@@ -1,0 +1,164 @@
+---
+title: "Auth for GenAI"
+sidebarTitle: Overview
+---
+
+<Frame>
+  <iframe
+    width="100%"
+    height="537"
+    src="https://www.youtube.com/embed/X22XNlRnHZU"
+    title="Introducing: Auth for GenAI"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  />
+</Frame>
+
+<Card
+  title="Secure your AI Agents and GenAI applications with robust user authentication, secure API access, human-in-the-loop controls, and fine-grained authorization for your data."
+  icon="sparkles"
+  iconType="solid"
+  horizontal
+/>
+
+### User authentication
+
+- Securely authenticate users in your GenAI applications using Auth0's [Universal Login](https://auth0.com/docs/authenticate/login/auth0-universal-login) with support for social, enterprise, and custom identity providers. This allows you to leverage robust standards like OAuth 2.0 and OpenID Connect to secure both interactive and headless AI agents. [Learn More](/user-authentication)
+
+### Call your APIs on a user's behalf
+
+- Enable AI agents to securely call your application's own APIs (first-party APIs) on behalf of a user using OAuth 2.0. This pattern ensures that the user's context is maintained, preventing agents from having broad, unrestricted access to all user data. [Learn More](/call-your-apis-on-users-behalf)
+
+### Call other's APIs on a user's behalf using Token Vault
+
+- Securely connect AI agents to external tools and services like Google, Slack, or GitHub. Our Token Vault feature manages the complexities of obtaining, storing, and refreshing API tokens, allowing your agents to interact with third-party APIs without handling sensitive credentials or API keys directly. [Learn More](/intro/token-vault)
+
+### Asynchronous authorization
+
+- Implement "human-in-the-loop" workflows for actions that are long-running or require user consent. Using standards like [CIBA (Client-Initiated Backchannel Authentication)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow), agents can request approval for sensitive operations via push notifications, SMS, or email, even when the user is not actively using the application. [Learn More](/asynchronous-authorization)
+
+### Authorization for RAG
+
+- Enforce fine-grained, document-level access control within your Retrieval Augmented Generation (RAG) pipelines using [Auth0 FGA](https://auth0.com/fine-grained-authorization). This ensures that when a Large Language Model (LLM) generates a response, it only uses data that the current user is authorized to see, preventing [sensitive data leakage](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/) and ensuring compliance. [Learn More](/authorization-for-rag)
+
+## Get started
+
+Follow our [quickstart guides](/get-started) for a step-by-step tutorial on implementing authentication and authorization in your GenAI applications.
+
+## Sample applications
+
+Explore our sample applications and templates
+
+<Columns cols={3}>
+<Card href="https://github.com/auth0-samples/auth0-assistant0" title="Assistant0" >
+Assistant0, a Next.js based AI personal assistant that consolidates digital life by dynamically accessing multiple tools to help stay organized and efficient.
+
+'NEXT.JS' 'VERCEL AI' 'LANGCHAIN'
+
+</Card>
+<Card href="https://github.com/auth0-samples/agent0" title="Agent0"  >
+Agent0, a full-stack AI personal assistant powered by React and Fastify, that invokes your APIs using tool calls on a logged-in user's behalf.
+
+`FASTIFY`
+
+</Card>
+<Card href="https://github.com/auth0-samples/auth0-ai-samples" title="AI Samples"  >
+Explore our repository of sample applications showcasing Auth0's authentication and authorization capabilities in the context of generative AI applications.
+
+`LANGCHAIN` `FASTAPI` `VERCEL AI` `LLAMAINDEX`
+
+</Card>
+</Columns>
+
+## Frameworks & SDKs
+
+Explore samples and SDKs for the different frameworks supported by Auth for GenAI.
+
+<Columns cols={3}>
+  <Card
+    href="/javascript-sdk"
+    icon="js"
+    iconType="solid"
+    horizontal
+    title="JavaScript"
+  />
+  <Card
+    href="/python-sdk"
+    icon="python"
+    iconType="solid"
+    horizontal
+    title="Python"
+  />
+  <Card
+    href="/langchain-sdk"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+        alt="LangChain"
+      />
+    }
+    horizontal
+    title="LangChain"
+  />
+  <Card
+    href="/llamaindex-sdk"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/llamadex.svg"
+        alt="LlamaIndex"
+      />
+    }
+    horizontal
+    title="LlamaIndex"
+  />
+  <Card
+    href="/vercel-ai-sdk"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/vercel.svg"
+        alt="Vercel AI"
+      />
+    }
+    horizontal
+    title="Vercel AI"
+  />
+  <Card
+    href="/cloudflare-sdk"
+    horizontal
+    title="Cloudflare"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/cloudflare.svg"
+        alt="Cloudflare"
+        height={48}
+        width={48}
+      />
+    }
+  />
+  <Card
+    href="/genkit-sdk"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/genkit.svg"
+        alt="Genkit"
+      />
+    }
+    horizontal
+    title="Genkit"
+  />
+</Columns>
+
+## Developer Preview
+
+Auth for GenAI provides a robust identity and access management platform designed on top of industry standards to secure every layer of your GenAI stack. We offer solutions for common challenges, such as insecurely hardcoded API keys, lack of user consent in agent-led workflows, and weak authorization in RAG pipelines.
+Auth for GenAI works out of the box with popular AI frameworks like LangChain, LlamaIndex, Genkit, and the Vercel AI SDK, enabling developers to build and deploy secure AI-powered applications that users can trust.
+
+<Columns cols={1}>
+<Card href="https://dev.auth0.com/signup?onboard_app=genai" icon={<img src="https://mintlify-assets.b-cdn.net/auth0/bannerimage.png" alt="Developer Preview Program" />} title="Developer Preview Program">
+
+Auth for GenAI is currently available in Developer Preview. Join today to start building secure GenAI applications and provide feedback to shape the platform's future.
+
+</Card>
+</Columns>
