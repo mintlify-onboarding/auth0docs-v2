@@ -1,0 +1,10 @@
+button[data-component-part="tab-button"] {
+  font-size: 1rem !important;
+}
+
+/* For Mintlify dark mode class (if used) */
+.dark img[src*="https://mintlify-assets.b-cdn.net/auth0/"]
+{
+  filter: invert(1) hue-rotate(180deg);
+  background: transparent !important;
+}

@@ -1,0 +1,84 @@
+---
+title: Connections
+description: "A Connection in Auth0 is a relationship between Auth0 and a source of users, such as third-party applications (like Slack or Salesforce) or external Identity Providers (like Google or Microsoft)."
+---
+
+These Connections allow users to log in to your application using those identities (such as log in with Google), and share their data from that application to your application. Auth0 standardizes the authentication process from various sources to simplify the integration of different identity providers.
+
+For GenAI applications that utilize Token Vault, Connections are essential. They allow your AI agents to securely access external APIs, such as Google Calendar or Microsoft 365, on behalf of the user. This is achieved by the user granting your application consent to access their data through these Connections.
+
+Within the Auth0 dashboard, Connections are grouped into two categories: Social Connections allow users to log in to your application using their credentials from popular social media and consumer platforms. This provides a frictionless login experience and can enrich user profiles with additional information.
+
+Enterprise Connections are used to authenticate users against a federated corporate directory or identity provider. This is crucial for B2B applications where users need to log in with their company credentials or use single sign-on (SSO).
+
+## Supported Connections
+
+Auth0 provides a large number of Connection types, many of which already support Token Vault, and more will be supported soon. The ones that currently support Token Vault are as follows:
+
+<Columns cols={2}>
+<Card title="Google" icon="google" iconType="solid">
+Allows users to log in with their personal Google account.
+</Card>
+<Card title="Microsoft" icon="microsoft" iconType="solid">
+Allows users to log in with their Microsoft account.
+</Card>
+<Card title="GitHub" icon="github" iconType="solid">
+Allows users to log in with their GitHub account, which is useful for developer-focused applications.
+</Card>
+<Card title="Slack" icon="slack" iconType="solid">
+Allows users to log in with their Slack account, which is useful for developer-focused applications.
+</Card>
+<Card title="Box" icon="box" iconType="solid">
+Allows users to log in with their Box account.
+</Card>
+<Card title="OpenID Connect (OIDC)" icon="code" iconType="solid">
+A simple identity layer on top of the OAuth 2.0 protocol. It allows clients to verify the identity of the end-user based on the authentication performed by an Authorization Server. Any Identity Provider that supports OIDC can be configured using this Connection type, for example, Salesforce.
+</Card>
+<Card title="Custom Connections" icon="link" iconType="solid">
+If a specific identity provider is not available out of the box, Auth0 allows you to create Custom Social Connections. This is particularly useful for integrating with any OAuth2-compliant authorization server. This extensibility ensures that your application can connect to a wide range of services as needed.
+</Card>
+</Columns>
+
+## Configuring Connections for Token Vault
+
+To enable your GenAI application to call APIs on a user’s behalf, you will need to:
+
+<Steps>
+  <Step title="Obtain client credentials">
+ To enable your application to call APIs on a user’s behalf, you will need to obtain the **Client ID** and **Client Secret** from the Connection you want to use.
+ </Step>
+ <Step title="Create and configure the Connection">
+ In the Auth0 Dashboard, navigate to **Authentication** and select the desired **Social** or **Enterprise** Connection type, and configure using the obtained **Client ID** and **Client Secret**.
+ </Step>
+ <Step title="Request the necessary scopes">
+ When configuring the Connection, you need to specify the default scopes (permissions) your application requires to access the user's data from the third-party API.
+ </Step>
+ <Step title="Enable Token Vault on the Connection">
+ Scroll down to the end of the page to the **Advanced** section and toggle **Enable Token Vault** and save the Connection.
+ </Step>
+ <Step title="Enable the Connection for your application">
+ Ensure that the newly configured Connection is enabled for the Auth0 application that represents your GenAI app under **Applications** \> **Applications** \> **\[your Auth0 app\]** \> **Connections.**
+ </Step>
+</Steps>
+
+## Get started
+
+To begin using Auth0 Token Vault in your GenAI applications, refer to the following resources:
+
+- **Quickstarts:**
+  <Columns cols={2}>
+  <Card title="Call Other's APIs on User's Behalf" href="/call-others-apis-on-users-behalf" icon="key" horizontal/>
+  </Columns>
+- **Guides:**
+  <Columns cols={2}>
+  <Card title="Configure Google Social Connection" href="/google-sign-in-and-auth" icon="google" horizontal/>
+  </Columns>
+
+## Learn more
+
+<Columns cols={2}>
+<Card title="Social Identity Providers" href="https://auth0.com/docs/authenticate/identity-providers/social-identity-providers" icon="user" horizontal/>
+<Card title="Enterprise Identity Providers" href="https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers" icon="user" horizontal/>
+<Card title="Configure Token Vault" href="https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault" icon="gear" horizontal/>
+<Card title="Auth0 Marketplace for Social Connections" href="https://marketplace.auth0.com/features/social-connections" icon="users" horizontal/>
+</Columns>

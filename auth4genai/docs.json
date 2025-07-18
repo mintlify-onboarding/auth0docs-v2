@@ -1,0 +1,166 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Auth0",
+  "colors": {
+    "primary": "#5001FF",
+    "light": "#5001FF",
+    "dark": "#341773"
+  },
+  "favicon": "/favicon.svg",
+  "fonts": {
+    "heading": {
+      "family": "Aeonik",
+      "source": "https://cdn.auth0.com/website/cic-homepage/fonts/Aeonik-Medium.woff2",
+      "format": "woff2"
+    },
+    "body": {
+      "family": "Aeonik",
+      "source": "https://cdn.auth0.com/website/cic-homepage/fonts/Aeonik-Regular.woff2",
+      "format": "woff2"
+    }
+  },
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude"]
+  },
+  "appearance": {
+    "default": "dark"
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Auth for GenAI",
+            "pages": [
+              "intro",
+              {
+                "group": "User Authentication",
+                "pages": [
+                  "intro/user-authentication",
+                  "intro/call-your-apis-on-users-behalf"
+                ]
+              },
+              {
+                "group": "Call Other's APIs with Token Vault",
+                "pages": [
+                  "intro/token-vault",
+                  "intro/connections",
+                  "intro/account-linking",
+                  "intro/call-others-apis-on-users-behalf"
+                ]
+              },
+              "intro/asynchronous-authorization",
+              "intro/authorization-for-rag"
+            ]
+          },
+          {
+            "group": "Get Started",
+            "pages": [
+              "get-started",
+              "user-authentication",
+              "call-your-apis-on-users-behalf",
+              "call-others-apis-on-users-behalf",
+              "asynchronous-authorization",
+              "authorization-for-rag"
+            ]
+          },
+          {
+            "group": "Sample Apps",
+            "pages": ["sample-apps"]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides",
+              "google-sign-in-and-auth",
+              "client-initiated-account-linking"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": ["support"]
+          },
+          {
+            "group": "Glossary",
+            "pages": ["glossary"]
+          }
+        ]
+      },
+      {
+        "tab": "How-Tos",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "how-tos",
+              "check-google-calendar-availability",
+              "list-github-repositories",
+              "list-slack-channels",
+              "get-salesforce-opportunities",
+              "analyze-strava-activities",
+              "create-spotify-playlist",
+              "get-github-issues-python"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Auth for MCP",
+        "groups": [
+          {
+            "group": " ",
+            "pages": ["auth-for-mcp", "cloudflare-mcp"]
+          }
+        ]
+      },
+      {
+        "tab": "SDKs",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "sdks",
+              "javascript-sdk",
+              "python-sdk",
+              "langchain-sdk",
+              "llamaindex-sdk",
+              "vercel-ai-sdk",
+              "cloudflare-sdk",
+              "genkit-sdk"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://auth0.com/"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Sign up",
+        "href": "https://auth0.com/signup?place=header&type=button&text=sign%20up"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Contact sales",
+      "href": "https://auth0.com/contact-us?place=header&type=button&text=contact%20sales"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://twitter.com/auth0",
+      "github": "https://github.com/auth0",
+      "linkedin": "https://linkedin.com/company/auth0"
+    }
+  }
+}
