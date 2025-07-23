@@ -35,34 +35,28 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the GitHub API.
 
-```typescript lines ./src/lib/tools/listRepositories.ts wrap
+```typescript lines ./src/lib/tools/listRepositories.ts wrap highlight={2-4,9,15,19-21,31-33}
 import { Octokit, RequestError } from "octokit";
-// highlight-start
 import { getAccessTokenForConnection } from "@auth0/ai-vercel";
 import { FederatedConnectionError } from "@auth0/ai/interrupts";
 import { withGitHub } from "@/lib/auth0-ai";
-// highlight-end
 import { tool } from "ai";
 import { z } from "zod";
 
 
-// highlight-next-line
 export const listRepositories = withGitHub(
   tool({
     description: "List respositories for the current user on GitHub",
     parameters: z.object({}),
     execute: async () => {
       // Get the access token from Auth0 AI
-      // highlight-next-line
       const accessToken = getAccessTokenForConnection();
 
       // GitHub SDK
       try {
-        // highlight-start
         const octokit = new Octokit({
           auth: accessToken,
         });
-        // highlight-end
 
         const { data } = await octokit.rest.repos.listForAuthenticatedUser();
 
@@ -72,11 +66,9 @@ export const listRepositories = withGitHub(
 
         if (error instanceof RequestError) {
           if (error.status === 401) {
-            // highlight-start
             throw new FederatedConnectionError(
               `Authorization required to access the Federated Connection`
             );
-            // highlight-end
           }
         }
 
@@ -95,23 +87,19 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server-side code of your Next.js App, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`. The `setAIContext` function is used to set the async-context for the Auth0 AI SDK.
 
-```typescript lines ./src/app/api/chat/route.ts wrap
+```typescript lines ./src/app/api/chat/route.ts wrap highlight={3-4,10,13,27,29}
 import { createDataStreamResponse, Message, streamText } from "ai";
 import { listRepositories } from "@/lib/tools/";
-// highlight-start
 import { setAIContext } from "@auth0/ai-vercel";
 import { errorSerializer, withInterruptions } from "@auth0/ai-vercel/interrupts";
-// highlight-end
 import { openai } from "@ai-sdk/openai";
 
 export async function POST(request: Request) {
   const { id, messages} = await request.json();
   const tools = { listRepositories };
-  // highlight-next-line
   setAIContext({ threadID: id });
 
   return createDataStreamResponse({
-    // highlight-next-line
     execute: withInterruptions(
       async (dataStream) => {
         const result = streamText({
@@ -126,10 +114,8 @@ export async function POST(request: Request) {
           sendReasoning: true,
         });
       },
-      // highlight-next-line
       { messages, tools }
     ),
-    // highlight-next-line
     onError: errorSerializer((err) => {
       console.log(err);
       return "Oops, an error occured!";
@@ -148,25 +134,21 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx wrap
+```tsx lines ./src/components/chat.tsx wrap highlight={4-6,10-14,25-34}
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-// highlight-start
 import { useInterruptions } from "@auth0/ai-vercel/react";
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import { EnsureAPIAccessPopup } from "@/components/auth0-ai/FederatedConnections/popup";
-// highlight-end
 
 export default function Chat() {
   const { messages, handleSubmit, input, setInput, toolInterrupt } =
-    // highlight-start
     useInterruptions((handler) =>
       useChat({
         onError: handler((error) => console.error("Chat error:", error)),
       })
     );
-    // highlight-end
 
   return (
     <div>
@@ -177,7 +159,6 @@ export default function Chat() {
         </div>
       ))}
 
-      {/* highlight-start */}
       {FederatedConnectionInterrupt.isInterrupt(toolInterrupt) && (
         <EnsureAPIAccessPopup
           interrupt={toolInterrupt}
@@ -188,7 +169,6 @@ export default function Chat() {
           }}
         />
       )}
-      {/* highlight-end */}
 
       <form onSubmit={handleSubmit}>
         <input value={input} placeholder="Say something..." onChange={(e) => setInput(e.target.value)} />
