@@ -8,11 +8,10 @@
 
 ### 2. Integrate your tool with Google Calendar
 
-```ts lines ./src/lib/tools/checkUsersCalendar.ts wrap
+```ts lines ./src/lib/tools/checkUsersCalendar.ts wrap highlight={4,12,18}
 import { tool } from "ai";
 import { z } from 'zod';
 import { google } from "googleapis";
-// highlight-next-line
 import { auth0 } from "@/lib/auth0";
 
 export const checkUsersCalendar = tool({
@@ -21,14 +20,12 @@ export const checkUsersCalendar = tool({
     date: z.coerce.date(),
   }),
   execute: async ({ date }) => {
-    // highlight-next-line
     const { token } = await auth0.getAccessTokenForConnection({ connection: 'google-oauth2' });
 
     // Google SDK
     const calendar = google.calendar("v3");
     const auth = new google.auth.OAuth2();
 
-    // highlight-next-line
     auth.setCredentials({ access_token: token });
 
     const response = await calendar.freebusy.query({
@@ -54,12 +51,11 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 ### 3. Set up the API route for the chat
 
-```tsx lines ./src/app/api/chat/route.ts wrap
+```tsx lines ./src/app/api/chat/route.ts wrap highlight={5,16}
 import { z } from 'zod';
 import { streamText } from "ai"
 import { openai } from "@ai-sdk/openai"
 import { google } from "googleapis";
-// highlight-next-line
 import { checkUsersCalendar } from "@/lib/tools/checkUsersCalendar";
 
 export const maxDuration = 60;
@@ -71,7 +67,6 @@ export async function POST(req) {
     model: openai('gpt-4o'),
     messages,
     system: "You're a helpful AI assistant that can read events from Google Calendar",
-    // highlight-next-line
     tools: { checkUsersCalendar }
   })
   return response.toDataStreamResponse();
