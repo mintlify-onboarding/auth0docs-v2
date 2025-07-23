@@ -28,18 +28,15 @@ Here, the session is controlled by a Flask application instance. You may utilize
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the GitHub API.
 
-```python ./src/lib/tools/list_repositories.py wrap
+```python ./src/lib/tools/list_repositories.py wrap highlight={4-5,9,19,21}
 from github import Github
 from github.GithubException import BadCredentialsException
 from llama_index.core.tools import FunctionTool
-# highlight-next-line
 from auth0_ai_llamaindex.federated_connections import get_access_token_for_connection, FederatedConnectionError
-# highlight-next-line
 from src.lib.auth0_ai import with_github
 
 def list_github_repositories_tool_function():
     # Get the access token from Auth0 AI
-    # highlight-next-line
     access_token = get_access_token_for_connection()
 
     # GitHub SDK
@@ -50,10 +47,8 @@ def list_github_repositories_tool_function():
         repo_names = [repo.name for repo in repos]
         return repo_names
     except BadCredentialsException:
-        # highlight-next-line
-        raise FederatedConnectionError("Authorization required to access the Federated Connection
+        raise FederatedConnectionError("Authorization required to access the Federated Connection")
 
-# highlight-next-line
 list_github_repositories_tool = with_github(FunctionTool.from_defaults(
     name="list_github_repositories",
     description="List respositories for the current user on GitHub",
@@ -63,10 +58,9 @@ list_github_repositories_tool = with_github(FunctionTool.from_defaults(
 
 Now that the tool is protected, you can pass it your LlamaIndex agent.
 
-```python ./src/lib/agent.ts wrap
+```python ./src/lib/agent.ts wrap highlight={3,13}
 from datetime import datetime
 from llama_index.agent.openai import OpenAIAgent
-# highlight-next-line
 from src.lib.tools.list_repositories import list_github_repositories_tool
 
 system_prompt = f"""You are an assistant designed to answer random user's questions.
@@ -77,7 +71,6 @@ system_prompt = f"""You are an assistant designed to answer random user's questi
 agent = OpenAIAgent.from_tools(
     tools=[
         # a tool with federated connection access
-        # highlight-next-line
         list_github_repositories_tool
         # ... other tools
     ],
@@ -98,14 +91,12 @@ On the server side of your Flask application you will need to set up a route to 
 When `FederatedConnectionInterrupt` error ocurrs, the server side will signal the front-end about the level access restrictions, and the front-end should prompt the user to trigger a new authorization (or login) request with the necessary permissions.
 
 
-```python ./src/app.py wrap
+```python ./src/app.py wrap highlight={3-5,19-20}
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, session
-# highlight-start
 from auth0_ai_llamaindex.auth0_ai import Auth0AI
 from auth0_ai_llamaindex.federated_connections import FederatedConnectionInterrupt
 from src.lib.agent import agent
-# highlight-end
 
 load_dotenv()
 app = Flask(__name__)
@@ -119,10 +110,8 @@ async def chat():
         message = request.json.get("message")
         response = agent.achat(message)
         return jsonify({"response": str(response)})
-    # highlight-start
     except FederatedConnectionInterrupt as e:
         return jsonify({"error": str(e.to_json())}), 403
-    # highlight-end
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 ```
