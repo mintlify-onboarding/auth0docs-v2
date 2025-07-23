@@ -76,7 +76,7 @@ By the end of this quickstart, you should have an application integrated with Au
     - `access_type`: pass in `offline` to allow your server to retrieve access tokens when needed without manual user interaction.
     - `prompt`: pass in `consent` to prompt the user to give your application consent for refresh tokens.
 
-    ```tsx ./src/app/page.tsx expandable wrap
+    ```tsx ./src/app/page.tsx wrap
     // ...
 
     // If no user session, show sign-up and login buttons.
@@ -98,7 +98,7 @@ By the end of this quickstart, you should have an application integrated with Au
 
     Once the user is authenticated, you can fetch an access token from the [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) using the Auth0 SDK. In this example, we fetch an access token for a Google social connection:
 
-    ```ts ./src/lib/google.ts expandable wrap
+    ```ts ./src/lib/google.ts wrap
     import { google } from "googleapis";
     // highlight-next-line
     import { auth0 } from "./auth0";
@@ -123,7 +123,7 @@ By the end of this quickstart, you should have an application integrated with Au
 
     In our example, we create a file at `src/lib/tools/google-calendar-view.ts`. In the file, we define a tool, `googleCalendarViewTool`, that uses the access token with the Google Calendar API to query for calendar events in a specified date range:
 
-    ```ts ./src/lib/tools/google-calendar-view.ts expandable wrap
+    ```ts ./src/lib/tools/google-calendar-view.ts wrap
     import { tool } from 'ai';
     import { z } from 'zod';
     import { google } from 'googleapis';
@@ -174,7 +174,7 @@ By the end of this quickstart, you should have an application integrated with Au
 
     You can call the tool from your AI app to get calendar events:
 
-    ```ts ./src/app/api/chat/route.ts expandable wrap
+    ```ts ./src/app/api/chat/route.ts wrap
     import { NextRequest } from 'next/server';
     import { streamText } from 'ai';
     import { openai } from '@ai-sdk/openai';
@@ -208,7 +208,7 @@ By the end of this quickstart, you should have an application integrated with Au
 
     Update your client component to use the AI agent route:
 
-    ```tsx ./src/app/page.tsx expandable wrap
+    ```tsx ./src/app/page.tsx wrap
     "use client";
 
     import { useUser } from "@auth0/nextjs-auth0";
@@ -327,7 +327,7 @@ In the root directory of your project, create the `.env.local` file and add the 
   client secret value, click the copy button on the code sample.
 </Note>
 
-```bash .env.local expandable wrap
+```bash .env.local wrap
 AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
 APP_BASE_URL='http://localhost:3000'
 AUTH0_DOMAIN='<your-auth0-domain>'
@@ -352,7 +352,7 @@ When you initialize the Auth0 Server Client, you need to specify additional auth
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `scope`       | Requests the following Auth0 scopes to be authorized for the application:<p><ul><li>`openid`: (Required) Indicates that the application intends to use OIDC to verify the user's identity. To learn more read [OpenID connect scopes](https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes).</li><li>`profile`: Returns claims that represent basic profile information, including `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `picture`, and `updated_at`.</li><li>`email`: Returns the `email` claim, which contains the user's email address, and `email_verified`, which is a boolean indicating whether the email address was verified by the user.</li><li>`offline_access`: Requests an Auth0 refresh token from the Auth0 Authorization Server, which will be exchanged for a new access token from the requested connection's Token Vault. To learn more, read [Token Vault](https://auth0.com/docs/secure/tokens/token-vault).</li></ul></p> |
 
-```python ./src/app.py expandable wrap
+```python ./src/app.py wrap
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import HTMLResponse
 from auth0_server_python.auth_server import ServerClient
@@ -399,7 +399,7 @@ auth0 = ServerClient(
 
 In `src/app.py`, instantiate a FastAPI instance that intercepts incoming requests and applies Auth0's authentication logic:
 
-```python ./src/app.py expandable wrap
+```python ./src/app.py wrap
 # ...
 
 app = FastAPI()
@@ -444,7 +444,7 @@ if __name__ == "__main__":
 
 Add the following code to `src/app.py` to ask the user to log in from a browser window:
 
-```python ./src/app.py expandable wrap
+```python ./src/app.py wrap
 # ...
 
 print("-" * 25)
@@ -516,7 +516,7 @@ calendar_service = build('calendar', 'v3',
 
 Add the following code to `src/app.py` to create the calendar tool for listing upcoming Calendar events:
 
-```python ./src/app.py expandable wrap
+```python ./src/app.py wrap
 # ...
 
 tools = [{
@@ -554,7 +554,7 @@ def list_upcoming_events(max_results=10):
 
 Set your OpenAI API key in your environment variables:
 
-```bash .env.local expandable wrap
+```bash .env.local wrap
 # .env.local
 # ...
 
@@ -563,7 +563,7 @@ OPENAI_API_KEY="YOUR_API_KEY"
 
 Add the following code to `src/app.py` to create the AI agent:
 
-```python ./src/app.py expandable wrap
+```python ./src/app.py wrap
 # ...
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))

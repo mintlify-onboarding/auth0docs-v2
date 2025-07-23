@@ -8,7 +8,7 @@ pip install auth0-ai-llamaindex
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Slack scopes.
 
-```python ./src/lib/auth0-ai.py expandable wrap
+```python ./src/lib/auth0-ai.py wrap
 from auth0_ai_llamaindex.auth0_ai import Auth0AI
 from flask import session
 
@@ -28,7 +28,7 @@ Here, the session is controlled by a Flask application instance. You may utilize
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Slack API.
 
-```python ./src/lib/tools/list_channels.py expandable wrap
+```python ./src/lib/tools/list_channels.py wrap
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from llama_index.core.tools import FunctionTool
@@ -70,7 +70,7 @@ list_slack_channels_tool = with_slack(FunctionTool.from_defaults(
 
 Now that the tool is protected, you can pass it your LlamaIndex agent.
 
-```python ./src/lib/agent.ts expandable wrap
+```python ./src/lib/agent.ts wrap
 from datetime import datetime
 from llama_index.agent.openai import OpenAIAgent
 # highlight-next-line
@@ -105,7 +105,7 @@ On the server side of your Flask application you will need to set up a route to 
 When `FederatedConnectionInterrupt` error ocurrs, the server side will signal the front-end about the level access restrictions, and the front-end should prompt the user to trigger a new authorization (or login) request with the necessary permissions.
 
 
-```python ./src/app.py expandable wrap
+```python ./src/app.py wrap
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, session
 # highlight-start

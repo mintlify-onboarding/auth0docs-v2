@@ -60,7 +60,7 @@ By the end of this quickstart, you should have an application that can:
 
     The confirmation dialog will provide you with all the information that you need for your environment file.
 
-    ```bash .env.local expandable wrap
+    ```bash .env.local wrap
     # You can use any provider of your choice supported by Vercel AI
     OPENAI_API_KEY=<your-openai-api-key>
 
@@ -113,7 +113,7 @@ By the end of this quickstart, you should have an application that can:
 
     The first helper will create an in-memory vector store using `faiss` and `OpenAIEmbeddings`. You can replace this module with your own store, as long as it follows the LangChain retriever specification.
 
-    ```ts ./helpers.ts expandable wrap
+    ```ts ./helpers.ts wrap
     import fs from "node:fs/promises";
     import { StructuredToolInterface } from "@langchain/core/tools";
     import { createReactAgent } from "@langchain/langgraph/prebuilt";
@@ -187,7 +187,7 @@ By the end of this quickstart, you should have an application that can:
 
     In the first step, we will define a new RAG tool. The agent calls the tool when needed.
 
-    ```bash ./index.ts expandable wrap
+    ```bash ./index.ts wrap
     import "dotenv/config";
 
     import { OpenAIEmbeddings } from "@langchain/openai";
@@ -269,7 +269,7 @@ By the end of this quickstart, you should have an application that can:
 
     As a first step, let’s create a virtual environment and install the dependencies:
 
-    ```bash expandable wrap
+    ```bash wrap
     # Create a virtual env
     python -m venv venv
     # Activate the virtual env
@@ -353,7 +353,7 @@ By the end of this quickstart, you should have an application that can:
 
     The first helper will create an in-memory vector store using `faiss` and `OpenAIEmbeddings`. You can replace this module with your own store, as long as it follows the LangChain retriever specification.
 
-    ```py ./helpers/memory_store.py expandable wrap
+    ```py ./helpers/memory_store.py wrap
     import faiss
 
     from langchain_openai import OpenAIEmbeddings
@@ -382,7 +382,7 @@ By the end of this quickstart, you should have an application that can:
 
     The second helper will load the documents from the assets folder into the store.
 
-    ```py ./helpers/read_documents.py expandable wrap
+    ```py ./helpers/read_documents.py wrap
     import os
 
     from langchain_core.documents import Document
@@ -418,7 +418,7 @@ By the end of this quickstart, you should have an application that can:
 
     In the first step, we will define a new RAG tool. The agent will call up the tool when needed.
 
-    ```py ./main.py expandable wrap
+    ```py ./main.py wrap
     @tool
     def agent_retrieve_context_tool(query: str):
         """Call to get information about a company, e.g., What is the financial outlook for ZEKO?"""
@@ -448,7 +448,7 @@ By the end of this quickstart, you should have an application that can:
 
     The `FGARetriever` defined in the `retrieve` node is designed to abstract the base retriever from the FGA query logic. In this case, the `build_query` argument lets us specify how to query our FGA model by asking if the user is a viewer of the document.
 
-    ```py ./main.py expandable wrap
+    ```py ./main.py wrap
     # ...
 
     build_query=lambda doc: ClientBatchCheckItem(
@@ -460,7 +460,7 @@ By the end of this quickstart, you should have an application that can:
 
     Next, we define the ReActive Agent nodes, as seen in the file below. Please refer to the comments to see explanations of the steps:
 
-    ```py ./main.py expandable wrap
+    ```py ./main.py wrap
     # ...
 
     def agent_node(state: State):
@@ -503,7 +503,7 @@ By the end of this quickstart, you should have an application that can:
 
     And finally, we build the graph.
 
-    ```py ./main.py expandable wrap
+    ```py ./main.py wrap
     # ...
 
     # Create the OpenAI chat tool

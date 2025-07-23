@@ -8,7 +8,7 @@ pip install auth0-ai-langchain
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
-```python lines ./src/lib/auth0-ai.py expandable wrap
+```python lines ./src/lib/auth0-ai.py wrap
 from auth0_ai_langchain.auth0_ai import Auth0AI
 
 auth0_ai = Auth0AI()
@@ -27,7 +27,7 @@ with_google = auth0_ai.with_federated_connection(
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```python lines ./src/lib/tools/check_availability.py expandable wrap
+```python lines ./src/lib/tools/check_availability.py wrap
 from datetime import datetime, timedelta
 from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
@@ -81,7 +81,7 @@ check_user_calendar_tool = with_google(StructuredTool(
 
 Now that the tool is protected, you can pass it your LangGraph agent as part of a `ToolNode`. The agent will automatically request the access token when the tool is called.
 
-```python lines ./src/lib/agent.py expandable wrap
+```python lines ./src/lib/agent.py wrap
 from typing import Annotated, Sequence, TypedDict
 from langchain.storage import InMemoryStore
 from langchain_core.messages import AIMessage, BaseMessage
@@ -146,7 +146,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `refreshToken` to the Langchain's RunnableConfig from the authenticated user's session.
 
-```typescript lines ./src/app/api/langgraph/[..._path]/route.ts expandable wrap
+```typescript lines ./src/app/api/langgraph/[..._path]/route.ts wrap
 import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
 // highlight-next-line
 import { auth0 } from "@/lib/auth0";
@@ -201,7 +201,7 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx expandable wrap
+```tsx lines ./src/components/chat.tsx wrap
 import { useStream } from "@langchain/langgraph-sdk/react";
 // highlight-start
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";

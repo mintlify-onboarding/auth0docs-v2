@@ -6,7 +6,7 @@
 
 ### 2. Integrate your tool with Github
 
-```ts ./src/lib/tools/listRepos.ts expandable wrap
+```ts ./src/lib/tools/listRepos.ts wrap
 import { tool } from "ai";
 import { z } from 'zod';
 import { openai } from "@ai-sdk/openai";
@@ -52,7 +52,7 @@ You can check different authentication options for Next.js with Auth0 at the [of
 Create an AI tool that fetches GitHub repositories for the authenticated user using Auth0 to get a GitHub access token:
 
 
-```tsx ./src/app/api/chat/route.ts expandable wrap
+```tsx ./src/app/api/chat/route.ts wrap
 import { z } from 'zod';
 import { streamText, tool } from "ai"
 import { openai } from "@ai-sdk/openai"
@@ -79,7 +79,7 @@ export async function POST(req) {
 
 ### 4. Call from the client side
 
-```tsx ./src/app/page.tsx expandable wrap
+```tsx ./src/app/page.tsx wrap
 'use client';
 
 import { useChat } from '@ai-sdk/react';

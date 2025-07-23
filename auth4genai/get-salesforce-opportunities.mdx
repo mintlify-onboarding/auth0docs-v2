@@ -32,7 +32,7 @@ Create an AI tool that gets a list of opportunities from Salesforce and a backen
 
 - When the tool calls `auth0.getAccessTokenForConnection()`, pass `sfdc` as the connection name to get a Salesforce access token.
 
-```tsx /app/api/chat/route.js expandable wrap
+```tsx /app/api/chat/route.js wrap
 import { openai } from "@ai-sdk/openai";
 import { streamText, tool } from "ai";
 import { z } from "zod";
@@ -93,7 +93,7 @@ export async function POST(req) {
 
 Use the `@ai-sdk/react` hook to wire up the chat component:
 
-```tsx ./src/components/chat.tsx expandable wrap
+```tsx ./src/components/chat.tsx wrap
 "use client";
 import { useChat } from "@ai-sdk/react";
 export default function Chat() {

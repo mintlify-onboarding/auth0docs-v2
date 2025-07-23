@@ -8,7 +8,7 @@ npm install @auth0/ai-langchain
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Slack scopes.
 
-```typescript ./src/lib/auth0-ai.ts expandable wrap
+```typescript ./src/lib/auth0-ai.ts wrap
 import { Auth0AI } from "@auth0/ai-langchain";
 
 const auth0AI = new Auth0AI();
@@ -27,7 +27,7 @@ export const withSlack = auth0AI.withTokenForConnection({
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Slack API.
 
-```typescript ./src/lib/tools/listChannels.ts expandable wrap
+```typescript ./src/lib/tools/listChannels.ts wrap
 import { ErrorCode, WebClient } from "@slack/web-api";
 // highlight-start
 import { getAccessTokenForConnection } from "@auth0/ai-langchain";
@@ -82,7 +82,7 @@ export const listChannels = withSlack(
 
 Now that the tool is protected, you can pass it your LangGraph agent as part of a `ToolNode`. The agent will automatically request the access token when the tool is called.
 
-```typescript ./src/lib/agent.ts expandable wrap
+```typescript ./src/lib/agent.ts wrap
 import { AIMessage } from "@langchain/core/messages";
 import { RunnableLike } from "@langchain/core/runnables";
 import { END, InMemoryStore, MemorySaver, MessagesAnnotation, START, StateGraph } from "@langchain/langgraph";
@@ -150,7 +150,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `refreshToken` to the Langchain's RunnableConfig from the authenticated user's session.
 
-```typescript ./src/app/api/langgraph/[..._path]/route.ts expandable wrap
+```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap
 import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
 // highlight-next-line
 import { auth0 } from "@/lib/auth0";
@@ -205,7 +205,7 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx ./src/components/chat.tsx expandable wrap
+```tsx ./src/components/chat.tsx wrap
 import { useStream } from "@langchain/langgraph-sdk/react";
 // highlight-start
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";

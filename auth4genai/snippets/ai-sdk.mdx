@@ -9,7 +9,7 @@ npm install @auth0/ai-vercel
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
-```typescript lines ./src/lib/auth0-ai.ts expandable wrap
+```typescript lines ./src/lib/auth0-ai.ts wrap
 import { Auth0AI } from "@auth0/ai-vercel";
 import { auth0 } from "@/lib/auth0";
 
@@ -36,7 +36,7 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```typescript lines  ./src/lib/tools/checkUsersCalendar.ts expandable wrap
+```typescript lines  ./src/lib/tools/checkUsersCalendar.ts wrap
 import { addHours, formatISO } from "date-fns";
 import { GaxiosError } from "gaxios";
 import { google } from "googleapis";
@@ -111,7 +111,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server-side code of your Next.js App, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`. The `setAIContext` function is used to set the async-context for the Auth0 AI SDK.
 
-```typescript lines ./src/app/api/chat/route.ts expandable wrap
+```typescript lines ./src/app/api/chat/route.ts wrap
 import { createDataStreamResponse, Message, streamText } from "ai";
 import { checkUsersCalendar } from "@/lib/tools/";
 // highlight-start
@@ -164,7 +164,7 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx expandable wrap
+```tsx lines ./src/components/chat.tsx wrap
 "use client";
 
 import { useChat } from "@ai-sdk/react";

@@ -24,7 +24,7 @@ npm install @auth0/ai-vercel @auth0/ai-cloudflare @auth0/ai
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Github scopes.
 
-```typescript lines ./src/lib/auth0-ai.ts expandable wrap
+```typescript lines ./src/lib/auth0-ai.ts wrap
 import { Auth0AI, setGlobalAIContext } from "@auth0/ai-vercel";
 import { getCurrentAgent } from "agents";
 import type { Chat } from "./chat";
@@ -55,7 +55,7 @@ export const withGitHub = auth0AI.withTokenForConnection({
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Github API.
 
-```typescript lines ./src/agent/tools/listRepositories.ts expandable wrap
+```typescript lines ./src/agent/tools/listRepositories.ts wrap
 import { Octokit, RequestError } from "octokit";
 // highlight-start
 import { getAccessTokenForConnection } from "@auth0/ai-vercel";
@@ -117,7 +117,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the Chat agent class, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`.
 
-```typescript lines ./src/agent/chat.ts expandable wrap
+```typescript lines ./src/agent/chat.ts wrap
 // highlight-start
 import { setAIContext } from "@auth0/ai-vercel";
 import { errorSerializer, withInterruptions } from "@auth0/ai-vercel/interrupts";
@@ -207,7 +207,7 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx expandable wrap
+```tsx lines ./src/components/chat.tsx wrap
 "use client";
 
 import { useChat } from "@ai-sdk/react";

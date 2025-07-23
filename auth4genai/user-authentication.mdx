@@ -99,7 +99,7 @@ The Auth0 client provides methods for handling authentication, sessions, and use
 
 The middleware intercepts incoming requests and applies Auth0's authentication logic. Create the following file at `src/middleware.ts`:
 
-```tsx ./src/middleware.ts expandable
+```tsx ./src/middleware.ts
 import { NextRequest, NextResponse } from "next/server";
 import { auth0 } from "./lib/auth0";
 
@@ -137,7 +137,7 @@ export const config = {
 
 Update the `src/app/page.tsx` file to display content based on the user session:
 
-```tsx ./src/app/page.tsx expandable
+```tsx ./src/app/page.tsx
 "use client";
 
 import { useUser } from "@auth0/nextjs-auth0";
@@ -284,7 +284,7 @@ When you initialize the Auth0 client, you need to specify additional authorizati
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `scope`       | Requests the following Auth0 scopes to be authorized for the application:<p><ul><li>`openid`: (Required) Indicates that the application intends to use OIDC to verify the user's identity. To learn more read [OpenID connect scopes](https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes).</li><li>`profile`: Returns claims that represent basic profile information, including `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `picture`, and `updated_at`.</li><li>`email`: Returns the `email` claim, which contains the user's email address, and `email_verified`, which is a boolean indicating whether the email address was verified by the user.</li><li>`offline_access`: Requests an Auth0 refresh token from the Auth0 Authorization Server, which will be exchanged for a new access token from the requested connection's Token Vault. To learn more, read [Token Vault](https://auth0.com/docs/secure/tokens/token-vault).</li></ul></p> |
 
-```python ./src/app.py expandable
+```python ./src/app.py
 # import dependencies
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import HTMLResponse
@@ -333,7 +333,7 @@ The Auth0 client provides methods for handling authentication, sessions, and use
 
 In `src/app.py`, instantiate a FastAPI instance that intercepts incoming requests and applies Auth0's authentication logic:
 
-```python ./src/app.py expandable
+```python ./src/app.py
 # ...
 
 app = FastAPI()
@@ -378,7 +378,7 @@ if __name__ == "__main__":
 
 Add the following code to `src/app.py` to ask the user to log in from a browser window:
 
-```python ./src/app.py expandable
+```python ./src/app.py
 # ...
 
 print("-" * 25)

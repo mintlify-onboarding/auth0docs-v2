@@ -8,7 +8,7 @@
 
 ### 2. Integrate your tool with Google Calendar
 
-```ts lines ./src/lib/tools/checkUsersCalendar.ts expandable wrap
+```ts lines ./src/lib/tools/checkUsersCalendar.ts wrap
 import { tool } from "ai";
 import { z } from 'zod';
 import { google } from "googleapis";
@@ -54,7 +54,7 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 ### 3. Set up the API route for the chat
 
-```tsx lines ./src/app/api/chat/route.ts expandable wrap
+```tsx lines ./src/app/api/chat/route.ts wrap
 import { z } from 'zod';
 import { streamText } from "ai"
 import { openai } from "@ai-sdk/openai"
@@ -81,7 +81,7 @@ export async function POST(req) {
 
 ### 4. Call from the client side
 
-```tsx lines ./src/app/page.tsx expandable wrap
+```tsx lines ./src/app/page.tsx wrap
 'use client';
 
 import { useChat } from '@ai-sdk/react';
