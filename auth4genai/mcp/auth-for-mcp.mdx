@@ -15,7 +15,6 @@ For developers building AI applications, MCP offers practical advantages:
 - **LLM-Optimized Tool Definitions:** The protocol acknowledges that APIs for LLMs differ from traditional developer APIs. LLM-facing tools require richer descriptive context and metadata for the model to use them effectively, a distinction MCP incorporates into its design.
 - **Reusable Components:** Growing adoption means access to a larger ecosystem of MCP-compliant tools and resources. This allows developers to leverage existing, tested components rather than building everything from scratch.
 
-
 ## Authentication and Authorization for MCP Servers
 
 When an MCP server is exposed to the internet, it must be secured. The MCP specification recommends using [OAuth 2.1](https://oauth.net/2.1/) to secure these interactions. This allows an MCP server to delegate authentication to a dedicated authorization server and manage access control for different clients, users, and actions using scopes.
@@ -26,20 +25,20 @@ For a client to interact with your server, the MCP specification requires you to
 
 1. Announce Your Auth Server with Protected Resource Metadata ([RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728))
 
-  Your MCP server must tell clients where to get authorized. To do this, you must expose a metadata endpoint. Create a `.well-known/oauth-authorization-server` endpoint on your server that returns a JSON object pointing to your Auth0 tenant. This allows MCP clients to automatically discover your authorization endpoints without manual configuration.
+Your MCP server must tell clients where to get authorized. To do this, you must expose a metadata endpoint. Create a `.well-known/oauth-authorization-server` endpoint on your server that returns a JSON object pointing to your Auth0 tenant. This allows MCP clients to automatically discover your authorization endpoints without manual configuration.
 
 2. Use the `WWW-Authenticate` Header for 401 Errors
 
-  When a client makes a request without a valid token, your server must return a `401 Unauthorized` status. Crucially, this response must include the `WWW-Authenticate` header, pointing to the metadata URL you configured above. This signals to the client that authentication is required and tells it exactly where to start the process.
+When a client makes a request without a valid token, your server must return a `401 Unauthorized` status. Crucially, this response must include the `WWW-Authenticate` header, pointing to the metadata URL you configured above. This signals to the client that authentication is required and tells it exactly where to start the process.
 
 ## Implementing MCP Security with Auth0
 
 By using Auth0 as your authorization server, you can secure your MCP server without building and maintaining a complex identity system yourself. The MCP specification highlights several key OAuth 2.1 features that Auth0 provides:
 
- - **Proof Key for Code Exchange (PKCE):** [PKCE](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce) mandatory security feature that mitigates authorization code interception and is handled automatically in Auth0's SDKs.
- - **Metadata Discovery:** Is mandatory per the MCP spec. Servers must advertise their OAuth endpoints. An Auth0 tenant provides a [standard discovery document](https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery) (`/.well-known/openid-configuration`) so MCP clients can dynamically find the required endpoints for authorization, token exchange, etc., reducing manual client-side configuration.
- - **Dynamic Client Registration (DCR):** DCR is crucial for scalability. It allows MCP clients (like a generic AI workbench) to programmatically register with your Auth0-secured MCP server via an API call. This avoids forcing users to manually create a client application in the Auth0 dashboard for every new tool they want to connect.
- - **Delegating Authentication to a Third-Party Identity Provider(IdP):** The specification supports delegating the user login process. You can configure your MCP server to use Auth0 as the trusted identity provider, centralizing user management and sign-on logic.
+- **Proof Key for Code Exchange (PKCE):** [PKCE](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce) mandatory security feature that mitigates authorization code interception and is handled automatically in Auth0's SDKs.
+- **Metadata Discovery:** Is mandatory per the MCP spec. Servers must advertise their OAuth endpoints. An Auth0 tenant provides a [standard discovery document](https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery) (`/.well-known/openid-configuration`) so MCP clients can dynamically find the required endpoints for authorization, token exchange, etc., reducing manual client-side configuration.
+- **Dynamic Client Registration (DCR):** DCR is crucial for scalability. It allows MCP clients (like a generic AI workbench) to programmatically register with your Auth0-secured MCP server via an API call. This avoids forcing users to manually create a client application in the Auth0 dashboard for every new tool they want to connect.
+- **Delegating Authentication to a Third-Party Identity Provider(IdP):** The specification supports delegating the user login process. You can configure your MCP server to use Auth0 as the trusted identity provider, centralizing user management and sign-on logic.
 
 ## MCP Authorization Flow with Auth0
 
@@ -47,32 +46,36 @@ Here is the standard OAuth authorization code flow when an MCP server uses Auth0
 
 <Steps>
   <Step>
-   The MCP client initiates the OAuth flow by making a request to the MCP server's authorization endpoint.
+    The MCP client initiates the OAuth flow by making a request to the MCP
+    server's authorization endpoint.
   </Step>
   <Step>
-   The MCP server redirects the user to the Auth0 authorization server.
+    The MCP server redirects the user to the Auth0 authorization server.
   </Step>
   <Step>
-   The user authenticates with Auth0 (using username/password, social login, or MFA).
+    The user authenticates with Auth0 (using username/password, social login, or
+    MFA).
   </Step>
   <Step>
-   After successful authentication, Auth0 redirects the browser back to the MCP server's callback URL with a single-use authorization code.
+    After successful authentication, Auth0 redirects the browser back to the MCP
+    server's callback URL with a single-use authorization code.
   </Step>
   <Step>
-   The MCP server exchanges the authorization code for an access token directly with the Auth0 token endpoint.
+    The MCP server exchanges the authorization code for an access token directly
+    with the Auth0 token endpoint.
   </Step>
   <Step>
-   The MCP server validates the token from Auth0 and generates its own session or internal access token that is bound to the third-party session.
+    The MCP server validates the token from Auth0 and generates its own session
+    or internal access token that is bound to the third-party session.
   </Step>
   <Step>
-   The MCP server completes the original OAuth flow, returning its own token to the MCP client, which can then be used to make authenticated calls to the server's tools.
+    The MCP server completes the original OAuth flow, returning its own token to
+    the MCP client, which can then be used to make authenticated calls to the
+    server's tools.
   </Step>
 </Steps>
 
-<Frame>
-![MCP Server Auth](/img/mcp_auth_flow.png)
-</Frame>
-
+<Frame>![MCP Server Auth](/img/mcp_auth_flow.png)</Frame>
 
 ### Access Token Validation
 
