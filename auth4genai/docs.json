@@ -99,11 +99,11 @@
               "how-tos/overview",
               "how-tos/check-google-calendar-availability",
               "how-tos/list-github-repositories",
+              "how-tos/get-github-issues-python",
               "how-tos/list-slack-channels",
               "how-tos/get-salesforce-opportunities",
               "how-tos/analyze-strava-activities",
-              "how-tos/create-spotify-playlist",
-              "how-tos/get-github-issues-python"
+              "how-tos/create-spotify-playlist"
             ]
           }
         ]
