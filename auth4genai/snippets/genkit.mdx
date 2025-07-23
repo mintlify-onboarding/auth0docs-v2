@@ -38,21 +38,17 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```typescript lines ./src/lib/tools/checkUsersCalendar.ts wrap
+```typescript lines ./src/lib/tools/checkUsersCalendar.ts wrap highlight={3-5,11,24,31-33,51-53}
 import { addHours } from "date-fns";
 import { z } from "zod";
-// highlight-next-line
 import { getAccessTokenForConnection } from "@auth0/ai-genkit";
-// highlight-next-line
 import { FederatedConnectionError } from "@auth0/ai/interrupts";
-// highlight-next-line
 import { withGoogleCalendar } from "@/lib/auth0-ai";
 
 // importing GenKit instance
 import { ai } from "../genkit";
 
 export const checkUsersCalendar = ai.defineTool(
-  // highlight-next-line
   ...withGoogleCalendar(
     {
       description:
@@ -66,7 +62,6 @@ export const checkUsersCalendar = ai.defineTool(
     },
     async ({ date }) => {
       // Get the access token from Auth0 AI
-      // highlight-next-line
       const accessToken = getAccessTokenForConnection();
 
       // Google SDK
@@ -74,11 +69,9 @@ export const checkUsersCalendar = ai.defineTool(
         const calendar = google.calendar("v3");
         const auth = new google.auth.OAuth2();
 
-        // highlight-start
         auth.setCredentials({
           access_token: .accessToken,
         });
-        // highlight-end
 
         const response = await calendar.freebusy.query({
           auth,
@@ -96,11 +89,9 @@ export const checkUsersCalendar = ai.defineTool(
       } catch (error) {
         if (error instanceof GaxiosError) {
           if (error.status === 401) {
-            // highlight-start
             throw new FederatedConnectionError(
               `Authorization required to access the Federated Connection`
             );
-            // highlight-end
           }
         }
 
@@ -119,13 +110,11 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server-side code of your Next.js App, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`. The `setAIContext` function is used to set the async-context for the Auth0 AI SDK.
 
-```typescript lines ./src/app/api/chat/route.ts wrap
+```typescript lines ./src/app/api/chat/route.ts wrap highlight={4-5,47}
 import { ToolRequestPart } from "genkit";
 import path from "path";
 import { ai } from "@/lib/genkit";
-// highlight-next-line
 import { checkUsersCalendar } from "@/lib/tools/check-user-calendar";
-// highlight-next-line
 import { resumeAuth0Interrupts } from "@auth0/ai-genkit";
 import { auth0 } from "@/lib/auth0";
 
@@ -168,7 +157,6 @@ export async function POST(
 
   const r = await chat.send({
     prompt: message,
-    // highlight-next-line
     resume: resumeAuth0Interrupts(tools, interruptedToolRequest),
   });
 
@@ -211,14 +199,12 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx wrap
+```tsx lines ./src/components/chat.tsx wrap highlight={4-5, 120-141}
 "use client";
 import { useQueryState } from "nuqs";
 import { FormEventHandler, useEffect, useRef, useState } from "react";
-// highlight-start
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import { EnsureAPIAccessPopup } from "@/components/auth0-ai/FederatedConnections/popup";
-// highlight-end
 import Markdown from "react-markdown";
 
 const useFocus = () => {
@@ -333,7 +319,6 @@ export default function Chat() {
               {(message.role === "user" ? "User: " : "AI: ") +
                 (message.content[0].text || "")}
             </Markdown>
-            // highlight-start
             {!isLoading &&
             message.content[0].metadata?.interrupt &&
             FederatedConnectionInterrupt.isInterrupt(
@@ -356,7 +341,6 @@ export default function Chat() {
                   );
                 })()
               : null}
-          // highlight-end
           </div>
         ))}
 
