@@ -34,14 +34,11 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the GitHub API.
 
-```typescript ./src/lib/tools/listRepositories.ts wrap
+```typescript ./src/lib/tools/listRepositories.ts wrap highlight={3-5,13,17,33-35}
 import { tool } from "llamaindex";
 import { z } from "zod";
-// highlight-next-line
 import { withSlack } from "@/lib/auth0-ai";
-// highlight-next-line
 import { getAccessTokenForConnection } from "@auth0/ai-llamaindex";
-// highlight-next-line
 import { FederatedConnectionError } from "@auth0/ai/interrupts";
 import { ErrorCode, WebClient } from "@slack/web-api";
 
@@ -50,12 +47,10 @@ export const listChannels = () =>
     tool(
       async () => {
         // Get the access token from Auth0 AI
-        // highlight-next-line
         const accessToken = getAccessTokenForConnection();
 
         // Slack SDK
         try {
-          // highlight-next-line
           const web = new WebClient(accessToken);
 
           const result = await web.conversations.list({
@@ -72,11 +67,8 @@ export const listChannels = () =>
         } catch (error) {
           if (error && typeof error === "object" && "code" in error) {
             if (error.code === ErrorCode.HTTPError) {
-              // highlight-next-line
               throw new FederatedConnectionError(
-                // highlight-next-line
                 `Authorization required to access the Federated Connection`
-              // highlight-next-line
               );
             }
           }
@@ -101,15 +93,11 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server-side code of your Next.js App, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`. The `setAIContext` function is used to set the async-context for the Auth0 AI SDK.
 
-```typescript ./src/app/api/chat/route.ts wrap
+```typescript ./src/app/api/chat/route.ts wrap highlight={2-5,15,35}
 import { createDataStreamResponse, LlamaIndexAdapter, Message, ToolExecutionError } from "ai";
-// highlight-next-line
 import { listRepositories } from "@/lib/tools/";
-// highlight-next-line
 import { setAIContext } from "@auth0/ai-llamaindex";
-// highlight-next-line
 import { withInterruptions } from "@auth0/ai-llamaindex/interrupts";
-// highlight-next-line
 import { errorSerializer } from "@auth0/ai-vercel/interrupts";
 import { OpenAIAgent } from "llamaindex";
 
@@ -120,7 +108,6 @@ export async function POST(request: Request) {
   setAIContext({ threadID: id });
 
   return createDataStreamResponse({
-    // highlight-next-line
     execute: withInterruptions(
       async (dataStream) => {
         const agent = new OpenAIAgent({
@@ -141,7 +128,6 @@ export async function POST(request: Request) {
         errorType: ToolExecutionError,
       }
     ),
-    // highlight-next-line
     onError: errorSerializer((err) => {
       console.log(err);
       return "Oops, an error occured!";
@@ -160,15 +146,12 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx ./src/components/chat.tsx wrap
+```tsx ./src/components/chat.tsx wrap highlight={4-6,28-38}
 "use client";
 
 import { generateId } from "ai";
-// highlight-next-line
 import { EnsureAPIAccessPopup } from "@/components/auth0-ai/FederatedConnections/popup";
-// highlight-next-line
 import { useInterruptions } from "@auth0/ai-vercel/react";
-// highlight-next-line
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import { useChat } from "@ai-sdk/react";
 
@@ -191,7 +174,6 @@ export default function Chat() {
           {message.content}
           {message.parts && message.parts.length > 0 && (
             <div>
-              // highlight-start
               {toolInterrupt?.toolCall.id.includes(message.id) &&
                 FederatedConnectionInterrupt.isInterrupt(toolInterrupt) && (
                   <EnsureAPIAccessPopup
@@ -203,7 +185,6 @@ export default function Chat() {
                     }}
                   />
                 )}
-              // highlight-end
             </div>
           )}
         </div>
