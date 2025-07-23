@@ -25,23 +25,23 @@ sidebarTitle: Overview
 
 ### User authentication
 
-- Securely authenticate users in your GenAI applications using Auth0's [Universal Login](https://auth0.com/docs/authenticate/login/auth0-universal-login) with support for social, enterprise, and custom identity providers. This allows you to leverage robust standards like OAuth 2.0 and OpenID Connect to secure both interactive and headless AI agents. [Learn More](/user-authentication)
+- Securely authenticate users in your GenAI applications using Auth0's [Universal Login](https://auth0.com/docs/authenticate/login/auth0-universal-login) with support for social, enterprise, and custom identity providers. This allows you to leverage robust standards like OAuth 2.0 and OpenID Connect to secure both interactive and headless AI agents. [Learn More](./user-authentication)
 
 ### Call your APIs on a user's behalf
 
-- Enable AI agents to securely call your application's own APIs (first-party APIs) on behalf of a user using OAuth 2.0. This pattern ensures that the user's context is maintained, preventing agents from having broad, unrestricted access to all user data. [Learn More](/call-your-apis-on-users-behalf)
+- Enable AI agents to securely call your application's own APIs (first-party APIs) on behalf of a user using OAuth 2.0. This pattern ensures that the user's context is maintained, preventing agents from having broad, unrestricted access to all user data. [Learn More](./call-your-apis-on-users-behalf)
 
 ### Call other's APIs on a user's behalf using Token Vault
 
-- Securely connect AI agents to external tools and services like Google, Slack, or GitHub. Our Token Vault feature manages the complexities of obtaining, storing, and refreshing API tokens, allowing your agents to interact with third-party APIs without handling sensitive credentials or API keys directly. [Learn More](/intro/token-vault)
+- Securely connect AI agents to external tools and services like Google, Slack, or GitHub. Our Token Vault feature manages the complexities of obtaining, storing, and refreshing API tokens, allowing your agents to interact with third-party APIs without handling sensitive credentials or API keys directly. [Learn More](./token-vault)
 
 ### Asynchronous authorization
 
-- Implement "human-in-the-loop" workflows for actions that are long-running or require user consent. Using standards like [CIBA (Client-Initiated Backchannel Authentication)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow), agents can request approval for sensitive operations via push notifications, SMS, or email, even when the user is not actively using the application. [Learn More](/asynchronous-authorization)
+- Implement "human-in-the-loop" workflows for actions that are long-running or require user consent. Using standards like [CIBA (Client-Initiated Backchannel Authentication)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow), agents can request approval for sensitive operations via push notifications, SMS, or email, even when the user is not actively using the application. [Learn More](./asynchronous-authorization)
 
 ### Authorization for RAG
 
-- Enforce fine-grained, document-level access control within your Retrieval Augmented Generation (RAG) pipelines using [Auth0 FGA](https://auth0.com/fine-grained-authorization). This ensures that when a Large Language Model (LLM) generates a response, it only uses data that the current user is authorized to see, preventing [sensitive data leakage](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/) and ensuring compliance. [Learn More](/authorization-for-rag)
+- Enforce fine-grained, document-level access control within your Retrieval Augmented Generation (RAG) pipelines using [Auth0 FGA](https://auth0.com/fine-grained-authorization). This ensures that when a Large Language Model (LLM) generates a response, it only uses data that the current user is authorized to see, preventing [sensitive data leakage](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/) and ensuring compliance. [Learn More](./authorization-for-rag)
 
 ## Get started
 
@@ -55,7 +55,7 @@ Explore our sample applications and templates
 <Card href="https://github.com/auth0-samples/auth0-assistant0" title="Assistant0" >
 Assistant0, a Next.js based AI personal assistant that consolidates digital life by dynamically accessing multiple tools to help stay organized and efficient.
 
-'NEXT.JS' 'VERCEL AI' 'LANGCHAIN'
+`NEXT.JS` `VERCEL AI` `LANGCHAIN`
 
 </Card>
 <Card href="https://github.com/auth0-samples/agent0" title="Agent0"  >
@@ -78,21 +78,21 @@ Explore samples and SDKs for the different frameworks supported by Auth for GenA
 
 <Columns cols={3}>
   <Card
-    href="/javascript-sdk"
+    href="/sdks/javascript-sdk"
     icon="js"
     iconType="solid"
     horizontal
     title="JavaScript"
   />
   <Card
-    href="/python-sdk"
+    href="/sdks/python-sdk"
     icon="python"
     iconType="solid"
     horizontal
     title="Python"
   />
   <Card
-    href="/langchain-sdk"
+    href="/sdks/langchain-sdk"
     icon={
       <img
         src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
@@ -103,7 +103,7 @@ Explore samples and SDKs for the different frameworks supported by Auth for GenA
     title="LangChain"
   />
   <Card
-    href="/llamaindex-sdk"
+    href="/sdks/llamaindex-sdk"
     icon={
       <img
         src="https://mintlify-assets.b-cdn.net/auth0/llamadex.svg"
@@ -114,7 +114,7 @@ Explore samples and SDKs for the different frameworks supported by Auth for GenA
     title="LlamaIndex"
   />
   <Card
-    href="/vercel-ai-sdk"
+    href="/sdks/vercel-ai-sdk"
     icon={
       <img
         src="https://mintlify-assets.b-cdn.net/auth0/vercel.svg"
@@ -125,7 +125,7 @@ Explore samples and SDKs for the different frameworks supported by Auth for GenA
     title="Vercel AI"
   />
   <Card
-    href="/cloudflare-sdk"
+    href="/sdks/cloudflare-sdk"
     horizontal
     title="Cloudflare"
     icon={
@@ -138,7 +138,7 @@ Explore samples and SDKs for the different frameworks supported by Auth for GenA
     }
   />
   <Card
-    href="/genkit-sdk"
+    href="/sdks/genkit-sdk"
     icon={
       <img
         src="https://mintlify-assets.b-cdn.net/auth0/genkit.svg"

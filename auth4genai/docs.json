@@ -37,7 +37,7 @@
           {
             "group": "Auth for GenAI",
             "pages": [
-              "intro",
+              "intro/overview",
               {
                 "group": "User Authentication",
                 "pages": [
@@ -61,12 +61,12 @@
           {
             "group": "Get Started",
             "pages": [
-              "get-started",
-              "user-authentication",
-              "call-your-apis-on-users-behalf",
-              "call-others-apis-on-users-behalf",
-              "asynchronous-authorization",
-              "authorization-for-rag"
+              "get-started/overview",
+              "get-started/user-authentication",
+              "get-started/call-your-apis-on-users-behalf",
+              "get-started/call-others-apis-on-users-behalf",
+              "get-started/asynchronous-authorization",
+              "get-started/authorization-for-rag"
             ]
           },
           {
@@ -76,9 +76,8 @@
           {
             "group": "Guides",
             "pages": [
-              "guides",
-              "google-sign-in-and-auth",
-              "client-initiated-account-linking"
+              "guides/google-sign-in-and-auth",
+              "guides/client-initiated-account-linking"
             ]
           },
           {
@@ -97,14 +96,14 @@
           {
             "group": " ",
             "pages": [
-              "how-tos",
-              "check-google-calendar-availability",
-              "list-github-repositories",
-              "list-slack-channels",
-              "get-salesforce-opportunities",
-              "analyze-strava-activities",
-              "create-spotify-playlist",
-              "get-github-issues-python"
+              "how-tos/overview",
+              "how-tos/check-google-calendar-availability",
+              "how-tos/list-github-repositories",
+              "how-tos/list-slack-channels",
+              "how-tos/get-salesforce-opportunities",
+              "how-tos/analyze-strava-activities",
+              "how-tos/create-spotify-playlist",
+              "how-tos/get-github-issues-python"
             ]
           }
         ]
@@ -114,7 +113,7 @@
         "groups": [
           {
             "group": " ",
-            "pages": ["auth-for-mcp", "cloudflare-mcp"]
+            "pages": ["mcp/auth-for-mcp", "mcp/cloudflare-mcp"]
           }
         ]
       },
@@ -124,20 +123,86 @@
           {
             "group": " ",
             "pages": [
-              "sdks",
-              "javascript-sdk",
-              "python-sdk",
-              "langchain-sdk",
-              "llamaindex-sdk",
-              "vercel-ai-sdk",
-              "cloudflare-sdk",
-              "genkit-sdk"
+              "sdks/overview",
+              "sdks/javascript-sdk",
+              "sdks/python-sdk",
+              "sdks/langchain-sdk",
+              "sdks/llamaindex-sdk",
+              "sdks/vercel-ai-sdk",
+              "sdks/cloudflare-sdk",
+              "sdks/genkit-sdk"
             ]
           }
         ]
       }
     ]
   },
+  "redirects": [
+    {
+      "source": "/get-started",
+      "destination": "/get-started/overview"
+    },
+    {
+      "source": "/user-authentication",
+      "destination": "/get-started/user-authentication"
+    },
+    {
+      "source": "/call-your-apis-on-users-behalf",
+      "destination": "/get-started/call-your-apis-on-users-behalf"
+    },
+    {
+      "source": "/call-others-apis-on-users-behalf",
+      "destination": "/get-started/call-others-apis-on-users-behalf"
+    },
+    {
+      "source": "/async-authorization",
+      "destination": "/get-started/async-authorization"
+    },
+    {
+      "source": "/authorization-for-rag",
+      "destination": "/get-started/authorization-for-rag"
+    },
+    {
+      "source": "/how-tos",
+      "destination": "/how-tos/overview"
+    },
+    {
+      "source": "/check-google-calendar-availability",
+      "destination": "/how-tos/check-google-calendar-availability"
+    },
+    {
+      "source": "/list-github-repositories",
+      "destination": "/how-tos/list-github-repositories"
+    },
+    {
+      "source": "/list-slack-channels",
+      "destination": "/how-tos/list-slack-channels"
+    },
+    {
+      "source": "/get-salesforce-opportunities",
+      "destination": "/how-tos/get-salesforce-opportunities"
+    },
+    {
+      "source": "/auth-for-mcp",
+      "destination": "/mcp/auth-for-mcp"
+    },
+    {
+      "source": "/cloudflare-mcp",
+      "destination": "/mcp/cloudflare-mcp"
+    },
+    {
+      "source": "/sdks",
+      "destination": "/sdks/overview"
+    },
+    {
+      "source": "/google-sign-in-and-auth",
+      "destination": "/guides/google-sign-in-and-auth"
+    },
+    {
+      "source": "/client-initiated-account-linking",
+      "destination": "/guides/client-initiated-account-linking"
+    }
+  ],
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",

@@ -1,32 +1,30 @@
 ---
-title: Check Google Calendar Availability
-description: "Use OpenAI, NextJS, and the Auth0-AI SDKs to check your Google Calendar availability."
+title: List GitHub Repositories
+description: "Use OpenAI, NextJS, and the Auth0-AI SDKs to list your GitHub repositores"
 ---
 
-import AISDKSample from "/snippets/ai-sdk.mdx";
-import CloudflareAgents from "/snippets/cloudflare-agents.mdx";
-import LangGraphJSSample from "/snippets/langgraph.mdx";
-import LangGraphSample from "/snippets/langgraph-python.mdx";
-import LlamaIndexJSSample from "/snippets/llamaindex.mdx";
-import LlamaIndexSample from "/snippets/llamaindex-python.mdx";
-import NextJSAuth0Sample from "/snippets/nextjs-auth0.mdx";
-import GenKitSample from "/snippets/genkit.mdx";
+import AISDKSample from "/snippets/github/ai-sdk.mdx";
+import CloudflareAgents from "/snippets/github/cloudflare-agents.mdx";
+import LangGraphJSSample from "/snippets/github/langgraph.mdx";
+import LangGraphSample from "/snippets/github/langgraph-python.mdx";
+import LlamaIndexSample from "/snippets/github/llamaindex-python.mdx";
+import NextJSAuth0Sample from "/snippets/github/nextjs-auth0.mdx";
+import GenKitSample from "/snippets/github/genkit.mdx";
+import LlamaIndexJSSample from "/snippets/github/llamaindex.mdx";
+import AccountLinking from "/snippets/account-linking.mdx";
 
 <Tabs>
-  <Tab title="Javascript" icon="js">
+   <Tab title="Javascript" icon="js">
 
     <Card title="Prerequisites">
       Before using this example, make sure you:
 
       - Install Node.js 18+ and `npm`.
       - [Set up an OpenAI API key](https://platform.openai.com/docs/quickstart?api-mode=chat).
-      - Complete the [User authentication quickstart](/user-authentication) to create a Next.js app integrated with Auth0.
-      - Set up and configure a Google Cloud project:
-        - Enable the [Google Calendar API](https://console.cloud.google.com/apis/library/calendar-json.googleapis.com).
-        - Create OAuth 2.0 credentials (Web Application) with proper redirect URIs.
-      - Configure a [Social Connection for Google in Auth0](https://marketplace.auth0.com/integrations/google-social-connection)
+      - Complete the [User authentication quickstart](/get-started/user-authentication) to create a Next.js app integrated with Auth0.
+      - Create and configure a [GitHub App](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps).
+      - Configure a [Social Connection for GitHub in Auth0](https://marketplace.auth0.com/integrations/github-social-connection)
         - Make sure to enable `Token Vault`
-        - Select `Offline Access` scope
     </Card>
 
     <Tabs>
@@ -59,14 +57,13 @@ import GenKitSample from "/snippets/genkit.mdx";
 
   <Tab title="Python" icon="python">
 
-    <Card headerText="Prerequisites">
+    <Card title="Prerequisites">
       Before using this example, make sure you:
 
       - Install Python 3.11+ and `pip`.
       - [Set up an OpenAI API key](https://platform.openai.com/docs/quickstart?api-mode=chat).
-      - Configure a [Social Connection for Google in Auth0](https://marketplace.auth0.com/integrations/google-social-connection)
+      - Configure a [Social Connection for GitHub in Auth0](https://marketplace.auth0.com/integrations/github-social-connection)
         - Make sure to enable `Token Vault`
-        - Select `Offline Access` scope
     </Card>
 
     <Tabs>
@@ -78,8 +75,8 @@ import GenKitSample from "/snippets/genkit.mdx";
         <LlamaIndexSample />
       </Tab>
 
-      <Tab title="CrewAI" icon="https://mintlify-assets.b-cdn.net/auth0/crew_ai.svg">
-        Coming soon!
+      <Tab title="CrewAI" icon="https://mintlify-assets.b-cdn.net/auth0/crew_ai.svg" disabled={true}>
+        comming soon!
       </Tab>
     </Tabs>
 
