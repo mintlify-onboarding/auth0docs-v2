@@ -98,19 +98,16 @@ By the end of this quickstart, you should have an application integrated with Au
 
     Once the user is authenticated, you can fetch an access token from the [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) using the Auth0 SDK. In this example, we fetch an access token for a Google social connection:
 
-    ```ts ./src/lib/google.ts wrap
+    ```ts ./src/lib/google.ts wrap highlight={2,6,10}
     import { google } from "googleapis";
-    // highlight-next-line
     import { auth0 } from "./auth0";
 
     export async function getGoogleAuth () {
       // Get access token for Google social connection.
-      // highlight-next-line
       const { token } = await auth0.getAccessTokenForConnection({ connection: 'google-oauth2' });
 
       // Create Google OAuth client.
       const googleOAuthClient = new google.auth.OAuth2();
-      // highlight-next-line
       googleOAuthClient.setCredentials({ access_token: token });
 
       return googleOAuthClient;
@@ -123,11 +120,10 @@ By the end of this quickstart, you should have an application integrated with Au
 
     In our example, we create a file at `src/lib/tools/google-calendar-view.ts`. In the file, we define a tool, `googleCalendarViewTool`, that uses the access token with the Google Calendar API to query for calendar events in a specified date range:
 
-    ```ts ./src/lib/tools/google-calendar-view.ts wrap
+    ```ts ./src/lib/tools/google-calendar-view.ts wrap highlight={4,17}
     import { tool } from 'ai';
     import { z } from 'zod';
     import { google } from 'googleapis';
-    // highlight-next-line
     import { getGoogleAuth } from '../google';
 
     // Define a Vercel AI SDK tool.
@@ -141,7 +137,6 @@ By the end of this quickstart, you should have an application integrated with Au
 
       execute: async ({ timeMin, timeMax, timeZone }) => {
         // Get Google OAuth client with access token via Auth0.
-        // highlight-next-line
         const auth = await getGoogleAuth();
         const calender = google.calendar({ version: 'v3', auth });
 
@@ -174,11 +169,10 @@ By the end of this quickstart, you should have an application integrated with Au
 
     You can call the tool from your AI app to get calendar events:
 
-    ```ts ./src/app/api/chat/route.ts wrap
+    ```ts ./src/app/api/chat/route.ts wrap highlight={4,16}
     import { NextRequest } from 'next/server';
     import { streamText } from 'ai';
     import { openai } from '@ai-sdk/openai';
-    // highlight-next-line
     import { googleCalendarViewTool } from '@/lib/tools/google-calendar-view';
 
     export async function POST(req: NextRequest) {
@@ -191,7 +185,6 @@ By the end of this quickstart, you should have an application integrated with Au
         model: openai('gpt-4o-mini'),
         // Provides external tools the model can call.
         // In this case, Google Calendar integration.
-        // highlight-next-line
         tools: { googleCalendarViewTool },
         maxSteps: 2,
         onError({ error }) {
