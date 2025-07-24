@@ -17,7 +17,7 @@ npm install @auth0/ai-vercel @auth0/ai-cloudflare @auth0/ai
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Github scopes.
 
-```typescript ./src/lib/auth0-ai.ts expandable wrap
+```typescript ./src/lib/auth0-ai.ts wrap
 import { Auth0AI, setGlobalAIContext } from "@auth0/ai-vercel";
 import { getCurrentAgent } from "agents";
 import type { Chat } from "./chat";
@@ -48,29 +48,24 @@ export const withSlack = auth0AI.withTokenForConnection({
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Slack API.
 
-```typescript ./src/agent/tools/listRepositories.ts expandable wrap
+```typescript ./src/agent/tools/listRepositories.ts wrap highlight={2-4,8,14,18,30-32}
 import { ErrorCode, WebClient } from "@slack/web-api";
-// highlight-start
 import { getAccessTokenForConnection } from "@auth0/ai-vercel";
 import { FederatedConnectionError } from "@auth0/ai/interrupts";
 import { withSlack } from "@/lib/auth0-ai";
-// highlight-end
 import { tool } from "ai";
 import { z } from "zod";
 
-// highlight-next-line
 export const listChannels = withSlack(
   tool({
     description: "List channels for the current user on Slack",
     parameters: z.object({}),
     execute: async () => {
       // Get the access token from Auth0 AI
-      // highlight-next-line
       const accessToken = getAccessTokenForConnection();
 
       // Slack SDK
       try {
-        // highlight-next-line
         const web = new WebClient(accessToken);
 
         const result = await web.conversations.list({
@@ -83,11 +78,9 @@ export const listChannels = withSlack(
       } catch (error) {
         if (error && typeof error === "object" && "code" in error) {
           if (error.code === ErrorCode.HTTPError) {
-            // highlight-start
             throw new FederatedConnectionError(
               `Authorization required to access the Federated Connection`
             );
-            // highlight-end
           }
         }
 
@@ -108,11 +101,9 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the Chat agent class, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`.
 
-```typescript ./src/agent/chat.ts expandable wrap
-// highlight-start
+```typescript ./src/agent/chat.ts wrap highlight={1-2,52-54,63-66}
 import { setAIContext } from "@auth0/ai-vercel";
 import { errorSerializer, withInterruptions } from "@auth0/ai-vercel/interrupts";
-// highlight-end
 // Other dependencies
 import { AuthAgent, OwnedAgent } from "@auth0/auth0-cloudflare-agents-api";
 import { openai } from "@ai-sdk/openai";
@@ -162,11 +153,9 @@ The name of the user is ${claims?.name ?? "unknown"}.
             );
           },
           onError: (error) => {
-            // highlight-start
             if (!Auth0Interrupt.isInterrupt(error)) {
               return;
             }
-            // highlight-end
             console.error("Error while streaming:", error);
           },
           maxSteps: 10,
@@ -175,12 +164,10 @@ The name of the user is ${claims?.name ?? "unknown"}.
         // Merge the AI response stream with tool execution outputs
         result.mergeIntoDataStream(dataStream);
       }),
-      // highlight-start
       onError: errorSerializer((err) => {
         console.log(err);
         return "Oops, an error occured!";
       }),
-      // highlight-end
     });
 
     return dataStreamResponse;
@@ -198,15 +185,13 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx ./src/components/chat.tsx expandable wrap
+```tsx ./src/components/chat.tsx wrap highlight={4-6,17-18,33-42}
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-// highlight-start
 import { useAgentChatInterruptions } from "@auth0/ai-cloudflare/react";
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import { EnsureAPIAccessPopup } from "@/components/auth0-ai/FederatedConnections/popup";
-// highlight-end
 
 export default function Chat() {
 
@@ -217,10 +202,8 @@ export default function Chat() {
     handleSubmit: handleAgentSubmit,
     addToolResult,
     clearHistory,
-  // highlight-start
     toolInterrupt,
   } = useAgentChatInterruptions({
-  // highlight-end
     agent,
     maxSteps: 5,
     id: threadID,
@@ -235,7 +218,6 @@ export default function Chat() {
         </div>
       ))}
 
-      // highlight-start
       {FederatedConnectionInterrupt.isInterrupt(toolInterrupt) && (
         <EnsureAPIAccessPopup
           interrupt={toolInterrupt}
@@ -246,7 +228,6 @@ export default function Chat() {
           }}
         />
       )}
-      // highlight-end
 
       <form onSubmit={handleSubmit}>
         <input value={input} placeholder="Say something..." onChange={(e) => setInput(e.target.value)} />

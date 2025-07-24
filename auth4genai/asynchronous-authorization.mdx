@@ -98,7 +98,7 @@ By the end of this quickstart, you should have an AI agent integrated with the [
     **Note:** Your application’s client secret is masked for you. To get the client secret value, click the copy button on the code sample.
     </Note>
 
-    ```bash .env expandable wrap
+    ```bash .env wrap
     AUTH0_DOMAIN='<your-auth0-domain>'
     AUTH0_CLIENT_ID='<your-auth0-application-client-id>'
     AUTH0_CLIENT_SECRET='<your-auth0-application-client-secret>'
@@ -131,7 +131,7 @@ By the end of this quickstart, you should have an AI agent integrated with the [
 
     The Auth0 AI SDK returns an error response if the user denies the transaction.
 
-    ```ts ./src/lib/tools/buy.ts expandable wrap
+    ```ts ./src/lib/tools/buy.ts wrap highlight={15-18,31,55}
     import "dotenv/config";
 
     import { tool } from "ai";
@@ -146,13 +146,9 @@ By the end of this quickstart, you should have an AI agent integrated with the [
     const auth0AI = new Auth0AI();
 
     export const buy = (context: Context) => {
-      // highlight-next-line
       const withAsyncAuthorization = auth0AI.withAsyncUserConfirmation({
-        // highlight-next-line
         userID: context.userId,
-        // highlight-next-line
         bindingMessage: async ({ ticker, qty }) =>
-          // highlight-next-line
           `Do you want to buy ${qty} shares of ${ticker}`,
         scopes: ["openid", "stock:trade"],
         audience: process.env["AUDIENCE"]!,
@@ -166,7 +162,6 @@ By the end of this quickstart, you should have an AI agent integrated with the [
         * In practice, the process that is awaiting the user confirmation
         * could crash or timeout before the user approves the request.
         */
-        // highlight-next-line
         onAuthorizationRequest: "block",
         onUnauthorized: async (e: Error) => {
           if (e instanceof AccessDeniedInterrupt) {
@@ -191,7 +186,6 @@ By the end of this quickstart, you should have an AI agent integrated with the [
               ticker: ticker,
               qty: qty,
             };
-            // highlight-next-line
             const credentials = getCIBACredentials();
             const accessToken = credentials?.accessToken?.value;
 
@@ -218,7 +212,7 @@ By the end of this quickstart, you should have an AI agent integrated with the [
 
     Create a file at `src/index.ts` and add tool calling to the Vercel AI agent using the `generateText()` or `streamText()` functions.
 
-    ```ts ./src/index.ts expandable wrap
+    ```ts ./src/index.ts wrap highlight={10,22}
     import { setAIContext } from "@auth0/ai-vercel";
     import crypto from "node:crypto";
     import { generateText } from "ai";
@@ -228,7 +222,6 @@ By the end of this quickstart, you should have an AI agent integrated with the [
 
     async function main() {
       const threadID = crypto.randomUUID();
-      // highlight-next-line
       setAIContext({ threadID });
 
       console.log(
@@ -241,7 +234,6 @@ By the end of this quickstart, you should have an AI agent integrated with the [
         maxSteps: 2,
         tools: {
           // pass an Auth0 user id. For example, 'auth0|100000000000000000000' or 'google-oauth2|100000000000000000000'
-          // highlight-next-line
           buy: buy({ userId: "<authenticated-user-id>" }),
         },
       });

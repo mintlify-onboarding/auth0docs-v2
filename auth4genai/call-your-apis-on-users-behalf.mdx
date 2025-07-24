@@ -65,7 +65,7 @@ In this step, you’ll create a Vercel AI tool to make the first-party API call.
 
 In this example, after taking in an Auth0 access token during user login, the tool returns the user profile of the currently logged-in user by calling the [`/userinfo`](https://auth0.com/docs/api/authentication/user-profile/get-user-info) endpoint.
 
-```tsx ./src/lib/tools/user-info.ts expandable wrap
+```tsx ./src/lib/tools/user-info.ts wrap
 import { tool } from "ai";
 import { z } from "zod";
 import { auth0 } from "../auth0";
@@ -101,7 +101,7 @@ export const getUserInfoTool = tool({
 
 The AI agent processes and runs the user’s request through the AI pipeline, including the tool call. Vercel AI simplifies this task with the `streamText()` method:
 
-```tsx ./src/app/api/chat/route.ts expandable wrap
+```tsx ./src/app/api/chat/route.ts wrap
 import { getUserInfoTool } from "@/lib/tools/user-info";
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
@@ -143,7 +143,7 @@ Before testing the application, update the `/src/app/chat/page.tsx` file with th
 
 The following code sample creates a minimalist and functional chat page to get you started quickly:
 
-```tsx ./src/app/chat/page.tsx expandable wrap
+```tsx ./src/app/chat/page.tsx wrap
 "use client";
 
 import React from "react";
@@ -274,7 +274,7 @@ Since the Agent defined in the class Chat in `src/agent/chat.ts` uses the **Auth
 
 The tool we are defining here uses the same access token to call Auth0's [`/userinfo`](https://auth0.com/docs/api/authentication/user-profile/get-user-info) endpoint.
 
-```tsx ./src/agent/tools.ts expandable wrap
+```tsx ./src/agent/tools.ts wrap
 const getUserInfoTool = tool({
   description: "Get information about the current logged in user.",
   parameters: z.object({}),
@@ -305,7 +305,7 @@ const getUserInfoTool = tool({
 
 Then in the `tools` export of the `src/agent/chat.ts` file, add the `getUserInfoTool` to the tools array:
 
-```tsx ./src/agent/chat.ts expandable
+```tsx ./src/agent/chat.ts
 export const tools = {
   // Your other tools...
   getUserInfoTool,
@@ -410,7 +410,7 @@ Explore [the start kit on GitHub](https://github.com/auth0-lab/cloudflare-agents
 
     Next, create a file called `src/app.py` and add the following code to import dependencies and set up the Auth0 configuration:
 
-    ```python ./src/app.py expandable wrap
+    ```python ./src/app.py wrap
     import json
 
     from fastapi import Depends, FastAPI, HTTPException, Request, Response
@@ -454,7 +454,7 @@ Explore [the start kit on GitHub](https://github.com/auth0-lab/cloudflare-agents
 
     Add the following code to `src/app.py` to set up `Agent0` with a token-protected API tool call to Auth0's `/userinfo` endpoint:
 
-    ```python ./src/app.py expandable wrap
+    ```python ./src/app.py wrap
     # ...
 
     # OpenAI model
@@ -515,7 +515,7 @@ Explore [the start kit on GitHub](https://github.com/auth0-lab/cloudflare-agents
 
     Add the following code to `src/app.py` to handle requests to the `/agent` endpoint:
 
-    ```python ./src/app.py expandable wrap
+    ```python ./src/app.py wrap
     # ...
 
     @app.post("/agent")
@@ -560,7 +560,7 @@ Explore [the start kit on GitHub](https://github.com/auth0-lab/cloudflare-agents
     ### 1. Create a test script
     Create a file called `api_test.py` and add the following code to it:
 
-    ```python ./api_test.py expandable wrap
+    ```python ./api_test.py wrap
     from dotenv import load_dotenv
     import os
     import requests

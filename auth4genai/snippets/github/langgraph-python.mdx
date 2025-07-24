@@ -27,14 +27,12 @@ with_github = auth0_ai.with_federated_connection(
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the GitHub API.
 
-```python ./src/lib/tools/list_repositories.py expandable wrap
+```python ./src/lib/tools/list_repositories.py wrap highlight={5-6,13,23,25}
 from github import Github
 from github.GithubException import BadCredentialsException
 from pydantic import BaseModel
 from langchain_core.tools import StructuredTool
-# highlight-next-line
 from auth0_ai_langchain.federated_connections import get_access_token_for_connection, FederatedConnectionError
-# highlight-next-line
 from src.lib.auth0_ai import with_github
 
 class EmptySchema(BaseModel):
@@ -42,7 +40,6 @@ class EmptySchema(BaseModel):
 
 def list_repositories_tool_function(date: datetime):
     # Get the access token from Auth0 AI
-    # highlight-next-line
     access_token = get_access_token_for_connection()
 
     # GitHub SDK
@@ -53,10 +50,8 @@ def list_repositories_tool_function(date: datetime):
         repo_names = [repo.name for repo in repos]
         return repo_names
     except BadCredentialsException:
-        # highlight-next-line
         raise FederatedConnectionError("Authorization required to access the Federated Connection API")
 
-# highlight-next-line
 list_github_repositories_tool = with_github(StructuredTool(
     name="list_github_repositories",
     description="List respositories for the current user on GitHub",
@@ -67,7 +62,7 @@ list_github_repositories_tool = with_github(StructuredTool(
 
 Now that the tool is protected, you can pass it your LangGraph agent as part of a `ToolNode`. The agent will automatically request the access token when the tool is called.
 
-```python showLineNumbers title="./src/lib/agent.py"
+```python ./src/lib/agent.py highlight={8,15,37,42}
 from typing import Annotated, Sequence, TypedDict
 from langchain.storage import InMemoryStore
 from langchain_core.messages import AIMessage, BaseMessage
@@ -75,7 +70,6 @@ from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph, add_messages
 from langgraph.prebuilt import ToolNode
-# highlight-next-line
 from tools.list_repositories import list_github_repositories_tool
 
 
@@ -83,7 +77,6 @@ class State(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
 
 llm = ChatOpenAI(model="gpt-4o")
-# highlight-next-line
 llm.bind_tools([list_github_repositories_tool])
 
 async def call_llm(state: State):
@@ -106,13 +99,11 @@ workflow = (
         ToolNode(
             [
                 # a tool with federated connection access
-                # highlight-next-line
                 list_github_repositories_tool,
                 # ... other tools
             ],
             # The error handler should be disabled to
             # allow interruptions to be triggered from within tools.
-            # highlight-next-line
             handle_tool_errors=False
         )
     )
@@ -132,9 +123,8 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `refreshToken` to the Langchain's RunnableConfig from the authenticated user's session.
 
-```typescript ./src/app/api/langgraph/[..._path]/route.ts expandable wrap
+```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap highlight={2,23-29}
 import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
-// highlight-next-line
 import { auth0 } from "@/lib/auth0";
 
 const getRefreshToken = async () => {
@@ -156,7 +146,6 @@ export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
       ) {
         return {
           ...body,
-          // highlight-start
           config: {
             configurable: {
               _credentials: {
@@ -164,7 +153,6 @@ export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
               },
             },
           },
-          // highlight-end
         };
       }
 
@@ -187,12 +175,10 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx ./src/components/chat.tsx expandable wrap
+```tsx ./src/components/chat.tsx wrap highlight={2-3,62-74}
 import { useStream } from "@langchain/langgraph-sdk/react";
-// highlight-start
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import { EnsureAPIAccessPopup } from "@/components/auth0-ai/FederatedConnections/popup";
-// highlight-end
 
 const useFocus = () => {
   const htmlElRef = useRef<HTMLInputElement>(null);
@@ -251,7 +237,6 @@ export default function Chat() {
         </div>
       ))}
 
-      // highlight-start
       {thread.interrupt && FederatedConnectionInterrupt.isInterrupt(thread.interrupt.value) ? (
         <div key={thread.interrupt.ns?.join("")}>
           <EnsureAPIAccessPopup
@@ -265,7 +250,6 @@ export default function Chat() {
           />
         </div>
       ) : null}
-      // highlight-end
 
       <form onSubmit={handleSubmit}>
         <input ref={inputRef} value={input} placeholder="Say something..." readOnly={thread.isLoading} disabled={thread.isLoading} onChange={(e) => setInput(e.target.value)} />

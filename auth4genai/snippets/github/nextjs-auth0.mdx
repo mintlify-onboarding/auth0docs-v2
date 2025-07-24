@@ -6,22 +6,19 @@
 
 ### 2. Integrate your tool with Github
 
-```ts ./src/lib/tools/listRepos.ts expandable wrap
+```ts ./src/lib/tools/listRepos.ts wrap highlight={5,11-12}
 import { tool } from "ai";
 import { z } from 'zod';
 import { openai } from "@ai-sdk/openai";
 import { Octokit } from "@octokit/rest";
-// highlight-next-line
 import { auth0 } from "@/lib/auth0";
 
 export const listRepos = tool({
   description: 'List respositories for the current user on GitHub',
   parameters: z.object({}),
   execute: async () => {
-    // highlight-start
     const { accessToken } = await auth0.getAccessTokenForConnection({ connection: "github" });
     const octokit = new Octokit({ auth: accessToken });
-    // highlight-end
 
     const response = await octokit.request('GET /user/repos', {
       visibility: 'all',
@@ -52,13 +49,12 @@ You can check different authentication options for Next.js with Auth0 at the [of
 Create an AI tool that fetches GitHub repositories for the authenticated user using Auth0 to get a GitHub access token:
 
 
-```tsx ./src/app/api/chat/route.ts expandable wrap
+```tsx ./src/app/api/chat/route.ts wrap highlight={6,17}
 import { z } from 'zod';
 import { streamText, tool } from "ai"
 import { openai } from "@ai-sdk/openai"
 const { Octokit } = require("@octokit/rest");
 
-// highlight-next-line
 import { listRepos } from "@/lib/tools/listRepos";
 
 export const maxDuration = 60;
@@ -70,7 +66,6 @@ export async function POST(req) {
     model: openai('gpt-4o'),
     messages,
     system: "You're a helpful AI agent that fetches GitHub repositories",
-    // highlight-next-line
     tools: { listRepos }
   })
   return response.toDataStreamResponse();
@@ -79,7 +74,7 @@ export async function POST(req) {
 
 ### 4. Call from the client side
 
-```tsx ./src/app/page.tsx expandable wrap
+```tsx ./src/app/page.tsx wrap
 'use client';
 
 import { useChat } from '@ai-sdk/react';

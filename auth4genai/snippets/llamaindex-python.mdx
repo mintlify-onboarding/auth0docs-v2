@@ -8,7 +8,7 @@ pip install auth0-ai-llamaindex
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
-```python lines ./src/lib/auth0-ai.py expandable wrap
+```python lines ./src/lib/auth0-ai.py wrap
 from auth0_ai_llamaindex.auth0_ai import Auth0AI
 from flask import session
 
@@ -28,28 +28,24 @@ Here, the session is controlled by a Flask application instance. You may utilize
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```python lines ./src/lib/tools/check_availability.py expandable wrap
+```python lines ./src/lib/tools/check_availability.py wrap highlight={7-8,14,18,33,37}
 from datetime import timedelta
 from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 from typing import Annotated
 from llama_index.core.tools import FunctionTool
-# highlight-next-line
 from auth0_ai_llamaindex.federated_connections import get_access_token_for_connection, FederatedConnectionError
-# highlight-next-line
 from src.lib.auth0_ai import with_google
 
 def check_user_calendar_tool_function(
     date: Annotated[str, "Date and time in ISO 8601 format."]
 ):
     # Get the access token from Auth0 AI
-    # highlight-next-line
     access_token = get_access_token_for_connection()
 
     # Google SDK
     try:
-        # highlight-next-line
         service = build('calendar', 'v3', credentials=Credentials(token=access_token))
         time_min = date.isoformat() + 'Z'
         time_max = (date + timedelta(hours=1)).isoformat() + 'Z'
@@ -65,12 +61,10 @@ def check_user_calendar_tool_function(
         return {"available": len(busy_times) == 0}
     except HttpError as e:
         if e.resp.status == 401:
-            # highlight-next-line
             raise FederatedConnectionError("Authorization required to access the Federated Connection API")
 
         raise ValueError(f"Invalid response from Google Calendar API: {response.status_code} - {response.text}")
 
-# highlight-next-line
 check_user_calendar_tool = with_google(FunctionTool.from_defaults(
     name="check_user_calendar",
     description="Use this function to check if the user is available on a certain date and time",
@@ -80,10 +74,9 @@ check_user_calendar_tool = with_google(FunctionTool.from_defaults(
 
 Now that the tool is protected, you can pass it your LlamaIndex agent.
 
-```python lines ./src/lib/agent.ts expandable wrap
+```python lines ./src/lib/agent.ts wrap highlight={3,13}
 from datetime import datetime
 from llama_index.agent.openai import OpenAIAgent
-# highlight-next-line
 from src.lib.tools.check_availability import check_user_calendar_tool
 
 system_prompt = f"""You are an assistant designed to answer random user's questions.
@@ -94,7 +87,6 @@ system_prompt = f"""You are an assistant designed to answer random user's questi
 agent = OpenAIAgent.from_tools(
     tools=[
         # a tool with federated connection access
-        # highlight-next-line
         check_user_calendar_tool
         # ... other tools
     ],
@@ -115,14 +107,12 @@ On the server side of your Flask application you will need to set up a route to 
 When `FederatedConnectionInterrupt` error ocurrs, the server side will signal the front-end about the level access restrictions, and the front-end should prompt the user to trigger a new authorization (or login) request with the necessary permissions.
 
 
-```python lines ./src/app.py expandable wrap
+```python lines ./src/app.py wrap highlight={3-5,19-20}
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, session
-# highlight-start
 from auth0_ai_llamaindex.auth0_ai import Auth0AI
 from auth0_ai_llamaindex.federated_connections import FederatedConnectionInterrupt
 from src.lib.agent import agent
-# highlight-end
 
 load_dotenv()
 app = Flask(__name__)
@@ -136,10 +126,8 @@ async def chat():
         message = request.json.get("message")
         response = agent.achat(message)
         return jsonify({"response": str(response)})
-    # highlight-start
     except FederatedConnectionInterrupt as e:
         return jsonify({"error": str(e.to_json())}), 403
-    # highlight-end
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 ```

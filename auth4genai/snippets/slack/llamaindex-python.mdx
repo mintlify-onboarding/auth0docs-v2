@@ -8,7 +8,7 @@ pip install auth0-ai-llamaindex
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Slack scopes.
 
-```python ./src/lib/auth0-ai.py expandable wrap
+```python ./src/lib/auth0-ai.py wrap
 from auth0_ai_llamaindex.auth0_ai import Auth0AI
 from flask import session
 
@@ -28,22 +28,19 @@ Here, the session is controlled by a Flask application instance. You may utilize
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Slack API.
 
-```python ./src/lib/tools/list_channels.py expandable wrap
+```python ./src/lib/tools/list_channels.py wrap highlight={4,13,24,28}
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from llama_index.core.tools import FunctionTool
-# highlight-next-line
 from auth0_ai_llamaindex.federated_connections import get_access_token_for_connection, FederatedConnectionError
 from src.lib.auth0_ai import with_slack
 
 def list_slack_channels_tool_function():
     # Get the access token from Auth0 AI
-    # highlight-next-line
     access_token = get_access_token_for_connection()
 
     # Slack SDK
     try:
-        # highlight-next-line
         client = WebClient(token=access_token)
         response = client.conversations_list(
             exclude_archived=True,
@@ -55,12 +52,10 @@ def list_slack_channels_tool_function():
         return channel_names
     except SlackApiError as e:
         if e.response['error'] == 'not_authed':
-            # highlight-next-line
             raise FederatedConnectionError("Authorization required to access the Federated Connection API")
 
         raise ValueError(f"An error occurred: {e.response['error']}")
 
-# highlight-next-line
 list_slack_channels_tool = with_slack(FunctionTool.from_defaults(
     name="list_slack_channels",
     description="List channels for the current user on Slack",
@@ -70,10 +65,9 @@ list_slack_channels_tool = with_slack(FunctionTool.from_defaults(
 
 Now that the tool is protected, you can pass it your LlamaIndex agent.
 
-```python ./src/lib/agent.ts expandable wrap
+```python ./src/lib/agent.ts wrap highlight={3,13}
 from datetime import datetime
 from llama_index.agent.openai import OpenAIAgent
-# highlight-next-line
 from src.lib.tools.list_channels import list_slack_channels_tool
 
 system_prompt = f"""You are an assistant designed to answer random user's questions.
@@ -84,7 +78,6 @@ system_prompt = f"""You are an assistant designed to answer random user's questi
 agent = OpenAIAgent.from_tools(
     tools=[
         # a tool with federated connection access
-        # highlight-next-line
         list_slack_channels_tool
         # ... other tools
     ],
@@ -105,14 +98,12 @@ On the server side of your Flask application you will need to set up a route to 
 When `FederatedConnectionInterrupt` error ocurrs, the server side will signal the front-end about the level access restrictions, and the front-end should prompt the user to trigger a new authorization (or login) request with the necessary permissions.
 
 
-```python ./src/app.py expandable wrap
+```python ./src/app.py wrap highlight={3-5,19-20}
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, session
-# highlight-start
 from auth0_ai_llamaindex.auth0_ai import Auth0AI
 from auth0_ai_llamaindex.federated_connections import FederatedConnectionInterrupt
 from src.lib.agent import agent
-# highlight-end
 
 load_dotenv()
 app = Flask(__name__)
@@ -126,10 +117,8 @@ async def chat():
         message = request.json.get("message")
         response = agent.achat(message)
         return jsonify({"response": str(response)})
-    # highlight-start
     except FederatedConnectionInterrupt as e:
         return jsonify({"error": str(e.to_json())}), 403
-    # highlight-end
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 ```
