@@ -9,6 +9,7 @@ sidebarTitle: "Overview"
 Authentication verifies a user’s identity. Authorization grants or denies the user’s access to certain resources. To learn more, read [Authentication vs Authorization](https://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization).
 
 Auth0 secures your AI agent authentication and authorization flows with the following services:
+
 - Authentication: [Passwordless](https://auth0.com/docs/authenticate/passwordless/passwordless-with-universal-login), [Multi-factor Authentication (MFA)](https://auth0.com/docs/secure/multi-factor-authentication), and [Single-Sign On (SSO)](https://auth0.com/docs/authenticate/single-sign-on).
 - Authorization: [Role-Based Access Control (RBAC)](https://auth0.com/docs/manage-users/access-control/rbac) and [Fine-Grained Authorization (FGA)](https://docs.fga.dev/fga).
 
@@ -26,12 +27,12 @@ Auth for GenAI provides fine-grained authorization through [Auth0 FGA](https://d
 
 GenAI uses generative models to produce new content such as text, images, videos, and more. Trained on large datasets, GenAI models are able to learn patterns, styles, and structures while utilizing a variety of architectures, each with strengths for specific tasks and the type of content being generated:
 
-| **Model type** | **Common AI model** | **Used for** |
-|------------|-----------------|----------|
-| Transformers | GPT, Bert, LLaMa | Text generation, chatbots, translation |
-| GANs (Generative Adversarial Networks) | StyleGAN, BigGAN | Image and video generation |
-| Diffusion models | DALL-E, Stable Diffusion | High-quality image synthesis |
-| RNNs and LSTMs | Older NLP models | Sequence generation such as in music and simple text |
+| **Model type**                         | **Common AI model**      | **Used for**                                         |
+| -------------------------------------- | ------------------------ | ---------------------------------------------------- |
+| Transformers                           | GPT, Bert, LLaMa         | Text generation, chatbots, translation               |
+| GANs (Generative Adversarial Networks) | StyleGAN, BigGAN         | Image and video generation                           |
+| Diffusion models                       | DALL-E, Stable Diffusion | High-quality image synthesis                         |
+| RNNs and LSTMs                         | Older NLP models         | Sequence generation such as in music and simple text |
 
 When integrated with [agentic frameworks](#what-are-agentic-frameworks), GenAI models can move beyond generating content and autonomously plan, retrieve information, and make tool calls to third-party APIs.
 
@@ -40,6 +41,7 @@ When integrated with [agentic frameworks](#what-are-agentic-frameworks), GenAI m
 Agentic frameworks are software tools for developing autonomous AI agents capable of making complex decisions and managing their own workflows. Built on top of LLMs, AI agents can help with task delegation, data retrieval, tool integration, and more.
 
 AI agents have the ability to:
+
 - Plan: Break down complex tasks into actionable steps.
 - Retrieve information: Use RAG for information retrieval.
 - Dynamically reason: Dynamically evaluate actions based on constraints.
@@ -53,29 +55,51 @@ With [Auth0 SDKs](/sdks/overview), you can easily integrate with popular agentic
 A subset of GenAI includes large language models (LLMs) that utilize retrieval-augmented generation (RAG) to incorporate relevant information from external sources to provide more contextually accurate answers to user queries.
 
 RAG has the following components:
+
 <Columns cols={3}>
-<Card title="Retrieval" icon="square-1" iconType="solid" >
-  The model fetches relevant external documents from databases, APIs, or the web based on the user query.
-</Card>
-<Card title="Augmentation" icon="square-2" iconType="solid" >
-  After ranking the retrieved documents based on relevancy, the most relevant documents are used as retrieved context in the prompt.
-</Card>
-<Card title="Generation" icon="square-3" iconType="solid" >
-  The model generates a response using both its pretrained knowledge and retrieved context.
-</Card>
+  <Card title="Retrieval" icon="square-1" iconType="solid">
+    The model fetches relevant external documents from databases, APIs, or the
+    web based on the user query.
+  </Card>
+  <Card title="Augmentation" icon="square-2" iconType="solid">
+    After ranking the retrieved documents based on relevancy, the most relevant
+    documents are used as retrieved context in the prompt.
+  </Card>
+  <Card title="Generation" icon="square-3" iconType="solid">
+    The model generates a response using both its pretrained knowledge and
+    retrieved context.
+  </Card>
 </Columns>
 
 With [Auth0 SDKs](/sdks/overview), you can easily implement RAG in LLMs:
 
 <Columns cols={2}>
-<Card title="Auth0 AI with LangChain" icon={<img src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg" alt="LangChain" />}  href="https://github.com/auth0-lab/auth0-ai-python/tree/main/packages/langchain-auth0-ai">
-  Integrate with LangChain to connect LLMs with vector databases for RAG.
-</Card>
-<Card title="Auth0 AI with LlamaIndex" icon={<img src="https://mintlify-assets.b-cdn.net/auth0/llamadex.svg" alt="LlamaIndex" />}  href="https://github.com/auth0-lab/auth0-ai-python/tree/main/packages/llama-index-auth0-ai">
-  Integrate with LlamaIndex to structure external data for better retrieval.
-</Card>
+  <Card
+    title="Auth0 AI with LangChain"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+        alt="LangChain"
+      />
+    }
+    href="/sdks/langchain-sdk"
+  >
+    Integrate with LangChain to connect LLMs with vector databases for RAG.
+  </Card>
+  <Card
+    title="Auth0 AI with LlamaIndex"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/llamadex.svg"
+        alt="LlamaIndex"
+      />
+    }
+    href="/sdks/llamaindex-sdk"
+  >
+    Integrate with LlamaIndex to structure external data for better retrieval.
+  </Card>
 </Columns>
 
 ## Next steps
 
-- To start building with Auth for GenAI, read the [get started](/get-started) quickstarts.
+- To start building with Auth for GenAI, read the [get started](/get-started/overview) quickstarts.
