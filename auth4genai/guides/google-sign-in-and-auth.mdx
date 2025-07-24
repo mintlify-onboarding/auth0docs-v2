@@ -28,7 +28,10 @@ Use the Google Auth Platform to:
 ### Configure Google consent screen
 
 <Note>
-**Note:** If your application requests sensitive OAuth scopes or uses a custom image, [Google limits it to 100 logins until the OAuth consent screen is verified](https://developers.google.com/apps-script/guides/client-verification). Consent screen verification may take up to several days.
+  **Note:** If your application requests sensitive OAuth scopes or uses a custom
+  image, [Google limits it to 100 logins until the OAuth consent screen is
+  verified](https://developers.google.com/apps-script/guides/client-verification).
+  Consent screen verification may take up to several days.
 </Note>
 
 When you use OAuth 2.0 for authorization, your application requests authorization for one or more scopes of access from a Google Account. Google displays a consent screen to the user, including a summary of your project, its policies, and the requested access scopes.
@@ -38,23 +41,28 @@ Before creating an OAuth client ID, you must first configure the OAuth consent s
 In the Google Cloud Console, [configure your Google OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent):
 
 <Steps>
-  <Step>
-   Navigate to **Google Auth Platform > Branding**:
-   - For Authorized domains, enter `auth0.com`. If you’re using a [custom domain](https://auth0.com/docs/customize/custom-domains), enter your custom domain instead.
+  <Step title="Configure Authorized domains">
+    Navigate to **Google Auth Platform > Branding**. For Authorized domains,
+    enter `auth0.com`. If you're using a [custom
+    domain](https://auth0.com/docs/customize/custom-domains), enter your custom
+    domain instead.
   </Step>
-  <Step>
-   Navigate to **Google Auth Platform > Audience**:
-   - For **User type**, select **Make External**. In **Test Users**, you can add the email addresses you want to use for testing.
+  <Step title="Configure Audience">
+    Navigate to **Google Auth Platform > Audience**. For **User type**, select
+    **Make External**. In **Test Users**, you can add the email addresses you
+    want to use for testing.
   </Step>
-  <Step>
-   Navigate to **Google Auth Platform > Data Access** to add or remove scopes. To learn more, read [OAuth 2.0 Scopes for Google APIs](https://developers.google.com/identity/protocols/oauth2/scopes).
+  <Step title="Configure Data Access">
+    Navigate to **Google Auth Platform > Data Access** to add or remove scopes.
+    To learn more, read [OAuth 2.0 Scopes for Google
+    APIs](https://developers.google.com/identity/protocols/oauth2/scopes).
   </Step>
-  <Step>
-   Follow the rest of the instructions to finish [configuring your Google OAuth consent screen](https://developers.google.com/workspace/guides/configure-oauth-consent).
+  <Step title="Configure Consent screen">
+    Follow the rest of the instructions to finish [configuring your Google OAuth
+    consent
+    screen](https://developers.google.com/workspace/guides/configure-oauth-consent).
   </Step>
-  <Step>
-   Select **Save Changes**.
-  </Step>
+  <Step title="Save Changes">Select **Save Changes**.</Step>
 </Steps>
 
 ### Create Google OAuth Client
@@ -62,29 +70,30 @@ In the Google Cloud Console, [configure your Google OAuth consent screen](https:
 To create a Google OAuth 2.0 Client, you need your Auth0 domain, which you can find in the Auth0 Dashboard.
 
 1. If you haven’t configured a custom domain, your Auth0 domain name is `{YOUR_TENANT_NAME}.{YOUR_REGIONAL_SUBDOMAIN}.auth0.com`. It will be bolded in the introduction. Your redirect URI is `https://{YOUR_TENANT_NAME}.{YOUR_REGIONAL_SUBDOMAIN}.auth0.com/login/callback`.
-3. If you have configured a custom domain via **Settings > Custom Domains** in your Auth0 Dashboard, use your custom domain instead. Your redirect URI is `https://{YOUR_CUSTOM_DOMAIN}/login/callback`.
+2. If you have configured a custom domain via **Settings > Custom Domains** in your Auth0 Dashboard, use your custom domain instead. Your redirect URI is `https://{YOUR_CUSTOM_DOMAIN}/login/callback`.
 
 **Note:** If you created your US tenant before June 2020, then your Auth0 domain name does not include the regional subdomain: `{YOUR_TENANT_NAME}.auth0.com`.
-
 
 In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.cloud.google.com/auth/clients/create):
 
 <Steps>
-  <Step>
-   Navigate to **Google Auth Platform > Clients**. Then, select **New Client**.
+  <Step title="Create Client">
+    Navigate to **Google Auth Platform > Clients**. Then, select **New Client**.
   </Step>
-  <Step>
-   For the **Application type**, select **Web application**.
+  <Step title="Select Application type">
+    For the **Application type**, select **Web application**.
   </Step>
-  <Step>
-   Enter the following information for your OAuth 2.0 Client:
-    - Name: The name of your OAuth 2.0 Client.
-    - Authorized Javascript origins: `https://{YOUR_DOMAIN}`
-    - Authorized redirect URIs: `https://{YOUR_DOMAIN}/login/callback`
+  <Step title="Configure Client credentials">
+    Enter the following information for your OAuth 2.0 Client:
+    <ul>
+      <li>**Name**: The name of your OAuth 2.0 Client.</li>
+      <li>**Authorized Javascript origins**: `https://{YOUR_DOMAIN}`</li>
+      <li>
+        **Authorized redirect URIs**: `https://{YOUR_DOMAIN}/login/callback`
+      </li>
+    </ul>
   </Step>
-  <Step>
-   Select **Create**.
-  </Step>
+  <Step title="Complete">Select **Create**.</Step>
 </Steps>
 
 ## Auth0 Dashboard
@@ -96,23 +105,28 @@ Use the Auth0 Dashboard to create and configure a Google social connection with 
 Use the Auth0 Dashboard to create a new Google social connection.
 
 <Steps>
-  <Step>
-   Navigate to **Authentication > Social**.
+  <Step title="Create Connection">
+    Navigate to **Authentication > Social**. Select **Create Connection** and
+    then **Google/Gmail**.
   </Step>
-  <Step>
-   Select **Create Connection** and then **Google/Gmail**.
+  <Step title="Configure Client credentials">
+    In **General**, enter the client credentials from the Google OAuth 2.0
+    Client you created:
+    <ul>
+      <li>**Client ID**: The unique identifier for your application.</li>
+      <li>
+        **Client Secret**: The secret used by the application to authenticate
+        with Auth0. To learn more, read [Client secret
+        authentication](https://auth0.com/docs/secure/application-credentials#client-secret-authentication).
+      </li>
+    </ul>
   </Step>
-  <Step>
-   In **General**, enter the client credentials from the Google OAuth 2.0 Client you created:
-    - Client ID: The unique identifier for your application.
-    - Client Secret: The secret used by the application to authenticate with Auth0. To learn more, read [Client secret authentication](https://auth0.com/docs/secure/application-credentials#client-secret-authentication).
+  <Step title="Select Permissions">
+    In **Permissions**, select all the required scopes. When you get an access
+    token for the Google social connection, it will contain the appropriate
+    scopes so you can use it to call the required Google APIs.
   </Step>
-  <Step>
-   In **Permissions**, select all the required scopes. When you get an access token for the Google social connection, it will contain the appropriate scopes so you can use it to call the required Google APIs.
-  </Step>
-  <Step>
-   Click **Save Changes**.
-  </Step>
+  <Step title="Save">Click **Save Changes**.</Step>
 </Steps>
 
 ### Configure federated connection
