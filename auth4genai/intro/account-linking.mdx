@@ -3,8 +3,6 @@ title: Account Linking
 description: "Account linking in Auth0 allows a user to connect multiple identity provider accounts, such as Google, GitHub, or a corporate SAML connection, under a single, unified user profile. By default, Auth0 treats each login from a different provider as a separate user. Account linking merges these distinct identities, enabling a user to authenticate from any of their linked accounts and be recognized as the same person by your application."
 ---
 
-
-
 ## Why is account linking important for GenAI
 
 For GenAI applications, and particularly for AI agents that need to act on a user's behalf, account linking is critical. An agent might need to access a user's calendar via their Google account and their code repositories through their GitHub account. Without account linking, the agent would see these as two separate users.
@@ -25,23 +23,28 @@ There are two primary methods for implementing account linking:
 For GenAI applications, **Client-initiated account linking** is a new option that provides a seamless way for users to grant AI agents access to different services. When an agent needs to access a new service (e.g., Google Calendar) for which it doesn't have a token, the application can trigger the account linking flow.
 
 <Frame>
-![Client-initiated account linking flow](/img/client_initiated_account_linking.png)
+  ![Client-initiated account linking
+  flow](/img/client_initiated_account_linking.png)
 </Frame>
 
 The key steps are:
 
 <Steps>
   <Step title="Trigger the flow">
-  The client application initiates the flow when an agent needs access to a new external provider.
+    The client application initiates the flow when an agent needs access to a
+    new external provider.
   </Step>
   <Step title="User authentication">
-  The user is prompted to log in with the new account they wish to link.
+    The user is prompted to log in with the new account they wish to link.
   </Step>
   <Step title="Token exchange and linking">
-  Auth0 handles the authentication with the new provider and, upon successful login, links the new identity to the user's primary profile.
+    Auth0 handles the authentication with the new provider and, upon successful
+    login, links the new identity to the user's primary profile.
   </Step>
   <Step title="Token retrieval">
-  With the accounts now linked, your application can use Token Vault to retrieve an access token for the newly connected service to use for API calls.
+    With the accounts now linked, your application can use Token Vault to
+    retrieve an access token for the newly connected service to use for API
+    calls.
   </Step>
 </Steps>
 
@@ -53,19 +56,47 @@ For a detailed guide on implementing this flow, please refer to the [Client-Init
 
 To begin using Auth0 Token Vault in your GenAI applications, refer to the following resources:
 
-- **Quickstarts:**
-  <Columns cols={2}>
-  <Card title="Call Other's APIs on User's Behalf" href="/get-started/call-others-apis-on-users-behalf" icon="key" horizontal/>
-  </Columns>
-- **Guides:**
-  <Columns cols={2}>
-  <Card title="Client-Initiated Account Linking Guide" href="/guides/client-initiated-account-linking" icon="link" horizontal/>
-  </Columns>
-
-## Learn more
+### Quickstarts
 
 <Columns cols={2}>
-<Card title="User Account Linking" href="https://auth0.com/docs/manage-users/user-accounts/user-account-linking" icon="user" horizontal/>
-<Card title="User-Initiated Account Linking: Client-Side Implementation" href="https://auth0.com/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation" icon="user" horizontal/>
-<Card title="User Account Linking: Server-Side Implementation" href="https://auth0.com/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation" icon="user" horizontal/>
+  <Card
+    title="Call Other's APIs on User's Behalf"
+    href="/get-started/call-others-apis-on-users-behalf"
+    icon="key"
+    horizontal
+  />
+</Columns>
+
+### Guides
+
+<Columns cols={2}>
+  <Card
+    title="Client-Initiated Account Linking Guide"
+    href="/guides/client-initiated-account-linking"
+    icon="link"
+    horizontal
+  />
+</Columns>
+
+### Learn more
+
+<Columns cols={2}>
+  <Card
+    title="User Account Linking"
+    href="https://auth0.com/docs/manage-users/user-accounts/user-account-linking"
+    icon="user"
+    horizontal
+  />
+  <Card
+    title="User-Initiated Account Linking: Client-Side Implementation"
+    href="https://auth0.com/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation"
+    icon="user"
+    horizontal
+  />
+  <Card
+    title="User Account Linking: Server-Side Implementation"
+    href="https://auth0.com/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation"
+    icon="user"
+    horizontal
+  />
 </Columns>

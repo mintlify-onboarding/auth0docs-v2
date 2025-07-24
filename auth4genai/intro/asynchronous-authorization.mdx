@@ -3,8 +3,6 @@ title: Asynchronous Authorization
 description: 'Asynchronous Authorization provides a secure "human-in-the-loop" mechanism, allowing agents to work autonomously in the background and seek user consent for sensitive or critical actions only when necessary.'
 ---
 
-
-
 This process relies on a decoupled authentication flow where the user provides consent on a trusted device, such as their mobile phone, separate from the device where the agent was initially engaged.
 
 ## Use cases for asynchronous authorization
@@ -19,7 +17,7 @@ In these scenarios, the agent needs the user to approve an action at a later tim
 
 This decoupled mechanism is also ideal for human-in-the-loop interactions, such as approving a stock purchase through a chatbot or completing a financial transaction with a banking agent.
 
-## How it works: Client-Initiated Backchannel Authentication and Rich Authorization Requests
+## Client-Initiated Backchannel Authentication and Rich Authorization Requests
 
 Auth0 implements asynchronous authorization using the **Client-Initiated Backchannel Authentication (CIBA)** standard, enhanced with **Rich Authorization Requests (RAR)**.
 
@@ -30,19 +28,28 @@ The flow generally proceeds as follows:
 
 <Steps>
   <Step title="Initiation">
-  The agent's backend identifies a need for user approval and sends a CIBA request to the Auth0 `/bc-authorize` endpoint. This request includes a user identifier and the optional RAR payload in the (`authorization_details`) parameter.
+    The agent's backend identifies a need for user approval and sends a CIBA
+    request to the Auth0 `/bc-authorize` endpoint. This request includes a user
+    identifier and the optional RAR payload in the (`authorization_details`)
+    parameter.
   </Step>
   <Step title="Acknowledgment">
-  Auth0 immediately acknowledges the request by returning a unique `auth_req_id`.
+    Auth0 immediately acknowledges the request by returning a unique
+    `auth_req_id`.
   </Step>
   <Step title="Polling">
-  The agent's backend uses `auth_req_id` to begin polling the Auth0 `/token` endpoint to check for completion.
+    The agent's backend uses `auth_req_id` to begin polling the Auth0 `/token`
+    endpoint to check for completion.
   </Step>
   <Step title="User consent">
-  In parallel, Auth0 sends a notification (e.g., push, SMS, or email) to the user's authentication device, displaying the rich context from the RAR payload. The user approves or denies the request.
+    In parallel, Auth0 sends a notification (e.g., push, SMS, or email) to the
+    user's authentication device, displaying the rich context from the RAR
+    payload. The user approves or denies the request.
   </Step>
   <Step title="Token issuance">
-  Once the user approves, the next polling request from the agent's backend to the `/token` endpoint will succeed. Auth0 returns the required access and ID tokens, allowing the agent to complete the authorized action.
+    Once the user approves, the next polling request from the agent's backend to
+    the `/token` endpoint will succeed. Auth0 returns the required access and ID
+    tokens, allowing the agent to complete the authorized action.
   </Step>
 </Steps>
 
@@ -50,26 +57,86 @@ The flow generally proceeds as follows:
 
 To begin using Asynchronous Authorization in your GenAI applications, refer to the following resources:
 
-- **Quickstarts:**
-  <Columns cols={2}>
-  <Card title="Asynchronous Authorization" href="/get-started/asynchronous-authorization" icon="key" horizontal/>
-  </Columns>
-- **Guides:**
-  <Columns cols={2}>
-  <Card title="Configure Rich Authorization Requests (RAR)" href="https://auth0.com/docs/get-started/apis/configure-rich-authorization-requests" icon="gear" />
-  </Columns>
-- **Sample Apps:**
-  <Columns cols={2}>
-  <Card title="Assistant0: Next.js + Vercel AI SDK" href="https://github.com/auth0-samples/auth0-assistant0/tree/vercel-ai" icon={<img src="https://mintlify-assets.b-cdn.net/auth0/vercel.svg" alt="Vercel AI" />}/>
-  <Card title="Assistant0: Next.js + LangGraph - Coming soon" icon="clock" horizontal/>
-  <Card title="Assistant0: Next.js + LlamaIndex - Coming soon" icon="clock" horizontal/>
-  <Card title="Auth0 AI SDK TypeScript samples" href="https://github.com/auth0-lab/auth0-ai-js/tree/main/examples/async-user-confirmation" icon="code" />
-  <Card title="Auth0 AI SDK Python samples" href="https://github.com/auth0-lab/auth0-ai-python/tree/main/examples/async-user-confirmation" icon="python" />
-  </Columns>
-
-## Learn more
+### Quickstarts
 
 <Columns cols={2}>
-<Card title="Client-Initiated Backchannel Authentication Flow" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow" icon="gear" horizontal/>
-<Card title="User Authorization with CIBA" href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authorization-with-ciba" icon="gear" horizontal/>
+  <Card
+    title="Asynchronous Authorization"
+    href="/get-started/asynchronous-authorization"
+    icon="key"
+    horizontal
+  />
+</Columns>
+
+### Guides
+
+<Columns cols={2}>
+  <Card
+    title="Configure Rich Authorization Requests (RAR)"
+    href="https://auth0.com/docs/get-started/apis/configure-rich-authorization-requests"
+    icon="gear"
+    horizontal
+  />
+</Columns>
+
+### Sample Apps
+
+<Columns cols={2}>
+  <Card
+    title="Assistant0: Next.js + Vercel AI SDK"
+    href="https://github.com/auth0-samples/auth0-assistant0/tree/main/ts-vercel-ai"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/vercel.svg"
+        alt="Vercel AI"
+      />
+    }
+    horizontal
+  />
+  <Card
+    title="Assistant0: Next.js + LangGraph"
+    href="https://github.com/auth0-samples/auth0-assistant0/tree/main/ts-langchain"
+    icon="clock"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+        alt="Vercel AI"
+      />
+    }
+    horizontal
+  />
+  <Card
+    title="Assistant0: Next.js + LlamaIndex - Coming soon"
+    icon="clock"
+    horizontal
+  />
+  <Card
+    title="Auth0 AI SDK TypeScript samples"
+    href="https://github.com/auth0-lab/auth0-ai-js/tree/main/examples/async-user-confirmation"
+    icon="code"
+    horizontal
+  />
+  <Card
+    title="Auth0 AI SDK Python samples"
+    href="https://github.com/auth0-lab/auth0-ai-python/tree/main/examples/async-user-confirmation"
+    icon="python"
+    horizontal
+  />
+</Columns>
+
+### Learn more
+
+<Columns cols={2}>
+  <Card
+    title="Client-Initiated Backchannel Authentication Flow"
+    href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow"
+    icon="gear"
+    horizontal
+  />
+  <Card
+    title="User Authorization with CIBA"
+    href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authorization-with-ciba"
+    icon="gear"
+    horizontal
+  />
 </Columns>

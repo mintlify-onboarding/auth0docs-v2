@@ -1,10 +1,10 @@
 ---
 title: Calling APIs with Token Vault
 description: Generative AI applications and agents often need to access data and perform actions in third-party systems to fulfill user requests.
-sidebarTitle: Overview
+sidebarTitle: Token Vault
 ---
 
- For example, a sales assistant agent might need to:
+For example, a sales assistant agent might need to:
 
 - Read a user's calendar to schedule a meeting.
 - Access a user's documents to summarize them.
@@ -56,15 +56,33 @@ Token Vault supports a variety of social and enterprise identity providers, incl
 To begin using Token Vault to call external APIs on behalf of your users, you will need to:
 
 <Columns cols={3}>
-<Card title="Configure connections" href="/intro/connections" icon="square-1" iconType="solid">
-Set up connections to the external service (e.g., Google, Microsoft) in your Auth0 dashboard.
-</Card>
-<Card title="Configure account linking" href="/intro/account-linking" icon="square-2" iconType="solid">
-Enable Account Linking so that end-users can link multiple third-party accounts (e.g., Google, Microsoft) together.
-</Card>
-<Card title="Call other's APIs on user's behalf" href="/intro/call-others-apis-on-users-behalf" icon="square-3" iconType="solid">
-Use our SDKs for your preferred frameworks to easily obtain access tokens for the connections.
-</Card>
+  <Card
+    title="Configure connections"
+    href="/intro/connections"
+    icon="square-1"
+    iconType="solid"
+  >
+    Set up connections to the external service (e.g., Google, Microsoft) in your
+    Auth0 dashboard.
+  </Card>
+  <Card
+    title="Configure account linking"
+    href="/intro/account-linking"
+    icon="square-2"
+    iconType="solid"
+  >
+    Enable Account Linking so that end-users can link multiple third-party
+    accounts (e.g., Google, Microsoft) together.
+  </Card>
+  <Card
+    title="Call other's APIs on user's behalf"
+    href="/intro/call-others-apis-on-users-behalf"
+    icon="square-3"
+    iconType="solid"
+  >
+    Use our SDKs for your preferred frameworks to easily obtain access tokens
+    for the connections.
+  </Card>
 </Columns>
 
 By leveraging Auth0's Token Vault, you can build powerful and trustworthy GenAI applications that securely and seamlessly integrate with the broader ecosystem of APIs and services.
@@ -73,34 +91,109 @@ By leveraging Auth0's Token Vault, you can build powerful and trustworthy GenAI 
 
 To begin using Auth0 Token Vault in your GenAI applications, refer to the following resources:
 
-- **Quickstarts:**
-
-  <Columns cols={2}>
-  <Card title="Call Other's APIs on User's Behalf" href="/get-started/call-others-apis-on-users-behalf" icon="key" horizontal/>
-  </Columns>
-
-- **Guides:**
-  <Columns cols={2}>
-  <Card title="Check Google Calendar Availability" href="/how-tos/check-google-calendar-availability" icon="google" horizontal/>
-  <Card title="List GitHub Repositories" href="/how-tos/list-github-repositories" icon="github" horizontal/>
-  <Card title="List Slack Channels" href="/how-tos/list-slack-channels" icon="slack" horizontal/>
-  <Card title="Get Salesforce Opportunities" href="/how-tos/get-salesforce-opportunities" icon="salesforce" horizontal/>
-  </Columns>
-- **Sample Apps:**
-
-  <Columns cols={2}>
-  <Card title="Assistant0: Next.js + LangGraph" href="https://github.com/auth0-samples/auth0-assistant0" icon="github" horizontal/>
-  <Card title="Assistant0: Next.js + Vercel AI SDK" href="https://github.com/auth0-samples/auth0-assistant0/tree/vercel-ai" icon="github" horizontal/>
-  <Card title="Assistant0: Next.js + LlamaIndex - Coming soon" icon="clock" horizontal/>
-  <Card title="Auth0 AI SDK TypeScript samples" href="https://github.com/auth0-lab/auth0-ai-js/tree/main/examples/calling-apis" icon="github" horizontal/>
-
-  <Card title="Auth0 AI SDK Python samples" href="https://github.com/auth0-lab/auth0-ai-python/tree/main/examples/calling-apis" icon="python" horizontal/>
-  </Columns>
-
-## Learn more
+### Quickstarts
 
 <Columns cols={2}>
-<Card title="Auth0 Docs for Token Vault" href="https://auth0.com/docs/secure/tokens/token-vault" icon="book" horizontal/>
-<Card title="Call APIs with Token Vault" href="https://auth0.com/docs/secure/tokens/token-vault/call-apis-with-token-vault" icon="key" horizontal/>
-<Card title="Configure Token Vault" href="https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault" icon="gear" horizontal/>
+  <Card
+    title="Call Other's APIs on User's Behalf"
+    href="/get-started/call-others-apis-on-users-behalf"
+    icon="key"
+    horizontal
+  />
+</Columns>
+
+### Guides
+
+<Columns cols={2}>
+  <Card
+    title="Check Google Calendar Availability"
+    href="/how-tos/check-google-calendar-availability"
+    icon="google"
+    horizontal
+  />
+  <Card
+    title="List GitHub Repositories"
+    href="/how-tos/list-github-repositories"
+    icon="github"
+    horizontal
+  />
+  <Card
+    title="List Slack Channels"
+    href="/how-tos/list-slack-channels"
+    icon="slack"
+    horizontal
+  />
+  <Card
+    title="Get Salesforce Opportunities"
+    href="/how-tos/get-salesforce-opportunities"
+    icon="salesforce"
+    horizontal
+  />
+</Columns>
+
+### Sample Apps
+
+<Columns cols={2}>
+  <Card
+    title="Assistant0: Next.js + LangGraph"
+    href="https://github.com/auth0-samples/auth0-assistant0/tree/main/ts-langchain"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+        alt="Vercel AI"
+      />
+    }
+    horizontal
+  />
+  <Card
+    title="Assistant0: Next.js + Vercel AI SDK"
+    href="https://github.com/auth0-samples/auth0-assistant0/tree/main/ts-vercel-ai"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/vercel.svg"
+        alt="Vercel AI"
+      />
+    }
+    horizontal
+  />
+  <Card
+    title="Assistant0: Next.js + LlamaIndex - Coming soon"
+    icon="clock"
+    horizontal
+  />
+  <Card
+    title="Auth0 AI SDK TypeScript samples"
+    href="https://github.com/auth0-lab/auth0-ai-js/tree/main/examples/calling-apis"
+    icon="github"
+    horizontal
+  />
+  <Card
+    title="Auth0 AI SDK Python samples"
+    href="https://github.com/auth0-lab/auth0-ai-python/tree/main/examples/calling-apis"
+    icon="python"
+    horizontal
+  />
+</Columns>
+
+### Learn more
+
+<Columns cols={2}>
+  <Card
+    title="Auth0 Docs for Token Vault"
+    href="https://auth0.com/docs/secure/tokens/token-vault"
+    icon="book"
+    horizontal
+  />
+  <Card
+    title="Call APIs with Token Vault"
+    href="https://auth0.com/docs/secure/tokens/token-vault/call-apis-with-token-vault"
+    icon="key"
+    horizontal
+  />
+  <Card
+    title="Configure Token Vault"
+    href="https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault"
+    icon="gear"
+    horizontal
+  />
 </Columns>
