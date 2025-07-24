@@ -1,0 +1,67 @@
+---
+title: Call Your APIs on User's Behalf
+description: Learn how Auth for GenAI enables AI agents to call first-party APIs on the user's behalf.
+---
+
+import VercelCallYourApi from "/snippets/get-started/vercel-ai-next-js/call-your-api.mdx";
+import CloudflareCallYourApi from "/snippets/get-started/cloudflare-agents-js/call-your-api.mdx";
+import FastApiCallYourApi from "/snippets/get-started/langchain-fastapi-py/call-your-api.mdx";
+import LangChainNextjsCallYourApi from "/snippets/get-started/langchain-next-js/call-your-api.mdx";
+
+Let your AI agent call your APIs on behalf of the authenticated user using access tokens securely issued by Auth0. Your API can be any [API that you have configured in Auth0](https://auth0.com/docs/get-started/apis).
+
+By the end of this quickstart, you should have an AI application integrated with Auth0 that can:
+
+- Get an Auth0 access token.
+- Use the Auth0 access token to make a tool call to your API endpoint, in this case, Auth0's `/userinfo` endpoint.
+- Return the data to the user via an AI agent.
+
+## Prerequisites
+
+Before getting started, make sure you have completed the following steps:
+
+<Steps>
+  <Step title="Create an Auth0 Account and a Dev Tenant">
+    To continue with this quickstart, you need an Auth0 account and a Developer Tenant.
+      <Columns cols={2}>
+          <Card title="Create Account" icon="user-shield" iconType="solid" href="https://auth0.auth0.com/u/login/identifier?state=hKFo2SAwWU5ObEx4S2JyRzNjUTlmVFFia2s5LXMxT2pYTVZobaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFhGQWJhLVR1V1dQWDdGUzhvdjY4WEsyQmg5Z3N1Q1NSo2NpZNkgekVZZnBvRnpVTUV6aWxoa0hpbGNXb05rckZmSjNoQUk" horizontal/>
+        </Columns>
+  </Step>
+  <Step title="Create Application">
+    Create and configure an Auth0 Application of type `Regular Web` to use with this quickstart.
+    To learn more about Auth0 applications, read [Applications](https://auth0.com/docs/get-started/applications)
+
+    <Columns cols={2}>
+      <Card title="Create App" icon="android" iconType="solid" horizontal href="https://manage.auth0.com/dashboard" />
+    </Columns>
+
+  </Step>
+  <Step title="OpenAI Platform">
+    Set up an [OpenAI account and API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).
+  </Step>
+</Steps>
+
+## Pick your tech stack
+
+<Tabs>
+  <Tab title="LangGraph.js" icon="https://mintlify-assets.b-cdn.net/auth0/langchain.svg">
+    <LangChainNextjsCallYourApi />
+  </Tab>
+  <Tab title="Vercel AI" icon="https://mintlify-assets.b-cdn.net/auth0/vercel.svg">
+    <VercelCallYourApi />
+  </Tab>
+  <Tab title="Cloudflare Agents" icon="cloudflare">
+      <CloudflareCallYourApi />
+  </Tab>
+  <Tab title="FastAPI" icon="https://mintlify-assets.b-cdn.net/auth0/FastAPI.svg">
+      <FastApiCallYourApi />
+  </Tab>
+</Tabs>
+
+## Next steps
+
+- To set up third-party tool calling, complete the
+  [Call other's APIs on user's behalf](/get-started/call-others-apis-on-users-behalf) quickstart.
+- To explore the Auth0 Next.js SDK, see the
+  [Github repo](https://github.com/auth0/nextjs-auth0).
+- [Call your APIs on user's behalf docs](/intro/call-your-apis-on-users-behalf).

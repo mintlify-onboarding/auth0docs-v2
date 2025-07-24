@@ -1,0 +1,258 @@
+    ### Install dependencies
+
+    In the root directory of your project, install the following dependencies:
+
+    - `fastapi`: [FastAPI](https://fastapi.tiangolo.com/) web framework for building APIs with Python.
+    - `auth0-fastapi-api`: [Auth0's FastAPI API SDK](https://github.com/auth0/auth0-server-python/tree/main/packages/auth0_fastapi_api) to secure APIs using bearer tokens from Auth0.
+    - `langchain`: [LangChain's](https://pypi.org/project/langchain/) base Python library.
+    - `langchain-core`: LangChain's [core abstractions](https://pypi.org/project/langchain-core/) library.
+    - `langchain-openai`: LangChain integrations for OpenAI.
+    - `uvicorn` and `python-dotenv` `https`: Other Python utility libraries.
+
+    ```bash
+    pip3 install fastapi auth0-fastapi-api langchain langchain-core langchain-openai uvicorn python-dotenv httpx
+    ```
+
+    ### Set up your environment
+
+    In the root directory of your project, create the `.env.local` file and add the following variables. If you created an application with this quickstart, Auth0 automatically populates your environment variables for you:
+
+    **Note:** Your application’s client secret is masked for you. To get the client secret value, click the copy button on the code sample.
+
+    ```bash .env.local lines
+    AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
+    APP_BASE_URL='http://localhost:3000'
+    AUTH0_DOMAIN='<your-auth0-domain>'
+    AUTH0_CLIENT_ID='<your-auth0-application-client-id>'
+    AUTH0_CLIENT_SECRET='<your-auth0-application-client-secret>'
+    ```
+
+    To initialize your local Python environment, run these commands in the terminal:
+
+    ```bash
+    python3 -m venv env
+    source env/bin/activate
+    ```
+
+    ### Create an API in Auth0
+
+    In the Auth0 Dashboard, [create an API](https://auth0.com/docs/get-started/auth0-overview/set-up-apis). Set the **Identifier** as `agent0-api`.
+
+    Once you've successfully created the API, enable the corresponding `AUTH0_CLIENT_ID` within the **Machine to Machine Applications** tab. This enables that client to request access tokens for this API.
+
+    Update the `.env.local` file to set the `AUTH0_API_AUDIENCE` to `agent0-api`, or the identifier for the API you created.
+
+    ```bash .env.local
+    # .env.local
+    # ...
+
+    AUTH0_API_AUDIENCE=agent0-api
+    ```
+
+    Next, create a file called `src/app.py` and add the following code to import dependencies and set up the Auth0 configuration:
+
+    ```python src/app.py lines
+    import json
+
+    from fastapi import Depends, FastAPI, HTTPException, Request, Response
+    from fastapi.middleware.cors import CORSMiddleware
+    from fastapi_plugin import Auth0FastAPI
+
+    from langchain_openai import ChatOpenAI
+    from langchain.agents import AgentExecutor, create_tool_calling_agent
+
+    from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+    from langchain_core.tools import tool
+
+    from dotenv import load_dotenv
+    from typing import Any, Dict, List
+
+    import httpx
+    import os
+    import uvicorn
+
+    load_dotenv(dotenv_path=".env.local")
+    app = FastAPI()
+
+    # Set up the CORS middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[os.getenv("AGENT0_WEB_HOST")],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Auth0 configuration
+    auth0 = Auth0FastAPI(
+        domain=os.getenv("AUTH0_DOMAIN"),
+        audience=os.getenv("AUTH0_API_AUDIENCE"),
+    )
+    ```
+    ### Define a tool to call your API
+
+    In this step, you’ll create a tool to make the first-party API call. The tool fetches an access token to call the API.
+
+    Add the following code to `src/app.py` to set up `Agent0` with a token-protected API tool call to Auth0's `/userinfo` endpoint:
+
+    ```python src/app.py lines
+    # ...
+
+    # OpenAI model
+    model = ChatOpenAI(
+        model="gpt-4o",
+        temperature=0,
+        api_key=os.getenv("AGENT0_OPENAI_KEY")
+    )
+
+    # Create a prompt template
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "You are an AI agent for demonstrating tool calling with Auth0."),
+        ("human", "{input}"),
+        MessagesPlaceholder(variable_name="agent_scratchpad"),
+    ])
+
+    # Function to create a tool dynamically with the provided token
+    def get_user_info_tool(token: str):
+        @tool
+        async def get_user_info() -> Dict[str, Any]:
+            """Fetch user info from Auth0 using the provided token."""
+            auth0_domain = os.getenv("AUTH0_DOMAIN")
+            if not auth0_domain:
+                return {"error": "Auth0 domain is not defined"}
+
+            url = f"https://{auth0_domain}/userinfo"
+            headers = {"Authorization": f"Bearer {token}"}
+
+            async with httpx.AsyncClient() as client:
+                response = await client.get(url, headers=headers)
+                if response.status_code != 200:
+                    return {"error": "Failed to fetch user info"}
+                return response.json()
+
+        return get_user_info
+
+    # Agent execution function
+    async def agent0(messages: List[Dict], token: str) -> Dict[str, Any]:
+        get_user_info = get_user_info_tool(token)  # Inject token dynamically
+
+        tools = [get_user_info]
+
+        # Create the agent using the factory function
+        agent = create_tool_calling_agent(model, tools, prompt)
+
+        # Create the agent executor
+        agent_executor = AgentExecutor(
+            agent=agent,
+            tools=tools,
+        )
+
+        response = await agent_executor.ainvoke({"input": messages})
+
+        return {"content": response["output"]}
+    ```
+
+    ### Run API server and handle AI agent requests
+
+    Add the following code to `src/app.py` to handle requests to the `/agent` endpoint:
+
+    ```python src/app.py lines
+    # ...
+
+    @app.post("/agent")
+    async def agent_api(
+        request: Request,
+        response: Response,
+        claims: dict = Depends(auth0.require_auth())
+    ):
+        data = await request.body()
+        messages = json.loads(data).get('messages') if data else ""
+
+        if not messages or not isinstance(messages, list):
+            detail = "Messages are required and should be an array"
+            raise HTTPException(status_code=400, detail=detail)
+
+        try:
+            # Retrieve the authorization header with access token
+            # in the format "Bearer <token>"
+            token = request.headers.get("authorization")
+            response = await agent0(messages, token)
+            return {"response": response["content"]}
+        except Exception as error:
+            print(error)
+            detail("Failed to get response from agent")
+            raise HTTPException(status_code=500, detail=detail)
+
+    if __name__ == "__main__":
+        uvicorn.run(app, host="127.0.0.1", port=3000)
+    ```
+
+    ### Run your API server
+    Run this command to start the API server:
+
+    ```bash
+    python3 src/app.py
+    ```
+
+    ### Test your application
+
+    Create a test script to call the API using an access token issued to the logged-in user. This simulates using a front-end application which can follow the same pattern to access backend APIs.
+
+    #### 1. Create a test script
+    Create a file called `api_test.py` and add the following code to it:
+
+    ```python api_test.py lines
+    from dotenv import load_dotenv
+    import os
+    import requests
+    load_dotenv(dotenv_path=".env.local")
+
+    def get_access_token():
+        url = f"https://{os.getenv('AUTH0_DOMAIN')}/oauth/token"
+        headers = {"content-type": "application/x-www-form-urlencoded"}
+        data = {
+            "grant_type": "client_credentials",
+            "client_id": os.getenv("AUTH0_CLIENT_ID"),
+            "client_secret": os.getenv("AUTH0_CLIENT_SECRET"),
+            "audience": os.getenv("AUTH0_API_AUDIENCE"),
+        }
+        response = requests.post(url, headers=headers, data=data)
+        response.raise_for_status()  # Raise an error for bad responses
+        return response.json().get("access_token")
+
+    def call_agent_api(access_token):
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {access_token}"
+        }
+        payload = {
+            "messages": [
+                {"content": "Hello, tell me a joke.", "role": "Human"}
+            ]
+        }
+        response = requests.post((os.getenv("APP_BASE_URL")+"/agent"), json=payload, headers=headers)
+        response.raise_for_status()
+        return response.json()
+
+    def main():
+        try:
+            token = get_access_token()
+            print("Access token obtained successfully.")
+            response = call_agent_api(token)
+            print("Agent API Response:", response.get("response"))
+        except requests.exceptions.RequestException as e:
+            print("Error:", e)
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+    #### 2. Run your test script
+
+    To run your test script, enter the following command in a second terminal instance:
+
+    ```bash
+    python3 api_test.py
+    ```
+
+    When you run the test script, the CLI app fetches an Auth0 token with `agent0-api` as the audience and uses it to call the `/agent` endpoint. If successful, it prints the AI agent's response.

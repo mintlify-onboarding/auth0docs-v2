@@ -1,0 +1,62 @@
+---
+title: User Authentication
+description: Learn how Auth for GenAI enables AI agents to seamlessly authenticate users.
+---
+
+import VercelUserAuthentication from "/snippets/get-started/vercel-ai-next-js/user-authentication.mdx";
+import FastApiUserAuthentication from "/snippets/get-started/langchain-fastapi-py/user-authentication.mdx";
+
+Authentication is the process of proving a user's identity before granting them access to a resource. In this quickstart, you'll learn how to bring [Universal Login](https://auth0.com/docs/authenticate/login/auth0-universal-login) to your GenAI application and leverage OAuth 2.0 and OpenID Connect to securely authenticate users.
+
+When a user authenticates with an identity provider through Auth0, Auth0 can pass user information in an ID token to an application or AI agent to deliver a personalized experience. For example, a chatbot can greet a user with their name and display relevant information based on the user's profile.
+
+By the end of this quickstart, you should have an application that can:
+
+- Sign up and log in using a username and password or a Google account.
+- Authenticate and authorize users using OAuth 2.0 and OpenID Connect.
+
+## Prerequisites
+
+Before getting started, make sure you have completed the following steps:
+
+<Steps>
+  <Step title="Create an Auth0 Account and a Dev Tenant">
+  To continue with this quickstart, you need an Auth0 account and a Developer Tenant.
+    <Columns cols={2}>
+      <Card title="Create Account" icon="user-shield" iconType="solid" href="https://auth0.auth0.com/u/login/identifier?state=hKFo2SAwWU5ObEx4S2JyRzNjUTlmVFFia2s5LXMxT2pYTVZobaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFhGQWJhLVR1V1dQWDdGUzhvdjY4WEsyQmg5Z3N1Q1NSo2NpZNkgekVZZnBvRnpVTUV6aWxoa0hpbGNXb05rckZmSjNoQUk" horizontal/>
+    </Columns>
+  </Step>
+  <Step title="Create Application">
+    Create and configure an Auth0 Application of type `Regular Web` to use with this quickstart.
+    To learn more about Auth0 applications, read [Applications](https://auth0.com/docs/get-started/applications)
+
+    <Columns cols={2}>
+      <Card title="Create App" icon="android" iconType="solid" horizontal href="https://manage.auth0.com/dashboard" />
+    </Columns>
+
+  </Step>
+</Steps>
+
+## Pick your tech stack
+
+<Tabs>
+  <Tab
+    title="Next.js"
+    icon="https://mintlify-assets.b-cdn.net/auth0/next-js.svg"
+  >
+    <VercelUserAuthentication />
+  </Tab>
+  <Tab
+    title="FastAPI"
+    icon="https://mintlify-assets.b-cdn.net/auth0/FastAPI.svg"
+  >
+    <FastApiUserAuthentication />
+  </Tab>
+</Tabs>
+
+## Next steps
+
+- To set up first-party tool calling, complete the [Call your APIs on user's behalf](/get-started/call-your-apis-on-users-behalf) quickstart.
+- To set up third-party tool calling, complete the [Call other's APIs on user's behalf](/get-started/call-others-apis-on-users-behalf) quickstart.
+- To explore the Auth0 Next.js SDK, see the [Github repo](https://github.com/auth0/nextjs-auth0).
+- [User Authentication for GenAI docs](/intro/user-authentication).
