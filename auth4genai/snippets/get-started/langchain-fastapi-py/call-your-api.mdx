@@ -19,7 +19,7 @@
 
     **Note:** Your application’s client secret is masked for you. To get the client secret value, click the copy button on the code sample.
 
-    ```bash .env.local
+    ```bash .env.local lines
     AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
     APP_BASE_URL='http://localhost:3000'
     AUTH0_DOMAIN='<your-auth0-domain>'
@@ -51,7 +51,7 @@
 
     Next, create a file called `src/app.py` and add the following code to import dependencies and set up the Auth0 configuration:
 
-    ```python ./src/app.py expandable wrap
+    ```python src/app.py lines
     import json
 
     from fastapi import Depends, FastAPI, HTTPException, Request, Response
@@ -95,7 +95,7 @@
 
     Add the following code to `src/app.py` to set up `Agent0` with a token-protected API tool call to Auth0's `/userinfo` endpoint:
 
-    ```python ./src/app.py expandable wrap
+    ```python src/app.py lines
     # ...
 
     # OpenAI model
@@ -156,7 +156,7 @@
 
     Add the following code to `src/app.py` to handle requests to the `/agent` endpoint:
 
-    ```python ./src/app.py expandable wrap
+    ```python src/app.py lines
     # ...
 
     @app.post("/agent")
@@ -201,7 +201,7 @@
     #### 1. Create a test script
     Create a file called `api_test.py` and add the following code to it:
 
-    ```python ./api_test.py expandable wrap
+    ```python api_test.py lines
     from dotenv import load_dotenv
     import os
     import requests

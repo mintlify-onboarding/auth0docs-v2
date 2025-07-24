@@ -20,14 +20,12 @@ Use the Auth0 Python SDK and FastAPI to set up an interactive CLI app get access
 
 In the root directory of your project, create the `.env.local` file and add the following variables. If you created an application with this quickstart, Auth0 automatically populates your environment variables for you:
 
-{" "}
-
 <Note>
   **Note:** Your application’s client secret is masked for you. To get the
   client secret value, click the copy button on the code sample.
 </Note>
 
-```bash .env.local expandable wrap
+```bash .env.local lines
 AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
 APP_BASE_URL='http://localhost:3000'
 AUTH0_DOMAIN='<your-auth0-domain>'
@@ -52,7 +50,7 @@ When you initialize the Auth0 Server Client, you need to specify additional auth
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `scope`       | Requests the following Auth0 scopes to be authorized for the application:<p><ul><li>`openid`: (Required) Indicates that the application intends to use OIDC to verify the user's identity. To learn more read [OpenID connect scopes](https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes).</li><li>`profile`: Returns claims that represent basic profile information, including `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `picture`, and `updated_at`.</li><li>`email`: Returns the `email` claim, which contains the user's email address, and `email_verified`, which is a boolean indicating whether the email address was verified by the user.</li><li>`offline_access`: Requests an Auth0 refresh token from the Auth0 Authorization Server, which will be exchanged for a new access token from the requested connection's Token Vault. To learn more, read [Token Vault](https://auth0.com/docs/secure/tokens/token-vault).</li></ul></p> |
 
-```python ./src/app.py expandable wrap
+```python src/app.py lines
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import HTMLResponse
 from auth0_server_python.auth_server import ServerClient
@@ -99,7 +97,7 @@ auth0 = ServerClient(
 
 In `src/app.py`, instantiate a FastAPI instance that intercepts incoming requests and applies Auth0's authentication logic:
 
-```python ./src/app.py expandable wrap
+```python src/app.py lines
 # ...
 
 app = FastAPI()
@@ -144,7 +142,7 @@ if __name__ == "__main__":
 
 Add the following code to `src/app.py` to ask the user to log in from a browser window:
 
-```python ./src/app.py expandable wrap
+```python src/app.py lines
 # ...
 
 print("-" * 25)
@@ -174,7 +172,7 @@ Set up an OpenAI agent for tool calling with Google Calendar.
 
 Add the following code to `src/app.py` to import the OpenAI and Google dependencies:
 
-```python ./src/app.py
+```python src/app.py lines
 # ...
 
 print("Proceeding to retrieve your next 5 calendar events...")
@@ -199,7 +197,7 @@ When you call `get_token_from_token_vault()`, pass in the following parameters:
 | `connection`  | The name of the connection you're requesting access to, in this case, `google-oauth2`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `scope`       | Requests the following Auth0 scopes to be authorized for the application:<p><ul><li>`openid`: (Required) Indicates that the application intends to use OIDC to verify the user's identity. To learn more read [OpenID connect scopes](https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes).</li><li>`profile`: Returns claims that represent basic profile information, including `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `picture`, and `updated_at`.</li><li>`email`: Returns the `email` claim, which contains the user's email address, and `email_verified`, which is a boolean indicating whether the email address was verified by the user.</li><li>`offline_access`: Requests an Auth0 refresh token from the Auth0 Authorization Server, which will be exchanged for a new access token from the requested connection's Token Vault. To learn more, read [Token Vault](https://auth0.com/docs/secure/tokens/token-vault).</li></ul></p> |
 
-```python ./src/app.py
+```python src/app.py lines
 # ...
 
 async def get_token_from_token_vault():
@@ -216,7 +214,7 @@ calendar_service = build('calendar', 'v3',
 
 Add the following code to `src/app.py` to create the calendar tool for listing upcoming Calendar events:
 
-```python ./src/app.py expandable wrap
+```python src/app.py lines
 # ...
 
 tools = [{
@@ -254,7 +252,7 @@ def list_upcoming_events(max_results=10):
 
 Set your OpenAI API key in your environment variables:
 
-```bash .env.local expandable wrap
+```bash .env.local lines
 # .env.local
 # ...
 
@@ -263,7 +261,7 @@ OPENAI_API_KEY="YOUR_API_KEY"
 
 Add the following code to `src/app.py` to create the AI agent:
 
-```python ./src/app.py expandable wrap
+```python src/app.py lines
 # ...
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
@@ -299,7 +297,7 @@ def process_user_request(user_input):
 
 Add the following to `src/app.py` to send a sample message to the AI agent to get the user's upcoming calendar events:
 
-```python ./src/app.py
+```python src/app.py lines
 # ...
 
 print(process_user_request("Show my next 5 upcoming calendar events"))

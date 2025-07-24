@@ -12,7 +12,7 @@ Use Auth0 SDKs to fetch access tokens for social and enterprise identity provide
 By the end of this quickstart, you should have an AI application integrated with Auth0 that can:
 
 1. Retrieve access tokens for a Google social connection.
-2. Integrate with an AI agent to call Google Calendar APIs.
+2. Integrate with an AI agent to call Google APIs.
 
 ## Prerequisites
 
@@ -33,6 +33,9 @@ Before getting started, make sure you have completed the following steps:
       <Card title="Create App" icon="android" iconType="solid" horizontal href="https://manage.auth0.com/dashboard" />
     </Columns>
 
+  </Step>
+  <Step title="Enable Token Exchange Grant">
+    Enable the Token Exchange Grant for your Auth0 Application. Go to **Applications > [YourApplication] > Settings > Advanced > Grant Types** and enable the **Token Exchange** grant type.
   </Step>
 
   <Step title="Configure Google Social Connection">

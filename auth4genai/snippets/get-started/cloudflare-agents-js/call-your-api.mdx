@@ -1,4 +1,3 @@
-
 ### Start from our Cloudflare Agents template
 
 Our [Auth0 Cloudflare Agents Starter Kit](https://github.com/auth0-lab/cloudflare-agents-starter) provides a starter project that includes the necessary dependencies and configuration to get you up and running quickly.
@@ -40,7 +39,7 @@ In the root directory of your project, copy the `.dev.vars.example` into `.dev.v
 
 ### Define a tool to call your API
 
-In this step, you’ll create a Vercel AI tool to make the first-party API call to the Auth0 API. You will do the same for third-party APIs.
+In this step, you'll create a Vercel AI tool to make the first-party API call to the Auth0 API. You will do the same for third-party APIs.
 
 In this example, after taking in an Auth0 access token during user login, the Cloudflare Worker send to the token to the Cloudflare Agent using the Authorization header in every web request or websocket connection.
 
@@ -48,7 +47,7 @@ Since the Agent defined in the class Chat in `src/agent/chat.ts` uses the **Auth
 
 The tool we are defining here uses the same access token to call Auth0's [`/userinfo`](https://auth0.com/docs/api/authentication/user-profile/get-user-info) endpoint.
 
-```tsx ./src/agent/tools.ts expandable wrap
+```tsx src/agent/tools.ts lines
 const getUserInfoTool = tool({
   description: "Get information about the current logged in user.",
   parameters: z.object({}),
@@ -79,7 +78,7 @@ const getUserInfoTool = tool({
 
 Then in the `tools` export of the `src/agent/chat.ts` file, add the `getUserInfoTool` to the tools array:
 
-```tsx ./src/agent/chat.ts expandable
+```tsx src/agent/chat.ts lines
 export const tools = {
   // Your other tools...
   getUserInfoTool,
@@ -98,6 +97,6 @@ User: who am I?
 AI: You are Juan Martinez. Here are your details: - .........
 ```
 
-That’s it! You’ve successfully integrated first-party tool-calling into your project.
+That's it! You've successfully integrated first-party tool-calling into your project.
 
 Explore [the start kit on GitHub](https://github.com/auth0-lab/cloudflare-agents-starter).
