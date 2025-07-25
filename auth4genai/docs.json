@@ -7,7 +7,7 @@
     "light": "#5001FF",
     "dark": "#341773"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/ai/docs/favicon.svg",
   "fonts": {
     "heading": {
       "family": "Aeonik",
@@ -204,8 +204,8 @@
     }
   ],
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
+    "light": "/ai/docs/logo/light.svg",
+    "dark": "/ai/docs/logo/dark.svg",
     "href": "https://auth0.com/"
   },
   "navbar": {

@@ -52,7 +52,7 @@ In Client-initiated account linking, the client initiates the account linking re
     6. Auth0 then uses the Google access token to call the Google Calendar API and complete the operation.
 
     <Frame>
-    ![Client-initiated account linking flow](/img/client_initiated_account_linking.png)
+    ![Client-initiated account linking flow](/ai/docs/img/client_initiated_account_linking.png)
     </Frame>
 
     When the primary user logs in via `/authorize`, the Client-Initiated Account Linking [`post-login`](https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger#login-post-login) Action checks for the `link_account` scope and attempts to link the requested user account (secondary account) with their existing logged in account (primary account). In our example, the user's Auth0 account is the primary account and the user's Google account is the secondary account.
