@@ -33,7 +33,7 @@ By using Token Vault, you can:
 
 The process of using Token Vault involves the following key steps:
 
-1. **User authentication and consent:** The [user links](/intro/account-linking) and authenticates with an external Identity Provider (e.g., Google) and grants your application permission to access their data by approving the requested OAuth scopes.
+1. **User authentication and consent:** The [user links](/ai/docs/intro/account-linking) and authenticates with an external Identity Provider (e.g., Google) and grants your application permission to access their data by approving the requested OAuth scopes.
 2. **Secure token storage:** Auth0 receives the federated access and refresh tokens from the external provider and stores them securely within Token Vault.
 3. **Token exchange:** Your application can then exchange a valid Auth0 refresh token for a federated access token from Token Vault. This allows your application to obtain the necessary credentials to call the third-party API without the user having to re-authenticate. It also means your application does not need to store or manage any credentials.
 4. **API call:** With the federated access token, your AI agent can make authorized calls to the third-party API on the user's behalf.
@@ -58,7 +58,7 @@ To begin using Token Vault to call external APIs on behalf of your users, you wi
 <Columns cols={3}>
   <Card
     title="Configure connections"
-    href="/intro/connections"
+    href="/ai/docs/intro/connections"
     icon="square-1"
     iconType="solid"
   >
@@ -67,7 +67,7 @@ To begin using Token Vault to call external APIs on behalf of your users, you wi
   </Card>
   <Card
     title="Configure account linking"
-    href="/intro/account-linking"
+    href="/ai/docs/intro/account-linking"
     icon="square-2"
     iconType="solid"
   >
@@ -76,7 +76,7 @@ To begin using Token Vault to call external APIs on behalf of your users, you wi
   </Card>
   <Card
     title="Call other's APIs on user's behalf"
-    href="/intro/call-others-apis-on-users-behalf"
+    href="/ai/docs/intro/call-others-apis-on-users-behalf"
     icon="square-3"
     iconType="solid"
   >
@@ -96,7 +96,7 @@ To begin using Auth0 Token Vault in your GenAI applications, refer to the follow
 <Columns cols={2}>
   <Card
     title="Call Other's APIs on User's Behalf"
-    href="/get-started/call-others-apis-on-users-behalf"
+    href="/ai/docs/get-started/call-others-apis-on-users-behalf"
     icon="key"
     horizontal
   />
@@ -107,25 +107,25 @@ To begin using Auth0 Token Vault in your GenAI applications, refer to the follow
 <Columns cols={2}>
   <Card
     title="Check Google Calendar Availability"
-    href="/how-tos/check-google-calendar-availability"
+    href="/ai/docs/how-tos/check-google-calendar-availability"
     icon="google"
     horizontal
   />
   <Card
     title="List GitHub Repositories"
-    href="/how-tos/list-github-repositories"
+    href="/ai/docs/how-tos/list-github-repositories"
     icon="github"
     horizontal
   />
   <Card
     title="List Slack Channels"
-    href="/how-tos/list-slack-channels"
+    href="/ai/docs/how-tos/list-slack-channels"
     icon="slack"
     horizontal
   />
   <Card
     title="Get Salesforce Opportunities"
-    href="/how-tos/get-salesforce-opportunities"
+    href="/ai/docs/how-tos/get-salesforce-opportunities"
     icon="salesforce"
     horizontal
   />
