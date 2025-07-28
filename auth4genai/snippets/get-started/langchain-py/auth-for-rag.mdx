@@ -4,7 +4,7 @@ Please use [Python version >\=3.11 and \<4.0](https://www.python.org/downloads/)
 
 As a first step, let's create a virtual environment and install the dependencies:
 
-```bash
+```bash wrap lines
 # Create a virtual env
 python -m venv venv
 # Activate the virtual env
@@ -42,7 +42,7 @@ Create a LangGraph agent and other helper functions that are needed to load docu
 
 The first helper will create an in-memory vector store using `faiss` and `OpenAIEmbeddings`. You can replace this module with your own store, as long as it follows the LangChain retriever specification.
 
-```py helpers/memory_store.py lines
+```py helpers/memory_store.py wrap lines
 import faiss
 
 from langchain_openai import OpenAIEmbeddings
@@ -71,7 +71,7 @@ class MemoryStore:
 
 The second helper will load the documents from the assets folder into the store.
 
-```py helpers/read_documents.py lines
+```py helpers/read_documents.py wrap lines
 import os
 
 from langchain_core.documents import Document
@@ -107,7 +107,7 @@ Define a RAG tool that uses the FGARetriever to filter authorized data from an i
 
 In the first step, we will define a new RAG tool. The agent will call up the tool when needed.
 
-```py main.py lines
+```py main.py wrap lines
 @tool
 def agent_retrieve_context_tool(query: str):
     """Call to get information about a company, e.g., What is the financial outlook for ZEKO?"""
@@ -137,7 +137,7 @@ tools = [agent_retrieve_context_tool]
 
 The `FGARetriever` defined in the `retrieve` node is designed to abstract the base retriever from the FGA query logic. In this case, the `build_query` argument lets us specify how to query our FGA model by asking if the user is a viewer of the document.
 
-```py main.py lines
+```py main.py wrap lines
 # ...
 
 build_query=lambda doc: ClientBatchCheckItem(
@@ -149,7 +149,7 @@ build_query=lambda doc: ClientBatchCheckItem(
 
 Next, we define the ReActive Agent nodes, as seen in the file below. Please refer to the comments to see explanations of the steps:
 
-```py main.py lines
+```py main.py wrap lines
 # ...
 
 def agent_node(state: State):
@@ -192,7 +192,7 @@ def generate_response_node(state: State):
 
 And finally, we build the graph.
 
-```py main.py lines
+```py main.py wrap lines
 # ...
 
 # Create the OpenAI chat tool
@@ -218,7 +218,7 @@ print(result["messages"][-1].content)
 
 To run the application, simply run the Python script as follows:
 
-```bash
+```bash wrap lines
 python main.py
 ```
 

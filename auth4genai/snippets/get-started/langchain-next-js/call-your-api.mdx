@@ -2,7 +2,7 @@
 
 **Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
 
-```bash
+```bash wrap lines
 git clone https://github.com/auth0-samples/auth0-ai-samples.git
 cd auth0-ai-samples/authenticate-users/langchain-next-js
 ```
@@ -17,7 +17,7 @@ In the root directory of your project, install the following dependencies:
 - `zod`: TypeScript-first schema validation library.
 - `langgraph-nextjs-api-passthrough`: API passthrough for LangGraph.
 
-```bash
+```bash wrap lines
 npm install @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3 zod@3 langgraph-nextjs-api-passthrough@0.1
 ```
 
@@ -25,7 +25,7 @@ npm install @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3 zod@3 l
 
 First, you have to pass the access token from the user's session to the agent. First, create a helper function to get the access token from the session. Add the following function to `src/lib/auth0.ts`.
 
-```ts src/lib/auth0.ts lines highlight={4-7}
+```ts src/lib/auth0.ts wrap lines highlight={4-7}
 //...
 
 // Get the Access token from Auth0 session
@@ -37,7 +37,7 @@ export const getAccessToken = async () => {
 
 Now, update the `/src/app/api/chat/[..._path]/route.ts` file to pass the access token to the agent.
 
-```ts src/app/api/chat/[..._path]/route.ts lines highlight={3,19}
+```ts src/app/api/chat/[..._path]/route.ts wrap lines highlight={3,19}
 import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
 
 import { getAccessToken } from "@/lib/auth0";
@@ -74,7 +74,7 @@ In this step, you'll create a LangChain tool to make the first-party API call. T
 
 In this example, after taking in an Auth0 access token during user login, the tool returns the user profile of the currently logged-in user by calling the [/userinfo](https://auth0.com/docs/api/authentication/user-profile/get-user-info) endpoint.
 
-```ts src/lib/tools/user-info.ts lines
+```ts src/lib/tools/user-info.ts wrap lines
 import { tool } from "@langchain/core/tools";
 
 export const getUserInfoTool = tool(
@@ -111,7 +111,7 @@ export const getUserInfoTool = tool(
 
 The AI agent processes and runs the user's request through the AI pipeline, including the tool call. Update the `/src/lib/agent.ts` file to add the tool to the agent.
 
-```ts src/lib/agent.ts lines highlight={2,8}
+```ts src/lib/agent.ts wrap lines highlight={2,8}
 //...
 import { getUserInfoTool } from "./tools/user-info";
 
@@ -127,7 +127,7 @@ const tools = [
 
 You need an API Key from Open AI or another provider to use an LLM. Add that API key to your `.env.local` file:
 
-```bash .env.local
+```bash .env.local wrap lines
 # ...
 # You can use any provider of your choice supported by Vercel AI
 OPENAI_API_KEY="YOUR_API_KEY"
@@ -139,7 +139,7 @@ If you use another provider for your LLM, adjust the variable name in `.env.loca
 
 To test the application, run `npm run all:dev` and navigate to `http://localhost:3000` and interact with the AI agent. You can ask questions like `"who am I?"` to trigger the tool call and test whether it successfully retrieves information about the logged-in user.
 
-```bash
+```bash wrap lines
 User: who am I?
 AI: It seems that there is no user currently logged in. If you need assistance with anything else, feel free to ask!
 

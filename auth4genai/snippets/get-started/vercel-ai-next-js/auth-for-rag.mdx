@@ -2,7 +2,7 @@
 
 **Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
 
-```bash
+```bash wrap lines
 git clone https://github.com/auth0-samples/auth0-ai-samples.git
 cd auth0-ai-samples/authenticate-users/vercel-ai-next-js
 ```
@@ -17,7 +17,7 @@ In the root directory of your project, install the following dependencies:
 - `@ai-sdk/react`: [React](https://react.dev/) UI components for the Vercel AI SDK.
 - `zod`: TypeScript-first schema validation library.
 
-```bash
+```bash wrap lines
 npm install @auth0/ai-vercel@3 ai@4 @ai-sdk/openai@1 @ai-sdk/react@1 zod@3
 ```
 
@@ -52,7 +52,7 @@ The starter application is already configured to handle documents and embeddings
 
 Define a RAG tool that uses the `FGAFilter` to filter authorized data from the vector database.
 
-```tsx src/lib/tools/context-docs.ts lines
+```tsx src/lib/tools/context-docs.ts wrap lines
 import { tool } from "ai";
 import { z } from "zod";
 import { FGAFilter } from "@auth0/ai";
@@ -100,7 +100,7 @@ export const getContextDocumentsTool = tool({
 
 Call the tool from your AI agent to get data from documents. Update the `/src/app/api/chat/route.ts` file with the following code:
 
-```ts src/app/api/chat/route.ts lines highlight={2,8}
+```ts src/app/api/chat/route.ts wrap lines highlight={2,8}
 //...
 import { getContextDocumentsTool } from "@/lib/tools/context-docs";
 
@@ -137,7 +137,7 @@ export async function POST(req: NextRequest) {
 
 Start the database and create required tables.
 
-```bash
+```bash wrap lines
 # start the postgres database
 docker compose up -d
 # create the database schema

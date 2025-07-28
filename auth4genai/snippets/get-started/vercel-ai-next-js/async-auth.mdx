@@ -2,7 +2,7 @@
 
 **Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
 
-```bash
+```bash wrap lines
 git clone https://github.com/auth0-samples/auth0-ai-samples.git
 cd auth0-ai-samples/authenticate-users/vercel-ai-next-js
 ```
@@ -17,7 +17,7 @@ In the root directory of your project, install the following dependencies:
 - `@ai-sdk/react`: [React](https://react.dev/) UI components for the Vercel AI SDK.
 - `zod`: TypeScript-first schema validation library.
 
-```bash
+```bash wrap lines
 npm install @auth0/ai-vercel@3 ai@4 @ai-sdk/openai@1 @ai-sdk/react@1 zod@3
 ```
 
@@ -31,7 +31,7 @@ To require asynchronous authorization for your tool, the tool needs to be wrappe
 
 Create a file at `src/lib/auth0-ai.ts` and instantiate a new Auth0 AI SDK client:
 
-```tsx src/lib/auth0-ai.ts lines
+```tsx src/lib/auth0-ai.ts wrap lines
 import { Auth0AI } from "@auth0/ai-vercel";
 import { AccessDeniedInterrupt } from "@auth0/ai/interrupts";
 
@@ -85,7 +85,7 @@ This will intercept the tool call to initiate a CIBA request:
 
 Next, add the following code to `src/lib/auth0.ts`:
 
-```tsx src/lib/auth0.ts lines highlight={2-5}
+```tsx src/lib/auth0.ts wrap lines highlight={2-5}
 //... existing code
 export const getUser = async () => {
   const session = await auth0.getSession();
@@ -101,7 +101,7 @@ The Auth0 AI SDK returns an error response if the user denies the transaction.
 
 Now, create and wrap the tool with the Async authorizer. Create a file `src/lib/tools/shop-online.ts` and add the following code:
 
-```ts src/lib/tools/shop-online.ts lines
+```ts src/lib/tools/shop-online.ts wrap lines
 import { tool } from "ai";
 import { z } from "zod";
 
@@ -163,7 +163,7 @@ If you want to use an API, it must be [registered with Auth0](https://auth0.com/
 
 Update the `.env.local` file with the following variables:
 
-```bash .env.local
+```bash .env.local wrap lines
 # ... existing variables
 # You can use any provider of your choice supported by Vercel AI
 OPENAI_API_KEY="YOUR_API_KEY"
@@ -177,7 +177,7 @@ AUDIENCE=sample-shop-api
 
 Call the tool from your AI app to make purchases. Update the `src/app/api/chat/route.ts` file with the following code:
 
-```ts src/app/api/chat/route.ts lines highlight={2,3,11,14}
+```ts src/app/api/chat/route.ts wrap lines highlight={2,3,11,14}
 //...
 import { setAIContext } from "@auth0/ai-vercel";
 import { shopOnlineTool } from "@/lib/tools/shop-online";
