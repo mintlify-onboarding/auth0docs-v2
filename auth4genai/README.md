@@ -37,3 +37,31 @@ Install our Github App to auto propagate changes from your repo to your deployme
 - See [local dev guide](https://oktawiki.atlassian.net/wiki/spaces/DAFS/pages/3622310144/Auth4GenAI+docs+Mintlify+access+and+local+dev) for reference.
 - If the dev environment isn't running - Run `mint update` to ensure you have the most recent version of the CLI.
 - Page loads as a 404 - Make sure you are running in a folder with `docs.json`
+
+# Style Guide
+
+### Code Blocks
+
+When creating a code block of any size or language, be sure to include the options `wrap lines`.
+
+Learn more about Mintlify code block options [here](https://mintlify.com/docs/code#code-block-options).
+
+In this repo, code block instantiation follows this pattern:
+
+` ```[language] [file name (optional)] wrap lines [highlight lines (optional)]`
+
+For example:
+
+```
+
+```bash .env wrap lines
+...
+
+```
+
+```
+
+```typescript ./src/auth0/app wrap lines highlight={1,7-10}
+...
+
+```
