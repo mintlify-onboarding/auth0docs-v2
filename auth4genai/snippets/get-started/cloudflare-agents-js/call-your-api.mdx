@@ -4,7 +4,7 @@ Our [Auth0 Cloudflare Agents Starter Kit](https://github.com/auth0-lab/cloudflar
 
 To create a new Cloudflare Agents project using the template, run the following command in your terminal:
 
-```bash
+```bash wrap lines
 npx create-cloudflare@latest --template auth0-lab/cloudflare-agents-starter
 ```
 
@@ -22,7 +22,7 @@ The start kit is similar to the [Cloudflare Agents starter kit](https://github.c
 
 **You don't need to install these dependencies manually**; they are already included in the starter kit.
 
-```bash
+```bash wrap lines
 npm remove agents
 npm install hono \
   @auth0/auth0-hono \
@@ -47,7 +47,7 @@ Since the Agent defined in the class Chat in `src/agent/chat.ts` uses the **Auth
 
 The tool we are defining here uses the same access token to call Auth0's [`/userinfo`](https://auth0.com/docs/api/authentication/user-profile/get-user-info) endpoint.
 
-```tsx src/agent/tools.ts lines
+```tsx src/agent/tools.ts wrap lines
 const getUserInfoTool = tool({
   description: "Get information about the current logged in user.",
   parameters: z.object({}),
@@ -78,7 +78,7 @@ const getUserInfoTool = tool({
 
 Then in the `tools` export of the `src/agent/chat.ts` file, add the `getUserInfoTool` to the tools array:
 
-```tsx src/agent/chat.ts lines
+```tsx src/agent/chat.ts wrap lines
 export const tools = {
   // Your other tools...
   getUserInfoTool,
@@ -89,7 +89,7 @@ export const tools = {
 
 To test the application, run `npm run start` and navigate to `http://localhost:3000/` and interact with the AI agent. You can ask questions like `“who am I?”` to trigger the tool call and test whether it successfully retrieves information about the logged-in user.
 
-```bash
+```bash wrap lines
 User: who am I?
 AI: It seems that there is no user currently logged in. If you need assistance with anything else, feel free to ask!
 

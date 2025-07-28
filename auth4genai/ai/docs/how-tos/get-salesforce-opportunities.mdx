@@ -20,7 +20,7 @@ Before using this example, make sure you:
 - Complete the [User authentication quickstart](/ai/docs/get-started/user-authentication) to create a Next.js app integrated with Auth0.
 - Set the `SALESFORCE_INSTANCE_URL` in your `.env` file.
 
-```env
+```bash .env wrap lines
 SALESFORCE_INSTANCE_URL=https://your-instance.salesforce.com
 ```
 
@@ -32,7 +32,7 @@ Create an AI tool that gets a list of opportunities from Salesforce and a backen
 
 - When the tool calls `auth0.getAccessTokenForConnection()`, pass `sfdc` as the connection name to get a Salesforce access token.
 
-```tsx /app/api/chat/route.js wrap
+```tsx app/api/chat/route.js wrap lines
 import { openai } from "@ai-sdk/openai";
 import { streamText, tool } from "ai";
 import { z } from "zod";
@@ -93,7 +93,7 @@ export async function POST(req) {
 
 Use the `@ai-sdk/react` hook to wire up the chat component:
 
-```tsx ./src/components/chat.tsx wrap
+```tsx ./src/components/chat.tsx wrap lines
 "use client";
 import { useChat } from "@ai-sdk/react";
 export default function Chat() {
