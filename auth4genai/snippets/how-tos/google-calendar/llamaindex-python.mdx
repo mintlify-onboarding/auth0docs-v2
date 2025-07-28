@@ -2,13 +2,13 @@
 
 First, you must install the SDK:
 
-```bash lines
+```bash wrap lines
 pip install auth0-ai-llamaindex
 ```
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
-```python lines ./src/lib/auth0-ai.py wrap
+```python ./src/lib/auth0-ai.py wrap lines
 from auth0_ai_llamaindex.auth0_ai import Auth0AI
 from flask import session
 
@@ -28,7 +28,7 @@ Here, the session is controlled by a Flask application instance. You may utilize
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```python lines ./src/lib/tools/check_availability.py wrap highlight={7-8,14,18,33,37}
+```python ./src/lib/tools/check_availability.py wrap lines highlight={7-8,14,18,33,37}
 from datetime import timedelta
 from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
@@ -74,7 +74,7 @@ check_user_calendar_tool = with_google(FunctionTool.from_defaults(
 
 Now that the tool is protected, you can pass it your LlamaIndex agent.
 
-```python lines ./src/lib/agent.ts wrap highlight={3,13}
+```python ./src/lib/agent.ts wrap lines highlight={3,13}
 from datetime import datetime
 from llama_index.agent.openai import OpenAIAgent
 from src.lib.tools.check_availability import check_user_calendar_tool
@@ -107,7 +107,7 @@ On the server side of your Flask application you will need to set up a route to 
 When `FederatedConnectionInterrupt` error ocurrs, the server side will signal the front-end about the level access restrictions, and the front-end should prompt the user to trigger a new authorization (or login) request with the necessary permissions.
 
 
-```python lines ./src/app.py wrap highlight={3-5,19-20}
+```python ./src/app.py wrap lines highlight={3-5,19-20}
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, session
 from auth0_ai_llamaindex.auth0_ai import Auth0AI

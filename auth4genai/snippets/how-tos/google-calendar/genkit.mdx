@@ -2,13 +2,13 @@
 
 First, you must install the SDK:
 
-```bash lines
+```bash wrap lines
 npm install @auth0/ai-genkit
 ```
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
-```typescript lines ./src/lib/auth0-ai.ts wrap
+```typescript ./src/lib/auth0-ai.ts wrap lines
 import { Auth0AI } from "@auth0/ai-genkit";
 import { auth0 } from "@/lib/auth0";
 
@@ -38,7 +38,7 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```typescript lines ./src/lib/tools/checkUsersCalendar.ts wrap highlight={3-5,11,24,31-33,51-53}
+```typescript ./src/lib/tools/checkUsersCalendar.ts wrap lines highlight={3-5,11,24,31-33,51-53}
 import { addHours } from "date-fns";
 import { z } from "zod";
 import { getAccessTokenForConnection } from "@auth0/ai-genkit";
@@ -110,7 +110,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server-side code of your Next.js App, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`. The `setAIContext` function is used to set the async-context for the Auth0 AI SDK.
 
-```typescript lines ./src/app/api/chat/route.ts wrap highlight={4-5,47}
+```typescript ./src/app/api/chat/route.ts wrap lines highlight={4-5,47}
 import { ToolRequestPart } from "genkit";
 import path from "path";
 import { ai } from "@/lib/genkit";
@@ -193,13 +193,13 @@ export async function GET(
 
 On this example we utilize the `EnsureAPIAccessPopup` component to show a popup that allows the user to authenticate with Google Calendar and grant access with the requested scopes. You'll first need to install the `@auth0/ai-components` package:
 
-```bash lines
+```bash wrap lines
 npx @auth0/ai-components add FederatedConnections
 ```
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx wrap highlight={4-5, 120-141}
+```tsx ./src/components/chat.tsx wrap lines highlight={4-5, 120-141}
 "use client";
 import { useQueryState } from "nuqs";
 import { FormEventHandler, useEffect, useRef, useState } from "react";
