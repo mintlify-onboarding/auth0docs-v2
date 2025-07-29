@@ -206,19 +206,19 @@
   "logo": {
     "light": "/ai/docs/logo/light.svg",
     "dark": "/ai/docs/logo/dark.svg",
-    "href": "https://auth0.com/"
+    "href": "https://auth0.com/ai"
   },
   "navbar": {
     "links": [
       {
-        "label": "Sign up",
-        "href": "https://auth0.com/signup?place=header&type=button&text=sign%20up"
+        "label": "Start building",
+        "href": "https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Contact sales",
-      "href": "https://auth0.com/contact-us?place=header&type=button&text=contact%20sales"
+      "label": "Log in",
+      "href": "https://manage.auth0.com/login?onboard_app=genai"
     }
   },
   "footer": {

@@ -8,7 +8,7 @@ npm install @auth0/ai-vercel
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required GitHub scopes.
 
-```typescript lines ./src/lib/auth0-ai.ts
+```typescript ./src/lib/auth0-ai.ts wrap lines
 import { Auth0AI } from "@auth0/ai-vercel";
 import { auth0 } from "@/lib/auth0";
 
@@ -35,7 +35,7 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the GitHub API.
 
-```typescript lines ./src/lib/tools/listRepositories.ts wrap highlight={2-4,9,15,19-21,31-33}
+```typescript ./src/lib/tools/listRepositories.ts wrap lines highlight={2-4,9,15,19-21,31-33}
 import { Octokit, RequestError } from "octokit";
 import { getAccessTokenForConnection } from "@auth0/ai-vercel";
 import { FederatedConnectionError } from "@auth0/ai/interrupts";
@@ -87,7 +87,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server-side code of your Next.js App, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`. The `setAIContext` function is used to set the async-context for the Auth0 AI SDK.
 
-```typescript lines ./src/app/api/chat/route.ts wrap highlight={3-4,10,13,27,29}
+```typescript ./src/app/api/chat/route.ts wrap lines highlight={3-4,10,13,27,29}
 import { createDataStreamResponse, Message, streamText } from "ai";
 import { listRepositories } from "@/lib/tools/";
 import { setAIContext } from "@auth0/ai-vercel";
@@ -128,13 +128,13 @@ export async function POST(request: Request) {
 
 On this example we utilize the `EnsureAPIAccessPopup` component to show a popup that allows the user to authenticate with GitHub and grant access with the requested scopes. You'll first need to install the `@auth0/ai-components` package:
 
-```bash lines
+```bash wrap lines
 npx @auth0/ai-components add FederatedConnections
 ```
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx wrap highlight={4-6,10-14,25-34}
+```tsx ./src/components/chat.tsx wrap lines highlight={4-6,10-14,25-34}
 "use client";
 
 import { useChat } from "@ai-sdk/react";

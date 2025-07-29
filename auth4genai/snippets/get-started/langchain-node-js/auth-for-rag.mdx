@@ -2,7 +2,7 @@
 
 As a first step, let's get all dependencies installed:
 
-```bash Create a new Node.js project
+```bash Create a new Node.js project wrap lines
 npm init -y
 npm install langchain@0.3 @langchain/langgraph@0.2 @auth0/ai-langchain@3 dotenv@16
 ```
@@ -36,7 +36,7 @@ Create a LangGraph agent and other helper functions that are needed to load docu
 
 The first helper will create an in-memory vector store using `faiss` and `OpenAIEmbeddings`. You can replace this module with your own store, as long as it follows the LangChain retriever specification.
 
-```ts helpers.ts lines
+```ts helpers.ts wrap lines
 import fs from "node:fs/promises";
 import { StructuredToolInterface } from "@langchain/core/tools";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
@@ -110,7 +110,7 @@ Define a RAG tool that uses the `FGARetriever` to filter authorized data from an
 
 In the first step, we will define a new RAG tool. The agent calls the tool when needed.
 
-```ts index.ts lines
+```ts index.ts wrap lines
 import "dotenv/config";
 
 import { OpenAIEmbeddings } from "@langchain/openai";
@@ -160,7 +160,7 @@ main().catch(console.error);
 
 To run the application, add the below to `package.json`:
 
-```json package.json
+```json package.json wrap lines
 "x-type": "module",
 "main": "index.js",
 "scripts": {

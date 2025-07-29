@@ -12,7 +12,7 @@ Before getting started, make sure you have completed the following steps:
 
 **Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
 
-```bash
+```bash wrap lines
 git clone https://github.com/auth0-samples/auth0-ai-samples.git
 cd auth0-ai-samples/authenticate-users/vercel-ai-next-js
 ```
@@ -28,7 +28,7 @@ In the root directory of your project, install the following dependencies:
 - `zod`: TypeScript-first schema validation library.
 - `googleapis`: Node.js client for Google APIs that supports authentication and authorization with OAuth 2.0.
 
-```bash
+```bash wrap lines
 npm install @auth0/ai-vercel@3 ai@4 @ai-sdk/openai@1 @ai-sdk/react@1 zod@3 googleapis@148
 ```
 
@@ -46,7 +46,7 @@ Setup Auth0 AI SDK for Google Social Connection. This will allow you to get acce
 
 Create a file at `src/lib/auth0-ai.ts` and instantiate a new Auth0 AI SDK client:
 
-```tsx src/lib/auth0-ai.ts lines
+```tsx src/lib/auth0-ai.ts wrap lines
 import { Auth0AI, getAccessTokenForConnection } from "@auth0/ai-vercel";
 import { getRefreshToken } from "./auth0";
 
@@ -65,7 +65,7 @@ export const withGoogleConnection = auth0AI.withTokenForConnection({
 
 Update the `/src/lib/auth0.ts` file with the following code:
 
-```tsx src/lib/auth0.ts lines highlight={4-7}
+```tsx src/lib/auth0.ts wrap lines highlight={4-7}
 //...
 //... existing code
 // Get the refresh token from Auth0 session
@@ -81,7 +81,7 @@ Once the user is authenticated, you can fetch an access token from the Token Vau
 
 In our example, we create a file at `src/lib/tools/google-calendar.ts`. In the file, we define a tool, `checkUsersCalendarTool`, that uses the access token with the Google Calendar API to query for calendar events in a specified date range:
 
-```ts src/lib/tools/google-calendar.ts lines
+```ts src/lib/tools/google-calendar.ts wrap lines
 import { tool } from "ai";
 import { addHours, formatISO } from "date-fns";
 import { GaxiosError } from "gaxios";
@@ -142,7 +142,7 @@ export const checkUsersCalendarTool = withGoogleConnection(
 
 You need to [obtain an API Key from OpenAI](https://platform.openai.com/api-keys) or another provider to use an LLM. Add the API key to your environment variables:
 
-```bash .env.local
+```bash .env.local wrap lines
 # ...
 # You can use any provider of your choice supported by Vercel AI
 OPENAI_API_KEY="YOUR_API_KEY"
@@ -154,13 +154,13 @@ Now when you try to use the tool, you will need to authorize additional scopes f
 
 Install Auth0 AI Components for Next.js to get the required UI components.
 
-```bash
+```bash wrap lines
 npx @auth0/ai-components add FederatedConnections
 ```
 
 Add a new file, `src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx` and add the following code:
 
-```tsx src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx lines
+```tsx src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx wrap lines
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import type { Auth0InterruptionUI } from "@auth0/ai-vercel/react";
 
@@ -195,7 +195,7 @@ export function FederatedConnectionInterruptHandler({
 
 Now update the `src/components/chat-window.tsx` file to include the FederatedConnectionInterruptHandler component:
 
-```tsx src/components/chat-window.tsx lines highlight={2,3,10-18,36-38}
+```tsx src/components/chat-window.tsx wrap lines highlight={2,3,10-18,36-38}
 //...
 import { useInterruptions } from '@auth0/ai-vercel/react';
 import { FederatedConnectionInterruptHandler } from '@/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler';
@@ -248,7 +248,7 @@ export function ChatWindow(props: {
 
 Handle the interrupts from the Agent and call the tool from your AI app to get calendar events. Update the `/src/app/api/chat/route.ts` file with the following code:
 
-```ts src/app/api/chat/route.ts lines highlight={2-7,14,17,21,35-38,40-43}
+```ts src/app/api/chat/route.ts wrap lines highlight={2-7,14,17,21,35-38,40-43}
 //...
 import { setAIContext } from "@auth0/ai-vercel";
 import {

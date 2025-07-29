@@ -11,13 +11,13 @@ You can also check our [Starter Kit](https://github.com/auth0-lab/cloudflare-age
 
 Then, you need to install the Auth0 AI SDK for Cloudflare Agents:
 
-```bash lines
+```bash wrap lines
 npm install @auth0/ai-vercel @auth0/ai-cloudflare @auth0/ai
 ```
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
-```typescript lines ./src/lib/auth0-ai.ts wrap
+```typescript ./src/lib/auth0-ai.ts wrap lines
 import { Auth0AI, setGlobalAIContext } from "@auth0/ai-vercel";
 import { getCurrentAgent } from "agents";
 import type { Chat } from "./chat";
@@ -48,7 +48,7 @@ export const withGoogleCalendar = auth0AI.withTokenForConnection({
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```typescript lines ./src/agent/tools/checkUsersCalendar.ts wrap highlight={4-6,10,19,26-28.46-48}
+```typescript ./src/agent/tools/checkUsersCalendar.ts wrap lines highlight={4-6,10,19,26-28.46-48}
 import { addHours, formatISO } from "date-fns";
 import { GaxiosError } from "gaxios";
 import { google } from "googleapis";
@@ -117,7 +117,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the Chat agent class, you need to set up the tool invocation and handle the interruption messaging via the `errorSerializer`.
 
-```typescript lines ./src/agent/chat.ts wrap highlight={1-2,52-54,63-66}
+```typescript ./src/agent/chat.ts wrap lines highlight={1-2,52-54,63-66}
 import { setAIContext } from "@auth0/ai-vercel";
 import { errorSerializer, withInterruptions } from "@auth0/ai-vercel/interrupts";
 // Other dependencies
@@ -195,13 +195,13 @@ The name of the user is ${claims?.name ?? "unknown"}.
 
 On this example we utilize the `EnsureAPIAccessPopup` component to show a popup that allows the user to authenticate with Google Calendar and grant access with the requested scopes. You'll first need to install the `@auth0/ai-components` package:
 
-```bash lines
+```bash wrap lines
 npx @auth0/ai-components add FederatedConnections
 ```
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx wrap highlight={4-6,17-18,33-42}
+```tsx ./src/components/chat.tsx wrap lines highlight={4-6,17-18,33-42}
 "use client";
 
 import { useChat } from "@ai-sdk/react";

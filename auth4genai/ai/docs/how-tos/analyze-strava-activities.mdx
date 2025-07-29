@@ -21,7 +21,7 @@ Before using this example, make sure you:
 Define a `getActivities` tool that uses GPT-4 to fetch and analyze a user's recent fitness activity from Strava:
 - When the tool calls `getAccessTokenForConnection()` to fetch a Spotify access token, pass in `strava-custom` as the connection name.
 
-```tsx wrap
+```tsx wrap lines
 import { openai } from "@ai-sdk/openai"
 import { streamText, tool } from "ai"
 import { z } from 'zod';
@@ -75,7 +75,7 @@ export async function POST(req) {
 
 Use the `@ai-sdk/react` hook to wire up the chat component:
 
-```tsx wrap
+```tsx wrap lines
 'use client';
 
 import { useChat } from '@ai-sdk/react';

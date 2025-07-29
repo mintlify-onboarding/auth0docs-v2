@@ -9,14 +9,14 @@
     - `@ai-sdk/openai`: [OpenAI](https://sdk.vercel.ai/providers/ai-sdk-providers/openai) provider for the [Vercel AI SDK](https://sdk.vercel.ai/docs).
     - `@auth0/ai-vercel`: [Auth0 AI SDK for Vercel AI](https://github.com/auth0-lab/auth0-ai-js/tree/main/packages/ai-vercel) built for GenAI applications powered by the Vercel AI SDK.
 
-    ```bash Create a new Node.js project
+    ```bash Create a new Node.js project wrap lines
     npm init -y
     npm i auth0@4 @auth0/ai-vercel@2 zod@3 ai@4 @ai-sdk/openai@1 dotenv@16
     ```
 
     Add the below to `package.json`:
 
-    ```json package.json
+    ```json package.json wrap lines
     "main": "index.js",
     "x-type": "module",
     "scripts": {
@@ -35,7 +35,7 @@
     **Note:** Your application’s client secret is masked for you. To get the client secret value, click the copy button on the code sample.
     </Note>
 
-    ```bash .env
+    ```bash .env wrap lines
     AUTH0_DOMAIN='<your-auth0-domain>'
     AUTH0_CLIENT_ID='<your-auth0-application-client-id>'
     AUTH0_CLIENT_SECRET='<your-auth0-application-client-secret>'
@@ -68,7 +68,7 @@
 
     The Auth0 AI SDK returns an error response if the user denies the transaction.
 
-    ```ts src/lib/tools/buy.ts lines
+    ```ts src/lib/tools/buy.ts wrap lines
     import "dotenv/config";
 
     import { tool } from "ai";
@@ -155,7 +155,7 @@
 
     Create a file at `src/index.ts` and add tool calling to the Vercel AI agent using the `generateText()` or `streamText()` functions.
 
-    ```ts src/index.ts lines
+    ```ts src/index.ts wrap lines
     import { setAIContext } from "@auth0/ai-vercel";
     import crypto from "node:crypto";
     import { generateText } from "ai";

@@ -2,13 +2,13 @@
 
 First, you must install the SDK:
 
-```bash lines
+```bash wrap lines
 npm install @auth0/ai-langchain
 ```
 
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
-```typescript lines ./src/lib/auth0-ai.ts wrap
+```typescript ./src/lib/auth0-ai.ts wrap lines
 import { Auth0AI } from "@auth0/ai-langchain";
 
 const auth0AI = new Auth0AI();
@@ -27,7 +27,7 @@ export const withGoogleCalendar = auth0AI.withTokenForConnection({
 
 Wrap your tool using the Auth0 AI SDK to obtain an access token for the Google Calendar API.
 
-```typescript lines ./src/lib/tools/checkUsersCalendar.ts wrap highlight={4-6,10,13,20-22,39-41}
+```typescript ./src/lib/tools/checkUsersCalendar.ts wrap lines highlight={4-6,10,13,20-22,39-41}
 import { addHours, formatISO } from "date-fns";
 import { GaxiosError } from "gaxios";
 import { google } from "googleapis";
@@ -86,7 +86,7 @@ export const checkUsersCalendar = withGoogleCalendar(
 
 Now that the tool is protected, you can pass it your LangGraph agent as part of a `ToolNode`. The agent will automatically request the access token when the tool is called.
 
-```typescript lines ./src/lib/agent.ts wrap highlight={7,10,33,39}
+```typescript ./src/lib/agent.ts wrap lines highlight={7,10,33,39}
 import { AIMessage } from "@langchain/core/messages";
 import { RunnableLike } from "@langchain/core/runnables";
 import { END, InMemoryStore, MemorySaver, MessagesAnnotation, START, StateGraph } from "@langchain/langgraph";
@@ -150,7 +150,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `refreshToken` to the Langchain's RunnableConfig from the authenticated user's session.
 
-```typescript lines ./src/app/api/langgraph/[..._path]/route.ts wrap highlight={2,23-29}
+```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap lines highlight={2,23-29}
 import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
 import { auth0 } from "@/lib/auth0";
 
@@ -196,13 +196,13 @@ You can check different authentication options for Next.js with Auth0 at the [of
 
 On this example we utilize the `EnsureAPIAccessPopup` component to show a popup that allows the user to authenticate with Google Calendar and grant access with the requested scopes. You'll first need to install the `@auth0/ai-components` package:
 
-```bash lines
+```bash wrap lines
 npx @auth0/ai-components add FederatedConnections
 ```
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx lines ./src/components/chat.tsx wrap highlight={2-3,62-74}
+```tsx ./src/components/chat.tsx wrap lines highlight={2-3,62-74}
 import { useStream } from "@langchain/langgraph-sdk/react";
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import { EnsureAPIAccessPopup } from "@/components/auth0-ai/FederatedConnections/popup";
