@@ -99,11 +99,8 @@
               "ai/docs/how-tos/overview",
               "ai/docs/how-tos/check-google-calendar-availability",
               "ai/docs/how-tos/list-github-repositories",
-              "ai/docs/how-tos/get-github-issues-python",
               "ai/docs/how-tos/list-slack-channels",
-              "ai/docs/how-tos/get-salesforce-opportunities",
-              "ai/docs/how-tos/analyze-strava-activities",
-              "ai/docs/how-tos/create-spotify-playlist"
+              "ai/docs/how-tos/get-salesforce-opportunities"
             ]
           }
         ]
