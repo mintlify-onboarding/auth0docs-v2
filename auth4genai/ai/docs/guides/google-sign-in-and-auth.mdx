@@ -72,7 +72,9 @@ To create a Google OAuth 2.0 Client, you need your Auth0 domain, which you can f
 1. If you haven’t configured a custom domain, your Auth0 domain name is `{YOUR_TENANT_NAME}.{YOUR_REGIONAL_SUBDOMAIN}.auth0.com`. It will be bolded in the introduction. Your redirect URI is `https://{YOUR_TENANT_NAME}.{YOUR_REGIONAL_SUBDOMAIN}.auth0.com/login/callback`.
 2. If you have configured a custom domain via **Settings > Custom Domains** in your Auth0 Dashboard, use your custom domain instead. Your redirect URI is `https://{YOUR_CUSTOM_DOMAIN}/login/callback`.
 
-**Note:** If you created your US tenant before June 2020, then your Auth0 domain name does not include the regional subdomain: `{YOUR_TENANT_NAME}.auth0.com`.
+<Note>
+If you created your US tenant before June 2020, then your Auth0 domain name does not include the regional subdomain: `{YOUR_TENANT_NAME}.auth0.com`.
+</Note>
 
 In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.cloud.google.com/auth/clients/create):
 
