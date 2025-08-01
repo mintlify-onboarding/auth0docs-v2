@@ -8,13 +8,16 @@ Client-initiated account linking enables AI agents to request access and connect
 
 When a user authenticates with a supported identity provider, Auth0 creates a new identity associated with the connection in the user profile’s `identities` array. A user can have multiple identities associated with various identity providers.
 
+<<<<<<< Updated upstream
 Account linking is the process of linking multiple identities in a single user profile. As a result, users can log into supported identity providers with a single set of credentials instead of creating a separate user account for each identity provider. To learn more, read [User account linking](https://auth0.com/docs/manage-users/user-accounts/user-account-linking).
+=======
+Account linking is the process of linking multiple identities in a single user profile. As a result, users can log into supported identity providers with a single set of credentials instead of creating a separate user account for each identity provider. To learn more, read [Account linking](/ai/docs/intro/account-linkingsubl ).
+>>>>>>> Stashed changes
 
 In Client-initiated account linking, the client initiates the account linking request to Auth0 on the user’s behalf. When the client attempts to access an external provider’s API that the user has not granted access to, Auth0 returns a response that it cannot find the access token for that service, triggering the account linking flow.
 
-<Tabs>
-  <Tab title="JavaScript" icon="js">
-    <Card title="Prerequisites">
+## Prerequisites
+
       Before getting started, make sure you have completed the following steps:
       <Steps>
         <Step title="Create an Auth0 Account and a Dev Tenant">
@@ -39,7 +42,7 @@ In Client-initiated account linking, the client initiates the account linking re
           </Columns>
         </Step>
       </Steps>
-    </Card>
+
     ## How it works
 
     Let’s walk through a real-world example: After authenticating via Auth0 using [Passkeys](https://auth0.com/docs/authenticate/database-connections/passkeys), a user asks an AI agent integrated with a productivity app to fetch Google Calendar events:
@@ -56,6 +59,11 @@ In Client-initiated account linking, the client initiates the account linking re
     </Frame>
 
     When the primary user logs in via `/authorize`, the Client-Initiated Account Linking [`post-login`](https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger#login-post-login) Action checks for the `link_account` scope and attempts to link the requested user account (secondary account) with their existing logged in account (primary account). In our example, the user's Auth0 account is the primary account and the user's Google account is the secondary account.
+
+## Pick Your tech stack
+
+    <Tabs>
+  <Tab title="JavaScript" icon="js">
 
     ## Link user accounts
 
@@ -108,14 +116,14 @@ In Client-initiated account linking, the client initiates the account linking re
 
     To unlink accounts, use the Management API to call the [Unlink a user account](https://auth0.com/docs/api/management/v2#!/Users/delete_user_identity_by_user_id) endpoint. To learn more, read [Unlink user accounts](https://auth0.com/docs/manage-users/user-accounts/user-account-linking/unlink-user-accounts).
 
-    ## Learn more
-
-    - Learn more about how to [link user accounts in Auth0](https://auth0.com/docs/manage-users/user-accounts/user-account-linking/link-user-accounts).
-    - Learn more about how to [unlink user accounts in Auth0](https://auth0.com/docs/manage-users/user-accounts/user-account-linking/unlink-user-accounts).
-
 </Tab>
 
 <Tab title="Python" icon="python">
 Coming soon...
 </Tab>
 </Tabs>
+
+## Learn more
+
+- Learn more about how to [link user accounts in Auth0](https://auth0.com/docs/manage-users/user-accounts/user-account-linking/link-user-accounts).
+- Learn more about how to [unlink user accounts in Auth0](https://auth0.com/docs/manage-users/user-accounts/user-account-linking/unlink-user-accounts).
