@@ -8,7 +8,7 @@ Client-initiated account linking enables AI agents to request access and connect
 
 When a user authenticates with a supported identity provider, Auth0 creates a new identity associated with the connection in the user profile’s `identities` array. A user can have multiple identities associated with various identity providers.
 
-Account linking is the process of linking multiple identities in a single user profile. As a result, users can log into supported identity providers with a single set of credentials instead of creating a separate user account for each identity provider. To learn more, read [User account linking](https://auth0.com/docs/manage-users/user-accounts/user-account-linking).
+Account linking is the process of linking multiple identities in a single user profile. As a result, users can log into supported identity providers with a single set of credentials instead of creating a separate user account for each identity provider. To learn more, read [Account linking](/ai/docs/intro/account-linking).
 
 In Client-initiated account linking, the client initiates the account linking request to Auth0 on the user’s behalf. When the client attempts to access an external provider’s API that the user has not granted access to, Auth0 returns a response that it cannot find the access token for that service, triggering the account linking flow.
 
