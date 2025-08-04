@@ -135,6 +135,14 @@
     ]
   },
   "redirects": [
+     {
+      "source": "/api/request",
+      "destination": "https://tus.auth0.com/ai/docs/api/request"
+    },
+    {
+      "source": "/mintlify-assets/:path+",
+      "destination": "https://tus.auth0.com/ai/docs/mintlify-assets/:path+"
+    },
     {
       "source": "/ai/docs/get-started",
       "destination": "/ai/docs/get-started/overview"
