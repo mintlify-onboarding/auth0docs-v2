@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/request",
-      "destination": "https://auth0-genai.mintlify.app/ai/docs/api/request"
+      "destination": "https://auth0-genai.mintlify.app/api/request"
     },
-    {
-      "source": "/mintlify-assets/:path+",
-      "destination": "https://auth0-genai.mintlify.app/ai/docs/mintlify-assets/:path+"
+   {
+      "source": "/ai/docs/mintlify-assets/:path+",
+      "destination": "https://auth0-genai.mintlify.app/mintlify-assets/:path+"
     }
   ]
 }
