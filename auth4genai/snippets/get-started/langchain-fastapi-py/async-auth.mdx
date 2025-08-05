@@ -33,14 +33,14 @@ Make sure you have [uv](https://docs.astral.sh/uv/) installed and run the follow
 ```bash wrap lines
 cd backend
 uv sync
-uv add "auth0-ai-langchain>=1.0.0b3" "langgraph>=0.5.4" langchain-openai "langgraph-cli[inmem]" google-api-python-client --prerelease=allow
+uv add "auth0-ai-langchain>=1.0.0b3" "langgraph>=0.5.4" langchain-openai "langgraph-cli[inmem]" --prerelease=allow
 ```
 
 ### Update the environment file
 
 Copy the `.env.example` file to `.env` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID and client secret in the application you created in the Auth0 dashboard.
 
-### Setup Human in the Loop Approvals
+### Set up Human-in-the-Loop Approvals
 
 Integrate the Auth0 AI SDK into your application to secure your async AI agent workflow. For quickstart we will use a blocking request flow. In real use cases, often an asynchronous flow is preferred.
 
@@ -71,8 +71,8 @@ with_async_user_confirmation = auth0_ai.with_async_user_confirmation(
     audience=settings.SHOP_API_AUDIENCE,
     # add any scopes you want to use with your API
     scopes=["openid", "product:buy"],
-    binding_message=lambda product, quantity: "Do you want to buy {quantity} {product}?",
-    user_id=lambda *_, **__: ensure_config(
+    binding_message=lambda product, quantity: f"Do you want to buy {quantity} {product}",
+    user_id=lambda *_, **__: ensure_config()
     .get("configurable")
     .get("_credentials")
     .get("user")
@@ -258,8 +258,6 @@ agent = create_react_agent(
     prompt="You are a personal assistant named Assistant0. You are a helpful assistant that can answer questions and help with tasks. You have access to a set of tools, use the tools as needed to answer the user's question. Render the email body as a markdown block, do not wrap it in code blocks.",
 )
 ```
-
-### Test the application
 
 ### Test your application
 
