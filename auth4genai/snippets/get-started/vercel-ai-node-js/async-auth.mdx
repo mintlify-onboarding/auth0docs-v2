@@ -46,7 +46,7 @@ OPENAI_API_KEY="YOUR_API_KEY"
 
 # API
 STOCK_API_URL=<your-stock-api-url>
-AUDIENCE=sample-stock-api
+STOCK_API_AUDIENCE=sample-stock-api
 ```
 
 #### 2. Require async authorization for your tool
@@ -97,7 +97,7 @@ export const buy = (context: Context) => {
       // highlight-next-line
       `Do you want to buy ${qty} shares of ${ticker}`,
     scopes: ["openid", "stock:trade"],
-    audience: process.env["AUDIENCE"]!,
+    audience: process.env["STOCK_API_AUDIENCE"]!,
     /**
      * When this flag is set to `block`, the execution of the tool awaits
      * until the user approves or rejects the request.
