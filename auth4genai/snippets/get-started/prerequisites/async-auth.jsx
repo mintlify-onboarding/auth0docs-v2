@@ -4,7 +4,9 @@ export const Prerequisites = ({
 }) => {
   return (
     <>
-      <h3>Prerequisites</h3>
+      <Heading level={3} id="prerequisites">
+        Prerequisites
+      </Heading>
       Before getting started, make sure you have completed the following steps:
       <Steps>
         <Step title="Create an Auth0 Account and a Dev Tenant">

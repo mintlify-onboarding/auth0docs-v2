@@ -70,7 +70,9 @@ export const Prerequisites = ({
 
   return (
     <>
-      <h3>Prerequisites</h3>
+      <Heading level={3} id="prerequisites">
+        Prerequisites
+      </Heading>
       Before getting started, make sure you:
       <Steps>{steps}</Steps>
     </>
