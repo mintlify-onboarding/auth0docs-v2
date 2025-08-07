@@ -84,8 +84,6 @@ export const Prerequisites = ({
               Copy and paste the following code into the Action code editor:
             </li>
           </ol>
-          <br />
-          <br />
           <CodeBlock
             language="javascript"
             expandable="true"
