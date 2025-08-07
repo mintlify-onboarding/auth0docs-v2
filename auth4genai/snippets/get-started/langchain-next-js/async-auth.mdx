@@ -1,3 +1,7 @@
+import { Prerequisites } from "/snippets/get-started/prerequisites/async-auth.jsx";
+
+<Prerequisites />
+
 ### Prepare Next.js app
 
 **Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
@@ -21,8 +25,11 @@ In the root directory of your project, install the following dependencies:
 ```bash wrap lines
 npm install @auth0/ai-langchain@3 @langchain/core@0.3 @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3 langgraph-nextjs-api-passthrough@0.1
 ```
+### Update the environment file
 
-### Set up Human-in-the-Loop Approvals
+Copy the `.env.example` file to `.env.local` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID, and client secret in the application you created in the Auth0 Dashboard.
+
+### Set up Human-in-the-Loop approvals
 
 Integrate the Auth0 AI SDK into your application to secure your async AI agent workflow. For this quickstart, we will use a blocking request flow. In real use cases, often an asynchronous flow is preferred.
 
@@ -46,7 +53,7 @@ export const withAsyncAuthorization = auth0AI.withAsyncUserConfirmation({
   bindingMessage: async ({ product, qty }) =>
     `Do you want to buy ${qty} ${product}`,
   scopes: ["openid", "product:buy"], // add any scopes you want to use with your API
-  audience: process.env["AUDIENCE"]!,
+  audience: process.env["SHOP_API_AUDIENCE"]!,
 
   /**
    * When this flag is set to `block`, the execution of the tool awaits
@@ -201,7 +208,7 @@ OPENAI_API_KEY="YOUR_API_KEY"
 
 # API
 SHOP_API_URL=<your-shop-api-url>
-AUDIENCE=sample-shop-api
+SHOP_API_AUDIENCE=sample-shop-api
 ```
 
 ### Require async authorization for your tool

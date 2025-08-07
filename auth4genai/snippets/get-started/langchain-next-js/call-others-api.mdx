@@ -1,3 +1,7 @@
+import { Prerequisites } from "/snippets/get-started/prerequisites/call-others-api.jsx";
+
+<Prerequisites />
+
 ### Prepare Next.js app
 
 **Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
@@ -22,6 +26,10 @@ In the root directory of your project, install the following dependencies:
 ```bash wrap lines
 npm install @auth0/ai-langchain@3 @langchain/community@0.3 @langchain/core@0.3 @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3 langgraph-nextjs-api-passthrough@0.1
 ```
+
+### Update the environment file
+
+Copy the `.env.example` file to `.env.local` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID, and client secret in the application you created in the Auth0 Dashboard.
 
 ### Get access tokens for others APIs
 
@@ -146,7 +154,9 @@ OPENAI_API_KEY="YOUR_API_KEY"
 
 ### Add step-up authorization
 
-Now when you try to use the tool, you will need to authorize additional scopes for Google that you have configured. We can achieve this using step-up authorization.
+When you try to use the tool, the application requests any additional Google scopes that are required but not yet authorized. This process is called step-up authorization.
+
+Let us implement step-up authorization.
 
 Install the Auth0 AI Components for Next.js to get the required UI components:
 
@@ -154,7 +164,7 @@ Install the Auth0 AI Components for Next.js to get the required UI components:
 npx @auth0/ai-components add FederatedConnections
 ```
 
-Add a new file, `src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx`, and add the following code:
+Add a new file, `src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx`, with the following code:
 
 ```tsx src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx wrap lines
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
@@ -195,7 +205,7 @@ export function FederatedConnectionInterruptHandler({
 }
 ```
 
-Now update the `src/components/chat-window.tsx` file to include the `FederatedConnectionInterruptHandler` component:
+Now, update the `src/components/chat-window.tsx` file to include the `FederatedConnectionInterruptHandler` component:
 
 ```tsx src/components/chat-window.tsx wrap lines highlight={2,3,8-19,36-38}
 //...
@@ -248,8 +258,8 @@ export function ChatWindow(props: {
 
 ### Test your application
 
-Start the application with `npm run all:dev`. Then, navigate to `http://localhost:3000`. If you are already logged in, make sure to log out and log in again using Google. Then, ask your AI Agent fetch emails from your Gmail account!
+Start the application with `npm run all:dev`. Then, navigate to `http://localhost:3000`. If you are already logged in, make sure to log out and log back in using Google. Then, ask your AI Agent to fetch emails from your Gmail account!
 
-That's it! You successfully integrated external tool-calling into your project.
+That's it! You successfully integrated integrated third-party API access using Token Vault into your project.
 
 Explore [the example app on GitHub](https://github.com/auth0-samples/auth0-ai-samples/tree/main/call-apis-on-users-behalf/others-api/langchain-next-js).

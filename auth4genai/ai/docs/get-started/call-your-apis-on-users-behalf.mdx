@@ -1,6 +1,7 @@
 ---
 title: Call Your APIs on User's Behalf
 description: Learn how Auth for GenAI enables AI agents to call first-party APIs on the user's behalf.
+mode: "wide"
 ---
 
 import VercelCallYourApi from "/snippets/get-started/vercel-ai-next-js/call-your-api.mdx";
@@ -16,44 +17,36 @@ By the end of this quickstart, you should have an AI application integrated with
 - Use the Auth0 access token to make a tool call to your API endpoint, in this case, Auth0's `/userinfo` endpoint.
 - Return the data to the user via an AI agent.
 
-## Prerequisites
-
-Before getting started, make sure you have completed the following steps:
-
-<Steps>
-  <Step title="Create an Auth0 Account and a Dev Tenant">
-    To continue with this quickstart, you need an [Auth0 account](https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM) and a Developer Tenant.
-  </Step>
-  <Step title="Create Application">
-    Create and configure an Auth0 Application of type `Regular Web` to use with this quickstart.
-    To learn more about Auth0 applications, read [Applications](https://auth0.com/docs/get-started/applications).
-  </Step>
-  <Step title="OpenAI Platform">
-    Set up an [OpenAI account and API key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).
-  </Step>
-</Steps>
-
 ## Pick your tech stack
 
 <Tabs>
-  <Tab title="LangGraph.js" icon="https://mintlify-assets.b-cdn.net/auth0/langchain.svg">
+  <Tab
+    title="LangGraph.js + Next.js"
+    icon="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+  >
     <LangChainNextjsCallYourApi />
   </Tab>
-  <Tab title="Vercel AI" icon="https://mintlify-assets.b-cdn.net/auth0/vercel.svg">
+  <Tab
+    title="Vercel AI + Next.js"
+    icon="https://mintlify-assets.b-cdn.net/auth0/vercel.svg"
+  >
     <VercelCallYourApi />
   </Tab>
-  <Tab title="Cloudflare Agents" icon="cloudflare">
-      <CloudflareCallYourApi />
+  <Tab
+    title="LangGraph + FastAPI"
+    icon="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+  >
+    <FastApiCallYourApi />
   </Tab>
-  <Tab title="FastAPI" icon="https://mintlify-assets.b-cdn.net/auth0/FastAPI.svg">
-      <FastApiCallYourApi />
+  <Tab title="Cloudflare Agents" icon="cloudflare">
+    <CloudflareCallYourApi />
   </Tab>
 </Tabs>
 
 ## Next steps
 
+- [Call your APIs on user's behalf docs](/ai/docs/intro/call-your-apis-on-users-behalf).
 - To set up third-party tool calling, complete the
   [Call other's APIs on user's behalf](../get-started/call-others-apis-on-users-behalf) quickstart.
 - To explore the Auth0 Next.js SDK, see the
   [Github repo](https://github.com/auth0/nextjs-auth0).
-- [Call your APIs on user's behalf docs](/ai/docs/intro/call-your-apis-on-users-behalf).
