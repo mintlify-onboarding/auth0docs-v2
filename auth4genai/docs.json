@@ -7,7 +7,7 @@
     "light": "#5001FF",
     "dark": "#341773"
   },
-  "favicon": "/ai/docs/favicon.svg",
+  "favicon": "/favicon.svg",
   "fonts": {
     "heading": {
       "family": "Aeonik",
@@ -37,52 +37,52 @@
           {
             "group": "Auth for GenAI",
             "pages": [
-              "ai/docs/intro/overview",
+              "intro/overview",
               {
                 "group": "User Authentication",
                 "pages": [
-                  "ai/docs/intro/user-authentication",
-                  "ai/docs/intro/call-your-apis-on-users-behalf"
+                  "intro/user-authentication",
+                  "intro/call-your-apis-on-users-behalf"
                 ]
               },
               {
                 "group": "Call Other's APIs with Token Vault",
                 "pages": [
-                  "ai/docs/intro/token-vault",
-                  "ai/docs/intro/connections",
-                  "ai/docs/intro/account-linking",
-                  "ai/docs/intro/call-others-apis-on-users-behalf"
+                  "intro/token-vault",
+                  "intro/connections",
+                  "intro/account-linking",
+                  "intro/call-others-apis-on-users-behalf"
                 ]
               },
-              "ai/docs/intro/asynchronous-authorization",
-              "ai/docs/intro/authorization-for-rag"
+              "intro/asynchronous-authorization",
+              "intro/authorization-for-rag"
             ]
           },
           {
             "group": "Get Started",
             "pages": [
-              "ai/docs/get-started/overview",
-              "ai/docs/get-started/user-authentication",
-              "ai/docs/get-started/call-your-apis-on-users-behalf",
-              "ai/docs/get-started/call-others-apis-on-users-behalf",
-              "ai/docs/get-started/asynchronous-authorization",
-              "ai/docs/get-started/authorization-for-rag"
+              "get-started/overview",
+              "get-started/user-authentication",
+              "get-started/call-your-apis-on-users-behalf",
+              "get-started/call-others-apis-on-users-behalf",
+              "get-started/asynchronous-authorization",
+              "get-started/authorization-for-rag"
             ]
           },
           {
             "group": "Sample Apps",
-            "pages": ["ai/docs/sample-apps"]
+            "pages": ["sample-apps"]
           },
           {
             "group": "Guides",
             "pages": [
-              "ai/docs/guides/google-sign-in-and-auth",
-              "ai/docs/guides/client-initiated-account-linking"
+              "guides/google-sign-in-and-auth",
+              "guides/client-initiated-account-linking"
             ]
           },
           {
             "group": "Glossary",
-            "pages": ["ai/docs/glossary"]
+            "pages": ["glossary"]
           }
         ]
       },
@@ -92,11 +92,11 @@
           {
             "group": " ",
             "pages": [
-              "ai/docs/how-tos/overview",
-              "ai/docs/how-tos/check-google-calendar-availability",
-              "ai/docs/how-tos/list-github-repositories",
-              "ai/docs/how-tos/list-slack-channels",
-              "ai/docs/how-tos/get-salesforce-opportunities"
+              "how-tos/overview",
+              "how-tos/check-google-calendar-availability",
+              "how-tos/list-github-repositories",
+              "how-tos/list-slack-channels",
+              "how-tos/get-salesforce-opportunities"
             ]
           }
         ]
@@ -106,7 +106,7 @@
         "groups": [
           {
             "group": " ",
-            "pages": ["ai/docs/mcp/auth-for-mcp", "ai/docs/mcp/cloudflare-mcp"]
+            "pages": ["mcp/auth-for-mcp", "mcp/cloudflare-mcp"]
           }
         ]
       },
@@ -116,14 +116,14 @@
           {
             "group": " ",
             "pages": [
-              "ai/docs/sdks/overview",
-              "ai/docs/sdks/javascript-sdk",
-              "ai/docs/sdks/python-sdk",
-              "ai/docs/sdks/langchain-sdk",
-              "ai/docs/sdks/llamaindex-sdk",
-              "ai/docs/sdks/vercel-ai-sdk",
-              "ai/docs/sdks/cloudflare-sdk",
-              "ai/docs/sdks/genkit-sdk"
+              "sdks/overview",
+              "sdks/javascript-sdk",
+              "sdks/python-sdk",
+              "sdks/langchain-sdk",
+              "sdks/llamaindex-sdk",
+              "sdks/vercel-ai-sdk",
+              "sdks/cloudflare-sdk",
+              "sdks/genkit-sdk"
             ]
           }
         ]
@@ -132,73 +132,73 @@
   },
   "redirects": [
     {
-      "source": "/ai/docs/get-started",
-      "destination": "/ai/docs/get-started/overview"
+      "source": "/get-started",
+      "destination": "/get-started/overview"
     },
     {
-      "source": "/ai/docs/user-authentication",
-      "destination": "/ai/docs/get-started/user-authentication"
+      "source": "/user-authentication",
+      "destination": "/get-started/user-authentication"
     },
     {
-      "source": "/ai/docs/call-your-apis-on-users-behalf",
-      "destination": "/ai/docs/get-started/call-your-apis-on-users-behalf"
+      "source": "/call-your-apis-on-users-behalf",
+      "destination": "/get-started/call-your-apis-on-users-behalf"
     },
     {
-      "source": "/ai/docs/call-others-apis-on-users-behalf",
-      "destination": "/ai/docs/get-started/call-others-apis-on-users-behalf"
+      "source": "/call-others-apis-on-users-behalf",
+      "destination": "/get-started/call-others-apis-on-users-behalf"
     },
     {
-      "source": "/ai/docs/async-authorization",
-      "destination": "/ai/docs/get-started/async-authorization"
+      "source": "/async-authorization",
+      "destination": "/get-started/async-authorization"
     },
     {
-      "source": "/ai/docs/authorization-for-rag",
-      "destination": "/ai/docs/get-started/authorization-for-rag"
+      "source": "/authorization-for-rag",
+      "destination": "/get-started/authorization-for-rag"
     },
     {
-      "source": "/ai/docs/how-tos",
-      "destination": "/ai/docs/how-tos/overview"
+      "source": "/how-tos",
+      "destination": "/how-tos/overview"
     },
     {
-      "source": "/ai/docs/check-google-calendar-availability",
-      "destination": "/ai/docs/how-tos/check-google-calendar-availability"
+      "source": "/check-google-calendar-availability",
+      "destination": "/how-tos/check-google-calendar-availability"
     },
     {
-      "source": "/ai/docs/list-github-repositories",
-      "destination": "/ai/docs/how-tos/list-github-repositories"
+      "source": "/list-github-repositories",
+      "destination": "/how-tos/list-github-repositories"
     },
     {
-      "source": "/ai/docs/list-slack-channels",
-      "destination": "/ai/docs/how-tos/list-slack-channels"
+      "source": "/list-slack-channels",
+      "destination": "/how-tos/list-slack-channels"
     },
     {
-      "source": "/ai/docs/get-salesforce-opportunities",
-      "destination": "/ai/docs/how-tos/get-salesforce-opportunities"
+      "source": "/get-salesforce-opportunities",
+      "destination": "/how-tos/get-salesforce-opportunities"
     },
     {
-      "source": "/ai/docs/auth-for-mcp",
-      "destination": "/ai/docs/mcp/auth-for-mcp"
+      "source": "/auth-for-mcp",
+      "destination": "/mcp/auth-for-mcp"
     },
     {
-      "source": "/ai/docs/cloudflare-mcp",
-      "destination": "/ai/docs/mcp/cloudflare-mcp"
+      "source": "/cloudflare-mcp",
+      "destination": "/mcp/cloudflare-mcp"
     },
     {
-      "source": "/ai/docs/sdks",
-      "destination": "/ai/docs/sdks/overview"
+      "source": "/sdks",
+      "destination": "/sdks/overview"
     },
     {
-      "source": "/ai/docs/google-sign-in-and-auth",
-      "destination": "/ai/docs/guides/google-sign-in-and-auth"
+      "source": "/google-sign-in-and-auth",
+      "destination": "/guides/google-sign-in-and-auth"
     },
     {
-      "source": "/ai/docs/client-initiated-account-linking",
-      "destination": "/ai/docs/guides/client-initiated-account-linking"
+      "source": "/client-initiated-account-linking",
+      "destination": "/guides/client-initiated-account-linking"
     }
   ],
   "logo": {
-    "light": "/ai/docs/logo/light.svg",
-    "dark": "/ai/docs/logo/dark.svg",
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
     "href": "https://auth0.com/ai"
   },
   "navbar": {
