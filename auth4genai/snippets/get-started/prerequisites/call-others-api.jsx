@@ -56,7 +56,7 @@ export const Prerequisites = ({
         <Step title="Configure Google Social Connection">
           Set up a Google developer account that allows for third-party API
           calls following the{" "}
-          <a href="/ai/docs/guides/google-sign-in-and-auth">
+          <a href="/guides/google-sign-in-and-auth">
             Google Sign-in and Authorization
           </a>{" "}
           instructions.
