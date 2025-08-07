@@ -51,7 +51,7 @@ export const Prerequisites = ({
           and enable the toggle.
           <br />
           <br />
-          Now click the expand arrow next to the toggle to view the permissions.
+          Now, click the expand arrow next to the toggle to view the permissions.
           enable the
           <code>create:users</code> permission and click <strong>Update</strong>{" "}
           to save the changes.
