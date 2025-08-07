@@ -1,3 +1,7 @@
+import { Prerequisites } from "/snippets/get-started/prerequisites/async-auth.jsx";
+
+<Prerequisites />
+
 ### Prepare Next.js app
 
 **Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
@@ -21,7 +25,11 @@ In the root directory of your project, install the following dependencies:
 npm install @auth0/ai-vercel@3 ai@4 @ai-sdk/openai@1 @ai-sdk/react@1 zod@3
 ```
 
-### Set up Human-in-the-Loop Approvals
+### Update the environment file
+
+Copy the `.env.example` file to `.env.local` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID, and client secret in the application you created in the Auth0 Dashboard.
+
+### Set up Human-in-the-Loop approvals
 
 Integrate the Auth0 AI SDK into your application to secure your async AI agent workflow. For this quickstart, we will use a blocking request flow. In real use cases, often an asynchronous flow is preferred.
 
@@ -48,7 +56,7 @@ export const withAsyncAuthorization = auth0AI.withAsyncUserConfirmation({
   bindingMessage: async ({ product, qty }) =>
     `Do you want to buy ${qty} ${product}`,
   scopes: ["openid", "product:buy"], // add any scopes you want to use with your API
-  audience: process.env["AUDIENCE"]!,
+  audience: process.env["SHOP_API_AUDIENCE"]!,
 
   /**
    * When this flag is set to `block`, the execution of the tool awaits
@@ -170,7 +178,7 @@ OPENAI_API_KEY="YOUR_API_KEY"
 
 # API (OPTIONAL)
 SHOP_API_URL=<your-shop-api-url>
-AUDIENCE=sample-shop-api
+SHOP_API_AUDIENCE=sample-shop-api
 ```
 
 ### Integrate the tool into an AI agent

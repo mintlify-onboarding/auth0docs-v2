@@ -1,11 +1,13 @@
 ---
 title: Authorization for RAG
 description: "Learn how Auth for GenAI enables AI agents to implement fine-grained authorization for Retrieval Augmented Generation (RAG)."
+mode: "wide"
 ---
 
 import LangChainNextjsAuthForRag from "/snippets/get-started/langchain-next-js/auth-for-rag.mdx";
 import VercelNextjsAuthForRag from "/snippets/get-started/vercel-ai-next-js/auth-for-rag.mdx";
 import LangChainNodejsAuthForRag from "/snippets/get-started/langchain-node-js/auth-for-rag.mdx";
+import LangChainFastapiAuthForRag from "/snippets/get-started/langchain-fastapi-py/auth-for-rag.mdx";
 import LangChainPythonAuthForRag from "/snippets/get-started/langchain-py/auth-for-rag.mdx";
 
 Auth for GenAI leverages [Auth0 FGA](https://auth0.com/fine-grained-authorization) to provide fine-grained authorization control for AI agents. As a result, when AI agents use Retrieval Augmented Generation (RAG) to provide sophisticated, relevant responses to user queries, they only have access to authorized data.
@@ -14,21 +16,6 @@ By the end of this quickstart, you should have an AI application that can:
 
 1. Retrieve authorized data as context for a RAG pipeline.
 2. Use Auth0 FGA to determine if the user has authorization for the data.
-
-## Prerequisites
-
-Before getting started, make sure you:
-
-<Steps>
-  <Step title="Create an Auth0 FGA account">
-    You need an [Auth0 FGA account](https://dashboard.fga.dev/) to complete this
-    quickstart.
-  </Step>
-  <Step title="OpenAI Platform">
-    Set up an [OpenAI account and API
-    key](https://platform.openai.com/docs/libraries#create-and-export-an-api-key).
-  </Step>
-</Steps>
 
 ## Pick your tech stack
 
@@ -46,6 +33,12 @@ Before getting started, make sure you:
     <VercelNextjsAuthForRag />
   </Tab>
   <Tab
+    title="LangGraph + FastAPI"
+    icon="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+  >
+    <LangChainFastapiAuthForRag />
+  </Tab>
+  <Tab
     title="LangGraph.js + Node.js"
     icon="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
   >
@@ -61,6 +54,6 @@ Before getting started, make sure you:
 
 ## Next steps
 
+- [Authorization for RAG docs](/ai/docs/intro/authorization-for-rag)
 - Learn how to use [Auth0 FGA](https://auth0.com/fine-grained-authorization) to create a Relationship-Based Access Control (ReBAC) authorization model.
 - Learn more about [OpenFGA](https://openfga.dev/docs/fga).
-- [Authorization for RAG docs](/intro/authorization-for-rag)

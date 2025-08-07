@@ -12,6 +12,19 @@ For example, a sales assistant agent might need to:
 
 You can securely access third-party APIs on the user's behalf using Auth0’s **Token Vault**. Users are prompted to provide consent for your AI Agent to access their other applications, and that access is stored and managed by Auth0. For example, they can provide consent for your AI Agent to access their Google Calendar to view their schedule or set up meetings, or their Salesforce account to retrieve customer information.
 
+<Frame>
+  <iframe
+    width="100%"
+    height="400"
+    src="https://play.vidyard.com/9A42zhQBXirXUpb43PKKAZ.html"
+    title="Introducing: Auth for GenAI"
+    frameborder="0"
+    allow="accelerometer; autoplay; gyroscope; picture-in-picture"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  />
+</Frame>
+
 ## What is Token Vault
 
 Auth0's Token Vault is a secure service for storing and managing tokens for third-party services. Your GenAI applications can use the access tokens from Token Vault to call external APIs on behalf of your users. This capability is essential for building trustworthy AI agents that can securely interact with third-party services from providers, such as Google, Microsoft, Salesforce, or any other API provider that uses OAuth 2.0.
@@ -63,7 +76,7 @@ To begin using Token Vault to call external APIs on behalf of your users, you wi
     iconType="solid"
   >
     Set up connections to the external service (e.g., Google, Microsoft) in your
-    Auth0 dashboard.
+    Auth0 Dashboard.
   </Card>
   <Card
     title="Configure account linking"
@@ -141,6 +154,17 @@ To begin using Auth0 Token Vault in your GenAI applications, refer to the follow
       <img
         src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
         alt="Vercel AI"
+      />
+    }
+    horizontal
+  />
+  <Card
+    title="Assistant0: FastAPI + LangGraph"
+    href="https://github.com/auth0-samples/auth0-assistant0/tree/main/py-langchain"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+        alt="LangChain"
       />
     }
     horizontal

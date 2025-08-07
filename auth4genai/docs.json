@@ -219,9 +219,67 @@
     }
   },
   "footer": {
+    "links": [
+      {
+        "header": "Developers",
+        "items": [
+          {
+            "label": "Blog",
+            "href": "https://auth0.com/blog/ai/"
+          }
+        ]
+      },
+      {
+        "header": "Support Center",
+        "items": [
+          {
+            "label": "Community",
+            "href": "https://community.auth0.com/c/auth-gen-ai"
+          },
+          {
+            "label": "Support",
+            "href": "https://support.auth0.com"
+          }
+        ]
+      },
+      {
+        "header": "Learning",
+        "items": [
+          {
+            "label": "Learn",
+            "href": "https://auth0.com/learn"
+          },
+          {
+            "label": "Intro to IAM (CIAM)",
+            "href": "https://auth0.com/intro-to-iam"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "Our Customers",
+            "href": "https://auth0.com/customers"
+          },
+          {
+            "label": "Compliance",
+            "href": "https://auth0.com/compliance"
+          },
+          {
+            "label": "Partners",
+            "href": "https://auth0.com/partners"
+          },
+          {
+            "label": "About us",
+            "href": "https://auth0.com/company"
+          }
+        ]
+      }
+    ],
     "socials": {
       "x": "https://twitter.com/auth0",
-      "github": "https://github.com/auth0",
+      "github": "https://github.com/auth0/auth-for-genai",
       "linkedin": "https://linkedin.com/company/auth0"
     }
   }

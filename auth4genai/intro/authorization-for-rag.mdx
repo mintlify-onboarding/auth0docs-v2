@@ -3,6 +3,19 @@ title: Authorization for RAG
 description: "Authorization for Retrieval-Augmented Generation (RAG) ensures that when a GenAI application retrieves and uses your company's internal data to answer user questions, it only accesses information that the specific user is permitted to see. This prevents the AI model from inadvertently [exposing sensitive or confidential data](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/) to unauthorized individuals."
 ---
 
+<Frame>
+  <iframe
+    width="100%"
+    height="400"
+    src="https://play.vidyard.com/TCAzaPdj4SEp9yXTbgPP1W.html"
+    title="Introducing: Auth for GenAI"
+    frameborder="0"
+    allow="accelerometer; autoplay; gyroscope; picture-in-picture"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  />
+</Frame>
+
 ## The challenge: Securing data in RAG pipelines
 
 Retrieval-Augmented Generation (RAG) is a powerful technique that enhances Large Language Models (LLMs) by providing them with relevant, up-to-date information from external data sources, such as a company's internal knowledge base or document repository.
@@ -86,11 +99,21 @@ To begin using Auth0 FGA in your GenAI applications, refer to the following reso
   <Card
     title="Assistant0: Next.js + LangGraph"
     href="https://github.com/auth0-samples/auth0-assistant0/tree/main/ts-langchain"
-    icon="clock"
     icon={
       <img
         src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
-        alt="Vercel AI"
+        alt="LangChain"
+      />
+    }
+    horizontal
+  />
+  <Card
+    title="Assistant0: FastAPI + LangGraph"
+    href="https://github.com/auth0-samples/auth0-assistant0/tree/main/py-langchain"
+    icon={
+      <img
+        src="https://mintlify-assets.b-cdn.net/auth0/langchain.svg"
+        alt="LangChain"
       />
     }
     horizontal
