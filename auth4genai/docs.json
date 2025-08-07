@@ -275,7 +275,8 @@
     ],
     "socials": {
       "x": "https://twitter.com/auth0",
-      "github": "https://github.com/auth0/auth-for-genai"
+      "github": "https://github.com/auth0/auth-for-genai",
+      "linkedin": "https://linkedin.com/company/auth0"
     }
   }
 }
