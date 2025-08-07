@@ -4,7 +4,9 @@ export const Prerequisites = ({
 }) => {
   return (
     <>
-      <h3>Prerequisites</h3>
+      <Heading level={3} id="prerequisites">
+        Prerequisites
+      </Heading>
       Before getting started, make sure you have completed the following steps:
       <Steps>
         <Step title="Create an Auth0 Account and a Dev Tenant">
@@ -51,8 +53,8 @@ export const Prerequisites = ({
           and enable the toggle.
           <br />
           <br />
-          Now, click the expand arrow next to the toggle to view the permissions.
-          enable the
+          Now, click the expand arrow next to the toggle to view the
+          permissions. Enable the
           <code>create:users</code> permission and click <strong>Update</strong>{" "}
           to save the changes.
           <Frame>
@@ -66,13 +68,24 @@ export const Prerequisites = ({
         <Step title="Create an Auth0 Action for Account Linking">
           To enable account linking, you need to create an Auth0 Action. This
           Action will handle the account linking process when the user logs in.
-          Go to <strong>Actions &gt; Library</strong> and click{" "}
-          <strong>Create Action &gt; Create Custom Action</strong>. Name the
-          Action <code>account-linking</code> and select the{" "}
-          <code>Post Login</code> trigger.
+          <ol>
+            <li>
+              Go to <strong>Actions &gt; Library</strong> in the Auth0
+              Dashboard.
+            </li>
+            <li>
+              Click <strong>Create Action &gt; Create Custom Action</strong>.
+            </li>
+            <li>
+              Name the Action <code>account-linking</code> and select the{" "}
+              <code>Post Login</code> trigger.
+            </li>
+            <li>
+              Copy and paste the following code into the Action code editor:
+            </li>
+          </ol>
           <br />
           <br />
-          Copy and paste the following code into the Action code editor:
           <CodeBlock
             language="javascript"
             expandable="true"
@@ -101,8 +114,8 @@ export const Prerequisites = ({
  * - \`requested_connection\`, the provider which is requested.
  * - \`requested_connection_scope\`, OPTIONAL list of scopes that are requested by the provider,
  *    if not present it will leverage the configured scopes in the Dashboard.
- * 
- * If you intend to perform custom MFA we recommend using another action prior to this to centralize and 
+ *
+ * If you intend to perform custom MFA we recommend using another action prior to this to centralize and
  * enforce those policies. This Action should be treated as a client.
  *
  * Author: Auth0 Product Architecture
@@ -734,22 +747,22 @@ function sha256(str) {
 
 // End: Helper Utilities`}
           </CodeBlock>
-          You will now need to{" "}
+          In the Action code editor,{" "}
           <a href="https://auth0.com/docs/customize/actions/write-your-first-action#add-a-secret">
             add the following required secrets:
           </a>
           <ul>
             <li>
-              <code>AUTH0_CLIENT_ID</code>: The Client ID of your Application you created in the
-              previous step.
+              <code>AUTH0_CLIENT_ID</code>: The Client ID of your application
+              you created in the previous step.
             </li>
             <li>
-              <code>AUTH0_CLIENT_SECRET</code>: The Client Secret of your
-              Application you created in the previous step.
+              <code>AUTH0_CLIENT_SECRET</code>: The client secret of your
+              application you created in the previous step.
             </li>
             <li>
               <code>ACTION_SECRET</code>: A secret that is unique to this
-              application, you can use <code>uuidgen</code> or a secure random
+              application. You can use <code>uuidgen</code> or a secure random
               string.
             </li>
           </ul>
@@ -793,10 +806,11 @@ function sha256(str) {
         </Step>
 
         <Step title="Attach your Auth0 Action to the Post Login Trigger">
-          Now in the Dashboard navigate to <strong>Actions &gt; Triggers</strong> and click on the{" "}
-          <code>post-login</code> trigger. From the <strong>Add Action</strong> side panel select the <strong>account-linking</strong> action
-          and drag it into your flow. Make sure it is the 
-          first action in the flow.
+          In the Dashboard, navigate to{" "}
+          <strong>Actions &gt; Triggers</strong> and click on the{" "}
+          <code>post-login</code> trigger. From the <strong>Add Action</strong>{" "}
+          side panel, select the <strong>account-linking</strong> Action and drag
+          it into your flow. Make sure it is the first Action in the flow.
           <br />
           <Frame>
             <img

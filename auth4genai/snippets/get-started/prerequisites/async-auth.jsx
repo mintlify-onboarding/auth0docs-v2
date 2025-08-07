@@ -45,7 +45,7 @@ export const Prerequisites = ({
           .
         </Step>
         <Step title="Enable CIBA Grant">
-          Enable the Token Exchange Grant for your Auth0 Application. Go to{" "}
+          Enable the CIBA Grant for your Auth0 Application. Go to{" "}
           <strong>
             Applications &gt; [Your Application] &gt; Settings &gt; Advanced
             &gt; Grant Types

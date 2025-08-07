@@ -7,7 +7,7 @@ import { Prerequisites } from "/snippets/get-started/prerequisites/call-others-a
 
 ### Prepare the FastAPI app
 
-**Recommended**: Use the starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
+**Recommended**: Use the starter template by cloning the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
 
 ```bash wrap lines
 git clone https://github.com/auth0-samples/auth0-ai-samples.git
@@ -16,8 +16,8 @@ cd auth0-ai-samples/authenticate-users/langchain-fastapi-py
 
 The project is divided into two parts:
 
-- `backend/` contains the backend code for the Web app and API written in Python using FastAPI and the LangGraph agent.
-- `frontend/` contains the frontend code for the Web app written in React as a Vite SPA.
+- `backend/`: contains the backend code for the Web app and API written in Python using FastAPI and the LangGraph agent.
+- `frontend/`: contains the frontend code for the Web app written in React as a Vite SPA.
 
 ### Install dependencies
 
@@ -39,7 +39,7 @@ uv add "auth0-ai-langchain>=1.0.0b3" "langgraph>=0.5.4" langchain-openai "langgr
 
 ### Update the environment file
 
-Copy the `.env.example` file to `.env` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID and client secret in the application you created in the Auth0 dashboard.
+Copy the `.env.example` file to `.env` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID, and client secret in the application you created in the Auth0 Dashboard.
 
 ### Get access tokens for other's APIs
 
@@ -47,7 +47,7 @@ Use the [Auth0 AI SDK for LangChain](https://github.com/auth0-lab/auth0-ai-pytho
 
 #### Set up Token Vault for Google social connection
 
-Set up the Auth0 AI SDK for a [Google Social Connection](/ai/docs/guides/google-sign-in-and-auth). This allows you to get access tokens for a Google social connection using [Token Vault](https://auth0.com/docs/secure/tokens/token-vault):
+Set up the Auth0 AI SDK for a [Google social connection](/ai/docs/guides/google-sign-in-and-auth). This allows you to get access tokens for a Google social connection using [Token Vault](https://auth0.com/docs/secure/tokens/token-vault):
 
 - `connection`: pass in the name of the connection you want the user to sign up for/log into.
 - `scopes`: pass in the scopes for the service you want to get access to.
@@ -211,7 +211,9 @@ OPENAI_API_KEY="YOUR_API_KEY"
 
 ### Add step-up authorization
 
-Now when you try to use the tool, you will need to authorize additional scopes for Google that you have configured. We can achieve this using step-up authorization.
+When you try to use the tool, the application requests any additional Google scopes that are required but not yet authorized. This process is called step-up authorization.
+
+Let us implement step-up authorization.
 
 Install the required dependencies and the Auth0 AI Components for React to get the required UI components:
 
@@ -221,7 +223,7 @@ npm install @auth0/ai @langchain/langgraph-sdk
 npx @auth0/ai-components add FederatedConnections
 ```
 
-Add a new file, `src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx`, and add the following code:
+Add a new file, `src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx`, with the following code:
 
 ```tsx src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx wrap lines
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
@@ -268,7 +270,7 @@ export function FederatedConnectionInterruptHandler({
 }
 ```
 
-Now update the `src/components/chat-window.tsx` file to include the `FederatedConnectionInterruptHandler` component:
+Now, update the `src/components/chat-window.tsx` file to include the `FederatedConnectionInterruptHandler` component:
 
 ```tsx src/components/chat-window.tsx wrap lines highlight={2,3,25-50}
 //...
@@ -361,7 +363,7 @@ npm install
 npm run dev
 ```
 
-Visit the URL `http://localhost:5173` in your browser and interact with the AI agent. If you are already logged in, make sure to log out and log in again using Google. Then, ask your AI Agent to list the upcoming events in your Google Calendar!
+Visit the URL `http://localhost:5173` in your browser and interact with the AI agent. If you are already logged in, make sure to log out and log back in using Google. Then, ask your AI Agent to list the upcoming events in your Google Calendar!
 
 That's it! You've successfully integrated third-party API access using Token Vault into your LangGraph FastAPI project.
 
