@@ -81,10 +81,6 @@
             ]
           },
           {
-            "group": "Support",
-            "pages": ["support"]
-          },
-          {
             "group": "Glossary",
             "pages": ["glossary"]
           }
