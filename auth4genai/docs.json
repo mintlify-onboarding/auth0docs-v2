@@ -149,7 +149,7 @@
     },
     {
       "source": "/async-authorization",
-      "destination": "/get-started/async-authorization"
+      "destination": "/get-started/asynchronous-authorization"
     },
     {
       "source": "/authorization-for-rag",
@@ -190,10 +190,6 @@
     {
       "source": "/google-sign-in-and-auth",
       "destination": "/guides/google-sign-in-and-auth"
-    },
-    {
-      "source": "/async-authorization",
-      "destination": "/intro/asynchronous-authorization"
     },
     {
       "source": "/client-initiated-account-linking",
