@@ -149,7 +149,7 @@
     },
     {
       "source": "/async-authorization",
-      "destination": "/get-started/async-authorization"
+      "destination": "/get-started/asynchronous-authorization"
     },
     {
       "source": "/authorization-for-rag",
