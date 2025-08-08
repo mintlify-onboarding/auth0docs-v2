@@ -192,6 +192,10 @@
       "destination": "/guides/google-sign-in-and-auth"
     },
     {
+      "source": "/async-authorization",
+      "destination": "/intro/asynchronous-authorization"
+    },
+    {
       "source": "/client-initiated-account-linking",
       "destination": "/guides/client-initiated-account-linking"
     }
