@@ -278,5 +278,10 @@
       "github": "https://github.com/auth0/auth-for-genai",
       "linkedin": "https://linkedin.com/company/auth0"
     }
+  },
+  "integrations": {
+    "heap": {
+      "appId": "1279799279"
+    }
   }
 }
