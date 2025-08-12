@@ -80,7 +80,7 @@ export const Prerequisites = ({
           lists the factors the user is enrolled in:
           <Frame>
             <img
-              src="/img/user_enrolled_in_auth0_guardian.png"
+              src="/ai/docs/img/user_enrolled_in_auth0_guardian.png"
               alt="User Enrolled in Auth0 Guardian"
             />
           </Frame>
@@ -88,7 +88,7 @@ export const Prerequisites = ({
           email:
           <Frame>
             <img
-              src="/img/enroll_user_in_auth0_guardian.png"
+              src="/ai/docs/img/enroll_user_in_auth0_guardian.png"
               alt="Enable Guardian Push Screenshot"
             />
           </Frame>
