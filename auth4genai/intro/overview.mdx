@@ -52,24 +52,36 @@ Follow our [quickstart guides](/get-started/overview) for a step-by-step tutoria
 Explore our sample applications and templates
 
 <Columns cols={3}>
-<Card href="https://github.com/auth0-samples/auth0-assistant0" title="Assistant0" vertical>
-Assistant0, a Next.js based AI personal assistant that consolidates digital life by dynamically accessing multiple tools to help stay organized and efficient.
+  <Card href="https://github.com/auth0-samples/auth0-assistant0" title="Assistant0" vertical>
+    A fullstack AI personal assistant with pre-configured tools that
+    demonstrates different Auth for GenAI features like User Authentication,
+    calling APIs (Gmail, Google Calendar, etc.) securely using Token Vault,
+    Human-in-the-loop interactions using Asynchronous Authorization, and using
+    Auth0 FGA for securing RAG tools.
 
-`NEXT.JS` `FASTAPI` `VERCEL AI` `LANGCHAIN`
+    `NEXT.JS` `FASTAPI` `VERCEL AI` `LANGCHAIN`
 
-</Card>
-<Card href="https://github.com/auth0-samples/agent0" title="Agent0" vertical>
-Agent0, a full-stack AI personal assistant powered by React and Fastify, that invokes your APIs using tool calls on a logged-in user's behalf.
+  </Card>
+  <Card
+    title="SmartHR Assistant"
+    vertical
+    href="https://github.com/auth0-samples/auth0-ai-smart-hr-assistant"
+  >
+    An AI HR assistant that provides secure access to HR documents based on
+    complex authorization rules. This demonstrates the use of Auth0 FGA to
+    secure RAG applications with relationship-based access control (Fine-Grained
+    Authorization).
 
-`FASTIFY`
+    `NEXT.JS` `LLAMAINDEX`
+  </Card>
+  <Card href="https://github.com/auth0-samples/auth0-ai-samples" title="AI Samples" vertical>
+    Explore our repository of standalone sample applications that showcase
+    Auth0's authentication and authorization capabilities in generative AI
+    applications. Each sample demonstrates a specific Auth for GenAI feature.
 
-</Card>
-<Card href="https://github.com/auth0-samples/auth0-ai-samples" title="AI Samples" vertical>
-Explore our repository of sample applications showcasing Auth0's authentication and authorization capabilities in the context of generative AI applications.
+    `LANGCHAIN` `FASTAPI` `VERCEL AI` `LLAMAINDEX`
 
-`LANGCHAIN` `FASTAPI` `VERCEL AI` `LLAMAINDEX`
-
-</Card>
+  </Card>
 </Columns>
 
 ## Frameworks & SDKs
