@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import Columns from "@theme/Columns";
-import { IntegrationCard } from "./IntegrationCard";
+import { IntegrationCard } from "/snippets/integrations/IntegrationCard.jsx";
 
-export const FilterableIntegrationsGrid = () => {
+export const IntegrationsGrid = () => {
   const integrations = [
     // Available
     {

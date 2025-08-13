@@ -1,7 +1,7 @@
+import React from "/snippets/react";
+
 export const IntegrationCard = ({ integration }) => {
   const isComingSoon = integration.status === 'Coming Soon';
-
-  console.log('i am an integration card')
 
   const cardContent = (
     <>
