@@ -1,0 +1,95 @@
+---
+title: Salesforce Integration
+description: "Connect your GenAI application to Salesforce CRM for customer relationship management and sales automation."
+---
+
+<Warning>
+**This page is AI Generated as a placeholder for actual content** 
+</Warning>
+
+The Salesforce Integration enables your GenAI application to authenticate users with their Salesforce accounts and access CRM data through Token Vault.
+
+## Overview
+
+Salesforce is the world's leading CRM platform. This integration allows AI agents to access customer data, manage sales processes, and automate business workflows within the Salesforce ecosystem.
+
+### Supported APIs
+
+<Columns cols={2}>
+  <Card title="Accounts" icon="building-office" iconType="solid">
+    Manage customer and prospect accounts.
+  </Card>
+  <Card title="Contacts" icon="user" iconType="solid">
+    Access and manage contact information.
+  </Card>
+  <Card title="Opportunities" icon="chart-bar" iconType="solid">
+    Track and manage sales opportunities.
+  </Card>
+  <Card title="Leads" icon="user-plus" iconType="solid">
+    Manage sales leads and conversions.
+  </Card>
+  <Card title="Cases" icon="support" iconType="solid">
+    Handle customer service cases.
+  </Card>
+  <Card title="Custom Objects" icon="cube" iconType="solid">
+    Access custom Salesforce objects.
+  </Card>
+</Columns>
+
+## Configuration
+
+<Steps>
+  <Step title="Create Connected App">
+    1. In Salesforce Setup, go to **App Manager**
+    2. Click **New Connected App**
+    3. Enable OAuth settings and configure scopes
+    4. Note your **Consumer Key** and **Consumer Secret**
+  </Step>
+  <Step title="Set up Auth0 Integration">
+    1. In Auth0 Dashboard, go to **Authentication** > **Enterprise**
+    2. Select **OIDC** and configure for Salesforce
+    3. Enable **Token Vault** in Advanced settings
+  </Step>
+</Steps>
+
+## Required Scopes
+
+| Scope | Description |
+|-------|-------------|
+| `api` | Access and manage data |
+| `refresh_token` | Maintain access |
+| `openid` | OpenID Connect authentication |
+| `profile` | Access user profile |
+
+## Example Use Cases
+
+### CRM Data Analysis
+```javascript
+// Query Salesforce opportunities
+const opportunities = await fetch(
+  `${instanceUrl}/services/data/v58.0/query/?q=SELECT Id,Name,Amount FROM Opportunity`,
+  {
+    headers: {
+      'Authorization': `Bearer ${userToken}`,
+      'Content-Type': 'application/json'
+    }
+  }
+);
+```
+
+## Learn More
+
+<Columns cols={2}>
+  <Card
+    title="Salesforce How-To Guide"
+    href="/how-tos/get-salesforce-opportunities"
+    icon="salesforce"
+    horizontal
+  />
+  <Card
+    title="Salesforce API Documentation"
+    href="https://developer.salesforce.com/"
+    icon="book-open"
+    horizontal
+  />
+</Columns>

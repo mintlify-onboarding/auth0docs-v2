@@ -1,0 +1,72 @@
+---
+title: Slack Connection
+description: "Connect your GenAI application to Slack for team communication and workflow automation."
+---
+
+<Warning>
+**This page is AI Generated as a placeholder for actual content** 
+</Warning>
+
+The Slack Connection enables your GenAI application to authenticate users with their Slack accounts and interact with Slack workspaces on their behalf.
+
+## Overview
+
+The Slack Connection is ideal for AI agents that need to participate in team communications, automate workflows, or provide intelligent assistance within Slack workspaces. This connection provides access to messages, channels, and workspace data.
+
+### Supported APIs
+
+<Columns cols={2}>
+  <Card title="Messages" icon="chat" iconType="solid">
+    Send and read messages in channels and DMs.
+  </Card>
+  <Card title="Channels" icon="hash" iconType="solid">
+    Create, join, and manage Slack channels.
+  </Card>
+  <Card title="Users" icon="users" iconType="solid">
+    Access user profiles and presence information.
+  </Card>
+  <Card title="Files" icon="paperclip" iconType="solid">
+    Upload and share files in Slack.
+  </Card>
+</Columns>
+
+## Configuration
+
+<Steps>
+  <Step title="Create Slack App">
+    1. Go to [Slack API](https://api.slack.com/apps) and create a new app
+    2. Configure OAuth & Permissions with required scopes
+    3. Note your **Client ID** and **Client Secret**
+  </Step>
+  <Step title="Set up Auth0 Connection">
+    1. In Auth0 Dashboard, go to **Authentication** > **Social**
+    2. Select **Slack** and configure with your credentials
+    3. Enable **Token Vault** in Advanced settings
+  </Step>
+</Steps>
+
+## Required Scopes
+
+| Scope | Description |
+|-------|-------------|
+| `chat:write` | Send messages |
+| `channels:read` | View basic information about public channels |
+| `users:read` | View people in the workspace |
+| `files:write` | Upload and modify files |
+
+## Learn More
+
+<Columns cols={2}>
+  <Card
+    title="Slack How-To Guide"
+    href="/how-tos/list-slack-channels"
+    icon="slack"
+    horizontal
+  />
+  <Card
+    title="Slack API Documentation"
+    href="https://api.slack.com/"
+    icon="book-open"
+    horizontal
+  />
+</Columns>

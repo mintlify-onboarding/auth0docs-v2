@@ -86,6 +86,40 @@
           }
         ]
       },
+       {
+        "tab": "Integrations",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "integrations/overview",
+              {
+                "group": "Social Integrations",
+                "pages": [
+                  "integrations/google",
+                  "integrations/github"
+                ]
+              },
+              {
+                "group": "Enterprise Integrations", 
+                "pages": [
+                  "integrations/microsoft",
+                  "integrations/slack",
+                  "integrations/box",
+                  "integrations/salesforce"
+                ]
+              },
+              {
+                "group": "Custom Integrations",
+                "pages": [
+                  "integrations/oidc",
+                  "integrations/custom"
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "tab": "How-Tos",
         "groups": [

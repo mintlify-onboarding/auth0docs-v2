@@ -1,0 +1,103 @@
+---
+title: Integrations
+description: "Explore the complete list of supported Integrations for Auth0's GenAI platform. Find the perfect integration for your AI application."
+mode: "wide"
+---
+
+import { FilterableConnectionsGrid } from "/snippets/connections/filterable-connections-grid.jsx";
+
+An Integration in Auth0 is a relationship between Auth0 and a source of users, such as third-party applications (like Slack or Salesforce) or external Identity Providers (like Google or Microsoft). These Integrations allow users to log in to your application using those identities and share their data from that application to your AI agents.
+
+<FilterableConnectionsGrid />
+
+<Columns cols={3}>
+  <Card title="Google" icon="google" iconType="solid" href="/connections/google" className="hidden">
+    Personal Google accounts with comprehensive API access for Gmail, Drive, Calendar, and more.
+  </Card>
+  <Card title="Microsoft" icon="microsoft" iconType="solid" href="/connections/microsoft">
+    Microsoft 365 and Azure AD integration for enterprise-grade authentication and Office apps.
+  </Card>
+  <Card title="GitHub" icon="github" iconType="solid" href="/connections/github">
+    Developer platform connection with access to repositories, issues, and code management.
+  </Card>
+  <Card title="Salesforce" icon="salesforce" iconType="solid" href="/connections/salesforce">
+    CRM platform integration for accessing customer data, opportunities, and sales workflows.
+  </Card>
+  <Card title="Slack" icon="slack" iconType="solid" href="/connections/slack">
+    Team communication platform for channel management, messaging, and workspace integration.
+  </Card>
+  <Card title="Box" icon="box" iconType="solid" href="/connections/box">
+    Cloud storage and collaboration platform for file management and document sharing.
+  </Card>
+  <Card title="LinkedIn" icon="linkedin" iconType="solid">
+    Professional networking platform for career data and business connections.
+    <br />
+    <em>Coming Soon</em>
+  </Card>
+  <Card title="Dropbox" icon="dropbox" iconType="solid">
+    File storage and sharing platform for document management and collaboration.
+    <br />
+    <em>Coming Soon</em>
+  </Card>
+  <Card title="Notion" icon="notion" iconType="solid">
+    All-in-one workspace for notes, databases, and project management integration.
+    <br />
+    <em>Coming Soon</em>
+  </Card>
+</Columns>
+
+### Coming Soon
+
+We're constantly expanding our Integration catalog. Here are some integrations we're working on:
+
+<Columns cols={3}>
+  <Card title="Stripe" icon="stripe" iconType="solid">
+    Payment processing platform for transaction data and subscription management.
+    <br />
+    <em>Coming Soon</em>
+  </Card>
+  <Card title="HubSpot" icon="hubspot" iconType="solid">
+    Marketing and sales platform for lead management and customer data.
+    <br />
+    <em>Coming Soon</em>
+  </Card>
+  <Card title="Zoom" icon="video" iconType="solid">
+    Video conferencing platform for meeting data and calendar integration.
+    <br />
+    <em>Coming Soon</em>
+  </Card>
+</Columns>
+
+<Info>
+**Can't find what you're looking for?** 
+
+You can build a custom integration for any OAuth2-compliant service using our [Custom OAuth2 Connection](/integrations/custom) guide, or contact our team to request a new integration.
+</Info>
+
+## Why Use Integrations?
+
+Integrations enable your GenAI applications to access rich, real-time data from the platforms your users already use. This allows you to:
+
+- **Personalize AI responses** with user-specific data from their connected accounts
+- **Automate workflows** by performing actions on behalf of users across platforms
+- **Reduce friction** by eliminating the need for users to manually provide data
+- **Enhance context** by pulling relevant information from multiple sources
+
+## Getting Started
+
+Ready to start using Integrations in your GenAI application?
+
+<Columns cols={2}>
+  <Card
+    title="Configure Your First Integration"
+    href="/get-started/call-others-apis-on-users-behalf"
+    icon="key"
+    horizontal
+  />
+  <Card
+    title="Google Social Integration Guide"
+    href="/guides/google-sign-in-and-auth"
+    icon="google"
+    horizontal
+  />
+</Columns>
