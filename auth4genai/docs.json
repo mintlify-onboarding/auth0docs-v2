@@ -166,6 +166,10 @@
   },
   "redirects": [
     {
+      "source": "/integrations",
+      "destination": "/integrations/overview"
+    },
+    {
       "source": "/get-started",
       "destination": "/get-started/overview"
     },
