@@ -1,6 +1,5 @@
 export const Prerequisites = ({
-  callbackUrl = "http://localhost:3000/auth/callback",
-  logoutUrl = "http://localhost:3000",
+  callbackUrl = "https://AUTH0_DOMAIN/continue"
 }) => {
   return (
     <>
@@ -31,9 +30,6 @@ export const Prerequisites = ({
             <li>
               Allowed Callback URLs: <code>{callbackUrl}</code>
             </li>
-            <li>
-              Allowed Logout URLs: <code>{logoutUrl}</code>
-            </li>
           </ul>
           To learn more about Auth0 applications, read{" "}
           <a
@@ -59,7 +55,7 @@ export const Prerequisites = ({
           to save the changes.
           <Frame>
             <img
-              src="/ai/docs/img/app_enabled_user_creation.png"
+              src="/ai/docs/img/app_enabled_user_update.png"
               alt="Enable Auth0 Management API"
             />
           </Frame>
