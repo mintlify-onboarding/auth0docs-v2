@@ -1,5 +1,8 @@
+import { useRef } from 'react';
+
 export const IntegrationCard = ({ integration }) => {
   const isComingSoon = integration.status === 'Coming Soon';
+  const cardRef = useRef(null);
 
   const cardContent = (
     <>
@@ -75,23 +78,21 @@ export const IntegrationCard = ({ integration }) => {
   }
 
   return (
-    <a 
-      href={integration.href} 
-      // TODO: fix all of this, hover is broken
-      style={{
-        ...cardStyle,
-        ':hover': {
-          transform: 'translateY(-2px)',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+     <a
+      ref={cardRef}
+      href={integration.href}
+      style={cardStyle}
+      onMouseEnter={() => {
+        if (cardRef.current) {
+          cardRef.current.style.transform = 'translateY(-2px)';
+          cardRef.current.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
         }
       }}
-      onMouseEnter={(e) => {
-        e.target.style.transform = 'translateY(-2px)';
-        e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.transform = 'translateY(0)';
-        e.target.style.boxShadow = 'none';
+      onMouseLeave={() => {
+        if (cardRef.current) {
+          cardRef.current.style.transform = 'translateY(0)';
+          cardRef.current.style.boxShadow = 'none';
+        }
       }}
     >
       {cardContent}
