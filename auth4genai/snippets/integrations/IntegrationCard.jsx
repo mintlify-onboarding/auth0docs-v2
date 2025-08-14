@@ -1,5 +1,3 @@
-import React from "/snippets/react";
-
 export const IntegrationCard = ({ integration }) => {
   const isComingSoon = integration.status === 'Coming Soon';
 
