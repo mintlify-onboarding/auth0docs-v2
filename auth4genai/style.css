@@ -9,9 +9,12 @@ button[data-component-part="tab-button"] {
   background: transparent !important;
 }
 
+/* Make Github integration logo visible in dark mode */
+
 :root {
   --github-logo-filter: none;
 }
-[data-theme="dark"] {
+
+html[style*="color-scheme: dark"] {
   --github-logo-filter: invert(1) brightness(2);
 }

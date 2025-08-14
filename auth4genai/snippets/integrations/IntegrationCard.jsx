@@ -20,7 +20,7 @@ export const IntegrationCard = ({ integration }) => {
               width: '1em',
               height: '1em',
               verticalAlign: 'middle',
-              filter: 'var(--github-logo-filter, none)'
+              ...integration.styles
             }}
           />
         </span>

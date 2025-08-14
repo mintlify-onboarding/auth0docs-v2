@@ -32,6 +32,9 @@ export const integrations = [
       type: "Other",
       description:
         "Developer platform connection with access to repositories, issues, and code management.",
+      styles: {
+        filter: "var(--github-logo-filter, none)",
+      }
     },
     {
       id: "salesforce",
