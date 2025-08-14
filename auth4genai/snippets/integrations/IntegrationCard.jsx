@@ -41,6 +41,19 @@ export const IntegrationCard = ({ integration }) => {
       }}>
         {integration.description}
       </p>
+
+      {isComingSoon && (
+        <div style={{
+          marginTop: 'auto',
+          paddingTop: '0.5rem'
+        }}>
+          <em style={{ 
+            fontSize: '0.875rem',
+          }}>
+            Coming Soon
+          </em>
+        </div>
+      )}
     </>
   );
 
@@ -48,10 +61,6 @@ export const IntegrationCard = ({ integration }) => {
     <Card
       href={integration.href}
       disabled={isComingSoon}
-      // icon="js"
-      // iconType="solid"
-      // horizontal
-      // title="JavaScript SDKs"
     >
       {cardContent}
     </Card>
