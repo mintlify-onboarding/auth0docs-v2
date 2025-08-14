@@ -16,7 +16,6 @@ export const IntegrationsGrid = ({ integrations = [] }) => {
   }
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [typeFilter, setTypeFilter] = useState("All");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedTypes, setSelectedTypes] = useState({
     Social: false,
