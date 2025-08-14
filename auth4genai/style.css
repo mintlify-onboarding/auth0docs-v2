@@ -8,3 +8,10 @@ button[data-component-part="tab-button"] {
   filter: invert(1) hue-rotate(180deg);
   background: transparent !important;
 }
+
+:root {
+  --github-logo-filter: none;
+}
+[data-theme="dark"] {
+  --github-logo-filter: invert(1) brightness(2);
+}

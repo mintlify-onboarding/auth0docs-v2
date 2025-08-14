@@ -13,19 +13,16 @@ export const IntegrationCard = ({ integration }) => {
           marginRight: '0.75rem',
           opacity: isComingSoon ? 0.6 : 1
         }}>
-          {/* Icon placeholder - in a real implementation this would use the icon prop */}
-          {integration.icon === 'google' && '🔍'}
-          {integration.icon === 'microsoft' && '🟦'}
-          {integration.icon === 'github' && '🐙'}
-          {integration.icon === 'salesforce' && '☁️'}
-          {integration.icon === 'slack' && '💬'}
-          {integration.icon === 'box' && '📦'}
-          {integration.icon === 'linkedin' && '💼'}
-          {integration.icon === 'dropbox' && '📁'}
-          {integration.icon === 'notion' && '📝'}
-          {integration.icon === 'stripe' && '💳'}
-          {integration.icon === 'hubspot' && '🧲'}
-          {integration.icon === 'video' && '📹'}
+          <img
+            src={integration.icon}
+            alt={`${integration.title} icon`}
+            style={{
+              width: '1em',
+              height: '1em',
+              verticalAlign: 'middle',
+              filter: 'var(--github-logo-filter, none)'
+            }}
+          />
         </span>
         <h3 style={{ 
           margin: 0, 
