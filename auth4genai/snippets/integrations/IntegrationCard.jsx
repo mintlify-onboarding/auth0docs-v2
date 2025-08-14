@@ -1,8 +1,5 @@
-import { useRef } from 'react';
-
 export const IntegrationCard = ({ integration }) => {
   const isComingSoon = integration.status === 'Coming Soon';
-  const cardRef = useRef(null);
 
   const cardContent = (
     <>
@@ -44,58 +41,19 @@ export const IntegrationCard = ({ integration }) => {
       }}>
         {integration.description}
       </p>
-
-      {isComingSoon && (
-        <div style={{
-          marginTop: 'auto',
-          paddingTop: '0.5rem'
-        }}>
-          <em style={{ 
-            fontSize: '0.875rem'
-          }}>
-            Coming Soon
-          </em>
-        </div>
-      )}
     </>
   );
 
-  const cardStyle = {
-    padding: '1.5rem',
-    borderRadius: '8px',
-    transition: 'all 0.2s ease',
-    cursor: isComingSoon ? 'default' : 'pointer',
-    opacity: integration.className?.includes('hidden') ? 0.5 : 1,
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    textDecoration: 'none',
-    color: 'inherit'
-  };
-
-  if (isComingSoon) {
-    return <div style={cardStyle}>{cardContent}</div>;
-  }
-
   return (
-     <a
-      ref={cardRef}
+    <Card
       href={integration.href}
-      style={cardStyle}
-      onMouseEnter={() => {
-        if (cardRef.current) {
-          cardRef.current.style.transform = 'translateY(-2px)';
-          cardRef.current.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-        }
-      }}
-      onMouseLeave={() => {
-        if (cardRef.current) {
-          cardRef.current.style.transform = 'translateY(0)';
-          cardRef.current.style.boxShadow = 'none';
-        }
-      }}
+      disabled={isComingSoon}
+      // icon="js"
+      // iconType="solid"
+      // horizontal
+      // title="JavaScript SDKs"
     >
       {cardContent}
-    </a>
+    </Card>
   );
 }

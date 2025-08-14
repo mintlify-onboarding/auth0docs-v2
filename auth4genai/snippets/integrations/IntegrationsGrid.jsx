@@ -317,7 +317,7 @@ export const IntegrationsGrid = ({ integrations = [] }) => {
       </div>
 
       {/* Integration Grid */}
-      <Columns cols={3} style={{ gap: "1.5rem" }}>
+      <Columns cols={3}>
         {sortedIntegrations.map((integration) => (
           <IntegrationCard integration={integration}/>
         ))}
