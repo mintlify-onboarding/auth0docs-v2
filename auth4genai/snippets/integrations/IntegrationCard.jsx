@@ -35,7 +35,6 @@ export const IntegrationCard = ({ integration }) => {
 
       <p style={{ 
         margin: '0 0 1rem 0', 
-        color: 'var(--ifm-color-emphasis-700)',
         fontSize: '0.875rem',
         lineHeight: '1.5',
         opacity: isComingSoon ? 0.6 : 1
@@ -49,7 +48,6 @@ export const IntegrationCard = ({ integration }) => {
           paddingTop: '0.5rem'
         }}>
           <em style={{ 
-            color: 'var(--ifm-color-emphasis-500)',
             fontSize: '0.875rem'
           }}>
             Coming Soon
@@ -61,9 +59,7 @@ export const IntegrationCard = ({ integration }) => {
 
   const cardStyle = {
     padding: '1.5rem',
-    border: '1px solid var(--ifm-color-emphasis-300)',
     borderRadius: '8px',
-    backgroundColor: 'var(--ifm-background-color)',
     transition: 'all 0.2s ease',
     cursor: isComingSoon ? 'default' : 'pointer',
     opacity: integration.className?.includes('hidden') ? 0.5 : 1,
@@ -81,21 +77,19 @@ export const IntegrationCard = ({ integration }) => {
   return (
     <a 
       href={integration.href} 
+      // TODO: fix all of this, hover is broken
       style={{
         ...cardStyle,
         ':hover': {
-          borderColor: 'var(--ifm-color-primary)',
           transform: 'translateY(-2px)',
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
         }
       }}
       onMouseEnter={(e) => {
-        e.target.style.borderColor = 'var(--ifm-color-primary)';
         e.target.style.transform = 'translateY(-2px)';
         e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
       }}
       onMouseLeave={(e) => {
-        e.target.style.borderColor = 'var(--ifm-color-emphasis-300)';
         e.target.style.transform = 'translateY(0)';
         e.target.style.boxShadow = 'none';
       }}
