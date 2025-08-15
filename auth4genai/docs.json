@@ -105,8 +105,7 @@
                 "pages": [
                   "integrations/microsoft",
                   "integrations/slack",
-                  "integrations/box",
-                  "integrations/salesforce"
+                  "integrations/box"
                 ]
               },
               {
