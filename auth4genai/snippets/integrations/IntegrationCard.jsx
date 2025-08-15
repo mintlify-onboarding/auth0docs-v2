@@ -2,76 +2,31 @@ export const IntegrationCard = ({ integration }) => {
   const isComingSoon = integration.status === 'Coming Soon';
 
   const cardContent = (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      minHeight: '175px'
-    }}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '0.75rem'
-      }}>
-        <span style={{ 
-          fontSize: '1.5rem', 
-          marginRight: '0.75rem',
-          opacity: isComingSoon ? 0.6 : 1
-        }}>
+    <div className="integration-card">
+      <div className="integration-card-header">
+        <span className={`integration-card-icon ${isComingSoon ? 'coming-soon' : ''}`}>
           <img
             src={integration.icon}
             alt={`${integration.title} icon`}
-            style={{
-              width: '1em',
-              height: '1em',
-              verticalAlign: 'middle',
-              ...integration.styles
-            }}
+            style={{...integration.styles}}
           />
         </span>
-        <h3 style={{ 
-          margin: 0, 
-          fontSize: '1.25rem',
-          opacity: isComingSoon ? 0.6 : 1
-        }}>
+        <h3 className={`integration-card-title ${isComingSoon ? 'coming-soon' : ''}`}>
           {integration.title}
         </h3>
       </div>
 
-      <p style={{ 
-        margin: '0', 
-        fontSize: '0.875rem',
-        lineHeight: '1.5',
-        opacity: isComingSoon ? 0.6 : 1,
-        flex: '1'
-      }}>
+      <p className={`integration-card-description ${isComingSoon ? 'coming-soon' : ''}`}>
         {integration.description}
       </p>
 
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        marginTop: 'auto'
-      }}>
-        <span style={{
-          fontSize: '0.75rem',
-          lineheight: '1',
-          padding: '0 0.3rem',
-          backgroundColor: '#F0F0FC',
-          border: '1px solid darkblue',
-          borderRadius: '0.7rem',
-          fontWeight: '500',
-          color: 'darkblue',
-          opacity: isComingSoon ? 0.6 : 1
-        }}>
+      <div className="integration-card-footer">
+        <span className={`integration-card-type-tag ${isComingSoon ? 'coming-soon' : ''}`}>
           {integration.type}
         </span>
 
         {isComingSoon && (
-          <em style={{ 
-            fontSize: '0.875rem',
-          }}>
+          <em className="integration-card-coming-soon">
             Coming Soon
           </em>
         )}
