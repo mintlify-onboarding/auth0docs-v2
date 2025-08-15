@@ -7,11 +7,11 @@ description: "Connect your application to GitHub for repository access, issue ma
 **This page is AI Generated as a placeholder for actual content** 
 </Warning>
 
-The GitHub Integration allows your GenAI application to authenticate users with their GitHub accounts and access GitHub repositories and data on their behalf.
+The GitHub integration allows your application to authenticate users with their GitHub accounts and access GitHub repositories and data on their behalf.
 
 ## Overview
 
-The GitHub Integration is perfect for developer-focused AI applications that need to interact with code repositories, manage issues, or automate development workflows. This integration provides access to both public and private repositories based on user permissions.
+The GitHub integration is perfect for developer-focused AI applications that need to interact with code repositories, manage issues, or automate development workflows. This integration provides access to both public and private repositories based on user permissions.
 
 ## Configuration
 
@@ -91,20 +91,3 @@ const prs = await fetch('https://api.github.com/repos/owner/repo/pulls', {
 2. **Rate Limiting**: GitHub API has rate limits - implement proper retry logic
 3. **Webhook Integration**: Consider using webhooks for real-time updates
 4. **Repository Privacy**: Respect private repository access and user permissions
-
-## Learn More
-
-<Columns cols={2}>
-  <Card
-    title="GitHub API Documentation"
-    href="https://docs.github.com/en/rest"
-    icon="github"
-    horizontal
-  />
-  <Card
-    title="GitHub How-To Guide"
-    href="/how-tos/list-github-repositories"
-    icon="book-open"
-    horizontal
-  />
-</Columns>
