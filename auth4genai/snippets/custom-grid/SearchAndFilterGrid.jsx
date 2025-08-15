@@ -63,6 +63,23 @@ export const SearchAndFilterGrid = ({ items = [], filters = [] }) => {
               <path d="m21 21-4.35-4.35" stroke="currentColor" strokeWidth="2"/>
             </svg>
           </div>
+          <div className="custom-grid-filter-buttons">
+            <button
+              onClick={() => setFilter(null)}
+              className={`custom-grid-filter-button ${filter === null ? 'active' : ''}`}
+            >
+              All
+            </button>
+            {filters.map((filterOption) => (
+              <button
+                key={filterOption}
+                onClick={() => setFilter(filterOption)}
+                className={`custom-grid-filter-button ${filter === filterOption ? 'active' : ''}`}
+              >
+                {filterOption}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
