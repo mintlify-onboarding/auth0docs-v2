@@ -4,13 +4,13 @@ description: "Explore the complete list of supported integrations for Auth0's Ge
 mode: "wide"
 ---
 
-import { integrations, integrationTypes } from "/snippets/integrations/integrations-data.jsx";
-import { IntegrationCard } from "/snippets/integrations/IntegrationCard.jsx";
-import { IntegrationsGrid } from "/snippets/integrations/IntegrationsGrid.jsx";
+import { integrations, integrationTypes } from "/snippets/data/integrations.jsx";
+import { CustomCard } from "/snippets/custom-grid/CustomCard.jsx";
+import { SearchAndFilterGrid } from "/snippets/custom-grid/SearchAndFilterGrid.jsx";
 
 An integration in Auth0 is a relationship between Auth0 and a source of users, such as third-party applications (like Slack or Salesforce) or external Identity Providers (like Google or Microsoft). These integrations allow users to log in to your application using those identities and share their data from that application to your AI agents.
 
-<IntegrationsGrid items={integrations} filters={integrationTypes} />
+<SearchAndFilterGrid items={integrations} filters={integrationTypes} />
 
 <Info>
 **Can't find what you're looking for?** 

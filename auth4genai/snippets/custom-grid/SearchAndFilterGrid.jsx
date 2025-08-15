@@ -1,8 +1,7 @@
 import { useState, useMemo } from "react";
-import { IntegrationCard } from "/snippets/integrations/IntegrationCard.jsx";
-import Columns from "@theme/Columns";
+import { CustomCard } from "/snippets/custom-grid/CustomCard.jsx";
 
-export const IntegrationsGrid = ({ items = [], filters = [] }) => {
+export const SearchAndFilterGrid = ({ items = [], filters = [] }) => {
 
   const fuzzySearch = (needle, haystack) => {
   if (!needle || !haystack) return false;
@@ -42,23 +41,23 @@ export const IntegrationsGrid = ({ items = [], filters = [] }) => {
   }, [filteredItems]);
 
   return (
-    <div className="integrations-container">
-      <div className="integrations-search-container">
-        <div className="integrations-search-filter-wrapper">
-          <div className="integrations-search-input-wrapper">
+    <div className="custom-grid-container">
+      <div className="custom-grid-search-container">
+        <div className="custom-grid-search-filter-wrapper">
+          <div className="custom-grid-search-input-wrapper">
             <input
               type="text"
               placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="integrations-search-input"
+              className="custom-grid-search-input"
             />
             <svg
               width="16"
               height="16"
               viewBox="0 0 24 24"
               fill="none"
-              className="integrations-search-icon"
+              className="custom-grid-search-icon"
             >
               <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
               <path d="m21 21-4.35-4.35" stroke="currentColor" strokeWidth="2"/>
@@ -69,17 +68,17 @@ export const IntegrationsGrid = ({ items = [], filters = [] }) => {
 
       <Columns cols={3}>
         {sortedItems.map((item) => (
-          <IntegrationCard integration={item} key={item.id} />
+          <CustomCard item={item} key={item.id} />
         ))}
       </Columns>
 
       {sortedItems.length === 0 && (
-        <div className="integrations-no-results">
-          <div className="integrations-no-results-icon">🔍</div>
-          <h3 className="integrations-no-results-title">
+        <div className="custom-grid-no-results">
+          <div className="custom-grid-no-results-icon">🔍</div>
+          <h3 className="custom-grid-no-results-title">
             No results found
           </h3>
-          <p className="integrations-no-results-text">
+          <p className="custom-grid-no-results-text">
             {searchTerm ? `No results for "${searchTerm}". ` : ""}Try adjusting
             your search or filter criteria.
           </p>
