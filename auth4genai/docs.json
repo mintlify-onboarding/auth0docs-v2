@@ -49,7 +49,7 @@
                 "group": "Call Other's APIs with Token Vault",
                 "pages": [
                   "intro/token-vault",
-                  "intro/connections",
+                  "intro/integrations",
                   "intro/account-linking",
                   "intro/call-others-apis-on-users-behalf"
                 ]
