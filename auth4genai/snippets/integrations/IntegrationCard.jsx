@@ -2,7 +2,12 @@ export const IntegrationCard = ({ integration }) => {
   const isComingSoon = integration.status === 'Coming Soon';
 
   const cardContent = (
-    <>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      minHeight: '175px'
+    }}>
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -34,27 +39,44 @@ export const IntegrationCard = ({ integration }) => {
       </div>
 
       <p style={{ 
-        margin: '0 0 1rem 0', 
+        margin: '0', 
         fontSize: '0.875rem',
         lineHeight: '1.5',
-        opacity: isComingSoon ? 0.6 : 1
+        opacity: isComingSoon ? 0.6 : 1,
+        flex: '1'
       }}>
         {integration.description}
       </p>
 
-      {isComingSoon && (
-        <div style={{
-          marginTop: 'auto',
-          paddingTop: '0.5rem'
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        marginTop: 'auto'
+      }}>
+        <span style={{
+          fontSize: '0.75rem',
+          lineheight: '1',
+          padding: '0 0.3rem',
+          backgroundColor: '#F0F0FC',
+          border: '1px solid darkblue',
+          borderRadius: '0.7rem',
+          fontWeight: '500',
+          color: 'darkblue',
+          opacity: isComingSoon ? 0.6 : 1
         }}>
+          {integration.type}
+        </span>
+
+        {isComingSoon && (
           <em style={{ 
             fontSize: '0.875rem',
           }}>
             Coming Soon
           </em>
-        </div>
-      )}
-    </>
+        )}
+      </div>
+    </div>
   );
 
   return (
