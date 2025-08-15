@@ -113,17 +113,6 @@ export const integrations = [
       }
     },
     {
-      id: "salesforce",
-      title: "Salesforce",
-      icon: "../../img/integrations/salesforce-avatar.png",
-      iconType: "solid",
-      href: "/integrations/salesforce",
-      status: "Available",
-      type: "Enterprise",
-      description:
-        "CRM platform integration for accessing customer data, opportunities, and sales workflows.",
-    },
-    {
       id: "slack",
       title: "Slack",
       icon: "../../img/integrations/slack-avatar.png",
