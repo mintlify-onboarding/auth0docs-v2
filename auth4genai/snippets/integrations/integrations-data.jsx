@@ -1,3 +1,5 @@
+export const integrationTypes = ['Social', 'Enterprise', 'Custom'];
+
 export const integrations = [
     {
       id: "gmail",
@@ -105,7 +107,7 @@ export const integrations = [
       iconType: "solid",
       href: "/integrations/github",
       status: "Available",
-      type: "Other",
+      type: "Social",
       description:
         "Developer platform connection with access to repositories, issues, and code management.",
       styles: {
@@ -141,7 +143,7 @@ export const integrations = [
       iconType: "solid",
       href: "/integrations/custom",
       status: "Available",
-      type: "Other",
+      type: "Custom",
       description:
         "OAuth2 integration for connecting any standards-compliant identity provider or service.",
     },
@@ -152,7 +154,7 @@ export const integrations = [
       iconType: "solid",
       href: "/integrations/oidc",
       status: "Available",
-      type: "Other",
+      type: "Custom",
       description:
         "OpenID Connect (OIDC) integration for secure authentication and user identity management.",
     },

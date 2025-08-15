@@ -2,7 +2,8 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import Columns from "@theme/Columns";
 import { IntegrationCard } from "/snippets/integrations/IntegrationCard.jsx";
 
-export const IntegrationsGrid = ({ integrations = [] }) => {
+export const IntegrationsGrid = ({ items = [], filters = [] }) => {
+  const initialFilterState = Object.fromEntries(filters.map(item => [item, false]));
   
   // Simple fuzzy search function
   function fuzzySearch(needle, haystack) {
@@ -17,11 +18,7 @@ export const IntegrationsGrid = ({ integrations = [] }) => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useState({
-    Social: false,
-    Enterprise: false,
-    Other: false,
-  });
+  const [selectedTypes, setSelectedTypes] = useState(initialFilterState);
   const dropdownRef = useRef(null);
 
   // Close dropdown when clicking outside
@@ -39,7 +36,7 @@ export const IntegrationsGrid = ({ integrations = [] }) => {
   }, []);
 
   const filteredIntegrations = useMemo(() => {
-    let filtered = integrations;
+    let filtered = items;
 
     // Filter by search term
     if (searchTerm.trim()) {
@@ -78,11 +75,7 @@ export const IntegrationsGrid = ({ integrations = [] }) => {
   };
 
   const handleReset = () => {
-    setSelectedTypes({
-      Social: false,
-      Enterprise: false,
-      Other: false,
-    });
+    setSelectedTypes(initialFilterState);
   };
 
   const handleApply = () => {
@@ -236,7 +229,7 @@ export const IntegrationsGrid = ({ integrations = [] }) => {
               >
                 {/* Filter Options */}
                 <div style={{ marginBottom: "1rem" }}>
-                  {["Social", "Enterprise", "Other"].map((type) => (
+                  {filters.map((type) => (
                     <label
                       key={type}
                       style={{
@@ -342,7 +335,7 @@ export const IntegrationsGrid = ({ integrations = [] }) => {
               fontSize: "1.25rem",
             }}
           >
-            No integrations found
+            No results found
           </h3>
           <p
             style={{
