@@ -4,11 +4,11 @@ import { CustomCard } from "/snippets/custom-grid/CustomCard.jsx";
 export const SearchAndFilterGrid = ({ items = [], filters = [] }) => {
 
   const fuzzySearch = (needle, haystack) => {
-  if (!needle || !haystack) return false;
-  const needleLower = needle.toLowerCase();
-  const haystackLower = haystack.toLowerCase();
-  return haystackLower.includes(needleLower);
-}
+    if (!needle || !haystack) return false;
+    const needleLower = needle.toLowerCase();
+    const haystackLower = haystack.toLowerCase();
+    return haystackLower.includes(needleLower);
+  }
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(null);
