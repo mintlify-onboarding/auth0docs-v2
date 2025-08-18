@@ -3,10 +3,6 @@ title: Box
 description: "Connect your application to Box for enterprise file management and collaboration."
 ---
 
-<Warning>
-**This page is AI Generated as a placeholder for actual content** 
-</Warning>
-
 The Box integration enables your application to authenticate users with their Box accounts and access enterprise file storage and collaboration features.
 
 ## Overview
@@ -16,24 +12,23 @@ Box is an enterprise-focused cloud storage and collaboration platform. This inte
 ## Configuration
 
 <Steps>
-  <Step title="Create Box App">
-    1. Go to [Box Developer Console](https://app.box.com/developers/console)
-    2. Create a new Custom App with OAuth 2.0
-    3. Configure redirect URIs and application scopes
-    4. Note your **Client ID** and **Client Secret**
+  <Step title="Set up app in Box">
+    1. Sign up for a [Box Developer account](https://developers.box.com/)
+    2. Set up an app using Box's [Custom Apps: Setup with OAuth 2.0](https://developer.box.com/guides/applications/custom-apps/oauth2-setup/) documentation
+    3. Note your **Client ID** and **Client Secret**
   </Step>
-  <Step title="Set up Auth0 Integration">
-    1. In Auth0 Dashboard, go to **Authentication** > **Social**
-    2. Select **Box** and configure with your credentials
-    3. Enable **Token Vault** in Advanced settings
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+      - Application Scopes: Select the permissions you want to enable for this connection.
   </Step>
 </Steps>
 
-## Required Scopes
+<Info>
+Troubleshooting
 
-| Scope | Description |
-|-------|-------------|
-| `root_readonly` | Read all files and folders |
-| `root_readwrite` | Read and write all files and folders |
-| `manage_users` | Manage users (admin only) |
-| `manage_groups` | Manage groups (admin only) |
+If your Auth0 domain name is not shown above and you are not using our custom domains feature, your domain name is your tenant name, your regional subdomain (unless your tenant is in the US region and was created before June 2020), plus`.auth0.com`. For example, if your tenant name were `exampleco-enterprises`, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your redirect URI would be `https://exampleco-enterprises.us.auth0.com/login/callback`. (If your tenant is in the US and was created before June 2020, then your domain name would be `https://exampleco-enterprises.auth0.com`.)
+
+If you are using [custom domains](https://auth0.com/docs/custom-domains), your redirect URI will have the following format: `https://<YOUR CUSTOM DOMAIN>/login/callback`.
+</Info>
+
