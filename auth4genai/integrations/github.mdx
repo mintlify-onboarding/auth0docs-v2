@@ -3,10 +3,6 @@ title: GitHub
 description: "Connect your application to GitHub for repository access, issue management, and developer workflows."
 ---
 
-<Warning>
-**This page is AI Generated as a placeholder for actual content** 
-</Warning>
-
 The GitHub integration allows your application to authenticate users with their GitHub accounts and access GitHub repositories and data on their behalf.
 
 ## Overview
@@ -16,78 +12,28 @@ The GitHub integration is perfect for developer-focused AI applications that nee
 ## Configuration
 
 <Steps>
-  <Step title="Create GitHub OAuth App">
-    1. Go to GitHub Settings > Developer settings > OAuth Apps
-    2. Click **New OAuth App**
-    3. Configure your application details
-    4. Note your **Client ID** and **Client Secret**
+  <Step title="Set up app in Box">
+    1. Sign up for a [GitHub Developer account](https://github.com/settings/developers)
+    2. Set up an app using Box's [GitHub Developer Settings: OAuth Apps](https://github.com/settings/developers#oauth-apps) documentation
+    3. Note your **Client ID** and **Client Secret**
   </Step>
-  <Step title="Set up Auth0 Integration">
-    1. In Auth0 Dashboard, go to **Authentication** > **Social**
-    2. Select **GitHub** and configure with your credentials
-    3. Set the required scopes for your application
-    4. Enable **Token Vault** in the Advanced settings
-  </Step>
-  <Step title="Enable for your Application">
-    Ensure the GitHub Integration is enabled for your Auth0 application.
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Homepage URL: `https://YOUR_DOMAIN`
+      - Authorization callback URL: `https://YOUR_DOMAIN/login/callback`
   </Step>
 </Steps>
 
-## Required Scopes
+<Info>
+<b>Find your Auth0 domain name</b>
 
-| Scope | Description |
-|-------|-------------|
-| `user` | Read user profile information |
-| `repo` | Full control of private repositories |
-| `public_repo` | Access public repositories |
-| `read:org` | Read organization membership |
-| `workflow` | Update GitHub Action workflows |
-| `gist` | Create and manage gists |
+If your Auth0 domain name is not shown above and you are not using our custom domains feature, your domain name is your tenant name, your regional subdomain (unless your tenant is in the US region and was created before June 2020), plus`.auth0.com`. For example, if your tenant name were `exampleco-enterprises`, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your redirect URI would be `https://exampleco-enterprises.us.auth0.com/login/callback`. (If your tenant is in the US and was created before June 2020, then your domain name would be `https://exampleco-enterprises.auth0.com`.)
 
-## Example Use Cases
+If you are using [custom domains](https://auth0.com/docs/custom-domains), your redirect URI will have the following format: `https://<YOUR CUSTOM DOMAIN>/login/callback`.
+</Info>
 
-### Repository Analysis
-```javascript
-// Get repository information
-const repo = await fetch('https://api.github.com/repos/owner/repo', {
-  headers: {
-    'Authorization': `Bearer ${userToken}`,
-    'Accept': 'application/vnd.github.v3+json'
-  }
-});
-```
+<Warning>
+<b>Troubleshooting</b>
 
-### Issue Management
-```javascript
-// Create a new issue
-const issue = await fetch('https://api.github.com/repos/owner/repo/issues', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${userToken}`,
-    'Accept': 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    title: 'AI Generated Issue',
-    body: 'This issue was created by an AI agent.'
-  })
-});
-```
-
-### Code Review Automation
-```javascript
-// List pull requests
-const prs = await fetch('https://api.github.com/repos/owner/repo/pulls', {
-  headers: {
-    'Authorization': `Bearer ${userToken}`,
-    'Accept': 'application/vnd.github.v3+json'
-  }
-});
-```
-
-## Best Practices
-
-1. **Scope Limitation**: Only request the minimum scopes needed
-2. **Rate Limiting**: GitHub API has rate limits - implement proper retry logic
-3. **Webhook Integration**: Consider using webhooks for real-time updates
-4. **Repository Privacy**: Respect private repository access and user permissions
+If you are receiving `Access Denied` when calling the GitHub API, you probably have not requested the correct permissions for the user during login. To learn more, see [Add scopes/permissions to call Identity Provider's APIs](https://auth0.com/docs/connections/adding-scopes-for-an-external-idp).
+</Warning>
