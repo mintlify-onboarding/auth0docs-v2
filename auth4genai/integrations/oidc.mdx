@@ -10,3 +10,9 @@ The OpenID Connect (OIDC) connection allows you to integrate with any identity p
 OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. It allows your application to verify the identity of users and obtain basic profile information in an interoperable and REST-like manner.
 
 To learn more and configure a custom OIDC connection with Auth0, see our [Connect to OpenID Connect Identity Provider documentation](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/oidc).
+
+### Configure federated connection
+
+You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
+
+To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
