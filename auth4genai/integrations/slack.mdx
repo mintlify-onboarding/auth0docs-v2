@@ -3,11 +3,11 @@ title: Slack
 description: "Connect your application to Slack for team communication and workflow automation."
 ---
 
-<Warning>
-**This page is AI Generated as a placeholder for actual content** 
-</Warning>
-
 The Slack integration enables your application to authenticate users with their Slack accounts and interact with Slack workspaces on their behalf.
+
+<Info>
+By default, Auth0 automatically syncs user profile data with each user login, thereby ensuring that changes made in the connection source are automatically updated in Auth0. Optionally, you can [disable user profile data synchronization](https://auth0.com/docs/users/configure-connection-sync-with-auth0) to allow for updating profile attributes from your application.
+</Info>
 
 ## Overview
 
@@ -16,23 +16,21 @@ The Slack integration is ideal for AI agents that need to participate in team co
 ## Configuration
 
 <Steps>
-  <Step title="Create Slack App">
-    1. Go to [Slack API](https://api.slack.com/apps) and create a new app
-    2. Configure OAuth & Permissions with required scopes
-    3. Note your **Client ID** and **Client Secret**
+  <Step title="Set up app in Slack">
+    1. Sign up for a [Slack Developer account](https://slack.com/signin)
+    2. If you haven't already, create a [Slack App](https://api.slack.com/apps/new)
   </Step>
-  <Step title="Set up Auth0 Connection">
-    1. In Auth0 Dashboard, go to **Authentication** > **Social**
-    2. Select **Slack** and configure with your credentials
-    3. Enable **Token Vault** in Advanced settings
+  <Step title="Configure for Auth0">
+    1. Once your app is created, copy and paste the Client ID and Client Secret into the Auth0 configuration screen.
+    2. Next, click on OAuth & Permissions in the Features menu on the left. Use the following settings when configuring your app:
+      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
   </Step>
 </Steps>
 
-## Required Scopes
+<Info>
+<b>Find your Auth0 domain name</b>
 
-| Scope | Description |
-|-------|-------------|
-| `chat:write` | Send messages |
-| `channels:read` | View basic information about public channels |
-| `users:read` | View people in the workspace |
-| `files:write` | Upload and modify files |
+If your Auth0 domain name is not shown above and you are not using our custom domains feature, your domain name is your tenant name, your regional subdomain (unless your tenant is in the US region and was created before June 2020), plus`.auth0.com`. For example, if your tenant name were `exampleco-enterprises`, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your redirect URI would be `https://exampleco-enterprises.us.auth0.com/login/callback`. (If your tenant is in the US and was created before June 2020, then your domain name would be `https://exampleco-enterprises.auth0.com`.)
+
+If you are using [custom domains](https://auth0.com/docs/custom-domains), your redirect URI will have the following format: `https://<YOUR CUSTOM DOMAIN>/login/callback`.
+</Info>
