@@ -1,4 +1,4 @@
-export const integrationTypes = ['Social', 'Enterprise', 'Custom'];
+export const integrationTypes = ['Social', 'Enterprise'];
 
 export const integrations = [
     {
@@ -9,7 +9,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Email platform integration for accessing inbox, sending messages, and managing communications.",
+        "Allow your AI Agents to search, create, and send Gmail emails.",
     },
     {
       id: "google-calendar",
@@ -19,7 +19,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Calendar integration for scheduling events, reminders, and managing appointments.",
+        "Allow your AI Agents to search, schedule, and update events in Google Calendar.",
     },
      {
       id: "google-drive",
@@ -29,7 +29,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Cloud storage integration for accessing, sharing, and managing files and documents.",
+        "Allow your AI Agents to search, create, and modify files in Google Drive.",
     },
      {
       id: "google-sheets",
@@ -39,7 +39,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Spreadsheet platform integration for analyzing, updating, and automating data.",
+        "Allow your AI Agents to search, create, and modify spreadsheets in Google Sheets.",
     },
      {
       id: "google-slides",
@@ -49,7 +49,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Presentation platform integration for creating, viewing, and collaborating on slides.",
+        "Allow your AI Agents to search, create, and modify slides in Google Slides.",
     },
      {
       id: "google-contacts",
@@ -59,7 +59,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Contact management integration for syncing and accessing address book data.",
+        "Allow your AI Agents to search, create, and modify contacts in Google Contacts.",
     },
      {
       id: "google-tasks",
@@ -69,7 +69,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Task management integration for tracking, updating, and automating to-do lists.",
+        "Allow your AI Agents to search, create, and modify tasks in Google Tasks.",
     },
      {
       id: "youtube",
@@ -79,7 +79,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Video platform integration for accessing channel data, content, and analytics.",
+        "Allow your AI Agents to search, create, and manage YouTube videos.",
     },
     {
       id: "microsoft",
@@ -87,9 +87,9 @@ export const integrations = [
       icon: "/ai/docs/img/integrations/microsoft-avatar.png",
       href: "/integrations/microsoft",
       status: "Available",
-      type: "Enterprise",
+      type: "Social",
       description:
-        "Microsoft 365 and Azure AD integration for enterprise-grade authentication and Office apps.",
+        "Connect to your users via their Microsoft Account.",
     },
     {
       id: "github",
@@ -99,7 +99,7 @@ export const integrations = [
       status: "Available",
       type: "Social",
       description:
-        "Developer platform connection with access to repositories, issues, and code management.",
+        "Allow your AI Agents to create and manage GitHub issues and pull requests.",
       styles: {
         filter: "var(--github-logo-filter, none)",
       }
@@ -110,9 +110,9 @@ export const integrations = [
       icon: "/ai/docs/img/integrations/slack-avatar.png",
       href: "/integrations/slack",
       status: "Available",
-      type: "Enterprise",
+      type: "Social",
       description:
-        "Team communication platform for channel management, messaging, and workspace integration.",
+        "Allow your AI Agents to send and receive Slack messages.",
     },
     {
       id: "box",
@@ -120,19 +120,19 @@ export const integrations = [
       icon: "/ai/docs/img/integrations/box-avatar.png",
       href: "/integrations/box",
       status: "Available",
-      type: "Enterprise",
+      type: "Social",
       description:
-        "Cloud storage and collaboration platform for file management and document sharing.",
+        "Allow your AI Agents to search, create, and modify files in Box.",
     },
     {
       id: "custom",
       title: "Custom OAuth2",
       icon: "/ai/docs/img/integrations/oauth2-avatar.png",
-      href: "/integrations/custom",
+      href: "/integrations/oauth2",
       status: "Available",
-      type: "Custom",
+      type: "Social",
       description:
-        "OAuth2 integration for connecting any standards-compliant identity provider or service.",
+        "Allow your AI Agent to connect with any OAuth2 compliant identity provider or service.",
     },
         {
       id: "oidc",
@@ -140,8 +140,8 @@ export const integrations = [
       icon: "/ai/docs/img/integrations/oidc-avatar.png",
       href: "/integrations/oidc",
       status: "Available",
-      type: "Custom",
+      type: "Enterprise",
       description:
-        "OpenID Connect (OIDC) integration for secure authentication and user identity management.",
+        "Allow your AI Agent to connect with any OpenID Connect (OIDC) compliant identity provider.",
     },
   ];

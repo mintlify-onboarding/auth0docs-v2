@@ -95,23 +95,18 @@
               {
                 "group": "Social Integrations",
                 "pages": [
+                  "integrations/box",
+                  "integrations/oauth2",
+                  "integrations/github",
                   "integrations/google",
-                  "integrations/github"
+                  "integrations/microsoft",
+                  "integrations/slack"                  
                 ]
               },
               {
                 "group": "Enterprise Integrations",
                 "pages": [
-                  "integrations/microsoft",
-                  "integrations/slack",
-                  "integrations/box"
-                ]
-              },
-              {
-                "group": "Custom Integrations",
-                "pages": [
-                  "integrations/oidc",
-                  "integrations/custom"
+                  "integrations/oidc" 
                 ]
               }
             ]
