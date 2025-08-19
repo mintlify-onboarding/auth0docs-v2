@@ -76,7 +76,6 @@
           {
             "group": "Guides",
             "pages": [
-              "guides/google-sign-in-and-auth",
               "guides/client-initiated-account-linking"
             ]
           },
@@ -101,7 +100,7 @@
                 ]
               },
               {
-                "group": "Enterprise Integrations", 
+                "group": "Enterprise Integrations",
                 "pages": [
                   "integrations/microsoft",
                   "integrations/slack",
@@ -226,7 +225,11 @@
     },
     {
       "source": "/google-sign-in-and-auth",
-      "destination": "/guides/google-sign-in-and-auth"
+      "destination": "/integrations/google"
+    },
+    {
+      "source": "/guides/google-sign-in-and-auth",
+      "destination": "/integrations/google"
     },
     {
       "source": "/client-initiated-account-linking",

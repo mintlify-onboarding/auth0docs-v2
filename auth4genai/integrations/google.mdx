@@ -127,14 +127,11 @@ Use the Auth0 Dashboard to create a new Google social connection.
     token for the Google social connection, it will contain the appropriate
     scopes so you can use it to call the required Google APIs.
   </Step>
+  <Step title="Enable Token Vault">
+    In **Advanced**, toggle **Enable Token Vault**. This allows the connection to retrieve and store access tokens for third-party APIs securely. To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+  </Step>
   <Step title="Save">Click **Save Changes**.</Step>
 </Steps>
-
-### Configure federated connection
-
-You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
-
-To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
 
 ### Test connection
 
