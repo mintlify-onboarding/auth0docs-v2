@@ -1,0 +1,41 @@
+---
+title: Box
+description: "Connect your application to Box for enterprise file management and collaboration."
+---
+
+The Box integration enables your application to authenticate users with their Box accounts and access enterprise file storage and collaboration features.
+
+## Overview
+
+Box is an enterprise-focused cloud storage and collaboration platform. This integration allows AI agents to securely access, manage, and collaborate on files stored in Box, making it ideal for business applications that need document management capabilities.
+
+## Configuration
+
+<Steps>
+  <Step title="Set up app in Box">
+    1. Sign up for a [Box Developer account](https://developers.box.com/)
+    2. Set up an app using Box's [Custom Apps: Setup with OAuth 2.0](https://developer.box.com/guides/applications/custom-apps/oauth2-setup/) documentation
+    3. Note your **Client ID** and **Client Secret**
+  </Step>
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+      - Application Scopes: Select the permissions you want to enable for this connection.
+  </Step>
+</Steps>
+
+<Info>
+<b>Find your Auth0 domain name</b>
+
+If your Auth0 domain name is not shown above and you are not using our custom domains feature, your domain name is your tenant name, your regional subdomain (unless your tenant is in the US region and was created before June 2020), plus`.auth0.com`. For example, if your tenant name were `exampleco-enterprises`, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your redirect URI would be `https://exampleco-enterprises.us.auth0.com/login/callback`. (If your tenant is in the US and was created before June 2020, then your domain name would be `https://exampleco-enterprises.auth0.com`.)
+
+If you are using [custom domains](https://auth0.com/docs/custom-domains), your redirect URI will have the following format: `https://<YOUR CUSTOM DOMAIN>/login/callback`.
+</Info>
+
+### Configure federated connection
+
+You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
+
+To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+
+

@@ -1,0 +1,32 @@
+---
+title: Integrations
+description: "The following integrations are available for use with your AI Agents through Auth0."
+mode: "wide"
+---
+
+import { integrations, integrationTypes } from "/snippets/data/integrations.jsx";
+import { CustomCard } from "/snippets/custom-grid/CustomCard.jsx";
+import { SearchAndFilterGrid } from "/snippets/custom-grid/SearchAndFilterGrid.jsx";
+
+Allow your AI Agents to interact with these applications by setting up an Auth0 Connection. Users can log in to your application using these identities or give access to share their data with your AI Agents.
+
+<SearchAndFilterGrid items={integrations} filters={integrationTypes} />
+
+<Info>
+**Can't find what you're looking for?** 
+
+You can build a custom integration for any OAuth2-compliant service using our [Custom OAuth2 Connection](/integrations/custom) guide, or contact our team to request a new integration.
+</Info>
+
+## Getting Started
+
+Ready to start using integrations in your application?
+
+<Columns cols={2}>
+  <Card
+    title="Call an API Using Your Integration"
+    href="/get-started/call-others-apis-on-users-behalf"
+    icon="key"
+    horizontal
+  />
+</Columns>

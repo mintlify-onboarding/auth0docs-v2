@@ -38,6 +38,12 @@ Install our Github App to auto propagate changes from your repo to your deployme
 - If the dev environment isn't running - Run `mint update` to ensure you have the most recent version of the CLI.
 - Page loads as a 404 - Make sure you are running in a folder with `docs.json`
 
+## Custom React Components
+
+Use the `snippets` folder to hold content we want to reuse throughout the application; for example, custom React components or JSON-style data. 
+Note that when importing a component into a `.mdx` file, we must include everything that component imports as well.
+For example: `SearchAndFilterGrid` imports `CustomCard`. When importing and using `SearchAndFilterGrid` in `/integrations/overview.mdx` file, we must also import `CustomCard`.
+
 ## Style Guide
 
 ### Code Blocks
