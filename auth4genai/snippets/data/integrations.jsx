@@ -4,7 +4,7 @@ export const integrations = [
     {
       id: "gmail",
       title: "Gmail",
-      icon: "/img/integrations/gmail-avatar.png",
+      icon: "/ai/docs/img/integrations/gmail-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -14,7 +14,7 @@ export const integrations = [
     {
       id: "google-calendar",
       title: "Google Calendar",
-      icon: "/img/integrations/google-calendar-avatar.png",
+      icon: "/ai/docs/img/integrations/google-calendar-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -24,7 +24,7 @@ export const integrations = [
      {
       id: "google-drive",
       title: "Google Drive",
-      icon: "/img/integrations/google-drive-avatar.png",
+      icon: "/ai/docs/img/integrations/google-drive-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -34,7 +34,7 @@ export const integrations = [
      {
       id: "google-sheets",
       title: "Google Sheets",
-      icon: "/img/integrations/google-sheets-avatar.png",
+      icon: "/ai/docs/img/integrations/google-sheets-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -44,7 +44,7 @@ export const integrations = [
      {
       id: "google-slides",
       title: "Google Slides",
-      icon: "/img/integrations/google-slides-avatar.png",
+      icon: "/ai/docs/img/integrations/google-slides-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -54,7 +54,7 @@ export const integrations = [
      {
       id: "google-contacts",
       title: "Google Contacts",
-      icon: "/img/integrations/google-contacts-avatar.png",
+      icon: "/ai/docs/img/integrations/google-contacts-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -64,7 +64,7 @@ export const integrations = [
      {
       id: "google-tasks",
       title: "Google Tasks",
-      icon: "/img/integrations/google-tasks-avatar.png",
+      icon: "/ai/docs/img/integrations/google-tasks-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -74,7 +74,7 @@ export const integrations = [
      {
       id: "youtube",
       title: "Youtube",
-      icon: "/img/integrations/youtube-avatar.png",
+      icon: "/ai/docs/img/integrations/youtube-avatar.png",
       href: "/integrations/google",
       status: "Available",
       type: "Social",
@@ -84,7 +84,7 @@ export const integrations = [
     {
       id: "microsoft",
       title: "Microsoft",
-      icon: "/img/integrations/microsoft-avatar.png",
+      icon: "/ai/docs/img/integrations/microsoft-avatar.png",
       href: "/integrations/microsoft",
       status: "Available",
       type: "Enterprise",
@@ -94,7 +94,7 @@ export const integrations = [
     {
       id: "github",
       title: "GitHub",
-      icon: "/img/integrations/github-avatar.png",
+      icon: "/ai/docs/img/integrations/github-avatar.png",
       href: "/integrations/github",
       status: "Available",
       type: "Social",
@@ -107,7 +107,7 @@ export const integrations = [
     {
       id: "slack",
       title: "Slack",
-      icon: "/img/integrations/slack-avatar.png",
+      icon: "/ai/docs/img/integrations/slack-avatar.png",
       href: "/integrations/slack",
       status: "Available",
       type: "Enterprise",
@@ -117,7 +117,7 @@ export const integrations = [
     {
       id: "box",
       title: "Box",
-      icon: "/img/integrations/box-avatar.png",
+      icon: "/ai/docs/img/integrations/box-avatar.png",
       href: "/integrations/box",
       status: "Available",
       type: "Enterprise",
@@ -127,7 +127,7 @@ export const integrations = [
     {
       id: "custom",
       title: "Custom OAuth2",
-      icon: "/img/integrations/oauth2-avatar.png",
+      icon: "/ai/docs/img/integrations/oauth2-avatar.png",
       href: "/integrations/custom",
       status: "Available",
       type: "Custom",
@@ -137,7 +137,7 @@ export const integrations = [
         {
       id: "oidc",
       title: "OpenID Connect",
-      icon: "/img/integrations/oidc-avatar.png",
+      icon: "/ai/docs/img/integrations/oidc-avatar.png",
       href: "/integrations/oidc",
       status: "Available",
       type: "Custom",
