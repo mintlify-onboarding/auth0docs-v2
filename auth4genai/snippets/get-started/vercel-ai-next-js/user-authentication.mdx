@@ -2,18 +2,18 @@ import { Prerequisites } from "/snippets/get-started/prerequisites/user-authenti
 
 <Prerequisites />
 
-### Prepare the Next.js app
+### Create a Next.js app
 
 Use a starter template or create a Next.js web application using Next.js version 15 or above.
 
-**Recommended**: To use a starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
+**Recommended**: Use this starter template from the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
 
 ```bash wrap lines
 git clone https://github.com/auth0-samples/auth0-ai-samples.git
 cd auth0-ai-samples/authenticate-users/vercel-ai-next-js-starter
 ```
 
-Else, create a new application using [create-next-app](https://nextjs.org/docs/app/getting-started/installation):
+**Or:** Create a new application using [create-next-app](https://nextjs.org/docs/app/getting-started/installation):
 
 ```bash wrap lines
 npx create-next-app@15 --src-dir
@@ -27,25 +27,32 @@ In the root directory of your project, install the [Auth0 Next.js SDK](http://ne
 npm i @auth0/nextjs-auth0@4
 ```
 
-### Add login to your application
+### Add log in to your application
 
-Secure the application using the Auth0 Next.js SDK.
+Secure your application using the Auth0 Next.js SDK.
 
 #### Create your environment file
 
-In the root directory of your project, create the `.env.local` file and add the following variables. You can find your Auth0 domain and client ID in the application you created in the Auth0 Dashboard.
+In the root directory of your project, create a new file and name it `.env.local` and add the following content:
 
 ```bash .env.local wrap lines
 APP_BASE_URL='http://localhost:3000'
-AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
+AUTH0_SECRET='random 32 byte value'
 AUTH0_DOMAIN='<your-auth0-domain>'
 AUTH0_CLIENT_ID='<your-auth0-application-client-id>'
 AUTH0_CLIENT_SECRET='<your-auth0-application-client-secret>'
 ```
+Access your <code>AUTH0_DOMAIN</code>, <code>AUTH0_CLIENT_ID</code>, and <code>AUTH0_CLIENT_SECRET</code> by viewing the Auth0 Application that you created in the Auth0 Dashboard and navigating to the Basic Information section at the top of the Settings tab.
+Copy each value to the matching setting.
+
+Next, run this command to generate a random 32 byte value and copy it to the <code>AUTH0_SECRET</code> field.
+```bash generate random 32 byte value
+openssl rand -hex 32
+```
 
 #### Create the Auth0 client
 
-Create a file at `src/lib/auth0.ts` and instantiate a new Auth0 client:
+Create a new file in the `src/lib` directory and name it `auth0.ts`. Add the following code to create a new Auth0 client:
 
 ```tsx src/lib/auth0.ts wrap lines
 import { Auth0Client } from "@auth0/nextjs-auth0/server";
@@ -58,7 +65,7 @@ The Auth0 client provides methods for handling authentication, sessions, and use
 
 #### Add the authentication middleware
 
-The middleware intercepts incoming requests and applies Auth0's authentication logic. Create the following file at `src/middleware.ts`:
+The middleware intercepts incoming requests and applies Auth0's authentication logic. Create a new file in the `src` directory and name it `middleware.ts`. Add the following code to the file:
 
 ```tsx src/middleware.ts wrap lines
 import { NextRequest, NextResponse } from "next/server";
@@ -96,9 +103,10 @@ export const config = {
 };
 ```
 
-#### Add Login and Sign up buttons
+#### Add Log in and Sign up buttons
 
-Update the `src/app/page.tsx` file to display content based on the user session:
+Update the `src/app/page.tsx` file with the following code to check if the user is signed in or not.
+It will display the **Sign up** or **Log in** buttons without a user session. If a user session exists, the app displays a welcome message with the user's name.
 
 ```tsx src/app/page.tsx wrap lines highlight={5,7-27, 36}
 //...
@@ -143,11 +151,9 @@ export default async function Home() {
 }
 ```
 
-The app displays the **Sign up** or **Log in** buttons without a user session. If a user session exists, the app displays a welcome message with the user's name.
-
 ### Add User Profile Dropdown (Optional)
 
-If you are using the starter template, you can add a user profile dropdown to your application.
+If you are using the starter template, you can add a user profile dropdown to your application. Update the `src/app/layout.tsx` file:
 
 ```tsx src/app/layout.tsx wrap lines highlight={2,3,10,21-28}
 //...
@@ -207,7 +213,4 @@ You will see:
   ![Auth0 login screen](/img/user_authentication_quickstart_login_screen.png)
 </Frame>
 
-- A **Sign up** and **Log in** button if the user is not authenticated.
-- A welcome message and user profile dropdown if the user is authenticated.
-
-Explore [the example app on GitHub](https://github.com/auth0-samples/auth0-ai-samples/tree/main/authenticate-users/vercel-ai-next-js).
+Sign up to your application to create a new user account. You will then see a welcome message with your user name. You can sign in with that account on future visits.
