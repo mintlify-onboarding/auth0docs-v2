@@ -3,13 +3,14 @@ title: Slack
 description: "Connect your AI Agents to Slack for team communication and workflow automation."
 ---
 
-import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
-import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
-
 The Sign in with Slack integration enables your AI Agents to authenticate users with their Slack accounts and interact with Slack workspaces on their behalf.
 
 <Info>
-By default, Auth0 automatically syncs user profile data with each user login, thereby ensuring that changes made in the connection source are automatically updated in Auth0. Optionally, you can [disable user profile data synchronization](https://auth0.com/docs/users/configure-connection-sync-with-auth0) to allow for updating profile attributes from your application.
+  By default, Auth0 automatically syncs user profile data with each user login,
+  thereby ensuring that changes made in the connection source are automatically
+  updated in Auth0. Optionally, you can [disable user profile data
+  synchronization](https://auth0.com/docs/users/configure-connection-sync-with-auth0)
+  to allow for updating profile attributes from your application.
 </Info>
 
 ## Overview
@@ -20,16 +21,26 @@ The Sign in with Slack integration is ideal for AI agents that need to participa
 
 <Steps>
   <Step title="Set up app in Slack">
-    1. Sign up for a [Slack Developer account](https://slack.com/signin)
-    2. If you haven't already, create a [Slack App](https://api.slack.com/apps/new)
+    1. Sign up for a [Slack Developer account](https://slack.com/signin) 2. If
+    you haven't already, create a [Slack App](https://api.slack.com/apps/new)
   </Step>
   <Step title="Configure for Auth0">
-    1. Once your app is created, copy and paste the Client ID and Client Secret into the Auth0 configuration screen.
-    2. Next, click on OAuth & Permissions in the Features menu on the left. Use the following settings when configuring your app:
-      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+    1. Once your app is created, copy and paste the Client ID and Client Secret
+    into the Auth0 configuration screen. 2. Next, click on OAuth & Permissions
+    in the Features menu on the left. Use the following settings when
+    configuring your app: - Redirect URI: `https://YOUR_DOMAIN/login/callback`
   </Step>
 </Steps>
 
-<Auth0DomainInfo />
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 
-<AddConnectionInAuth0 />
+<FindDomainInfoBlock />
+
+## Account linking
+
+If you want to use more than one connection for a user, you can link their accounts. This allows the user to log in with any of their linked accounts and have a single user profile in your application. This allows calling APIs from different providers with a single user profile. Learn more about [Client-initiated account linking](/guides/client-initiated-account-linking).
+
+## Learn more
+
+- Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs. To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+- Learn how to get an access token to make a tool call by completing the [Call other's APIs on user's behalf quickstart](/get-started/call-others-apis-on-users-behalf).

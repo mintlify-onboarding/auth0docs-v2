@@ -3,9 +3,6 @@ title: GitHub
 description: "Connect your AI Agents to GitHub for repository access, issue management, and developer workflows."
 ---
 
-import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
-import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
-
 The GitHub integration allows your AI Agents to authenticate users with their GitHub accounts and access GitHub repositories and manage issues their behalf.
 
 ## Overview
@@ -16,23 +13,78 @@ The GitHub integration is perfect for developer focused AI applications that nee
 
 <Steps>
   <Step title="Set up app in Github">
-    1. Sign up for a [GitHub Developer account](https://github.com/settings/developers)
-    2. Set up an app using Box's [GitHub Developer Settings: OAuth Apps](https://github.com/settings/developers#oauth-apps) documentation
-    3. Note your **Client ID** and **Client Secret**
+    <ol>
+      <li>
+        Sign up for a [GitHub Developer account](https://github.com/signup)
+      </li>
+      <li>
+        Set up a new OAuth app via [GitHub Developer Settings: OAuth
+        Apps](https://github.com/settings/developers#oauth-apps)
+      </li>
+      <li>
+        Use the following settings when configuring your app:
+        <ul>
+          <li>Homepage URL: `https://YOUR_AUTH0_DOMAIN`</li>
+          <li>
+            Authorization callback URL:
+            `https://YOUR_AUTH0_DOMAIN/login/callback`
+          </li>
+        </ul>
+      </li>
+      <li>
+        Create the app and generate a new client secret in the app settings page
+        that appears.
+      </li>
+      <li>Note your **Client ID** and **Client Secret**</li>
+    </ol>
   </Step>
-  <Step title="Configure for Auth0">
-    1. Use the following settings when configuring your app:
-      - Homepage URL: `https://YOUR_DOMAIN`
-      - Authorization callback URL: `https://YOUR_DOMAIN/login/callback`
+  <Step title="Configure the GitHub Social Connection in Auth0">
+    <ol>
+      <li>
+        In the [Auth0 Dashboard](https://manage.auth0.com/), navigate to
+        **Authentication > Social**. Select **Create Connection** and then
+        **GitHub**. Click **Continue**.
+      </li>
+      <li>
+        In **General**, enter the **Client ID** and **Client Secret** from the
+        GitHub OAuth app you created.
+      </li>
+      <li>
+        In **Permissions**, select all the required scopes. When you get an
+        access token for the GitHub social connection, it will contain the
+        appropriate scopes so you can use it to call the required GitHub APIs.
+      </li>
+      <li>
+        In **Advanced**, toggle **Enable Token Vault**. This allows the
+        connection to retrieve and store access tokens for third-party APIs
+        securely. To learn more, read [Configure Token
+        Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+      </li>
+      <li>Click **Create**.</li>
+      <li>
+        After saving, go the **Applications** tab and select the applications
+        that should use this connection.
+      </li>
+    </ol>
   </Step>
 </Steps>
 
-<Auth0DomainInfo />
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 
-<AddConnectionInAuth0 />
+<FindDomainInfoBlock />
 
 <Warning>
-<b>Troubleshooting</b>
+<strong>Troubleshooting</strong>
 
 If you are receiving `Access Denied` when calling the GitHub API, you probably have not requested the correct permissions for the user during login. To learn more, see [Add scopes/permissions to call Identity Provider's APIs](https://auth0.com/docs/connections/adding-scopes-for-an-external-idp).
+
 </Warning>
+
+## Account linking
+
+If you want to use more than one connection for a user, you can link their accounts. This allows the user to log in with any of their linked accounts and have a single user profile in your application. This allows calling APIs from different providers with a single user profile. Learn more about [Client-initiated account linking](/guides/client-initiated-account-linking).
+
+## Learn more
+
+- Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs. To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+- Learn how to get an access token to make a tool call by completing the [Call other's APIs on user's behalf quickstart](/get-started/call-others-apis-on-users-behalf).

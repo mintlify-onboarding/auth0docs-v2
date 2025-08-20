@@ -3,8 +3,6 @@ title: Google
 description: "Connect your AI Agents to Google services including Gmail, Google Calendar, Drive, and more."
 ---
 
-import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
-
 The Google integration allows users to log in to your AI Agents using their Google profile. To complete the [Call other's APIs on user's behalf quickstart](/get-started/call-others-apis-on-users-behalf), you need to set up a Google social connection.
 
 To set up a Google social connection, you must:
@@ -67,6 +65,13 @@ In the Google Cloud Console, [configure your Google OAuth consent screen](https:
 </Steps>
 
 ### Create Google OAuth Client
+
+To create a Google OAuth 2.0 Client, you need your Auth0 domain.
+
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
+
+<FindDomainInfoBlock />
+
 In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.cloud.google.com/auth/clients/create):
 
 <Steps>
@@ -80,8 +85,11 @@ In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.clo
     Enter the following information for your OAuth 2.0 Client:
     <ul>
       <li>**Name**: The name of your OAuth 2.0 Client.</li>
-      <li>**Authorized Javascript origins**: `https://{YOUR_DOMAIN}`</li>
-      <li>**Authorized redirect URIs**: `https://{YOUR_DOMAIN}/login/callback`</li>
+      <li>**Authorized Javascript origins**: `https://{YOUR_AUTH0_DOMAIN}`</li>
+      <li>
+        **Authorized redirect URIs**: `https://{YOUR_AUTH0_DOMAIN}
+        /login/callback`
+      </li>
     </ul>
     <Auth0DomainInfo />
   </Step>
@@ -94,7 +102,7 @@ Use the Auth0 Dashboard to create and configure a Google social connection with 
 
 ### Create Google social connection
 
-Use the Auth0 Dashboard to create a new Google social connection.
+Use the [Auth0 Dashboard](https://manage.auth0.com/) to create a new Google social connection.
 
 <Steps>
   <Step title="Create Connection">
@@ -119,17 +127,27 @@ Use the Auth0 Dashboard to create a new Google social connection.
     scopes so you can use it to call the required Google APIs.
   </Step>
   <Step title="Enable Token Vault">
-    In **Advanced**, toggle **Enable Token Vault**. This allows the connection to retrieve and store access tokens for third-party APIs securely. To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+    In **Advanced**, toggle **Enable Token Vault**. This allows the connection
+    to retrieve and store access tokens for third-party APIs securely. To learn
+    more, read [Configure Token
+    Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
   </Step>
   <Step title="Save">Click **Save Changes**.</Step>
+  <Step title="Enable Applications">
+    After saving, go the **Applications** tab and select the applications that
+    should use this connection.
+  </Step>
 </Steps>
 
 ### Test connection
 
 Once you have created your Google social connection, [test your connection](https://auth0.com/docs/dashboard/guides/connections/test-connections-social).
 
-## Next steps
+## Account linking
+
+If you want to use more than one connection for a user, you can link their accounts. This allows the user to log in with any of their linked accounts and have a single user profile in your application. This allows calling APIs from different providers with a single user profile. Learn more about [Client-initiated account linking](/guides/client-initiated-account-linking).
+
+## Learn more
 
 - Learn how to get an access token to make a tool call by completing the [Call other's APIs on user's behalf quickstart](/get-started/call-others-apis-on-users-behalf).
 - Learn more about using [Google for social login](https://developer.auth0.com/resources/labs/authentication/google-social-connection-to-login#introduction).
-
