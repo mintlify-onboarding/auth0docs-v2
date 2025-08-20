@@ -123,8 +123,8 @@ export const integrations = [
       "Allow your AI Agents to search, create, and modify files in Box.",
   },
   {
-    id: "custom",
-    title: "Custom OAuth2",
+    id: "oauth2",
+    title: "OAuth2",
     icon: "/ai/docs/img/integrations/oauth2-avatar.png",
     href: "/integrations/oauth2",
     status: "Available",
@@ -210,6 +210,6 @@ export const integrations = [
     status: "Available",
     type: "Social",
     description:
-      "Allow your AI Agent to create and schedule new posts (text, photo, video), reblog content, and manage a user's blog theme and settings."
-  }
+      "Allow your AI Agent to create and schedule new posts (text, photo, video), reblog content, and manage a user's blog theme and settings.",
+  },
 ];
