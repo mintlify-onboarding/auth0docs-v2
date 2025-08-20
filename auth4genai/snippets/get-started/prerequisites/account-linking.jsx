@@ -1,5 +1,5 @@
 export const Prerequisites = ({
-  callbackUrl = "https://AUTH0_DOMAIN/continue"
+  callbackUrl = "https://AUTH0_DOMAIN/continue",
 }) => {
   return (
     <>
@@ -16,7 +16,10 @@ export const Prerequisites = ({
         <Step title="Create an Auth0 Application">
           Go to your {" "}
           <a href="https://manage.auth0.com/dashboard" target="_blank">
-            Auth0 Dashboard</a>{" "}to create a new Auth0 Application.
+            Create and configure an Auth0 Application
+          </a>{" "}
+          or use an existing one. When creating a new app, use the following
+          properties:
           <ul>
             <li>
               Navigate to <code>Applications {">"} Applications</code> in the left sidebar.
@@ -35,7 +38,7 @@ export const Prerequisites = ({
             </li>
             <li>
               Copy the <code>Domain</code> from the <code>Basic Information</code> section to your clipboard.
-            </li>            
+            </li>
             <li>
               Scroll down to the <code>Application URIs</code> section.
             </li>
@@ -46,12 +49,23 @@ export const Prerequisites = ({
               Click <code>Save</code> in the bottom right to save your changes.
             </li>
           </ul>
+          If using an existing app, ensure to add the above callback URL to it.
+          To learn more about Auth0 applications, read{" "}
+          <a
+            href="https://auth0.com/docs/get-started/applications"
+            target="_blank"
+          >
+            Applications
+          </a>
+          .
         </Step>
         <Step title="Enable your Application to use the Auth0 Management API">
           Now switch to the <code>APIs</code> tab and enable the toggle next to the Auth0 Management API.
           <br />
-          Next, click the expand arrow to the right of the toggle to view the permissions. Use the filter to find and select the
-          <code>create:users</code> and <code>update:users</code> permissions and click <strong>Update</strong>{" "}
+          <br />
+          Now, click the expand arrow next to the toggle to view the
+          permissions. Enable the
+          <code>update:users</code> permission and click <strong>Update</strong>{" "}
           to save the changes.
           <Frame>
             <img
@@ -740,7 +754,7 @@ function sha256(str) {
 
 // End: Helper Utilities`}
           </CodeBlock>
-        
+
           Click <code>Save Draft</code>
         </Step>
         <Step title="Set Secrets and Dependencies for your Auth0 Action">
@@ -779,7 +793,7 @@ function sha256(str) {
           tab (represented with a package icon) and click <code>Add Dependency</code> to add the following dependencies:
           <ul>
             <li>
-              Name: <code>auth0</code>, Version: <code>4.21.0</code>
+              <code>auth0</code>: <code>^4.28.0</code>
             </li>
             <li>
               Name: <code>openid-client</code>, Version: <code>6.3.4</code>
@@ -805,12 +819,11 @@ function sha256(str) {
         </Step>
 
         <Step title="Attach your Auth0 Action to the Post Login Trigger">
-          In the Dashboard, navigate to{" "}
-          <strong>Actions &gt; Triggers</strong> and click on the{" "}
-          <code>post-login</code> trigger. From the <strong>Add Action</strong>{" "}
-          side panel on the right side, select the <strong>account-linking</strong> Action and drag
-          it into your flow between Start and Complete. If you have other Actions, make sure it is the first Action in the flow.
-          If you do not see the Action listed, try refreshing the page.
+          In the Dashboard, navigate to <strong>Actions &gt; Triggers</strong>{" "}
+          and click on the <code>post-login</code> trigger. From the{" "}
+          <strong>Add Action</strong> side panel, select the{" "}
+          <strong>account-linking</strong> Action and drag it into your flow.
+          Make sure it is the first Action in the flow.
           <br />
           <Frame>
             <img
