@@ -143,6 +143,37 @@ Use the [Auth0 Dashboard](https://manage.auth0.com/) to create a new Google soci
 
 Once you have created your Google social connection, [test your connection](https://auth0.com/docs/dashboard/guides/connections/test-connections-social).
 
+## Token Vault configuration Example
+
+To configure the Token Vault for your Google connection, you can use the following code snippet in your application:
+
+<Tabs>
+  <Tab title="JavaScript" icon="js">
+    ```tsx wrap lines
+    const auth0AI = new Auth0AI();
+
+    export const withGoogleConnection = auth0AI.withTokenForConnection({
+      connection: "google-oauth2",
+      scopes: ["https://www.googleapis.com/auth/calendar.freebusy", ...],
+      refreshToken: getAuth0RefreshToken(),
+    });
+    ```
+
+  </Tab>
+  <Tab title="Python" icon="python">
+    ```python wrap lines
+    auth0_ai = Auth0AI()
+
+    with_google_connection = auth0_ai.with_federated_connection(
+        connection="google-oauth2",
+        scopes=["https://www.googleapis.com/auth/calendar.freebusy", ...],
+        refresh_token=get_auth0_refresh_token,
+    )
+    ```
+
+  </Tab>
+</Tabs>
+
 ## Account linking
 
 If you want to use more than one connection for a user, you can link their accounts. This allows the user to log in with any of their linked accounts and have a single user profile in your application. This allows calling APIs from different providers with a single user profile. Learn more about [Client-initiated account linking](/guides/client-initiated-account-linking).

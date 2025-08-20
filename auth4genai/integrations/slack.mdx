@@ -35,6 +35,37 @@ import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 
 <FindDomainInfoBlock />
 
+## Token Vault configuration Example
+
+To configure the Token Vault for your GitHub connection, you can use the following code snippet in your application:
+
+<Tabs>
+  <Tab title="JavaScript" icon="js">
+    ```tsx wrap lines
+    const auth0AI = new Auth0AI();
+
+    export const withSlackConnection = auth0AI.withTokenForConnection({
+      connection: "sign-in-with-slack",
+      scopes: ["channels:read", ...],
+      refreshToken: getAuth0RefreshToken(),
+    });
+    ```
+
+  </Tab>
+  <Tab title="Python" icon="python">
+    ```python wrap lines
+    auth0_ai = Auth0AI()
+
+    with_slack_connection = auth0_ai.with_federated_connection(
+        connection="sign-in-with-slack",
+        scopes=["channels:read", ...],
+        refresh_token=get_auth0_refresh_token,
+    )
+    ```
+
+  </Tab>
+</Tabs>
+
 ## Account linking
 
 If you want to use more than one connection for a user, you can link their accounts. This allows the user to log in with any of their linked accounts and have a single user profile in your application. This allows calling APIs from different providers with a single user profile. Learn more about [Client-initiated account linking](/guides/client-initiated-account-linking).
