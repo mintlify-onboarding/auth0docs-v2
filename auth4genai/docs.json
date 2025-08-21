@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Auth0",
   "colors": {
-    "primary": "#5001FF",
-    "light": "#5001FF",
-    "dark": "#341773"
+    "primary": "#6742D5",
+    "light": "#B3A7FF",
+    "dark": "#343434"
   },
   "favicon": "/favicon.svg",
   "fonts": {
