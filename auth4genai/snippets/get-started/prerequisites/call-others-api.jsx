@@ -1,76 +1,236 @@
+/**
+ * Prerequisites for call-others-api quickstarts.
+ * @param {Object} props - The props object
+ *
+ * @param {Object|undefined} [props.createAuth0ApplicationStep] - Configuration for Auth0 application creation step
+ * @param {string} [props.createAuth0ApplicationStep.applicationType] - Type of Auth0 application (e.g., "Regular Web")
+ * @param {string} [props.createAuth0ApplicationStep.callbackUrl] - Allowed callback URL for the application
+ * @param {string} [props.createAuth0ApplicationStep.logoutUrl] - Allowed logout URL for the application
+ *
+ * @param {string|undefined} [props.createAuth0ApplicationStep.allowedWebOrigins] - Allowed web origins for the application
+ *
+ * @param {Object|undefined} [props.refreshTokenGrantStep] - Configuration for refresh token grant step
+ * @param {string} [props.refreshTokenGrantStep.applicationName] - Name of the application for refresh token grant
+ *
+ * @param {Object|undefined} [props.createAuth0ApiStep] - Configuration for Auth0 API creation step
+ *
+ * @param {Object|undefined} [props.createResourceServerClientStep] - Configuration for resource server client creation step
+ *
+ * @param {Object|undefined} [props.tokenExchangeGrantStep] - Configuration for token exchange grant step
+ * @param {string} [props.tokenExchangeGrantStep.applicationName] - Name of the application for token exchange grant
+ *
+ * @returns {JSX.Element} A React component containing prerequisite steps
+ */
+
 export const Prerequisites = ({
-  callbackUrl = "http://localhost:3000/auth/callback",
-  logoutUrl = "http://localhost:3000",
+  createAuth0ApplicationStep = {
+    applicationType: "Regular Web",
+    callbackUrl: "http://localhost:3000/auth/callback",
+    logoutUrl: "http://localhost:3000",
+    allowedWebOrigins: undefined,
+  },
+  refreshTokenGrantStep = undefined,
+  createAuth0ApiStep = undefined,
+  createResourceServerClientStep = undefined,
+  tokenExchangeGrantStep = undefined,
 }) => {
+  // Build steps array dynamically based on conditions
+  const steps = [];
+
+  // Always include these steps
+  steps.push(
+    <Step key="auth0-account" title="Create an Auth0 Account and a Dev Tenant">
+      To continue with this quickstart, you need an{" "}
+      <a
+        href="https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM"
+        target="_blank"
+      >
+        Auth0 account
+      </a>{" "}
+      and a Developer Tenant.
+    </Step>
+  );
+
+  if (createAuth0ApplicationStep) {
+    steps.push(
+      <Step key="auth0-application" title="Create an Auth0 Application">
+        <a href="https://manage.auth0.com/dashboard" target="_blank">
+          Create and configure an Auth0 Application
+        </a>{" "}
+        with the following properties:
+        <ul>
+          <li>
+            Type: <code>{createAuth0ApplicationStep.applicationType}</code>
+          </li>
+          <li>
+            Allowed Callback URLs: <code>{createAuth0ApplicationStep.callbackUrl}</code>
+          </li>
+          <li>
+            Allowed Logout URLs: <code>{createAuth0ApplicationStep.logoutUrl}</code>
+          </li>
+          {createAuth0ApplicationStep.allowedWebOrigins && (
+            <li>
+              Allowed Web Origins: <code>{createAuth0ApplicationStep.allowedWebOrigins}</code>
+            </li>
+          )}
+        </ul>
+        To learn more about Auth0 applications, read{" "}
+        <a
+          href="https://auth0.com/docs/get-started/applications"
+          target="_blank"
+        >
+          Applications
+        </a>
+        .
+      </Step>
+    );
+  }
+  // Conditionally add steps
+  if (refreshTokenGrantStep) {
+    steps.push(
+      <Step key="refresh-token" title="Enable Refresh Token Grant">
+        Enable the Refresh Token Grant for your{" "}
+        {refreshTokenGrantStep.applicationName}. Go to{" "}
+        <strong>
+          Applications &gt; [Your Application] &gt; Settings &gt; Advanced &gt;
+          Grant Types
+        </strong>{" "}
+        and enable the <strong>Refresh Token</strong> grant type.
+      </Step>
+    );
+  }
+
+  if (createAuth0ApiStep) {
+    steps.push(
+      <Step key="auth0-api" title="Create an Auth0 API">
+        <ul>
+          <li>In your Auth0 Dashboard, go to <strong>Applications &gt; APIs</strong></li>
+          <li>Create a new API with an identifier (audience)</li>
+          <li>Once API is created, go to the APIs <strong>Settings &gt; Access Settings</strong> and enable <strong>Allow Offline Access</strong></li>
+          <li>Note down the API identifier for your environment variables</li>
+        </ul>
+        To learn more about Auth0 APIs, read{" "}
+        <a
+          href="https://auth0.com/docs/get-started/auth0-overview/set-up-apis"
+          target="_blank"
+        >
+          APIs
+        </a>
+        .
+      </Step>
+    );
+  }
+
+  if (createResourceServerClientStep) {
+    steps.push(
+      <Step key="resource-server" title="Create a Resource Server Client">
+        This is a special client that allows your API server to perform token
+        exchanges using{" "}
+        <strong>
+          <i>access tokens</i>
+        </strong>{" "}
+        instead of{" "}
+        <strong>
+          <i>refresh tokens</i>
+        </strong>
+        . This client enables Token Vault to exchange an access token for an
+        external API access token (e.g., Google Calendar API).
+        <br />
+        <br />
+        Create this client programmatically via the Auth0 Management API:
+
+          <CodeBlock
+            language="bash"
+            expandable="true"
+            lines="true"
+            filename="Create Resource Server Client"
+          >
+            {`curl -L 'https://{tenant}.auth0.com/api/v2/clients' \\
+-H 'Content-Type: application/json' \\
+-H 'Accept: application/json' \\
+-H 'Authorization: Bearer {MANAGEMENT_API_TOKEN}' \\
+-d '{
+  "name": "Calendar API Resource Server Client",
+  "app_type": "resource_server",
+  "grant_types": ["urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token"],
+  "resource_server_identifier": "YOUR_API_IDENTIFIER"
+}'`}
+          </CodeBlock>
+
+        <ul>
+          <li>
+            Note that your <code>MANAGEMENT_API_TOKEN</code> above must have the{" "}
+            <code>create:clients</code> scope in order to create a new client.
+            One way you can create a new token with this access is by doing the
+            following:
+            <ul>
+              <li>
+                Navigate to <strong>Applications &gt; APIs &gt; Auth0 Management API &gt; API Explorer</strong>
+                tab in your tenant
+              </li>
+              <li>Hit the <strong>Create &amp; Authorize Test Application</strong> button</li>
+              <li>
+                Copy the jwt access token shown and provide it as the{" "}
+                <code>MANAGEMENT_API_TOKEN</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Note down the <code>client_id</code> and <code>client_secret</code>{" "}
+            returned from the curl response for your environment variables after running curl
+            successfully.
+          </li>
+        </ul>
+      </Step>
+    );
+  }
+
+  if (tokenExchangeGrantStep) {
+    steps.push(
+      <Step key="token-exchange" title="Enable Token Exchange Grant">
+        Enable the Token Exchange Grant for your{" "}
+        {tokenExchangeGrantStep.applicationName}. Go to{" "}
+        <strong>
+          Applications &gt; [Your Application] &gt; Settings &gt; Advanced &gt;
+          Grant Types
+        </strong>{" "}
+        and enable the <strong>Token Exchange</strong> grant type.
+      </Step>
+    );
+  }
+
+  // Always include these final steps
+  steps.push(
+    <Step key="google-connection" title="Configure Google Social Connection">
+      Set up a Google developer account that allows for third-party API calls
+      following the{" "}
+      <a href="/integrations/google">
+        Google Sign-in and Authorization
+      </a>{" "}
+      instructions.
+    </Step>
+  );
+
+  steps.push(
+    <Step key="openai" title="OpenAI Platform">
+      Set up an{" "}
+      <a
+        href="https://platform.openai.com/docs/libraries#create-and-export-an-api-key"
+        target="_blank"
+      >
+        OpenAI account and API key
+      </a>
+      .
+    </Step>
+  );
+
   return (
     <>
       <Heading level={3} id="prerequisites">
         Prerequisites
       </Heading>
       Before getting started, make sure you have completed the following steps:
-      <Steps>
-        <Step title="Create an Auth0 Account and a Dev Tenant">
-          To continue with this quickstart, you need an{" "}
-          <a
-            href="https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM"
-            target="_blank"
-          >
-            Auth0 account
-          </a>{" "}
-          and a Developer Tenant.
-        </Step>
-        <Step title="Create an Auth0 Application">
-          <a href="https://manage.auth0.com/dashboard" target="_blank">
-            Create and configure an Auth0 Application
-          </a>{" "}
-          with the following properties:
-          <ul>
-            <li>
-              Type: <code>Regular Web</code>
-            </li>
-            <li>
-              Allowed Callback URLs: <code>{callbackUrl}</code>
-            </li>
-            <li>
-              Allowed Logout URLs: <code>{logoutUrl}</code>
-            </li>
-          </ul>
-          To learn more about Auth0 applications, read{" "}
-          <a
-            href="https://auth0.com/docs/get-started/applications"
-            target="_blank"
-          >
-            Applications
-          </a>
-          .
-        </Step>
-        <Step title="Enable Token Exchange Grant">
-          Enable the Token Exchange Grant for your Auth0 Application. Go to{" "}
-          <strong>
-            Applications &gt; [Your Application] &gt; Settings &gt; Advanced
-            &gt; Grant Types
-          </strong>{" "}
-          and enable the <strong>Token Exchange</strong> grant type.
-        </Step>
-
-        <Step title="Configure Google Social Connection">
-          Set up a Google developer account that allows for third-party API
-          calls following the{" "}
-          <a href="/integrations/google">Google Sign-in and Authorization</a>{" "}
-          instructions.
-        </Step>
-
-        <Step title="OpenAI Platform">
-          Set up an{" "}
-          <a
-            href="https://platform.openai.com/docs/libraries#create-and-export-an-api-key"
-            target="_blank"
-          >
-            OpenAI account and API key
-          </a>
-          .
-        </Step>
-      </Steps>
+      <Steps>{steps}</Steps>
     </>
   );
 };
