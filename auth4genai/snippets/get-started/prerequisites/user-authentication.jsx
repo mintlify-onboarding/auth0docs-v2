@@ -9,30 +9,45 @@ export const Prerequisites = ({
       </Heading>
       Before getting started, make sure you have completed the following steps:
       <Steps>
-        <Step title="Create an Auth0 Account and a Dev Tenant">
-          To continue with this quickstart, you need an{" "}
+        <Step title="Create an Auth0 Account">
+          To continue with this quickstart, you need to have  an{" "}
           <a
             href="https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM"
             target="_blank"
           >
-            Auth0 account
-          </a>{" "}
-          and a Developer Tenant.
+            Auth0 account.
+          </a>
         </Step>
         <Step title="Create an Auth0 Application">
+          Go to your {" "}
           <a href="https://manage.auth0.com/dashboard" target="_blank">
-            Create and configure an Auth0 Application
+            Auth0 Dashboard
           </a>{" "}
-          with the following properties:
+          to create a new Auth0 Application.
           <ul>
             <li>
-              Type: <code>Regular Web</code>
+              Navigate to <code>Applications {">"} Applications</code> in the left sidebar.
             </li>
             <li>
-              Allowed Callback URLs: <code>{callbackUrl}</code>
+              Click the <code>Create Application</code> button in the top right.
             </li>
             <li>
-              Allowed Logout URLs: <code>{logoutUrl}</code>
+              In the pop-up select <code>Regular Web Applications</code> and click <code>Create</code>.
+            </li>
+            <li>
+              Once the Application is created, switch to the <code>Settings</code> tab.
+            </li>
+            <li>
+              Scroll down to the <code>Application URIs</code> section.
+            </li>
+            <li>
+              Set Allowed Callback URLs as: <code>{callbackUrl}</code>
+            </li>
+            <li>
+              Set Allowed Logout URLs as: <code>{logoutUrl}</code>
+            </li>
+            <li>
+              Click <code>Save</code> in the bottom right to save your changes.
             </li>
           </ul>
           To learn more about Auth0 applications, read{" "}
