@@ -11,6 +11,13 @@ The GitHub integration is perfect for developer focused AI applications that nee
 
 ## Configuration
 
+<Warning>
+<strong>GitHub app permissions</strong>
+
+GitHub apps [use fine grained permissions](https://docs.github.com/en/enterprise-server@3.17/apps/oauth-apps/building-oauth-apps/differences-between-github-apps-and-oauth-apps#requesting-permission-levels-for-resources) and hence requesting permissions when configuring Token Vault is not supported. Instead, you should set the required permissions when creating the GitHub app in the GitHub developer settings.
+
+</Warning>
+
 <Steps>
   <Step title="Set up app in Github">
     <ol>
@@ -18,17 +25,16 @@ The GitHub integration is perfect for developer focused AI applications that nee
         Sign up for a [GitHub Developer account](https://github.com/signup)
       </li>
       <li>
-        Set up a new OAuth app via [GitHub Developer Settings: OAuth
-        Apps](https://github.com/settings/developers#oauth-apps)
+        Set up a new GitHub app via [GitHub Developer Settings > GitHub
+        Apps](https://github.com/settings/apps/new)
       </li>
       <li>
-        Use the following settings when configuring your app:
+        Use the following settings when configuring your GitHub app:
         <ul>
           <li>Homepage URL: `https://YOUR_AUTH0_DOMAIN`</li>
-          <li>
-            Authorization callback URL:
-            `https://YOUR_AUTH0_DOMAIN/login/callback`
-          </li>
+          <li>Callback URL: `https://YOUR_AUTH0_DOMAIN/login/callback`</li>
+          <li>Webhook Active: Disabled</li>
+          <li>Permissions: Select the appropriate permissions for your app</li>
         </ul>
       </li>
       <li>
@@ -50,11 +56,6 @@ The GitHub integration is perfect for developer focused AI applications that nee
         GitHub OAuth app you created.
       </li>
       <li>
-        In **Permissions**, select all the required scopes. When you get an
-        access token for the GitHub social connection, it will contain the
-        appropriate scopes so you can use it to call the required GitHub APIs.
-      </li>
-      <li>
         In **Advanced**, toggle **Enable Token Vault**. This allows the
         connection to retrieve and store access tokens for third-party APIs
         securely. To learn more, read [Configure Token
@@ -73,13 +74,6 @@ import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 
 <FindDomainInfoBlock />
 
-<Warning>
-<strong>Troubleshooting</strong>
-
-If you are receiving `Access Denied` when calling the GitHub API, you probably have not requested the correct permissions for the user during login. To learn more, see [Add scopes/permissions to call Identity Provider's APIs](https://auth0.com/docs/connections/adding-scopes-for-an-external-idp).
-
-</Warning>
-
 ## Token Vault configuration Example
 
 To configure the Token Vault for your GitHub connection, you can use the following code snippet in your application:
@@ -91,7 +85,8 @@ To configure the Token Vault for your GitHub connection, you can use the followi
 
     export const withGitHubConnection = auth0AI.withTokenForConnection({
       connection: "github",
-      scopes: ["repo", ...],
+      // scopes are not supported for GitHub yet. Set required scopes when creating the accompanying GitHub app
+      scopes: [],
       refreshToken: getAuth0RefreshToken(),
     });
     ```
@@ -103,7 +98,8 @@ To configure the Token Vault for your GitHub connection, you can use the followi
 
     with_github_connection = auth0_ai.with_federated_connection(
         connection="github",
-        scopes=["repo", ...],
+        # scopes are not supported for GitHub yet. Set required scopes when creating the accompanying GitHub app
+        scopes=[],
         refresh_token=get_auth0_refresh_token,
     )
     ```
