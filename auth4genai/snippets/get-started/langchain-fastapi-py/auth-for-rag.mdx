@@ -7,7 +7,7 @@ import { Prerequisites } from "/snippets/get-started/prerequisites/auth-for-rag.
 
 ### Prepare the FastAPI app
 
-**Recommended**: Use the starter template, clone the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
+**Recommended**: Use the starter template by cloning the [Auth0 AI samples](https://github.com/auth0-samples/auth0-ai-samples) repository:
 
 ```bash wrap lines
 git clone https://github.com/auth0-samples/auth0-ai-samples.git
@@ -16,8 +16,8 @@ cd auth0-ai-samples/authenticate-users/langchain-fastapi-py
 
 The project is divided into two parts:
 
-- `backend/` contains the backend code for the Web app and API written in Python using FastAPI and the LangGraph agent.
-- `frontend/` contains the frontend code for the Web app written in React as a Vite SPA.
+- `backend/`: contains the backend code for the Web app and API written in Python using FastAPI and the LangGraph agent.
+- `frontend/`: contains the frontend code for the Web app written in React as a Vite SPA.
 
 ### Install dependencies
 
@@ -27,7 +27,7 @@ In the `backend` directory of your project, install the following dependencies:
 - `langgraph`: For building stateful, multi-actor applications with LLMs.
 - `langchain-openai`: [OpenAI](https://python.langchain.com/docs/integrations/chat/openai) provider for LangChain.
 - `langgraph-cli`: LangGraph CLI for running a local LangGraph server.
-- `openfga-sdk`: OpenFGA SDK for Fine-Grained Authorization
+- `openfga-sdk`: OpenFGA SDK for Fine-Grained Authorization.
 
 Make sure you have [uv](https://docs.astral.sh/uv/) installed and run the following command to install the dependencies:
 
@@ -39,13 +39,13 @@ uv add "auth0-ai-langchain>=1.0.0b3" openfga-sdk langgraph langchain-openai "lan
 
 ### Update the environment file
 
-Copy the `.env.example` file to `.env` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID and client secret in the application you created in the Auth0 dashboard.
+Copy the `.env.example` file to `.env` and update the variables with your Auth0 credentials. You can find your Auth0 domain, client ID, and client secret in the application you created in the Auth0 Dashboard.
 
 import SetupFGAStore from "/snippets/get-started/common/setup-fga-store.mdx";
 
 <SetupFGAStore />
 
-### Secure the RAG Tool
+### Secure the RAG tool
 
 After configuring your FGA Store, secure the RAG tool using Auth0 FGA and Auth0 AI SDK.
 
@@ -63,7 +63,7 @@ The starter application is already configured to handle documents and embeddings
 **Access Control with Auth0 FGA**
 
 - When a document is uploaded, the app automatically creates [FGA tuples](https://docs.fga.dev/fga-concepts#what-is-a-relationship-tuple) to define which users can access which documents. A tuple signifies a user's relation to a given object. For example, the below tuple implies that all users can view the `<document name>` object.
-- Navigate to the **Tuple Management** section to see the tuples being added. If you want to add a tuple manually for a document, click **+ Add Tuple**. Fill in the following information:
+- Navigate to the **Tuple Management** section to see the tuples being added. If you want to manually add a tuple for a document, click **+ Add Tuple**. Fill in the following information:
   - **User**: `user:*`
   - **Object**: select doc and add `<document name>` in the ID field
   - **Relation**: `viewer`
