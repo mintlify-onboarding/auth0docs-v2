@@ -3,6 +3,8 @@ title: OAuth2
 description: "Build a custom social connection for any OAuth2 compliant authorization server."
 ---
 
+import LearnMore from "/snippets/integrations/learn-more.mdx";
+
 The custom OAuth2 connection allows you to create integrations with any OAuth2 compliant service that isn't available as a built-in integration type.
 
 ## Overview
@@ -15,11 +17,4 @@ To learn more and configure a custom OAuth2 connection with Auth0, see our [Conn
 
 After creating the connection, at the bottom of the connection settings in the **Advanced** section enable the **Enable Token Vault** toggle. This will allow your connection to retrieve and store access tokens for third-party APIs.
 
-## Account linking
-
-If you want to use more than one connection for a user, you can link their accounts. This allows the user to log in with any of their linked accounts and have a single user profile in your application. This allows calling APIs from different providers with a single user profile. Learn more about [Client-initiated account linking](/guides/client-initiated-account-linking).
-
-## Learn more
-
-- Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs. To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
-- Learn how to get an access token to make a tool call by completing the [Call other's APIs on user's behalf quickstart](/get-started/call-others-apis-on-users-behalf).
+<LearnMore />
