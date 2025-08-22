@@ -3,6 +3,9 @@ title: Microsoft
 description: "Connect your AI Agents to Microsoft services including Outlook, Teams, OneDrive, and more."
 ---
 
+import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
+
 The Microsoft integration enables your AI Agents to access Microsoft applications and services.
 
 ## Overview
@@ -26,16 +29,6 @@ The Microsoft integration provides access to Microsoft's ecosystem of applicatio
   </Step>
 </Steps>
 
-<Info>
-<b>Find your Auth0 domain name</b>
+<Auth0DomainInfo />
 
-If your Auth0 domain name is not shown above and you are not using our custom domains feature, your domain name is your tenant name, your regional subdomain (unless your tenant is in the US region and was created before June 2020), plus`.auth0.com`. For example, if your tenant name were `exampleco-enterprises`, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your redirect URI would be `https://exampleco-enterprises.us.auth0.com/login/callback`. (If your tenant is in the US and was created before June 2020, then your domain name would be `https://exampleco-enterprises.auth0.com`.)
-
-If you are using [custom domains](https://auth0.com/docs/custom-domains), your redirect URI will have the following format: `https://<YOUR CUSTOM DOMAIN>/login/callback`.
-</Info>
-
-### Configure Token Vault
-
-You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
-
-To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+<AddConnectionInAuth0 />

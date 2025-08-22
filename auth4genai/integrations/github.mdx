@@ -3,6 +3,9 @@ title: GitHub
 description: "Connect your AI Agents to GitHub for repository access, issue management, and developer workflows."
 ---
 
+import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
+
 The GitHub integration allows your AI Agents to authenticate users with their GitHub accounts and access GitHub repositories and manage issues their behalf.
 
 ## Overview
@@ -24,22 +27,12 @@ The GitHub integration is perfect for developer focused AI applications that nee
   </Step>
 </Steps>
 
-<Info>
-<b>Find your Auth0 domain name</b>
+<Auth0DomainInfo />
 
-If your Auth0 domain name is not shown above and you are not using our custom domains feature, your domain name is your tenant name, your regional subdomain (unless your tenant is in the US region and was created before June 2020), plus`.auth0.com`. For example, if your tenant name were `exampleco-enterprises`, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your redirect URI would be `https://exampleco-enterprises.us.auth0.com/login/callback`. (If your tenant is in the US and was created before June 2020, then your domain name would be `https://exampleco-enterprises.auth0.com`.)
-
-If you are using [custom domains](https://auth0.com/docs/custom-domains), your redirect URI will have the following format: `https://<YOUR CUSTOM DOMAIN>/login/callback`.
-</Info>
+<AddConnectionInAuth0 />
 
 <Warning>
 <b>Troubleshooting</b>
 
 If you are receiving `Access Denied` when calling the GitHub API, you probably have not requested the correct permissions for the user during login. To learn more, see [Add scopes/permissions to call Identity Provider's APIs](https://auth0.com/docs/connections/adding-scopes-for-an-external-idp).
 </Warning>
-
-### Configure Token Vault
-
-You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
-
-To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).

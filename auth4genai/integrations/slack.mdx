@@ -3,7 +3,10 @@ title: Slack
 description: "Connect your AI Agents to Slack for team communication and workflow automation."
 ---
 
-The Slack integration enables your AI Agents to authenticate users with their Slack accounts and interact with Slack workspaces on their behalf.
+import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
+
+The Sign in with Slack integration enables your AI Agents to authenticate users with their Slack accounts and interact with Slack workspaces on their behalf.
 
 <Info>
 By default, Auth0 automatically syncs user profile data with each user login, thereby ensuring that changes made in the connection source are automatically updated in Auth0. Optionally, you can [disable user profile data synchronization](https://auth0.com/docs/users/configure-connection-sync-with-auth0) to allow for updating profile attributes from your application.
@@ -11,7 +14,7 @@ By default, Auth0 automatically syncs user profile data with each user login, th
 
 ## Overview
 
-The Slack integration is ideal for AI agents that need to participate in team communications, automate workflows, or provide intelligent assistance within Slack workspaces. This connection provides access to messages, channels, and workspace data.
+The Sign in with Slack integration is ideal for AI agents that need to participate in team communications, automate workflows, or provide intelligent assistance within Slack workspaces. This connection provides access to messages, channels, and workspace data.
 
 ## Configuration
 
@@ -27,16 +30,6 @@ The Slack integration is ideal for AI agents that need to participate in team co
   </Step>
 </Steps>
 
-<Info>
-<b>Find your Auth0 domain name</b>
+<Auth0DomainInfo />
 
-If your Auth0 domain name is not shown above and you are not using our custom domains feature, your domain name is your tenant name, your regional subdomain (unless your tenant is in the US region and was created before June 2020), plus`.auth0.com`. For example, if your tenant name were `exampleco-enterprises`, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your redirect URI would be `https://exampleco-enterprises.us.auth0.com/login/callback`. (If your tenant is in the US and was created before June 2020, then your domain name would be `https://exampleco-enterprises.auth0.com`.)
-
-If you are using [custom domains](https://auth0.com/docs/custom-domains), your redirect URI will have the following format: `https://<YOUR CUSTOM DOMAIN>/login/callback`.
-</Info>
-
-### Configure Token Vault
-
-You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
-
-To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+<AddConnectionInAuth0 />

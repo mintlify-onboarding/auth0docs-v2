@@ -1,0 +1,32 @@
+---
+title: Spotify
+description: "Connect your AI Agents to Spotify for music streaming, playlist management, and audio content."
+---
+
+import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
+
+The Spotify integration allows your AI Agents to authenticate users with their Spotify accounts and access music libraries, playlists, and listening data on their behalf.
+
+## Overview
+
+The Spotify integration is perfect for music and entertainment-focused AI applications that need to interact with music content, manage playlists, analyze listening habits, or automate music discovery workflows. This integration provides access to Spotify's comprehensive API for music and audio features.
+
+## Configuration
+
+<Steps>
+  <Step title="Set up app in Spotify">
+    1. Sign up for a [Spotify Developer account](https://developer.spotify.com/)
+    2. Create a new app in the Spotify Developer Dashboard
+    3. Note your **Client ID** and select _View Client Secret_ to note your **Client Secret**
+  </Step>
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Website: `https://YOUR_DOMAIN`
+      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+  </Step>
+</Steps>
+
+<Auth0DomainInfo />
+
+<AddConnectionInAuth0 />

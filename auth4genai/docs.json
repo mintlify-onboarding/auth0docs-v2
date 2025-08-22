@@ -96,11 +96,18 @@
                 "group": "Social Integrations",
                 "pages": [
                   "integrations/box",
-                  "integrations/oauth2",
+                  "integrations/discord",
+                  "integrations/figma",
+                  "integrations/freshbooks",
                   "integrations/github",
                   "integrations/google",
                   "integrations/microsoft",
-                  "integrations/slack"                  
+                  "integrations/oauth2",
+                  "integrations/slack",
+                  "integrations/snapchat",
+                  "integrations/spotify",
+                  "integrations/stripe-connect",
+                  "integrations/tumblr"
                 ]
               },
               {
