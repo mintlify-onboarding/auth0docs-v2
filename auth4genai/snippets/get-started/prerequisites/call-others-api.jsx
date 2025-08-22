@@ -104,10 +104,10 @@ export const Prerequisites = ({
     steps.push(
       <Step key="auth0-api" title="Create an Auth0 API">
         <ul>
-          <li>In your Auth0 Dashboard, go to <strong>Applications &gt; APIs</strong></li>
-          <li>Create a new API with an identifier (audience)</li>
-          <li>Once API is created, go to the APIs <strong>Settings &gt; Access Settings</strong> and enable <strong>Allow Offline Access</strong></li>
-          <li>Note down the API identifier for your environment variables</li>
+          <li>In your Auth0 Dashboard, go to <strong>Applications &gt; APIs</strong>.</li>
+          <li>Create a new API with an identifier (audience).</li>
+          <li>Once API is created, go to the APIs <strong>Settings &gt; Access Settings</strong> and enable <strong>Allow Offline Access</strong>.</li>
+          <li>Note down the API identifier for your environment variables.</li>
         </ul>
         To learn more about Auth0 APIs, read{" "}
         <a
@@ -124,7 +124,7 @@ export const Prerequisites = ({
   if (createResourceServerClientStep) {
     steps.push(
       <Step key="resource-server" title="Create a Resource Server Client">
-        This is a special client that allows your API server to perform token
+        The Resource Server Client allows your API server to perform token
         exchanges using{" "}
         <strong>
           <i>access tokens</i>
@@ -159,25 +159,25 @@ export const Prerequisites = ({
 
         <ul>
           <li>
-            Note that your <code>MANAGEMENT_API_TOKEN</code> above must have the{" "}
+            Your <code>MANAGEMENT_API_TOKEN</code> above must have the{" "}
             <code>create:clients</code> scope in order to create a new client.
-            One way you can create a new token with this access is by doing the
+            To create a new Management API token with the right access permissions:
             following:
             <ul>
               <li>
-                Navigate to <strong>Applications &gt; APIs &gt; Auth0 Management API &gt; API Explorer</strong>
-                tab in your tenant
+                Navigate to <strong>Applications &gt; APIs &gt; Auth0 Management API &gt; API Explorer</strong> 
+                tab in your tenant.
               </li>
-              <li>Hit the <strong>Create &amp; Authorize Test Application</strong> button</li>
+              <li>Click the <strong>Create &amp; Authorize Test Application</strong> button.</li>
               <li>
-                Copy the jwt access token shown and provide it as the{" "}
-                <code>MANAGEMENT_API_TOKEN</code>
+                Copy the JWT access token shown and provide it as the{" "}
+                <code>MANAGEMENT_API_TOKEN</code>.
               </li>
             </ul>
           </li>
           <li>
             Note down the <code>client_id</code> and <code>client_secret</code>{" "}
-            returned from the curl response for your environment variables after running curl
+            returned from the cURL response for your environment variables after running cURL
             successfully.
           </li>
         </ul>
@@ -201,11 +201,11 @@ export const Prerequisites = ({
 
   // Always include these final steps
   steps.push(
-    <Step key="google-connection" title="Configure Google Social Connection">
-      Set up a Google developer account that allows for third-party API calls
+    <Step key="google-connection" title="Configure Google Social Integration">
+      Set up a Google developer account that allows for third-party API calls by 
       following the{" "}
       <a href="/integrations/google">
-        Google Sign-in and Authorization
+        Google Social Integration
       </a>{" "}
       instructions.
     </Step>
