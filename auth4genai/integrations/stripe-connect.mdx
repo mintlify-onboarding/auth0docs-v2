@@ -1,0 +1,37 @@
+---
+title: Stripe Connect
+description: "Connect your AI Agents to Stripe Connect for marketplace payments, vendor management, and financial transactions."
+---
+
+import Auth0DomainInfo from "/snippets/auth0-domain-info.mdx";
+
+
+The Stripe Connect integration allows your AI Agents to authenticate users with their Stripe Connect accounts and access payment data, transaction history, and marketplace features on their behalf.
+
+## Overview
+
+The Stripe Connect integration is perfect for marketplace and fintech AI applications that need to interact with payment systems, manage vendor payouts, process transactions, or automate financial workflows. This integration provides access to Stripe Connect's comprehensive API for marketplace payments and financial operations.
+
+## Configuration
+
+<Steps>
+  <Step title="Set up app in Stripe">
+    1. Sign up for a [Stripe account](https://stripe.com/)
+    2. Setup your account and complete any necessary verification steps to work with [Stripe Connect](https://dashboard.stripe.com/connect)
+    3. Navigate to the Onboarding options for your Stripe Connect account and select [OAuth](https://dashboard.stripe.com/settings/connect/onboarding-options/oauth)
+    4. Toggle **Enable OAuth** then fill in the Redirect URI and note your **Client ID** for later
+    5. Navigate to the [API Keys Page](https://dashboard.stripe.com/apikeys) and copy the **Client Secret**
+  </Step>
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Redirects: `https://YOUR_DOMAIN/login/callback`
+  </Step>
+</Steps>
+
+<Auth0DomainInfo />
+
+### Configure Token Vault
+
+You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
+
+To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).

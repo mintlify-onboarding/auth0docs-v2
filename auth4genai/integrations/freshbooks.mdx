@@ -1,0 +1,36 @@
+---
+title: Freshbooks
+description: "Connect your AI Agents to Freshbooks for accounting, invoicing, and financial management."
+---
+import Auth0DomainInfo from "/snippets/auth0-domain-info.mdx";
+
+The Freshbooks integration allows your AI Agents to authenticate users with their Freshbooks accounts and access accounting data, invoices, and financial information on their behalf.
+
+## Overview
+
+The Freshbooks integration is perfect for business and finance-focused AI applications that need to interact with accounting data, manage invoices, track expenses, or automate financial workflows. This integration provides access to Freshbooks' comprehensive API for accounting and business management.
+
+## Configuration
+
+<Steps>
+  <Step title="Set up app in Freshbooks">
+    1. Sign up for a [Freshbooks Developer account](https://www.freshbooks.com/developers)
+    2. Create a new app in the [Freshbooks Developer Center](https://my.freshbooks.com/#/developer)
+    3. Configure the app and add any scopes you may require
+    4. Navigate to your newly created app and scroll to the bottom of the "App Settings" tab.
+    5. Note your **Client ID** and **Client Secret**
+  </Step>
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Website URL: `https://YOUR_DOMAIN`
+      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+  </Step>
+</Steps>
+
+<Auth0DomainInfo />
+
+### Configure Token Vault
+
+You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
+
+To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).

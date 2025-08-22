@@ -1,0 +1,36 @@
+---
+title: Snapchat
+description: "Connect your AI Agents to Snapchat for social media integration, content sharing, and user engagement."
+---
+
+import Auth0DomainInfo from "/snippets/auth0-domain-info.mdx";
+
+The Snapchat integration allows your AI Agents to authenticate users with their Snapchat accounts and access Snapchat features, user data, and social content on their behalf.
+
+## Overview
+
+The Snapchat integration is perfect for social media-focused AI applications that need to interact with Snapchat content, manage user profiles, share content, or automate social media workflows. This integration provides access to Snapchat's API for social and content features.
+
+## Configuration
+
+<Steps>
+  <Step title="Set up app in Snapchat">
+    1. Sign up for a [Snapchat Developer account](https://developers.snapchat.com/)
+    2. Navigate to the [Snap Kit Portal](https://kit.snapchat.com/manage) and create a new app in the Snapchat Developer Portal
+    3. You will need to pick the libraries you plan to use: Login Kit is required at the minimum.
+    4. Generate a new _Confidential OAuth 2.0 Client ID_ and note your **Confidential Client ID** and **Confidential Client Secret**
+    5. In the left hand panel, navigate to Versions > [Your App Name], scroll to the Login Kit section and add the redirect URIs.
+  </Step>
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Redirect URIs for OAuth: `https://YOUR_DOMAIN/login/callback`
+  </Step>
+</Steps>
+
+<Auth0DomainInfo />
+
+### Configure Token Vault
+
+You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
+
+To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).

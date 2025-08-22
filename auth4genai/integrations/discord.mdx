@@ -1,0 +1,36 @@
+---
+title: Discord
+description: "Connect your AI Agents to Discord for server management, messaging, and community features."
+---
+
+import Auth0DomainInfo from "/snippets/auth0-domain-info.mdx";
+
+The Discord integration allows your AI Agents to authenticate users with their Discord accounts and access Discord servers, channels, and messaging features on their behalf.
+
+## Overview
+
+The Discord integration is perfect for AI applications that need to interact with Discord communities, manage servers, send messages, or automate community workflows. This integration provides access to Discord's rich API for server and user management.
+
+## Configuration
+
+<Steps>
+  <Step title="Set up app in Discord">
+    1. Sign up for a [Discord Developer account](https://discord.com/developers/applications)
+    2. Create a new application in the Discord Developer Portal
+    3. Navigate to the OAuth2 section and note your **Client ID** and **Client Secret**
+  </Step>
+  <Step title="Configure for Auth0">
+    1. Use the following settings when configuring your app:
+      - Homepage URL: `https://YOUR_DOMAIN`
+      - Authorization callback URL: `https://YOUR_DOMAIN/login/callback`
+  </Step>
+</Steps>
+
+<Auth0DomainInfo />
+
+
+### Configure Token Vault
+
+You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
+
+To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
