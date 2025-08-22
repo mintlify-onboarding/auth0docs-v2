@@ -105,7 +105,7 @@ export const integrations = [
   },
   {
     id: "slack",
-    title: "Slack",
+    title: "Sign in with Slack",
     icon: "/ai/docs/img/integrations/slack-avatar.png",
     href: "/integrations/slack",
     status: "Available",

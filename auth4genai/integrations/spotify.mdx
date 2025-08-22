@@ -3,7 +3,8 @@ title: Spotify
 description: "Connect your AI Agents to Spotify for music streaming, playlist management, and audio content."
 ---
 
-import Auth0DomainInfo from "/snippets/auth0-domain-info.mdx";
+import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
 
 The Spotify integration allows your AI Agents to authenticate users with their Spotify accounts and access music libraries, playlists, and listening data on their behalf.
 
@@ -28,8 +29,4 @@ The Spotify integration is perfect for music and entertainment-focused AI applic
 
 <Auth0DomainInfo />
 
-### Configure Token Vault
-
-You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
-
-To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+<AddConnectionInAuth0 />

@@ -3,8 +3,8 @@ title: Figma
 description: "Connect your AI Agents to Figma for design collaboration, file management, and creative workflows."
 ---
 
-import Auth0DomainInfo from "/snippets/auth0-domain-info.mdx";
-
+import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
 
 The Figma integration allows your AI Agents to authenticate users with their Figma accounts and access Figma files, projects, and design assets on their behalf.
 
@@ -29,8 +29,4 @@ The Figma integration is perfect for design-focused AI applications that need to
 
 <Auth0DomainInfo />
 
-### Configure Token Vault
-
-You will need to configure your connection so it can retrieve and store access tokens for third-party APIs. Auth0's [Token Vault](https://auth0.com/docs/secure/tokens/token-vault) organizes the access and refresh tokens of federated connections in secure tokensets. Applications can then access the Token Vault to retrieve access tokens to call third-party APIs.
-
-To learn more, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+<AddConnectionInAuth0 />

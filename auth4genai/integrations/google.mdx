@@ -3,6 +3,8 @@ title: Google
 description: "Connect your AI Agents to Google services including Gmail, Google Calendar, Drive, and more."
 ---
 
+import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+
 The Google integration allows users to log in to your AI Agents using their Google profile. To complete the [Call other's APIs on user's behalf quickstart](/get-started/call-others-apis-on-users-behalf), you need to set up a Google social connection.
 
 To set up a Google social connection, you must:
@@ -65,16 +67,6 @@ In the Google Cloud Console, [configure your Google OAuth consent screen](https:
 </Steps>
 
 ### Create Google OAuth Client
-
-To create a Google OAuth 2.0 Client, you need your Auth0 domain, which you can find in the Auth0 Dashboard.
-
-1. If you haven’t configured a custom domain, your Auth0 domain name is `{YOUR_TENANT_NAME}.{YOUR_REGIONAL_SUBDOMAIN}.auth0.com`. It will be bolded in the introduction. Your redirect URI is `https://{YOUR_TENANT_NAME}.{YOUR_REGIONAL_SUBDOMAIN}.auth0.com/login/callback`.
-2. If you have configured a custom domain via **Settings > Custom Domains** in your Auth0 Dashboard, use your custom domain instead. Your redirect URI is `https://{YOUR_CUSTOM_DOMAIN}/login/callback`.
-
-<Note>
-If you created your US tenant before June 2020, then your Auth0 domain name does not include the regional subdomain: `{YOUR_TENANT_NAME}.auth0.com`.
-</Note>
-
 In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.cloud.google.com/auth/clients/create):
 
 <Steps>
@@ -89,10 +81,9 @@ In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.clo
     <ul>
       <li>**Name**: The name of your OAuth 2.0 Client.</li>
       <li>**Authorized Javascript origins**: `https://{YOUR_DOMAIN}`</li>
-      <li>
-        **Authorized redirect URIs**: `https://{YOUR_DOMAIN}/login/callback`
-      </li>
+      <li>**Authorized redirect URIs**: `https://{YOUR_DOMAIN}/login/callback`</li>
     </ul>
+    <Auth0DomainInfo />
   </Step>
   <Step title="Complete">Select **Create**.</Step>
 </Steps>
