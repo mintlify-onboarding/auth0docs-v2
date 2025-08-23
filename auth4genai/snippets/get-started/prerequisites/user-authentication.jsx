@@ -10,7 +10,7 @@ export const Prerequisites = ({
       Before getting started, make sure you have completed the following steps:
       <Steps>
         <Step title="Create an Auth0 Account">
-          To continue with this quickstart, you need to have  an{" "}
+          To continue with this quickstart, you need to have an{" "}
           <a
             href="https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM"
             target="_blank"
