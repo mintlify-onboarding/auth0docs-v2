@@ -17,6 +17,15 @@ import { Prerequisites } from "/snippets/get-started/prerequisites/call-others-a
   }}
 />
 
+### Key differences from Next.js approach
+
+This React SPA implementation differs from the <a href="/get-started/call-others-apis-on-users-behalf#vercel-ai-%2B-next-js" target="_blank">Next.js example</a> in a few important ways:
+
+1. **Token Vault Access Token Exchange**: Instead of using refresh tokens, the React SPA implementation exchanges the SPA's access token for a third-party access token.
+2. **Client-Side Authorization**: Client login and step-up authorization are handled client-side using `@auth0/auth0-spa-js`.
+3. **Resource Server Client**: Requires a special Resource Server Client configured for token exchange with Token Vault.
+4. **Interrupt Handling**: The React client manages tool access errors and step-up authorization using interrupts that trigger a pop-up for re-authorization.
+
 ### Prepare React SPA + Hono API
 
 **Recommended**: To use this example, clone the [Auth0 AI JS](https://github.com/auth0-lab/auth0-ai-js.git) repository:
@@ -44,7 +53,7 @@ In the root directory of your project, you have the following client and server 
 - `@ai-sdk/openai`: [OpenAI](https://sdk.vercel.ai/providers/ai-sdk-providers/openai) provider
 - `googleapis`: Node.js client for Google APIs
 - `jose`: JavaScript Object Signing and Encryption library for JWT verification
-To install all the client and server dependencies, navigate to the root directory of your project and run the following command: 
+To install all the client and server dependencies, navigate to the root directory of your project and run the following command:
 ```bash wrap lines
 # Install all client & server dependencies from the root directory of the project.
 npm install
@@ -52,7 +61,9 @@ npm install
 
 ### Update the environment files
 
-#### Client (.env)
+Add separate `.env` files with environment variables for the client and server.
+
+#### Client (client/.env)
 
 ```bash .env wrap lines
 VITE_AUTH0_DOMAIN=your-auth0-domain
@@ -61,7 +72,7 @@ VITE_AUTH0_AUDIENCE=your-api-identifier
 VITE_API_URL=http://localhost:3001
 ```
 
-#### Server (.env)
+#### Server (server/.env)
 
 ```bash .env wrap lines
 AUTH0_DOMAIN=your-auth0-domain
@@ -179,6 +190,8 @@ export function FederatedConnectionPopup({
 
 #### Create tools with integrated Token Vault support for retrieving third-party access tokens
 
+Next, create a tool that accesses Token Vault to fetch a Google access token to list all the Google Calendars a user has access to.
+
 Create `server/src/lib/tools/listUserCalendars.ts`:
 
 ```ts server/src/lib/tools/listUserCalendars.ts wrap lines
@@ -227,6 +240,8 @@ export const createListUserCalendarsTool = (
 
 #### Configure the API server with Google connection wrapper for calendar tools
 
+Instantiate an instance of `Auth0AI` with a pre-configured resource client. Then, create a wrapper for the Google Calendar Tool that sets up the token exchange. This allows you to directly exchange an Auth0 access token for a Google access token from Token Vault with the necessary Calendar scopes.
+
 Create `server/src/lib/auth0.ts`:
 
 ```ts server/src/lib/auth0.ts wrap lines
@@ -265,6 +280,10 @@ export const createGoogleCalendarTool = (c: Context): ToolWrapper => {
 ```
 
 ### Create Hono API Chat API server with interrupt handling
+
+Create an AI-powered chat server using Hono, the Auth0 AI SDK, and the Vercel AI SDK that allows a user to chat with an AI assistant that can access their Google Calendar.
+
+The Auth0 AI SDK's `withInterruptions()` function wraps the Vercel AI SDK's `streamText()` function, enabling the Hono server to handle interrupts, which are special responses from Token Vault. An interrupt is sent if a tool call requires a new or updated access token, for example, if a user needs to re-authenticate or a new permission is needed.
 
 Create `server/src/index.ts`:
 
@@ -534,15 +553,6 @@ function MessageBubble({ message }: { message: Message }) {
   );
 }
 ```
-
-### Key differences from Next.js approach
-
-This React SPA implementation differs from the <a href="/get-started/call-others-apis-on-users-behalf#vercel-ai-%2B-next-js" target="_blank">Next.js example</a> in a few important ways:
-
-1. **Token Vault Access Token Exchange**: Instead of using refresh tokens, the React SPA implementation exchanges the SPA's access token for a third-party access token.
-2. **Client-Side Authorization**: Client login and step-up authorization are handled client-side using `@auth0/auth0-spa-js`.
-3. **Resource Server Client**: Requires a special Resource Server Client configured for token exchange with Token Vault.
-4. **Interrupt Handling**: The React client manages tool access errors and step-up authorization using interrupts that trigger a pop-up for re-authorization.
 
 ### Test your application
 
