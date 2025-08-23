@@ -746,6 +746,10 @@ function sha256(str) {
 
 // End: Helper Utilities`}
           </CodeBlock>
+        
+          Click <code>Save Draft</code>
+        </Step>
+        <Step title="Set Secrets and Dependencies for your Auth0 Action">
           Open <code>Applications {">"} Applications</code> in the left sidebar in a new tab by right clicking and selecting to open in a new tab.
           Select your <code>Account Linking App</code> from the list, and navigate to the <code>Settings</code> tab. You will need to copy the settings from here in the following steps.
           Switch back to the Actions code editor, and on the left side switch to the <code>Secrets</code> tab (represented with a key icon) and click <code>Add Secret</code>{" "}
@@ -753,6 +757,9 @@ function sha256(str) {
             to add the following required secrets:
           </a>
           <ul>
+            <li>
+              <code>AUTH0_DOMAIN</code>: Copy from the Account Linking App settings.
+            </li>
             <li>
               <code>AUTH0_CLIENT_ID</code>: Copy from the Account Linking App settings.
             </li>
