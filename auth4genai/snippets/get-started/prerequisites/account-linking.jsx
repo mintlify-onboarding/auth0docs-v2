@@ -1,115 +1,54 @@
+import { AccountAndAppSteps } from "/snippets/get-started/prerequisites/account-app-steps.jsx";
+
 export const Prerequisites = ({
   callbackUrl = "https://AUTH0_DOMAIN/continue",
 }) => {
-  return (
-    <>
-      <Heading level={3} id="prerequisites">
-        Prerequisites
-      </Heading>
-      Before getting started, make sure you have completed the following steps:
-      <Steps>
-        <Step title="Create an Auth0 Account">
-          To continue with this quickstart, you need to have an{" "}
-          <a
-            href="https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM"
-            target="_blank"
-          >
-            Auth0 account.
-          </a>
-        </Step>
-        <Step title="Create an Auth0 Application">
-          Go to your{" "}
-          <a href="https://manage.auth0.com/dashboard" target="_blank">
-            Auth0 Dashboard
-          </a>{" "}
-          to create a new Auth0 Application.
-          <ul>
-            <li>
-              Navigate to <strong>Applications {">"} Applications</strong> in
-              the left sidebar.
-            </li>
-            <li>
-              Click the <strong>Create Application</strong> button in the top
-              right.
-            </li>
-            <li>
-              In the pop-up name the Application{" "}
-              <code>Account Linking App</code>.
-            </li>
-            <li>
-              Then select <strong>Regular Web Applications</strong> and click{" "}
-              <strong>Create</strong>.
-            </li>
-            <li>
-              Once the Application is created, switch to the{" "}
-              <strong>Settings</strong> tab.
-            </li>
-            <li>
-              Copy the <strong>Domain</strong> from the{" "}
-              <strong>Basic Information</strong> section to your clipboard.
-            </li>
-            <li>
-              Scroll down to the <strong>Application URIs</strong> section.
-            </li>
-            <li>
-              Set Allowed Callback URLs as: <code>{callbackUrl}</code>
-            </li>
-            <li>
-              Click <strong>Save</strong> in the bottom right to save your
-              changes.
-            </li>
-          </ul>
-          To learn more about Auth0 applications, read{" "}
-          <a
-            href="https://auth0.com/docs/get-started/applications"
-            target="_blank"
-          >
-            Applications
-          </a>
-          .
-        </Step>
-        <Step title="Enable your Application to use the Auth0 Management API">
-          Now switch to the <strong>APIs</strong> tab and enable the toggle next
-          to the Auth0 Management API.
-          <br />
-          Next, click the expand arrow to the right of the toggle to view the
-          permissions. Use the filter to find and select the
-          <code>create:users</code> and <code>update:users</code> permissions
-          and click <strong>Update</strong> to save the changes.
-          <Frame>
-            <img
-              src="/ai/docs/img/app_enabled_user_update.png"
-              alt="Enable Auth0 Management API"
-            />
-          </Frame>
-        </Step>
+  const steps = AccountAndAppSteps({
+    callbackUrl,
+    logoutUrl: false,
+    copyDomain: true,
+  });
 
-        <Step title="Create an Auth0 Action for Account Linking">
-          To enable account linking, you need to create an Auth0 Action. This
-          Action will handle the account linking process when the user logs in.
-          <ol>
-            <li>
-              Go to <strong>Actions &gt; Library</strong> in the Auth0
-              Dashboard.
-            </li>
-            <li>
-              Click <strong>Create Action &gt; Create Custom Action</strong>.
-            </li>
-            <li>
-              Name the Action <code>account-linking</code> and select the{" "}
-              <strong>Post Login</strong> trigger.
-            </li>
-            <li>
-              Copy and paste the following code into the Action code editor:
-            </li>
-          </ol>
-          <CodeBlock
-            language="javascript"
-            expandable="true"
-            lines="true"
-            filename="Account Linking Action Code"
-          >
-            {`/**
+  steps.push(
+    <Step title="Enable your Application to use the Auth0 Management API">
+      Now switch to the <strong>APIs</strong> tab and enable the toggle next to
+      the Auth0 Management API.
+      <br />
+      Next, click the expand arrow to the right of the toggle to view the
+      permissions. Use the filter to find and select the
+      <code>create:users</code> and <code>update:users</code> permissions and
+      click <strong>Update</strong> to save the changes.
+      <Frame>
+        <img
+          src="/ai/docs/img/app_enabled_user_update.png"
+          alt="Enable Auth0 Management API"
+        />
+      </Frame>
+    </Step>,
+
+    <Step title="Create an Auth0 Action for Account Linking">
+      To enable account linking, you need to create an Auth0 Action. This Action
+      will handle the account linking process when the user logs in.
+      <ol>
+        <li>
+          Go to <strong>Actions &gt; Library</strong> in the Auth0 Dashboard.
+        </li>
+        <li>
+          Click <strong>Create Action &gt; Create Custom Action</strong>.
+        </li>
+        <li>
+          Name the Action <code>account-linking</code> and select the{" "}
+          <strong>Post Login</strong> trigger.
+        </li>
+        <li>Copy and paste the following code into the Action code editor:</li>
+      </ol>
+      <CodeBlock
+        language="javascript"
+        expandable="true"
+        lines="true"
+        filename="Account Linking Action Code"
+      >
+        {`/**
  * Implementation of [Client Initiated Account Linking](https://auth0.com/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
  * in an Auth0 Action. This action facilitates OIDC Applications to be able to
  * request account linking from the Authorization Server instead of having to perform
@@ -763,101 +702,106 @@ function sha256(str) {
 }
 
 // End: Helper Utilities`}
-          </CodeBlock>
-          Click <strong>Save Draft</strong>
-        </Step>
-        <Step title="Set Secrets and Dependencies for your Auth0 Action">
-          Open <strong>Applications {">"} Applications</strong> in the left
-          sidebar in a new tab by right clicking and selecting to open in a new
-          tab. Select your <strong>Account Linking App</strong> from the list,
-          and navigate to the <strong>Settings</strong> tab. You will need to
-          copy the settings from here in the following steps. Switch back to the
-          Actions code editor, and on the left side switch to the{" "}
-          <strong>Secrets</strong> tab (represented with a key icon) and click{" "}
-          <strong>Add Secret</strong>{" "}
-          <a href="https://auth0.com/docs/customize/actions/write-your-first-action#add-a-secret">
-            to add the following required secrets:
-          </a>
-          <ul>
-            <li>
-              <code>AUTH0_DOMAIN</code>: Copy from the Account Linking App
-              settings.
-            </li>
-            <li>
-              <code>AUTH0_CLIENT_ID</code>: Copy from the Account Linking App
-              settings.
-            </li>
-            <li>
-              <code>AUTH0_CLIENT_SECRET</code>: Copy from the Account Linking
-              App settings.
-            </li>
-            <li>
-              <code>ACTION_SECRET</code>: Open a terminal and run{" "}
-              <code>uuidgen</code> to generate a secret that is unique to this
-              application and copy it here.
-            </li>
-          </ul>
-          <Frame>
-            <img
-              src="/ai/docs/img/account_linking_action_secrets.png"
-              alt="Enable Auth0 Management API"
-            />
-          </Frame>
-          <br />
-          In the Actions code editor on the left side switch to the{" "}
-          <a href="https://auth0.com/docs/customize/actions/write-your-first-action#add-a-dependency">
-            Dependencies
-          </a>{" "}
-          tab (represented with a package icon) and click{" "}
-          <strong>Add Dependency</strong> to add the following dependencies:
-          <ul>
-            <li>
-              Name: <code>auth0</code>, Version: <code>4.21.0</code>
-            </li>
-            <li>
-              Name: <code>openid-client</code>, Version: <code>6.3.4</code>
-            </li>
-            <li>
-              Name: <code>jose</code>, Version: <code>6.0.10</code>
-            </li>
-            <li>
-              Name: <code>@panva/hkdf</code>, Version: <code>1.2.1</code>
-            </li>
-            <li>
-              Name: <code>debug</code>, Version: <code>4.4.0</code>
-            </li>
-          </ul>
-          <Frame>
-            <img
-              src="/ai/docs/img/account_linking_action_deps.png"
-              alt="Enable Auth0 Management API"
-            />
-          </Frame>
-          <br />
-          Finally, click <strong>Save Draft</strong> to save the Action. Once
-          the Action is saved, click <strong>Deploy</strong> to make the Action
-          available for use.
-        </Step>
+      </CodeBlock>
+      Click <strong>Save Draft</strong>
+    </Step>,
+    <Step title="Set Secrets and Dependencies for your Auth0 Action">
+      Open <strong>Applications {">"} Applications</strong> in the left sidebar
+      in a new tab by right clicking and selecting to open in a new tab. Select
+      your <strong>Account Linking App</strong> from the list, and navigate to
+      the <strong>Settings</strong> tab. You will need to copy the settings from
+      here in the following steps. Switch back to the Actions code editor, and
+      on the left side switch to the <strong>Secrets</strong> tab (represented
+      with a key icon) and click <strong>Add Secret</strong>{" "}
+      <a href="https://auth0.com/docs/customize/actions/write-your-first-action#add-a-secret">
+        to add the following required secrets:
+      </a>
+      <ul>
+        <li>
+          <code>AUTH0_DOMAIN</code>: Copy from the Account Linking App settings.
+        </li>
+        <li>
+          <code>AUTH0_CLIENT_ID</code>: Copy from the Account Linking App
+          settings.
+        </li>
+        <li>
+          <code>AUTH0_CLIENT_SECRET</code>: Copy from the Account Linking App
+          settings.
+        </li>
+        <li>
+          <code>ACTION_SECRET</code>: Open a terminal and run{" "}
+          <code>uuidgen</code> to generate a secret that is unique to this
+          application and copy it here.
+        </li>
+      </ul>
+      <Frame>
+        <img
+          src="/ai/docs/img/account_linking_action_secrets.png"
+          alt="Enable Auth0 Management API"
+        />
+      </Frame>
+      <br />
+      In the Actions code editor on the left side switch to the{" "}
+      <a href="https://auth0.com/docs/customize/actions/write-your-first-action#add-a-dependency">
+        Dependencies
+      </a>{" "}
+      tab (represented with a package icon) and click{" "}
+      <strong>Add Dependency</strong> to add the following dependencies:
+      <ul>
+        <li>
+          Name: <code>auth0</code>, Version: <code>4.21.0</code>
+        </li>
+        <li>
+          Name: <code>openid-client</code>, Version: <code>6.3.4</code>
+        </li>
+        <li>
+          Name: <code>jose</code>, Version: <code>6.0.10</code>
+        </li>
+        <li>
+          Name: <code>@panva/hkdf</code>, Version: <code>1.2.1</code>
+        </li>
+        <li>
+          Name: <code>debug</code>, Version: <code>4.4.0</code>
+        </li>
+      </ul>
+      <Frame>
+        <img
+          src="/ai/docs/img/account_linking_action_deps.png"
+          alt="Enable Auth0 Management API"
+        />
+      </Frame>
+      <br />
+      Finally, click <strong>Save Draft</strong> to save the Action. Once the
+      Action is saved, click <strong>Deploy</strong> to make the Action
+      available for use.
+    </Step>,
 
-        <Step title="Attach your Auth0 Action to the Post Login Trigger">
-          In the Dashboard, navigate to <strong>Actions &gt; Triggers</strong>{" "}
-          and click on the <strong>post-login</strong> trigger. From the{" "}
-          <strong>Add Action</strong> side panel on the right side, select the{" "}
-          <strong>account-linking</strong> Action and drag it into your flow
-          between Start and Complete. If you have other Actions, make sure it is
-          the first Action in the flow. If you do not see the Action listed, try
-          refreshing the page.
-          <br />
-          <Frame>
-            <img
-              src="/ai/docs/img/account_linking_post_login.png"
-              alt="Attach Account Linking Action to Post Login Trigger"
-            />
-          </Frame>
-          <br />
-          Click <strong>Apply</strong> to save the trigger.
-        </Step>
-      </Steps>
+    <Step title="Attach your Auth0 Action to the Post Login Trigger">
+      In the Dashboard, navigate to <strong>Actions &gt; Triggers</strong> and
+      click on the <strong>post-login</strong> trigger. From the{" "}
+      <strong>Add Action</strong> side panel on the right side, select the{" "}
+      <strong>account-linking</strong> Action and drag it into your flow between
+      Start and Complete. If you have other Actions, make sure it is the first
+      Action in the flow. If you do not see the Action listed, try refreshing
+      the page.
+      <br />
+      <Frame>
+        <img
+          src="/ai/docs/img/account_linking_post_login.png"
+          alt="Attach Account Linking Action to Post Login Trigger"
+        />
+      </Frame>
+      <br />
+      Click <strong>Apply</strong> to save the trigger.
+    </Step>
+  );
+  return (
+    <>
+      <Heading level={3} id="prerequisites">
+        Prerequisites
+      </Heading>
+      Before getting started, make sure you have completed the following steps:
+      <Steps>{steps}</Steps>
     </>
   );
 };

@@ -1,3 +1,5 @@
+import { AccountAndAppSteps } from "/snippets/get-started/prerequisites/account-app-steps.jsx";
+
 /**
  * Prerequisites for call-others-api quickstarts.
  * @param {Object} props - The props object
@@ -24,7 +26,7 @@
 
 export const Prerequisites = ({
   createAuth0ApplicationStep = {
-    applicationType: "Regular Web",
+    applicationType: "Regular Web Applications",
     callbackUrl: "http://localhost:3000/auth/callback",
     logoutUrl: "http://localhost:3000",
     allowedWebOrigins: undefined,
@@ -37,54 +39,16 @@ export const Prerequisites = ({
   // Build steps array dynamically based on conditions
   const steps = [];
 
-  // Always include these steps
   steps.push(
-    <Step key="auth0-account" title="Create an Auth0 Account and a Dev Tenant">
-      To continue with this quickstart, you need an{" "}
-      <a
-        href="https://auth0.com/signup?onboard_app=genai&ocid=7014z000001NyoxAAC-aPA4z0000008OZeGAM"
-        target="_blank"
-      >
-        Auth0 account
-      </a>{" "}
-      and a Developer Tenant.
-    </Step>
+    ...AccountAndAppSteps({
+      applicationType: createAuth0ApplicationStep.applicationType,
+      callbackUrl: createAuth0ApplicationStep.callbackUrl,
+      logoutUrl: createAuth0ApplicationStep.logoutUrl,
+      appCreation: !!createAuth0ApplicationStep,
+      allowedWebOrigins: createAuth0ApplicationStep.allowedWebOrigins,
+    })
   );
 
-  if (createAuth0ApplicationStep) {
-    steps.push(
-      <Step key="auth0-application" title="Create an Auth0 Application">
-        <a href="https://manage.auth0.com/dashboard" target="_blank">
-          Create and configure an Auth0 Application
-        </a>{" "}
-        with the following properties:
-        <ul>
-          <li>
-            Type: <code>{createAuth0ApplicationStep.applicationType}</code>
-          </li>
-          <li>
-            Allowed Callback URLs: <code>{createAuth0ApplicationStep.callbackUrl}</code>
-          </li>
-          <li>
-            Allowed Logout URLs: <code>{createAuth0ApplicationStep.logoutUrl}</code>
-          </li>
-          {createAuth0ApplicationStep.allowedWebOrigins && (
-            <li>
-              Allowed Web Origins: <code>{createAuth0ApplicationStep.allowedWebOrigins}</code>
-            </li>
-          )}
-        </ul>
-        To learn more about Auth0 applications, read{" "}
-        <a
-          href="https://auth0.com/docs/get-started/applications"
-          target="_blank"
-        >
-          Applications
-        </a>
-        .
-      </Step>
-    );
-  }
   // Conditionally add steps
   if (refreshTokenGrantStep) {
     steps.push(
@@ -104,9 +68,16 @@ export const Prerequisites = ({
     steps.push(
       <Step key="auth0-api" title="Create an Auth0 API">
         <ul>
-          <li>In your Auth0 Dashboard, go to <strong>Applications &gt; APIs</strong>.</li>
+          <li>
+            In your Auth0 Dashboard, go to{" "}
+            <strong>Applications &gt; APIs</strong>.
+          </li>
           <li>Create a new API with an identifier (audience).</li>
-          <li>Once API is created, go to the APIs <strong>Settings &gt; Access Settings</strong> and enable <strong>Allow Offline Access</strong>.</li>
+          <li>
+            Once API is created, go to the APIs{" "}
+            <strong>Settings &gt; Access Settings</strong> and enable{" "}
+            <strong>Allow Offline Access</strong>.
+          </li>
           <li>Note down the API identifier for your environment variables.</li>
         </ul>
         To learn more about Auth0 APIs, read{" "}
@@ -138,14 +109,13 @@ export const Prerequisites = ({
         <br />
         <br />
         Create this client programmatically via the Auth0 Management API:
-
-          <CodeBlock
-            language="bash"
-            expandable="true"
-            lines="true"
-            filename="Create Resource Server Client"
-          >
-            {`curl -L 'https://{tenant}.auth0.com/api/v2/clients' \\
+        <CodeBlock
+          language="bash"
+          expandable="true"
+          lines="true"
+          filename="Create Resource Server Client"
+        >
+          {`curl -L 'https://{tenant}.auth0.com/api/v2/clients' \\
 -H 'Content-Type: application/json' \\
 -H 'Accept: application/json' \\
 -H 'Authorization: Bearer {MANAGEMENT_API_TOKEN}' \\
@@ -155,20 +125,26 @@ export const Prerequisites = ({
   "grant_types": ["urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token"],
   "resource_server_identifier": "YOUR_API_IDENTIFIER"
 }'`}
-          </CodeBlock>
-
+        </CodeBlock>
         <ul>
           <li>
             Your <code>MANAGEMENT_API_TOKEN</code> above must have the{" "}
             <code>create:clients</code> scope in order to create a new client.
-            To create a new Management API token with the right access permissions:
-            following:
+            To create a new Management API token with the right access
+            permissions: following:
             <ul>
               <li>
-                Navigate to <strong>Applications &gt; APIs &gt; Auth0 Management API &gt; API Explorer</strong> 
+                Navigate to{" "}
+                <strong>
+                  Applications &gt; APIs &gt; Auth0 Management API &gt; API
+                  Explorer
+                </strong>
                 tab in your tenant.
               </li>
-              <li>Click the <strong>Create &amp; Authorize Test Application</strong> button.</li>
+              <li>
+                Click the{" "}
+                <strong>Create &amp; Authorize Test Application</strong> button.
+              </li>
               <li>
                 Copy the JWT access token shown and provide it as the{" "}
                 <code>MANAGEMENT_API_TOKEN</code>.
@@ -177,8 +153,8 @@ export const Prerequisites = ({
           </li>
           <li>
             Note down the <code>client_id</code> and <code>client_secret</code>{" "}
-            returned from the cURL response for your environment variables after running cURL
-            successfully.
+            returned from the cURL response for your environment variables after
+            running cURL successfully.
           </li>
         </ul>
       </Step>
@@ -202,11 +178,8 @@ export const Prerequisites = ({
   // Always include these final steps
   steps.push(
     <Step key="google-connection" title="Configure Google Social Integration">
-      Set up a Google developer account that allows for third-party API calls by 
-      following the{" "}
-      <a href="/integrations/google">
-        Google Social Integration
-      </a>{" "}
+      Set up a Google developer account that allows for third-party API calls by
+      following the <a href="/integrations/google">Google Social Integration</a>{" "}
       instructions.
     </Step>
   );
