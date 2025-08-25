@@ -3,8 +3,9 @@ title: Tumblr
 description: "Connect your AI Agents to Tumblr for social blogging, content creation, and community engagement."
 ---
 
-import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
+import LearnMore from "/snippets/integrations/learn-more.mdx";
 
 The Tumblr integration allows your AI Agents to authenticate users with their Tumblr accounts and access blog content, posts, and social features on their behalf.
 
@@ -16,19 +17,25 @@ The Tumblr integration is perfect for content creation and social media AI appli
 
 <Steps>
   <Step title="Set up app in Tumblr">
+
     1. Sign up for a [Tumblr Developer account](https://api.tumblr.com/console)
     2. Create a new application in the Tumblr Developer Console if you don't have one already by select **Or register a new application**.
     3. You should be able to see your app in the list of [applications](https://www.tumblr.com/oauth/apps)
     4. Make sure to fill the _Default callback URL_ and _OAuth2 redirect URLs_ with your Tenant's callback URL
     5. Note your **OAuth consumer key** and **OAuth consumer secret**
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Application Website: `https://YOUR_DOMAIN`
-      - Tenant's callback URL: `https://YOUR_DOMAIN/login/callback`
+      - Application Website: `https://YOUR_AUTH0_DOMAIN`
+      - Tenant's callback URL: `https://YOUR_AUTH0_DOMAIN/login/callback`
+
+    <FindDomainInfoBlock />
+
   </Step>
 </Steps>
 
-<Auth0DomainInfo />
-
 <AddConnectionInAuth0 />
+
+<LearnMore />

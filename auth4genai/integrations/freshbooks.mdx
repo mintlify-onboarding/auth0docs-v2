@@ -3,8 +3,9 @@ title: Freshbooks
 description: "Connect your AI Agents to Freshbooks for accounting, invoicing, and financial management."
 ---
 
-import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
+import LearnMore from "/snippets/integrations/learn-more.mdx";
 
 The Freshbooks integration allows your AI Agents to authenticate users with their Freshbooks accounts and access accounting data, invoices, and financial information on their behalf.
 
@@ -16,19 +17,25 @@ The Freshbooks integration is perfect for business and finance-focused AI applic
 
 <Steps>
   <Step title="Set up app in Freshbooks">
+
     1. Sign up for a [Freshbooks Developer account](https://www.freshbooks.com/developers)
     2. Create a new app in the [Freshbooks Developer Center](https://my.freshbooks.com/#/developer)
     3. Configure the app and add any scopes you may require
     4. Navigate to your newly created app and scroll to the bottom of the "App Settings" tab.
     5. Note your **Client ID** and **Client Secret**
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Website URL: `https://YOUR_DOMAIN`
-      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+      - Website URL: `https://YOUR_AUTH0_DOMAIN`
+      - Redirect URI: `https://YOUR_AUTH0_DOMAIN/login/callback`
+
+    <FindDomainInfoBlock />
+
   </Step>
 </Steps>
 
-<Auth0DomainInfo />
-
 <AddConnectionInAuth0 />
+
+<LearnMore />

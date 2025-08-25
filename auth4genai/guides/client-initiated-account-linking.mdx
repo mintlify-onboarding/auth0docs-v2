@@ -17,7 +17,7 @@ In Client-initiated account linking, the client initiates the account linking re
 
 ## How it works
 
-Let’s walk through a real-world example: After authenticating via Auth0 using [Passkeys](https://auth0.com/docs/authenticate/database-connections/passkeys), a user asks an AI agent integrated with a productivity app to fetch Google Calendar events:
+Let's walk through a real-world example: After authenticating via Auth0 using [Passkeys](https://auth0.com/docs/authenticate/database-connections/passkeys), a user asks an AI agent integrated with a productivity app to fetch Google Calendar events:
 
 1. The application calls the Agent API with an Auth0 access token and the user input “Get Google Calendar events for today and tomorrow.”
 2. The Agent API uses an Auth0 access token to call Auth0 and requests a Google access token with the Calendar scopes.

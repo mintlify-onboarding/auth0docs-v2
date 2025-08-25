@@ -3,8 +3,9 @@ title: Stripe Connect
 description: "Connect your AI Agents to Stripe Connect for marketplace payments, vendor management, and financial transactions."
 ---
 
-import Auth0DomainInfo from "/snippets/integrations/auth0-domain-info.mdx";
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import AddConnectionInAuth0 from "/snippets/integrations/add-connection-auth0.mdx";
+import LearnMore from "/snippets/integrations/learn-more.mdx";
 
 The Stripe Connect integration allows your AI Agents to authenticate users with their Stripe Connect accounts and access payment data, transaction history, and marketplace features on their behalf.
 
@@ -16,18 +17,24 @@ The Stripe Connect integration is perfect for marketplace and fintech AI applica
 
 <Steps>
   <Step title="Set up app in Stripe">
+
     1. Sign up for a [Stripe account](https://stripe.com/)
     2. Setup your account and complete any necessary verification steps to work with [Stripe Connect](https://dashboard.stripe.com/connect)
     3. Navigate to the Onboarding options for your Stripe Connect account and select [OAuth](https://dashboard.stripe.com/settings/connect/onboarding-options/oauth)
     4. Toggle **Enable OAuth** then fill in the Redirect URI and note your **Client ID** for later
     5. Navigate to the [API Keys Page](https://dashboard.stripe.com/apikeys) and copy the **Client Secret**
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Redirects: `https://YOUR_DOMAIN/login/callback`
+      - Redirects: `https://YOUR_AUTH0_DOMAIN/login/callback`
+
+    <FindDomainInfoBlock />
+
   </Step>
 </Steps>
 
-<Auth0DomainInfo />
-
 <AddConnectionInAuth0 />
+
+<LearnMore />
