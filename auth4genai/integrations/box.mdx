@@ -17,18 +17,21 @@ Box is an enterprise-focused cloud storage and collaboration platform. This inte
 
 <Steps>
   <Step title="Set up app in Box">
+
     1. Sign up for a [Box Developer account](https://developers.box.com/)
     2. Set up an app using Box's [Custom Apps: Setup with OAuth 2.0](https://developer.box.com/guides/applications/custom-apps/oauth2-setup/) documentation
     3. Note your **Client ID** and **Client Secret**
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+      - Redirect URI: `https://YOUR_AUTH0_DOMAIN/login/callback`
       - Application Scopes: Select the permissions you want to enable for this connection.
+    <FindDomainInfoBlock />
+
   </Step>
 </Steps>
-
-<FindDomainInfoBlock />
 
 <AddConnectionInAuth0 />
 

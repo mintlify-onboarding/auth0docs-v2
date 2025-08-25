@@ -17,19 +17,23 @@ The Snapchat integration is perfect for social media-focused AI applications tha
 
 <Steps>
   <Step title="Set up app in Snapchat">
+
     1. Sign up for a [Snapchat Developer account](https://developers.snapchat.com/)
     2. Navigate to the [Snap Kit Portal](https://kit.snapchat.com/manage) and create a new app in the Snapchat Developer Portal
     3. You will need to pick the libraries you plan to use: Login Kit is required at the minimum.
     4. Generate a new _Confidential OAuth 2.0 Client ID_ and note your **Confidential Client ID** and **Confidential Client Secret**
     5. In the left hand panel, navigate to Versions > [Your App Name], scroll to the Login Kit section and add the redirect URIs.
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Redirect URIs for OAuth: `https://YOUR_DOMAIN/login/callback`
+      - Redirect URIs for OAuth: `https://YOUR_AUTH0_DOMAIN/login/callback`
+
+    <FindDomainInfoBlock />
+
   </Step>
 </Steps>
-
-<FindDomainInfoBlock />
 
 <AddConnectionInAuth0 />
 

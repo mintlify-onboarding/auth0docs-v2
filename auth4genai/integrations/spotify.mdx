@@ -17,18 +17,21 @@ The Spotify integration is perfect for music and entertainment-focused AI applic
 
 <Steps>
   <Step title="Set up app in Spotify">
+
     1. Sign up for a [Spotify Developer account](https://developer.spotify.com/)
     2. Create a new app in the Spotify Developer Dashboard
     3. Note your **Client ID** and select _View Client Secret_ to note your **Client Secret**
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Website: `https://YOUR_DOMAIN`
-      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+      - Website: `https://YOUR_AUTH0_DOMAIN`
+      - Redirect URI: `https://YOUR_AUTH0_DOMAIN/login/callback`
+
+  <FindDomainInfoBlock />
   </Step>
 </Steps>
-
-<FindDomainInfoBlock />
 
 <AddConnectionInAuth0 />
 

@@ -17,20 +17,24 @@ The Freshbooks integration is perfect for business and finance-focused AI applic
 
 <Steps>
   <Step title="Set up app in Freshbooks">
+
     1. Sign up for a [Freshbooks Developer account](https://www.freshbooks.com/developers)
     2. Create a new app in the [Freshbooks Developer Center](https://my.freshbooks.com/#/developer)
     3. Configure the app and add any scopes you may require
     4. Navigate to your newly created app and scroll to the bottom of the "App Settings" tab.
     5. Note your **Client ID** and **Client Secret**
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Website URL: `https://YOUR_DOMAIN`
-      - Redirect URI: `https://YOUR_DOMAIN/login/callback`
+      - Website URL: `https://YOUR_AUTH0_DOMAIN`
+      - Redirect URI: `https://YOUR_AUTH0_DOMAIN/login/callback`
+
+    <FindDomainInfoBlock />
+
   </Step>
 </Steps>
-
-<FindDomainInfoBlock />
 
 <AddConnectionInAuth0 />
 

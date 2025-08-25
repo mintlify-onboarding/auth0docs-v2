@@ -71,8 +71,6 @@ In the Google Cloud Console, [configure your Google OAuth consent screen](https:
 
 To create a Google OAuth 2.0 Client, you need your Auth0 domain.
 
-<FindDomainInfoBlock />
-
 In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.cloud.google.com/auth/clients/create):
 
 <Steps>
@@ -88,11 +86,11 @@ In the Google Cloud Console, [create a new OAuth 2.0 Client](https://console.clo
       <li>**Name**: The name of your OAuth 2.0 Client.</li>
       <li>**Authorized Javascript origins**: `https://{YOUR_AUTH0_DOMAIN}`</li>
       <li>
-        **Authorized redirect URIs**: `https://{YOUR_AUTH0_DOMAIN}
-        /login/callback`
+        **Authorized redirect URIs**: `https://{YOUR_AUTH0_DOMAIN}/login/callback`
       </li>
     </ul>
-    <Auth0DomainInfo />
+    <FindDomainInfoBlock />
+
   </Step>
   <Step title="Complete">Select **Create**.</Step>
 </Steps>

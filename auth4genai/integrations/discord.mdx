@@ -17,18 +17,22 @@ The Discord integration is perfect for AI applications that need to interact wit
 
 <Steps>
   <Step title="Set up app in Discord">
+
     1. Sign up for a [Discord Developer account](https://discord.com/developers/applications)
     2. Create a new application in the Discord Developer Portal
     3. Navigate to the OAuth2 section and note your **Client ID** and **Client Secret**
+
   </Step>
   <Step title="Configure for Auth0">
+
     1. Use the following settings when configuring your app:
-      - Homepage URL: `https://YOUR_DOMAIN`
-      - Authorization callback URL: `https://YOUR_DOMAIN/login/callback`
+      - Homepage URL: `https://YOUR_AUTH0_DOMAIN`
+      - Authorization callback URL: `https://YOUR_AUTH0_DOMAIN/login/callback`
+
+    <FindDomainInfoBlock />
+
   </Step>
 </Steps>
-
-<FindDomainInfoBlock />
 
 <AddConnectionInAuth0 />
 
