@@ -34,7 +34,9 @@ export const Prerequisites = ({
   refreshTokenGrantStep = undefined,
   createAuth0ApiStep = undefined,
   createResourceServerClientStep = undefined,
-  tokenExchangeGrantStep = undefined,
+  tokenExchangeGrantStep = {
+    applicationName: "Auth0 Application",
+  },
 }) => {
   // Build steps array dynamically based on conditions
   const steps = [];
@@ -48,6 +50,20 @@ export const Prerequisites = ({
       allowedWebOrigins: createAuth0ApplicationStep.allowedWebOrigins,
     })
   );
+
+  if (tokenExchangeGrantStep) {
+    steps.push(
+      <Step key="token-exchange" title="Enable Token Exchange Grant">
+        Enable the Token Exchange Grant for your{" "}
+        {tokenExchangeGrantStep.applicationName}. Go to{" "}
+        <strong>
+          Applications &gt; [Your Application] &gt; Settings &gt; Advanced &gt;
+          Grant Types
+        </strong>{" "}
+        and enable the <strong>Token Exchange</strong> grant type.
+      </Step>
+    );
+  }
 
   // Conditionally add steps
   if (refreshTokenGrantStep) {
@@ -111,7 +127,7 @@ export const Prerequisites = ({
         Create this client programmatically via the Auth0 Management API:
         <CodeBlock
           language="bash"
-          expandable="true"
+          expandable="false"
           lines="true"
           filename="Create Resource Server Client"
         >
@@ -139,6 +155,7 @@ export const Prerequisites = ({
                   Applications &gt; APIs &gt; Auth0 Management API &gt; API
                   Explorer
                 </strong>
+                {"  "}
                 tab in your tenant.
               </li>
               <li>
@@ -157,20 +174,6 @@ export const Prerequisites = ({
             running cURL successfully.
           </li>
         </ul>
-      </Step>
-    );
-  }
-
-  if (tokenExchangeGrantStep) {
-    steps.push(
-      <Step key="token-exchange" title="Enable Token Exchange Grant">
-        Enable the Token Exchange Grant for your{" "}
-        {tokenExchangeGrantStep.applicationName}. Go to{" "}
-        <strong>
-          Applications &gt; [Your Application] &gt; Settings &gt; Advanced &gt;
-          Grant Types
-        </strong>{" "}
-        and enable the <strong>Token Exchange</strong> grant type.
       </Step>
     );
   }
