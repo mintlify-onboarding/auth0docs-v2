@@ -88,22 +88,21 @@ export const getRefreshToken = async () => {
 
 Once the user is authenticated, you can fetch an access token from the Token Vault using the Auth0 AI SDK. In this example, we fetch an access token for a Google social connection. Once you've obtained the access token for a social connection, you can use it with an AI agent to fetch data during a tool call and provide contextual data in its response.
 
-In our example, we create a file at `src/lib/tools/google-calendar.ts`. In the file, we define a tool, `checkUsersCalendarTool`, that uses the access token with the Google Calendar API to query for calendar events in a specified date range:
+In our example, we create a file at `src/lib/tools/google-calendar.ts`. In the file, we define a tool, `getCalendarEventsTool`, that uses the access token with the Google Calendar API to query for calendar events in a specified date:
 
 ```ts src/lib/tools/google-calendar.ts wrap lines
-import { tool } from "ai";
-import { addHours, formatISO } from "date-fns";
-import { GaxiosError } from "gaxios";
-import { google } from "googleapis";
-import { z } from "zod";
-import { FederatedConnectionError } from "@auth0/ai/interrupts";
+import { tool } from 'ai';
+import { endOfDay, formatISO, startOfDay } from 'date-fns';
+import { GaxiosError } from 'gaxios';
+import { google } from 'googleapis';
+import { z } from 'zod';
+import { FederatedConnectionError } from '@auth0/ai/interrupts';
 
-import { getAccessToken, withGoogleConnection } from "../auth0-ai";
+import { getAccessToken, withGoogleConnection } from '../auth0-ai';
 
-export const checkUsersCalendarTool = withGoogleConnection(
+export const getCalendarEventsTool = withGoogleConnection(
   tool({
-    description:
-      "Check user availability on a given date time on their calendar",
+    description: `Get calendar events for a given date from the user's Google Calendar`,
     parameters: z.object({
       date: z.coerce.date(),
     }),
@@ -113,39 +112,57 @@ export const checkUsersCalendarTool = withGoogleConnection(
 
       // Google SDK
       try {
-        const calendar = google.calendar("v3");
+        const calendar = google.calendar('v3');
         const auth = new google.auth.OAuth2();
 
         auth.setCredentials({
           access_token: accessToken,
         });
 
-        const response = await calendar.freebusy.query({
+        // Get events for the entire day
+        const response = await calendar.events.list({
           auth,
-          requestBody: {
-            timeMin: formatISO(date),
-            timeMax: addHours(date, 1).toISOString(),
-            timeZone: "UTC",
-            items: [{ id: "primary" }],
-          },
+          calendarId: 'primary',
+          timeMin: formatISO(startOfDay(date)),
+          timeMax: formatISO(endOfDay(date)),
+          singleEvents: true,
+          orderBy: 'startTime',
+          maxResults: 50,
         });
 
+        const events = response.data.items || [];
+
         return {
-          available: response.data?.calendars?.primary?.busy?.length === 0,
+          date: formatISO(date, { representation: 'date' }),
+          eventsCount: events.length,
+          events: events.map((event) => ({
+            id: event.id,
+            summary: event.summary || 'No title',
+            description: event.description,
+            startTime: event.start?.dateTime || event.start?.date,
+            endTime: event.end?.dateTime || event.end?.date,
+            location: event.location,
+            attendees:
+              event.attendees?.map((attendee) => ({
+                email: attendee.email,
+                name: attendee.displayName,
+                responseStatus: attendee.responseStatus,
+              })) || [],
+            status: event.status,
+            htmlLink: event.htmlLink,
+          })),
         };
       } catch (error) {
         if (error instanceof GaxiosError) {
           if (error.status === 401) {
-            throw new FederatedConnectionError(
-              `Authorization required to access the Federated Connection`
-            );
+            throw new FederatedConnectionError(`Authorization required to access the Federated Connection`);
           }
         }
 
         throw error;
       }
     },
-  })
+  }),
 );
 ```
 
@@ -266,7 +283,7 @@ import {
   errorSerializer,
   withInterruptions,
 } from "@auth0/ai-vercel/interrupts";
-import { checkUsersCalendarTool } from "@/lib/tools/google-calendar";
+import { getCalendarEventsTool } from "@/lib/tools/google-calendar";
 //... existing code
 
 export async function POST(req: NextRequest) {
@@ -276,7 +293,7 @@ export async function POST(req: NextRequest) {
   setAIContext({ threadID: request.id });
 
   const tools = {
-    checkUsersCalendarTool,
+    getCalendarEventsTool,
   };
 
   return createDataStreamResponse({
