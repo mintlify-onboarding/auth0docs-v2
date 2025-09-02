@@ -1,4 +1,4 @@
-import JSZip from 'jszip';
+import JSZip from 'jszip'; // TODO: fix, this is currently not working
 import { useState } from "react";
 
 export const DownloadQuickstartButton = ({
@@ -12,37 +12,78 @@ export const DownloadQuickstartButton = ({
 
   const githubRepo = 'auth0-samples/auth0-ai-samples';
   const folderPath = `${quickstart}/${framework}`;
-  const genericErrorMessage = 'An unexpected error occurred. Please try again.';
+  const defaultErrorMessage = 'An unexpected error occurred. Please try again.';
 
   const downloadFolder = async () => {
     setIsDownloading(true);
     setError(null);
 
     try {
-      const response = await fetch(
-        `https://api.github.com/repos/${githubRepo}/contents/${folderPath}`,
-        {
-          headers: {
-            'Accept': 'application/vnd.github.v3+json',
+      const zip = new JSZip();
+      console.log('zip,', zip) // breaks
+
+      const processDirectory = async (dirPath, dirName = '') => {
+        const response = await fetch(
+          `https://api.github.com/repos/${githubRepo}/contents/${dirPath}`,
+          {
+            headers: {
+              'Accept': 'application/vnd.github.v3+json',
+            }
           }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch directory: ${dirPath}`);
         }
-      );
 
-      if (!response.ok) {
-        setError(genericErrorMessage);
-      }
+        const items = await response.json();
+        
+        const promises = items.map(async (item) => {
+          if (item.type === 'file') {
+            const fileResponse = await fetch(item.download_url);
+            if (fileResponse.ok) {
+              const isTextFile = item.name.match(/\.(js|jsx|ts|tsx|json|md|txt|env|yml|yaml)$/i);
+              const content = isTextFile 
+                ? await fileResponse.text()
+                : await fileResponse.arrayBuffer();
+              
+              const filePath = dirName ? `${dirName}/${item.name}` : item.name;
+              zip.file(filePath, content);
+            }
+          } else if (item.type === 'dir') {
+            const subDirName = dirName ? `${dirName}/${item.name}` : item.name;
+            await processDirectory(item.path, subDirName);
+          }
+        });
 
-      const files = await response.json();
+        await Promise.all(promises);
+      };
 
-      console.log('files', files)
+      // Start processing from the root folder
+      await processDirectory(folderPath);
+      
+      // Generate and download zip
+      const blob = await zip.generateAsync({ 
+        type: 'blob',
+        compression: 'DEFLATE',
+        compressionOptions: { level: 6 }
+      });
+      
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${quickstart}-${framework}-sample.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
 
     } catch (err) {
-      console.log('error', err);
-      setError (err.message  || genericErrorMessage);
+      setError(err.message || defaultErrorMessage);
     } finally {
       setIsDownloading(false);
     }
-  }
+  };
 
   return (
     <div className="download-button-container">
