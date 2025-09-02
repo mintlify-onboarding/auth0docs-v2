@@ -1,17 +1,18 @@
 import JSZip from 'jszip';
 import { useState } from "react";
 
-export const DownloadButton = ({
+export const DownloadQuickstartButton = ({
   quickstart,
   framework,
   label = "Download Sample",
-  variant = "primary"
 }) => {
 
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(null);
 
+  const githubRepo = 'auth0-samples/auth0-ai-samples';
   const folderPath = `${quickstart}/${framework}`;
+  const genericErrorMessage = 'An unexpected error occurred. Please try again.';
 
   const downloadFolder = async () => {
     setIsDownloading(true);
@@ -19,7 +20,7 @@ export const DownloadButton = ({
 
     try {
       const response = await fetch(
-        `https://api.github.com/repos/auth0-samples/auth0-ai-samples/contents/${folderPath}`,
+        `https://api.github.com/repos/${githubRepo}/contents/${folderPath}`,
         {
           headers: {
             'Accept': 'application/vnd.github.v3+json',
@@ -28,7 +29,7 @@ export const DownloadButton = ({
       );
 
       if (!response.ok) {
-        console.log('error occurred')
+        setError(genericErrorMessage);
       }
 
       const files = await response.json();
@@ -37,7 +38,7 @@ export const DownloadButton = ({
 
     } catch (err) {
       console.log('error', err);
-      setError (err.message  || 'An unexpected error occurred. Please try again.')
+      setError (err.message  || genericErrorMessage);
     } finally {
       setIsDownloading(false);
     }
@@ -48,12 +49,18 @@ export const DownloadButton = ({
       <button
         onClick={downloadFolder}
         disabled={isDownloading}
-        className={`download-button ${variant} ${isDownloading ? 'downloading' : ''}`}
+        className={`download-button ${isDownloading ? 'downloading' : ''}`}
         aria-label={`Download ${quickstart} ${framework} sample code`}
       >
         {isDownloading ? (
           <>
-            <svg className="download-spinner" width="16" height="16" viewBox="0 0 24 24">
+            <svg 
+              className="download-spinner" 
+              width="16" 
+              height="16" 
+              viewBox="0 0 24 24" 
+              fill="none"
+            >
               <circle 
                 cx="12" 
                 cy="12" 
@@ -82,31 +89,7 @@ export const DownloadButton = ({
           </>
         ) : (
           <>
-            <svg className="download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path 
-                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <polyline 
-                points="7,10 12,15 17,10" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-              <line 
-                x1="12" 
-                y1="15" 
-                x2="12" 
-                y2="3" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round"
-              />
-            </svg>
+            <Icon icon="download" color="white"/>
             {label}
           </>
         )}
@@ -114,11 +97,7 @@ export const DownloadButton = ({
       
       {error && (
         <div className="download-error" role="alert">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-            <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" strokeWidth="2"/>
-            <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" strokeWidth="2"/>
-          </svg>
+          <Icon icon="triangle-exclamation" color="#DC2626"/>
           {error}
         </div>
       )}
