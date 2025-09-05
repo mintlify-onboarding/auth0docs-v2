@@ -10,13 +10,13 @@ export const Auth0SetupBlock = ({
       <ol>
         <li>
           In the <a href="https://manage.auth0.com">Auth0 Dashboard</a>,
-          navigate to <b>Authentication &gt; Social</b>
+          navigate to <b>Authentication &gt; Social.</b>
         </li>
         <li>
-          Select <b>Create Connection</b> and then select <b>{providerName}</b>
+          Select <b>Create Connection</b> and then select <b>{providerName}.</b>
         </li>
         <li>
-          Click <b>Continue</b>
+          Click <b>Continue</b>.
         </li>
         <li>
           In <b>General</b>:
@@ -46,14 +46,13 @@ export const Auth0SetupBlock = ({
           third-party APIs. To learn more, read{" "}
           <a href="https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault">
             Configure Token Vault
-          </a>
-          .
+          </a>.
         </li>
         <li>
           Click <b>Create</b>.
         </li>
         <li>
-          Select the application you would like to enable this connection for.
+          Once your connection is created, you will be redirected to the "Applications" page, where you can select the application you would like to enable this connection for.
           <br />
           Note: If this is a new Auth0 tenant, you can select the <b>Default App</b>.
         </li>
