@@ -14,7 +14,7 @@ export const TokenVaultConfigBlock = ({
     <>
       <Tabs>
         <Tab title="JavaScript" icon="js">
-          <CodeBlock language="javascript">
+          <CodeBlock language="javascript" wrap="true" lines="true">
 {`const auth0AI = new Auth0AI();
 
 export const ${jsVariableName} = auth0AI.withTokenForConnection({
@@ -25,7 +25,7 @@ export const ${jsVariableName} = auth0AI.withTokenForConnection({
           </CodeBlock>
         </Tab>
         <Tab title="Python" icon="python">
-          <CodeBlock language="python">
+          <CodeBlock language="python" wrap="true" lines="true">
 {`auth0_ai = Auth0AI()
 
 ${pythonVariableName} = auth0_ai.with_federated_connection(
