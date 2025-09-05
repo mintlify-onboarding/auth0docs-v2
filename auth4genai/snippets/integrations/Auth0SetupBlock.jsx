@@ -9,15 +9,13 @@ export const Auth0SetupBlock = ({
     <>
       <ol>
         <li>
-          In the <a href="https://manage.auth0.com">Auth0 Dashboard</a>,
-          navigate to <b>Authentication &gt; Social.</b>
+          In the <a href="https://manage.auth0.com">Auth0 Dashboard</a>, go to{" "}
+          <b>Authentication &gt; Social</b>.
         </li>
         <li>
-          Select <b>Create Connection</b> and then select <b>{providerName}.</b>
+          Select <b>Create Connection</b>, then choose <b>{providerName}</b>.
         </li>
-        <li>
-          Click <b>Continue</b>.
-        </li>
+        <li>Click <b>Continue</b>.</li>
         <li>
           In <b>General</b>:
           <ol type="A">
@@ -34,27 +32,26 @@ export const Auth0SetupBlock = ({
             </li>
             {allowFreeFormScopes && (
               <li>
-                You can also add any additional scopes your application may
-                require by adding it to the <b>Additional Scopes</b> text box.
+                Add any additional scopes your application requires in the{" "}
+                <b>Additional Scopes</b> field.
               </li>
             )}
           </ol>
         </li>
         <li>
-          In <b>Advanced</b>, toggle <b>Enable Token Vault</b>. This allows the
-          connection to retrieve and securely store access tokens for
-          third-party APIs. To learn more, read{" "}
+          In <b>Advanced</b>, <b>Enable Token Vault</b>. This lets the
+          connection retrieve and securely store access tokens for third‑party
+          APIs. Learn more in{" "}
           <a href="https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault">
             Configure Token Vault
           </a>.
         </li>
+        <li>Click <b>Create</b>.</li>
         <li>
-          Click <b>Create</b>.
-        </li>
-        <li>
-          Once your connection is created, you will be redirected to the "Applications" page, where you can select the application you would like to enable this connection for.
+          After creation, you are redirected to the <b>Applications</b> page.
+          Select the application(s) to enable this connection for.
           <br />
-          Note: If this is a new Auth0 tenant, you can select the <b>Default App</b>.
+          Note: In a new Auth0 tenant, you can select the <b>Default App</b>.
         </li>
         <li>
           Once you have created your {providerName} social connection, <a href="https://auth0.com/docs/authenticate/identity-providers/test-connections">test your connection</a> to ensure the setup is working correctly before using it in your application.
