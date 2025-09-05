@@ -1,0 +1,58 @@
+---
+title: Amazon
+---
+
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
+import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
+import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
+import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+
+
+Connect your AI Agents to Amazon for e-commerce capabilities, product management, and order
+processing. It's designed for applications that need to interact with Amazon's product catalog, manage orders, and provide personalized shopping experiences.
+
+When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
+- Access product information: retrieve product details, pricing, and availability from Amazon.
+- Support AI-powered workflows: use product data to generate insights or automate e-commerce tasks.
+- Integrate with creative processes: connect product assets with other tools and services.
+
+## Connect Amazon to Auth0
+
+<IntegrationInfoBlock providerName="Amazon" />
+
+<Steps>
+  <Step title="Amazon Setup">
+    1. Visit the [Amazon Developer account](https://developer.amazon.com/) page to sign up.
+    2. You will be prompted to **Create a New Security Profile** on the **Amazon Developer Console**
+    3. You should now be presented with a **Consent Screen Information modal** that you will need to fill out.
+    4. Select the **Show Client ID and Client Secret** link
+    5. Copy your **Client ID** and **Client Secret** for the next steps.
+    6. You should now be able to select your new Security Profile and configure the **Web Settings** by selecting it from the dropdown menu.
+    7. Click **Edit** and configure your Allowed Origins and Allowed Return URLs
+    8. You will need to use the following values for your configuration:
+       - Allowed Origins: `https://YOUR_AUTH0_DOMAIN`
+       - Allowed Return URLs: `https://YOUR_AUTH0_DOMAIN/login/callback`
+    <FindDomainInfoBlock />
+    9. Click **Save** to apply your updates.
+  </Step>
+  <Step title="Auth0 Setup">
+    <Auth0SetupBlock providerName="Amazon" scopesName="Attributes" allowFreeFormScopes={true} />
+  </Step>
+</Steps>
+
+To learn more about setting up Amazon, read the [Login with Amazon documentation](https://developer.amazon.com/docs/login-with-amazon/documentation-overview.html).
+
+## Token Vault configuration Example
+
+To configure the Token Vault for your Amazon connection, you can use the following code snippet in your application:
+
+<TokenVaultConfigBlock 
+  providerName="Amazon"
+  connectionName="amazon"
+  scopes={["profile"]}
+/>
+
+## Next steps
+- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
+- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).

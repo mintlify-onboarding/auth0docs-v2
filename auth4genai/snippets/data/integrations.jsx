@@ -212,4 +212,14 @@ export const integrations = [
     description:
       "Allow your AI Agent to create and schedule new posts (text, photo, video), reblog content, and manage a user's blog theme and settings.",
   },
+  {
+    id: "amazon",
+    title: "Amazon",
+    icon: "/ai/docs/img/integrations/amazon-avatar.png",
+    href: "/integrations/amazon",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as an Amazon seller to manage inventory, update product listings, and track sales performance. Or, as a consumer, a shopping agent that tracks product prices and availability.",
+  }
 ];

@@ -1,0 +1,44 @@
+export const TokenVaultConfigBlock = ({ 
+  connectionName = "connection-name",
+  providerName = "Provider",
+  scopes = ["scope1", "scope2"],
+}) => {
+  const formatScopes = (scopes) => {
+    return scopes.map(scope => `"${scope}"`).join(", ");
+  };
+
+  const jsVariableName = `with${providerName.replace(/\s+/g, '')}Connection`;
+  const pythonVariableName = `with_${connectionName.replace(/-/g, '_')}_connection`;
+
+  return (
+    <>
+      <h2>Token Vault configuration Example</h2>
+      <p>To configure the Token Vault for your {providerName} connection, you can use the following code snippet in your application:</p>
+      
+      <Tabs>
+        <Tab title="JavaScript" icon="js">
+          <CodeBlock language="javascript">
+{`const auth0AI = new Auth0AI();
+
+export const ${jsVariableName} = auth0AI.withTokenForConnection({
+  connection: "${connectionName}",
+  scopes: [${formatScopes(scopes)}, ...],
+  refreshToken: getAuth0RefreshToken(),
+});`}
+          </CodeBlock>
+        </Tab>
+        <Tab title="Python" icon="python">
+          <CodeBlock language="python">
+{`auth0_ai = Auth0AI()
+
+${pythonVariableName} = auth0_ai.with_federated_connection(
+    connection="${connectionName}",
+    scopes=[${formatScopes(scopes)}, ...],
+    refresh_token=get_auth0_refresh_token,
+)`}
+          </CodeBlock>
+        </Tab>
+      </Tabs>
+    </>
+  );
+};
