@@ -8,8 +8,8 @@ import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
 
 
-Connect your AI Agents to Amazon for e-commerce capabilities, product management, and order
-processing. It's designed for applications that need to interact with Amazon's product catalog, manage orders, and provide personalized shopping experiences.
+Connect your AI agents to Amazon for e-commerce capabilities, product management, and order
+processing. It is designed for applications that need to interact with Amazon's product catalog, manage orders, and provide personalized shopping experiences.
 
 When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
 - Access product information: retrieve product details, pricing, and availability from Amazon.
@@ -21,27 +21,30 @@ When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/toke
 <IntegrationInfoBlock providerName="Amazon" />
 
 <Steps>
-  <Step title="Amazon Setup">
-    1. Visit the [Amazon Developer account](https://developer.amazon.com/) page to sign up.
-    2. You will be prompted to **Create a New Security Profile** on the **Amazon Developer Console**.
-    3. You should now be presented with a **Consent Screen Information modal** that you will need to fill out.
-    4. Select the **Show Client ID and Client Secret** link.
-    5. Copy your **Client ID** and **Client Secret** for the next steps.
-    6. You should now be able to select your new Security Profile and configure the **Web Settings** by selecting it from the dropdown menu.
-    7. Click **Edit** and configure your Allowed Origins and Allowed Return URLs.
-    8. You will need to use the following values for your configuration:
+  <Step title="Amazon setup">
+    1. Visit the [Amazon Developer account](https://developer.amazon.com/) page and sign up.
+    2. Create a new Security Profile in the Amazon Developer Console.
+    3. Complete the Consent Screen Information form.
+    4. Select the Show Client ID and Client Secret link.
+    5. Copy the Client ID and Client Secret.
+    6. Select your new Security Profile, then open Web Settings from the dropdown.
+    7. Click Edit and configure Allowed Origins and Allowed Return URLs.
+    8. Use these values:
        - Allowed Origins: `https://YOUR_AUTH0_DOMAIN`
        - Allowed Return URLs: `https://YOUR_AUTH0_DOMAIN/login/callback`
-    <FindDomainInfoBlock />
-    9. Click **Save** to apply your updates.
+       <FindDomainInfoBlock />
+    9. Click Save.
 
     To learn more about setting up Amazon, read the [Login with Amazon documentation](https://developer.amazon.com/docs/login-with-amazon/documentation-overview.html).
-
   </Step>
-  <Step title="Auth0 Setup">
+  <Step title="Auth0 setup">
     <Auth0SetupBlock providerName="Amazon" scopesName="Attributes" allowFreeFormScopes={true} />
   </Step>
 </Steps>
+
+## Token Vault configuration example
+
+To configure the Token Vault for your Amazon connection, you can use the following code snippet in your application:
 
 <TokenVaultConfigBlock 
   providerName="Amazon"

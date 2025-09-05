@@ -12,9 +12,6 @@ export const TokenVaultConfigBlock = ({
 
   return (
     <>
-      <h2>Token Vault configuration Example</h2>
-      <p>To configure the Token Vault for your {providerName} connection, you can use the following code snippet in your application:</p>
-      
       <Tabs>
         <Tab title="JavaScript" icon="js">
           <CodeBlock language="javascript">
