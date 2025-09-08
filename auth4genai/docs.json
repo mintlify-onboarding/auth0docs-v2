@@ -108,7 +108,10 @@
                   "integrations/snapchat",
                   "integrations/spotify",
                   "integrations/stripe-connect",
-                  "integrations/tumblr"
+                  "integrations/tumblr",
+                  "integrations/bitbucket",
+                  "integrations/dropbox",
+                  "integrations/fitbit"
                 ]
               },
               {
