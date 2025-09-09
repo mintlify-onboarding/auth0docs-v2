@@ -95,10 +95,13 @@
               {
                 "group": "Social Integrations",
                 "pages": [
-                  "integrations/amazon",
+                 "integrations/amazon",
+                  "integrations/bitbucket",
                   "integrations/box",
                   "integrations/discord",
+                  "integrations/dropbox",
                   "integrations/figma",
+                  "integrations/fitbit",
                   "integrations/freshbooks",
                   "integrations/github",
                   "integrations/google",
@@ -108,10 +111,7 @@
                   "integrations/snapchat",
                   "integrations/spotify",
                   "integrations/stripe-connect",
-                  "integrations/tumblr",
-                  "integrations/bitbucket",
-                  "integrations/dropbox",
-                  "integrations/fitbit"
+                  "integrations/tumblr"
                 ]
               },
               {

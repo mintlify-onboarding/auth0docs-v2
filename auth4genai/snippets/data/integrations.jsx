@@ -221,5 +221,35 @@ export const integrations = [
     type: "Social",
     description:
       "Allow your AI Agent as an Amazon seller to manage inventory, update product listings, and track sales performance. Or, as a consumer, a shopping agent that tracks product prices and availability.",
+  },
+  {
+    id: "bitbucket",
+    title: "Bitbucket",
+    icon: "/ai/docs/img/integrations/bitbucket-avatar.png",
+    href: "/integrations/bitbucket",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Bitbucket user to manage repositories, track issues, and automate work with code repositories.",
+  },
+  {
+    id: "dropbox",
+    title: "Dropbox",
+    icon: "/ai/docs/img/integrations/dropbox-avatar.png",
+    href: "/integrations/dropbox",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Dropbox user to manage files, share Dropbox content for analysis, and automate document processing.",
+  },
+  {
+    id: "fitbit",
+    title: "Fitbit",
+    icon: "/ai/docs/img/integrations/fitbit-avatar.png",
+    href: "/integrations/fitbit",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Fitbit user to access health data, track fitness goals, and manage user profiles.",
   }
 ];
