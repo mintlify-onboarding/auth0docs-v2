@@ -251,5 +251,25 @@ export const integrations = [
     type: "Social",
     description:
       "Allow your AI Agent as a Fitbit user to access health data, track fitness goals, and manage user profiles.",
-  }
+  },
+  {
+    id: "hugging-face",
+    title: "Hugging Face",
+    icon: "/ai/docs/img/integrations/hugging-face-avatar.png",
+    href: "/integrations/hugging-face",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Hugging Face user to access model information, manage datasets, and integrate with machine learning workflows.",
+  },
+  {
+    id: "paypal",
+    title: "Paypal",
+    icon: "/ai/docs/img/integrations/paypal-avatar.png",
+    href: "/integrations/paypal",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Paypal user to access transaction information, manage payments, and integrate with financial workflows.",
+  },
 ];

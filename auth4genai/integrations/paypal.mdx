@@ -1,0 +1,58 @@
+---
+title: Paypal
+---
+
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
+import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
+import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
+import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+
+
+Connect your AI agents to Paypal for payment processing, transaction management, and financial insights.
+ It is designed for applications that need to interact with Paypal's payment gateway, manage transactions, and provide seamless checkout experiences.
+
+When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
+- Access transaction information: retrieve transaction details, payment status, and user profiles from Paypal.
+- Support AI-powered workflows: analyse payment histories to detect anomalies, predict future transactions, and automate financial tasks.
+- Integrate with creative processes: connect product assets with other tools and services.
+
+## Connect Paypal to Auth0
+
+<IntegrationInfoBlock providerName="Paypal" />
+
+<Steps>
+  <Step title="Paypal setup">
+    1. Visit the [Paypal Developer account](https://developer.paypal.com/) page and sign up.
+    2. Create a new App in the Paypal Developer Console.
+    3. Give the app a name and choose whether it's for test (Sandbox) or live
+    7. Click Create App to see the app detail page.
+    5. Copy the Client ID and Client Secret.
+    6. Enable the appropriate the features
+    7. Click Advanced Settings and configure the Return URLs.
+    8. Use these values:
+       - Return URL: `https://YOUR_AUTH0_DOMAIN/login/callback`
+       <FindDomainInfoBlock />
+    9. Select scope attributes for OpenID connect (OAuth2) protocol.
+    9. Click Save to save changes.
+
+    To learn more about setting up Paypal, read the [Paypal Developer documentation](https://developer.paypal.com/docs/api/overview/).
+  </Step>
+  <Step title="Auth0 setup">
+    <Auth0SetupBlock providerName="Paypal" scopesName="Attributes" allowFreeFormScopes={true} />
+  </Step>
+</Steps>
+
+## Token Vault configuration example
+
+To configure the Token Vault for your Paypal connection, you can use the following code snippet in your application:
+
+<TokenVaultConfigBlock 
+  providerName="Paypal"
+  connectionName="paypal"
+  scopes={["profile"]}
+/>
+
+## Next steps
+- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
+- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).

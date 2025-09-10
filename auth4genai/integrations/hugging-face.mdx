@@ -1,0 +1,58 @@
+---
+title: Hugging Face
+---
+
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
+import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
+import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
+import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+
+
+Connect your AI agents to Hugging Face for model access, dataset management, and machine learning workflows.
+It is designed for applications that need to retrieve, analyze, or automate work with state-of-the-art AI models and datasets.
+
+When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
+- Access model information: retrieve model details, performance metrics, and usage statistics from Hugging Face.
+- Support AI-powered workflows: integrate Hugging Face pipelines into your applications to automate machine learning tasks.
+- Integrate with creative processes: connect Hugging Face models with collaboration tools, chat systems, or analysis pipelines to enable real-time insights and decision-making.
+
+## Connect Hugging Face to Auth0
+
+<IntegrationInfoBlock providerName="Hugging Face" />
+
+<Steps>
+  <Step title="Hugging Face setup">
+    1. Visit the [Hugging Face Developer account](https://huggingface.co/) page and sign up.
+    2. Navigate to the connected apps section under settings.
+    3. Create a new OAuth application in the Hugging Face Developer Console.
+    4. Complete the application form.
+    5. Configure scopes:
+       - Add the necessary scopes for your application.
+    6. Configure OAuth redirect URL:
+       - Redirect URL: `https://YOUR_AUTH0_DOMAIN/login/callback`
+       <FindDomainInfoBlock />
+    7. Click Create Application.
+    8. After creation you'll be shown the client ID and client secret.
+    9. Copy the Client ID and Client Secret.
+
+    To learn more about setting up Hugging Face, read the [Developer guide for Hugging Face documentation](https://huggingface.co/docs/hub/oauth).
+  </Step>
+  <Step title="Auth0 setup">
+    <Auth0SetupBlock providerName="Hugging Face"  />
+  </Step>
+</Steps>
+
+## Token Vault configuration example
+
+To configure the Token Vault for your Hugging Face connection, you can use the following code snippet in your application:
+
+<TokenVaultConfigBlock 
+  providerName="Hugging Face"
+  connectionName="hugging-face"
+  scopes={["openid", "profile"]}
+/>
+
+## Next steps
+- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
+- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).
