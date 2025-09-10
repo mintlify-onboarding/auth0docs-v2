@@ -1,4 +1,3 @@
-import JSZip from 'jszip'; // TODO: fix, this is currently not working
 import { useState } from "react";
 
 export const DownloadQuickstartButton = ({
@@ -11,77 +10,34 @@ export const DownloadQuickstartButton = ({
   const [error, setError] = useState(null);
 
   const githubRepo = 'auth0-samples/auth0-ai-samples';
-  const folderPath = `${quickstart}/${framework}`;
-  const defaultErrorMessage = 'An unexpected error occurred. Please try again.';
+  const filename = `${quickstart}-${framework}-sample.zip`;
+  const defaultErrorMessage = 'Failed to download sample. Please try again.';
 
   const downloadFolder = async () => {
     setIsDownloading(true);
     setError(null);
 
+    // TODO: set up when ready, working on script to create releases first
     try {
-      const zip = new JSZip();
-      console.log('zip,', zip) // breaks
+      const downloadUrl = `https://github.com/${githubRepo}/releases/latest/download/${filename}`;
 
-      const processDirectory = async (dirPath, dirName = '') => {
-        const response = await fetch(
-          `https://api.github.com/repos/${githubRepo}/contents/${dirPath}`,
-          {
-            headers: {
-              'Accept': 'application/vnd.github.v3+json',
-            }
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch directory: ${dirPath}`);
-        }
-
-        const items = await response.json();
-        
-        const promises = items.map(async (item) => {
-          if (item.type === 'file') {
-            const fileResponse = await fetch(item.download_url);
-            if (fileResponse.ok) {
-              const isTextFile = item.name.match(/\.(js|jsx|ts|tsx|json|md|txt|env|yml|yaml)$/i);
-              const content = isTextFile 
-                ? await fileResponse.text()
-                : await fileResponse.arrayBuffer();
-              
-              const filePath = dirName ? `${dirName}/${item.name}` : item.name;
-              zip.file(filePath, content);
-            }
-          } else if (item.type === 'dir') {
-            const subDirName = dirName ? `${dirName}/${item.name}` : item.name;
-            await processDirectory(item.path, subDirName);
-          }
-        });
-
-        await Promise.all(promises);
-      };
-
-      // Start processing from the root folder
-      await processDirectory(folderPath);
+      console.log('downloadUrl', downloadUrl);
       
-      // Generate and download zip
-      const blob = await zip.generateAsync({ 
-        type: 'blob',
-        compression: 'DEFLATE',
-        compressionOptions: { level: 6 }
-      });
+      // // Try to download directly
+      // const response = await fetch(downloadUrl, { method: 'HEAD' });
       
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${quickstart}-${framework}-sample.zip`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      // if (!response.ok) {
+      //   throw new Error(`Sample not found: ${quickstart}/${framework}`);
+      // }
 
+      // // If file exists, trigger download
+      // window.location.href = downloadUrl;
+      
     } catch (err) {
       setError(err.message || defaultErrorMessage);
     } finally {
-      setIsDownloading(false);
+      // Reset after brief delay to allow download to start
+      setTimeout(() => setIsDownloading(false), 1000);
     }
   };
 
