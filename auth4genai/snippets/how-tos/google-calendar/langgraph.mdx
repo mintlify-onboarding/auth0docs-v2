@@ -261,6 +261,96 @@ Here, the property `auth0` is an instance of `@auth0/nextjs-auth0` to handle the
 You can check different authentication options for Next.js with Auth0 at the [official documentation.](https://github.com/auth0/nextjs-auth0?tab=readme-ov-file#3-create-the-auth0-sdk-client)
 :::
 
+### Custom Auth flow
+In your langgraph.json, add the path to your auth file:
+```typescript langgraph.json wrap lines highlight={8}
+{
+  "node_version": "20",
+  "graphs": {
+    "agent": "./agent.mts:graph"
+  },
+  "env": ".env",
+  "auth": {
+    "path": "./auth.mts:auth"
+  }
+}
+```
+Then, in your auth.mts file, add your auth logic:
+```typescript ./auth.mts wrap lines
+import { createRemoteJWKSet, jwtVerify } from "jose";
+
+const { Auth, HTTPException } = require("@langchain/langgraph-sdk/auth");
+
+// JWKS endpoint for Auth0
+const JWKS = createRemoteJWKSet(
+  new URL(`https://${AUTH0_DOMAIN}/.well-known/jwks.json`)
+);
+
+// Create the Auth instance
+const auth = new Auth();
+// Register the authentication handler
+auth.authenticate(async (request: Request) => {
+  const authHeader = request.headers.get("Authorization");
+  const xApiKeyHeader = request.headers.get("x-api-key");
+    /**
+     * LangGraph Platform will convert the `Authorization` header from the client to an `x-api-key` header automatically
+     * as of now: https://docs.langchain.com/langgraph-platform/custom-auth
+     *
+     * We can still leverage the `Authorization` header when served in other infrastructure w/ langgraph-cli
+     * or when running locally.
+     */
+    // This header is required in Langgraph Cloud.
+    if (!authHeader && !xApiKeyHeader) {
+      throw new HTTPException(401, {
+        message: "Invalid auth header provided.",
+      });
+    }
+
+    // prefer the xApiKeyHeader first
+    let token = xApiKeyHeader ?? authHeader;
+
+    // Remove "Bearer " prefix if present
+    if (token && token.startsWith("Bearer ")) {
+      token = token.substring(7);
+    }
+
+    // Validate Auth0 Access Token using common JWKS endpoint
+    if (!token) {
+      throw new HTTPException(401, {
+        message:
+          "Authorization header format must be of the form: Bearer <token>",
+      });
+    }
+
+    if (token) {
+      try {
+        // Verify the JWT using Auth0 JWKS
+        const { payload } = await jwtVerify(token, JWKS, {
+          issuer: `https://${AUTH0_DOMAIN}/`,
+          audience: AUTH0_AUDIENCE,
+        });
+
+        console.log("✅ Auth0 JWT payload resolved!", payload);
+
+        // Return the verified payload - this becomes available in graph nodes
+        return {
+          identity: payload.sub!,
+          email: payload.email as string,
+          permissions:
+            typeof payload.scope === "string" ? payload.scope.split(" ") : [],
+          auth_type: "auth0",
+          // Add any other claims you need
+          ...payload,
+        };
+      } catch (jwtError) {
+        ...
+      }
+    }
+});
+
+export { auth as authHandler };
+```
+
 #### Client Side
 
 On this example we utilize the `EnsureAPIAccessPopup` component to show a popup that allows the user to authenticate with Google Calendar and grant access with the requested scopes. You'll first need to install the `@auth0/ai-components` package:
