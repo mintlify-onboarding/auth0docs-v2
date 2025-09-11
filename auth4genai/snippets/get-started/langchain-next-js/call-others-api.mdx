@@ -22,9 +22,10 @@ In the root directory of your project, install the following dependencies:
 - `@langchain/core`: LangChain core libraries.
 - `@langchain/openai`: OpenAI provider for LangChain.
 - `@langchain/community`: LangChain community integrations.
+- `langgraph-nextjs-api-passthrough`: API passthrough for LangGraph.
 
 ```bash wrap lines
-npm install @auth0/ai-langchain@3 @langchain/community@0.3 @langchain/core@0.3 @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3
+npm install @auth0/ai-langchain@3 @langchain/community@0.3 @langchain/core@0.3 @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3 langgraph-nextjs-api-passthrough@0.1
 ```
 
 ### Update the environment file
@@ -46,124 +47,64 @@ Create a file at `src/lib/auth0-ai.ts` and instantiate a new Auth0 AI SDK client
 
 ```tsx src/lib/auth0-ai.ts wrap lines
 import { Auth0AI, getAccessTokenForConnection } from "@auth0/ai-langchain";
-import { SUBJECT_TOKEN_TYPES } from "@auth0/ai";
 
-const auth0AI = new Auth0AI({
-  auth0: {
-    domain: process.env.AUTH0_DOMAIN!,
-    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!, // Resource server client ID for token exchange
-    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!, // Resource server client secret
-  },
+// Get the access token for a connection via Auth0
+export const getAccessToken = async () => getAccessTokenForConnection();
+
+const auth0AI = new Auth0AI();
+
+// Connection for Google services
+export const withGoogleConnection = auth0AI.withTokenForConnection({
+  connection: "google-oauth2",
+  scopes: ["https://www.googleapis.com/auth/gmail.readonly"],
 });
-
-const withAccessTokenForConnection = (connection: string, scopes: string[]) =>
-  auth0AI.withTokenForConnection({
-    connection,
-    scopes,
-    accessToken: async (_, config) => {
-      return config.configurable._credentials.accessToken;
-    },
-    subjectTokenType: SUBJECT_TOKEN_TYPES.SUBJECT_TYPE_ACCESS_TOKEN,
-  });
-
-export const withGoogleCalendar = withAccessTokenForConnection(
-  "google-oauth2",
-  ["https://www.googleapis.com/auth/calendar.freebusy"]
-);
 ```
 
-Update the `/src/app/api/chat/[..._path]/route.ts` file with the following code. The `accessToken` will be passed to your LangGraph agent so we can use it from the Auth0 AI SDK to get Google access tokens from the server.
+### Pass credentials to the tools
 
-```ts src/app/api/chat/[..._path]/route.ts wrap lines highlight={48-54}
-import { getAccessToken } from "@/lib/auth0";
+Update the `/src/lib/auth0.ts` file with the following code:
 
-export async function POST(
-  request: NextRequest,
-  { params }: { params: Promise<{ _path: string[] }> }
-) {
-    const { token: accessToken } = await auth0.getAccessToken();
-    const body = await request.json();
+```tsx src/lib/auth0.ts wrap lines highlight={4-7}
+//...
+//... existing code
+// Get the refresh token from Auth0 session
+export const getRefreshToken = async () => {
+  const session = await auth0.getSession();
+  return session?.tokenSet?.refreshToken;
+};
+```
 
-    const { _path } = await params;
-    const path = _path || [];
-    const endpoint = path.length > 0 ? `/${path.join("/")}` : "/";
+Update the `/src/app/api/chat/[..._path]/route.ts` file with the following code. The `refreshToken` will be passed to your LangGraph agent so we can use it from the Auth0 AI SDK to get Google access tokens from the server.
 
-    let requestBody = body;
+```ts src/app/api/chat/[..._path]/route.ts wrap lines highlight={3,19}
+import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
 
-    if (endpoint.includes("/runs")) {
-      requestBody = addAuthContext(body, accessToken);
-    } else if (endpoint.includes("/threads")) {
-      requestBody = body;
-    } else {
-      requestBody = addAuthContext(body, accessToken);
-    }
+import { getRefreshToken } from "@/lib/auth0";
 
-    const response = await makeLangGraphRequest(
-      endpoint,
-      "POST",
-      accessToken,
-      requestBody
-    );
+export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
+  initApiPassthrough({
+    apiUrl: process.env.LANGGRAPH_API_URL,
+    baseRoute: "chat/",
+    bodyParameters: async (req, body) => {
+      if (
+        req.nextUrl.pathname.endsWith("/runs/stream") &&
+        req.method === "POST"
+      ) {
+        return {
+          ...body,
+          config: {
+            configurable: {
+              _credentials: {
+                refreshToken: await getRefreshToken(),
+              },
+            },
+          },
+        };
+      }
 
-    if (endpoint.includes("/stream")) {
-      return new Response(response.body, {
-        headers: {
-          "Content-Type": "text/event-stream",
-          "Cache-Control": "no-cache",
-          Connection: "keep-alive",
-        },
-      });
-    }
-
-    const responseData = await response.json();
-    return NextResponse.json(responseData);
-}
-
-function addAuthContext(body: any, accessToken: string) {
-  return {
-    ...body,
-    config: {
-      configurable: {
-        _credentials: {
-          accessToken,
-        },
-      },
+      return body;
     },
-  };
-}
-
-async function makeLangGraphRequest(
-  endpoint: string,
-  method: string = "GET",
-  accessToken: string,
-  body?: any,
-  additionalHeaders: Record<string, string> = {}
-) {
-  const langGraphUrl = `${process.env.LANGGRAPH_API_URL}${endpoint}`;
-  const requestHeaders: Record<string, string> = {
-    ...additionalHeaders,
-  };
-
-  // Pass Auth0 access token for the API in the Authorization header
-  requestHeaders["Authorization"] = `Bearer ${accessToken}`;
-
-  const requestOptions: RequestInit = {
-    method,
-    headers: requestHeaders,
-  };
-
-  if (body) {
-    requestOptions.body = JSON.stringify(body);
-    requestOptions.headers = {
-      ...requestOptions.headers,
-      "Content-Type": "application/json",
-    };
-  }
-
-  const response = await fetch(langGraphUrl, requestOptions);
-
-  return response;
-}
+  });
 ```
 
 ### Use access token to call APIs from a tool
