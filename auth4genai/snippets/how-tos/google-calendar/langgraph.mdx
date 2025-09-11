@@ -9,18 +9,31 @@ npm install @auth0/ai-langchain
 Then, you need to initialize Auth0 AI and set up the connection to request access tokens with the required Google Calendar scopes.
 
 ```typescript ./src/lib/auth0-ai.ts wrap lines
+import { SUBJECT_TOKEN_TYPES } from "@auth0/ai";
 import { Auth0AI } from "@auth0/ai-langchain";
 
-const auth0AI = new Auth0AI();
-
-export const withGoogleCalendar = auth0AI.withTokenForConnection({
-  connection: "google-oauth2",
-  scopes: ["https://www.googleapis.com/auth/calendar.freebusy"],
-  // Optional: By default, the SDK will expect the refresh token from
-  // the LangChain RunnableConfig (`config.configurable._credentials.refreshToken`)
-  // If you want to use a different store for refresh token you can set up a getter here
-  // refreshToken: async () => await getRefreshToken(),
+const auth0AI = new Auth0AI({
+  auth0: {
+    domain: process.env.AUTH0_DOMAIN!,
+    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!, // Resource server client ID for token exchange
+    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!, // Resource server client secret
+  },
 });
+
+const withAccessTokenForConnection = (connection: string, scopes: string[]) =>
+  auth0AI.withTokenForConnection({
+    connection,
+    scopes,
+    accessToken: async (_, config) => {
+      return config.configurable._credentials.accessToken;
+    },
+    subjectTokenType: SUBJECT_TOKEN_TYPES.SUBJECT_TYPE_ACCESS_TOKEN,
+  });
+
+export const withGoogleCalendar = withAccessTokenForConnection(
+  "google-oauth2",
+  ["https://www.googleapis.com/auth/calendar.freebusy"]
+);
 ```
 
 ### 2. Integrate your tool with Google Calendar
@@ -139,6 +152,8 @@ const store = new InMemoryStore();
 export const graph = stateGraph.compile({
   checkpointer,
   store,
+  interruptBefore: [],
+  interruptAfter: [],
 });
 ```
 
@@ -148,44 +163,98 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 #### Server Side
 
-On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `refreshToken` to the Langchain's RunnableConfig from the authenticated user's session.
+On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `accessToken` to the Langchain’s RunnableConfig from the authenticated user’s session.
 
-```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap lines highlight={2,23-29}
-import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
+```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap lines highlight={1,49-53}
 import { auth0 } from "@/lib/auth0";
 
-const getRefreshToken = async () => {
-  const session = await auth0.getSession();
-  const refreshToken = session?.tokenSet.refreshToken as string;
-  return refreshToken;
-};
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ _path: string[] }> }
+) {
+    const { token: accessToken } = await auth0.getAccessToken();
+    const body = await request.json();
 
-export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
-  initApiPassthrough({
-    apiUrl: process.env.LANGGRAPH_API_URL,
-    apiKey: process.env.LANGSMITH_API_KEY,
-    runtime: "edge",
-    baseRoute: "langgraph/",
-    bodyParameters: async (req, body) => {
-      if (
-        req.nextUrl.pathname.endsWith("/runs/stream") &&
-        req.method === "POST"
-      ) {
-        return {
-          ...body,
-          config: {
-            configurable: {
-              _credentials: {
-                refreshToken: await getRefreshToken(),
-              },
-            },
-          },
-        };
-      }
+    const { _path } = await params;
+    const path = _path || [];
+    const endpoint = path.length > 0 ? `/${path.join("/")}` : "/";
 
-      return body;
+    let requestBody = body;
+
+    if (endpoint.includes("/runs")) {
+      requestBody = addAuthContext(body, accessToken);
+    } else if (endpoint.includes("/threads")) {
+      requestBody = body;
+    } else {
+      requestBody = addAuthContext(body, accessToken);
+    }
+
+    const response = await makeLangGraphRequest(
+      endpoint,
+      "POST",
+      accessToken,
+      requestBody
+    );
+
+    if (endpoint.includes("/stream")) {
+      return new Response(response.body, {
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          Connection: "keep-alive",
+        },
+      });
+    }
+
+    const responseData = await response.json();
+    return NextResponse.json(responseData);
+}
+
+function addAuthContext(body: any, accessToken: string) {
+  return {
+    ...body,
+    config: {
+      configurable: {
+        _credentials: {
+          accessToken,
+        },
+      },
     },
-  });
+  };
+}
+
+async function makeLangGraphRequest(
+  endpoint: string,
+  method: string = "GET",
+  accessToken: string,
+  body?: any,
+  additionalHeaders: Record<string, string> = {}
+) {
+  const langGraphUrl = `${process.env.LANGGRAPH_API_URL}${endpoint}`;
+  const requestHeaders: Record<string, string> = {
+    ...additionalHeaders,
+  };
+
+  // Pass Auth0 access token for the API in the Authorization header
+  requestHeaders["Authorization"] = `Bearer ${accessToken}`;
+
+  const requestOptions: RequestInit = {
+    method,
+    headers: requestHeaders,
+  };
+
+  if (body) {
+    requestOptions.body = JSON.stringify(body);
+    requestOptions.headers = {
+      ...requestOptions.headers,
+      "Content-Type": "application/json",
+    };
+  }
+
+  const response = await fetch(langGraphUrl, requestOptions);
+
+  return response;
+}
 ```
 :::info
 Here, the property `auth0` is an instance of `@auth0/nextjs-auth0` to handle the application auth flows. <br/>
@@ -202,7 +271,7 @@ npx @auth0/ai-components add FederatedConnections
 
 Then, you can integrate the authentication popup in your chat component, using the interruptions helper from the SDK:
 
-```tsx ./src/components/chat.tsx wrap lines highlight={2-3,62-74}
+```tsx ./src/components/chat.tsx wrap lines highlight={2-3,63-73}
 import { useStream } from "@langchain/langgraph-sdk/react";
 import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
 import { EnsureAPIAccessPopup } from "@/components/auth0-ai/FederatedConnections/popup";
@@ -222,7 +291,7 @@ export default function Chat() {
   const [threadId, setThreadId] = useQueryState("threadId");
   const [input, setInput] = useState("");
   const thread = useStream({
-    apiUrl: `${process.env.NEXT_PUBLIC_URL}/api/langgraph`,
+    apiUrl: `${process.env.NEXT_PUBLIC_URL}/api/chat`,
     assistantId: "agent",
     threadId,
     onThreadId: setThreadId,

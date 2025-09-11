@@ -22,10 +22,9 @@ In the root directory of your project, install the following dependencies:
 - `@langchain/core`: Core LangChain dependencies.
 - `@langchain/openai`: [OpenAI](https://js.langchain.com/docs/integrations/chat/openai) provider for LangChain.
 - `zod`: TypeScript-first schema validation library.
-- `langgraph-nextjs-api-passthrough`: API passthrough for LangGraph.
 
 ```bash wrap lines
-npm install @auth0/ai-langchain@3 @langchain/core@0.3 @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3 langgraph-nextjs-api-passthrough@0.1
+npm install @auth0/ai-langchain@3 @langchain/core@0.3 @langchain/langgraph@0.3 @langchain/openai@0.6 langchain@0.3
 ```
 
 ### Update the environment file
@@ -113,34 +112,96 @@ export const getContextDocumentsTool = tool(
 Call the tool from your AI agent to get data from documents. First, update the `/src/app/api/chat/[..._path]/route.ts` file with the following code to pass the user credentials to your agent:
 
 ```ts src/app/api/chat/[..._path]/route.ts wrap lines highlight={3,19}
-import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
-
 import { getUser } from "@/lib/auth0";
 
-export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
-  initApiPassthrough({
-    apiUrl: process.env.LANGGRAPH_API_URL,
-    baseRoute: "chat/",
-    bodyParameters: async (req, body) => {
-      if (
-        req.nextUrl.pathname.endsWith("/runs/stream") &&
-        req.method === "POST"
-      ) {
-        return {
-          ...body,
-          config: {
-            configurable: {
-              _credentials: {
-                user: await getUser(),
-              },
-            },
-          },
-        };
-      }
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ _path: string[] }> }
+) {
+    const user = await auth0.getUser();
+    const accessToken = await auth0.getAccessToken();
+    const body = await request.json();
 
-      return body;
+    const { _path } = await params;
+    const path = _path || [];
+    const endpoint = path.length > 0 ? `/${path.join("/")}` : "/";
+
+    let requestBody = body;
+
+    if (endpoint.includes("/runs")) {
+      requestBody = addAuthContext(body, user);
+    } else if (endpoint.includes("/threads")) {
+      requestBody = body;
+    } else {
+      requestBody = addAuthContext(body, user);
+    }
+
+    const response = await makeLangGraphRequest(
+      endpoint,
+      "POST",
+      accessToken,
+      requestBody
+    );
+
+    if (endpoint.includes("/stream")) {
+      return new Response(response.body, {
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          Connection: "keep-alive",
+        },
+      });
+    }
+
+    const responseData = await response.json();
+    return NextResponse.json(responseData);
+}
+
+function addAuthContext(body: any, user: any) {
+  return {
+    ...body,
+    config: {
+      configurable: {
+        _credentials: {
+          user,
+        },
+      },
     },
-  });
+  };
+}
+
+async function makeLangGraphRequest(
+  endpoint: string,
+  method: string = "GET",
+  accessToken: string,
+  body?: any,
+  additionalHeaders: Record<string, string> = {}
+) {
+  const langGraphUrl = `${process.env.LANGGRAPH_API_URL}${endpoint}`;
+  const requestHeaders: Record<string, string> = {
+    ...additionalHeaders,
+  };
+
+  // Pass Auth0 access token for the API in the Authorization header
+  requestHeaders["Authorization"] = `Bearer ${accessToken}`;
+
+  const requestOptions: RequestInit = {
+    method,
+    headers: requestHeaders,
+  };
+
+  if (body) {
+    requestOptions.body = JSON.stringify(body);
+    requestOptions.headers = {
+      ...requestOptions.headers,
+      "Content-Type": "application/json",
+    };
+  }
+
+  const response = await fetch(langGraphUrl, requestOptions);
+
+  return response;
+}
 ```
 
 Next, add the following code to `src/lib/auth0.ts`:
