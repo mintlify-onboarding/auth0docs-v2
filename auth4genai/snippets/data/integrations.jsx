@@ -221,5 +221,25 @@ export const integrations = [
     type: "Social",
     description:
       "Allow your AI Agent as an Amazon seller to manage inventory, update product listings, and track sales performance. Or, as a consumer, a shopping agent that tracks product prices and availability.",
+  },
+  {
+    id: "twitch",
+    title: "Twitch",
+    icon: "/ai/docs/img/integrations/twitch-avatar.png",
+    href: "/integrations/twitch",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Twitch user to access streaming data, manage broadcasts, and integrate with gaming workflows.",
+  },
+  {
+    id: "twitter",
+    title: "Twitter",
+    icon: "/ai/docs/img/integrations/twitter-avatar.png",
+    href: "/integrations/twitter",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Twitter user to post tweets, manage followers, and integrate with social media workflows.",
   }
 ];
