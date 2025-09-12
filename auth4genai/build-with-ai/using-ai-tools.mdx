@@ -1,26 +1,53 @@
 ---
-title: Using AI Tools
+title: Use AI Tools
 description: Use AI tools to integrate Auth for GenAI into your application.
 ---
+## Introduction
+Building with AI tools that have information and context about Auth for GenAI enable you to accelerate your development workflows. By providing these tools with the right information, you can get instant, context-aware answers and even delegate tasks to AI agents.
 
-## Auth for GenAI MCP server
-Connect your AI tools, such as GitHub Copilot, Cursor, or Windsurf, to the Auth for GenAI Model Context Protocol (MCP) server.
-This server enables your AI tools to access and query the most up-to-date Auth for GenAI documentation, ensuring more accurate, context-aware answers.
+This allows you to:
 
-By connecting your AI tools to the Auth for GenAI MCP server, you can:
+- Ask questions in natural language to get up-to-date answers on how to set up and integrate with Auth for GenAI.
+- Generate accurate code snippets and get direct links to relevant documentation to help you implement changes faster.
+- Have AI agents read documentation to understand complex requirements and apply them to your codebase.
 
-- Access the latest information: Get accurate, up-to-date answers on how to set up and integrate with Auth for GenAI.
-- Search the documentation: Use natural language queries to search for information on quickstarts, integrations, SDKs, and more. Your AI tool will provide code snippets and direct links to relevant documentation to help you implement code changes.
+## How it works
+You can use AI coding assistants like Cursor or GitHub Copilot to help you build your application. The key to making these tools effective is providing them with the correct context.
 
-<Note>Even with access to the most up-to-date documentation, AI tools can make mistakes. Always review AI-generated code for accuracy.</Note>
+There are several ways to give your AI tools context:
+
+- **Context Files**: You can provide raw text files (llms.txt), individual markdown pages, or URLs for the AI to read. This is a great way to provide targeted information for a specific task.
+- **Model Context Protocol (MCP) Servers**: A more powerful method is connecting your tool to an MCP server. These servers act like a specialized API for your AI. They enable an AI agent to:
+  - **Read Documents**: An agent can connect to a documentation MCP server to query and retrieve the most up-to-date information, ensuring its answers are accurate.
+  - **Perform Actions**: An agent can also connect to an application-specific MCP server to perform actions on your behalf. For example, an agent could connect to the [Auth0 MCP server](https://auth0.com/docs/get-started/auth0-mcp-server) to create a new application in your tenant.
+
+## Our AI Resources
+We provide several resources to help you connect your AI tools to Auth for GenAI.
+
+### MCP Servers
+**Auth for GenAI Docs MCP Server**: Provides read-only access to our complete documentation. Use this server to ask questions and get context-aware answers about integrating with Auth for GenAI.
+
+**Auth0 MCP Server**: Allows authenticated AI agents to perform actions in your Auth0 tenant, such as creating applications, configuring connections, and more. To learn more, read the [Auth0 MCP server documentation.](https://auth0.com/docs/get-started/auth0-mcp-server)
+
+### LLM Context Files
+To enable your AI tools to index and search the documentation, use the following files:
+
+- **llms.txt:** `https://auth0.com/ai/docs/llms.txt` - A file containing concise summaries of our documentation pages.
+- **llms-full.txt:** `https://auth0.com/ai/docs/llms-full.txt` - A file containing the full content of our documentation.
+- **Markdown versions of each page:** available by clicking **Copy page** at the top of each page or by appending `.md` to any page URL.
+
+We recommend using the Auth for GenAI MCP server over context files to ensure your AI tools always have access to the most up-to-date information.
 
 ### Connect to the Auth for GenAI MCP server
+Connect your AI tools to this server to access and query the most up-to-date Auth for GenAI documentation.
+
 The Auth for GenAI MCP server has the following endpoint metadata:
 
 - **Server Name:** Auth for GenAI
 - **Server URL:** `https://auth0.com/ai/docs/mcp`
 - **Transport Type:** HTTP
 
+You can also connect your AI tool to the Auth for GenAI MCP server by following one of our guides.
 
 <Tabs>
 <Tab title="VS Code">
@@ -39,7 +66,7 @@ Or create a `.vscode/mcp.json` file and add:
 }
 ```
 
-To learn more, read he [VS Code documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers).
+To learn more, read the [VS Code documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers).
 </Tab>
 
 <Tab title="Cursor">
@@ -111,18 +138,7 @@ To learn more, read the [Model Context Protocol documentation](https://modelcont
 </Tab>
 </Tabs>
 
-
 ## How to use the Auth for GenAI Docs MCP server
 After adding the MCP server to your AI tool, you can ask it questions about how to setup, configure, or integrate Auth for GenAI. AI coding agents will be able to automatically retrieve the matching documentation for steps, references, and examples when applying code changes. 
 
-
-<Note>AI can make mistakes even with access to the latest documentation. Make sure to review AI generated code for accuracy.</Note>
-
-## LLM context files
-To enable your AI tools to index and search the documentation, use the following files:
-
-- **llms.txt:** `https://auth0.com/ai/docs/llms.txt`
-- **llms-full.txt:** `https://auth0.com/ai/docs/llms-full.txt`
-- **Markdown versions of each page:** available by clicking **Copy page** at the top of each page or by appending `.md` to any page URL.
-
-We recommend using the Auth for GenAI MCP server to ensure your AI tools have access to the most up-to-date information.
+<Note>Even with access to the most up-to-date documentation, AI tools can make mistakes. Always review AI-generated code for accuracy.</Note>
