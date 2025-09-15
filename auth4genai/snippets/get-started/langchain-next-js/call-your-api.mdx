@@ -54,25 +54,17 @@ import { getAccessToken } from "@/lib/auth0";
 export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
   initApiPassthrough({
     apiUrl: process.env.LANGGRAPH_API_URL,
+    apiKey: process.env.LANGSMITH_API_KEY,
+    runtime: "edge",
     baseRoute: "chat/",
-    bodyParameters: async (req, body) => {
-      if (
-        req.nextUrl.pathname.endsWith("/runs/stream") &&
-        req.method === "POST"
-      ) {
-        return {
-          ...body,
-          config: {
-            configurable: {
-              _credentials: {
-                accessToken: await getAccessToken(),
-              },
-            },
-          },
-        };
-      }
+    headers: async (req: NextRequest) => {
+      const headers: Record<string, string> = {
+        ...req.headers,
+      };
 
-      return body;
+      const accessToken = await getAccessToken();
+      headers["Authorization"] = `Bearer ${accessToken}`;
+      return headers;
     },
   });
 ```
