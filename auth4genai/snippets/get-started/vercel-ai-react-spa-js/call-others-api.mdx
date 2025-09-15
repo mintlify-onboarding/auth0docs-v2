@@ -255,9 +255,9 @@ import type { ToolWrapper } from "@auth0/ai-vercel";
 // Create an Auth0AI instance configured with reserver client credentials
 const auth0AI = new Auth0AI({
   auth0: {
-    domain: process.env.AUTH0_DOMAIN!,
-    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!, // Resource server client ID for token exchange
-    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!, // Resource server client secret
+    domain: '<your-auth0-domain>',
+    clientId: '<your-resource-server-client-id>',
+    clientSecret: '<your-resource-server-client-secret>',
   },
 });
 

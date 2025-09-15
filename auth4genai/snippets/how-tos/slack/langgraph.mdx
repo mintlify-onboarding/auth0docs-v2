@@ -14,9 +14,9 @@ import { Auth0AI } from "@auth0/ai-langchain";
 
 const auth0AI = new Auth0AI({
   auth0: {
-    domain: process.env.AUTH0_DOMAIN!,
-    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!, // Resource server client ID for token exchange
-    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!, // Resource server client secret
+    domain: '<your-auth0-domain>',
+    clientId: '<your-resource-server-client-id>',
+    clientSecret: '<your-resource-server-client-secret>',
   },
 });
 
@@ -25,7 +25,7 @@ const withAccessTokenForConnection = (connection: string, scopes: string[]) =>
     connection,
     scopes,
     accessToken: async (_, config) => {
-      return config.configurable._credentials.accessToken;
+      return config.configurable?.langgraph_auth_user?.getRawAccessToken();
     },
     subjectTokenType: SUBJECT_TOKEN_TYPES.SUBJECT_TYPE_ACCESS_TOKEN,
   });
@@ -150,95 +150,41 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 #### Server Side
 
-On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `accessToken` to the Langchain's RunnableConfig from the authenticated user's session.
+On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `accessToken` in the headers.
 
 ```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap lines
+import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
+import { NextRequest } from "next/server";
+
 import { auth0 } from "@/lib/auth0";
 
 async function getAccessToken() {
   const tokenResult = await auth0.getAccessToken();
-
   if (!tokenResult?.token) {
     throw new Error("Error retrieving access token for langgraph api.");
   }
-
   return tokenResult.token;
 }
 
-async function makeLangGraphRequest(
-  endpoint: string,
-  method: string = "GET",
-  accessToken: string,
-  body?: any,
-  additionalHeaders: Record<string, string> = {}
-) {
-  const langGraphUrl = `${process.env.LANGGRAPH_API_URL}${endpoint}`;
-  const requestHeaders: Record<string, string> = {
-    ...additionalHeaders,
-  };
-
-  // Pass Auth0 access token for the API in the Authorization header
-  requestHeaders["Authorization"] = `Bearer ${accessToken}`;
-
-  const requestOptions: RequestInit = {
-    method,
-    headers: requestHeaders,
-  };
-
-  if (body) {
-    requestOptions.body = JSON.stringify(body);
-    requestOptions.headers = {
-      ...requestOptions.headers,
-      "Content-Type": "application/json",
-    };
-  }
-
-  const response = await fetch(langGraphUrl, requestOptions);
-
-  if (!response.ok) {
-    throw new Error(
-      `LangGraph request failed: ${response.status} ${response.statusText}`
-    );
-  }
-
-  return response;
-}
-
-export async function POST(
-  request: NextRequest,
-  { params }: { params: Promise<{ _path: string[] }> }
-) {
-  try {
-    const accessToken = await getAccessToken();
-    const body = await request.json();
-
-    const { _path } = await params;
-    const path = _path || [];
-    const endpoint = path.length > 0 ? `/${path.join("/")}` : "/";
-
-    const response = await makeLangGraphRequest(
-      endpoint,
-      "POST",
-      accessToken,
-      body
-    );
-
-    if (endpoint.includes("/stream")) {
-      return new Response(response.body, {
-        headers: {
-          "Content-Type": "text/event-stream",
-          "Cache-Control": "no-cache",
-          Connection: "keep-alive",
-        },
+export const { GET, POST, PUT, PATCH, DELETE, OPTIONS, runtime } =
+  initApiPassthrough({
+    apiUrl: process.env.LANGGRAPH_API_URL,
+    apiKey: process.env.LANGSMITH_API_KEY,
+    runtime: "edge",
+    baseRoute: "langgraph/",
+    headers: async (req: NextRequest) => {
+      const headers: Record<string, string> = {};
+      req.headers.forEach((value, key) => {
+        headers[key] = value;
       });
-    }
 
-    const responseData = await response.json();
-    return NextResponse.json(responseData);
-  } catch (error) {
-    ...
-  }
-}
+      const accessToken = await getAccessToken();
+      headers["Authorization"] = `Bearer ${accessToken}`;
+      return headers;
+    },
+  });
+
+
 ```
 <Info>
 Here, the property `auth0` is an instance of `@auth0/nextjs-auth0` to handle the application auth flows. <br/>
@@ -323,6 +269,8 @@ auth.authenticate(async (request: Request) => {
           permissions:
             typeof payload.scope === "string" ? payload.scope.split(" ") : [],
           auth_type: "auth0",
+          // include the access token for use with Auth0 Token Vault exchanges by tools
+          getRawAccessToken: () => token,
           // Add any other claims you need
           ...payload,
         };
