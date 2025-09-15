@@ -221,5 +221,35 @@ export const integrations = [
     type: "Social",
     description:
       "Allow your AI Agent as an Amazon seller to manage inventory, update product listings, and track sales performance. Or, as a consumer, a shopping agent that tracks product prices and availability.",
-  }
+  },
+  {
+    id: "basecamp",
+    title: "Basecamp",
+    icon: "/ai/docs/img/integrations/basecamp-avatar.png",
+    href: "/integrations/basecamp",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent to manage projects, to-do lists, messages, schedules, and team collaboration in Basecamp.",
+  },
+  {
+    id: "digitalocean",
+    title: "DigitalOcean",
+    icon: "/ai/docs/img/integrations/digitalocean-avatar.png",
+    href: "/integrations/digitalocean",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent to provision and manage cloud infrastructure, Droplets, Kubernetes clusters, and automate deployment workflows.",
+  },
+  {
+    id: "salesforce",
+    title: "Salesforce",
+    icon: "/ai/docs/img/integrations/salesforce-avatar.png",
+    href: "/integrations/salesforce",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent to access customer records, manage sales opportunities, and automate CRM workflows in Salesforce.",
+  },
 ];

@@ -96,7 +96,9 @@
                 "group": "Social Integrations",
                 "pages": [
                   "integrations/amazon",
+                  "integrations/basecamp",
                   "integrations/box",
+                  "integrations/digitalocean",
                   "integrations/discord",
                   "integrations/figma",
                   "integrations/freshbooks",
@@ -104,6 +106,7 @@
                   "integrations/google",
                   "integrations/microsoft",
                   "integrations/oauth2",
+                  "integrations/salesforce",
                   "integrations/slack",
                   "integrations/snapchat",
                   "integrations/spotify",

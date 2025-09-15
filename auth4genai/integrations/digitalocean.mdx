@@ -1,0 +1,61 @@
+---
+title: DigitalOcean
+---
+
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
+import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
+import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
+import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+
+Connect your AI agents to DigitalOcean for cloud infrastructure management capabilities, resource provisioning, and automated deployment workflows. It is designed for applications that need to interact with DigitalOcean's Droplets, Kubernetes clusters, databases, storage, and networking resources.
+
+When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
+- **Infrastructure automation**: Provision and manage Droplets, Kubernetes clusters, and load balancers programmatically.
+- **Resource monitoring**: Access infrastructure metrics, alerts, and usage data for intelligent monitoring and optimization.
+- **Cost optimization**: Analyze resource usage patterns and automatically scale or optimize cloud infrastructure.
+- **Deployment orchestration**: Automate application deployments across multiple regions and environments.
+- **Storage management**: Manage Spaces object storage buckets, volumes, and snapshots for data workflows.
+- **Network configuration**: Configure VPCs, firewalls, and domain DNS settings for secure infrastructure.
+
+## Overview
+
+A cloud infrastructure agent that can automate the creation and management of servers (Droplets), configure networking, and manage storage volumes.
+
+## Connect DigitalOcean to Auth0
+
+<Steps>
+  <Step title="DigitalOcean setup">
+    1. Sign up for a [DigitalOcean account](https://cloud.digitalocean.com/registrations/new) if you don't already have one.
+    2. Visit the [OAuth Applications page](https://cloud.digitalocean.com/account/api/applications) in your DigitalOcean control panel.
+    3. Click **Register OAuth Application** to create a new OAuth application.
+    4. Fill in the application details:
+       - **Name**: Enter a descriptive name for your integration
+       - **Homepage URL**: `https://YOUR_AUTH0_DOMAIN`
+       - **Application description**: Brief description of your application
+       - **Callback URL**: `https://YOUR_AUTH0_DOMAIN/login/callback`
+       <FindDomainInfoBlock />
+    5. Click **Register OAuth Application** and note your **Client ID** and **Client Secret**.
+
+    To learn more about DigitalOcean OAuth setup, read the [DigitalOcean OAuth API documentation](https://docs.digitalocean.com/reference/api/oauth/).
+  </Step>
+  <Step title="Auth0 setup">
+    <Auth0SetupBlock providerName="DigitalOcean" scopesName="Scopes" allowFreeFormScopes={true} />
+  </Step>
+</Steps>
+
+<IntegrationInfoBlock providerName="DigitalOcean" />
+
+## Token Vault configuration example
+
+To configure the Token Vault for your DigitalOcean connection, you can use the following code snippet in your application:
+
+<TokenVaultConfigBlock 
+  providerName="DigitalOcean"
+  connectionName="digitalocean"
+  scopes={["account:read", "droplet:create", "kubernetes:read"]}
+/>
+
+## Next steps
+- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
+- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).

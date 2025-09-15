@@ -1,0 +1,60 @@
+---
+title: Basecamp
+---
+
+import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
+import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
+import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
+import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+
+Connect your AI agents to Basecamp for project management capabilities, team collaboration, and task automation. It is designed for applications that need to interact with Basecamp's projects, to-do lists, messages, schedules, and documents.
+
+When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
+- **Project management automation**: Create projects, manage to-do lists, and track progress across teams.
+- **Team collaboration**: Access messages, documents, and schedules to facilitate AI-powered team workflows.
+- **Task and deadline tracking**: Monitor project milestones, upcoming deadlines, and team assignments.
+- **Communication insights**: Analyze team discussions and project updates to provide intelligent summaries and recommendations.
+- **Document management**: Access and organize project documents, files, and rich content attachments.
+- **Real-time notifications**: Stay updated on project changes, new messages, and task completions.
+
+## Overview
+
+A project management agent that can create new projects, add to-do items, post messages, and upload files to a Basecamp project based on external triggers (e.g., an email).
+
+## Connect Basecamp to Auth0
+
+<Steps>
+  <Step title="Basecamp setup">
+    1. Sign up for a [Basecamp account](https://basecamp.com/) if you don't already have one.
+    2. Visit the [37signals Launchpad integrations page](https://launchpad.37signals.com/integrations) and sign in.
+    3. Click **Register a new application**.
+    4. Fill in the application details:
+       - **Name**: Enter a descriptive name for your integration
+       - **Website URL**: `https://YOUR_AUTH0_DOMAIN`
+       - **Redirect URI**: `https://YOUR_AUTH0_DOMAIN/login/callback`
+       <FindDomainInfoBlock />
+    5. Complete the registration and note your **Client ID** and **Client Secret**.
+
+    To learn more about Basecamp OAuth setup, read the [Basecamp API Authentication documentation](https://github.com/basecamp/api/blob/master/sections/authentication.md).
+  </Step>
+  <Step title="Auth0 setup">
+    <Auth0SetupBlock providerName="Basecamp" scopesName="Attributes" allowFreeFormScopes={false} />
+  </Step>
+</Steps>
+
+<IntegrationInfoBlock providerName="Basecamp" />
+
+## Token Vault configuration example
+
+To configure the Token Vault for your Basecamp connection, you can use the following code snippet in your application:
+
+<TokenVaultConfigBlock 
+  providerName="Basecamp"
+  connectionName="basecamp"
+  scopes={["profile"]}
+/>
+
+## Next steps
+- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
+- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
+- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).
