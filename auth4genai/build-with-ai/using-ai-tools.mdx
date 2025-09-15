@@ -12,25 +12,8 @@ This allows you to:
 - Have AI agents read documentation to understand complex requirements and apply them to your codebase.
 
 ## How it works
-You can use AI coding assistants like Cursor or GitHub Copilot to help you build your application. The key to making these tools effective is providing them with the correct context.
-
-There are several ways to give your AI tools context:
-
-- **Context Files**: You can provide raw text files (llms.txt), individual markdown pages, or URLs for the AI to read. This is a great way to provide targeted information for a specific task.
-- **Model Context Protocol (MCP) Servers**: A more powerful method is connecting your tool to an MCP server. These servers act like a specialized API for your AI. They enable an AI agent to:
-  - **Read Documents**: An agent can connect to a documentation MCP server to query and retrieve the most up-to-date information, ensuring its answers are accurate.
-  - **Perform Actions**: An agent can also connect to an application-specific MCP server to perform actions on your behalf. For example, an agent could connect to the [Auth0 MCP server](https://auth0.com/docs/get-started/auth0-mcp-server) to create a new application in your tenant.
-
-## Our AI Resources
-We provide several resources to help you connect your AI tools to Auth for GenAI.
-
-### MCP Servers
-**Auth for GenAI Docs MCP Server**: Provides read-only access to our complete documentation. Use this server to ask questions and get context-aware answers about integrating with Auth for GenAI.
-
-**Auth0 MCP Server**: Allows authenticated AI agents to perform actions in your Auth0 tenant, such as creating applications, configuring connections, and more. To learn more, read the [Auth0 MCP server documentation.](https://auth0.com/docs/get-started/auth0-mcp-server)
-
 ### LLM Context Files
-To enable your AI tools to index and search the documentation, use the following files:
+You can provide raw text files (llms.txt), individual markdown pages, or URLs for the AI to read. This is a great way to provide targeted information for a specific task. To enable your AI tools to index and search the documentation, use the following files:
 
 - **llms.txt:** `https://auth0.com/ai/docs/llms.txt` - A file containing concise summaries of our documentation pages.
 - **llms-full.txt:** `https://auth0.com/ai/docs/llms-full.txt` - A file containing the full content of our documentation.
@@ -38,8 +21,14 @@ To enable your AI tools to index and search the documentation, use the following
 
 We recommend using the Auth for GenAI MCP server over context files to ensure your AI tools always have access to the most up-to-date information.
 
-### Connect to the Auth for GenAI MCP server
-Connect your AI tools to this server to access and query the most up-to-date Auth for GenAI documentation.
+### MCP Servers
+A more powerful method is connecting your tool to an MCP server. These servers act like a specialized API for your AI, allowing them to search for and read documents or perform actions on your behalf.
+
+### Auth0 MCP Server
+The Auth0 MCP Server allows authenticated AI agents to perform actions in your Auth0 tenant, such as creating applications, configuring connections, and more. To learn more, read the [Auth0 MCP server documentation.](https://auth0.com/docs/get-started/auth0-mcp-server)
+
+### Auth for GenAI MCP Server
+The Auth for GenAI MCP Server provides read-only access to our complete documentation. Use this server to ask questions and get context-aware answers about integrating with Auth for GenAI. This MCP server helps your AI tools to implement the Auth for GenAI functionality.
 
 The Auth for GenAI MCP server has the following endpoint metadata:
 
@@ -142,3 +131,10 @@ To learn more, read the [Model Context Protocol documentation](https://modelcont
 After adding the MCP server to your AI tool, you can ask it questions about how to setup, configure, or integrate Auth for GenAI. AI coding agents will be able to automatically retrieve the matching documentation for steps, references, and examples when applying code changes. 
 
 <Note>Even with access to the most up-to-date documentation, AI tools can make mistakes. Always review AI-generated code for accuracy.</Note>
+
+### Sample prompts
+Use these sample prompts to get a quick answer, start building a new app, or integrate functionality into your existing app:
+
+- Use the Auth for GenAI MCP server to tell me about accessing 3rd party APIs using a user's credentials.
+- Add a tool call to my AI agent that will access the user's Google calendar and answer questions about their schedule and meetings. Use the Auth for GenAI MCP server to find and follow the instructions on using Auth0 to securely call the Google API using the user's credentials.
+- Build me a Next.js AI chatbot app that uses Langgraph to make tool calls to Google calendar. Use Auth0 for user login and to secure the tool calls to the user's calendar. Use the Auth for GenAI MCP server for instructions.
