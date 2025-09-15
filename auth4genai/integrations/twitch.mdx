@@ -6,14 +6,13 @@ import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+import  NextStepsBlock  from "/snippets/integrations/next-step.mdx";
 
 
 A streaming assistant agent that can create stream markers, run commercials, manage channel polls and predictions, and create clips from a live stream.
 
 
 ## Connect Twitch to Auth0
-
-<IntegrationInfoBlock providerName="Twitch" />
 
 <Steps>
   <Step title="Twitch setup">
@@ -39,6 +38,8 @@ A streaming assistant agent that can create stream markers, run commercials, man
   </Step>
 </Steps>
 
+<IntegrationInfoBlock providerName="Twitch" />
+
 ## Token Vault configuration example
 
 To configure the Token Vault for your Twitch connection, you can use the following code snippet in your application:
@@ -49,7 +50,4 @@ To configure the Token Vault for your Twitch connection, you can use the followi
   scopes={["user:read:email"]}
 />
 
-## Next steps
-- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
-- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
-- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).
+<NextStepsBlock />
