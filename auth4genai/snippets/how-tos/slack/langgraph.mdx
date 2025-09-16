@@ -14,9 +14,9 @@ import { Auth0AI } from "@auth0/ai-langchain";
 
 const auth0AI = new Auth0AI({
   auth0: {
-    domain: '<your-auth0-domain>',
-    clientId: '<your-resource-server-client-id>',
-    clientSecret: '<your-resource-server-client-secret>',
+    domain: process.env.AUTH0_DOMAIN!,
+    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!,
+    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!,
   },
 });
 
@@ -152,7 +152,7 @@ Interrupts are a way for the system to pause execution and prompt the user to ta
 
 On the server side of your Next.js application you need to set up a route to handle the Chat API requests. This route will be responsible for forwarding the requests to the LangGraph API. Additionally, you must provide the `accessToken` in the headers.
 
-```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap lines
+```typescript ./src/app/api/langgraph/[..._path]/route.ts wrap lines highlight={26}
 import { initApiPassthrough } from "langgraph-nextjs-api-passthrough";
 import { NextRequest } from "next/server";
 
