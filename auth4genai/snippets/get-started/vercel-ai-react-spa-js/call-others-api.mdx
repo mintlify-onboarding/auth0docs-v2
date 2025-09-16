@@ -256,8 +256,8 @@ import type { ToolWrapper } from "@auth0/ai-vercel";
 const auth0AI = new Auth0AI({
   auth0: {
     domain: process.env.AUTH0_DOMAIN!,
-    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!,
-    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!,
+    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!, // Resource server client ID for token exchange
+    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!, // Resource server client secret
   },
 });
 
