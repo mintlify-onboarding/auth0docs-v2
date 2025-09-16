@@ -6,19 +6,12 @@ import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+import  NextStepsBlock  from "/snippets/integrations/next-step.mdx";
 
 
-Connect your AI agents to Dropbox for secure file storage,content collaboration and streamline workflows with cloud files.
-It is designed for applications that need to interact with Dropbox's file storage, manage documents, and facilitate team collaboration.
-
-When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
-- Access stored files: retrieve files, folders, and metadata from Dropbox.
-- Support AI-powered workflows: use file data to generate insights or automate document management tasks.
-- Integrate with creative processes: connect Dropbox with productivity apps, project management and collaboration tools.
+A file management agent that can automatically organize files into folders based on rules, create and manage shared links, and initiate file requests.
 
 ## Connect Dropbox to Auth0
-
-<IntegrationInfoBlock providerName="Dropbox" />
 
 <Steps>
   <Step title="Dropbox setup">
@@ -27,7 +20,7 @@ When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/toke
     3. On create an app choose "Scoped access".
     4. Choose the type of access you need.
     5. Give your app a unique name.
-    6. Click Create app
+    6. Click Create app.
     7. Select the Show App Secret link to reveal the app secret.
     8. Copy the App Key and App Secret.
     9. Configure OAuth redirect URI:
@@ -44,6 +37,8 @@ When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/toke
   </Step>
 </Steps>
 
+<IntegrationInfoBlock providerName="Dropbox" />
+
 ## Token Vault configuration example
 
 To configure the Token Vault for your Dropbox connection, you can use the following code snippet in your application:
@@ -54,7 +49,4 @@ To configure the Token Vault for your Dropbox connection, you can use the follow
   scopes={["profile","offline"]}
 />
 
-## Next steps
-- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
-- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
-- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).
+<NextStepsBlock />

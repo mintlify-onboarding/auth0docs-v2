@@ -6,19 +6,12 @@ import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+import  NextStepsBlock  from "/snippets/integrations/next-step.mdx";
 
 
-Connect your AI agents to Bitbucket for source code collaboration, repository management, and DevOps workflow.
-It is designed for applications that need to interact with Bitbucket's repositories, manage pull requests, and facilitate team collaboration.
-
-When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
-- Access repository information: retrieve repository details, branch information, and commit history from Bitbucket.
-- Support AI-powered workflows: use repository data to generate insights or automate DevOps tasks.
-- Integrate with development pipelines: connect Bitbucket projects with CICD tools and services.
+A code management agent that can manage repositories, automate pull request creation and management, and integrate with CI/CD pipelines to report build statuses.
 
 ## Connect Bitbucket to Auth0
-
-<IntegrationInfoBlock providerName="Bitbucket" />
 
 <Steps>
   <Step title="Bitbucket setup">
@@ -29,7 +22,7 @@ When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/toke
     5. Configure OAuth redirect URL:
        - Redirect URL: `https://YOUR_AUTH0_DOMAIN/login/callback`
        <FindDomainInfoBlock />
-    6. Set permissions/Scopes
+    6. Set permissions/scopes.
     7. Click Save.
     8. Toggle the consumer name to see the generated Key and Secret value for your consumer.
     9. Copy the Consumer Key and Consumer Secret.
@@ -41,6 +34,8 @@ When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/toke
   </Step>
 </Steps>
 
+<IntegrationInfoBlock providerName="Bitbucket" />
+
 ## Token Vault configuration example
 
 To configure the Token Vault for your Bitbucket connection, you can use the following code snippet in your application:
@@ -51,7 +46,4 @@ To configure the Token Vault for your Bitbucket connection, you can use the foll
   scopes={["profile"]}
 />
 
-## Next steps
-- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
-- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
-- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).
+<NextStepsBlock />

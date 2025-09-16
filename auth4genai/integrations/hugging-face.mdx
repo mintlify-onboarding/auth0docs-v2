@@ -6,19 +6,12 @@ import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+import  NextStepsBlock  from "/snippets/integrations/next-step.mdx";
 
 
-Connect your AI agents to Hugging Face for model access, dataset management, and machine learning workflows.
-It is designed for applications that need to retrieve, analyze, or automate work with state-of-the-art AI models and datasets.
-
-When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
-- Access model information: retrieve model details, performance metrics, and usage statistics from Hugging Face.
-- Support AI-powered workflows: integrate Hugging Face pipelines into your applications to automate machine learning tasks.
-- Integrate with creative processes: connect Hugging Face models with collaboration tools, chat systems, or analysis pipelines to enable real-time insights and decision-making.
+An MLOps agent that can manage and upload models and datasets to the Hugging Face Hub, and interact with Spaces (running ML demos).
 
 ## Connect Hugging Face to Auth0
-
-<IntegrationInfoBlock providerName="Hugging Face" />
 
 <Steps>
   <Step title="Hugging Face setup">
@@ -42,6 +35,8 @@ When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/toke
   </Step>
 </Steps>
 
+<IntegrationInfoBlock providerName="Hugging Face" />
+
 ## Token Vault configuration example
 
 To configure the Token Vault for your Hugging Face connection, you can use the following code snippet in your application:
@@ -52,7 +47,4 @@ To configure the Token Vault for your Hugging Face connection, you can use the f
   scopes={["openid", "profile"]}
 />
 
-## Next steps
-- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
-- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
-- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).
+<NextStepsBlock />

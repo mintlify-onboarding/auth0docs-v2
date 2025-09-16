@@ -6,19 +6,12 @@ import FindDomainInfoBlock from "/snippets/common/find-domain-info-block.mdx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
+import  NextStepsBlock  from "/snippets/integrations/next-step.mdx";
 
 
-Connect your AI agents to Fitbit for health tracking, fitness monitoring, and wellness insights. Its designed
-designed for applications that need to analyse, interpret, or automate workflow usong health and fitness data.
-
-When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
-- Access Activity and wellness data: securely retrieve Fitbit metrics for reporting or analysis.
-- Support AI-powered workflows: use health data to generate insights or automate wellness tasks.
-- Integrate with creative processes: connect fitbit data with healthcare apps, coaching tools, or lifestyle services.
+A health and wellness agent that can track a user's fitness data, log activities or food intake on their behalf, and set new fitness goals.
 
 ## Connect Fitbit to Auth0
-
-<IntegrationInfoBlock providerName="Fitbit" />
 
 <Steps>
   <Step title="Fitbit setup">
@@ -41,6 +34,8 @@ When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/toke
   </Step>
 </Steps>
 
+<IntegrationInfoBlock providerName="Fitbit" />
+
 ## Token Vault configuration example
 
 To configure the Token Vault for your Fitbit connection, you can use the following code snippet in your application:
@@ -51,7 +46,4 @@ To configure the Token Vault for your Fitbit connection, you can use the followi
   scopes={["profile","activity"]}
 />
 
-## Next steps
-- To learn how to link user accounts, read [Client-initiated account linking](https://auth0.com/ai/docs/guides/client-initiated-account-linking). 
-- To learn how to configure applications to access Token Vault, read [Configure Token Vault](https://auth0.com/docs/secure/tokens/token-vault/configure-token-vault).
-- To learn how to get an access token to make a tool call, complete the [Call other's APIs on user's behalf Quickstart](https://auth0.com/ai/docs/get-started/call-others-apis-on-users-behalf).
+<NextStepsBlock />
