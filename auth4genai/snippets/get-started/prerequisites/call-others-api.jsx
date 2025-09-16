@@ -123,9 +123,6 @@ export const Prerequisites = ({
         . This client enables Token Vault to exchange an access token for an
         external API access token (e.g., Google Calendar API).
         <br />
-        This will be used by the Langgraph API server
-        (@langchain/langgraph-cli or Langgraph Platform) when executing tools that require third-party access.
-        <br />
         <ul>
               <li>
                 Navigate to{" "}
