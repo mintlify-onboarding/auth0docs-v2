@@ -28,7 +28,37 @@ import GenKitSample from "/snippets/how-tos/google-calendar/genkit.mdx";
       - Configure a [Social Connection for Google in Auth0](https://marketplace.auth0.com/integrations/google-social-connection)
         - Make sure to enable `Token Vault`
         - Select `Offline Access` scope
-    </Card>
+      - Create a Custom API Client:
+        <br />
+        The Custom API Client allows your API server to perform token
+        exchanges using <strong><i>access tokens</i></strong>
+        instead of <strong><i>refresh tokens</i></strong>.
+        This client enables Token Vault to exchange an access token for an
+        external API access token (e.g., Google Calendar API).
+        <br />
+        This will be used by the Langgraph API server
+        (@langchain/langgraph-cli or Langgraph Platform) when executing tools that require third-party access.
+        <br />
+        <ul>
+              <li>
+                Navigate to <strong>Applications > APIs</strong>
+              </li>
+              <li>
+                Click the{" "}
+                <strong>Create API</strong> button to create a new Custom API.
+              </li>
+              <li>
+                Go to the Custom API you created and click the <strong>Add Application</strong> button in the right top corner.
+              </li>
+              <li>
+                After that click the <strong>Configure Application</strong> button in the right top corner.
+              </li>
+          <li>
+            Note down the <code>client id</code> and <code>client secret</code>{" "}
+           for your environment variables.
+          </li>
+        </ul>
+      </Card>
 
     <Tabs>
       <Tab title="AI SDK" icon="https://mintlify-assets.b-cdn.net/auth0/vercel.svg">
