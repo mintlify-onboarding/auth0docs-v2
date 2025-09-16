@@ -7,21 +7,11 @@ import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
 
-Connect your AI agents to DigitalOcean to manage cloud infrastructure, provision resources, and automate deployments across Droplets, Kubernetes, databases, storage, and networking.
-
-When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
-- **Infrastructure automation**: Provision and manage Droplets, Kubernetes clusters, and load balancers programmatically.
-- **Resource monitoring**: Access infrastructure metrics, alerts, and usage data for intelligent monitoring and optimization.
-- **Cost optimization**: Analyze resource usage patterns and automatically scale or optimize cloud infrastructure.
-- **Deployment orchestration**: Automate application deployments across multiple regions and environments.
-- **Storage management**: Manage Spaces object storage buckets, volumes, and snapshots for data workflows.
-- **Network configuration**: Configure VPCs, firewalls, and domain DNS settings for secure infrastructure.
-
-## Overview
-
 A cloud infrastructure agent that can automate the creation and management of servers (Droplets), configure networking, and manage storage volumes.
 
 ## Connect DigitalOcean to Auth0
+
+<IntegrationInfoBlock providerName="DigitalOcean" />
 
 <Steps>
   <Step title="DigitalOcean setup">
@@ -42,8 +32,6 @@ A cloud infrastructure agent that can automate the creation and management of se
     <Auth0SetupBlock providerName="DigitalOcean" scopesName="Scopes" allowFreeFormScopes={true} />
   </Step>
 </Steps>
-
-<IntegrationInfoBlock providerName="DigitalOcean" />
 
 ## Token Vault configuration example
 

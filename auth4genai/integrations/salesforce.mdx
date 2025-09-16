@@ -7,21 +7,11 @@ import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
 
-Connect your AI agents to Salesforce for CRM, customer data, and sales automation across records, opportunities, cases, and more.
-
-When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
-- **Customer relationship management**: Access customer records, contacts, and account information for personalized AI interactions.
-- **Sales automation**: Retrieve and manage sales opportunities, leads, and forecasting data.
-- **Service and support**: Access support cases, knowledge base articles, and service metrics for intelligent customer service.
-- **Marketing insights**: Analyze campaign performance, lead generation, and customer engagement metrics.
-- **Data analytics**: Generate reports and insights from Salesforce data to drive business decisions.
-- **Workflow automation**: Create and update records, trigger processes, and automate business workflows.
-
-## Overview
-
 A powerful sales/CRM agent that can create/update leads and contacts, log activities (calls, emails), generate reports, and automate case management in Service Cloud.
 
 ## Connect Salesforce to Auth0
+
+<IntegrationInfoBlock providerName="Salesforce" />
 
 <Steps>
   <Step title="Salesforce setup">
@@ -60,7 +50,7 @@ A powerful sales/CRM agent that can create/update leads and contacts, log activi
   <Step title="Auth0 setup">
     <Auth0SetupBlock providerName="Salesforce" scopesName="Scopes" allowFreeFormScopes={true} />
 
-    <Warning>
+    <Note>
     **Required Scopes**: Make sure to include the following scopes in your Auth0 connection configuration:
     - `openid` - Access your identity URL service
     - `api` - Access and manage your data
@@ -68,12 +58,9 @@ A powerful sales/CRM agent that can create/update leads and contacts, log activi
     - `offline_access` - Maintain access when you're not present
     
     These scopes must also be enabled in your Salesforce Connected App configuration.
-    </Warning>
+    </Note>
   </Step>
 </Steps>
-
-<IntegrationInfoBlock providerName="Salesforce" />
-
 
 ## Token Vault configuration example
 

@@ -7,21 +7,11 @@ import { Auth0SetupBlock } from "/snippets/integrations/Auth0SetupBlock.jsx";
 import { IntegrationInfoBlock } from "/snippets/integrations/IntegrationInfoBlock.jsx";
 import { TokenVaultConfigBlock } from "/snippets/integrations/TokenVaultConfigBlock.jsx";
 
-Connect your AI agents to Basecamp for project management, collaboration, and automation across projects, tasks, messages, schedules, and documents.
-
-When used with Auth0's [Token Vault](https://auth0-genai.mintlify.app/intro/token-vault), this connection can enable use cases such as:
-- **Project management automation**: Create projects, manage to-do lists, and track progress across teams.
-- **Team collaboration**: Access messages, documents, and schedules to facilitate AI-powered team workflows.
-- **Task and deadline tracking**: Monitor project milestones, upcoming deadlines, and team assignments.
-- **Communication insights**: Analyze team discussions and project updates to provide intelligent summaries and recommendations.
-- **Document management**: Access and organize project documents, files, and rich content attachments.
-- **Real-time notifications**: Stay updated on project changes, new messages, and task completions.
-
-## Overview
-
 A project management agent that can create new projects, add to-do items, post messages, and upload files to a Basecamp project based on external triggers (e.g., an email).
 
 ## Connect Basecamp to Auth0
+
+<IntegrationInfoBlock providerName="Basecamp" />
 
 <Steps>
   <Step title="Basecamp setup">
@@ -41,8 +31,6 @@ A project management agent that can create new projects, add to-do items, post m
     <Auth0SetupBlock providerName="Basecamp" scopesName="Attributes" allowFreeFormScopes={false} />
   </Step>
 </Steps>
-
-<IntegrationInfoBlock providerName="Basecamp" />
 
 ## Token Vault configuration example
 
