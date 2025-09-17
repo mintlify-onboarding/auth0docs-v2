@@ -23,11 +23,9 @@
   "contextual": {
     "options": [
      "copy",
-     "chatgpt",
-     "claude",
-     "mcp",
+     "vscode",
      "cursor",
-     "vscode"
+     "mcp"
    ]
   },
   "appearance": {
