@@ -212,4 +212,64 @@ export const integrations = [
     description:
       "Allow your AI Agent to create and schedule new posts (text, photo, video), reblog content, and manage a user's blog theme and settings.",
   },
+  {
+    id: "amazon",
+    title: "Amazon",
+    icon: "/ai/docs/img/integrations/amazon-avatar.png",
+    href: "/integrations/amazon",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as an Amazon seller to manage inventory, update product listings, and track sales performance. Or, as a consumer, a shopping agent that tracks product prices and availability.",
+  },
+  {
+    id: "bitbucket",
+    title: "Bitbucket",
+    icon: "/ai/docs/img/integrations/bitbucket-avatar.png",
+    href: "/integrations/bitbucket",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Bitbucket user to manage repositories, track issues, and automate work with code repositories.",
+  },
+  {
+    id: "dropbox",
+    title: "Dropbox",
+    icon: "/ai/docs/img/integrations/dropbox-avatar.png",
+    href: "/integrations/dropbox",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Dropbox user to manage files, share Dropbox content for analysis, and automate document processing.",
+  },
+  {
+    id: "fitbit",
+    title: "Fitbit",
+    icon: "/ai/docs/img/integrations/fitbit-avatar.png",
+    href: "/integrations/fitbit",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Fitbit user to access health data, track fitness goals, and manage user profiles.",
+  },
+  {
+    id: "hugging-face",
+    title: "Hugging Face",
+    icon: "/ai/docs/img/integrations/hugging-face-avatar.png",
+    href: "/integrations/hugging-face",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Hugging Face user to access model information, manage datasets, and integrate with machine learning workflows.",
+  },
+  {
+    id: "paypal",
+    title: "Paypal",
+    icon: "/ai/docs/img/integrations/paypal-avatar.png",
+    href: "/integrations/paypal",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Paypal user to access transaction information, manage payments, and integrate with financial workflows.",
+  },
 ];
