@@ -211,6 +211,9 @@ import { createRemoteJWKSet, jwtVerify } from "jose";
 
 const { Auth, HTTPException } = require("@langchain/langgraph-sdk/auth");
 
+const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
+const AUTH0_AUDIENCE = process.env.AUTH0_AUDIENCE;
+
 // JWKS endpoint for Auth0
 const JWKS = createRemoteJWKSet(
   new URL(`https://${AUTH0_DOMAIN}/.well-known/jwks.json`)
