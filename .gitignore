@@ -1,3 +1,5 @@
-auth4genai/temp/
 auth4genai/node_modules/
 temp/
+
+# macOS
+.DS_Store
