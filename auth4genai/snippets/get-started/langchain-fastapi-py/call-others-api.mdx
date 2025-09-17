@@ -24,8 +24,8 @@ cd auth0-ai-samples/call-apis-on-users-behalf/others-api/langchain-fastapi-py
 
 The project is divided into two parts:
 
-- `backend/`: contains the backend code for the Web app, API written in Python using FastAPI and the LangGraph agent.
-- `frontend/`: contains the frontend code for the Web app, written in React as a Vite SPA.
+- `backend/`: contains the backend code for the web app, an API written in Python using FastAPI and the LangGraph agent.
+- `frontend/`: contains the frontend code for the web app, written in React as a Vite SPA.
 
 ### Install backend packages
 
@@ -55,15 +55,15 @@ OPENAI_API_KEY="YOUR_API_KEY"
 LANGGRAPH_API_URL=http://localhost:54367
 ```
 
-Access your `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, and `AUTH0_CLIENT_SECRET` by viewing the Auth0 Application that you created in the Auth0 Dashboard and navigating to the Basic Information section at the top of the Settings tab.
+To get your Auth0 application's `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, and `AUTH0_CLIENT_SECRET`, navigate to the **Settings** tab in the Auth0 Dashboard. You'll find these values in the **Basic Information** section at the top.
 Copy each value to the matching setting.
 
-Next, run this command to generate a random 32 byte value and copy it to the `AUTH0_SECRET` field.
+Next, run this command to generate a random 32 byte value and copy it to the `AUTH0_SECRET` field:
 ```bash generate random 32 byte value
 openssl rand -hex 32
 ```
 
-Lastly, set your OpenAI API key or use any provider supported by the Vercel AI SDK.
+Lastly, set your OpenAI API key or use any provider supported by the Vercel AI SDK:
 ```bash .env.local wrap lines
 OPENAI_API_KEY="YOUR_API_KEY"
 ```
@@ -100,7 +100,7 @@ uv pip install -U langgraph-api
 langgraph dev --port 54367 --allow-blocking
 ```
 <Note>
-  This will open the LangGraph Studio in a new tab, you can safely close it.
+  This opens LangGraph Studio in a new tab. You can safely close it.
 </Note>
 
 3. In a third new terminal, start the frontend:
@@ -138,7 +138,7 @@ uv add "auth0-ai-langchain>=1.0.0b3" "langgraph>=0.5.4" langchain-openai "langgr
 ```
 
 ### Update your environment file
-In the `backend` directory of your project, add to your environment file the following variables:
+In the `backend` directory of your project, add the following variables to your environment file:
 
 ```bash .env wrap lines
 # Auth0 configuration
@@ -155,7 +155,7 @@ OPENAI_API_KEY="YOUR_API_KEY"
 LANGGRAPH_API_URL=http://localhost:54367
 ```
 
-Access your `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, and `AUTH0_CLIENT_SECRET` by viewing the Auth0 Application that you created in the Auth0 Dashboard and navigating to the Basic Information section at the top of the Settings tab.
+To get your Auth0 application's `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, and `AUTH0_CLIENT_SECRET`, navigate to the **Settings** tab in the Auth0 Dashboard. You'll find these values in the **Basic Information** section at the top.
 Copy each value to the matching setting.
 
 Next, run this command to generate a random 32 byte value and copy it to the `AUTH0_SECRET` field.
@@ -199,7 +199,7 @@ with_calendar_access = auth0_ai.with_federated_connection(
 
 ### Pass credentials to the AI agent
 
-Update your API route to pass the user session data including and federated access token to the AI agent, for example in `app/api/routes/chat.py`:
+Update your API route to pass the user session data and an external provider's access token to the AI agent, for example, in `app/api/routes/chat.py`:
 
 ```python app/api/routes/chat.py wrap lines highlight={2,9,21}
 # ...
@@ -323,7 +323,7 @@ agent = create_react_agent(
 
 When you try to use the tool, the application requests any additional Google scopes that are required but not yet authorized. This process is called step-up authorization.
 
-To implement, install the Auth0 AI Components for React to get the required UI components:
+To implement, install the Auth0 AI Components for React SDK to get the required UI components:
 
 ```bash wrap lines
 cd frontend
@@ -447,7 +447,7 @@ export function ChatWindow(props: {
 Now when step-up authorization is required, the user will see a prompt in the chat window asking them to authorize.
 
 ### Test your application
-Start your application. If you are already logged in, make sure to log out and log back in using Google. Then, ask your AI Agent to list the upcoming events in your Google Calendar!
+Start your application. If you are already logged in, make sure to log out and log back in using Google. Then, ask your AI agent to list the upcoming events in your Google Calendar!
 
 That's it! You successfully integrated integrated third-party API access using Token Vault into your project.
 
@@ -455,4 +455,4 @@ That's it! You successfully integrated integrated third-party API access using T
 </Tabs>
 
 ### View a complete example
-Want to see how it all comes together? Explore or clone the fully implemented sample application [here on GitHub](https://github.com/auth0-samples/auth0-ai-samples/tree/main/call-apis-on-users-behalf/others-api/langchain-fastapi-py).
+Want to see how it all comes together? Explore or clone the fully implemented sample application on [GitHub](https://github.com/auth0-samples/auth0-ai-samples/tree/main/call-apis-on-users-behalf/others-api/langchain-fastapi-py).

@@ -34,10 +34,10 @@ AUTH0_DOMAIN='<your-auth0-domain>'
 AUTH0_CLIENT_ID='<your-auth0-application-client-id>'
 AUTH0_CLIENT_SECRET='<your-auth0-application-client-secret>'
 ```
-Access your `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, and `AUTH0_CLIENT_SECRET` by viewing the Auth0 Application that you created in the Auth0 Dashboard and navigating to the Basic Information section at the top of the Settings tab.
+To get your Auth0 application's `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, and `AUTH0_CLIENT_SECRET`, navigate to the **Settings** tab in the Auth0 Dashboard. You'll find these values in the **Basic Information** section at the top.
 Copy each value to the matching setting.
 
-Next, run this command to generate a random 32 byte value and copy it to the `AUTH0_SECRET` field.
+Next, run this command to generate a random 32 byte value and copy it to the `AUTH0_SECRET` field:
 ```bash generate random 32 byte value
 openssl rand -hex 32
 ```
@@ -58,7 +58,7 @@ You will see:
   ![Auth0 login screen](/img/user_authentication_quickstart_login_screen.png)
 </Frame>
 
-Sign up to your application to create a new user account. You will then see a welcome message with your user name. You can sign in with that account on future visits.
+Sign up for your application to create a new user account. You will then see a welcome message with your user name. You can sign in with that account on future visits.
 
 
   </Tab>
@@ -151,7 +151,7 @@ export const config = {
 
 #### Add Log in and Sign up buttons
 
-Using the following code example to check if the user is signed in or not.
+Use the following code example to check if the user is signed in or not:
 It will display the **Sign up** or **Log in** buttons without a user session. If a user session exists, the app displays a welcome message with the user's name.
 
 ```tsx src/app/page.tsx wrap lines highlight={5,7-27, 36}
@@ -221,4 +221,4 @@ Sign up to your application to create a new user account. You will then see a we
 
 
 ### View a complete example
-Want to see how it all comes together? Explore or clone the fully implemented sample application [here on GitHub](https://github.com/auth0-samples/auth0-ai-samples/tree/main/authenticate-users/vercel-ai-next-js).
+Want to see how it all comes together? Explore or clone the fully implemented sample application on [GitHub](https://github.com/auth0-samples/auth0-ai-samples/tree/main/authenticate-users/vercel-ai-next-js).
