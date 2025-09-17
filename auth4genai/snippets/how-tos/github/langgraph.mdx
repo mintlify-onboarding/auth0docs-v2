@@ -15,8 +15,8 @@ import { Auth0AI } from "@auth0/ai-langchain";
 const auth0AI = new Auth0AI({
   auth0: {
     domain: process.env.AUTH0_DOMAIN!,
-    clientId: process.env.RESOURCE_SERVER_CLIENT_ID!,
-    clientSecret: process.env.RESOURCE_SERVER_CLIENT_SECRET!,
+    clientId: process.env.AUTH0_CUSTOM_API_CLIENT_ID!,
+    clientSecret: process.env.AUTH0_CUSTOM_API_CLIENT_SECRET!,
   },
 });
 
@@ -188,7 +188,10 @@ Here, the property `auth0` is an instance of `@auth0/nextjs-auth0` to handle the
 You can check different authentication options for Next.js with Auth0 at the [official documentation.](https://github.com/auth0/nextjs-auth0?tab=readme-ov-file#3-create-the-auth0-sdk-client)
 </Info>
 
-### Custom Auth flow
+### Add Custom Authentication
+<Info>
+For more information on how to add custom authentication for your LangGraph Platform application, see the [Custom Auth](https://langchain-ai.github.io/langgraphjs/how-tos/auth/custom_auth/) guide.
+</Info>
 In your langgraph.json, add the path to your auth file:
 ```typescript langgraph.json wrap lines highlight={8}
 {

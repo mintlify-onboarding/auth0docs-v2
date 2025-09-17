@@ -13,6 +13,7 @@ import NextJSAuth0Sample from "/snippets/how-tos/github/nextjs-auth0.mdx";
 import GenKitSample from "/snippets/how-tos/github/genkit.mdx";
 import LlamaIndexJSSample from "/snippets/how-tos/github/llamaindex.mdx";
 import AccountLinking from "/snippets/how-tos/account-linking.mdx";
+import CreateCustomApiClient from "/snippets/common/create-custom-api-client.mdx";
 
 <Tabs>
    <Tab title="Javascript" icon="js">
@@ -26,33 +27,7 @@ import AccountLinking from "/snippets/how-tos/account-linking.mdx";
       - Create and configure a [GitHub App](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps).
       - Configure a [Social Connection for GitHub in Auth0](https://marketplace.auth0.com/integrations/github-social-connection)
         - Make sure to enable `Token Vault`
-      - Create a Custom API Client:
-        <br />
-        The Custom API Client allows your API server to perform token
-        exchanges using <strong><i>access tokens</i></strong>
-        instead of <strong><i>refresh tokens</i></strong>.
-        This client enables Token Vault to exchange an access token for an
-        external API access token (e.g., Google Calendar API).
-        <br />
-        <ul>
-              <li>
-                Navigate to <strong>Applications > APIs</strong>
-              </li>
-              <li>
-                Click the{" "}
-                <strong>Create API</strong> button to create a new Custom API.
-              </li>
-              <li>
-                Go to the Custom API you created and click the <strong>Add Application</strong> button in the right top corner.
-              </li>
-              <li>
-                After that click the <strong>Configure Application</strong> button in the right top corner.
-              </li>
-          <li>
-            Note down the <code>client id</code> and <code>client secret</code>{" "}
-           for your environment variables.
-          </li>
-        </ul>
+      <CreateCustomApiClient />
     </Card>
 
     <Tabs>
