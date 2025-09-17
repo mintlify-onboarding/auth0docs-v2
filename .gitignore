@@ -1,2 +1,5 @@
 auth4genai/temp/
 temp/
+
+# macOS
+.DS_Store
