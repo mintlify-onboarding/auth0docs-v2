@@ -284,7 +284,7 @@ export const integrations = [
   {
     id: "twitter",
     title: "Twitter",
-    icon: "/ai/docs/img/integrations/twitter-avatar.png",
+    icon: "/ai/docs/img/integrations/x-avatar.png",
     href: "/integrations/twitter",
     status: "Available",
     type: "Social",
