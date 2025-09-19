@@ -130,7 +130,9 @@
                   "integrations/snapchat",
                   "integrations/spotify",
                   "integrations/stripe-connect",
-                  "integrations/tumblr"
+                  "integrations/tumblr",
+                  "integrations/twitch",
+                  "integrations/twitter"
                 ]
               },
               {
