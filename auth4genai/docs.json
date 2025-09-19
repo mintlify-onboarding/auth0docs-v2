@@ -112,9 +112,11 @@
               {
                 "group": "Social Integrations",
                 "pages": [
-                 "integrations/amazon",
+                  "integrations/amazon",
+                  "integrations/basecamp",
                   "integrations/bitbucket",
                   "integrations/box",
+                  "integrations/digitalocean",
                   "integrations/discord",
                   "integrations/dropbox",
                   "integrations/figma",
@@ -126,6 +128,7 @@
                   "integrations/microsoft",
                   "integrations/oauth2",
                   "integrations/paypal",
+                  "integrations/salesforce",
                   "integrations/slack",
                   "integrations/snapchat",
                   "integrations/spotify",
