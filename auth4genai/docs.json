@@ -21,7 +21,12 @@
     }
   },
   "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude"]
+    "options": [
+     "copy",
+     "vscode",
+     "cursor",
+     "mcp"
+   ]
   },
   "appearance": {
     "default": "dark"
@@ -36,6 +41,7 @@
         "groups": [
           {
             "group": "Auth for GenAI",
+            "icon": "book-open",
             "pages": [
               "intro/overview",
               {
@@ -60,6 +66,7 @@
           },
           {
             "group": "Get Started",
+            "icon": "rocket-launch",
             "pages": [
               "get-started/overview",
               "get-started/user-authentication",
@@ -70,17 +77,27 @@
             ]
           },
           {
+            "group": "Build with AI",
+            "icon": "code",
+            "pages": [
+              "build-with-ai/using-ai-tools"
+            ]
+          },
+          {
             "group": "Sample Apps",
+            "icon": "robot",
             "pages": ["sample-apps"]
           },
           {
             "group": "Guides",
+            "icon": "graduation-cap",
             "pages": [
               "guides/client-initiated-account-linking"
             ]
           },
           {
             "group": "Glossary",
+            "icon": "compass",
             "pages": ["glossary"]
           }
         ]
@@ -97,21 +114,28 @@
                 "pages": [
                   "integrations/amazon",
                   "integrations/basecamp",
+                  "integrations/bitbucket",
                   "integrations/box",
                   "integrations/digitalocean",
                   "integrations/discord",
+                  "integrations/dropbox",
                   "integrations/figma",
+                  "integrations/fitbit",
                   "integrations/freshbooks",
                   "integrations/github",
                   "integrations/google",
+                  "integrations/hugging-face",
                   "integrations/microsoft",
                   "integrations/oauth2",
+                  "integrations/paypal",
                   "integrations/salesforce",
                   "integrations/slack",
                   "integrations/snapchat",
                   "integrations/spotify",
                   "integrations/stripe-connect",
-                  "integrations/tumblr"
+                  "integrations/tumblr",
+                  "integrations/twitch",
+                  "integrations/twitter"
                 ]
               },
               {

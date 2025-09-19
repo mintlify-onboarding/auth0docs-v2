@@ -52,7 +52,7 @@ export const listRepositories = () =>
         // GitHub SDK
         try {
           const octokit = new Octokit({
-            auth: credentials?.accessToken,
+            auth: accessToken,
           });
 
           const { data } = await octokit.rest.repos.listForAuthenticatedUser();
