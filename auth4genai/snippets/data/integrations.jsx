@@ -241,5 +241,56 @@ export const integrations = [
     type: "Social",
     description:
       "Allow your AI Agent as a Twitter user to post tweets, manage followers, and integrate with social media workflows.",
-  }
+  },
+  {
+   
+    id: "bitbucket",
+    title: "Bitbucket",
+    icon: "/ai/docs/img/integrations/bitbucket-avatar.png",
+    href: "/integrations/bitbucket",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Bitbucket user to manage repositories, track issues, and automate work with code repositories.",
+  },
+  {
+    id: "dropbox",
+    title: "Dropbox",
+    icon: "/ai/docs/img/integrations/dropbox-avatar.png",
+    href: "/integrations/dropbox",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Dropbox user to manage files, share Dropbox content for analysis, and automate document processing.",
+  },
+  {
+    id: "fitbit",
+    title: "Fitbit",
+    icon: "/ai/docs/img/integrations/fitbit-avatar.png",
+    href: "/integrations/fitbit",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Fitbit user to access health data, track fitness goals, and manage user profiles.",
+  },
+  {
+    id: "hugging-face",
+    title: "Hugging Face",
+    icon: "/ai/docs/img/integrations/hugging-face-avatar.png",
+    href: "/integrations/hugging-face",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Hugging Face user to access model information, manage datasets, and integrate with machine learning workflows.",
+  },
+  {
+    id: "paypal",
+    title: "Paypal",
+    icon: "/ai/docs/img/integrations/paypal-avatar.png",
+    href: "/integrations/paypal",
+    status: "Available",
+    type: "Social",
+    description:
+      "Allow your AI Agent as a Paypal user to access transaction information, manage payments, and integrate with financial workflows.",
+  },
 ];
