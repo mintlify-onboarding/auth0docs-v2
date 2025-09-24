@@ -12,7 +12,9 @@ title: Add Login to Your Next.js Application
   or existing Next.js application using the Auth0 Next.js v4 SDK (Beta).
 'twitter:title': 'Auth0 Next.js SDK Quickstarts: Add Login to Your Next.js Application'
 ---
-<Snippet file="quickstart/webapp/auth0-signup-tip.mdx" utm_source="nextjs" />
+<Tip>
+Don't have an Auth0 account? <a href="https://auth0.com/signup?utm_source=webapp-nextjs&utm_medium=docs&utm_campaign=get-started" target="_blank">Sign up for free and get started with Auth0's secure authentication and authorization platform</a>.
+</Tip>
 
 <Accordion title="AI Prompt" defaultOpen icon="microchip-ai" iconType="sharp-solid">
   **Using AI to integrate Auth0?** Add this prompt to Cursor, Windsurf, Copilot, Claude Code or your favourite AI-powered IDE to speed up development.
@@ -1168,7 +1170,9 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     ```
   </Step>
   <Step title="Run your app" stepNumber={10}>
-    <Snippet file="quickstart/webapp/run-app.mdx" />
+    ```shellscript
+    npm run dev
+    ```
 
     <Info>
       Your app will be available at http://localhost:3000. The Auth0 SDK v4 automatically mounts authentication routes at `/auth/*` (not `/api/auth/*` like in v3).

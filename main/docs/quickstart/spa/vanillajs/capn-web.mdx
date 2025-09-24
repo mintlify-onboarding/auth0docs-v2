@@ -13,7 +13,9 @@ title: Add Login to Your Cap'n Web Application
   Cap'n Web RPC, using the Auth0 SPA SDK.
 'twitter:title': 'Auth0 JavaScript SDK Quickstarts: Add Login to Your Cap''n Web Application'
 ---
-<Snippet file="quickstart/auth0-signup-tip.mdx" utm_source="capnweb" />
+<Tip>
+**Don't have an Auth0 account?** [Sign up for free](https://auth0.com/signup?utm_source=docs&utm_medium=quickstart&utm_campaign=spa-capnweb) and get started with Auth0's secure authentication and authorization platform.
+</Tip>
 
 <Accordion title="AI Prompt" defaultOpen icon="microchip-ai" iconType="sharp-solid">
   **Using AI to integrate Auth0?** Add this prompt to Cursor, Windsurf, Copilot, Claude Code or your favourite AI-powered IDE to speed up development.
@@ -61,7 +63,8 @@ title: Add Login to Your Cap'n Web Application
 
 ## Get Started
 
-This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web application. You'll build a modern RPC-based web application with secure login functionality using Cap'n Web's JavaScript framework and the Auth0 SPA SDK.
+This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web application. You'll build a secure RPC-based web application with login, logout, and user profile features using Cap'n Web's JavaScript framework and the Auth0 SPA SDK.
+
 
 <Steps>
   <Step title="Create a new project" stepNumber={1}>
@@ -80,12 +83,17 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
     Create the basic project structure
 
     ```shellscript
-    mkdir -p client server && touch server/index.js client/index.html client/app.js .env.example .env
+    mkdir -p client server && touch server/index.js client/index.html client/app.js .env
+    ```
+
+    Update package.json to include the dev script:
+
+    ```shellscript
+    npm pkg set scripts.dev="node server/index.js"
+    npm pkg set type="module"
     ```
   </Step>
   <Step title="Install the Auth0 SPA JS SDK" stepNumber={2}>
-    Install the Auth0 SPA JS SDK to handle authentication:
-
     ```shellscript
     npm install @auth0/auth0-spa-js
     ```
@@ -100,53 +108,66 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
         Run the following shell command on your project's root directory to create an Auth0 app and generate a `.env` file:
 
         <CodeGroup>
+          ```shellscript Mac
+          AUTH0_APP_NAME="My Cap'n Web App" && AUTH0_API_NAME="Cap'n Web API" && AUTH0_API_IDENTIFIER="https://capnweb-api.$(date +%s).com" && brew tap auth0/auth0-cli && brew install auth0 && auth0 login --no-input && auth0 apis create --name "${AUTH0_API_NAME}" --identifier "${AUTH0_API_IDENTIFIER}" --scopes "read:profile,write:profile" --json > auth0-api-details.json && auth0 apps create -n "${AUTH0_APP_NAME}" -t spa -c http://localhost:3000 -l http://localhost:3000 -o http://localhost:3000 --json > auth0-app-details.json && CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) && DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') && echo "AUTH0_DOMAIN=${DOMAIN}" > .env && echo "AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env && echo "AUTH0_AUDIENCE=${AUTH0_API_IDENTIFIER}" >> .env && echo "PORT=3000" >> .env && echo "NODE_ENV=development" >> .env && rm auth0-app-details.json auth0-api-details.json && echo ".env file created with your Auth0 details:" && cat .env
+          ```
 
-        ```shellscript Mac
-        AUTH0_APP_NAME="My Cap'n Web App" && brew tap auth0/auth0-cli && brew install auth0 && auth0 login --no-input && auth0 apps create -n "${AUTH0_APP_NAME}" -t spa -c http://localhost:3000 -l http://localhost:3000 -o http://localhost:3000 --json > auth0-app-details.json && CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) && DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') && echo "AUTH0_DOMAIN=${DOMAIN}" > .env && echo "AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env && echo "PORT=3000" >> .env && echo "NODE_ENV=development" >> .env && rm auth0-app-details.json && echo ".env file created with your Auth0 details:" && cat .env
-        ```
-
-        
-        ```shellscript Windows
-        $AppName = "My Cap'n Web App"; winget install Auth0.CLI; auth0 login --no-input; auth0 apps create -n "$AppName" -t spa -c http://localhost:3000 -l http://localhost:3000 -o http://localhost:3000 --json | Set-Content -Path auth0-app-details.json; $ClientId = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_id; $Domain = (auth0 tenants list --json | ConvertFrom-Json | Where-Object { $_.active -eq $true }).name; Set-Content -Path .env -Value "AUTH0_DOMAIN=$Domain"; Add-Content -Path .env -Value "AUTH0_CLIENT_ID=$ClientId"; Add-Content -Path .env -Value "PORT=3000"; Add-Content -Path .env -Value "NODE_ENV=development"; Remove-Item auth0-app-details.json; Write-Output ".env file created with your Auth0 details:"; Get-Content .env
-        
-        ```
-
+          ```shellscript Windows
+          $AppName = "My Cap'n Web App"; $ApiName = "Cap'n Web API"; $ApiIdentifier = "https://capnweb-api.$((Get-Date).Ticks).com"; winget install Auth0.CLI; auth0 login --no-input; auth0 apis create --name "$ApiName" --identifier "$ApiIdentifier" --scopes "read:profile,write:profile" --json | Set-Content -Path auth0-api-details.json; auth0 apps create -n "$AppName" -t spa -c http://localhost:3000 -l http://localhost:3000 -o http://localhost:3000 --json | Set-Content -Path auth0-app-details.json; $ClientId = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_id; $Domain = (auth0 tenants list --json | ConvertFrom-Json | Where-Object { $_.active -eq $true }).name; Set-Content -Path .env -Value "AUTH0_DOMAIN=$Domain"; Add-Content -Path .env -Value "AUTH0_CLIENT_ID=$ClientId"; Add-Content -Path .env -Value "AUTH0_AUDIENCE=$ApiIdentifier"; Add-Content -Path .env -Value "PORT=3000"; Add-Content -Path .env -Value "NODE_ENV=development"; Remove-Item auth0-app-details.json, auth0-api-details.json; Write-Output ".env file created with your Auth0 details:"; Get-Content .env
+          ```
         </CodeGroup>
       </Tab>
+
       <Tab title="Dashboard">
         Before you start, create a `.env` file on your project's root directory
 
         ```shellscript .env
         AUTH0_DOMAIN=YOUR_AUTH0_APP_DOMAIN
         AUTH0_CLIENT_ID=YOUR_AUTH0_APP_CLIENT_ID
+        AUTH0_AUDIENCE=https://capnweb-api.yourproject.com
         PORT=3000
         NODE_ENV=development
         ```
 
-        1. Head to the [Auth0 Dashboard ](https://manage.auth0.com/dashboard/)
-        2. Click on **Applications**  \> **Applications** \> **Create Application**
+        1. Head to the [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
+        2. Click on **Applications** > **Applications** > **Create Application**
         3. In the popup, enter a name for your app, select `Single Page Web Application` as the app type and click **Create**
         4. Switch to the **Settings** tab on the Application Details page
         5. Replace `YOUR_AUTH0_APP_DOMAIN` and `YOUR_AUTH0_APP_CLIENT_ID` on the `.env` file with the **Domain** and **Client ID** values from the dashboard
 
-        Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs**, **Allowed Logout URLs** and**Allowed Web Origins**  to:
+        Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs**, **Allowed Logout URLs** and **Allowed Web Origins** to:
 
         ```
         http://localhost:3000
         ```
 
         <Info>
-          **Allowed Callback URLs** are a critical security measure to ensure users are safely returned to your application after authentication. Without a matching URL, the login process will fail, and users will be blocked by an Auth0 error page instead of accessing your app.\
-          \
+          **Allowed Callback URLs** are a critical security measure to ensure users are safely returned to your application after authentication. Without a matching URL, the login process will fail, and users will be blocked by an Auth0 error page instead of accessing your app.
+
           **Allowed Logout URLs** are essential for providing a seamless user experience upon signing out. Without a matching URL, users will not be redirected back to your application after logout and will instead be left on a generic Auth0 page.
 
           **Allowed Web Origins** is critical for silent authentication. Without it, users will be logged out when they refresh the page or return to your app later.
         </Info>
+
+        **Create an Auth0 API**
+        
+        For this quickstart, you'll also need to create an Auth0 API:
+        
+        1. In the Auth0 Dashboard, go to **APIs** > **Create API**
+        2. Set these values:
+           - **Name**: `Cap'n Web API` 
+           - **Identifier**: `https://capnweb-api.yourproject.com` (use your own unique identifier)
+           - **Signing Algorithm**: `RS256` (default)
+        3. Click **Create**
+        4. In the **Scopes** tab, add these scopes:
+           - `read:profile` - Read user profile data
+           - `write:profile` - Update user profile data
+        5. Update your `.env` file with the API identifier as `AUTH0_AUDIENCE`
       </Tab>
     </Tabs>
   </Step>
-  <Step title="Create the server and client code" stepNumber={4}>
-    Create the complete application files:
+  <Step title="Create the server" stepNumber={4}>
+    Create the Cap'n Web server with Auth0 integration:
 
     <CodeGroup>
 
@@ -169,9 +190,13 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
     // Auth0 configuration
     const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
     const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+    const AUTH0_AUDIENCE = process.env.AUTH0_AUDIENCE;
 
-    if (!AUTH0_DOMAIN || !AUTH0_CLIENT_ID) {
+    if (!AUTH0_DOMAIN || !AUTH0_CLIENT_ID || !AUTH0_AUDIENCE) {
       console.error('❌ Missing required Auth0 environment variables');
+      if (!AUTH0_DOMAIN) console.error('   - AUTH0_DOMAIN is required');
+      if (!AUTH0_CLIENT_ID) console.error('   - AUTH0_CLIENT_ID is required');
+      if (!AUTH0_AUDIENCE) console.error('   - AUTH0_AUDIENCE is required');
       process.exit(1);
     }
 
@@ -190,6 +215,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
     async function verifyToken(token) {
       return new Promise((resolve, reject) => {
         jwt.verify(token, getKey, {
+          audience: AUTH0_AUDIENCE,
           issuer: `https://${AUTH0_DOMAIN}/`,
           algorithms: ['RS256']
         }, (err, decoded) => {
@@ -241,14 +267,21 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
       }
 
       if (req.url === '/api/config') {
-        const config = { auth0: { domain: AUTH0_DOMAIN, clientId: AUTH0_CLIENT_ID } };
+        const config = { 
+          auth0: { 
+            domain: AUTH0_DOMAIN, 
+            clientId: AUTH0_CLIENT_ID,
+            audience: AUTH0_AUDIENCE
+          } 
+        };
         res.setHeader('Content-Type', 'application/json');
         res.writeHead(200);
         res.end(JSON.stringify(config));
         return;
       }
 
-      if (req.url === '/' || req.url === '/index.html') {
+      // Handle root path and Auth0 callback (with query parameters)
+      if (req.url === '/' || req.url === '/index.html' || req.url.startsWith('/?code=') || req.url.startsWith('/?error=')) {
         const html = readFileSync(join(__dirname, '../client/index.html'), 'utf8');
         res.setHeader('Content-Type', 'text/html');
         res.writeHead(200);
@@ -450,18 +483,24 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
     let auth0Client = null;
     let rpcClient = null;
 
+    // Auth0 Configuration - Loaded dynamically from server
+    let AUTH0_CONFIG = null;
+
     // Load Auth0 config from server
     async function loadConfig() {
       const response = await fetch('/api/config');
       const config = await response.json();
       
-      return {
+      AUTH0_CONFIG = {
         domain: config.auth0.domain,
         clientId: config.auth0.clientId,
         authorizationParams: {
-          redirect_uri: window.location.origin
+          redirect_uri: window.location.origin,
+          audience: config.auth0.audience
         }
       };
+      
+      return AUTH0_CONFIG;
     }
 
     // Initialize the application
@@ -520,11 +559,17 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
 
     async function getAccessToken() {
       try {
-        return await auth0Client.getTokenSilently();
+        return await auth0Client.getTokenSilently({
+          authorizationParams: {
+            audience: AUTH0_CONFIG.authorizationParams.audience
+          }
+        });
       } catch (error) {
         if (error.error === 'consent_required' || error.error === 'interaction_required') {
           await auth0Client.loginWithRedirect({
             authorizationParams: {
+              audience: AUTH0_CONFIG.authorizationParams.audience,
+              scope: 'openid profile email',
               prompt: 'consent'
             }
           });
@@ -598,7 +643,316 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
 
     </CodeGroup>
   </Step>
-  <Step title="Run your app" stepNumber={5}>
+  <Step title="Create the client interface" stepNumber={5}>
+    Create the frontend HTML and JavaScript files:
+
+    <CodeGroup>
+    ```html client/index.html expandable lines
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cap'n Web + Auth0 Demo</title>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 2rem;
+                line-height: 1.6;
+            }
+            .auth-section, .profile-section {
+                background: #f8f9fa;
+                border-radius: 8px;
+                padding: 2rem;
+                margin: 1rem 0;
+            }
+            .profile-section { display: none; }
+            button {
+                background: #007bff;
+                color: white;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 1rem;
+                margin: 0.5rem 0.5rem 0.5rem 0;
+            }
+            button:hover { background: #0056b3; }
+            button.secondary { background: #6c757d; }
+            button.secondary:hover { background: #545b62; }
+            textarea {
+                width: 100%;
+                min-height: 100px;
+                margin: 1rem 0;
+                padding: 0.75rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                resize: vertical;
+            }
+            .status {
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 4px;
+                font-weight: 500;
+            }
+            .status.success { background: #d4edda; color: #155724; }
+            .status.error { background: #f8d7da; color: #721c24; }
+            .status.info { background: #d1ecf1; color: #0c5460; }
+        </style>
+    </head>
+    <body>
+        <h1>Cap'n Web + Auth0 Profile Demo</h1>
+        
+        <div id="status" class="status info">Initializing...</div>
+        
+        <!-- Login Section -->
+        <div id="authSection" class="auth-section">
+            <h2>🔐 Welcome!</h2>
+            <p>This demo shows Auth0 authentication with Cap'n Web RPC for real-time profile management.</p>
+            <button id="loginBtn">Login with Auth0</button>
+        </div>
+        
+        <!-- Profile Section -->
+        <div id="profileSection" class="profile-section">
+            <h2>👤 Profile Management</h2>
+            <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+            
+            <label for="bioTextarea"><strong>Bio:</strong></label>
+            <textarea id="bioTextarea" placeholder="Tell us about yourself..."></textarea>
+            
+            <div>
+                <button id="fetchBtn">🔄 Fetch Profile</button>
+                <button id="saveBtn">💾 Save Profile</button>
+                <button id="logoutBtn" class="secondary">🚪 Logout</button>
+            </div>
+        </div>
+
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+        <script src="/app.js"></script>
+    </body>
+    </html>
+    ```
+
+    ```javascript client/app.js expandable lines
+    // Simple Cap'n Web RPC client for browser
+    class SimpleRpcClient {
+      constructor(wsUrl) {
+        this.wsUrl = wsUrl;
+        this.ws = null;
+        this.requestId = 0;
+        this.pendingRequests = new Map();
+      }
+
+      async connect() {
+        return new Promise((resolve, reject) => {
+          this.ws = new WebSocket(this.wsUrl);
+          
+          this.ws.onopen = () => {
+            console.log('🔗 WebSocket connected');
+            resolve();
+          };
+          
+          this.ws.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            const request = this.pendingRequests.get(message.id);
+            
+            if (request) {
+              this.pendingRequests.delete(message.id);
+              if (message.type === 'result') {
+                request.resolve(message.result);
+              } else {
+                request.reject(new Error(message.error));
+              }
+            }
+          };
+          
+          this.ws.onerror = reject;
+        });
+      }
+
+      async call(method, ...params) {
+        const id = ++this.requestId;
+        
+        return new Promise((resolve, reject) => {
+          this.pendingRequests.set(id, { resolve, reject });
+          
+          this.ws.send(JSON.stringify({
+            type: 'call',
+            id,
+            method,
+            params
+          }));
+        });
+      }
+    }
+
+    // Auth0 Configuration
+    let auth0Client = null;
+    let rpcClient = null;
+
+    // Auth0 Configuration - Loaded dynamically from server
+    let AUTH0_CONFIG = null;
+
+    // Load Auth0 config from server
+    async function loadConfig() {
+      const response = await fetch('/api/config');
+      const config = await response.json();
+      
+      AUTH0_CONFIG = {
+        domain: config.auth0.domain,
+        clientId: config.auth0.clientId,
+        authorizationParams: {
+          redirect_uri: window.location.origin,
+          audience: config.auth0.audience
+        }
+      };
+      
+      return AUTH0_CONFIG;
+    }
+
+    // Initialize the application
+    async function initializeApp() {
+      try {
+        showStatus('Loading configuration...', 'info');
+        
+        const config = await loadConfig();
+        auth0Client = await auth0.createAuth0Client(config);
+        
+        rpcClient = new SimpleRpcClient(`ws://${window.location.host}`);
+        await rpcClient.connect();
+        
+        const query = window.location.search;
+        if (query.includes('code=') && query.includes('state=')) {
+          showStatus('Processing login...', 'info');
+          await auth0Client.handleRedirectCallback();
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        
+        const isAuthenticated = await auth0Client.isAuthenticated();
+        
+        if (isAuthenticated) {
+          await showProfileSection();
+        } else {
+          showAuthSection();
+        }
+        
+        setupEventListeners();
+        
+      } catch (error) {
+        console.error('Initialization error:', error);
+        showStatus(`Failed to initialize: ${error.message}`, 'error');
+      }
+    }
+
+    // Authentication functions
+    async function login() {
+      try {
+        showStatus('Redirecting to Auth0...', 'info');
+        await auth0Client.loginWithRedirect();
+      } catch (error) {
+        showStatus(`Login failed: ${error.message}`, 'error');
+      }
+    }
+
+    async function logout() {
+      try {
+        await auth0Client.logout({
+          logoutParams: { returnTo: window.location.origin }
+        });
+      } catch (error) {
+        showStatus(`Logout failed: ${error.message}`, 'error');
+      }
+    }
+
+    async function getAccessToken() {
+      try {
+        return await auth0Client.getTokenSilently({
+          authorizationParams: {
+            audience: AUTH0_CONFIG.authorizationParams.audience
+          }
+        });
+      } catch (error) {
+        if (error.error === 'consent_required' || error.error === 'interaction_required') {
+          await auth0Client.loginWithRedirect({
+            authorizationParams: {
+              audience: AUTH0_CONFIG.authorizationParams.audience,
+              scope: 'openid profile email',
+              prompt: 'consent'
+            }
+          });
+        }
+        throw error;
+      }
+    }
+
+    // Profile management functions
+    async function fetchProfile() {
+      try {
+        showStatus('Fetching profile...', 'info');
+        
+        const token = await getAccessToken();
+        const profile = await rpcClient.call('getProfile', token);
+        
+        document.getElementById('userEmail').textContent = profile.email;
+        document.getElementById('bioTextarea').value = profile.bio || '';
+        
+        showStatus('Profile loaded successfully!', 'success');
+      } catch (error) {
+        showStatus(`Failed to fetch profile: ${error.message}`, 'error');
+      }
+    }
+
+    async function saveProfile() {
+      try {
+        showStatus('Saving profile...', 'info');
+        
+        const token = await getAccessToken();
+        const bio = document.getElementById('bioTextarea').value;
+        
+        await rpcClient.call('updateProfile', token, bio);
+        
+        showStatus('Profile saved successfully!', 'success');
+      } catch (error) {
+        showStatus(`Failed to save profile: ${error.message}`, 'error');
+      }
+    }
+
+    // UI helper functions
+    function showAuthSection() {
+      document.getElementById('authSection').style.display = 'block';
+      document.getElementById('profileSection').style.display = 'none';
+      showStatus('Ready to login', 'info');
+    }
+
+    async function showProfileSection() {
+      document.getElementById('authSection').style.display = 'none';
+      document.getElementById('profileSection').style.display = 'block';
+      await fetchProfile();
+    }
+
+    function showStatus(message, type) {
+      const statusEl = document.getElementById('status');
+      statusEl.textContent = message;
+      statusEl.className = `status ${type}`;
+    }
+
+    // Event listeners
+    function setupEventListeners() {
+      document.getElementById('loginBtn').addEventListener('click', login);
+      document.getElementById('logoutBtn').addEventListener('click', logout);
+      document.getElementById('fetchBtn').addEventListener('click', fetchProfile);
+      document.getElementById('saveBtn').addEventListener('click', saveProfile);
+    }
+
+    // Initialize app when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initializeApp);
+    ```
+
+    </CodeGroup>
+  </Step>
+  <Step title="Run your app" stepNumber={6}>
     ```shellscript
     npm run dev
     ```
@@ -610,4 +964,156 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
 
   You should now have a fully functional Auth0 login page running on your [localhost](http://localhost:3000/)
 </Check>
+
+---
+
+## Advanced Usage
+
+<Accordion title="Server-Side RPC Security">
+  Enhance security by adding additional validation and rate limiting to your RPC methods:
+
+  ```javascript server/profile-service.js
+  import rateLimit from 'express-rate-limit';
+
+  class ProfileService extends RpcTarget {
+    constructor() {
+      super();
+      this.rateLimiter = new Map(); // Simple in-memory rate limiting
+    }
+
+    async validateAndRateLimit(userId) {
+      const now = Date.now();
+      const userLimit = this.rateLimiter.get(userId) || { count: 0, resetTime: now + 60000 };
+      
+      if (now > userLimit.resetTime) {
+        userLimit.count = 0;
+        userLimit.resetTime = now + 60000;
+      }
+      
+      if (userLimit.count >= 10) {
+        throw new Error('Rate limit exceeded. Try again later.');
+      }
+      
+      userLimit.count++;
+      this.rateLimiter.set(userId, userLimit);
+    }
+
+    async getProfile(accessToken) {
+      const decoded = await verifyToken(accessToken);
+      await this.validateAndRateLimit(decoded.sub);
+      
+      const userId = decoded.sub;
+      const profile = userProfiles.get(userId) || { bio: '' };
+      
+      return {
+        id: userId,
+        email: decoded.email || 'Unknown User',
+        bio: profile.bio,
+        lastUpdated: profile.lastUpdated || null
+      };
+    }
+  }
+  ```
+</Accordion>
+
+<Accordion title="WebSocket Connection Management">
+  Implement proper WebSocket connection handling with reconnection logic:
+
+  ```javascript client/enhanced-rpc-client.js
+  class EnhancedRpcClient extends SimpleRpcClient {
+    constructor(wsUrl, options = {}) {
+      super(wsUrl);
+      this.reconnectAttempts = 0;
+      this.maxReconnectAttempts = options.maxReconnectAttempts || 5;
+      this.reconnectDelay = options.reconnectDelay || 1000;
+      this.isConnecting = false;
+    }
+
+    async connect() {
+      if (this.isConnecting) return;
+      this.isConnecting = true;
+
+      try {
+        await super.connect();
+        this.reconnectAttempts = 0;
+        this.isConnecting = false;
+      } catch (error) {
+        this.isConnecting = false;
+        if (this.reconnectAttempts < this.maxReconnectAttempts) {
+          this.reconnectAttempts++;
+          console.log(`Reconnection attempt ${this.reconnectAttempts}/${this.maxReconnectAttempts}`);
+          
+          setTimeout(() => {
+            this.connect();
+          }, this.reconnectDelay * this.reconnectAttempts);
+        } else {
+          throw new Error('Max reconnection attempts reached');
+        }
+      }
+    }
+
+    async call(method, ...params) {
+      if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
+        await this.connect();
+      }
+      return super.call(method, ...params);
+    }
+  }
+  ```
+</Accordion>
+
+<Accordion title="Database Integration">
+  Replace in-memory storage with a database for production use:
+
+  ```javascript server/database.js
+  import { Pool } from 'pg';
+
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL || 'postgresql://localhost/capnweb_auth0'
+  });
+
+  // Initialize database schema
+  async function initializeDatabase() {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS user_profiles (
+        user_id VARCHAR(255) PRIMARY KEY,
+        bio TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+  }
+
+  class DatabaseProfileService extends RpcTarget {
+    async getProfile(accessToken) {
+      const decoded = await verifyToken(accessToken);
+      const result = await pool.query(
+        'SELECT bio, updated_at FROM user_profiles WHERE user_id = $1',
+        [decoded.sub]
+      );
+      
+      return {
+        id: decoded.sub,
+        email: decoded.email,
+        bio: result.rows[0]?.bio || '',
+        lastUpdated: result.rows[0]?.updated_at || null
+      };
+    }
+    
+    async updateProfile(accessToken, bio) {
+      const decoded = await verifyToken(accessToken);
+      await pool.query(`
+        INSERT INTO user_profiles (user_id, bio, updated_at) 
+        VALUES ($1, $2, CURRENT_TIMESTAMP)
+        ON CONFLICT (user_id) 
+        DO UPDATE SET bio = $2, updated_at = CURRENT_TIMESTAMP
+      `, [decoded.sub, bio]);
+      
+      return { success: true, message: 'Profile updated successfully' };
+    }
+  }
+
+  export { initializeDatabase, DatabaseProfileService };
+  ```
+</Accordion>
 
