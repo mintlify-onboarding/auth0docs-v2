@@ -1243,3 +1243,157 @@ This quickstart demonstrates how to integrate Auth0 authentication into a Vue.js
   You should now have a fully functional Auth0 login page running on your [localhost](http://localhost:5173/)
 </Check>
 
+---
+
+## Advanced Usage
+
+<Accordion title="Protecting Routes with Vue Router">
+  Use Vue Router's navigation guards to protect specific routes:
+
+  ```typescript src/router/index.ts
+  import { createRouter, createWebHistory } from 'vue-router'
+  import { authGuard } from '@auth0/auth0-vue'
+  import Home from '../views/Home.vue'
+  import Profile from '../views/Profile.vue'
+  import Dashboard from '../views/Dashboard.vue'
+
+  const routes = [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile,
+      beforeEnter: authGuard
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      beforeEnter: authGuard
+    }
+  ]
+
+  const router = createRouter({
+    history: createWebHistory(),
+    routes
+  })
+
+  export default router
+  ```
+</Accordion>
+
+<Accordion title="Calling Protected APIs">
+  Configure your Auth0 plugin to include an API audience and make authenticated requests:
+
+  ```typescript src/main.ts
+  import { createAuth0 } from '@auth0/auth0-vue'
+
+  const app = createApp(App)
+
+  app.use(
+    createAuth0({
+      domain: import.meta.env.VITE_AUTH0_DOMAIN,
+      clientId: import.meta.env.VITE_AUTH0_CLIENT_ID,
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+        audience: "YOUR_API_IDENTIFIER"
+      }
+    })
+  )
+  ```
+
+  Then make authenticated API calls in your components:
+
+  ```vue src/components/ApiCall.vue
+  <template>
+    <div>
+      <button @click="callProtectedApi" :disabled="isLoading">
+        Call Protected API
+      </button>
+      <pre v-if="apiResponse">{{ JSON.stringify(apiResponse, null, 2) }}</pre>
+    </div>
+  </template>
+
+  <script setup lang="ts">
+  import { ref } from 'vue'
+  import { useAuth0 } from '@auth0/auth0-vue'
+
+  const { getAccessTokenSilently } = useAuth0()
+  const apiResponse = ref(null)
+  const isLoading = ref(false)
+
+  const callProtectedApi = async () => {
+    try {
+      isLoading.value = true
+      const token = await getAccessTokenSilently()
+      
+      const response = await fetch('/api/protected', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      
+      apiResponse.value = await response.json()
+    } catch (error) {
+      console.error('API call failed:', error)
+    } finally {
+      isLoading.value = false
+    }
+  }
+  </script>
+  ```
+</Accordion>
+
+<Accordion title="Using Composables for Authentication Logic">
+  Create reusable composables for common authentication patterns:
+
+  ```typescript src/composables/useAuthenticatedUser.ts
+  import { computed, ref, watchEffect } from 'vue'
+  import { useAuth0 } from '@auth0/auth0-vue'
+
+  export function useAuthenticatedUser() {
+    const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
+    const accessToken = ref<string | null>(null)
+
+    watchEffect(async () => {
+      if (isAuthenticated.value && !isLoading.value) {
+        try {
+          accessToken.value = await getAccessTokenSilently()
+        } catch (error) {
+          console.error('Failed to get access token:', error)
+        }
+      }
+    })
+
+    return {
+      user: computed(() => user.value),
+      accessToken: computed(() => accessToken.value),
+      isAuthenticated: computed(() => isAuthenticated.value),
+      isLoading: computed(() => isLoading.value)
+    }
+  }
+  ```
+
+  Usage in components:
+
+  ```vue src/components/UserDashboard.vue
+  <template>
+    <div v-if="!isLoading">
+      <h1>Welcome, {{ user?.name }}</h1>
+      <p>Access Token: {{ accessToken ? 'Available' : 'Not available' }}</p>
+    </div>
+    <div v-else>Loading...</div>
+  </template>
+
+  <script setup lang="ts">
+  import { useAuthenticatedUser } from '../composables/useAuthenticatedUser'
+
+  const { user, accessToken, isLoading } = useAuthenticatedUser()
+  </script>
+  ```
+</Accordion>
+

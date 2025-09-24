@@ -1192,3 +1192,162 @@ This quickstart demonstrates how to add Auth0 authentication to a React applicat
 
   You should now have a fully functional Auth0 login page running on your [localhost](http://localhost:5173/)
 </Check>
+
+---
+
+## Advanced Usage
+
+<Accordion title="Protecting Routes with React Router">
+  Use Auth0's authentication state to protect specific routes in your application:
+
+  ```jsx src/App.jsx
+  import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+  import { useAuth0 } from '@auth0/auth0-react';
+  import Profile from './components/Profile';
+  import Dashboard from './components/Dashboard';
+  import LoginButton from './components/LoginButton';
+
+  function ProtectedRoute({ children }) {
+    const { isAuthenticated, isLoading } = useAuth0();
+    
+    if (isLoading) return <div>Loading...</div>;
+    
+    return isAuthenticated ? children : <Navigate to="/" />;
+  }
+
+  function App() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginButton />} />
+          <Route 
+            path="/profile" 
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } 
+          />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+  ```
+</Accordion>
+
+<Accordion title="Calling Protected APIs">
+  Configure your Auth0Provider to include an API audience and use the `getAccessTokenSilently` method:
+
+  ```jsx src/main.jsx
+  import { Auth0Provider } from '@auth0/auth0-react';
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+
+  root.render(
+    <Auth0Provider
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+        audience: "YOUR_API_IDENTIFIER"
+      }}
+    >
+      <App />
+    </Auth0Provider>
+  );
+  ```
+
+  Then make authenticated API calls:
+
+  ```jsx src/components/ApiCall.jsx
+  import { useState } from 'react';
+  import { useAuth0 } from '@auth0/auth0-react';
+
+  function ApiCall() {
+    const { getAccessTokenSilently } = useAuth0();
+    const [apiResponse, setApiResponse] = useState(null);
+
+    const callProtectedApi = async () => {
+      try {
+        const token = await getAccessTokenSilently();
+        
+        const response = await fetch('/api/protected', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        
+        const data = await response.json();
+        setApiResponse(data);
+      } catch (error) {
+        console.error('API call failed:', error);
+      }
+    };
+
+    return (
+      <div>
+        <button onClick={callProtectedApi}>Call API</button>
+        {apiResponse && <pre>{JSON.stringify(apiResponse, null, 2)}</pre>}
+      </div>
+    );
+  }
+
+  export default ApiCall;
+  ```
+</Accordion>
+
+<Accordion title="Using Auth0 with Custom Hooks">
+  Create reusable custom hooks for common authentication patterns:
+
+  ```jsx src/hooks/useAuthenticatedUser.js
+  import { useAuth0 } from '@auth0/auth0-react';
+  import { useEffect, useState } from 'react';
+
+  export function useAuthenticatedUser() {
+    const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
+    const [accessToken, setAccessToken] = useState(null);
+
+    useEffect(() => {
+      if (isAuthenticated && !isLoading) {
+        getAccessTokenSilently()
+          .then(token => setAccessToken(token))
+          .catch(console.error);
+      }
+    }, [isAuthenticated, isLoading, getAccessTokenSilently]);
+
+    return {
+      user,
+      accessToken,
+      isAuthenticated,
+      isLoading
+    };
+  }
+  ```
+
+  Usage in components:
+
+  ```jsx src/components/UserDashboard.jsx
+  import { useAuthenticatedUser } from '../hooks/useAuthenticatedUser';
+
+  function UserDashboard() {
+    const { user, accessToken, isLoading } = useAuthenticatedUser();
+
+    if (isLoading) return <div>Loading...</div>;
+
+    return (
+      <div>
+        <h1>Welcome, {user?.name}</h1>
+        <p>Access Token: {accessToken ? 'Available' : 'Not available'}</p>
+      </div>
+    );
+  }
+  ```
+</Accordion>

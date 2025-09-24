@@ -1186,132 +1186,132 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
 
 ## Advanced Usage
 
-### Important v4 Changes
+<Accordion title="Important v4 Changes">
+  This quickstart uses **Auth0 Next.js SDK v4**, which has significant changes from v3:
 
-This quickstart uses **Auth0 Next.js SDK v4**, which has significant changes from v3:
+  - **No dynamic route handlers needed** - Authentication routes are auto-mounted by middleware
+  - **Simplified client setup** - `new Auth0Client()` reads environment variables automatically
+  - **New route paths** - Routes are at `/auth/*` instead of `/api/auth/*`
+  - **Required middleware** - All authentication functionality goes through middleware
+  - **Use `<a>` tags** - Navigation must use `<a href="/auth/login">` instead of buttons with onClick
 
-- ✅ **No dynamic route handlers needed** - Authentication routes are auto-mounted by middleware
-- ✅ **Simplified client setup** - `new Auth0Client()` reads environment variables automatically
-- ✅ **New route paths** - Routes are at `/auth/*` instead of `/api/auth/*`
-- ✅ **Required middleware** - All authentication functionality goes through middleware
-- ✅ **`Use <a> tags`** - Navigation must use `<a href="/auth/login">` instead of buttons with onClick
+  ### Authentication Routes
 
-### Authentication Routes
+  The SDK automatically mounts these routes via middleware:
 
-The SDK automatically mounts these routes via middleware:
+  | Route                      | Purpose                   |
+  | -------------------------- | ------------------------- |
+  | `/auth/login`              | Initiate login            |
+  | `/auth/logout`             | Logout user               |
+  | `/auth/callback`           | Handle Auth0 callback     |
+  | `/auth/profile`            | Get user profile          |
+  | `/auth/access-token`       | Get access token          |
+  | `/auth/backchannel-logout` | Handle backchannel logout |
+</Accordion>
 
-| Route                      | Purpose                   |
-| -------------------------- | ------------------------- |
-| `/auth/login`              | Initiate login            |
-| `/auth/logout`             | Logout user               |
-| `/auth/callback`           | Handle Auth0 callback     |
-| `/auth/profile`            | Get user profile          |
-| `/auth/access-token`       | Get access token          |
-| `/auth/backchannel-logout` | Handle backchannel logout |
+<Accordion title="Server-Side Authentication">
+  The Auth0 Next.js SDK v4 supports both App Router and Pages Router patterns. Here are some common server-side patterns:
 
-### Server-Side Authentication
-
-The Auth0 Next.js SDK v4 supports both App Router and Pages Router patterns. Here are some common server-side patterns:
-
-<Tabs>
-  <Tab title="App Router - Server Component">
-    ```typescript app/protected/page.tsx
-    import { auth0 } from "@/lib/auth0";
-    import { redirect } from "next/navigation";
-    
-    export default async function ProtectedPage() {
-      const session = await auth0.getSession();
+  <Tabs>
+    <Tab title="App Router - Server Component">
+      ```typescript app/protected/page.tsx
+      import { auth0 } from "@/lib/auth0";
+      import { redirect } from "next/navigation";
       
-      if (!session) {
-        redirect('/auth/login');
+      export default async function ProtectedPage() {
+        const session = await auth0.getSession();
+        
+        if (!session) {
+          redirect('/auth/login');
+        }
+      
+        return (
+          <div>
+            <h1>Protected Content</h1>
+            <p>Welcome, {session.user.name}!</p>
+          </div>
+        );
       }
-    
-      return (
-        <div>
-          <h1>Protected Content</h1>
-          <p>Welcome, {session.user.name}!</p>
-        </div>
-      );
-    }
-    ```
-  </Tab>
-  <Tab title="App Router - API Route">
-    ```typescript app/api/protected/route.ts
-    import { auth0 } from "@/lib/auth0";
-    import { NextRequest, NextResponse } from "next/server";
-    
-    export async function GET() {
-      const session = await auth0.getSession();
+      ```
+    </Tab>
+    <Tab title="App Router - API Route">
+      ```typescript app/api/protected/route.ts
+      import { auth0 } from "@/lib/auth0";
+      import { NextRequest, NextResponse } from "next/server";
       
-      if (!session) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      export async function GET() {
+        const session = await auth0.getSession();
+        
+        if (!session) {
+          return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        }
+        
+        return NextResponse.json({
+          message: "This is a protected API route",
+          user: session.user
+        });
+      }
+      ```
+    </Tab>
+    <Tab title="Pages Router - Page">
+      ```typescript pages/protected.tsx
+      import { auth0 } from "@/lib/auth0";
+      import { GetServerSideProps } from "next";
+      
+      export default function ProtectedPage({ user }: { user: any }) {
+        return (
+          <div>
+            <h1>Protected Content</h1>
+            <p>Welcome, {user.name}!</p>
+          </div>
+        );
       }
       
-      return NextResponse.json({
-        message: "This is a protected API route",
-        user: session.user
-      });
-    }
-    ```
-  </Tab>
-  <Tab title="Pages Router - Page">
-    ```typescript pages/protected.tsx
-    import { auth0 } from "@/lib/auth0";
-    import { GetServerSideProps } from "next";
+      export const getServerSideProps: GetServerSideProps = auth0.withPageAuthRequired();
+      ```
+    </Tab>
+  </Tabs>
+</Accordion>
+
+<Accordion title="Client-Side Authentication">
+  For client-side authentication state, use the `useUser` hook:
+
+  ```typescript components/UserProfile.tsx
+  "use client";
+
+  import { useUser } from "@auth0/nextjs-auth0";
+
+  export default function UserProfile() {
+    const { user, error, isLoading } = useUser();
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error.message}</div>;
+    if (!user) return <div>Not logged in</div>;
+
+    return (
+      <div>
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+        <img src={user.picture} alt="Profile" />
+      </div>
+    );
+  }
+  ```
+</Accordion>
+
+<Accordion title="Protecting API Routes">
+  For API route protection, use the `withApiAuthRequired` method:
+
+  ```typescript app/api/protected/route.ts
+  import { auth0 } from "@/lib/auth0";
+
+  export const GET = auth0.withApiAuthRequired(async function handler() {
+    const session = await auth0.getSession();
     
-    export default function ProtectedPage({ user }: { user: any }) {
-      return (
-        <div>
-          <h1>Protected Content</h1>
-          <p>Welcome, {user.name}!</p>
-        </div>
-      );
-    }
-    
-    export const getServerSideProps: GetServerSideProps = auth0.withPageAuthRequired();
-    ```
-  </Tab>
-</Tabs>
-
-### Client-Side Hooks
-
-For client-side authentication state, use the `useUser` hook:
-
-```typescript components/UserProfile.tsx
-"use client";
-
-import { useUser } from "@auth0/nextjs-auth0";
-
-export default function UserProfile() {
-  const { user, error, isLoading } = useUser();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!user) return <div>Not logged in</div>;
-
-  return (
-    <div>
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <img src={user.picture} alt="Profile" />
-    </div>
-  );
-}
-```
-
-### Protecting API Routes
-
-For API route protection, use the `withApiAuthRequired` method:
-
-```typescript app/api/protected/route.ts
-import { auth0 } from "@/lib/auth0";
-
-export const GET = auth0.withApiAuthRequired(async function handler() {
-  const session = await auth0.getSession();
-  
-  return Response.json({
-    message: "This is a protected API route",
-    user: session?.user
+    return Response.json({
+      message: "This is a protected API route",
+      user: session?.user
+    });
   });
-});
-```
+  ```
+</Accordion>
