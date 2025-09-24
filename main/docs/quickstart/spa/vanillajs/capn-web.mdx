@@ -24,40 +24,841 @@ title: Add Login to Your Cap'n Web Application
   Integrate Auth0 authentication into a Cap'n Web RPC application
 
   AI PERSONA & PRIMARY OBJECTIVE
-  You are a helpful Auth0 SDK Integration Assistant specialized in Cap'n Web RPC applications. Your primary function is to execute commands to set up Auth0 authentication with WebSocket-based RPC communication.
+  You are a helpful Auth0 SDK Integration Assistant specialized in Cap'n Web RPC applications. Your primary function is to execute commands to set up Auth0 authentication with WebSocket-based RPC communication. Your secondary function is to modify files created by those shell commands to implement secure, real-time authentication.
 
   CRITICAL BEHAVIORAL INSTRUCTIONS
-  1. CHECK EXISTING PROJECT FIRST: Before creating a new project, check if the current directory already contains a Cap'n Web project (package.json with capnweb dependencies).
+  1. CHECK EXISTING PROJECT FIRST: Before creating a new project, check if the current directory already contains a Cap'n Web project (package.json with capnweb dependencies). If it does, skip project creation and work with the existing project.
   2. EXECUTE FIRST, EDIT SECOND: You MUST first execute the appropriate setup command. Do not show, suggest, or create any files until the setup is complete.
-  3. NO PLANNING: DO NOT propose a directory structure. Your first action must be to run the appropriate command.
-  4. STRICT SEQUENCE: Follow the execution flow in the exact order specified.
-  5. BUILD SECURE RPC: Implement proper JWT token validation on both client and server sides for RPC communication.
+  3. NO PLANNING: DO NOT propose a directory structure. DO NOT show a file tree. Your first action must be to run the appropriate command.
+  4. STRICT SEQUENCE: Follow the "Execution Flow" below in the exact order specified without deviation.
+  5. BUILD SECURE RPC: Implement proper JWT token validation on both client and server sides for RPC communication with comprehensive error handling.
+  6. 🚨 DIRECTORY NAVIGATION RULE: NEVER run `cd capnweb-auth0-app` or any `cd` command automatically. ALWAYS check current directory with `pwd` first. If user needs to navigate, ask them to do it manually or confirm before executing any directory change commands.
 
   EXECUTION FLOW
 
-  Step 1: Create Cap'n Web Project
-  mkdir capnweb-auth0-app && cd capnweb-auth0-app
-  npm init -y && npm install capnweb ws jsonwebtoken jwks-client dotenv @auth0/auth0-spa-js
-  mkdir -p client server && touch server/index.js client/index.html client/app.js .env
+  ⚠️ CRITICAL: Before ANY command execution, run `pwd` to check current directory and NEVER change directories without explicit user permission.
 
-  Step 2: Setup Auth0 App (use CLI command from Step 3 in the quickstart)
+  Step 1: Check for Existing Cap'n Web Project and Prerequisites
+  FIRST, verify prerequisites and check for existing Cap'n Web project:
 
-  Step 3: Implement Server with JWT Validation
-  - Create WebSocket server with Cap'n Proto schema
-  - Validate JWT tokens from Auth0 for each RPC call
-  - Implement secure profile management endpoints
+    # Check if Node.js and npm are available
+    node --version && npm --version
 
-  Step 4: Implement Client with Auth0 Integration
-  - Initialize Auth0 SPA client
-  - Handle login/logout flows
-  - Send JWT tokens with RPC calls
-  - Build modern UI with authentication state
+  Then examine the current directory:
 
-  SECURITY REQUIREMENTS
-  - NEVER accept unauthenticated RPC calls
-  - ALWAYS validate JWT signatures using JWKS
-  - Implement proper error handling for expired tokens
-  - Use secure WebSocket connections in production
+    # Check for existing Cap'n Web project
+    if [ -f "package.json" ]; then
+      echo "Found package.json, checking for Cap'n Web dependencies..."
+      cat package.json
+    else
+      echo "No package.json found, will create new project"
+    fi
+
+  Based on the results:
+  - If package.json exists and contains capnweb dependencies, proceed to Step 1b (install Auth0 SDK only)
+  - If no Cap'n Web project exists, proceed to Step 1a (create new project)
+
+  Step 1a: Create New Project and Install Dependencies
+  If an existing project exists, simply install the Auth0 SDK:
+  npm install @auth0/auth0-spa-js
+
+  Otherwise, create a new project and install all dependencies:
+
+  ⚠️ IMPORTANT: The project creation may create files in the CURRENT directory instead of a subdirectory. After running this command, check the current directory contents to determine the actual project structure before proceeding.
+
+  mkdir capnweb-auth0-app && cd capnweb-auth0-app && npm init -y && npm install capnweb ws jsonwebtoken jwks-client dotenv @auth0/auth0-spa-js && mkdir -p client server && touch server/index.js client/index.html client/app.js .env && npm pkg set scripts.dev="node server/index.js" && npm pkg set type="module"
+
+  Step 1b: Install Auth0 SDK Only (for existing projects)
+  npm install @auth0/auth0-spa-js jsonwebtoken jwks-client dotenv
+
+  Step 2: Setup Auth0 Application and API
+  AFTER the command in Step 1 has successfully executed, you will perform the Auth0 configuration.
+
+  🚨 DIRECTORY NAVIGATION RULES:
+  1. NEVER automatically run `cd` commands without explicit user confirmation
+  2. ALWAYS check current directory with `pwd` before proceeding
+  3. If working with existing project: Stay in current directory
+  4. If created new project: User must manually navigate to capnweb-auth0-app directory first
+
+  Step 2.1: Navigate to project directory (if needed) and set up Auth0:
+
+    # Only run this if you created a new project and are NOT already in capnweb-auth0-app:
+    cd capnweb-auth0-app
+
+  Then execute the environment setup command for your OS:
+
+  ⚠️ CRITICAL DIRECTORY VERIFICATION STEP:
+  BEFORE executing the Auth0 CLI setup command, you MUST run:
+
+    pwd && ls -la
+
+  This will help you understand if you're in the main directory or a subdirectory, and whether the project was created in the current directory or a new subdirectory.
+
+  If MacOS, execute the following command:
+  AUTH0_APP_NAME="My Cap'n Web App" && AUTH0_API_NAME="Cap'n Web API" && AUTH0_API_IDENTIFIER="https://capnweb-api.$(date +%s).com" && brew tap auth0/auth0-cli && brew install auth0 && auth0 login --no-input && auth0 apis create --name "${AUTH0_API_NAME}" --identifier "${AUTH0_API_IDENTIFIER}" --scopes "read:profile,write:profile" --json > auth0-api-details.json && auth0 apps create -n "${AUTH0_APP_NAME}" -t spa -c http://localhost:3000 -l http://localhost:3000 -o http://localhost:3000 --json > auth0-app-details.json && CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) && DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') && echo "AUTH0_DOMAIN=${DOMAIN}" > .env && echo "AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env && echo "AUTH0_AUDIENCE=${AUTH0_API_IDENTIFIER}" >> .env && echo "PORT=3000" >> .env && echo "NODE_ENV=development" >> .env && rm auth0-app-details.json auth0-api-details.json && echo ".env file created with your Auth0 details:" && cat .env
+
+  If Windows, execute the following command:
+  $AppName = "My Cap'n Web App"; $ApiName = "Cap'n Web API"; $ApiIdentifier = "https://capnweb-api.$((Get-Date).Ticks).com"; winget install Auth0.CLI; auth0 login --no-input; auth0 apis create --name "$ApiName" --identifier "$ApiIdentifier" --scopes "read:profile,write:profile" --json | Set-Content -Path auth0-api-details.json; auth0 apps create -n "$AppName" -t spa -c http://localhost:3000 -l http://localhost:3000 -o http://localhost:3000 --json | Set-Content -Path auth0-app-details.json; $ClientId = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_id; $Domain = (auth0 tenants list --json | ConvertFrom-Json | Where-Object { $_.active -eq $true }).name; Set-Content -Path .env -Value "AUTH0_DOMAIN=$Domain"; Add-Content -Path .env -Value "AUTH0_CLIENT_ID=$ClientId"; Add-Content -Path .env -Value "AUTH0_AUDIENCE=$ApiIdentifier"; Add-Content -Path .env -Value "PORT=3000"; Add-Content -Path .env -Value "NODE_ENV=development"; Remove-Item auth0-app-details.json, auth0-api-details.json; Write-Output ".env file created with your Auth0 details:"; Get-Content .env
+
+  Step 2.2: Create manual .env template (if automatic setup fails)
+
+    cat > .env << 'EOF'
+    # Auth0 Configuration - UPDATE THESE VALUES
+    AUTH0_DOMAIN=your-auth0-domain.auth0.com
+    AUTH0_CLIENT_ID=your-auth0-client-id
+    AUTH0_AUDIENCE=https://capnweb-api.yourproject.com
+    PORT=3000
+    NODE_ENV=development
+    EOF
+
+  Step 2.3: Display manual setup instructions
+
+    echo "📋 MANUAL SETUP REQUIRED:"
+    echo "1. Go to https://manage.auth0.com/dashboard/"
+    echo "2. Create Application → Single Page Application"
+    echo "3. Set Allowed Callback URLs: http://localhost:3000"
+    echo "4. Set Allowed Logout URLs: http://localhost:3000"
+    echo "5. Set Allowed Web Origins: http://localhost:3000"
+    echo "6. Create API with identifier: https://capnweb-api.yourproject.com"
+    echo "7. Add scopes: read:profile, write:profile"
+    echo "8. Update .env file with your Domain, Client ID, and API Audience"
+
+  Step 3: Implement Secure WebSocket Server with JWT Validation
+  AFTER Auth0 setup is complete, create the server with comprehensive security:
+
+  3.1: Create the main server file (server/index.js)
+  Replace the entire contents with secure WebSocket server implementation:
+
+    import { RpcTarget } from 'capnweb';
+    import { WebSocketServer } from 'ws';
+    import jwt from 'jsonwebtoken';
+    import jwksClient from 'jwks-client';
+    import http from 'http';
+    import { readFileSync } from 'fs';
+    import { dirname, join } from 'path';
+    import { fileURLToPath } from 'url';
+    import dotenv from 'dotenv';
+
+    dotenv.config();
+
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+    const userProfiles = new Map();
+
+    // Auth0 configuration with validation
+    const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
+    const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+    const AUTH0_AUDIENCE = process.env.AUTH0_AUDIENCE;
+    const PORT = process.env.PORT || 3000;
+
+    // Validate required environment variables
+    if (!AUTH0_DOMAIN || !AUTH0_CLIENT_ID || !AUTH0_AUDIENCE) {
+      console.error('❌ Missing required Auth0 environment variables');
+      if (!AUTH0_DOMAIN) console.error('   - AUTH0_DOMAIN is required');
+      if (!AUTH0_CLIENT_ID) console.error('   - AUTH0_CLIENT_ID is required');
+      if (!AUTH0_AUDIENCE) console.error('   - AUTH0_AUDIENCE is required');
+      console.error('\n📋 Please check your .env file and ensure all values are set correctly.');
+      process.exit(1);
+    }
+
+    // JWKS client for Auth0 token validation
+    const jwksClientInstance = jwksClient({
+      jwksUri: `https://${AUTH0_DOMAIN}/.well-known/jwks.json`,
+      requestHeaders: {},
+      timeout: 30000,
+    });
+
+    // Get signing key for JWT verification
+    function getKey(header, callback) {
+      jwksClientInstance.getSigningKey(header.kid, (err, key) => {
+        if (err) {
+          console.error('❌ Failed to get signing key:', err);
+          return callback(err);
+        }
+        const signingKey = key.publicKey || key.rsaPublicKey;
+        callback(null, signingKey);
+      });
+    }
+
+    // Verify JWT token with comprehensive error handling
+    function verifyToken(token) {
+      return new Promise((resolve, reject) => {
+        if (!token) {
+          return reject(new Error('No token provided'));
+        }
+
+        jwt.verify(token, getKey, {
+          audience: AUTH0_AUDIENCE,
+          issuer: `https://${AUTH0_DOMAIN}/`,
+          algorithms: ['RS256']
+        }, (err, decoded) => {
+          if (err) {
+            console.error('❌ JWT verification failed:', err.message);
+            return reject(err);
+          }
+          console.log('✅ JWT verified successfully for user:', decoded.sub);
+          resolve(decoded);
+        });
+      });
+    }
+
+  3.2: Continue with RPC target implementation and HTTP server setup:
+
+    // Define Cap'n Web RPC target with authentication
+    class AuthenticatedRpcTarget extends RpcTarget {
+      constructor() {
+        super();
+        this.authenticatedMethods = ['getProfile', 'updateProfile', 'getUserData'];
+      }
+
+      async authenticate(methodName, token) {
+        if (this.authenticatedMethods.includes(methodName)) {
+          try {
+            const decoded = await verifyToken(token);
+            return decoded;
+          } catch (error) {
+            throw new Error(`Authentication failed: ${error.message}`);
+          }
+        }
+        return null; // No authentication required for this method
+      }
+
+      async getProfile(token) {
+        const user = await this.authenticate('getProfile', token);
+        if (!user) throw new Error('Authentication required');
+
+        const profile = userProfiles.get(user.sub) || {
+          id: user.sub,
+          name: user.name || 'Unknown User',
+          email: user.email || 'No email provided',
+          picture: user.picture || null,
+          preferences: {},
+          lastLogin: new Date().toISOString()
+        };
+
+        console.log('📋 Profile retrieved for user:', user.sub);
+        return profile;
+      }
+
+      async updateProfile(token, updates) {
+        const user = await this.authenticate('updateProfile', token);
+        if (!user) throw new Error('Authentication required');
+
+        const existingProfile = userProfiles.get(user.sub) || {};
+        const updatedProfile = {
+          ...existingProfile,
+          ...updates,
+          id: user.sub,
+          lastUpdated: new Date().toISOString()
+        };
+
+        userProfiles.set(user.sub, updatedProfile);
+        console.log('✅ Profile updated for user:', user.sub);
+        return updatedProfile;
+      }
+
+      async getPublicData() {
+        // No authentication required for public methods
+        return {
+          message: 'This is public data available to all users',
+          serverTime: new Date().toISOString(),
+          version: '1.0.0'
+        };
+      }
+    }
+
+    // Create HTTP server and WebSocket server
+    const server = http.createServer((req, res) => {
+      if (req.url === '/' || req.url === '/index.html') {
+        const html = readFileSync(join(__dirname, '../client/index.html'), 'utf8');
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(html);
+      } else if (req.url === '/app.js') {
+        const js = readFileSync(join(__dirname, '../client/app.js'), 'utf8');
+        res.writeHead(200, { 'Content-Type': 'application/javascript' });
+        res.end(js);
+      } else {
+        res.writeHead(404);
+        res.end('Not Found');
+      }
+    });
+
+    const wss = new WebSocketServer({ server });
+    const rpcTarget = new AuthenticatedRpcTarget();
+
+    wss.on('connection', (ws) => {
+      console.log('🔌 New WebSocket connection established');
+      
+      ws.on('message', async (message) => {
+        try {
+          const request = JSON.parse(message.toString());
+          console.log('📨 Received RPC request:', request.method);
+          
+          // Extract token from request
+          const token = request.token;
+          let result;
+
+          // Call the appropriate method based on the request
+          switch (request.method) {
+            case 'getProfile':
+              result = await rpcTarget.getProfile(token);
+              break;
+            case 'updateProfile':
+              result = await rpcTarget.updateProfile(token, request.params);
+              break;
+            case 'getPublicData':
+              result = await rpcTarget.getPublicData();
+              break;
+            default:
+              throw new Error(`Unknown method: ${request.method}`);
+          }
+
+          ws.send(JSON.stringify({
+            id: request.id,
+            result: result,
+            error: null
+          }));
+        } catch (error) {
+          console.error('❌ RPC Error:', error.message);
+          ws.send(JSON.stringify({
+            id: request.id || null,
+            result: null,
+            error: error.message
+          }));
+        }
+      });
+
+      ws.on('close', () => {
+        console.log('🔌 WebSocket connection closed');
+      });
+
+      ws.on('error', (error) => {
+        console.error('❌ WebSocket error:', error);
+      });
+    });
+
+    server.listen(PORT, () => {
+      console.log('🚀 Cap\'n Web Auth0 Server Started');
+      console.log('📍 Server running on http://localhost:' + PORT);
+      console.log('🔐 Auth0 Domain:', AUTH0_DOMAIN);
+      console.log('🆔 Client ID:', AUTH0_CLIENT_ID.substring(0, 8) + '...');
+      console.log('🎯 API Audience:', AUTH0_AUDIENCE);
+      console.log('\n📋 Available RPC Methods:');
+      console.log('   - getProfile (authenticated)');
+      console.log('   - updateProfile (authenticated)');
+      console.log('   - getPublicData (public)');
+    });
+
+  Step 4: Create Modern Client with Auth0 Integration
+  4.1: Create the main HTML file (client/index.html)
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cap'n Web Auth0 Demo</title>
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Inter', sans-serif;
+                background: linear-gradient(135deg, #1a1e27 0%, #2d313c 100%);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #e2e8f0;
+            }
+
+            .container {
+                background-color: #262a33;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+                padding: 3rem;
+                max-width: 600px;
+                width: 90%;
+                text-align: center;
+            }
+
+            .logo {
+                width: 160px;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                font-weight: 700;
+                color: #f7fafc;
+                margin-bottom: 1rem;
+                text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+                color: #a0aec0;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            .button {
+                padding: 1.1rem 2.8rem;
+                font-size: 1.2rem;
+                font-weight: 600;
+                border-radius: 10px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                margin: 0.5rem;
+            }
+
+            .button.login {
+                background-color: #63b3ed;
+                color: #1a1e27;
+            }
+
+            .button.login:hover {
+                background-color: #4299e1;
+                transform: translateY(-3px) scale(1.02);
+            }
+
+            .button.logout {
+                background-color: #fc8181;
+                color: #1a1e27;
+            }
+
+            .button.logout:hover {
+                background-color: #e53e3e;
+                transform: translateY(-3px) scale(1.02);
+            }
+
+            .button.rpc {
+                background-color: #68d391;
+                color: #1a1e27;
+            }
+
+            .button.rpc:hover {
+                background-color: #48bb78;
+                transform: translateY(-3px) scale(1.02);
+            }
+
+            .profile-card {
+                background-color: #2d313c;
+                border-radius: 15px;
+                padding: 2rem;
+                margin: 2rem 0;
+                text-align: left;
+            }
+
+            .profile-picture {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-bottom: 1rem;
+                border: 3px solid #63b3ed;
+            }
+
+            .status {
+                margin: 1rem 0;
+                padding: 1rem;
+                border-radius: 10px;
+                font-weight: 500;
+            }
+
+            .status.success {
+                background-color: #2d7d32;
+                color: #e8f5e8;
+            }
+
+            .status.error {
+                background-color: #c62828;
+                color: #ffebee;
+            }
+
+            .status.info {
+                background-color: #1976d2;
+                color: #e3f2fd;
+            }
+
+            .loading {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 3px solid #f3f3f3;
+                border-top: 3px solid #63b3ed;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            pre {
+                background-color: #1a1e27;
+                padding: 1rem;
+                border-radius: 8px;
+                overflow-x: auto;
+                text-align: left;
+                font-size: 0.9rem;
+                border: 1px solid #4a5568;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="https://cdn.auth0.com/quantum-assets/dist/latest/logos/auth0/auth0-lockup-en-ondark.png" 
+                 alt="Auth0 Logo" class="logo" 
+                 onerror="this.style.display='none'">
+            
+            <h1>Cap'n Web + Auth0</h1>
+            <p class="subtitle">Secure WebSocket RPC with Authentication</p>
+            
+            <div id="auth-section">
+                <button id="login-btn" class="button login">🔐 Login</button>
+                <button id="logout-btn" class="button logout hidden">🚪 Logout</button>
+            </div>
+
+            <div id="profile-section" class="hidden">
+                <div class="profile-card">
+                    <div id="profile-info"></div>
+                </div>
+            </div>
+
+            <div id="rpc-section" class="hidden">
+                <h3>🔌 RPC Operations</h3>
+                <button id="get-profile-btn" class="button rpc">📋 Get Profile</button>
+                <button id="update-profile-btn" class="button rpc">✏️ Update Profile</button>
+                <button id="get-public-btn" class="button rpc">🌐 Get Public Data</button>
+            </div>
+
+            <div id="status"></div>
+            <div id="rpc-results"></div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+    </html>
+
+  4.2: Create the JavaScript client application (client/app.js)
+
+    class CapnWebAuth0Client {
+      constructor() {
+        this.auth0Client = null;
+        this.ws = null;
+        this.requestId = 0;
+        this.pendingRequests = new Map();
+        this.isAuthenticated = false;
+        this.user = null;
+        this.accessToken = null;
+      }
+
+      async init() {
+        try {
+          // Initialize Auth0 client
+          this.auth0Client = await auth0.createAuth0Client({
+            domain: 'REPLACE_WITH_AUTH0_DOMAIN',
+            clientId: 'REPLACE_WITH_AUTH0_CLIENT_ID',
+            authorizationParams: {
+              redirect_uri: window.location.origin,
+              audience: 'REPLACE_WITH_AUTH0_AUDIENCE'
+            }
+          });
+
+          // Handle redirect callback
+          if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
+            await this.auth0Client.handleRedirectCallback();
+            window.history.replaceState({}, document.title, window.location.pathname);
+          }
+
+          // Check authentication status
+          this.isAuthenticated = await this.auth0Client.isAuthenticated();
+          
+          if (this.isAuthenticated) {
+            this.user = await this.auth0Client.getUser();
+            this.accessToken = await this.auth0Client.getTokenSilently();
+            this.showLoggedInState();
+            this.connectWebSocket();
+          } else {
+            this.showLoggedOutState();
+          }
+
+          this.setupEventListeners();
+          this.showStatus('✅ Application initialized successfully', 'success');
+        } catch (error) {
+          console.error('❌ Initialization failed:', error);
+          this.showStatus(`❌ Initialization failed: ${error.message}`, 'error');
+        }
+      }
+
+      setupEventListeners() {
+        document.getElementById('login-btn').addEventListener('click', () => this.login());
+        document.getElementById('logout-btn').addEventListener('click', () => this.logout());
+        document.getElementById('get-profile-btn').addEventListener('click', () => this.getProfile());
+        document.getElementById('update-profile-btn').addEventListener('click', () => this.updateProfile());
+        document.getElementById('get-public-btn').addEventListener('click', () => this.getPublicData());
+      }
+
+      async login() {
+        try {
+          this.showStatus('🔄 Redirecting to Auth0...', 'info');
+          await this.auth0Client.loginWithRedirect();
+        } catch (error) {
+          console.error('❌ Login failed:', error);
+          this.showStatus(`❌ Login failed: ${error.message}`, 'error');
+        }
+      }
+
+      async logout() {
+        try {
+          this.closeWebSocket();
+          await this.auth0Client.logout({
+            logoutParams: {
+              returnTo: window.location.origin
+            }
+          });
+        } catch (error) {
+          console.error('❌ Logout failed:', error);
+          this.showStatus(`❌ Logout failed: ${error.message}`, 'error');
+        }
+      }
+
+      connectWebSocket() {
+        if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+          return; // Already connected
+        }
+
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const wsUrl = `${protocol}//${window.location.host}`;
+        
+        this.ws = new WebSocket(wsUrl);
+
+        this.ws.onopen = () => {
+          console.log('🔌 WebSocket connected');
+          this.showStatus('🔌 Connected to Cap\'n Web server', 'success');
+        };
+
+        this.ws.onmessage = (event) => {
+          try {
+            const response = JSON.parse(event.data);
+            const pendingRequest = this.pendingRequests.get(response.id);
+            
+            if (pendingRequest) {
+              this.pendingRequests.delete(response.id);
+              if (response.error) {
+                pendingRequest.reject(new Error(response.error));
+              } else {
+                pendingRequest.resolve(response.result);
+              }
+            }
+          } catch (error) {
+            console.error('❌ Failed to parse WebSocket message:', error);
+          }
+        };
+
+        this.ws.onerror = (error) => {
+          console.error('❌ WebSocket error:', error);
+          this.showStatus('❌ WebSocket connection error', 'error');
+        };
+
+        this.ws.onclose = () => {
+          console.log('🔌 WebSocket disconnected');
+          this.showStatus('🔌 Disconnected from server', 'info');
+          
+          // Retry connection after 3 seconds if authenticated
+          if (this.isAuthenticated) {
+            setTimeout(() => this.connectWebSocket(), 3000);
+          }
+        };
+      }
+
+      closeWebSocket() {
+        if (this.ws) {
+          this.ws.close();
+          this.ws = null;
+        }
+      }
+
+      async callRPC(method, params = null, requiresAuth = true) {
+        return new Promise((resolve, reject) => {
+          if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
+            return reject(new Error('WebSocket not connected'));
+          }
+
+          const id = ++this.requestId;
+          const request = {
+            id,
+            method,
+            params
+          };
+
+          if (requiresAuth && this.accessToken) {
+            request.token = this.accessToken;
+          }
+
+          this.pendingRequests.set(id, { resolve, reject });
+          
+          // Set timeout for request
+          setTimeout(() => {
+            if (this.pendingRequests.has(id)) {
+              this.pendingRequests.delete(id);
+              reject(new Error('RPC request timeout'));
+            }
+          }, 10000);
+
+          this.ws.send(JSON.stringify(request));
+        });
+      }
+
+      async getProfile() {
+        try {
+          this.showStatus('🔄 Fetching profile...', 'info');
+          const profile = await this.callRPC('getProfile');
+          this.showRPCResult('Profile Data', profile);
+        } catch (error) {
+          console.error('❌ Get profile failed:', error);
+          this.showStatus(`❌ Failed to get profile: ${error.message}`, 'error');
+        }
+      }
+
+      async updateProfile() {
+        try {
+          this.showStatus('🔄 Updating profile...', 'info');
+          const updates = {
+            preferences: {
+              theme: 'dark',
+              notifications: true,
+              lastAction: 'profile-update'
+            }
+          };
+          
+          const updatedProfile = await this.callRPC('updateProfile', updates);
+          this.showRPCResult('Updated Profile', updatedProfile);
+        } catch (error) {
+          console.error('❌ Update profile failed:', error);
+          this.showStatus(`❌ Failed to update profile: ${error.message}`, 'error');
+        }
+      }
+
+      async getPublicData() {
+        try {
+          this.showStatus('🔄 Fetching public data...', 'info');
+          const data = await this.callRPC('getPublicData', null, false);
+          this.showRPCResult('Public Data', data);
+        } catch (error) {
+          console.error('❌ Get public data failed:', error);
+          this.showStatus(`❌ Failed to get public data: ${error.message}`, 'error');
+        }
+      }
+
+      showLoggedInState() {
+        document.getElementById('login-btn').classList.add('hidden');
+        document.getElementById('logout-btn').classList.remove('hidden');
+        document.getElementById('profile-section').classList.remove('hidden');
+        document.getElementById('rpc-section').classList.remove('hidden');
+
+        if (this.user) {
+          const profileHtml = `
+            ${this.user.picture ? `<img src="${this.user.picture}" alt="Profile" class="profile-picture">` : ''}
+            <h3>${this.user.name || 'User'}</h3>
+            <p><strong>Email:</strong> ${this.user.email || 'Not provided'}</p>
+            <p><strong>User ID:</strong> ${this.user.sub}</p>
+          `;
+          document.getElementById('profile-info').innerHTML = profileHtml;
+        }
+      }
+
+      showLoggedOutState() {
+        document.getElementById('login-btn').classList.remove('hidden');
+        document.getElementById('logout-btn').classList.add('hidden');
+        document.getElementById('profile-section').classList.add('hidden');
+        document.getElementById('rpc-section').classList.add('hidden');
+      }
+
+      showStatus(message, type = 'info') {
+        const statusDiv = document.getElementById('status');
+        statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        
+        // Auto-hide success and info messages after 5 seconds
+        if (type === 'success' || type === 'info') {
+          setTimeout(() => {
+            statusDiv.innerHTML = '';
+          }, 5000);
+        }
+      }
+
+      showRPCResult(title, data) {
+        const resultsDiv = document.getElementById('rpc-results');
+        const resultHtml = `
+          <div class="status success">
+            <h4>${title}</h4>
+            <pre>${JSON.stringify(data, null, 2)}</pre>
+          </div>
+        `;
+        resultsDiv.innerHTML = resultHtml;
+        this.showStatus('✅ RPC call completed successfully', 'success');
+      }
+    }
+
+    // Initialize the application
+    const app = new CapnWebAuth0Client();
+    app.init().catch(error => {
+      console.error('❌ Failed to initialize application:', error);
+      document.getElementById('status').innerHTML = 
+        `<div class="status error">❌ Failed to initialize: ${error.message}</div>`;
+    });
+
+  Step 5: Update Environment Configuration
+  5.1: Update the client configuration in app.js with actual Auth0 values:
+
+  ⚠️ CRITICAL: Replace the placeholder values in client/app.js with your actual Auth0 configuration:
+  - Replace 'REPLACE_WITH_AUTH0_DOMAIN' with your Auth0 domain
+  - Replace 'REPLACE_WITH_AUTH0_CLIENT_ID' with your Auth0 client ID  
+  - Replace 'REPLACE_WITH_AUTH0_AUDIENCE' with your Auth0 API audience
+
+  Step 6: Test and Run the Application
+  6.1: Start the development server:
+
+    npm run dev
+
+  6.2: Open http://localhost:3000 in your browser
+
+  6.3: Test the complete authentication flow:
+    - Click "Login" to authenticate with Auth0
+    - View your profile information
+    - Test RPC calls (Get Profile, Update Profile, Get Public Data)
+    - Verify WebSocket connection status
+    - Test logout functionality
+
+  SECURITY REQUIREMENTS & BEST PRACTICES
+  - ✅ NEVER accept unauthenticated RPC calls for protected methods
+  - ✅ ALWAYS validate JWT signatures using JWKS from Auth0
+  - ✅ Implement comprehensive error handling for expired/invalid tokens
+  - ✅ Use environment variables for all sensitive configuration
+  - ✅ Validate all user inputs before processing
+  - ✅ Log security events and authentication attempts
+  - ✅ Use secure WebSocket connections (WSS) in production
+  - ✅ Implement proper CORS policies
+  - ✅ Add request rate limiting for production use
+  - ✅ Sanitize all data before storage or transmission
+
+  TROUBLESHOOTING TIPS
+  - Check browser console for JavaScript errors
+  - Verify .env file contains correct Auth0 configuration
+  - Ensure Auth0 application settings match your local URLs
+  - Confirm API scopes are properly configured in Auth0 dashboard
+  - Test WebSocket connectivity separately if RPC calls fail
+  - Validate JWT tokens using jwt.io for debugging
   ```
 </Accordion>
 
