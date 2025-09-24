@@ -12,9 +12,7 @@ title: Add Login to Your Next.js Application
   or existing Next.js application using the Auth0 Next.js v4 SDK (Beta).
 'twitter:title': 'Auth0 Next.js SDK Quickstarts: Add Login to Your Next.js Application'
 ---
-<Tip>
-  [**Sign up**](https://auth0.com/signup?utm_source=nextjs_quickstart) **for an Auth0 account if you don't have one**
-</Tip>
+<Snippet file="quickstart/webapp/auth0-signup-tip.mdx" utm_source="nextjs" />
 
 <Accordion title="AI Prompt" defaultOpen icon="microchip-ai" iconType="sharp-solid">
   **Using AI to integrate Auth0?** Add this prompt to Cursor, Windsurf, Copilot, Claude Code or your favourite AI-powered IDE to speed up development.
@@ -656,6 +654,8 @@ title: Add Login to Your Next.js Application
 
 ## Get Started
 
+This quickstart demonstrates how to add Auth0 authentication to a Next.js application. You'll build a full-stack web application with server-side rendering, secure login functionality, and protected routes using the Auth0 Next.js SDK.
+
 <Steps>
   <Step title="Create a new project" stepNumber={1}>
     Create a new Next.js project for this Quickstart
@@ -676,83 +676,58 @@ title: Add Login to Your Next.js Application
     ```
   </Step>
   <Step title="Setup your Auth0 App" stepNumber={3}>
-    Next up, you need to:
+    Next up, you need to create a new app on your Auth0 tenant and add the environment variables to your project.
 
-    1. Create a new **Regular Web Application** on your Auth0 tenant.
-    2. Generate a .env.local file in your project's root directory with the Domain, Client ID, Client Secret, and other required values.
-
-    You can manually set up your app on the [dashboard](https://manage.auth0.com/dashboard/) or run the following script to do this automatically:
+    You can choose to do this automatically by running a CLI command or do it manually via the Dashboard:
 
     <Tabs>
-      <Tab title="Mac">
-        ```shellscript
-        AUTH0_APP_NAME="My App" && \
-        brew tap auth0/auth0-cli && brew install auth0 && \
-        auth0 login --no-input && \
-        auth0 apps create -n "${AUTH0_APP_NAME}" -t regular -c http://localhost:3000/auth/callback -l http://localhost:3000 -o http://localhost:3000 --reveal-secrets --json > auth0-app-details.json && \
-        CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) && \
-        CLIENT_SECRET=$(jq -r '.client_secret' auth0-app-details.json) && \
-        DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') && \
-        SECRET=$(openssl rand -hex 32) && \
-        echo "AUTH0_DOMAIN=${DOMAIN}" > .env.local && \
-        echo "AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env.local && \
-        echo "AUTH0_CLIENT_SECRET=${CLIENT_SECRET}" >> .env.local && \
-        echo "AUTH0_SECRET=${SECRET}" >> .env.local && \
-        echo "APP_BASE_URL=http://localhost:3000" >> .env.local && \
-        rm auth0-app-details.json && \
-        echo ".env.local file created with your Auth0 details:" && cat .env.local
-        ```
-      </Tab>
-      <Tab title="Windows">
-        ```powershell
-        $AppName = "My App"
-        winget install Auth0.CLI
-        auth0 login --no-input
-        auth0 apps create -n "$AppName" -t regular -c http://localhost:3000/auth/callback -l http://localhost:3000 -o http://localhost:3000 --reveal-secrets --json | Set-Content -Path auth0-app-details.json
-        $ClientId = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_id
-        $ClientSecret = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_secret
-        $Domain = (auth0 tenants list --json | ConvertFrom-Json | Where-Object { $_.active -eq $true }).name
-        $Secret = [System.Convert]::ToHexString([System.Security.Cryptography.RandomNumberGenerator]::GetBytes(32)).ToLower()
-        Set-Content -Path .env.local -Value "AUTH0_DOMAIN=$Domain"
-        Add-Content -Path .env.local -Value "AUTH0_CLIENT_ID=$ClientId"
-        Add-Content -Path .env.local -Value "AUTH0_CLIENT_SECRET=$ClientSecret"
-        Add-Content -Path .env.local -Value "AUTH0_SECRET=$Secret"
-        Add-Content -Path .env.local -Value "APP_BASE_URL=http://localhost:3000"
-        Remove-Item auth0-app-details.json
-        Write-Output ".env.local file created with your Auth0 details:"
-        Get-Content .env.local
-        ```
-      </Tab>
-      <Tab title="Manual Setup">
-        Create a `.env.local` file in your project root:
+      <Tab title="CLI">
+        Run the following shell command on your project's root directory to create an Auth0 app and generate a `.env.local` file:
 
-        ```env
-        # Auth0 Configuration
-        AUTH0_DOMAIN=your-auth0-domain.auth0.com
-        AUTH0_CLIENT_ID=your-auth0-client-id
-        AUTH0_CLIENT_SECRET=your-auth0-client-secret
-        AUTH0_SECRET=your-long-random-secret-here
+        <CodeGroup>
+          ```shellscript Mac
+          AUTH0_APP_NAME="My App" && brew tap auth0/auth0-cli && brew install auth0 && auth0 login --no-input && auth0 apps create -n "${AUTH0_APP_NAME}" -t regular -c http://localhost:3000/auth/callback -l http://localhost:3000 -o http://localhost:3000 --reveal-secrets --json > auth0-app-details.json && CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) && CLIENT_SECRET=$(jq -r '.client_secret' auth0-app-details.json) && DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') && SECRET=$(openssl rand -hex 32) && echo "AUTH0_DOMAIN=${DOMAIN}" > .env.local && echo "AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env.local && echo "AUTH0_CLIENT_SECRET=${CLIENT_SECRET}" >> .env.local && echo "AUTH0_SECRET=${SECRET}" >> .env.local && echo "APP_BASE_URL=http://localhost:3000" >> .env.local && rm auth0-app-details.json && echo ".env.local file created with your Auth0 details:" && cat .env.local
+          ```
+
+          ```shellscript Windows
+          $AppName = "My App"; winget install Auth0.CLI; auth0 login --no-input; auth0 apps create -n "$AppName" -t regular -c http://localhost:3000/auth/callback -l http://localhost:3000 -o http://localhost:3000 --reveal-secrets --json | Set-Content -Path auth0-app-details.json; $ClientId = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_id; $ClientSecret = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_secret; $Domain = (auth0 tenants list --json | ConvertFrom-Json | Where-Object { $_.active -eq $true }).name; $Secret = [System.Convert]::ToHexString([System.Security.Cryptography.RandomNumberGenerator]::GetBytes(32)).ToLower(); Set-Content -Path .env.local -Value "AUTH0_DOMAIN=$Domain"; Add-Content -Path .env.local -Value "AUTH0_CLIENT_ID=$ClientId"; Add-Content -Path .env.local -Value "AUTH0_CLIENT_SECRET=$ClientSecret"; Add-Content -Path .env.local -Value "AUTH0_SECRET=$Secret"; Add-Content -Path .env.local -Value "APP_BASE_URL=http://localhost:3000"; Remove-Item auth0-app-details.json; Write-Output ".env.local file created with your Auth0 details:"; Get-Content .env.local
+          ```
+        </CodeGroup>
+      </Tab>
+
+      <Tab title="Dashboard">
+        Before you start, create a `.env.local` file on your project's root directory
+
+        ```shellscript .env.local
+        AUTH0_DOMAIN=YOUR_AUTH0_APP_DOMAIN
+        AUTH0_CLIENT_ID=YOUR_AUTH0_APP_CLIENT_ID
+        AUTH0_CLIENT_SECRET=YOUR_AUTH0_APP_CLIENT_SECRET
+        AUTH0_SECRET=YOUR_LONG_RANDOM_SECRET_HERE
         APP_BASE_URL=http://localhost:3000
         ```
 
-        **Manual Setup Steps:**
+        1. Head to the [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
+        2. Click on **Applications** > **Applications** > **Create Application**
+        3. In the popup, enter a name for your app, select `Regular Web Application` as the app type and click **Create**
+        4. Switch to the **Settings** tab on the Application Details page
+        5. Replace `YOUR_AUTH0_APP_DOMAIN`, `YOUR_AUTH0_APP_CLIENT_ID`, and `YOUR_AUTH0_APP_CLIENT_SECRET` in the `.env.local` file with the **Domain**, **Client ID**, and **Client Secret** values from the dashboard
+        6. Generate `YOUR_LONG_RANDOM_SECRET_HERE` using: `openssl rand -hex 32` (Mac/Linux) or use an online generator
 
-        1. Go to [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
-        2. Click "Create Application" → **Regular Web Application** (not SPA)
-        3. Set **Allowed Callback URLs**: `http://localhost:3000/auth/callback`
-        4. Set **Allowed Logout URLs**: `http://localhost:3000`
-        5. Set **Allowed Web Origins**: `http://localhost:3000`
-        6. Copy your Domain and Client ID to the `.env.local` file
-        7. Copy your Client Secret from the application settings
-        8. Generate `AUTH0_SECRET` using: `openssl rand -hex 32`
+        Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs**, **Allowed Logout URLs** and **Allowed Web Origins** to:
 
-        <Note>
-          You must register the following URLs in your Auth0 Application:
+        ```
+        Allowed Callback URLs: http://localhost:3000/auth/callback
+        Allowed Logout URLs: http://localhost:3000
+        Allowed Web Origins: http://localhost:3000
+        ```
 
-          - **Allowed Callback URLs**: `http://localhost:3000/auth/callback`
-          - **Allowed Logout URLs**: `http://localhost:3000`
-          - **Allowed Web Origins**: `http://localhost:3000`
-        </Note>
+        <Info>
+          **Allowed Callback URLs** are a critical security measure to ensure users are safely returned to your application after authentication. Without a matching URL, the login process will fail, and users will be blocked by an Auth0 error page instead of accessing your app.
+
+          **Allowed Logout URLs** are essential for providing a seamless user experience upon signing out. Without a matching URL, users will not be redirected back to your application after logout and will instead be left on a generic Auth0 page.
+
+          **Allowed Web Origins** is critical for silent authentication. Without it, users will be logged out when they refresh the page or return to your app later.
+        </Info>
       </Tab>
     </Tabs>
   </Step>
@@ -1193,9 +1168,7 @@ title: Add Login to Your Next.js Application
     ```
   </Step>
   <Step title="Run your app" stepNumber={10}>
-    ```shellscript
-    npm run dev
-    ```
+    <Snippet file="quickstart/webapp/run-app.mdx" />
 
     <Info>
       Your app will be available at http://localhost:3000. The Auth0 SDK v4 automatically mounts authentication routes at `/auth/*` (not `/api/auth/*` like in v3).

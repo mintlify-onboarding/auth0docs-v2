@@ -14,9 +14,7 @@ title: Add Login to Your Vue Application
   SDK.
 'twitter:title': 'Auth0 Vue SDK Quickstarts: Add Login to Your Vue Application'
 ---
-<Tip>
-  [**Sign up**](https://auth0.com/signup?utm_source=vue_quickstart) **for an Auth0 account if you don't have one**
-</Tip>
+<Snippet file="quickstart/spa/auth0-signup-tip.mdx" utm_source="vue" />
 
 <Accordion title="AI Prompt" defaultOpen icon="microchip-ai" iconType="sharp-solid">
   **Using AI to integrate Auth0?** Add this prompt to Cursor, Windsurf, Copilot, Claude Code or your favourite AI-powered IDE to speed up development.
@@ -700,6 +698,8 @@ Solution: Vue 3 with Vite uses import.meta.env.VITE_* for environment variables,
 
 ## Get Started
 
+This quickstart demonstrates how to integrate Auth0 authentication into a Vue.js 3 application. You'll build a responsive single-page app with secure user authentication using Vue's composition API and the Auth0 Vue SDK.
+
 <Steps>
   <Step title="Create a new project" stepNumber={1}>
     Create a new Vue 3 project for this Quickstart
@@ -720,23 +720,52 @@ Solution: Vue 3 with Vite uses import.meta.env.VITE_* for environment variables,
     ```
   </Step>
   <Step title="Setup your Auth0 App" stepNumber={3}>
-    Next up, you need to:
+    Next up, you need to create a new app on your Auth0 tenant and add the environment variables to your project.
 
-    1. Create a new Single-Page Application on your Auth0 tenant.
-    2. Generate a .env file in your project's root directory with the Domain and Client ID of your newly created app.
-
-    You can manually set up your app on the [dashboard](https://manage.auth0.com/dashboard/) or run the following script to do this automatically:
+    You can choose to do this automatically by running a CLI command or do it manually via the Dashboard:
 
     <Tabs>
-      <Tab title="Mac">
-        ```shellscript
-        AUTH0_APP_NAME="My Vue App" && brew tap auth0/auth0-cli && brew install auth0 && auth0 login --no-input && auth0 apps create -n "${AUTH0_APP_NAME}" -t spa -c http://localhost:5173 -l http://localhost:5173 -o http://localhost:5173 --json > auth0-app-details.json && CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) && DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') && echo "VITE_AUTH0_DOMAIN=${DOMAIN}" > .env && echo "VITE_AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env && rm auth0-app-details.json && echo ".env file created with your Auth0 details:" && cat .env
-        ```
+      <Tab title="CLI">
+        Run the following shell command on your project's root directory to create an Auth0 app and generate a `.env` file:
+
+        <CodeGroup>
+          ```shellscript Mac
+          AUTH0_APP_NAME="My Vue App" && brew tap auth0/auth0-cli && brew install auth0 && auth0 login --no-input && auth0 apps create -n "${AUTH0_APP_NAME}" -t spa -c http://localhost:5173 -l http://localhost:5173 -o http://localhost:5173 --json > auth0-app-details.json && CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) && DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') && echo "VITE_AUTH0_DOMAIN=${DOMAIN}" > .env && echo "VITE_AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env && rm auth0-app-details.json && echo ".env file created with your Auth0 details:" && cat .env
+          ```
+
+          ```shellscript Windows
+          $AppName = "My Vue App"; winget install Auth0.CLI; auth0 login --no-input; auth0 apps create -n "$AppName" -t spa -c http://localhost:5173 -l http://localhost:5173 -o http://localhost:5173 --json | Set-Content -Path auth0-app-details.json; $ClientId = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_id; $Domain = (auth0 tenants list --json | ConvertFrom-Json | Where-Object { $_.active -eq $true }).name; Set-Content -Path .env -Value "VITE_AUTH0_DOMAIN=$Domain"; Add-Content -Path .env -Value "VITE_AUTH0_CLIENT_ID=$ClientId"; Remove-Item auth0-app-details.json; Write-Output ".env file created with your Auth0 details:"; Get-Content .env
+          ```
+        </CodeGroup>
       </Tab>
-      <Tab title="Windows">
-        ```shellscript
-        $AppName = "My Vue App"; winget install Auth0.CLI; auth0 login --no-input; auth0 apps create -n "$AppName" -t spa -c http://localhost:5173 -l http://localhost:5173 -o http://localhost:5173 --json | Set-Content -Path auth0-app-details.json; $ClientId = (Get-Content -Raw auth0-app-details.json | ConvertFrom-Json).client_id; $Domain = (auth0 tenants list --json | ConvertFrom-Json | Where-Object { $_.active -eq $true }).name; Set-Content -Path .env -Value "VITE_AUTH0_DOMAIN=$Domain"; Add-Content -Path .env -Value "VITE_AUTH0_CLIENT_ID=$ClientId"; Remove-Item auth0-app-details.json; Write-Output ".env file created with your Auth0 details:"; Get-Content .env
+
+      <Tab title="Dashboard">
+        Before you start, create a `.env` file on your project's root directory
+
+        ```shellscript .env
+        VITE_AUTH0_DOMAIN=YOUR_AUTH0_APP_DOMAIN
+        VITE_AUTH0_CLIENT_ID=YOUR_AUTH0_APP_CLIENT_ID
         ```
+
+        1. Head to the [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
+        2. Click on **Applications** > **Applications** > **Create Application**
+        3. In the popup, enter a name for your app, select `Single Page Web Application` as the app type and click **Create**
+        4. Switch to the **Settings** tab on the Application Details page
+        5. Replace `YOUR_AUTH0_APP_DOMAIN` and `YOUR_AUTH0_APP_CLIENT_ID` on the `.env` file with the **Domain** and **Client ID** values from the dashboard
+
+        Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs**, **Allowed Logout URLs** and **Allowed Web Origins** to:
+
+        ```
+        http://localhost:5173
+        ```
+
+        <Info>
+          **Allowed Callback URLs** are a critical security measure to ensure users are safely returned to your application after authentication. Without a matching URL, the login process will fail, and users will be blocked by an Auth0 error page instead of accessing your app.
+
+          **Allowed Logout URLs** are essential for providing a seamless user experience upon signing out. Without a matching URL, users will not be redirected back to your application after logout and will instead be left on a generic Auth0 page.
+
+          **Allowed Web Origins** is critical for silent authentication. Without it users will be logged out when they refresh the page or return to your app later.
+        </Info>
       </Tab>
     </Tabs>
   </Step>
@@ -1204,9 +1233,7 @@ Solution: Vue 3 with Vite uses import.meta.env.VITE_* for environment variables,
     </CodeGroup>
   </Step>
   <Step title="Run your app" stepNumber={6}>
-    ```shellscript
-    npm run dev
-    ```
+    <Snippet file="quickstart/spa/run-app.mdx" />
   </Step>
 </Steps>
 

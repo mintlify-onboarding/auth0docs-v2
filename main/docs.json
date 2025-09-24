@@ -2354,7 +2354,7 @@
               "/docs/quickstart/webapp/java-ee/interactive",
               "/docs/quickstart/webapp/java-spring-boot/interactive",
               "/docs/quickstart/webapp/laravel/interactive",
-              "/docs/quickstart/webapp/nextjs/interactive",
+              "docs/quickstart/webapp/nextjs/index",
               "/docs/quickstart/webapp/nginx-plus/interactive",
               "/docs/quickstart/webapp/php/interactive",
               "/docs/quickstart/webapp/python/interactive",
@@ -2364,18 +2364,19 @@
           {
             "group": "Single Page App",
             "pages": [
-              "/docs/quickstart/spa/angular/interactive",
-              "/docs/quickstart/spa/flutter/interactive",
-              "/docs/quickstart/spa/vanillajs/interactive",
-              "/docs/quickstart/spa/react/interactive",
-              "/docs/quickstart/spa/vuejs/interactive"
+              "docs/quickstart/spa/angular/index",
+              "docs/quickstart/spa/flutter/index",
+              "docs/quickstart/spa/vanillajs/index",
+              "docs/quickstart/spa/vanillajs/capn-web",
+              "docs/quickstart/spa/react/index",
+              "docs/quickstart/spa/vuejs/index"
             ]
           },
           {
             "group": "Native/Mobile App",
             "pages": [
               "/docs/quickstart/native/net-android-ios/interactive",
-              "/docs/quickstart/native/android/interactive",
+              "docs/quickstart/native/android/index",
               "/docs/quickstart/native/android-facebook-login/interactive",
               "/docs/quickstart/native/device/interactive",
               "/docs/quickstart/native/react-native-expo/interactive",
@@ -2383,7 +2384,7 @@
               "/docs/quickstart/native/ionic-angular/interactive",
               "/docs/quickstart/native/ionic-react/interactive",
               "/docs/quickstart/native/ionic-vue/interactive",
-              "/docs/quickstart/native/ios-swift/interactive",
+              "docs/quickstart/native/ios-swift/index",
               "/docs/quickstart/native/maui/interactive",
               "/docs/quickstart/native/react-native/interactive",
               "/docs/quickstart/native/windows-uwp-csharp/interactive",
@@ -2452,5 +2453,43 @@
     "socials": {
       "github": "https://github.com/auth0/docs"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/docs/quickstart/spa/react/interactive",
+      "destination": "/docs/quickstart/spa/react"
+    },
+    {
+      "source": "/docs/quickstart/spa/vanillajs/interactive",
+      "destination": "/docs/quickstart/spa/vanillajs"
+    },
+    {
+      "source": "/docs/quickstart/spa/vuejs/interactive",
+      "destination": "/docs/quickstart/spa/vuejs"
+    },
+    {
+      "source": "/docs/quickstart/spa/angular/interactive",
+      "destination": "/docs/quickstart/spa/angular"
+    },
+    {
+      "source": "/docs/quickstart/webapp/nextjs/interactive",
+      "destination": "/docs/quickstart/webapp/nextjs"
+    },
+    {
+      "source": "/docs/quickstart/native/ios-swift/interactive",
+      "destination": "/docs/quickstart/native/ios-swift"
+    },
+    {
+      "source": "/docs/quickstart/native/android/interactive",
+      "destination": "/docs/quickstart/native/android"
+    },
+    {
+      "source": "/docs/quickstart/spa/flutter/interactive",
+      "destination": "/docs/quickstart/spa/flutter"
+    },
+    {
+      "source": "/docs/quickstart/spa/vanillajs/capn-web/interactive",
+      "destination": "/docs/quickstart/spa/vanillajs/capn-web"
+    }
+  ]
 }
