@@ -13,10 +13,6 @@ title: Add Login to Your Cap'n Web Application
   Cap'n Web RPC, using the Auth0 SPA SDK.
 'twitter:title': 'Auth0 JavaScript SDK Quickstarts: Add Login to Your Cap''n Web Application'
 ---
-<Callout icon="pencil" color="#FFC107" iconType="solid">
-  This Quickstart is currently in **Beta**. We'd love to hear your feedback!
-</Callout>
-
 <Tip>
 **Don't have an Auth0 account?** [Sign up for free](https://auth0.com/signup?utm_source=docs&utm_medium=quickstart&utm_campaign=spa-capnweb) and get started with Auth0's secure authentication and authorization platform.
 </Tip>
@@ -28,52 +24,40 @@ title: Add Login to Your Cap'n Web Application
   Integrate Auth0 authentication into a Cap'n Web RPC application
 
   AI PERSONA & PRIMARY OBJECTIVE
-  You are a helpful Auth0 SDK Integration Assistant specialized in Cap'n Web RPC applications. Your primary function is to execute commands to set up Auth0 authentication with WebSocket-based RPC communication. Your secondary function is to modify files created by those shell commands to implement secure, real-time authentication.
+  You are a helpful Auth0 SDK Integration Assistant specialized in Cap'n Web RPC applications. Your primary function is to execute commands to set up Auth0 authentication with WebSocket-based RPC communication.
 
   CRITICAL BEHAVIORAL INSTRUCTIONS
-  1. CHECK EXISTING PROJECT FIRST: Before creating a new project, check if the current directory already contains a Cap'n Web project (package.json with capnweb dependencies). If it does, skip project creation and work with the existing project.
+  1. CHECK EXISTING PROJECT FIRST: Before creating a new project, check if the current directory already contains a Cap'n Web project (package.json with capnweb dependencies).
   2. EXECUTE FIRST, EDIT SECOND: You MUST first execute the appropriate setup command. Do not show, suggest, or create any files until the setup is complete.
-  3. NO PLANNING: DO NOT propose a directory structure. DO NOT show a file tree. Your first action must be to run the appropriate command.
-  4. STRICT SEQUENCE: Follow the "Execution Flow" below in the exact order specified without deviation.
-  5. BUILD SECURE RPC: Implement proper JWT token validation on both client and server sides for RPC communication with comprehensive error handling.
-  6. 🚨 DIRECTORY NAVIGATION RULE: NEVER run `cd capnweb-auth0-app` or any `cd` command automatically. ALWAYS check current directory with `pwd` first. If user needs to navigate, ask them to do it manually or confirm before executing any directory change commands.
+  3. NO PLANNING: DO NOT propose a directory structure. Your first action must be to run the appropriate command.
+  4. STRICT SEQUENCE: Follow the execution flow in the exact order specified.
+  5. BUILD SECURE RPC: Implement proper JWT token validation on both client and server sides for RPC communication.
 
   EXECUTION FLOW
 
-  ⚠️ CRITICAL: Before ANY command execution, run `pwd` to check current directory and NEVER change directories without explicit user permission.
+  Step 1: Create Cap'n Web Project
+  mkdir capnweb-auth0-app && cd capnweb-auth0-app
+  npm init -y && npm install capnweb ws @auth0/auth0-api-js dotenv @auth0/auth0-spa-js
+  mkdir -p client server && touch server/index.js client/index.html client/app.js .env
 
-  Step 1: Check for Existing Cap'n Web Project and Prerequisites
-  FIRST, verify prerequisites and check for existing Cap'n Web project:
+  Step 2: Setup Auth0 App (use CLI command from Step 3 in the quickstart)
 
-    # Check if Node.js and npm are available
-    node --version && npm --version
+  Step 3: Implement Server with JWT Validation
+  - Create WebSocket server with Cap'n Proto schema
+  - Validate JWT tokens from Auth0 for each RPC call
+  - Implement secure profile management endpoints
 
-  Then examine the current directory:
+  Step 4: Implement Client with Auth0 Integration
+  - Initialize Auth0 SPA client
+  - Handle login/logout flows
+  - Send JWT tokens with RPC calls
+  - Build modern UI with authentication state
 
-    # Check for existing Cap'n Web project
-    if [ -f "package.json" ]; then
-      echo "Found package.json, checking for Cap'n Web dependencies..."
-      cat package.json
-    else
-      echo "No package.json found, will create new project"
-    fi
-
-  Based on the results:
-  - If package.json exists and contains capnweb dependencies, proceed to Step 1b (install Auth0 SDK only)
-  - If no Cap'n Web project exists, proceed to Step 1a (create new project)
-
-  Step 1a: Create New Project and Install Dependencies
-  If an existing project exists, simply install the Auth0 SDK:
-  npm install @auth0/auth0-spa-js
-
-  Otherwise, create a new project and install all dependencies:
-
-  ⚠️ IMPORTANT: The project creation may create files in the CURRENT directory instead of a subdirectory. After running this command, check the current directory contents to determine the actual project structure before proceeding.
-
-  mkdir capnweb-auth0-app && cd capnweb-auth0-app && npm init -y && npm install capnweb ws jsonwebtoken jwks-client dotenv @auth0/auth0-spa-js && mkdir -p client server && touch server/index.js client/index.html client/app.js .env && npm pkg set scripts.dev="node server/index.js" && npm pkg set type="module"
-
-  Step 1b: Install Auth0 SDK Only (for existing projects)
-  npm install @auth0/auth0-spa-js jsonwebtoken jwks-client dotenv
+  SECURITY REQUIREMENTS
+  - NEVER accept unauthenticated RPC calls
+  - ALWAYS validate JWT signatures using JWKS
+  - Implement proper error handling for expired tokens
+  - Use secure WebSocket connections in production
 
   Step 2: Setup Auth0 Application and API
   AFTER the command in Step 1 has successfully executed, you will perform the Auth0 configuration.
@@ -135,8 +119,7 @@ title: Add Login to Your Cap'n Web Application
 
     import { RpcTarget } from 'capnweb';
     import { WebSocketServer } from 'ws';
-    import jwt from 'jsonwebtoken';
-    import jwksClient from 'jwks-client';
+    import { ApiClient } from '@auth0/auth0-api-js';
     import http from 'http';
     import { readFileSync } from 'fs';
     import { dirname, join } from 'path';
@@ -148,61 +131,39 @@ title: Add Login to Your Cap'n Web Application
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const userProfiles = new Map();
 
-    // Auth0 configuration with validation
+    // Auth0 configuration
     const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
     const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
     const AUTH0_AUDIENCE = process.env.AUTH0_AUDIENCE;
-    const PORT = process.env.PORT || 3000;
 
-    // Validate required environment variables
     if (!AUTH0_DOMAIN || !AUTH0_CLIENT_ID || !AUTH0_AUDIENCE) {
       console.error('❌ Missing required Auth0 environment variables');
       if (!AUTH0_DOMAIN) console.error('   - AUTH0_DOMAIN is required');
       if (!AUTH0_CLIENT_ID) console.error('   - AUTH0_CLIENT_ID is required');
       if (!AUTH0_AUDIENCE) console.error('   - AUTH0_AUDIENCE is required');
-      console.error('\n📋 Please check your .env file and ensure all values are set correctly.');
       process.exit(1);
     }
 
-    // JWKS client for Auth0 token validation
-    const jwksClientInstance = jwksClient({
-      jwksUri: `https://${AUTH0_DOMAIN}/.well-known/jwks.json`,
-      requestHeaders: {},
-      timeout: 30000,
+    // Initialize Auth0 API client for token verification
+    // Using @auth0/auth0-api-js provides better Auth0 integration than jsonwebtoken:
+    // - Automatic JWKS handling and caching
+    // - Built-in JWT/JWE token support
+    // - Proper OAuth 2.0 compliance
+    // - Auth0-specific optimizations
+    const auth0ApiClient = new ApiClient({
+      domain: AUTH0_DOMAIN,
+      audience: AUTH0_AUDIENCE
     });
 
-    // Get signing key for JWT verification
-    function getKey(header, callback) {
-      jwksClientInstance.getSigningKey(header.kid, (err, key) => {
-        if (err) {
-          console.error('❌ Failed to get signing key:', err);
-          return callback(err);
-        }
-        const signingKey = key.publicKey || key.rsaPublicKey;
-        callback(null, signingKey);
-      });
-    }
-
-    // Verify JWT token with comprehensive error handling
-    function verifyToken(token) {
-      return new Promise((resolve, reject) => {
-        if (!token) {
-          return reject(new Error('No token provided'));
-        }
-
-        jwt.verify(token, getKey, {
-          audience: AUTH0_AUDIENCE,
-          issuer: `https://${AUTH0_DOMAIN}/`,
-          algorithms: ['RS256']
-        }, (err, decoded) => {
-          if (err) {
-            console.error('❌ JWT verification failed:', err.message);
-            return reject(err);
-          }
-          console.log('✅ JWT verified successfully for user:', decoded.sub);
-          resolve(decoded);
+    async function verifyToken(token) {
+      try {
+        const payload = await auth0ApiClient.verifyAccessToken({
+          accessToken: token
         });
-      });
+        return payload;
+      } catch (error) {
+        throw new Error(`Token verification failed: ${error.message}`);
+      }
     }
 
   3.2: Continue with RPC target implementation and HTTP server setup:
@@ -868,7 +829,7 @@ title: Add Login to Your Cap'n Web Application
 
 ## Get Started
 
-This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web application. You'll build a secure RPC-based web application with login, logout, and user profile features using Cap'n Web's JavaScript framework and the Auth0 SPA SDK.
+This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web application. You'll build a modern RPC-based web application with secure login functionality using Cap'n Web's JavaScript framework and the Auth0 SPA SDK.
 
 
 <Steps>
@@ -882,22 +843,24 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
     Initialize the project and install dependencies
 
     ```shellscript
-    npm init -y && npm install capnweb ws jsonwebtoken jwks-client dotenv
+    npm init -y && npm pkg set type="module" && npm install capnweb ws @auth0/auth0-api-js dotenv
     ```
 
     Create the basic project structure
 
     ```shellscript
-    mkdir -p client server && touch server/index.js client/index.html client/app.js .env
+    mkdir -p client server && touch server/index.js client/index.html client/app.js .env.example .env
     ```
 
-    Update package.json to include the dev script:
+    Set up your package.json scripts for development:
 
-    ```shellscript
-    npm pkg set scripts.dev="node server/index.js" && npm pkg set type="module"
+    ```shellscript 
+    npm pkg set scripts.dev="node server/index.js" && npm pkg set scripts.start="node server/index.js"
     ```
   </Step>
   <Step title="Install the Auth0 SPA JS SDK" stepNumber={2}>
+    Install the Auth0 SPA JS SDK to handle authentication:
+
     ```shellscript
     npm install @auth0/auth0-spa-js
     ```
@@ -953,9 +916,9 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
           **Allowed Web Origins** is critical for silent authentication. Without it, users will be logged out when they refresh the page or return to your app later.
         </Info>
 
-        **Create an Auth0 API**
+        **Required: Create an Auth0 API**
         
-        For this quickstart, you'll also need to create an Auth0 API:
+        You must create an Auth0 API for token validation to work:
         
         1. In the Auth0 Dashboard, go to **APIs** > **Create API**
         2. Set these values:
@@ -967,6 +930,10 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
            - `read:profile` - Read user profile data
            - `write:profile` - Update user profile data
         5. Update your `.env` file with the API identifier as `AUTH0_AUDIENCE`
+        
+        <Warning>
+        Without creating an Auth0 API, you'll get an "access_denied" error during login. The API identifier must match your `AUTH0_AUDIENCE` environment variable exactly.
+        </Warning>
       </Tab>
     </Tabs>
   </Step>
@@ -978,8 +945,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
     ```javascript server/index.js expandable lines
     import { RpcTarget } from 'capnweb';
     import { WebSocketServer } from 'ws';
-    import jwt from 'jsonwebtoken';
-    import jwksClient from 'jwks-client';
+    import { ApiClient } from '@auth0/auth0-api-js';
     import http from 'http';
     import { readFileSync } from 'fs';
     import { dirname, join } from 'path';
@@ -1004,29 +970,26 @@ This quickstart demonstrates how to add Auth0 authentication to a Cap'n Web appl
       process.exit(1);
     }
 
-    // JWKS client for token verification
-    const client = jwksClient({
-      jwksUri: `https://${AUTH0_DOMAIN}/.well-known/jwks.json`
+    // Initialize Auth0 API client for token verification
+    // Using @auth0/auth0-api-js provides better Auth0 integration than jsonwebtoken:
+    // - Automatic JWKS handling and caching
+    // - Built-in JWT/JWE token support
+    // - Proper OAuth 2.0 compliance
+    // - Auth0-specific optimizations
+    const auth0ApiClient = new ApiClient({
+      domain: AUTH0_DOMAIN,
+      audience: AUTH0_AUDIENCE
     });
 
-    function getKey(header, callback) {
-      client.getSigningKey(header.kid, (err, key) => {
-        const signingKey = key?.publicKey || key?.rsaPublicKey;
-        callback(null, signingKey);
-      });
-    }
-
     async function verifyToken(token) {
-      return new Promise((resolve, reject) => {
-        jwt.verify(token, getKey, {
-          audience: AUTH0_AUDIENCE,
-          issuer: `https://${AUTH0_DOMAIN}/`,
-          algorithms: ['RS256']
-        }, (err, decoded) => {
-          if (err) reject(err);
-          else resolve(decoded);
+      try {
+        const payload = await auth0ApiClient.verifyAccessToken({
+          accessToken: token
         });
-      });
+        return payload;
+      } catch (error) {
+        throw new Error(`Token verification failed: ${error.message}`);
+      }
     }
 
     // Profile Service - Cap'n Web RPC Target
