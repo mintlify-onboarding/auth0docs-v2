@@ -2365,7 +2365,7 @@
               "/docs/quickstart/spa/vanillajs/index",
               "/docs/quickstart/spa/vanillajs/capn-web",
               "/docs/quickstart/spa/vuejs/index",
-              "/docs/quickstart/spa/flutter/index"
+              "/docs/quickstart/spa/flutter/interactive"
             ]
           },
           {
@@ -2501,10 +2501,6 @@
     {
       "source": "/docs/quickstart/native/android/interactive",
       "destination": "/docs/quickstart/native/android"
-    },
-    {
-      "source": "/docs/quickstart/spa/flutter/interactive",
-      "destination": "/docs/quickstart/spa/flutter"
     },
     {
       "source": "/docs/quickstart/spa/vanillajs/capn-web/interactive",
