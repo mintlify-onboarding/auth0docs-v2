@@ -19,6 +19,13 @@
       "claude"
     ]
   },
+  "fonts": {
+    "heading": {
+      "family": "Aeonik",
+      "source": "https://mintlify-assets.b-cdn.net/Aeonik/Aeonik-Regular.woff2",
+      "format": "woff2"
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -2421,7 +2428,9 @@
       },
       {
         "tab": "API Reference",
-        "href": "https://auth0.com/docs/api"
+        "pages": [
+          "api"
+        ]
       },
       {
         "tab": "SDKs",
