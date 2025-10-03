@@ -149,7 +149,10 @@ export const SignUpForm = () => {
           Auth0 account
         </a>{" "}
         or{" "}
-        <span className="font-semibold text-primary cursor-pointer" onClick={() => console.log("log in")}>
+        <span
+          className="font-semibold text-primary dark:text-white cursor-pointer"
+          onClick={() => console.log("log in")}
+        >
           log in
         </span>{" "}
         to your existing account to integrate directly with your own tenant.

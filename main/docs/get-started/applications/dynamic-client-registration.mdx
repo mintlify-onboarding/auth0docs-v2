@@ -357,36 +357,46 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
 
 ```php PHP lines
 $curl = curl_init();
+
 curl_setopt_array($curl, [
-CURLOPT_URL => "https://{yourDomain}/oidc/register",
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_ENCODING => "",
-CURLOPT_MAXREDIRS => 10,
-CURLOPT_TIMEOUT => 30,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => "POST",
-CURLOPT_POSTFIELDS => "{\"client_name\":\"My Dynamic Application\",\"redirect_uris\": [\"https://application.example.com/callback\", \"https://application.example.com/callback2\"]}",
-CURLOPT_HTTPHEADER => [
-"content-type: application/json"
-],
+  CURLOPT_URL => "https://{yourDomain}/oidc/register",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\"client_name\":\"My Dynamic Application\",\"redirect_uris\": [\"https://application.example.com/callback\", \"https://application.example.com/callback2\"]}",
+  CURLOPT_HTTPHEADER => [
+    "content-type: application/json"
+  ],
 ]);
+
 $response = curl_exec($curl);
 $err = curl_error($curl);
+
 curl_close($curl);
+
 if ($err) {
-echo "cURL Error #:" . $err;
+  echo "cURL Error #:" . $err;
 } else {
-echo $response;
+  echo $response;
 }
 ```
 ```python Python lines
 import http.client
+
 conn = http.client.HTTPSConnection("")
+
 payload = "{\"client_name\":\"My Dynamic Application\",\"redirect_uris\": [\"https://application.example.com/callback\", \"https://application.example.com/callback2\"]}"
+
 headers = { 'content-type': "application/json" }
+
 conn.request("POST", "/{yourDomain}/oidc/register", payload, headers)
+
 res = conn.getresponse()
 data = res.read()
+
 print(data.decode("utf-8"))
 ```
 
@@ -394,39 +404,48 @@ print(data.decode("utf-8"))
 require 'uri'
 require 'net/http'
 require 'openssl'
+
 url = URI("https://{yourDomain}/oidc/register")
+
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request.body = "{\"client_name\":\"My Dynamic Application\",\"redirect_uris\": [\"https://application.example.com/callback\", \"https://application.example.com/callback2\"]}"
+
 response = http.request(request)
 puts response.read_body
 ```
 ```swift Swift lines
 import Foundation
+
 let headers = ["content-type": "application/json"]
 let parameters = [
-"client_name": "My Dynamic Application",
-"redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]
+  "client_name": "My Dynamic Application",
+  "redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]
 ] as [String : Any]
+
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
 let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/oidc/register")! as URL,
-cachePolicy: .useProtocolCachePolicy,
-timeoutInterval: 10.0)
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
 request.httpMethod = "POST"
 request.allHTTPHeaderFields = headers
 request.httpBody = postData as Data
+
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-if (error != nil) {
-print(error)
-} else {
-let httpResponse = response as? HTTPURLResponse
-print(httpResponse)
-}
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
 })
+
 dataTask.resume()
 ```
 </CodeGroup>
