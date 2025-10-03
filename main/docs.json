@@ -7261,9 +7261,42 @@
       "github": "https://github.com/auth0/docs"
     }
   },
-  "seo": {
-    "metatags": {
-      "canonical": "https://auth0.com/docs/"
+  "redirects": [
+    {
+      "source": "/docs/quickstart/spa/react/interactive",
+      "destination": "/docs/quickstart/spa/react"
+    },
+    {
+      "source": "/docs/quickstart/spa/vanillajs/interactive",
+      "destination": "/docs/quickstart/spa/vanillajs"
+    },
+    {
+      "source": "/docs/quickstart/spa/vuejs/interactive",
+      "destination": "/docs/quickstart/spa/vuejs"
+    },
+    {
+      "source": "/docs/quickstart/spa/angular/interactive",
+      "destination": "/docs/quickstart/spa/angular"
+    },
+    {
+      "source": "/docs/quickstart/webapp/nextjs/interactive",
+      "destination": "/docs/quickstart/webapp/nextjs"
+    },
+    {
+      "source": "/docs/quickstart/native/ios-swift/interactive",
+      "destination": "/docs/quickstart/native/ios-swift"
+    },
+    {
+      "source": "/docs/quickstart/native/android/interactive",
+      "destination": "/docs/quickstart/native/android"
+    },
+    {
+      "source": "/docs/quickstart/spa/flutter/interactive",
+      "destination": "/docs/quickstart/spa/flutter"
+    },
+    {
+      "source": "/docs/quickstart/spa/vanillajs/capn-web/interactive",
+      "destination": "/docs/quickstart/spa/vanillajs/capn-web"
     }
-  }
+  ]
 }
