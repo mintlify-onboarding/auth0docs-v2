@@ -75,13 +75,13 @@ function ProfileMenuTrigger({
   return (
     <DropdownMenuTrigger
       className={cn(
-        'adu:flex adu:w-8 adu:items-center adu:gap-2 adu:md:w-auto adu:focus-visible:outline-hidden',
+        'adu:flex adu:w-8 adu:items-center adu:gap-2 adu:lg:w-auto adu:focus-visible:outline-hidden',
         className,
       )}
     >
       <ContentText
         variant="button"
-        className="adu:text-foreground-bold adu:hidden adu:md:block"
+        className="adu:text-foreground-bold adu:hidden adu:lg:block"
         asChild
       >
         <span>{selectedTenant.name}</span>
@@ -92,7 +92,7 @@ function ProfileMenuTrigger({
       </Avatar>
       <SvgIcon
         iconName="caret-down"
-        className="adu:text-foreground adu:hidden adu:md:block"
+        className="adu:text-foreground adu:hidden adu:lg:block"
       />
     </DropdownMenuTrigger>
   );
