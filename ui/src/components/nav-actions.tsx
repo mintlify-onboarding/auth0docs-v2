@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
+import { useBreakpoint } from '@/hooks/media-query';
+
 import { AuthMenu } from './auth-menu';
 import { Button } from './ui/button';
 import type { UserData } from './ui/profile-menu';
 import type { TenantData } from './ui/tenant';
-import { cn } from '@/lib/utils';
 
 interface NavActionsProps {
   className?: string;
@@ -13,6 +15,8 @@ interface NavActionsProps {
 
 function NavActions({ className, user, tenants }: NavActionsProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const isLgUp = useBreakpoint('lg');
+
   const [currentTenant, setCurrentTenant] = useState(tenants[0] || null);
 
   const handleSelectTenant = (tenant: TenantData) => {
@@ -20,16 +24,18 @@ function NavActions({ className, user, tenants }: NavActionsProps) {
   };
 
   useEffect(() => {
-    const referenceDiv = document.querySelector('div.topbar-right-container');
-
-    if (!referenceDiv) return;
-
     const updatePosition = () => {
+      const referenceDiv = isLgUp
+        ? document.querySelector('.topbar-right-container')
+        : document.querySelector('.topbar-right-container+div');
+
+      if (!referenceDiv) return;
+
       const { right } = referenceDiv.getBoundingClientRect();
 
       if (wrapperRef.current) {
-        const darkModeIconWidth = 30 + 16; // icon width + margin
-        wrapperRef.current.style.right = `${window.innerWidth - right + darkModeIconWidth}px`;
+        const iconsWidth = isLgUp ? 30 + 16 : 0; // icon width + margin
+        wrapperRef.current.style.right = `${window.innerWidth - right + iconsWidth}px`;
       }
     };
 
@@ -41,13 +47,13 @@ function NavActions({ className, user, tenants }: NavActionsProps) {
 
     // Cleanup listener on unmount
     return () => window.removeEventListener('resize', updatePosition);
-  }, []);
+  }, [isLgUp]);
 
   return (
     <div
       ref={wrapperRef}
       className={cn(
-        'adu:fixed adu:top-0 adu:z-50 adu:flex adu:h-14 adu:items-center adu:gap-2',
+        'adu:fixed adu:top-0 adu:z-30 adu:flex adu:h-14 adu:items-center adu:gap-2',
         className,
       )}
     >
