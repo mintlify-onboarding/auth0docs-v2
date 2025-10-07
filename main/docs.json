@@ -2352,17 +2352,17 @@
               {
                 "group": "Single Page App",
                 "pages": [
-                  "/quickstart/spa/react/interactive",
-                  "/quickstart/spa/angular/interactive",
-                  "/quickstart/spa/vanillajs/interactive",
-                  "/quickstart/spa/vuejs/interactive",
-                  "/quickstart/spa/flutter/interactive"
+                  "/quickstart/spa/react",
+                  "/quickstart/spa/angular",
+                  "/quickstart/spa/vanillajs",
+                  "/quickstart/spa/vuejs",
+                  "/quickstart/spa/flutter"
                 ]
               },
               {
                 "group": "Regular Web App",
                 "pages": [
-                  "/quickstart/webapp/nextjs/interactive",
+                  "/quickstart/webapp/nextjs",
                   "/quickstart/webapp/express/interactive",
                   "/quickstart/webapp/python/interactive",
                   "/quickstart/webapp/django/interactive",
@@ -2383,8 +2383,8 @@
               {
                 "group": "Native/Mobile App",
                 "pages": [
-                  "/quickstart/native/ios-swift/interactive",
-                  "/quickstart/native/android/interactive",
+                  "/quickstart/native/ios-swift",
+                  "/quickstart/native/android",
                   "/quickstart/native/android-facebook-login/interactive",
                   "/quickstart/native/react-native/interactive",
                   "/quickstart/native/react-native-expo/interactive",
@@ -7264,39 +7264,35 @@
   "redirects": [
     {
       "source": "/docs/quickstart/spa/react/interactive",
-      "destination": "/docs/quickstart/spa/react"
+      "destination": "/quickstart/spa/react"
     },
     {
       "source": "/docs/quickstart/spa/vanillajs/interactive",
-      "destination": "/docs/quickstart/spa/vanillajs"
+      "destination": "/quickstart/spa/vanillajs"
     },
     {
       "source": "/docs/quickstart/spa/vuejs/interactive",
-      "destination": "/docs/quickstart/spa/vuejs"
+      "destination": "/quickstart/spa/vuejs"
     },
     {
       "source": "/docs/quickstart/spa/angular/interactive",
-      "destination": "/docs/quickstart/spa/angular"
+      "destination": "/quickstart/spa/angular"
     },
     {
       "source": "/docs/quickstart/webapp/nextjs/interactive",
-      "destination": "/docs/quickstart/webapp/nextjs"
+      "destination": "/quickstart/webapp/nextjs"
     },
     {
       "source": "/docs/quickstart/native/ios-swift/interactive",
-      "destination": "/docs/quickstart/native/ios-swift"
+      "destination": "/quickstart/native/ios-swift"
     },
     {
       "source": "/docs/quickstart/native/android/interactive",
-      "destination": "/docs/quickstart/native/android"
+      "destination": "/quickstart/native/android"
     },
     {
       "source": "/docs/quickstart/spa/flutter/interactive",
-      "destination": "/docs/quickstart/spa/flutter"
-    },
-    {
-      "source": "/docs/quickstart/spa/vanillajs/capn-web/interactive",
-      "destination": "/docs/quickstart/spa/vanillajs/capn-web"
+      "destination": "/quickstart/spa/flutter"
     }
   ]
 }
