@@ -2355,6 +2355,7 @@
                   "/quickstart/spa/react",
                   "/quickstart/spa/angular",
                   "/quickstart/spa/vanillajs",
+                  "/quickstart/spa/capn-web",
                   "/quickstart/spa/vuejs",
                   "/quickstart/spa/flutter"
                 ]
@@ -2397,7 +2398,7 @@
                   "/quickstart/native/windows-uwp-csharp/interactive",
                   "/quickstart/native/wpf-winforms/interactive",
                   "/quickstart/native/device/interactive",
-                  "/quickstart/native/xamarin/interactive"
+                  "/quickstart/native/xamarin"
                 ]
               },
               {
@@ -4794,7 +4795,7 @@
                   "fr-ca/quickstart/native/windows-uwp-csharp/interactive",
                   "fr-ca/quickstart/native/wpf-winforms/interactive",
                   "fr-ca/quickstart/native/device/interactive",
-                  "fr-ca/quickstart/native/xamarin/interactive"
+                  "fr-ca/quickstart/native/xamarin"
                 ]
               },
               {
@@ -7192,7 +7193,7 @@
                   "ja-jp/quickstart/native/windows-uwp-csharp/interactive",
                   "ja-jp/quickstart/native/wpf-winforms/interactive",
                   "ja-jp/quickstart/native/device/interactive",
-                  "ja-jp/quickstart/native/xamarin/interactive"
+                  "ja-jp/quickstart/native/xamarin"
                 ]
               },
               {
