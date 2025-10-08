@@ -24,7 +24,7 @@ By modeling your agent's backend as a secure application, it can obtain the nece
 
 ## Applications without refresh tokens
 
-In scenarios where refresh tokens cannot be used, such as single-page applications (SPAs) or headless agents and CLIs, you can still call external APIs on behalf of the user via Token Vault using the Auth0 access tokens. However, you need to configure the below for this
+In scenarios where refresh tokens cannot be used, such as single-page applications (SPAs) or headless agents and CLIs, you can still call external APIs on the user's behalf via Token Vault using Auth0 access tokens. To do so, use the Auth0 Dashboard to configure the following:
 
 - [An API in Auth0](https://auth0.com/docs/get-started/auth0-overview/set-up-apis): You need to register an API in the Auth0 Dashboard with the appropriate settings.
 - A Custom API Client in Auth0: The Custom API Client allows your API server to perform token exchanges using access tokens instead of refresh tokens. This client enables Token Vault to exchange an access token for an external API access token (e.g., Google Calendar API).
