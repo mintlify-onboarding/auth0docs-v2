@@ -25,7 +25,14 @@ interface UserResources {
   selected_api_id: string;
 }
 
-interface GetCurrentUserResponse {
+export interface ProfileData {
+  sub: string;
+  name: string;
+  email: string;
+  picture: string;
+}
+
+export interface GetCurrentUserResponse {
   /** Whether the user is currently authenticated */
   is_authenticated: boolean;
   account: Account;
@@ -37,11 +44,11 @@ interface GetCurrentUserResponse {
   manage_url: string;
   user_resources: UserResources;
   /** User profile information */
-  profile: Record<string, unknown>;
+  profile: Record<string, never> | ProfileData;
 }
 
 // Tenant Interfaces
-interface TenantEnvironment {
+export interface TenantEnvironment {
   id: string;
   apex: string;
   short_name: string;
@@ -50,7 +57,7 @@ interface TenantEnvironment {
   aliases: string[];
 }
 
-interface Tenant {
+export interface Tenant {
   name: string;
   login_url: string;
   override_subdomain?: string;
@@ -59,7 +66,7 @@ interface Tenant {
 }
 
 // Client Interfaces
-interface Client {
+export interface Client {
   tenant: string;
   name: string;
   client_id: string;
@@ -84,12 +91,12 @@ interface ClientUpdateRequest {
 }
 
 // Resource Server Interfaces
-interface ResourceServerScope {
+export interface ResourceServerScope {
   value: string;
   description?: string;
 }
 
-interface ResourceServer {
+export interface ResourceServer {
   id: string;
   name: string;
   identifier: string;
@@ -210,7 +217,26 @@ export async function postResourceServers(
 
 // User Methods
 export async function getCurrentUser() {
-  return request<GetCurrentUserResponse>(`${config.apiBaseUrl}/users/current`);
+  const { profile, ...session } = await request<GetCurrentUserResponse>(
+    `${config.apiBaseUrl}/users/current`,
+  );
+
+  if (!profile?.sub) {
+    return {
+      ...session,
+      profile: null,
+    };
+  }
+
+  return {
+    ...session,
+    profile: {
+      sub: profile.sub,
+      name: profile.name,
+      email: profile.email,
+      picture: profile.picture,
+    },
+  };
 }
 
 export async function patchUserSession(sessionData: UpdateUserSessionRequest) {
@@ -230,3 +256,5 @@ export async function patchRolloutConsent(consentData: RolloutConsentRequest) {
     },
   );
 }
+
+export function user() {}
