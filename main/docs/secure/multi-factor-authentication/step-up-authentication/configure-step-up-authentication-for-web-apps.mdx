@@ -12,19 +12,19 @@ title: Configure Step-up Authentication for Web Apps
 ---
 With step-up authentication, applications that allow access to different types of resources can require users to authenticate with a stronger mechanism to access sensitive information or perform certain transactions.
 
-For instance, a user may be allowed to access views with sensitive data or reset their password only after confirming their identity using <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA).
+For instance, a user may be allowed to access views with sensitive data or reset their password only after confirming their identity using <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA).
 
-To accomplish step-up authentication for your web app, you will create an Action that challenges the user to authenticate with MFA when the web app asks for it, check the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> claims for MFA if the user tries to access a restricted page, and then challenge the user if MFA is not included in the claim.
+To accomplish step-up authentication for your web app, you will create an Action that challenges the user to authenticate with MFA when the web app asks for it, check the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> claims for MFA if the user tries to access a restricted page, and then challenge the user if MFA is not included in the claim.
 
 ## Validate ID tokens for MFA
 
-When a user logs in, you get an [ID token](/secure/tokens/id-tokens/get-id-tokens) that contains information relevant to the user's session in the form of claims. The relevant claim is `amr` (authentication methods reference) which is a JSON array of strings that indicates the authentication method used during login. It must be present in the ID token's payload and must contain the value `mfa`.
+When a user logs in, you get an [ID token](/docs/secure/tokens/id-tokens/get-id-tokens) that contains information relevant to the user's session in the form of claims. The relevant claim is `amr` (authentication methods reference) which is a JSON array of strings that indicates the authentication method used during login. It must be present in the ID token's payload and must contain the value `mfa`.
 
 Its values may include any of the pre-defined [Authentication Method Reference Values](https://tools.ietf.org/html/rfc8176). Because it can contain claims other than `mfa`, when validating you must both test for its existence and examine its contents for a value of `mfa`.
 
 If a user attempts to access a restricted page and the token shows that the user has not authenticated with MFA, then you can retrigger authentication, which you have configured to trigger MFA using an Action. Once the user provides the second factor, a new ID token that contains the `amr` claim is generated and sent to the app.
 
-1. [Get the ID token](/secure/tokens/id-tokens/get-id-tokens).
+1. [Get the ID token](/docs/secure/tokens/id-tokens/get-id-tokens).
 2. Verify the token's signature, which is used to verify that the sender of the token is who it says it is and to ensure that the message wasn't changed along the way.
 3. Validate the following claims:
 
@@ -112,9 +112,9 @@ In the following scenario, a web app authenticates a user with a username and pa
 
 For this scenario, you must configure the following items in the Dashboard:
 
-* [Register a web app](/get-started/auth0-overview/create-applications/regular-web-apps).
+* [Register a web app](/docs/get-started/auth0-overview/create-applications/regular-web-apps).
 * [Create a database connection](https://manage.auth0.com/#/connections/database).
-* [Enable MFA](/secure/multi-factor-authentication/enable-mfa) to use push notifications.
+* [Enable MFA](/docs/secure/multi-factor-authentication/enable-mfa) to use push notifications.
 
 ### Create an Action
 
@@ -138,16 +138,16 @@ exports.onExecutePostLogin = async (event, api) => {
 
 
 
-* The `CLIENTS_WITH_MFA` variable contains the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+IDs">client IDs</Tooltip> of the applications you want this Action to apply to. You can remove this (and the `if` conditional that follows) if you don't need it.
-* The `event.transaction.acr_values` property is an array of strings that contains the authentication context class reference(s) (`acr`). This is an optional property that only exists when the application includes it in the authentication request to the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip>. In this example, our web app will include it in the authentication request, but only when a user who has not already authenticated with MFA tries to access salary information. When our web app includes it, it will set a value of `http://schemas.openid.net/pape/policies/2007/06/multi-factor`, which indicates that we want the Authorization Server to require MFA, and the `api.multifactor` property value that we set in our code will challenge the user for MFA using any of the available methods that have been configured in the tenant. To learn more about the `api.multifactor.enable()` method, read [Action Triggers: post-login API object](/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).
-* The `http://schemas.openid.net/pape/policies/2007/06/multi-factor` policy defines an authentication mechanism where the end user authenticates to the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Provider by providing more than one authentication factor, or MFA. To learn more, read [OpenID Provider Authentication Policy Extension 1.0](https://openid.net/specs/openid-provider-authentication-policy-extension-1_0.html).
+* The `CLIENTS_WITH_MFA` variable contains the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+IDs">client IDs</Tooltip> of the applications you want this Action to apply to. You can remove this (and the `if` conditional that follows) if you don't need it.
+* The `event.transaction.acr_values` property is an array of strings that contains the authentication context class reference(s) (`acr`). This is an optional property that only exists when the application includes it in the authentication request to the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip>. In this example, our web app will include it in the authentication request, but only when a user who has not already authenticated with MFA tries to access salary information. When our web app includes it, it will set a value of `http://schemas.openid.net/pape/policies/2007/06/multi-factor`, which indicates that we want the Authorization Server to require MFA, and the `api.multifactor` property value that we set in our code will challenge the user for MFA using any of the available methods that have been configured in the tenant. To learn more about the `api.multifactor.enable()` method, read [Action Triggers: post-login API object](/docs/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).
+* The `http://schemas.openid.net/pape/policies/2007/06/multi-factor` policy defines an authentication mechanism where the end user authenticates to the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Provider by providing more than one authentication factor, or MFA. To learn more, read [OpenID Provider Authentication Policy Extension 1.0](https://openid.net/specs/openid-provider-authentication-policy-extension-1_0.html).
 
 ### Configure app
 
 Configure the app to check that the user has authenticated using MFA when a user tries to access the restricted salary information page. (When a user has authenticated with MFA, the ID token claims contain the `amr` claim with a value of `mfa`.) If the user has already authenticated with MFA, then the web app will display the restricted page; otherwise, the web app will send a new authentication request that includes the `acr_values` parameter with a value of:
 `http://schemas.openid.net/pape/policies/2007/06/multi-factor`which will trigger the Action.
 
-The web app in this scenario uses the [Authorization Code Flow](/get-started/authentication-and-authorization-flow/authorization-code-flow) to authenticate, so the request is as follows:
+The web app in this scenario uses the [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow) to authenticate, so the request is as follows:
 
 ```http lines
 https://{yourDomain}/authorize?
@@ -165,7 +165,7 @@ https://{yourDomain}/authorize?
 
 
 
-Once the user authenticates with MFA, the web app receives the authorization code, which must be exchanged for the new ID token, which should now contain the `amr` claim with a value of `mfa`. To learn how to exchange the code for an ID token, read [Add Login Using the Authorization Code Flow](/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
+Once the user authenticates with MFA, the web app receives the authorization code, which must be exchanged for the new ID token, which should now contain the `amr` claim with a value of `mfa`. To learn how to exchange the code for an ID token, read [Add Login Using the Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
 
 ### Validate ID token
 
@@ -197,7 +197,7 @@ jwt.verify(id_token, AUTH0_CLIENT_SECRET, { algorithms: ['HS256'] }, function(er
 
 ## Learn more
 
-* [ID Tokens](/secure/tokens/id-tokens)
-* [Rule Use Cases](/customize/rules/use-cases)
-* [JSON Web Tokens](/secure/tokens/json-web-tokens)
-* [Configure Step-up Authentication for APIs](/secure/multi-factor-authentication/step-up-authentication/configure-step-up-authentication-for-apis)
+* [ID Tokens](/docs/secure/tokens/id-tokens)
+* [Rule Use Cases](/docs/customize/rules/use-cases)
+* [JSON Web Tokens](/docs/secure/tokens/json-web-tokens)
+* [Configure Step-up Authentication for APIs](/docs/secure/multi-factor-authentication/step-up-authentication/configure-step-up-authentication-for-apis)

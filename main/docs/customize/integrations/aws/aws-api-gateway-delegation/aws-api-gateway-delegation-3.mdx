@@ -53,11 +53,11 @@ You should also see the page for viewing pets.
 
 ### Use Delegation to Get an AWS Token
 
-At this point, you have authentication set up with Auth0, and you have an <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip>. Here is the directory structure for the generated code:
+At this point, you have authentication set up with Auth0, and you have an <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip>. Here is the directory structure for the generated code:
 
-<Frame>![AWS API Gateway - project directory](/images/cdy7uua7fh8z/5fYL14NE1L9WuzUyA0xTky/35e78ca14e6d0c5b36582b5b74a6fc55/aws-api-gateway-project.png)</Frame>
+<Frame>![AWS API Gateway - project directory](/docs/images/cdy7uua7fh8z/5fYL14NE1L9WuzUyA0xTky/35e78ca14e6d0c5b36582b5b74a6fc55/aws-api-gateway-project.png)</Frame>
 
-You can use Auth0's delegation capability to obtain an AWS <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> that is based on the Auth0 <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=identity+token">identity token</Tooltip>. Behind the scenes, Auth0 authenticates your identity token, and then uses <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> based on the addon that you configured.
+You can use Auth0's delegation capability to obtain an AWS <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> that is based on the Auth0 <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=identity+token">identity token</Tooltip>. Behind the scenes, Auth0 authenticates your identity token, and then uses <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> based on the addon that you configured.
 
 Update `pets/login/login.js` as follows to get an AWS delegation token from the identity token after a successful signin with `auth.signin`. Note that you are treating any user not logged in using a Social Connection as an admin. Later, we'll code a second role and show better ways to enforce role selection.
 
@@ -154,7 +154,7 @@ To add the API code for adding a call to your service, copy the contents of apiG
 * `lib` folder;
 * `README.md`.
 
-To review the download, see [AWS API Gateway Tutorial Part 2](/customize/integrations/aws/aws-api-gateway-delegation/aws-api-gateway-delegation-2#deploy-the-api).
+To review the download, see [AWS API Gateway Tutorial Part 2](/docs/customize/integrations/aws/aws-api-gateway-delegation/aws-api-gateway-delegation-2#deploy-the-api).
 
 There is already a `README.md` in the `pets` directory, so you will need to rename one of the files to keep both in the directory. The `README.md` for the API gateway explains how to use the API application from your Auth0 Application.
 

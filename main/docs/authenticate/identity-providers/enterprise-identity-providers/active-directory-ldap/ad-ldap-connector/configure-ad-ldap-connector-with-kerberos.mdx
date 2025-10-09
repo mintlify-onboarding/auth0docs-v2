@@ -26,20 +26,20 @@ When Kerberos authentication is enabled, the visible IP address of the server wh
 
 ## Authentication flow
 
-Depending on the users' location, the authentication flow will be different when IP ranges are set. Using Fabrikam as an example, since it uses the SaaS version of Auth0, they configured their Public IP Address (`24.12.34.56/32`) in the connection. Users connecting from within the building will all originate from `24.12.34.56` (as configured on the connection). When they authenticate, the users can follow the AD/LDAP native flow and have a seamless <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> experience.
+Depending on the users' location, the authentication flow will be different when IP ranges are set. Using Fabrikam as an example, since it uses the SaaS version of Auth0, they configured their Public IP Address (`24.12.34.56/32`) in the connection. Users connecting from within the building will all originate from `24.12.34.56` (as configured on the connection). When they authenticate, the users can follow the AD/LDAP native flow and have a seamless <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> experience.
 
 For this to work, the network must allow the users to connect to the AD/LDAP Connector on the port configured in the `config.json` file. In highly available deployments of the Connector, the address users will be connecting to is the network load balancer in front of all connectors instances.
 
 <Frame>
-  ![Configure AD/LDAP Connector Authentication with Kerberos Flow Diagram](/images/cdy7uua7fh8z/1EUZhFx2w5FjDeIoMySERC/fc50869b131faf3257cfe429c96f68d1/2023-09-22_14-28-30.png)
+  ![Configure AD/LDAP Connector Authentication with Kerberos Flow Diagram](/docs/images/cdy7uua7fh8z/1EUZhFx2w5FjDeIoMySERC/fc50869b131faf3257cfe429c96f68d1/2023-09-22_14-28-30.png)
 </Frame>
 
-To learn more, read [Deploy AD/LDAP Connectors for High Availability Environments.](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability)
+To learn more, read [Deploy AD/LDAP Connectors for High Availability Environments.](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability)
 
 On the other hand, when users are not in the corporate network (for example, at a customer site, working from home without VPN) they won't be able to access the AD/LDAP Connector directly. The users will need to enter their username/password, and Auth0 will validate these credentials with the AD/LDAP Connector (which will in turn use Active Directory to validate those credentials).
 
 <Frame>
-  ![Configure AD/LDAP Connector Authentication with Kerberos Credentials Flow Diagram](/images/cdy7uua7fh8z/7xo1cIdF6GmSowlVB8kjQn/4b55f555977742af3f3df94c5b3a0a9b/2023-09-22_14-29-00.png)
+  ![Configure AD/LDAP Connector Authentication with Kerberos Credentials Flow Diagram](/docs/images/cdy7uua7fh8z/7xo1cIdF6GmSowlVB8kjQn/4b55f555977742af3f3df94c5b3a0a9b/2023-09-22_14-29-00.png)
 </Frame>
 
 ## Auto-login with Lock
@@ -48,7 +48,7 @@ On the other hand, when users are not in the corporate network (for example, at 
   Detecting IP ranges in an AD/LDAP connection and using those ranges with Lock to allow integrated Windows Authentication is a feature that works in Lock 10, but can only be used in Lock 11 in Universal Login scenarios. This feature is disabled in Lock 11 when Lock 11 is used in Embedded Login scenarios.
 </Callout>
 
-When an application is using Lock 10 or 11 within the Login Page hosted by Auth0 (typically used for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>/WS-Federation protocols and Single Sign-on (SSO) Integrations), there will be a button which allows users to authenticate using "Windows Authentication".
+When an application is using Lock 10 or 11 within the Login Page hosted by Auth0 (typically used for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>/WS-Federation protocols and Single Sign-on (SSO) Integrations), there will be a button which allows users to authenticate using "Windows Authentication".
 
 In some cases the requirement could be to automatically sign in the user if Kerberos is possible (based on the IP-address of the end user). The following changes can be added to the Auth0 Login Page to automatically sign in the user if Kerberos is possible:
 

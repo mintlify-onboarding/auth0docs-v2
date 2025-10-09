@@ -11,13 +11,13 @@ title: Manage Multi-Site Sessions with Auth0 SDK
 ---
 ## Short-lived sessions
 
-This workflow shows how the auth0-spa-js SDK should be implemented to support multi-site session management. In this scenario, it is assumed that the tenant <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> Inactivity Timeout is set to 300 seconds, and the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> Expiration of each SPA application is set to 150 seconds. This is considered a "short-lived" session.
+This workflow shows how the auth0-spa-js SDK should be implemented to support multi-site session management. In this scenario, it is assumed that the tenant <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> Inactivity Timeout is set to 300 seconds, and the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> Expiration of each SPA application is set to 150 seconds. This is considered a "short-lived" session.
 
 ### SDK features
 
 #### PKCE flow
 
-For all methods of retrieving an ID Token or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, the SDK manages all the intricacies of the Proof Key for Code Exchange workflow. No additional effort or configuration is needed for this to work.
+For all methods of retrieving an ID Token or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, the SDK manages all the intricacies of the Proof Key for Code Exchange workflow. No additional effort or configuration is needed for this to work.
 
 #### Deep linking
 
@@ -27,7 +27,7 @@ In the Quickstart, the `PrivateRoute` component sets a state parameter of `targe
 
 #### Token storage
 
-To keep the returned tokens stored in the safest manner possible all tokens are placed into a local cache. The ID and Access Tokens are stored as pairs with the <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> and scope values being used to retrieve the tokens as needed.
+To keep the returned tokens stored in the safest manner possible all tokens are placed into a local cache. The ID and Access Tokens are stored as pairs with the <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> and scope values being used to retrieve the tokens as needed.
 
 Additionally the cache tokens are removed once either the ID Token or Access Token expires so that if a token is in the cache it can be assumed to stil be valid.
 
@@ -43,7 +43,7 @@ In the case where a user has not taken any actions that would cause the Auth0 se
 
 The intent of this approach allows the session to go inactive if the user is no longer present, but otherwise provides a means to trigger the silent token refresh so that the can continue their session without the need to be prompted again for credentials.
 
-To learn more about inactivity timers and timeout modals, read [Application-specific logout URLs](/manage-users/sessions/configure-session-lifetime-settings).
+To learn more about inactivity timers and timeout modals, read [Application-specific logout URLs](/docs/manage-users/sessions/configure-session-lifetime-settings).
 
 ### Example workflow
 
@@ -62,7 +62,7 @@ To learn more about inactivity timers and timeout modals, read [Application-spec
 4. SSO cookie (with expiration) is set
 5. Token exchange performed
 
-<Frame>![Diagram of Initial Authentication flow](/images/cdy7uua7fh8z/2voC3vs36CJJlpDu4xl06Y/310fe5afe79ad7d083833baa2690dfa4/initial-authentication.png)</Frame>
+<Frame>![Diagram of Initial Authentication flow](/docs/images/cdy7uua7fh8z/2voC3vs36CJJlpDu4xl06Y/310fe5afe79ad7d083833baa2690dfa4/initial-authentication.png)</Frame>
 
 #### Maintain Auth0 session
 
@@ -76,7 +76,7 @@ To learn more about inactivity timers and timeout modals, read [Application-spec
    2. Token exchange performed
 6. Resource is updated
 
-<Frame>![Diagram of maintaining a session](/images/cdy7uua7fh8z/7CI29ouvhuJ4TFC1G2C5n8/4d2bd0c9372a6cc16e75fc76f438a0bd/maintain-auth0-session.png)</Frame>
+<Frame>![Diagram of maintaining a session](/docs/images/cdy7uua7fh8z/7CI29ouvhuJ4TFC1G2C5n8/4d2bd0c9372a6cc16e75fc76f438a0bd/maintain-auth0-session.png)</Frame>
 
 #### Seamless SSO
 
@@ -84,14 +84,14 @@ To learn more about inactivity timers and timeout modals, read [Application-spec
 2. Check with `isAuthenticated()`
 3. If false, `loginWithRedirect()`
 
-<Frame>![Diagram of seamless SSO flow for sessions](/images/cdy7uua7fh8z/38heJlnN0letWMVhpTtXad/4d4127150fb818522ea29eea28ccc00e/seamless-sso.png)</Frame>
+<Frame>![Diagram of seamless SSO flow for sessions](/docs/images/cdy7uua7fh8z/38heJlnN0letWMVhpTtXad/4d4127150fb818522ea29eea28ccc00e/seamless-sso.png)</Frame>
 
 #### Prompt user to extend session
 
 1. At 240 seconds prompt user with keep session alive with modal that lasts 60 seconds
 2. If they choose to maintain session, `getTokenSilently()`
 
-<Frame>![Diagram of prompting a user to maintain a session](/images/cdy7uua7fh8z/6kH2G3oclCfSudwd0hJEUM/70651da37771c9945c5a34dcad409d9f/prompt-user-extend-session.png)</Frame>
+<Frame>![Diagram of prompting a user to maintain a session](/docs/images/cdy7uua7fh8z/6kH2G3oclCfSudwd0hJEUM/70651da37771c9945c5a34dcad409d9f/prompt-user-extend-session.png)</Frame>
 
 #### User explicitly logs out of application
 
@@ -103,7 +103,7 @@ To learn more about inactivity timers and timeout modals, read [Application-spec
    3. Clear SSO cookie & delete session data
    4. Redirect user to logout page
 
-<Frame>![Diagram of a user logging out](/images/cdy7uua7fh8z/4b55FKM2vZBoskXTPY4nxs/1a9e69437677f2cfac9a3d8e6bff7ffe/user-explicitly-logs-out-of-app.png)</Frame>
+<Frame>![Diagram of a user logging out](/docs/images/cdy7uua7fh8z/4b55FKM2vZBoskXTPY4nxs/1a9e69437677f2cfac9a3d8e6bff7ffe/user-explicitly-logs-out-of-app.png)</Frame>
 
 #### User returns to initial application after logging out
 
@@ -111,19 +111,19 @@ To learn more about inactivity timers and timeout modals, read [Application-spec
 2. `getTokenSilently()` called
 3. Application-dependent behavior
 
-<Frame>![Diagram of user returning to application after logging out](/images/cdy7uua7fh8z/3geXGwsXkIgFkwopoGoLMx/01685b6b8e8473c6ce6f26e59b402cf3/user-returns-to-initial-app.png)</Frame>
+<Frame>![Diagram of user returning to application after logging out](/docs/images/cdy7uua7fh8z/3geXGwsXkIgFkwopoGoLMx/01685b6b8e8473c6ce6f26e59b402cf3/user-returns-to-initial-app.png)</Frame>
 
 ## Long-lived sessions
 
 Auth0 supports long-lived sessions for enterprise plans. With long-lived sessions, you can configure session limits with up to 100 days of inactivity (idle timeout) and up to one year in total duration (absolute timeout). If you have quarterly, monthly, or other timelines, this allows you to reduce friction for end-users and provide access to low-risk content and capabilities. In addition, media companies can leverage long-lived sessions for improving user experiences through seamless access to content. You can also make the choices between long-lived sessions and password validation based on your requirements around user experience and security.
 
-Workflow details would change in the case of a long-lived session where the application session would most likely be shorter than the [Single Sign-on (SSO)](/authenticate/single-sign-on) session.
+Workflow details would change in the case of a long-lived session where the application session would most likely be shorter than the [Single Sign-on (SSO)](/docs/authenticate/single-sign-on) session.
 
-To learn more, read [Configure Session Lifetime Limits](/manage-users/sessions/configure-session-lifetime-settings) and [Update Access Token Lifetime](/secure/tokens/access-tokens/update-access-token-lifetime).
+To learn more, read [Configure Session Lifetime Limits](/docs/manage-users/sessions/configure-session-lifetime-settings) and [Update Access Token Lifetime](/docs/secure/tokens/access-tokens/update-access-token-lifetime).
 
 ##
 
 ## Learn more
 
-* [Troubleshoot Invalid Token Errors](/troubleshoot/basic-issues/invalid-token-errors)
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
+* [Troubleshoot Invalid Token Errors](/docs/troubleshoot/basic-issues/invalid-token-errors)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)

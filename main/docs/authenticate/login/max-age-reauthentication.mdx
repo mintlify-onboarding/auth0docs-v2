@@ -12,15 +12,15 @@ title: Force Reauthentication in OIDC
   has taken place within a given time interval.
 'twitter:title': Force Reauthentication in OIDC
 ---
-The `prompt=login` mechanism can be subverted by simply stripping the parameter as it passes through the user agent (browser) and is only good for providing a UX hint to the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> provider (OP) in cases when the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=relying+party">relying party</Tooltip> (RP) wants to display a link like:
+The `prompt=login` mechanism can be subverted by simply stripping the parameter as it passes through the user agent (browser) and is only good for providing a UX hint to the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> provider (OP) in cases when the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=relying+party">relying party</Tooltip> (RP) wants to display a link like:
 
 **“Hi Josh. Not you? Click here.”**
 
-However, you should not rely on it to validate that a fresh authentication took place. To mitigate this, the client must validate that re-authentication has taken place using the `auth_time` claim if re-authentication is why`max_age`was requested. This claim will be included automatically in the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> when `prompt-login` or `max_age=0` parameters are given in the authentication request.
+However, you should not rely on it to validate that a fresh authentication took place. To mitigate this, the client must validate that re-authentication has taken place using the `auth_time` claim if re-authentication is why`max_age`was requested. This claim will be included automatically in the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> when `prompt-login` or `max_age=0` parameters are given in the authentication request.
 
-You need to pass the `max_age` parameter to the Authorization API [`/authorize` endpoint](https://auth0.com/docs/api/authentication). If you use [Auth0.js](/libraries/auth0js) or [Lock](/libraries/lock/lock-authentication-parameters), you can set the parameter in the appropriate options of the library.
+You need to pass the `max_age` parameter to the Authorization API [`/authorize` endpoint](https://auth0.com/docs/api/authentication). If you use [Auth0.js](/docs/libraries/auth0js) or [Lock](/docs/libraries/lock/lock-authentication-parameters), you can set the parameter in the appropriate options of the library.
 
-How you implement re-authentication depends on your specific use-case. Make a distinction between simple re-authentication for sensitive operations vs. [step-up](/secure/multi-factor-authentication/step-up-authentication) (i.e. <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip>) for sensitive operations. Both are valid security measures. The former requires the end user to re-enter their password, whereas the latter requires them to use a pre-configured means of multifactor authentication as well.
+How you implement re-authentication depends on your specific use-case. Make a distinction between simple re-authentication for sensitive operations vs. [step-up](/docs/secure/multi-factor-authentication/step-up-authentication) (i.e. <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip>) for sensitive operations. Both are valid security measures. The former requires the end user to re-enter their password, whereas the latter requires them to use a pre-configured means of multifactor authentication as well.
 
 ## Limitations of prompt=login parameters
 
@@ -78,11 +78,11 @@ The trusted identity document returned by the AS **has no claims that validate w
 
 Here’s a diagram of a simplified implicit flow using the `prompt=login`parameter:
 
-<Frame>![Force Re-Authentication OIDC Implicit Flow](/images/cdy7uua7fh8z/7lhntbIKJ25JqQ1M9uB6rJ/26163ab92ac6e289e1185bcb50db2a72/simplified-implicit-flow-with-prompt-login.png)</Frame>
+<Frame>![Force Re-Authentication OIDC Implicit Flow](/docs/images/cdy7uua7fh8z/7lhntbIKJ25JqQ1M9uB6rJ/26163ab92ac6e289e1185bcb50db2a72/simplified-implicit-flow-with-prompt-login.png)</Frame>
 
 Note that all the end-user has to do is remove the `prompt=login` parameter and the re-authentication step can be skipped:
 
-<Frame>![Simplified Implicit Flow Remove prompt=login](/images/cdy7uua7fh8z/3hye4mnbcsny7oT0L2kxeq/029a66b8f4f98ee56c5d45a2da617e88/simplified-implicit-flow-remove-prompt.png)</Frame>
+<Frame>![Simplified Implicit Flow Remove prompt=login](/docs/images/cdy7uua7fh8z/3hye4mnbcsny7oT0L2kxeq/029a66b8f4f98ee56c5d45a2da617e88/simplified-implicit-flow-remove-prompt.png)</Frame>
 
 The token(s) returned from the first flow above will be identical to the token(s) returned from the second flow. The RP has no specification-defined way of verifying that re-authentication has taken place, and therefore cannot trust that a `prompt=login` has actually yielded a re-authentication.
 
@@ -100,12 +100,12 @@ OPTIONAL: Maximum Authentication Age. Specifies the allowable elapsed time in se
 
 The last sentence in the definition is the most important part. When `max_age` is requested by the RP, an `auth_time` claim must be present in the RP. This means that `max_age` can be used in one of two ways:
 
-* **To enforce a minimum session freshness**: If an app has a requirement that users must re-authenticate once per day, this can be enforced in the context of a much longer <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> session by providing `max_age` with a value. These are defined in seconds.
+* **To enforce a minimum session freshness**: If an app has a requirement that users must re-authenticate once per day, this can be enforced in the context of a much longer <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> session by providing `max_age` with a value. These are defined in seconds.
 * **To force an immediate re-authentication**: If an app requires that a user re-authenticate prior to access, provide a value of 0 for the `max_age` parameter and the AS will force a fresh login.
 
 This requirement is described as follows:
 
-<Frame>![OIDC re-authentication max_age flow](/images/cdy7uua7fh8z/2IHX6TjuCEcMrPZxoHkC41/11a32321789feee0eac6e71e9c64b307/max-age-flow.png)</Frame>
+<Frame>![OIDC re-authentication max_age flow](/docs/images/cdy7uua7fh8z/2IHX6TjuCEcMrPZxoHkC41/11a32321789feee0eac6e71e9c64b307/max-age-flow.png)</Frame>
 
 Note that the RP receives a token with the proper amount of information to validate whether or not re-authentication has taken place. The RP can now consult the `auth_time` claim in the ID token to determine whether or not the `max_age` parameter it requested was fulfilled. In this way, the `max_age=0` parameter is impervious to the same kind of client tampering that could subvert the `prompt=login` parameter.
 
@@ -195,7 +195,7 @@ var strategy = new Auth0OidcStrategy(
 
 
 
-Unlike `max_age=0`, the client must manually perform validation on the `auth_time` parameter. To learn more, read [Use auth_time claims](/authenticate/login/max-age-reauthentication#use-auth_time-claims).
+Unlike `max_age=0`, the client must manually perform validation on the `auth_time` parameter. To learn more, read [Use auth_time claims](/docs/authenticate/login/max-age-reauthentication#use-auth_time-claims).
 
 <Warning>
 
@@ -211,15 +211,15 @@ The example above represents a simplified proof-of-concept (it must have authent
 
 ## Known issues
 
-Auth0 can only guarantee that an exchange took place with the upstream <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>. This may be through the user actually signing in to a third-party identity provider or perhaps the user already had a session and didn't have to sign in again. Either way, Auth0’s exchange with the upstream identity provider will result in an updated `auth_time`.
+Auth0 can only guarantee that an exchange took place with the upstream <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>. This may be through the user actually signing in to a third-party identity provider or perhaps the user already had a session and didn't have to sign in again. Either way, Auth0’s exchange with the upstream identity provider will result in an updated `auth_time`.
 
 Forcing re-authentication within the upstream identity provider is not something Auth0 supports because not all providers support this.
 
 The diagram below presents an example flow for a user who chooses to reauthenticate with a federated connection:
 
-<Frame>![Federated connections do not force re-authentication diagram](/images/cdy7uua7fh8z/8o7GZWQo6LKRTwuYC6dDS/119eeb33dcafcdc5e8d992f284fd5134/federated-connection-flow.png)</Frame>
+<Frame>![Federated connections do not force re-authentication diagram](/docs/images/cdy7uua7fh8z/8o7GZWQo6LKRTwuYC6dDS/119eeb33dcafcdc5e8d992f284fd5134/federated-connection-flow.png)</Frame>
 
-This method assumes you use [database connections](/authenticate/database-connections). External identity providers may or may not support forcing re-authentication. Using `prompt=login` or `prompt=consent` is generally a way to indicate an external (social) identity provider to reauthenticate a user, but Auth0 cannot enforce this.
+This method assumes you use [database connections](/docs/authenticate/database-connections). External identity providers may or may not support forcing re-authentication. Using `prompt=login` or `prompt=consent` is generally a way to indicate an external (social) identity provider to reauthenticate a user, but Auth0 cannot enforce this.
 
 <Warning>
 
@@ -229,5 +229,5 @@ Don’t rely on client-side verification (i.e. in the browser) of the ID token 
 
 ## Learn more
 
-* [Implicit Flow with Form Post](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post)
-* [OpenID Connect Protocol](/authenticate/protocols/openid-connect-protocol)
+* [Implicit Flow with Form Post](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post)
+* [OpenID Connect Protocol](/docs/authenticate/protocols/openid-connect-protocol)

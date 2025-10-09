@@ -10,9 +10,9 @@ title: Set Root Attributes During User Signup
   the Auth0 Management API.
 'twitter:title': Set Root Attributes During User Signup
 ---
-You can set root attributes for a user during sign-up using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. This allows you to minimize the number of API calls required to set root attributes when creating users.
+You can set root attributes for a user during sign-up using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. This allows you to minimize the number of API calls required to set root attributes when creating users.
 
-Make a `POST` call to the [Create a User endpoint](https://auth0.com/docs/api/management/v2#!/Users/post_users). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `CONNECTION_NAME`, `EMAIL_VALUE`, `PASSWORD_VALUE`, `GIVEN_NAME_VALUE`, `FAMILY_NAME_VALUE`, `NAME_VALUE`, `NICKNAME_VALUE`, and `PICTURE` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, initial connection name, email address, password, given name, family name, name, nickname, and picture URL, respectively.
+Make a `POST` call to the [Create a User endpoint](https://auth0.com/docs/api/management/v2#!/Users/post_users). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `CONNECTION_NAME`, `EMAIL_VALUE`, `PASSWORD_VALUE`, `GIVEN_NAME_VALUE`, `FAMILY_NAME_VALUE`, `NAME_VALUE`, `NICKNAME_VALUE`, and `PICTURE` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, initial connection name, email address, password, given name, family name, name, nickname, and picture URL, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -235,7 +235,7 @@ dataTask.resume()
 <tbody>
 <tr>
 <td><code>MGMT_API_ACCESS_TOKEN</code></td>
-<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Token for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/glossary?term=scope">scope</Tooltip> <code>create:users</code>.</td>
+<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Token for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/docs/glossary?term=scope">scope</Tooltip> <code>create:users</code>.</td>
 </tr>
 <tr>
 <td><code>CONNECTION_NAME</code></td>
@@ -280,6 +280,6 @@ If you are using Lock or the [public signup endpoint](https://auth0.com/docs/api
 
 ## Learn more
 
-* [User Profile Structure](/manage-users/user-accounts/user-profiles/user-profile-structure)
-* [Update Root Attributes for Users](/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users)
-* [Set Root Attributes During User Import](/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-import)
+* [User Profile Structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure)
+* [Update Root Attributes for Users](/docs/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users)
+* [Set Root Attributes During User Import](/docs/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-import)

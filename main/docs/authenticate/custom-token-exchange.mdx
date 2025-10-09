@@ -10,21 +10,21 @@ title: Custom Token Exchange
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Custom Token Exchange is currently in Early Access for Enterprise customers only. Reach out to your Auth0 contact to request access. To learn more about Auth0's product release cycle, read [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages).
+Custom Token Exchange is currently in Early Access for Enterprise customers only. Reach out to your Auth0 contact to request access. To learn more about Auth0's product release cycle, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
 
 </Callout>
 
 As defined in [RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693), Custom Token Exchange allows you to enable applications to exchange their existing tokens for Auth0 tokens when calling the `/oauth/token` endpoint. This is useful for advanced integration use cases, such as:
 
-* Get Auth0 tokens for another <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>
-* Integrate an external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>
+* Get Auth0 tokens for another <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>
+* Integrate an external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>
 * Migrate to Auth0
 
 To learn more, read [Example Use Cases and Code Samples](#example-use-cases-and-code-samples).
 
-To govern the token exchange and adjust it to the specific needs of your use case, you can define one or more [Custom Token Exchange Profiles](#custom-token-exchange-profile). Each profile establishes a one-to-one mapping between a `subject_token_type`, which provides information about the user for the transaction, and an [Action](/customize/actions/actions-overview). In that Action, you can write custom code to decode and validate subject tokens passed to the `/oauth/token` endpoint.
+To govern the token exchange and adjust it to the specific needs of your use case, you can define one or more [Custom Token Exchange Profiles](#custom-token-exchange-profile). Each profile establishes a one-to-one mapping between a `subject_token_type`, which provides information about the user for the transaction, and an [Action](/docs/customize/actions/actions-overview). In that Action, you can write custom code to decode and validate subject tokens passed to the `/oauth/token` endpoint.
 
-You can use Custom Token Exchange to authenticate users. For example, in an Action, you can apply the authorization logic for your use case and set the user for the transaction. Auth0 will then issue access, ID, and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip> for the user.
+You can use Custom Token Exchange to authenticate users. For example, in an Action, you can apply the authorization logic for your use case and set the user for the transaction. Auth0 will then issue access, ID, and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip> for the user.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -40,7 +40,7 @@ To learn about different options for implementing secure validation of your subj
 
 ### Application
 
-To use Custom Token Exchange, you must [create a new application](/get-started/auth0-overview/create-applications) with the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. You can create multiple applications to use Custom Token Exchange.
+To use Custom Token Exchange, you must [create a new application](/docs/get-started/auth0-overview/create-applications) with the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. You can create multiple applications to use Custom Token Exchange.
 
 When you create a new application:
 
@@ -59,13 +59,13 @@ When you create a new application:
 
 
 
-2. Enable the [database connection](/authenticate/database-connections) or [enterprise connection](/authenticate/enterprise-connections) you want to use with Custom Token Exchange for the application.
+2. Enable the [database connection](/docs/authenticate/database-connections) or [enterprise connection](/docs/authenticate/enterprise-connections) you want to use with Custom Token Exchange for the application.
 
-3. Make sure your application is flagged as [First-Party](/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) and it is configured as [OIDC Conformant in Dashboard > Applications > Advanced Settings > OAuth](/get-started/applications/application-settings#oauth).
+3. Make sure your application is flagged as [First-Party](/docs/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) and it is configured as [OIDC Conformant in Dashboard > Applications > Advanced Settings > OAuth](/docs/get-started/applications/application-settings#oauth).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Custom DBs with [Import Users to Auth0](/manage-users/user-migration/configure-automatic-migration-from-your-database) enabled are only supported for `setUserById` operations.
+Custom DBs with [Import Users to Auth0](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database) enabled are only supported for `setUserById` operations.
 
 </Callout>
 
@@ -89,21 +89,21 @@ In the Auth0 Dashboard:
 
 3. In the **Create Action** dialog, enter a name and select the **Custom Token Exchange** trigger from the drop-down.
 
-<Frame>![](/images/cdy7uua7fh8z/22vz9dsCFj5Ruot7U0HIVx/1c3dc4b562334dab9d6ac415028ea76e/Screenshot_2025-02-05_at_8.48.34_AM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/22vz9dsCFj5Ruot7U0HIVx/1c3dc4b562334dab9d6ac415028ea76e/Screenshot_2025-02-05_at_8.48.34_AM.png)</Frame>
 
 4. Select **Create**.
 
 5. **Deploy** the Action.
 
-<Frame>![](/images/cdy7uua7fh8z/56NZA69Gmzha167xfgRD0W/302e59276815d2e2644ab2da3b9b5f1f/Screenshot_2025-02-03_at_10.29.17_AM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/56NZA69Gmzha167xfgRD0W/302e59276815d2e2644ab2da3b9b5f1f/Screenshot_2025-02-03_at_10.29.17_AM.png)</Frame>
 
 When you deploy the Action, Auth0 assigns it an Action ID. You still need to add your custom logic to the Action, but first, get the Action ID to create the Custom Token Exchange Profile.
 
 6. To get the Action ID in the Auth0 Dashboard, navigate to the URL of the browser window. The Action ID should be the last part of the URL, as shown in the following image:
 
-<Frame>![](/images/cdy7uua7fh8z/1Xx4UbgZR0FIuLC1KVvhKG/bde4469d770c2ff8d37c19895a0c8e66/Screenshot_2025-02-03_at_10.31.18_AM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/1Xx4UbgZR0FIuLC1KVvhKG/bde4469d770c2ff8d37c19895a0c8e66/Screenshot_2025-02-03_at_10.31.18_AM.png)</Frame>
 
-You can also get the Action ID via the Management API. First, [get a Management API token](/secure/tokens/access-tokens/management-api-access-tokens#get-management-api-tokens) to consume the API. Then, make the following GET request to the `/actions` endpoint:
+You can also get the Action ID via the Management API. First, [get a Management API token](/docs/secure/tokens/access-tokens/management-api-access-tokens#get-management-api-tokens) to consume the API. Then, make the following GET request to the `/actions` endpoint:
 
 ```bash lines
 curl --location 'https://{{YOUR _TENANT}}/api/v2/actions/actions?actionName={{ACTION_NAME}}' \
@@ -233,13 +233,13 @@ curl --location --request DELETE 'https://{{YOUR _TENANT}}/api/v2/token-exchange
 
 The Custom Token Exchange Action, available as a part of Custom Token Exchange Early Access, can use the new API methods listed in [Use the Actions API](#use-the-actions-api).
 
-For other needs, such as adding custom claims to <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip>, your [Post Login Actions trigger](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger) executes after the Custom Token Exchange Action runs for the user that you set for the transaction, thus giving you the same functionality as other login flows.
+For other needs, such as adding custom claims to <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>, your [Post Login Actions trigger](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger) executes after the Custom Token Exchange Action runs for the user that you set for the transaction, thus giving you the same functionality as other login flows.
 
-To identify a transaction that uses the token exchange grant type, look for an `event.transaction.protocol` value equal to `oauth2-token-exchange` in your [Post Login Action](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger). Because the token exchange grant type is used by both the Custom Token Exchange and Native Social Login transactions, you can use the value of the `subject_token_type` to distinguish between the two, where the `subject_token_type` corresponds to one of your Custom Token Exchange Profiles.
+To identify a transaction that uses the token exchange grant type, look for an `event.transaction.protocol` value equal to `oauth2-token-exchange` in your [Post Login Action](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger). Because the token exchange grant type is used by both the Custom Token Exchange and Native Social Login transactions, you can use the value of the `subject_token_type` to distinguish between the two, where the `subject_token_type` corresponds to one of your Custom Token Exchange Profiles.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Custom Token Exchange Early Access does not support [multi-factor authentication](/secure/multi-factor-authentication). Enabling MFA as a tenant policy or using `api.multifactor.enable()`, `api.authentication.challengeWith(),` or `api.authentication.enrollWith()` is not yet supported for Custom Token Exchange and, within your Post-Login Action trigger, will result in the transaction failing with a non-recoverable error. Make sure you skip enabling MFA when `event.transaction.protocol==oauth2-token-exchange` depending on the `subject_token_type` value.
+Custom Token Exchange Early Access does not support [multi-factor authentication](/docs/secure/multi-factor-authentication). Enabling MFA as a tenant policy or using `api.multifactor.enable()`, `api.authentication.challengeWith(),` or `api.authentication.enrollWith()` is not yet supported for Custom Token Exchange and, within your Post-Login Action trigger, will result in the transaction failing with a non-recoverable error. Make sure you skip enabling MFA when `event.transaction.protocol==oauth2-token-exchange` depending on the `subject_token_type` value.
 
 MFA support will be added in next iterations of Custom Token Exchange EA.
 
@@ -305,13 +305,13 @@ exports.onExecuteCustomTokenExchange = async (event, api) => {
 
 #### api.authentication.setUserByConnection(connection_name, user_profile, options)
 
-Sets a user and their associated profile attributes in a specified connection. This is equivalent to returning the specified user profile from the federated IdP (or the corresponding Custom DB with [Import Users to Auth0](/manage-users/user-migration/configure-automatic-migration-from-your-database) disabled) when a user logs into this connection. You can configure whether this operation should create the user if it does not exist, and whether it should update the profile using the provided user profile attributes.
+Sets a user and their associated profile attributes in a specified connection. This is equivalent to returning the specified user profile from the federated IdP (or the corresponding Custom DB with [Import Users to Auth0](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database) disabled) when a user logs into this connection. You can configure whether this operation should create the user if it does not exist, and whether it should update the profile using the provided user profile attributes.
 
 The login count will be incremented for each user that is logged in via `setUserByConnection()`. This method always fails for blocked users.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Custom Token Exchange EA currently supports `setUserByConnection()` for Auth0 database connections, Enterprise and Social connections, and Custom DBs with [Import Users to Auth0](/manage-users/user-migration/configure-automatic-migration-from-your-database) disabled.
+Custom Token Exchange EA currently supports `setUserByConnection()` for Auth0 database connections, Enterprise and Social connections, and Custom DBs with [Import Users to Auth0](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database) disabled.
 
 </Callout>
 
@@ -404,15 +404,15 @@ The current version provides support for the following connection strategies. Th
 
 Auth0 database connections:
 
-* Custom database connections with  [Import Users to Auth0](/manage-users/user-migration/configure-automatic-migration-from-your-database) disabled
+* Custom database connections with  [Import Users to Auth0](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database) disabled
 
 Enterprise connections:
 
-* [Active Directory](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap)
-* [SAML IdPs](/authenticate/identity-providers/enterprise-identity-providers/saml)
-* [OIDC IdPs](/authenticate/identity-providers/enterprise-identity-providers/oidc)
-* [Okta](/authenticate/identity-providers/enterprise-identity-providers/okta)
-* [ADFS](/authenticate/identity-providers/enterprise-identity-providers/adfs)
+* [Active Directory](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap)
+* [SAML IdPs](/docs/authenticate/identity-providers/enterprise-identity-providers/saml)
+* [OIDC IdPs](/docs/authenticate/identity-providers/enterprise-identity-providers/oidc)
+* [Okta](/docs/authenticate/identity-providers/enterprise-identity-providers/okta)
+* [ADFS](/docs/authenticate/identity-providers/enterprise-identity-providers/adfs)
 
 Social connections:
 
@@ -430,15 +430,15 @@ Users are dynamically created only when `creationBehavior` is set to `create_if_
 When creating users:
 
 * You must provide an identifier as configured by your connection. By default, an email is required.
-* For connections that use [Flexible Identifiers and Attributes](/authenticate/database-connections/flexible-identifiers-and-attributes), you may provide a username and phone number if the corresponding attribute is enabled for the connection.
+* For connections that use [Flexible Identifiers and Attributes](/docs/authenticate/database-connections/flexible-identifiers-and-attributes), you may provide a username and phone number if the corresponding attribute is enabled for the connection.
 * For connections that don’t use Flexible Identifiers and Attributes:
 
   + You must provide an email address.
-  + You may provide a username when the connection’s **Require Username** is set to `true`. To learn more, read [Adding Username for Database Connections](/authenticate/database-connections/require-username).
+  + You may provide a username when the connection’s **Require Username** is set to `true`. To learn more, read [Adding Username for Database Connections](/docs/authenticate/database-connections/require-username).
   + You cannot provide a `phone_number`.
   * You may specify `email_verified` and `phone_verified.`
 
-A random password is generated for users dynamically created in Auth0 database connections. There are different options to trigger a [password reset flow](/authenticate/database-connections/password-change) when needed after user creation.
+A random password is generated for users dynamically created in Auth0 database connections. There are different options to trigger a [password reset flow](/docs/authenticate/database-connections/password-change) when needed after user creation.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -506,11 +506,11 @@ exports.onExecuteCustomTokenExchange = async (event, api) => {
 
 
 
-If you have [configured and enabled a welcome email template](/customize/email/email-templates), Auth0 automatically sends a welcome email to newly created users when no email verification is sent.
+If you have [configured and enabled a welcome email template](/docs/customize/email/email-templates), Auth0 automatically sends a welcome email to newly created users when no email verification is sent.
 
 ##### Set metadata
 
-Unlike the [Update a User](https://auth0.com/docs/api/management/v2/users/patch-users-by-id) endpoint, the `setUserByConnection()` method does not allow you to set user or application metadata. Instead, you can use `api.user.setAppMetadata`. To learn how to correctly use metadata, read [How Metadata Works in User Profiles](/manage-users/user-accounts/metadata). For metadata best practices, read [How to Manage User Metadata with the Post-login Trigger](/manage-users/user-accounts/metadata/manage-user-metadata#best-practices).
+Unlike the [Update a User](https://auth0.com/docs/api/management/v2/users/patch-users-by-id) endpoint, the `setUserByConnection()` method does not allow you to set user or application metadata. Instead, you can use `api.user.setAppMetadata`. To learn how to correctly use metadata, read [How Metadata Works in User Profiles](/docs/manage-users/user-accounts/metadata). For metadata best practices, read [How to Manage User Metadata with the Post-login Trigger](/docs/manage-users/user-accounts/metadata/manage-user-metadata#best-practices).
 
 #### api.user.setAppMetadata(name, value)
 
@@ -650,7 +650,7 @@ Denies the transaction and increments the counter of failed attempts for the ext
 
 When the maximum number of failed attempts is reached, Auth0 blocks traffic for a period of time for all Custom Token Exchange requests coming from that IP with a `429 Too Many Requests` error response with error code `too_many_attempts`. To learn more read [Attack Protection](#attack-protection).
 
-Use this method whenever you receive a Custom Token Exchange request with a subject token that is not properly signed/encrypted or expired, or under any circumstance that points to any non-legitimate usage such as in a spoofing or replay attack. This allows Auth0 to activate <Tooltip tip="Suspicious IP Throttling: Form of attack protection that protects your tenant against suspicious logins targeting too many accounts from a single IP address." cta="View Glossary" href="/glossary?term=Suspicious+IP+Throttling">Suspicious IP Throttling</Tooltip> protection as per your configuration.
+Use this method whenever you receive a Custom Token Exchange request with a subject token that is not properly signed/encrypted or expired, or under any circumstance that points to any non-legitimate usage such as in a spoofing or replay attack. This allows Auth0 to activate <Tooltip tip="Suspicious IP Throttling: Form of attack protection that protects your tenant against suspicious logins targeting too many accounts from a single IP address." cta="View Glossary" href="/docs/glossary?term=Suspicious+IP+Throttling">Suspicious IP Throttling</Tooltip> protection as per your configuration.
 
 By default, Suspicious IP Throttling allows for 10 max attempts at a rate of 6 attempts/hour. To learn more, read [Attack Protection](#attack-protection).
 
@@ -748,9 +748,9 @@ Returns a cache record if an item is found in the cache for the supplied `key`. 
 
 Store or update a string value in the cache at the specified key.
 
-Values stored in this cache are scoped to the Trigger in which they are set. They are subject to the [Actions Cache Limits](/customize/actions/limitations).
+Values stored in this cache are scoped to the Trigger in which they are set. They are subject to the [Actions Cache Limits](/docs/customize/actions/limitations).
 
-Values stored in this way will have lifetimes of up to the specified `ttl` or `expires_at` values. If no lifetime is specified, a default lifetime of 15 minutes will be used. Lifetimes may not exceed the maximum duration listed at [Actions Cache Limits](/customize/actions/limitations).
+Values stored in this way will have lifetimes of up to the specified `ttl` or `expires_at` values. If no lifetime is specified, a default lifetime of 15 minutes will be used. Lifetimes may not exceed the maximum duration listed at [Actions Cache Limits](/docs/customize/actions/limitations).
 
 Returns `CacheWriteSuccess` if the values are stored successfully. Otherwise, you will receive `CacheWriteError`.
 
@@ -903,7 +903,7 @@ In addition to new Actions API methods, you can use data in the Actions Event to
 
 After you create your Token Exchange Action using the above API and Event objects, deploy the changes by clicking **Deploy** at the top of the page.
 
-<Frame>![](/images/cdy7uua7fh8z/61fgdh8VJEmfiYn0l7Tem0/3ceac5de5413373662e8b800d8f80210/Screenshot_2025-02-03_at_9.30.50_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/61fgdh8VJEmfiYn0l7Tem0/3ceac5de5413373662e8b800d8f80210/Screenshot_2025-02-03_at_9.30.50_PM.png)</Frame>
 
 ## Call Token Exchange
 
@@ -979,7 +979,7 @@ curl --location 'https://{{YOUR_TENANT}}/oauth/token' \
 
 ## Attack Protection
 
-To protect against spoofing and replay attacks, in which a <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/glossary?term=bad+actor">bad actor</Tooltip> tries to guess or reuse a subject token, Custom Token Exchange incorporates support for [Suspicious IP Throttling](/secure/attack-protection/suspicious-ip-throttling). This enables you to specifically signal from your code in Actions when [a subject token is invalid](#api-access-rejectinvalidsubjecttoken-reason-), so Auth0 can count the failed attempts sent from that external IP.
+To protect against spoofing and replay attacks, in which a <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/docs/glossary?term=bad+actor">bad actor</Tooltip> tries to guess or reuse a subject token, Custom Token Exchange incorporates support for [Suspicious IP Throttling](/docs/secure/attack-protection/suspicious-ip-throttling). This enables you to specifically signal from your code in Actions when [a subject token is invalid](#api-access-rejectinvalidsubjecttoken-reason-), so Auth0 can count the failed attempts sent from that external IP.
 
 When the number of failed attempts from an IP address reaches a pre-configured threshold, Auth0 blocks traffic for a Custom Token Exchange request coming from that IP with the following error:
 
@@ -1003,16 +1003,16 @@ Although it is recommended for all cases, **it is especially important that you 
 
 To properly use Suspicious IP Throttling protection, remember to use `api.access.rejectInvalidSubjectToken` in your Action code whenever the received subject token does not pass strong validation.
 
-Suspicious IP Throttling is activated by default for Auth0 tenants. To learn more about how to (de)activate and configure it, read [Suspicious IP Throttling](/secure/attack-protection/suspicious-ip-throttling). When activated, the default settings for Custom Token Exchange will be applied:
+Suspicious IP Throttling is activated by default for Auth0 tenants. To learn more about how to (de)activate and configure it, read [Suspicious IP Throttling](/docs/secure/attack-protection/suspicious-ip-throttling). When activated, the default settings for Custom Token Exchange will be applied:
 
 * Threshold: 10. Maximum number of failed attempts for an IP address.
 * Throttling rate: 6 per hour. One additional attempt will become available after every 10 minutes until the threshold is refilled.
 
-<Frame>![](/images/cdy7uua7fh8z/47PB3OAci9fotSHFrCNBVn/1bafbaacbeb22a4d94eb78506ab89bb8/Screenshot_2025-02-03_at_4.44.29_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/47PB3OAci9fotSHFrCNBVn/1bafbaacbeb22a4d94eb78506ab89bb8/Screenshot_2025-02-03_at_4.44.29_PM.png)</Frame>
 
 You can configure a custom threshold and throttling rate for Custom Token Exchange with the Management API.
 
-First, [get a Management API token](/secure/tokens/access-tokens/management-api-access-tokens#get-management-api-tokens) to consume the API. Then, send the following GET request to the [Get Suspicious IP Throttling settings endpoint](https://auth0.com/docs/api/management/v2/attack-protection/get-suspicious-ip-throttling):
+First, [get a Management API token](/docs/secure/tokens/access-tokens/management-api-access-tokens#get-management-api-tokens) to consume the API. Then, send the following GET request to the [Get Suspicious IP Throttling settings endpoint](https://auth0.com/docs/api/management/v2/attack-protection/get-suspicious-ip-throttling):
 
 ```bash lines
 curl --location 'https://{{YOUR _TENANT}}/api/v2/attack-protection/suspicious-ip-throttling' \
@@ -1086,11 +1086,11 @@ This section describes example use cases and specific code samples with recommen
 
 GearUp has a mobile App used by millions of people and needs to modernize their Identity solution so they’ve decided to switch to Auth0. However, they want to avoid forcing users to re-authenticate as they migrate from their legacy identity provider, or IdP, as that adds friction to the user experience.
 
-To solve this, and to limit risks, GearUp is migrating incrementally. For each user, they wish to exchange the refresh token from their legacy IdP for an Auth0 access token, refresh token and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> set. This allows their app to seamlessly start using Auth0 as the IdP for this user, as well as consume GearUp APIs using Auth0-issued tokens. Once the exchange is done for all users, the app will be fully migrated and the old IdP can be disconnected–all without impacting end users and GearUp’s business.
+To solve this, and to limit risks, GearUp is migrating incrementally. For each user, they wish to exchange the refresh token from their legacy IdP for an Auth0 access token, refresh token and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> set. This allows their app to seamlessly start using Auth0 as the IdP for this user, as well as consume GearUp APIs using Auth0-issued tokens. Once the exchange is done for all users, the app will be fully migrated and the old IdP can be disconnected–all without impacting end users and GearUp’s business.
 
-<Frame>![](/images/cdy7uua7fh8z/2Ke6p3yZl06KT4HHqtaVu9/5d9c5feb98d614d6d793fb01ccc03e92/Screenshot_2025-02-03_at_5.00.32_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/2Ke6p3yZl06KT4HHqtaVu9/5d9c5feb98d614d6d793fb01ccc03e92/Screenshot_2025-02-03_at_5.00.32_PM.png)</Frame>
 
-As a prerequisite, GearUp has done a [bulk user import](/manage-users/user-migration/bulk-user-imports) into their Auth0 tenant and the mobile app has a valid legacy refresh token for each user to be migrated.
+As a prerequisite, GearUp has done a [bulk user import](/docs/manage-users/user-migration/bulk-user-imports) into their Auth0 tenant and the mobile app has a valid legacy refresh token for each user to be migrated.
 
 1. The mobile app makes a request to Auth0 to exchange the legacy refresh token, setting it as the subject token.
 2. The corresponding Custom Token Exchange profile Action executes. It validates the refresh token with the legacy IdP and gets the external user ID from the user profile. It then applies the required authorization policy and finally sets the user.
@@ -1166,7 +1166,7 @@ Another use case involves GearUp partnering with Air0, a leading travel provider
 
 Once again, the solution needs to be invisible to end users by avoiding re-authentication to GearUp. To solve this problem, GearUp’s JavaScript library can perform a token exchange using the external Air0 ID token as the input. This results in an Auth0 access token that is generated and associated with the corresponding GearUp user based on their email address. Once the GearUp library gets the access token, it can start using GearUp’s APIs to offer car rental services directly within Air0’s website.
 
-<Frame>![](/images/cdy7uua7fh8z/34AVzwyYARK6fn2IEnLsQn/409082d736d8495b637626406977fb1f/Screenshot_2025-02-03_at_5.08.47_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/34AVzwyYARK6fn2IEnLsQn/409082d736d8495b637626406977fb1f/Screenshot_2025-02-03_at_5.08.47_PM.png)</Frame>
 
 As a prerequisite, GearUp has set up Air0 IdP as a federated enterprise or social connection, so the user can authenticate via federate login or alternatively via Custom Token Exchange as follows:
 
@@ -1247,7 +1247,7 @@ exports.onExecuteCustomTokenExchange = async (event, api) => {
 
 
 
-Read [code samples](#code-samples) for a more detailed example on how to securely validate <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWTs">JWTs</Tooltip>.
+Read [code samples](#code-samples) for a more detailed example on how to securely validate <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWTs">JWTs</Tooltip>.
 
 ### Use Case: Get Auth0 tokens for another audience
 
@@ -1255,7 +1255,7 @@ GearUp wants to improve how it authorizes calls between its internal microservic
 
 When the API request first arrives at service A, it exchanges the received access token for a new one that allows it to consume service B as the new audience. If the authorization policy governing the token exchange allows it, service A gets the new token back and can now consume service B. The user ID is kept unchanged in the new token, so the proper user context is retained throughout the process.
 
-<Frame>![](/images/cdy7uua7fh8z/5Zw7yaJGct9eHAl4rdf72D/42274a5896851a16bea402ac52037f52/Screenshot_2025-02-03_at_5.17.14_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/5Zw7yaJGct9eHAl4rdf72D/42274a5896851a16bea402ac52037f52/Screenshot_2025-02-03_at_5.17.14_PM.png)</Frame>
 
 The GearUp application has initially obtained an access token to consume API A on behalf of a user:
 
@@ -1447,7 +1447,7 @@ exports.onExecuteCustomTokenExchange = async (event, api) => {
 
 Consider the following recommendations:
 
-* Use [Actions Secrets](/customize/actions/write-your-first-action#add-a-secret) to securely store your symmetric secrets.
+* Use [Actions Secrets](/docs/customize/actions/write-your-first-action#add-a-secret) to securely store your symmetric secrets.
 * Adhere to [RFC8725](https://www.rfc-editor.org/rfc/rfc8725.txt) best practices
 * Use secure algorithms such as HS256, along with high entropy random secrets (e.g. of at least 256 bits long)
 
@@ -1516,7 +1516,7 @@ async function validateToken(subjectToken, symmetricKey) {
 
 #### Validate opaque token with an external service
 
-Use [Action Secrets](/customize/actions/write-your-first-action#add-a-secret) to securely store your external IdP <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip>.
+Use [Action Secrets](/docs/customize/actions/write-your-first-action#add-a-secret) to securely store your external IdP <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip>.
 
 ```javascript lines expandable
 const tokenEndpoint = "EXTERNAL_TOKEN_ ENDPOINT";
@@ -1663,8 +1663,8 @@ This is an Early Access feature and thus comes with some limitations and incompa
 The following features are not supported (or will not work properly) with Custom Token Exchange EA:
 
 * Organizations
-* <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip>: `api.authentication.challengeWith()` and `api.multifactor.enable()` commands in Post Login actions are not yet supported for Custom Token Exchange and will result in the transaction failing with a non-recoverable error; similarly, transactions will also fail when MFA is configured as a tenant policy
-* Custom DB Connections with [Import Users to Auth0](/manage-users/user-migration/configure-automatic-migration-from-your-database) enabled are not supported for `setUserByConnection()` operations
+* <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip>: `api.authentication.challengeWith()` and `api.multifactor.enable()` commands in Post Login actions are not yet supported for Custom Token Exchange and will result in the transaction failing with a non-recoverable error; similarly, transactions will also fail when MFA is configured as a tenant policy
+* Custom DB Connections with [Import Users to Auth0](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database) enabled are not supported for `setUserByConnection()` operations
 * Specific impersonation support (e.g. actor token and actor claim)
 * Third-Party and Non-OIDC Conformant Clients
 
@@ -1780,4 +1780,4 @@ You may receive an `invalid_request` error with a `consent_required` error descr
 
 To resolve this issue, enable the **Allow Skipping User Consent** option for your API in the Auth0 Dashboard.
 
-<Frame>![](/images/cdy7uua7fh8z/4eKWTJtCQwSHUZyKU81mWm/33c1966367d2b7c157b414fa1f04c026/Screenshot_2025-02-03_at_5.36.38_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/4eKWTJtCQwSHUZyKU81mWm/33c1966367d2b7c157b414fa1f04c026/Screenshot_2025-02-03_at_5.36.38_PM.png)</Frame>

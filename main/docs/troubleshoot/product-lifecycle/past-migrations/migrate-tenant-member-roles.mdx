@@ -19,7 +19,7 @@ Both your specific login implementation and your Auth0 plan or custom agreement 
 
 ## What's changing
 
-Previously, if you were a tenant administrator, you could invite additional administrators to have access to the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and all or specific applications within that tenant. That role was called **Application Admin**. The tenant members with that role were given full access to the selected application(s) settings plus read-access to non-enterprise connections and users. After 01 February 2021, the Application Admin role as defined above will be replaced by a new set of least privileged roles.
+Previously, if you were a tenant administrator, you could invite additional administrators to have access to the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and all or specific applications within that tenant. That role was called **Application Admin**. The tenant members with that role were given full access to the selected application(s) settings plus read-access to non-enterprise connections and users. After 01 February 2021, the Application Admin role as defined above will be replaced by a new set of least privileged roles.
 
 ### Why are we making this change
 
@@ -49,7 +49,7 @@ This will convert any existing members that have the **Application Admin** role 
 
 1. Go to [Dashboard > Tenant Settings > Tenant Members](https://manage.auth0.com/#/tenant/admins) and review which members have the **Application Admin** role assigned. (You may want to communicate to those members that their experience in the Dashboard will change: they will lose access to Users and Connections sections.)
 
-   <Frame>![Dashboard - Tenant Settings - Tenant Members](/images/cdy7uua7fh8z/1lsoGSi3Wgou5SF1iGAIgH/93fbd705f03bbdca5791e485e1b23ac1/tenant-settings-tenant-admins.png)</Frame>
+   <Frame>![Dashboard - Tenant Settings - Tenant Members](/docs/images/cdy7uua7fh8z/1lsoGSi3Wgou5SF1iGAIgH/93fbd705f03bbdca5791e485e1b23ac1/tenant-settings-tenant-admins.png)</Frame>
 2. Go to [Dashboard > Tenant Settings > Advanced](https://manage.auth0.com/#/tenant/advanced) and under **Migrations**, turn off the **Application Admin role** migration toggle.
 
    This will convert any existing members that have the **Application Admin** role to the new **Editor - Specific Apps** role with permission to manage the same set of applications.
@@ -67,8 +67,8 @@ Do the following steps to ensure the members are assigned to a role supported by
 
 ## Learn more
 
-* [Auth0 Dashboard](/get-started/auth0-overview/dashboard)
-* [Manage Dashboard Access](/get-started/manage-dashboard-access)
-* [Dashboard Access by Role](/get-started/manage-dashboard-access/feature-access-by-role)
-* [Add Tenant Members](/get-started/manage-dashboard-access/add-dashboard-users)
-* [Edit Tenant Members](/get-started/manage-dashboard-access/edit-dashboard-users)
+* [Auth0 Dashboard](/docs/get-started/auth0-overview/dashboard)
+* [Manage Dashboard Access](/docs/get-started/manage-dashboard-access)
+* [Dashboard Access by Role](/docs/get-started/manage-dashboard-access/feature-access-by-role)
+* [Add Tenant Members](/docs/get-started/manage-dashboard-access/add-dashboard-users)
+* [Edit Tenant Members](/docs/get-started/manage-dashboard-access/edit-dashboard-users)

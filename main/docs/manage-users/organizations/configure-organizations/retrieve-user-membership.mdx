@@ -9,7 +9,7 @@ title: Retrieve User's Organization Memberships
   the Auth0 Management API.
 'twitter:title': Retrieve User's Organization Memberships
 ---
-When working with [organizations](/manage-users/organizations/organizations-overview) programmatically, you may need to retrieve a list of organizations to which a user is assigned membership.
+When working with [organizations](/docs/manage-users/organizations/organizations-overview) programmatically, you may need to retrieve a list of organizations to which a user is assigned membership.
 
 ## Management API
 
@@ -19,7 +19,7 @@ Up to 1000 organization members can be displayed using the Auth0 Dashboard or Ma
 
 </Warning>
 
-Make a `GET` call to the `Get User Organizations` endpoint. Be sure to replace the `USER_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with the user ID and your <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
+Make a `GET` call to the `Get User Organizations` endpoint. Be sure to replace the `USER_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with the user ID and your <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
 
 <CodeGroup>
 
@@ -207,7 +207,7 @@ If you are using custom domains, this should be your custom domain name.
 
 | Value | Description |
 | `USER_ID` | ID of the user for which you want to retrieve organization membership. |
-| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
+| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
 
 ### Response status codes
 

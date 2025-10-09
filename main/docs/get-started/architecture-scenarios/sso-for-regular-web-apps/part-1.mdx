@@ -22,7 +22,7 @@ Identity-as-Service ("IDaaS") is a cloud-based service for identity and access m
 
 ## Which protocol to use
 
-The next decision has to do with which protocol to use, <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> with <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) or <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>.
+The next decision has to do with which protocol to use, <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> with <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) or <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -30,7 +30,7 @@ Auth0 implements proven, common and popular identity protocols, both for consume
 
 </Callout>
 
-**OpenID Connect** is an authentication protocol, based on the OAuth 2.0 family of specifications. It uses simple JSON <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=identity+tokens">identity tokens</Tooltip> (<Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip>) delivered via the OAuth 2.0 protocol.
+**OpenID Connect** is an authentication protocol, based on the OAuth 2.0 family of specifications. It uses simple JSON <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=identity+tokens">identity tokens</Tooltip> (<Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip>) delivered via the OAuth 2.0 protocol.
 
 <Info>
 ### OAuth vs OpenID Connect (OIDC)
@@ -58,7 +58,7 @@ The flow goes as follows:
 4. The Application sends the authorization code to Auth0, along with the application credentials (client_id and client_secret), and asks for a token.
 5. Auth0 authenticates the Application (using the client_id and client_secret) and validates the authorization code. If valid, Auth0 responds back with an ID Token.
 
-<Frame>![undefined](/images/cdy7uua7fh8z/5qO4QJH0YW34apsypLXnIk/e27a8cf1469c00d948cc476b11b54300/authz-code-flow.png)</Frame>
+<Frame>![undefined](/docs/images/cdy7uua7fh8z/5qO4QJH0YW34apsypLXnIk/e27a8cf1469c00d948cc476b11b54300/authz-code-flow.png)</Frame>
 
 <Info>
 ### Form Post Response Mode
@@ -73,7 +73,7 @@ The **ID Token** (usually referred to as `id_token` in code samples) is a *
 
 Tokens are alphanumeric strings used in token-based authentication. They allow users to authenticate with a username and password once and get a token in return which they can use from that point on. They have a limited lifetime duration.
 
-**JSON Web Tokens (JWTs)** are tokens that conform to the [JSON Web Token Standard](https://tools.ietf.org/html/rfc7519) and contain information about an identity in the form of claims. They are self-contained in that it is not necessary for the recipient to call a server to validate the token. JWTs can be signed using a secret (with the **HMAC** algorithm) or a public/private key pair using **RSA**. You can find more information on JWT [here](/secure/tokens/json-web-tokens).
+**JSON Web Tokens (JWTs)** are tokens that conform to the [JSON Web Token Standard](https://tools.ietf.org/html/rfc7519) and contain information about an identity in the form of claims. They are self-contained in that it is not necessary for the recipient to call a server to validate the token. JWTs can be signed using a secret (with the **HMAC** algorithm) or a public/private key pair using **RSA**. You can find more information on JWT [here](/docs/secure/tokens/json-web-tokens).
 
 The ID Token, which is a JWT, conforms to an industry standard (IETF [RFC 7519](https://tools.ietf.org/html/rfc7519)) and contains three parts: A header, a body and a signature.
 

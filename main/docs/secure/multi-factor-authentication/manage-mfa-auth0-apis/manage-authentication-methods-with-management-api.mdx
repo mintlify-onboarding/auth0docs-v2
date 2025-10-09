@@ -11,7 +11,7 @@ title: Manage Authentication Methods with Management API
 ---
 <Card title="Before you start">
 
-* Configure a [machine-to-machine (M2M) application](/get-started/auth0-overview/create-applications/machine-to-machine-apps), and [grant it access to the Auth0 Management API](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the following scopes:
+* Configure a [machine-to-machine (M2M) application](/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps), and [grant it access to the Auth0 Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the following scopes:
 
   + `create:authentication_methods`
   + `read:authentication_methods`
@@ -20,9 +20,9 @@ title: Manage Authentication Methods with Management API
 
 </Card>
 
-The [Auth0 Management API](https://auth0.com/docs/api/management/v2) provides several endpoints you can use to manage your users' <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> authentication methods.
+The [Auth0 Management API](https://auth0.com/docs/api/management/v2) provides several endpoints you can use to manage your users' <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> authentication methods.
 
-This method relies on authenticating using a confidential application. To learn more about confidential vs. public applications, read [Confidential and Public Applications](/get-started/applications/confidential-and-public-applications).
+This method relies on authenticating using a confidential application. To learn more about confidential vs. public applications, read [Confidential and Public Applications](/docs/get-started/applications/confidential-and-public-applications).
 
 ## Get all authentication methods
 
@@ -205,7 +205,7 @@ dataTask.resume()
 
 ### Responses
 
-For each valid request, the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> will return a response in the JSON format.
+For each valid request, the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> will return a response in the JSON format.
 
 ```json lines
 [
@@ -424,7 +424,7 @@ For each valid request, the Management API will return a response in the JSON fo
 
 ## Create an authentication method
 
-Use the [Creates an authentication method for a given user](https://auth0.com/docs/api/management/v2#!/Users/post_authentication_methods) endpoint to create an authentication method for a user, including SMS, email, one-time password (OTP), or WebAuthn with security keys. To learn more about available MFA authentication factors, read [Multi-Factor Authentication Factors](/secure/multi-factor-authentication/multi-factor-authentication-factors).
+Use the [Creates an authentication method for a given user](https://auth0.com/docs/api/management/v2#!/Users/post_authentication_methods) endpoint to create an authentication method for a user, including SMS, email, one-time password (OTP), or WebAuthn with security keys. To learn more about available MFA authentication factors, read [Multi-Factor Authentication Factors](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors).
 
 This endpoint requires the scope: `create:authentication_methods`.
 
@@ -2161,7 +2161,7 @@ For each valid request, the Management API will return a response with a `204` s
 
 ## Learn more
 
-* [Multi-Factor Authentication Factors](/secure/multi-factor-authentication/multi-factor-authentication-factors)
-* [Register Machine-to-Machine Applications](/get-started/auth0-overview/create-applications/machine-to-machine-apps)
-* [Get Management API Access Tokens for Production](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production)
-* [Confidential and Public Applications](/get-started/applications/confidential-and-public-applications)
+* [Multi-Factor Authentication Factors](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors)
+* [Register Machine-to-Machine Applications](/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps)
+* [Get Management API Access Tokens for Production](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production)
+* [Confidential and Public Applications](/docs/get-started/applications/confidential-and-public-applications)

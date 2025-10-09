@@ -10,14 +10,14 @@ title: Configure PingFederate as SAML Identity Provider
   provider for use with Auth0.
 'twitter:title': Configure PingFederate as SAML Identity Provider
 ---
-PingFederate is a federation server that provides identity management, <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=single+sign-on">single sign-on</Tooltip>, and API security for the enterprise. See the complete PingFederate instructions to [configure PingFederate as an identity provider](https://docs.pingidentity.com/r/en-us/pingfederate-120/pf_ident_provid_sso_config).
+PingFederate is a federation server that provides identity management, <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=single+sign-on">single sign-on</Tooltip>, and API security for the enterprise. See the complete PingFederate instructions to [configure PingFederate as an identity provider](https://docs.pingidentity.com/r/en-us/pingfederate-120/pf_ident_provid_sso_config).
 
-To configure Auth0 to use PingFederate as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>, you will use primarily the default values and your Auth0 tenant metadata file to upload the required configuration parameter values for your Auth0 tenant. If the metadata upload fails for some reason, these are the most important configuration parameters:
+To configure Auth0 to use PingFederate as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>, you will use primarily the default values and your Auth0 tenant metadata file to upload the required configuration parameter values for your Auth0 tenant. If the metadata upload fails for some reason, these are the most important configuration parameters:
 
 * **EntityID:** `urn:auth0:{yourTenant}:{yourConnectionName}`
 * **Assertion Consumer Service URL:** `https://{yourDomain}/login/callback`
 * **Logout URL:** `https://{yourDomain}/logout`
-* **HTTP-Redirect** binding for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> Request
+* **HTTP-Redirect** binding for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> Request
 * **HTTP-POST** binding for SAML Response
 
 1. Download your Auth0 metadata file from `https://YOUR_DOMAIN/samlp/metadata?connection=YOUR_CONNECTION_NAME`. Make sure that you use your custom domain if you have one configured. You will upload this file to import your Auth0 tenant information into the PingFederate configuration.
@@ -43,4 +43,4 @@ To configure Auth0 to use PingFederate as an <Tooltip tip="Identity Provider (Id
 
 To use IdP-Initiated SSO, make sure to include the `connection` parameter in the Assertion Consumer Service URL: `https://{yourDomain}/login/callback?connection={yourConnectionName}`.
 
-To learn how to configure Auth0 to route the incoming SAML responses, read [Configure Identity Provider-Initiated Single Sign-On](/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
+To learn how to configure Auth0 to route the incoming SAML responses, read [Configure Identity Provider-Initiated Single Sign-On](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).

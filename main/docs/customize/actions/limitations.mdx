@@ -43,8 +43,8 @@ The following limitations exist when using Actions:
 ## Executions
 
 * Each execution of a trigger must complete in 20 seconds or less or the processing will end in an error. Limiting HTTP requests is the best way to keep within this time limit.
-* Each execution of a trigger must complete in 20 seconds or less or the processing will end in an error. Limiting long-running processes, like outbound HTTP requests without a timeout, is necessary to keep within this time limit. An Action that [redirects users to an external page](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions) has a separate timeout before the redirect and after.
-* A new `event.request` object is issued anytime an Action trigger is suspended and then subsequently resumed (for example, due to a redirect or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> challenge).
+* Each execution of a trigger must complete in 20 seconds or less or the processing will end in an error. Limiting long-running processes, like outbound HTTP requests without a timeout, is necessary to keep within this time limit. An Action that [redirects users to an external page](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions) has a separate timeout before the redirect and after.
+* A new `event.request` object is issued anytime an Action trigger is suspended and then subsequently resumed (for example, due to a redirect or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> challenge).
 
 ## Logs
 
@@ -63,7 +63,7 @@ The following limitations exist when using Actions:
 
 ## SAML attributes
 
-* A maximum of 100 <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> attributes can be changed or added by Actions.
+* A maximum of 100 <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> attributes can be changed or added by Actions.
 * SAML attribute names have a maximum size of 1kB.
 * SAML values have a maximum size of 2kB.
 * The total SAML assertions have a maximum size of 10kB.
@@ -84,12 +84,12 @@ The following limitations exist when using Actions:
 
 ## Service requests
 
-* Calls made to the Auth0 <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> and User Metadata updates are [rate limited](/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
-* HTTP calls to external services originate from [these IP addresses](/secure/security-guidance/data-security/allowlist).
+* Calls made to the Auth0 <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> and User Metadata updates are [rate limited](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
+* HTTP calls to external services originate from [these IP addresses](/docs/secure/security-guidance/data-security/allowlist).
 
 ## Transaction metadata
 
-* Is available only on [post-login Actions](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger).
+* Is available only on [post-login Actions](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger).
 * Is not persisted beyond the completion of an authentication trigger.
 * Cannot be accessed outside of the Actions within the same transaction. (\*)
 * Keys are limited to 64 characters.
@@ -100,7 +100,7 @@ The following limitations exist when using Actions:
 
 ## Upstream tokens from external IdPs
 
-* Retrieving External <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=IdP">IdP</Tooltip> tokens from the Identities array
+* Retrieving External <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=IdP">IdP</Tooltip> tokens from the Identities array
 
 ## User metadata and app metadata
 
@@ -108,4 +108,4 @@ The following limitations exist when using Actions:
 
 ## Learn more
 
-* [Understand How Auth0 Actions Work](/customize/actions/actions-overview)
+* [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview)

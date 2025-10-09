@@ -10,9 +10,9 @@ title: Get Refresh Tokens
   using the Authorize endpoint.
 'twitter:title': Get Refresh Tokens
 ---
-To get a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+token">refresh token</Tooltip>, you must include the `offline_access` [scope](/get-started/apis/scopes) when you initiate an authentication request through the `/authorize` endpoint. Be sure to initiate Offline Access in your API. For more information, read [API Settings](/get-started/apis/api-settings).
+To get a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip>, you must include the `offline_access` [scope](/docs/get-started/apis/scopes) when you initiate an authentication request through the `/authorize` endpoint. Be sure to initiate Offline Access in your API. For more information, read [API Settings](/docs/get-started/apis/api-settings).
 
-For example, if you are using the [Authorization Code Flow](/get-started/authentication-and-authorization-flow/authorization-code-flow), the authentication request would look like the following:
+For example, if you are using the [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow), the authentication request would look like the following:
 
 ```http lines
 https://{yourDomain}/authorize?
@@ -29,9 +29,9 @@ https://{yourDomain}/authorize?
 
 
 
-The refresh token is stored in session. Then, when a session needs to be refreshed (for example, a preconfigured timeframe has passed or the user tries to perform a sensitive operation), the app uses the refresh token on the backend to obtain a new <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip>, using the `/oauth/token` endpoint with `grant_type=refresh_token`.
+The refresh token is stored in session. Then, when a session needs to be refreshed (for example, a preconfigured timeframe has passed or the user tries to perform a sensitive operation), the app uses the refresh token on the backend to obtain a new <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip>, using the `/oauth/token` endpoint with `grant_type=refresh_token`.
 
-Once the user authenticates successfully, the application will be redirected to the `redirect_uri`, with a `code` as part of the URL: `{https://yourApp/callback}?code=BPPLN3Z4qCTvSNOy`. You can exchange this code with an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> using the `/oauth/token` endpoint.
+Once the user authenticates successfully, the application will be redirected to the `redirect_uri`, with a `code` as part of the URL: `{https://yourApp/callback}?code=BPPLN3Z4qCTvSNOy`. You can exchange this code with an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> using the `/oauth/token` endpoint.
 
 <CodeGroup>
 ```bash cURL lines
@@ -256,11 +256,11 @@ If you are requesting a Refresh Token for a mobile app using the corresponding N
 
 Refresh Tokens must be stored securely by an application since they allow a user to remain authenticated essentially forever.
 
-For more information on how to implement this using the Authorization Code Flow, refer to our tutorial, [Call API Using the Authorization Code Flow](/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow). For other grants, see [Authentication and Authorization Flows](/get-started/authentication-and-authorization-flow).
+For more information on how to implement this using the Authorization Code Flow, refer to our tutorial, [Call API Using the Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow). For other grants, see [Authentication and Authorization Flows](/docs/get-started/authentication-and-authorization-flow).
 
 ## Learn more
 
-* [Use Refresh Tokens](/secure/tokens/refresh-tokens/use-refresh-tokens)
-* [Revoke Refresh Tokens](/secure/tokens/refresh-tokens/revoke-refresh-tokens)
-* [Refresh Token Rotation](/secure/tokens/refresh-tokens/refresh-token-rotation)
-* [Configure Refresh Token Expiration](/secure/tokens/refresh-tokens/configure-refresh-token-expiration)
+* [Use Refresh Tokens](/docs/secure/tokens/refresh-tokens/use-refresh-tokens)
+* [Revoke Refresh Tokens](/docs/secure/tokens/refresh-tokens/revoke-refresh-tokens)
+* [Refresh Token Rotation](/docs/secure/tokens/refresh-tokens/refresh-token-rotation)
+* [Configure Refresh Token Expiration](/docs/secure/tokens/refresh-tokens/configure-refresh-token-expiration)

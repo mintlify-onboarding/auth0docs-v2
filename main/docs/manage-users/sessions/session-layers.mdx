@@ -11,8 +11,8 @@ title: Session Layers
 There are typically three session layers that can be created when your users log in:
 
 * **Application Session Layer**: This layer is the session inside your application. Though your application uses Auth0 to authenticate users, your application also tracks that the user has logged in to your application; in a regular web application, for example, you achieve this by storing this information inside a cookie.
-* **Auth0 Session Layer**: Auth0 also maintains a session on the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip> for the user and stores their user information inside a cookie. This layer is used so that the next time a user is redirected to Auth0 for login the user's information will be remembered. This session layer makes the <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> experience possible for inbound SSO implementations.
-* **<Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip> Session Layer**: When users attempt to sign in using an identity providers such as Facebook or Google, and they already have a valid sign-in (with whichever provider they choose) they will not be prompted again to sign in though they may be asked to give permission to share their information with Auth0 and, in turn, your application.
+* **Auth0 Session Layer**: Auth0 also maintains a session on the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip> for the user and stores their user information inside a cookie. This layer is used so that the next time a user is redirected to Auth0 for login the user's information will be remembered. This session layer makes the <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> experience possible for inbound SSO implementations.
+* **<Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> Session Layer**: When users attempt to sign in using an identity providers such as Facebook or Google, and they already have a valid sign-in (with whichever provider they choose) they will not be prompted again to sign in though they may be asked to give permission to share their information with Auth0 and, in turn, your application.
 
 ### Session logout
 
@@ -38,12 +38,12 @@ Auth0 only redirects to AllowListed URLs after logout and there are two places y
 
 #### Session lifetime and session timeout
 
-You can set the behavior in cases where a user doesn’t explicitly log out of your application. Auth0 provides [session lifetime](/manage-users/sessions/session-lifetime-limits) limits to deal with Auth0 session termination in this scenario.
+You can set the behavior in cases where a user doesn’t explicitly log out of your application. Auth0 provides [session lifetime](/docs/manage-users/sessions/session-lifetime-limits) limits to deal with Auth0 session termination in this scenario.
 
 #### Federated logout
 
-You can also log the users out of the identity provider session layer. While this is not recommended, for many providers, Auth0 provides this behavior by having you add the `federated` query parameter to the redirect to `/oidc/logout`. This redirects the user to their identity provider and logs them out there as well. To learn more about federated logout, review the article [Log Users Out of Identity Providers](/authenticate/login/logout/log-users-out-of-idps).
+You can also log the users out of the identity provider session layer. While this is not recommended, for many providers, Auth0 provides this behavior by having you add the `federated` query parameter to the redirect to `/oidc/logout`. This redirects the user to their identity provider and logs them out there as well. To learn more about federated logout, review the article [Log Users Out of Identity Providers](/docs/authenticate/login/logout/log-users-out-of-idps).
 
 ## Learn more
 
-* [Session Lifetime Limits](/manage-users/sessions/session-lifetime-limits)
+* [Session Lifetime Limits](/docs/manage-users/sessions/session-lifetime-limits)

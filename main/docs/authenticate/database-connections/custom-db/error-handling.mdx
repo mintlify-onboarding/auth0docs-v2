@@ -27,7 +27,7 @@ You may receive different types of errors from a database connection:
 <tr>
 <td><code>new WrongUsernameOrPasswordError(&lt;email or user_id&gt;, &lt;message&gt;)</code></td>
 <td>Login</td>
-<td>Occurs when the user's credentials are invalid. Passing no arguments or a falsey first argument will result in the error being logged as an <code>fu</code> event (invalid username/email) with an empty string for a <code>user_id</code>. Providing a truthy first argument will result in the error being logged as an <code>fp</code> event (the user exists, but the password is invalid) with a <code>user_id</code> value of <code>auth0|&lt;first argument&gt;</code>. To learn more, read <a href="/deploy-monitor/logs/log-event-type-codes">Log Event Type Codes</a>.</td>
+<td>Occurs when the user's credentials are invalid. Passing no arguments or a falsey first argument will result in the error being logged as an <code>fu</code> event (invalid username/email) with an empty string for a <code>user_id</code>. Providing a truthy first argument will result in the error being logged as an <code>fp</code> event (the user exists, but the password is invalid) with a <code>user_id</code> value of <code>auth0|&lt;first argument&gt;</code>. To learn more, read <a href="/docs/deploy-monitor/logs/log-event-type-codes">Log Event Type Codes</a>.</td>
 </tr>
 <tr>
 <td><code>new ValidationError(&lt;user_exists&gt;, &lt;message&gt;)</code></td>
@@ -93,12 +93,12 @@ callback(new ValidationError('email-too-long', 'Email is too long.'));
 
 ### Returning errors when using Lock
 
-If you use Lock, you can [customize the error messages](/customize/login-pages/classic-login/customize-lock-error-messages) that will be displayed by adding them to the dictionary.
+If you use Lock, you can [customize the error messages](/docs/customize/login-pages/classic-login/customize-lock-error-messages) that will be displayed by adding them to the dictionary.
 
 ## Troubleshooting errors
 
 Test the script using the **Try** button.
 
-If you do not get the expected result or you receive an error, install the [Real-time Webtask Logs extension](/customize/extensions/real-time-webtask-logs), use `console.log()` statements in your script, and try the connection again. The output of `console.log()` will print to the Real-time Webtask Logs window.
+If you do not get the expected result or you receive an error, install the [Real-time Webtask Logs extension](/docs/customize/extensions/real-time-webtask-logs), use `console.log()` statements in your script, and try the connection again. The output of `console.log()` will print to the Real-time Webtask Logs window.
 
-You may experience errors using action scripts to import, create, or delete users. Use `console.logs` to verify the error is a result of using action scripts. To learn more, read [Custom Database Action Script Templates](/authenticate/database-connections/custom-db/templates).
+You may experience errors using action scripts to import, create, or delete users. Use `console.logs` to verify the error is a result of using action scripts. To learn more, read [Custom Database Action Script Templates](/docs/authenticate/database-connections/custom-db/templates).

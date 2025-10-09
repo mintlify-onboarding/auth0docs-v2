@@ -14,9 +14,9 @@ title: Enable/Disable Hooks
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
@@ -26,11 +26,11 @@ To read more about the Rules and Hooks deprecation, read our blog post: [Prepari
 
 Because we plan to remove Rules and Hooks functions in 2026, you should create new Rules or Hooks only in your Development environment and only to test migration to Actions.
 
-To learn how to migrate your Rules to Actions, read [Migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions). To learn how to migrate your Hooks to Actions, read [Migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions).
+To learn how to migrate your Rules to Actions, read [Migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions). To learn how to migrate your Hooks to Actions, read [Migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions).
 
 </Warning>
 
-You can enable or disable hooks using the Dashboard or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can enable or disable hooks using the Dashboard or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Warning>
 
@@ -49,14 +49,14 @@ When creating new hooks, Auth0 automatically enables the first Hook you create f
 1. Go to [Auth0 Dashboard > Auth Pipeline > Hooks](https://manage.auth0.com/#/) and locate the extensibility point for which you want to enable or disable a Hook.
 2. Click on the dropdown box located immediately under the extensibility point's name and description.
 
-   <Frame>![Auth0 Hook selection](/images/cdy7uua7fh8z/2LCBPLtrsjmmJYxCGfWquT/74b232fd96aa179c89f01e46d2e91ce3/dashboard-hooks-list.png)</Frame>
+   <Frame>![Auth0 Hook selection](/docs/images/cdy7uua7fh8z/2LCBPLtrsjmmJYxCGfWquT/74b232fd96aa179c89f01e46d2e91ce3/dashboard-hooks-list.png)</Frame>
 3. Select the Hook you want to enable, and confirm. If you want to disable all Hooks, select `None`.
 
 A green dot will appear next to the name of any enabled Hooks.
 
 ## Use the Management API
 
-Make a `PATCH` call to the [Update a Hook endpoint](https://auth0.com/docs/api/management/v2/#!/Hooks/patch_hooks_by_id). Be sure to replace `HOOK_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your Hook ID and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
+Make a `PATCH` call to the [Update a Hook endpoint](https://auth0.com/docs/api/management/v2/#!/Hooks/patch_hooks_by_id). Be sure to replace `HOOK_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your Hook ID and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -285,7 +285,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>MGMT_API_ACCESS_TOKEN</code></td>
-<td>Access Token for the Management API with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/glossary?term=scope">scope</Tooltip> <code>create:hooks</code>. To learn more, read <a href="https://auth0.com/docs/api/management/v2/tokens">Management API Access Tokens</a>.</td>
+<td>Access Token for the Management API with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/docs/glossary?term=scope">scope</Tooltip> <code>create:hooks</code>. To learn more, read <a href="https://auth0.com/docs/api/management/v2/tokens">Management API Access Tokens</a>.</td>
 </tr>
 </tbody>
 </table>

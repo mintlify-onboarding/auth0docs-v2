@@ -11,11 +11,11 @@ permalink: "oidc"
 
 ## 前提条件
 
-* [Auth0にアプリケーションを登録します](/ja-jp/get-started/auth0-overview/create-applications)。
+* [Auth0にアプリケーションを登録します](/docs/ja-jp/get-started/auth0-overview/create-applications)。
 
   + 適切な **［Application Type（アプリケーションタイプ）］** を選択します。
   + **`{https://yourApp/callback}`** の **［Allowed Callback URL（許可されているコールバックURL）］** を追加します。
-  + アプリケーションの[［Grant Types（付与タイプ）］](/ja-jp/get-started/applications/update-grant-types)に適切なフローが必ず含まれていることを確認してください。
+  + アプリケーションの[［Grant Types（付与タイプ）］](/docs/ja-jp/get-started/applications/update-grant-types)に適切なフローが必ず含まれていることを確認してください。
 
 ## 手順
 
@@ -28,19 +28,19 @@ permalink: "oidc"
 
 ## OIDCのIDプロバイダーでアプリをセットアップする
 
-OIDCのIDプロバイダーを使用してユーザーがログインできるようにするには、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>でアプリケーションを登録する必要があります。このプロセスはOIDCのIDプロバイダーによって異なるため、プロバイダーのドキュメンテーションに従って作業を行う必要があります。
+OIDCのIDプロバイダーを使用してユーザーがログインできるようにするには、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>でアプリケーションを登録する必要があります。このプロセスはOIDCのIDプロバイダーによって異なるため、プロバイダーのドキュメンテーションに従って作業を行う必要があります。
 
 一般に、いずれかの時点で次のコールバックURLを入力するようにしてください：`https://{yourDomain}/login/callback`
 
 <Card title="リダイレクト用のAuth0ドメイン名を見つける">
 
-上記で、 [カスタムドメイン](/ja-jp/customize/custom-domains)機能を使っていないのにAuth0ドメイン名が表示されない場合は、ドメイン名がテナント名、地域のサブドメイン、および「`auth0.com`」をドット記号（「`.`」）で区切って連結したものだからです。
+上記で、 [カスタムドメイン](/docs/ja-jp/customize/custom-domains)機能を使っていないのにAuth0ドメイン名が表示されない場合は、ドメイン名がテナント名、地域のサブドメイン、および「`auth0.com`」をドット記号（「`.`」）で区切って連結したものだからです。
 
 たとえば、テナント名が「`exampleco-enterprises`」でテナントがUS地域にある場合、Auth0ドメイン名は「`exampleco-enterprises.us.auth0.com`」、 **Redirect URI（リダイレクトURI）** は「`https://exampleco-enterprises.us.auth0.com/login/callback`」になります。
 
 ただし、テナントがUS地域にあり、2020年6月よりも前に作成された場合、Auth0ドメイン名は「`exampleco-enterprises.auth0.com` 」、 **Redirect URI（リダイレクトURI）** は「`https://exampleco-enterprises.auth0.com/login/callback`」になります。
 
-[カスタムドメイン](/ja-jp/customize/custom-domains)を使っている場合、 **Redirect URI（リダイレクトURI）** は「`https://<YOUR CUSTOM DOMAIN>/login/callback`」になります。
+[カスタムドメイン](/docs/ja-jp/customize/custom-domains)を使っている場合、 **Redirect URI（リダイレクトURI）** は「`https://<YOUR CUSTOM DOMAIN>/login/callback`」になります。
 
 </Card>
 
@@ -48,7 +48,7 @@ OIDCのIDプロバイダーを使用してユーザーがログインできる�
 
 ## Auth0でエンタープライズ接続を作成する
 
-次に、Auth0でOIDCのエンタープライズ接続を作成・構成する必要があります。OIDCプロバイダーでアプリをセットアップする際に、 **［Application (client) ID（アプリケーション（クライアント）ID）］** と **［<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=client-secret" tip="クライアントシークレット: クライアント（アプリケーション）が認可サーバーで認証するために使用するシークレット。これはクライアントと認可サーバーだけが知っているものであり、推測できないように十分にランダムである必要があります。" cta="用語集の表示">Client secret</Tooltip>（クライアントシークレット）］** が生成されていることを確認してください。
+次に、Auth0でOIDCのエンタープライズ接続を作成・構成する必要があります。OIDCプロバイダーでアプリをセットアップする際に、 **［Application (client) ID（アプリケーション（クライアント）ID）］** と **［<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=client-secret" tip="クライアントシークレット: クライアント（アプリケーション）が認可サーバーで認証するために使用するシークレット。これはクライアントと認可サーバーだけが知っているものであり、推測できないように十分にランダムである必要があります。" cta="用語集の表示">Client secret</Tooltip>（クライアントシークレット）］** が生成されていることを確認してください。
 
 ### Auth0 Dashboardを使用してエンタープライズ接続を作成する
 
@@ -60,7 +60,7 @@ Auth0 Dashboardを介した構成を可能にするためには、OpenID Connect
 
 1. [［Auth0 Dashboard］>［Authentication（認証）］>［Enterprise（エンタープライズ）］](https://manage.auth0.com/#/connections/enterprise)に移動し、 **Open ID Connect** の［`+`］記号をクリックします。
 
-   <Frame>![Dashboard - 接続 -エンタープライズ](/images/ja-jp/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/101fc19f62d82b5c7b13d88f3a0a8e96/Enterprise_Connections_-_JP.png)</Frame>
+   <Frame>![Dashboard - 接続 -エンタープライズ](/docs/images/ja-jp/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/101fc19f62d82b5c7b13d88f3a0a8e96/Enterprise_Connections_-_JP.png)</Frame>
 
 2. 接続の詳細を入力し、 **［Create（作成）］** をクリックします。
 
@@ -101,7 +101,7 @@ Auth0 Dashboardを介した構成を可能にするためには、OpenID Connect
    </tr>
    </tbody>
    </table>
-3. <Frame>![OIDC接続の詳細を入力する](/images/ja-jp/cdy7uua7fh8z/4PO4eBhEM3R0ZMhaTlDVfB/4811760e0343a8129485a2282eeae1ea/2025-02-25_09-45-59.png)</Frame>
+3. <Frame>![OIDC接続の詳細を入力する](/docs/images/ja-jp/cdy7uua7fh8z/4PO4eBhEM3R0ZMhaTlDVfB/4811760e0343a8129485a2282eeae1ea/2025-02-25_09-45-59.png)</Frame>
 
    必要であれば、 **［Settings（設定）］** ビューで、他の構成を調整します。
 
@@ -207,7 +207,7 @@ Auth0 Dashboardを介した構成を可能にするためには、OpenID Connect
 
 ### Management APIを使用してエンタープライズ接続を作成する
 
-以下の例では、Auth0の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使用して接続を作成するさまざまな方法をご紹介します。接続は、メタデータのURIを入力するか、OIDCのURLを明示的に設定することで構成できます。詳細については、「[IDプロバイダー](/ja-jp/authenticate/identity-providers)」をお読みください。
+以下の例では、Auth0の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使用して接続を作成するさまざまな方法をご紹介します。接続は、メタデータのURIを入力するか、OIDCのURLを明示的に設定することで構成できます。詳細については、「[IDプロバイダー](/docs/ja-jp/authenticate/identity-providers)」をお読みください。
 
 #### ディスカバリーエンドポイントでフロントチャネルを使用
 
@@ -1061,15 +1061,15 @@ dataTask.resume()
 
 ## PKCEとクレームのマッピングを構成する
 
-エンタープライズ接続では、PKCEや、属性とトークンのマッピングをサポートすることができます。詳細については、[「OIDC接続のPKCEとクレームのマッピングを構成する」](/ja-jp/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc)を参照してください。
+エンタープライズ接続では、PKCEや、属性とトークンのマッピングをサポートすることができます。詳細については、[「OIDC接続のPKCEとクレームのマッピングを構成する」](/docs/ja-jp/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc)を参照してください。
 
 ## Auth0アプリケーションでエンタープライズ接続を有効化
 
-新たなエンタープライズ接続を使うにはまずAuth0アプリケーションの[接続を有効](/ja-jp/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections)にする必要があります。
+新たなエンタープライズ接続を使うにはまずAuth0アプリケーションの[接続を有効](/docs/ja-jp/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections)にする必要があります。
 
 ## 接続をテストする
 
-これで[接続をテスト](/ja-jp/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections)する準備が整いました。
+これで[接続をテスト](/docs/ja-jp/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections)する準備が整いました。
 
 ## 発行者のメタデータを手動で構成する
 
@@ -1077,7 +1077,7 @@ dataTask.resume()
 
 ## Auth0とのフェデレーション
 
-<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=openid" tip="OpenID: アプリケーションがログイン情報を収集および保存することなくにユーザーのIDを検証できるようにする認証用のオープン標準。" cta="用語集の表示">OpenID</Tooltip> Connectのエンタープライズ接続は、別のAuth0テナントとのフェデレーションで大いに役立ちます。 **［Issuer（発行者）］** フィールドにAuth0テナントURL（たとえば、`https://<tenant>.us.auth0.com`）を入力して、 **［<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-4" href="/ja-jp/glossary?term=client-id" tip="クライアントID: Auth0から登録されたリソースに与えられる識別値。" cta="用語集の表示">Client ID</Tooltip>（クライアントID）］** フィールドに、フェデレーション（連合）したいテナントのアプリケーションのクライアントIDを入力するだけです。
+<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=openid" tip="OpenID: アプリケーションがログイン情報を収集および保存することなくにユーザーのIDを検証できるようにする認証用のオープン標準。" cta="用語集の表示">OpenID</Tooltip> Connectのエンタープライズ接続は、別のAuth0テナントとのフェデレーションで大いに役立ちます。 **［Issuer（発行者）］** フィールドにAuth0テナントURL（たとえば、`https://<tenant>.us.auth0.com`）を入力して、 **［<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-4" href="/docs/ja-jp/glossary?term=client-id" tip="クライアントID: Auth0から登録されたリソースに与えられる識別値。" cta="用語集の表示">Client ID</Tooltip>（クライアントID）］** フィールドに、フェデレーション（連合）したいテナントのアプリケーションのクライアントIDを入力するだけです。
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -1091,4 +1091,4 @@ dataTask.resume()
 
 この機能はOkta Workforce Identity Cloudでユニバーサルログアウトと併用できます。
 
-詳しい情報と構成手順については、「[ユニバーサルログアウト](/ja-jp/authenticate/login/logout/universal-logout)」を参照してください。
+詳しい情報と構成手順については、「[ユニバーサルログアウト](/docs/ja-jp/authenticate/login/logout/universal-logout)」を参照してください。

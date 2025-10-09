@@ -10,7 +10,7 @@ title: Enroll and Challenge Email Authenticators
   as an authentication factor.
 'twitter:title': Enroll and Challenge Email Authenticators
 ---
-Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
+Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/docs/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
 
 When email is enabled as a factor, all users with verified emails will be able to use them to complete MFA.
 
@@ -24,7 +24,7 @@ Both your specific login implementation and your Auth0 plan or custom agreement 
 
 Before you can use the MFA APIs, you'll need to enable the MFA grant type for your application. Go to [Auth0 Dashboard > Applications > Advanced Settings > Grant Types](https://manage.auth0.com/#/applications) and select **MFA**.
 
-* [Configure Email](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa) as a factor in the Dashboard or using the [Management API](https://auth0.com/docs/api/management/v2#!/Guardian/put_factors_by_name).
+* [Configure Email](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa) as a factor in the Dashboard or using the [Management API](https://auth0.com/docs/api/management/v2#!/Guardian/put_factors_by_name).
 
 ## Enroll with email
 
@@ -32,10 +32,10 @@ To enable users to enroll emails in addition to their verified email in their pr
 
 ### Get MFA token
 
-Depending on when you are triggering enrollment, you can obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> for using the MFA API in different ways:
+Depending on when you are triggering enrollment, you can obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> for using the MFA API in different ways:
 
-* If you are enrolling during authentication, see [Authenticate With Resource Owner Password Grant and MFA](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
-* If you want to let the user enroll a factor at any moment, see [Manage MFA Factor Enrollments](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api).
+* If you are enrolling during authentication, see [Authenticate With Resource Owner Password Grant and MFA](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
+* If you want to let the user enroll a factor at any moment, see [Manage MFA Factor Enrollments](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api).
 
 ### Enroll authenticator
 
@@ -514,13 +514,13 @@ At this point, the authenticator is fully associated and ready to be used, and y
 
 You can check at any point to verify whether an authenticator has been confirmed by calling the MFA Authenticators endpoint. If the authenticator is confirmed, the value returned for `active` is `true`.
 
-Optionally, you can customize the emails that users receive. See [Customize Email Templates](/customize/email/email-templates) for details.
+Optionally, you can customize the emails that users receive. See [Customize Email Templates](/docs/customize/email/email-templates) for details.
 
 ## Challenge with email
 
 ### Get MFA token
 
-Get an MFA token following the steps described in [Authenticate With Resource Owner Password Grant and MFA](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
+Get an MFA token following the steps described in [Authenticate With Resource Owner Password Grant and MFA](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
 
 ### Retrieve enrolled authenticators
 
@@ -1144,8 +1144,8 @@ If the call was successful, you'll receive a response in the format below, conta
 
 ## Learn more
 
-* [Manage Authentication Factors with Authentication API](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
-* [Challenge with Recovery Codes](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/challenge-with-recovery-codes)
-* [Enroll and Challenge OTP Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
-* [Enroll and Challenge Push Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
-* [Enroll and Challenge SMS and Voice Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
+* [Manage Authentication Factors with Authentication API](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
+* [Challenge with Recovery Codes](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/challenge-with-recovery-codes)
+* [Enroll and Challenge OTP Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
+* [Enroll and Challenge Push Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
+* [Enroll and Challenge SMS and Voice Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)

@@ -12,24 +12,24 @@ In this section, we will review ExampleCo's configurations using the [Auth0 Das
 
 ## Configure the API
 
-To protect an API, you must register an API using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Follow instructions on [Register APIs](/get-started/auth0-overview/set-up-apis) to configure the Timesheets API.
+To protect an API, you must register an API using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Follow instructions on [Register APIs](/docs/get-started/auth0-overview/set-up-apis) to configure the Timesheets API.
 
 ### JSON Web Token Profile
 
-<Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> defines the type of profiles, or dialects, for an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>. Auth0 supports two different profiles:
+<Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> defines the type of profiles, or dialects, for an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>. Auth0 supports two different profiles:
 
 * Auth0 token profile
 * RFC 9068 profile
 
-The default is the Auth0 profile. The main difference between these two profiles is the difference in claim names. The Auth0 profile uses `azp` rather than `client_id`. You can learn more about the differences by reading [Access Token Profiles](/secure/tokens/access-tokens/access-token-profiles).
+The default is the Auth0 profile. The main difference between these two profiles is the difference in claim names. The Auth0 profile uses `azp` rather than `client_id`. You can learn more about the differences by reading [Access Token Profiles](/docs/secure/tokens/access-tokens/access-token-profiles).
 
 ### Signing Algorithms
 
-When you create an API, you must select the algorithm with which your tokens will be signed. The signature is used to verify that the sender of the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> is who it says it is and to ensure that the message hasn't been changed along the way.
+When you create an API, you must select the algorithm with which your tokens will be signed. The signature is used to verify that the sender of the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> is who it says it is and to ensure that the message hasn't been changed along the way.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The signature is part of a JWT. If you are unfamiliar with JWT structure, please see [JSON Web Token Structure](/secure/tokens/json-web-tokens/json-web-token-structure).
+The signature is part of a JWT. If you are unfamiliar with JWT structure, please see [JSON Web Token Structure](/docs/secure/tokens/json-web-tokens/json-web-token-structure).
 
 </Callout>
 
@@ -53,13 +53,13 @@ For the purpose of this document, we will only be concerned with the `batch:upl
 
 </Callout>
 
-<Frame>![Dashboard > APIs > Permissions](/images/cdy7uua7fh8z/73FeuGyODcu3q7PKjLaQOO/63d8d20e9249e751152b4530005f4c71/Timesheets_API_-_Permissions_-_English.png)</Frame>
+<Frame>![Dashboard > APIs > Permissions](/docs/images/cdy7uua7fh8z/73FeuGyODcu3q7PKjLaQOO/63d8d20e9249e751152b4530005f4c71/Timesheets_API_-_Permissions_-_English.png)</Frame>
 
 ## Create the Application
 
 When creating an API in the Auth0 Dashboard, a test application for the API will automatically be generated. In the Auth0 Dashboard, navigate to the [Application Section](https://manage.auth0.com/#/applications), and you will see the test application for the Timesheets API.
 
-<Frame>![undefined](/images/cdy7uua7fh8z/7lnuzFgs3IuWyL4bK5aVZV/05abca8035c011bf018b27e31f77a055/2024-06-28_17-13-34.png)</Frame>
+<Frame>![undefined](/docs/images/cdy7uua7fh8z/7lnuzFgs3IuWyL4bK5aVZV/05abca8035c011bf018b27e31f77a055/2024-06-28_17-13-34.png)</Frame>
 
 Go to the settings for the application by selecting the menu option at the end. Rename the application to `Timesheets Import Job`.
 
@@ -77,6 +77,6 @@ Expand the settings for the application by clicking on the down arrow to the far
 
 Once you have selected the `batch:upload` scope, save the settings by clicking the **Update** button.
 
-<Frame>![Dashboard - Applications - APIs - Machine to Machine Applications - Authorize](/images/cdy7uua7fh8z/3PjvkTaoOZKWCMJol4ajCu/b5df50d1b78f95f5a2a8f82e6bb39e42/2025-02-26_18-58-47.png)</Frame>
+<Frame>![Dashboard - Applications - APIs - Machine to Machine Applications - Authorize](/docs/images/cdy7uua7fh8z/3PjvkTaoOZKWCMJol4ajCu/b5df50d1b78f95f5a2a8f82e6bb39e42/2025-02-26_18-58-47.png)</Frame>
 
 Now that we have designed our solution and discussed the configurations needed on Auth0's side, we can proceed with the implementation.

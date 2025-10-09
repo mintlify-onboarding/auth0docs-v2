@@ -10,7 +10,7 @@ title: Configure Identity Provider Connection for User Profile Updates
   identity provider so you can control when user profile root attributes are updated.
 'twitter:title': Configure Identity Provider Connection for User Profile Updates
 ---
-You can update connection preferences for an upstream <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> so you can control when updates to user profile root attributes are allowed using the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can update connection preferences for an upstream <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> so you can control when updates to user profile root attributes are allowed using the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 By default, user profile attributes provided by identity providers other than Auth0 (such as Google, Facebook, or X) are not directly editable because they are updated from the identity provider each time the user logs in.
 
@@ -22,7 +22,7 @@ To be able to edit the name, nickname, given_name, family_name, or picture root 
 
 </Callout>
 
-You can edit [root attributes individually](/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users) or as a [bulk import](/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-import) using the Management API.
+You can edit [root attributes individually](/docs/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users) or as a [bulk import](/docs/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-import) using the Management API.
 
 ## Use the Dashboard
 
@@ -32,9 +32,9 @@ You can edit [root attributes individually](/manage-users/user-accounts/user-pro
 
 ## Use the Management API
 
-Before completing this step, you should first [retrieve the existing values of the connection's `options` object](/authenticate/identity-providers/retrieve-connection-options) to avoid overriding the current values. If you do not, parameters missing from the original object will be lost after you update.
+Before completing this step, you should first [retrieve the existing values of the connection's `options` object](/docs/authenticate/identity-providers/retrieve-connection-options) to avoid overriding the current values. If you do not, parameters missing from the original object will be lost after you update.
 
-Make a `PATCH` call to the [Update a Connection endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Make sure you include the original options values in the call to avoid overriding the current values. Also, be sure to replace `CONNECTION_ID`, `MGMT_API_ACCESS_TOKEN`, and `ATTRIBUTE_UPDATE_VALUE` placeholder values with your connection ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>, and attribute update value, respectively.
+Make a `PATCH` call to the [Update a Connection endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Make sure you include the original options values in the call to avoid overriding the current values. Also, be sure to replace `CONNECTION_ID`, `MGMT_API_ACCESS_TOKEN`, and `ATTRIBUTE_UPDATE_VALUE` placeholder values with your connection ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, and attribute update value, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -274,8 +274,8 @@ dataTask.resume()
 
 ## Learn more
 
-* [Retrieve Connection Options](/authenticate/identity-providers/retrieve-connection-options)
-* [Set Root Attributes During User Import](/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-import)
-* [Set Root Attributes During User Signup](/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-sign-up)
-* [Update Root Attributes for Users](/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users)
-* [Promote Connections to Domain Level](/authenticate/identity-providers/promote-connections-to-domain-level)
+* [Retrieve Connection Options](/docs/authenticate/identity-providers/retrieve-connection-options)
+* [Set Root Attributes During User Import](/docs/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-import)
+* [Set Root Attributes During User Signup](/docs/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-sign-up)
+* [Update Root Attributes for Users](/docs/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users)
+* [Promote Connections to Domain Level](/docs/authenticate/identity-providers/promote-connections-to-domain-level)

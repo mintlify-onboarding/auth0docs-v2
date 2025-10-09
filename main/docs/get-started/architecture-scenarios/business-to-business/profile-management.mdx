@@ -22,18 +22,18 @@ You cannot directly access a user profile across multiple Auth0 tenants. If you�
 
 </Warning>
 
-An [Identity Provider](/authenticate/identity-providers) populates a user’s profile using data supplied during the login process, and this is referred to as the [Normalized User Profile](/manage-users/user-accounts/user-profiles/normalized-user-profiles).
+An [Identity Provider](/docs/authenticate/identity-providers) populates a user’s profile using data supplied during the login process, and this is referred to as the [Normalized User Profile](/docs/manage-users/user-accounts/user-profiles/normalized-user-profiles).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The Normalized User Profile is updated from the identity provider during login, and you can change the limited set of the information it contains through the Auth0 Management API. You can also use Auth0 extensibility, such as [Rules](/customize/rules), as an alternative to override information in the Normalized User Profile. See [User Profile Data Modification](/manage-users/user-accounts/user-profiles#user-profile-data-modification) for more information.
+The Normalized User Profile is updated from the identity provider during login, and you can change the limited set of the information it contains through the Auth0 Management API. You can also use Auth0 extensibility, such as [Rules](/docs/customize/rules), as an alternative to override information in the Normalized User Profile. See [User Profile Data Modification](/docs/manage-users/user-accounts/user-profiles#user-profile-data-modification) for more information.
 
 </Callout>
 
 By default, there is one user profile created for each user identity, and there are a number of things to consider:
 
 * What should you do if you need to store information to help customize a user’s experience?
-* What if you need to store user information that didn’t originate from an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>?
+* What if you need to store user information that didn’t originate from an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>?
 * Why would you need to store user-related information that a user cannot modify?
 * What do you do if you need to store user-related information that a user cannot modify?
 * What happens if a user forgets their password?
@@ -42,11 +42,11 @@ By default, there is one user profile created for each user identity, and there 
 
 Auth0 provides for the storage of metadata against a user’s profile, which allows for the capture of additional information, such as preference for language and/or accessibility in order to enhance the user experience. Metadata can be used to store both information that a user can change, and also information they can’t; the latter giving you the capability of associating, for example, a user profile with records in your existing systems without modifying existing implementation.
 
-For users who forget their passwords or who are allowed to change their password via some existing self-service mechanism (or self-service mechanism you have planned), you can leverage Auth0-provided [Password Reset](#password-reset) functionality. This can be integrated with your existing implementation and comes already incorporated with any out-of-box Auth0 UI widgets including [Universal Login](/authenticate/login/auth0-universal-login).
+For users who forget their passwords or who are allowed to change their password via some existing self-service mechanism (or self-service mechanism you have planned), you can leverage Auth0-provided [Password Reset](#password-reset) functionality. This can be integrated with your existing implementation and comes already incorporated with any out-of-box Auth0 UI widgets including [Universal Login](/docs/authenticate/login/auth0-universal-login).
 
-You’ll also want to make sure that you are working with a [verified user account](#account-verification) at all times. Auth0 provides out-of-box mechanisms for doing that too. You should also consider [regulatory compliance](/secure/data-privacy-and-compliance) such as ([GDPR](https://eugdpr.org/) which has very specific requirements when it comes to protecting EU citizens from privacy and data breaches.
+You’ll also want to make sure that you are working with a [verified user account](#account-verification) at all times. Auth0 provides out-of-box mechanisms for doing that too. You should also consider [regulatory compliance](/docs/secure/data-privacy-and-compliance) such as ([GDPR](https://eugdpr.org/) which has very specific requirements when it comes to protecting EU citizens from privacy and data breaches.
 
-Though Auth0 doesn’t currently provide a centralized profile management portal out-of-the-box, for the purpose of self-serviced profile management, you can use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to build your own or utilize an already built UI. See our Auth0 [community guidance](https://community.auth0.com/t/how-to-allow-the-end-user-to-update-their-own-profile-information/6228) which describes the Management API endpoint. All calls to the Management API will require use of an [Access Token](/secure/tokens/access-tokens).
+Though Auth0 doesn’t currently provide a centralized profile management portal out-of-the-box, for the purpose of self-serviced profile management, you can use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to build your own or utilize an already built UI. See our Auth0 [community guidance](https://community.auth0.com/t/how-to-allow-the-end-user-to-update-their-own-profile-information/6228) which describes the Management API endpoint. All calls to the Management API will require use of an [Access Token](/docs/secure/tokens/access-tokens).
 
 <Warning>
 
@@ -54,31 +54,31 @@ Self-service profile management can raise security as well as data privacy conce
 
 </Warning>
 
-Alternatively, you can use the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> to [manage aspects of a user’s profile](/manage-users/user-accounts/manage-users-using-the-dashboard). Managing a user’s profile via the Auth0 Dashboard is more of an administrative provision and **should not** be used for self-serviced profile management in a production environment. However, the interface provided by the Dashboard can be extremely useful during development as it provides a quick and simple way of manipulating a user’s profile information.
+Alternatively, you can use the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> to [manage aspects of a user’s profile](/docs/manage-users/user-accounts/manage-users-using-the-dashboard). Managing a user’s profile via the Auth0 Dashboard is more of an administrative provision and **should not** be used for self-serviced profile management in a production environment. However, the interface provided by the Dashboard can be extremely useful during development as it provides a quick and simple way of manipulating a user’s profile information.
 
 If you need to provide a way for your customers to have an administrator manage their own users when they are storing those credentials in your system, you can either build something yourself or use an Auth0 Extension. See [Admin Portal](#admin-portal) for more information.
 
 ## Metadata
 
-In addition to the Normalized User Profile information, [Metadata](/manage-users/user-accounts/metadata) can be stored in an Auth0 user profile. Metadata provides a way to store information that did not originate from an identity provider, or a way to store information that overrides what an identity provider supplies.
+In addition to the Normalized User Profile information, [Metadata](/docs/manage-users/user-accounts/metadata) can be stored in an Auth0 user profile. Metadata provides a way to store information that did not originate from an identity provider, or a way to store information that overrides what an identity provider supplies.
 
 <Info>
 ### Best Practice
 
-Use of Metadata should follow Auth0 [user data storage best practices](/secure/security-guidance/data-security/user-data-storage#metadata). Metadata storage is not designed to be a general purpose data store, and you should still use your own external storage facility when possible. Metadata size and complexity should also be kept to a minimum, and the Auth0 Management API has a strict set of guidance when it comes to updating and/or deleting metadata associated with a user.
+Use of Metadata should follow Auth0 [user data storage best practices](/docs/secure/security-guidance/data-security/user-data-storage#metadata). Metadata storage is not designed to be a general purpose data store, and you should still use your own external storage facility when possible. Metadata size and complexity should also be kept to a minimum, and the Auth0 Management API has a strict set of guidance when it comes to updating and/or deleting metadata associated with a user.
 </Info>
 
 You can manipulate metadata via both the Auth0 Management API and the Auth0 Authentication API. As is the case when managing the Normalized User Profile, calls to the Management API for manipulating Metadata requires use of an [Access Token](https://auth0.com/docs/api/management/v2/tokens).
 
 <Warning>
 
-Calls to the Management API are subject to [Auth0 Rate Limiting policy](/troubleshoot/customer-support/operational-policies/rate-limit-policy). You must take this into consideration, and to assist, Auth0 generally recommends use of the appropriate [Auth0 SDK](/libraries) for your development environment rather than calling our APIs directly.
+Calls to the Management API are subject to [Auth0 Rate Limiting policy](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy). You must take this into consideration, and to assist, Auth0 generally recommends use of the appropriate [Auth0 SDK](/docs/libraries) for your development environment rather than calling our APIs directly.
 
 </Warning>
 
 ### User metadata
 
-User metadata (also referred to as `user_metadata`) is information that can be stored against a user profile and that a user can read and update as part of any self-service profile management. Metadata of this nature may be something like salutation for a user, or a user’s preferred language which could be used to [customize the emails](/customize/email/email-templates) sent by Auth0.
+User metadata (also referred to as `user_metadata`) is information that can be stored against a user profile and that a user can read and update as part of any self-service profile management. Metadata of this nature may be something like salutation for a user, or a user’s preferred language which could be used to [customize the emails](/docs/customize/email/email-templates) sent by Auth0.
 
 <Info>
 ### Best Practice
@@ -92,27 +92,27 @@ App metadata (also referred to as `app_metadata`) is, on the other hand, inform
 
 ## Password reset
 
-For users who forget their passwords or who are allowed to change their password via some existing self-service mechanism, Auth0 provides [Password Reset](/authenticate/database-connections/password-change) functionality. You can integrate this with your existing implementation and comes already incorporated with out-of-the-box Auth0 UI widgets included as part of [Universal Login](/authenticate/login/auth0-universal-login).
+For users who forget their passwords or who are allowed to change their password via some existing self-service mechanism, Auth0 provides [Password Reset](/docs/authenticate/database-connections/password-change) functionality. You can integrate this with your existing implementation and comes already incorporated with out-of-the-box Auth0 UI widgets included as part of [Universal Login](/docs/authenticate/login/auth0-universal-login).
 
 <Warning>
 
-Password change and password reset is only supported for Auth0 [Database Connection](/authenticate/database-connections/password-change) types.
+Password change and password reset is only supported for Auth0 [Database Connection](/docs/authenticate/database-connections/password-change) types.
 
 </Warning>
 
-Auth0 <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> provides built-in UX support for password reset using Auth0 Authentication API functionality. Alternatively, you can use the [Auth0 Authentication API](/authenticate/database-connections/password-change#use-the-authentication-api), through one of the Auth0 SDKs appropriate to your development environment. Email templates used during password reset workflow can also be fully customized, whether you use Auth0 out-of-box UI widgets or customized Universal Login.
+Auth0 <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> provides built-in UX support for password reset using Auth0 Authentication API functionality. Alternatively, you can use the [Auth0 Authentication API](/docs/authenticate/database-connections/password-change#use-the-authentication-api), through one of the Auth0 SDKs appropriate to your development environment. Email templates used during password reset workflow can also be fully customized, whether you use Auth0 out-of-box UI widgets or customized Universal Login.
 
-You can use the Auth0 Management API, on the other hand, to [directly change the password](/authenticate/database-connections/password-change#directly-set-the-new-password) for a user identity defined using a Database Connection type. You can use the Auth0 Management API as part of any self-service profile management implementation, and also as part of any [Change Password page customization](/get-started/architecture-scenarios/business-to-business/branding).
+You can use the Auth0 Management API, on the other hand, to [directly change the password](/docs/authenticate/database-connections/password-change#directly-set-the-new-password) for a user identity defined using a Database Connection type. You can use the Auth0 Management API as part of any self-service profile management implementation, and also as part of any [Change Password page customization](/docs/get-started/architecture-scenarios/business-to-business/branding).
 
 ## Account verification
 
 You’ll also need to work with a verified user account at all times and make use of the mechanisms Auth0 provides. You should also consider regulatory compliance like [GDPR](https://eugdpr.org/) which has very specific requirements for protecting EU citizens from privacy and data breaches.
 
-Auth0 provides out-of-box functionality for sending a [verification email](/customize/email/manage-email-flow) to a user's email address to verify their account. By default, Auth0 automatically sends verification emails for any [Database Connection](/authenticate/database-connections/password-change) identity created as part of [self sign-up](/get-started/architecture-scenarios/business-to-business/provisioning#self-sign-up). However, Auth0 also provides a [Management API endpoint](https://auth0.com/docs/api/v2#!/Tickets/post_email_verification) that you can use to send verification emails in cases where email address validation is not performed by a Social Provider upon user registration.
+Auth0 provides out-of-box functionality for sending a [verification email](/docs/customize/email/manage-email-flow) to a user's email address to verify their account. By default, Auth0 automatically sends verification emails for any [Database Connection](/docs/authenticate/database-connections/password-change) identity created as part of [self sign-up](/docs/get-started/architecture-scenarios/business-to-business/provisioning#self-sign-up). However, Auth0 also provides a [Management API endpoint](https://auth0.com/docs/api/v2#!/Tickets/post_email_verification) that you can use to send verification emails in cases where email address validation is not performed by a Social Provider upon user registration.
 
 ## Blocking users
 
-[Blocking user access](/manage-users/user-accounts/block-and-unblock-users) in Auth0 provides a way to prevent user login to applications under certain conditions. By default, the Auth0 Dashboard provides an out-of-the-box mechanism to give administrators the ability to both block and unblock user access to all applications, and you can implement this functionality via use of the [Auth0 Management API](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id). You can also use Auth0 extensibility to [disable user access to certain applications](/manage-users/user-accounts/manage-user-access-to-applications) as well as provide more fine-grained [access control](/get-started/architecture-scenarios/business-to-business/authorization).
+[Blocking user access](/docs/manage-users/user-accounts/block-and-unblock-users) in Auth0 provides a way to prevent user login to applications under certain conditions. By default, the Auth0 Dashboard provides an out-of-the-box mechanism to give administrators the ability to both block and unblock user access to all applications, and you can implement this functionality via use of the [Auth0 Management API](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id). You can also use Auth0 extensibility to [disable user access to certain applications](/docs/manage-users/user-accounts/manage-user-access-to-applications) as well as provide more fine-grained [access control](/docs/get-started/architecture-scenarios/business-to-business/authorization).
 
 In addition, the Auth0 Management API provides you with the ability to [unblock](https://auth0.com/docs/api/management/v2#!/User_Blocks/delete_user_blocks_by_id) users disabled due to excessive use of incorrect credentials.
 
@@ -121,7 +121,7 @@ In addition, the Auth0 Management API provides you with the ability to [unblock
 An admin portal is an application where you can create new users, edit a user’s profile, see activity about a user, etc. This application should be accessible by administrators only. Though Auth0 provides its management dashboard, it is not advised to give access to the management dashboard to many people as there are a lot of ways someone can unintentionally break your Auth0 tenant. Instead, Auth0 provides two other options:
 
 * [**Auth0 Management API**](https://auth0.com/docs/api/management/v2): With the Management API you can easily construct an application that provides administrators the ability to manage users. You can either incorporate this into an existing application that already exists for your administrators, or create a new one with a UI that matches your current applications.
-* [**Auth0 Delegated Administration Extension**](/customize/extensions/delegated-administration-extension): This powerful and flexible extension allows you to customize a user administration experience. You can tailor this extension so that you can allow your customer admins to log in and allow them to only see and manage users within their organization.
+* [**Auth0 Delegated Administration Extension**](/docs/customize/extensions/delegated-administration-extension): This powerful and flexible extension allows you to customize a user administration experience. You can tailor this extension so that you can allow your customer admins to log in and allow them to only see and manage users within their organization.
 
 <Info>
 ### Best practice
@@ -139,4 +139,4 @@ We provide planning guidance in PDF format that you can download and refer to fo
 
 Many B2B platforms implement some form of isolation and/or branding for their customers' organization, and this can add complexity to any Identity and Access Management (IAM) system. If this applies to you, then we recommend you take some time to read through our guidance and best practice advice for this type of environment.
 
-[Multiple Organization Architecture](/get-started/architecture-scenarios/multiple-organization-architecture)
+[Multiple Organization Architecture](/docs/get-started/architecture-scenarios/multiple-organization-architecture)

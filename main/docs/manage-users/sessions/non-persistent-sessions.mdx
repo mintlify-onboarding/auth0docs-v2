@@ -8,7 +8,7 @@ title: Non-Persistent Sessions
 'twitter:description': Describes non-persistent sessions available with Auth0.
 'twitter:title': Non-Persistent Sessions
 ---
-In persistent sessions, users close a browser, but retain the session when re-opening the browser on the same device. To enhance the user experience and provide more secure access, non-persistent sessions invalidate a <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/glossary?term=session+cookie">session cookie</Tooltip> when the browser is closed.
+In persistent sessions, users close a browser, but retain the session when re-opening the browser on the same device. To enhance the user experience and provide more secure access, non-persistent sessions invalidate a <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/docs/glossary?term=session+cookie">session cookie</Tooltip> when the browser is closed.
 
 <Warning>
 
@@ -33,19 +33,19 @@ In these instances, non-persistent sessions do **not** provide extra security to
 
 Sessions consist of a cookie on the browser and a session record on the server. In non-persistent sessions, cookies are not persisted, and a tenant timeout is set, so users don’t have to manually log out of a device.
 
-Session lifetime determines how long the system should keep the login session and is configured per tenant. TheAbsolute Expiration of a session is defined when the session is created. You can enable non-persistedsettings for user sessions, or allow the session to continue even if the browser is closed. You can adjust the Absolute Expiration and non-persisted settings in the Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. To learn more, read [Configure Session Lifetime Settings](/manage-users/sessions/configure-session-lifetime-settings).
+Session lifetime determines how long the system should keep the login session and is configured per tenant. TheAbsolute Expiration of a session is defined when the session is created. You can enable non-persistedsettings for user sessions, or allow the session to continue even if the browser is closed. You can adjust the Absolute Expiration and non-persisted settings in the Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. To learn more, read [Configure Session Lifetime Settings](/docs/manage-users/sessions/configure-session-lifetime-settings).
 
 ## Cookies
 
-The Auth0 platform uses three types of cookies: session, <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=Multi-Factor+Authentication">Multi-Factor Authentication</Tooltip>, and device. All of these change to non-persistent once your Auth0 tenant is configured. The tenant timeout triggers the session expiration.
+The Auth0 platform uses three types of cookies: session, <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=Multi-Factor+Authentication">Multi-Factor Authentication</Tooltip>, and device. All of these change to non-persistent once your Auth0 tenant is configured. The tenant timeout triggers the session expiration.
 
-When non-persistent sessions are enabled, the following cookies will be issued as session cookies when interacting with the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip>:
+When non-persistent sessions are enabled, the following cookies will be issued as session cookies when interacting with the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip>:
 
 * `auth0` / `auth0_compat`
 * `auth0-mf` / `auth0-mf_compat`
 * `did` / `did_compat`
 
-To learn more about cookies, read [Authentication API Cookies](/manage-users/cookies/authentication-api-cookies).
+To learn more about cookies, read [Authentication API Cookies](/docs/manage-users/cookies/authentication-api-cookies).
 
 ## Tenant configuration
 

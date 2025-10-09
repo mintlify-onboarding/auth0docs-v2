@@ -15,14 +15,14 @@ In this scenario, we will build a web application for a fictitious company named
 <Info>
 ### TL;DR
 
-* Auth0 supports open standards such as OAuth 2.0 and <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID+Connect+%28OIDC%29">OpenID Connect (OIDC)</Tooltip> for authentication and authorization (see [Which protocol to use](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-1#which-protocol-to-use))
-* OIDC supports several different authorization flows - the most appropriate one for Web Applications being the Authorization Code Flow (see [Authentication Flow](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-1#authentication-flow))
-* Your application will be configured in Auth0 as an application (see [Application](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-2#application))
-* Identity Providers will be configured in Auth0 as a Connection (see [Connections](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-2#connections))
-* Auth0 provides a Lock widget, which allow users to log in to the application (see [User Login](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#user-login))
-* The web application needs to manage session state to keep track of the fact that the user is logged in. Along with this, Auth0 and the Identity Provider is also managing session information. (see [Session Management](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#session-management))
-* Conversely, logging a user out also involves three layers of session management (see [User Logout](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#user-logout))
-* Access Control can be managed with the Auth0 Authorization Extension (see [Access Control](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#access-control))
+* Auth0 supports open standards such as OAuth 2.0 and <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID+Connect+%28OIDC%29">OpenID Connect (OIDC)</Tooltip> for authentication and authorization (see [Which protocol to use](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-1#which-protocol-to-use))
+* OIDC supports several different authorization flows - the most appropriate one for Web Applications being the Authorization Code Flow (see [Authentication Flow](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-1#authentication-flow))
+* Your application will be configured in Auth0 as an application (see [Application](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-2#application))
+* Identity Providers will be configured in Auth0 as a Connection (see [Connections](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-2#connections))
+* Auth0 provides a Lock widget, which allow users to log in to the application (see [User Login](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#user-login))
+* The web application needs to manage session state to keep track of the fact that the user is logged in. Along with this, Auth0 and the Identity Provider is also managing session information. (see [Session Management](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#session-management))
+* Conversely, logging a user out also involves three layers of session management (see [User Logout](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#user-logout))
+* Access Control can be managed with the Auth0 Authorization Extension (see [Access Control](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3#access-control))
 </Info>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -62,16 +62,16 @@ Each user will be required to fill in their timesheets by the end of the week. T
 
 The company uses Active Directory for all employees and employees will sign into the Timesheet application using their Active Directory credentials. The external contractors can sign in with a username and password. Contractors are not on ExampleCo's corporate directory.
 
-ExampleCo wants to minimize user login burden, but wants to maintain a level of security depending on the operation: submitting timesheet entries is lower risk than approving them. However the approved timesheets are used for customer charging so security is definitely a requirement. The authentication strategy should be flexible so it can adapt as the company grows. For example, they should easily be able to add additional authentication requirements, like <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip>, for Admins.
+ExampleCo wants to minimize user login burden, but wants to maintain a level of security depending on the operation: submitting timesheet entries is lower risk than approving them. However the approved timesheets are used for customer charging so security is definitely a requirement. The authentication strategy should be flexible so it can adapt as the company grows. For example, they should easily be able to add additional authentication requirements, like <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip>, for Admins.
 
 The solution should be available both to the employees with a physical presence in the company office, as well as to those working remotely, without the overhead of a VPN connection, hence the app should be deployed on a cloud provider like Heroku or Microsoft Azure.
 
-<Frame>![Diagram of the solution](/images/cdy7uua7fh8z/7hg1vqzNEJ2RG1JYw0pxFp/d5e88b45ef76d06b1e8d35ab49186e1d/solution-diagram.png)</Frame>
+<Frame>![Diagram of the solution](/docs/images/cdy7uua7fh8z/7hg1vqzNEJ2RG1JYw0pxFp/d5e88b45ef76d06b1e8d35ab49186e1d/solution-diagram.png)</Frame>
 
 ## Learn more
 
-* [Solution Overview (Web Apps + SSO)](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-1)
-* [Auth0 Configuration (Web Apps + SSO)](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-2)
-* [Application Implementation (Web Apps + SSO)](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3)
-* [ASP.NET Core Implementation (Web Apps + SSO)](/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore)
-* [Conclusion (Web Apps + SSO)](/get-started/architecture-scenarios/sso-for-regular-web-apps/part-4)
+* [Solution Overview (Web Apps + SSO)](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-1)
+* [Auth0 Configuration (Web Apps + SSO)](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-2)
+* [Application Implementation (Web Apps + SSO)](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-3)
+* [ASP.NET Core Implementation (Web Apps + SSO)](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore)
+* [Conclusion (Web Apps + SSO)](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/part-4)

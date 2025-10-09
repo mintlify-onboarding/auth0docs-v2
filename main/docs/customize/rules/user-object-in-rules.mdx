@@ -14,17 +14,17 @@ title: User Object Properties in Rules
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
 </Warning>
 
-The `user` object stores information about the logged-in user, returned by the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>. It is generated when a user authenticates and before rules run. Because of the order of events when a user authenticates, changes made to a user's profile from within a rule will only be available in the current user object if you also save the changes to the user object from within the same rule.
+The `user` object stores information about the logged-in user, returned by the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>. It is generated when a user authenticates and before rules run. Because of the order of events when a user authenticates, changes made to a user's profile from within a rule will only be available in the current user object if you also save the changes to the user object from within the same rule.
 
-To learn more about the authentication transaction flow, read the "How rules work" section in [Create Rules](/customize/rules/create-rules).
+To learn more about the authentication transaction flow, read the "How rules work" section in [Create Rules](/docs/customize/rules/create-rules).
 
 <Warning>
 
@@ -48,7 +48,7 @@ The following properties are available for the `user` object.
 <tr>
 <td><code>user.app_metadata</code></td>
 <td>object</td>
-<td>Custom fields that store info about a user that influences the user's access, such as support plan, security roles, or access control groups. Is `undefined` by default. For more info, see <a href="/manage-users/user-accounts/metadata">Metadata</a>.</td>
+<td>Custom fields that store info about a user that influences the user's access, such as support plan, security roles, or access control groups. Is `undefined` by default. For more info, see <a href="/docs/manage-users/user-accounts/metadata">Metadata</a>.</td>
 </tr>
 <tr>
 <td><code>user.created_at</code></td>
@@ -79,13 +79,13 @@ The following properties are available for the `user` object.
 <td><code>user.identities</code></td>
 <td>array (object)</td>
 <td>
-        Contains info retrieved from the identity provider with which the user originally authenticates. Users may also <a href="/manage-users/user-accounts/user-account-linking">link their profile to multiple identity providers</a>; those identities will then also appear in this array. The contents of an individual identity provider object varies by provider, but it will typically include the following:<ul>
+        Contains info retrieved from the identity provider with which the user originally authenticates. Users may also <a href="/docs/manage-users/user-accounts/user-account-linking">link their profile to multiple identity providers</a>; those identities will then also appear in this array. The contents of an individual identity provider object varies by provider, but it will typically include the following:<ul>
 <li><code>connection</code> (text): Name of the Auth0 connection used to authenticate the user.</li>
 <li><code>isSocial</code> (boolean): Indicates whether the connection is a social one.</li>
 <li><code>provider</code> (text): Name of the entity that is authenticating the user, such as Facebook, Google, SAML, or your own provider.</li>
 <li><code>user_id</code> (text): User's unique identifier for this connection/provider. The first user_id linked becomes the primary unique identifier for the user.</li>
 <li><code>profileData</code> (object): User information associated with the connection. When profiles are linked, it is populated with the associated user info for secondary accounts.</li></ul>
-In some cases, it will also include an API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> to be used with the provider.
+In some cases, it will also include an API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> to be used with the provider.
       </td>
 </tr>
 <tr>
@@ -126,7 +126,7 @@ In some cases, it will also include an API <Tooltip tip="Access Token: Authoriza
 <tr>
 <td><code>user.picture</code></td>
 <td>text</td>
-<td>URL pointing to <a href="/manage-users/user-accounts/change-user-picture">the user's profile picture</a>.</td>
+<td>URL pointing to <a href="/docs/manage-users/user-accounts/change-user-picture">the user's profile picture</a>.</td>
 </tr>
 <tr>
 <td><code>user.updated_at</code></td>
@@ -141,7 +141,7 @@ In some cases, it will also include an API <Tooltip tip="Access Token: Authoriza
 <tr>
 <td><code>user.user_metadata</code></td>
 <td>object</td>
-<td>Custom fields that store info about a user that does not impact what they can or cannot access, such as work address, home address, or user preferences. For more info, see <a href="/manage-users/user-accounts/metadata">Metadata</a>.</td>
+<td>Custom fields that store info about a user that does not impact what they can or cannot access, such as work address, home address, or user preferences. For more info, see <a href="/docs/manage-users/user-accounts/metadata">Metadata</a>.</td>
 </tr>
 <tr>
 <td><code>user.username</code></td>

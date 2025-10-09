@@ -20,7 +20,7 @@ The Auth0 data store is customized for authentication data. Storing anything bey
 
 * **Scalability**: The Auth0 data store is limited in scalability, and your Application's data may exceed the appropriate limits. By using an external database, you keep your Auth0 data store simple, while the more efficient external database contains the extra data;
 * **Performance**: Your authentication data is likely accessed at lower frequencies than your other data. The Auth0 data store isn't optimized for high-frequency use, so you should store data that needs to be retrieved more often elsewhere;
-* **Flexibility**: Because the Auth0 data store was built to accommodate only user profiles and their associated metadata, you are limited in terms of the actions you can perform on the database. By using separate databases for your other data, you can manage your data as appropriate and perform direct calls without use of Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+* **Flexibility**: Because the Auth0 data store was built to accommodate only user profiles and their associated metadata, you are limited in terms of the actions you can perform on the database. By using separate databases for your other data, you can manage your data as appropriate and perform direct calls without use of Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 When outsourcing user authentication, there is usually no need to maintain your own users/passwords table. Even so, you may still want to associate application data with authenticated users.
 
@@ -29,9 +29,9 @@ When outsourcing user authentication, there is usually no need to maintain your 
 
 ## User data storage example scenario
 
-Auth0 provides a sample app, a mobile music application, that reflects the end-to-end user experience when using Auth0 with a custom external database. The sample app is an iOS app created using the [Auth0 iOS seed project](/quickstart/native/ios-swift). The backend uses the [Node.js API](/quickstart/backend/nodejs).
+Auth0 provides a sample app, a mobile music application, that reflects the end-to-end user experience when using Auth0 with a custom external database. The sample app is an iOS app created using the [Auth0 iOS seed project](/docs/quickstart/native/ios-swift). The backend uses the [Node.js API](/docs/quickstart/backend/nodejs).
 
-For a visualization of the application's overall structure, see the [Mobile + API architecture scenario](/get-started/architecture-scenarios/mobile-api).
+For a visualization of the application's overall structure, see the [Mobile + API architecture scenario](/docs/get-started/architecture-scenarios/mobile-api).
 
 ### Metadata
 
@@ -79,7 +79,7 @@ function(user, context, callback){
 
 Here's a look at the screen the user would use to change their `displayName`:
 
-<Frame>![iOS app settings screen with option to update display name.](/images/cdy7uua7fh8z/33YxGQKYztHY3OM6mxJ4jN/0a06103e6b6455c2e1962a1f738b663a/4-settings.png)</Frame>
+<Frame>![iOS app settings screen with option to update display name.](/docs/images/cdy7uua7fh8z/33YxGQKYztHY3OM6mxJ4jN/0a06103e6b6455c2e1962a1f738b663a/4-settings.png)</Frame>
 
 To save the changes to the database, the application makes a call to the [Get a User](https://auth0.com/docs/api/management/v2#!/Users/get_users_by_id) endpoint of the Management API to identify the appropriate user:
 
@@ -457,7 +457,7 @@ You must replace `{yourAccessToken}` with a [Management API Access Token](https:
 
 ### User data permission rules
 
-Use [rules](/customize/rules) to implement permissions on whether a user can edit featured playlists or not.
+Use [rules](/docs/customize/rules) to implement permissions on whether a user can edit featured playlists or not.
 
 #### Assign Playlist Editor role
 
@@ -555,7 +555,7 @@ function(user, context, callback) {
 
 After we've implemented these two rules, the app recognizes whether the user is a playlist editor or not and changes the welcome screen accordingly. If `playlist_editor` is in the `roles` array stored in the user's `app_metadata`, the user will be welcomed as an **EDITOR** after signing in:
 
-<Frame>![Example of user profile page with editor role.](/images/cdy7uua7fh8z/1WEKC4eWvm8GPK2BlodGFk/3eb36843f22518ace800fc1507bd5816/3-home.png)</Frame>
+<Frame>![Example of user profile page with editor role.](/docs/images/cdy7uua7fh8z/1WEKC4eWvm8GPK2BlodGFk/3eb36843f22518ace800fc1507bd5816/3-home.png)</Frame>
 
 #### Associate a user's music with the user
 
@@ -579,9 +579,9 @@ The user's unique identifier is the `user_id` and it's the sub-property of the `
 </tbody>
 </table>
 
-The Node.js backend authenticates requests to the URI associated with getting the user’s personal data from the database by validating a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip>.
+The Node.js backend authenticates requests to the URI associated with getting the user’s personal data from the database by validating a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip>.
 
-[Learn about token-based authentication and how to implement JWT in your Applications.](/secure/tokens/json-web-tokens)
+[Learn about token-based authentication and how to implement JWT in your Applications.](/docs/secure/tokens/json-web-tokens)
 
 Here is the code implementing JWT validation from the Node.js seed project:
 
@@ -657,6 +657,6 @@ function queryGenre(user_id, res){
 
 ## Learn more
 
-* [Normalized User Profiles](/manage-users/user-accounts/user-profiles/normalized-user-profiles)
-* [Normalized User Profile Schema](/manage-users/user-accounts/user-profiles/normalized-user-profile-schema)
-* [Sample User Profiles](/manage-users/user-accounts/user-profiles/sample-user-profiles)
+* [Normalized User Profiles](/docs/manage-users/user-accounts/user-profiles/normalized-user-profiles)
+* [Normalized User Profile Schema](/docs/manage-users/user-accounts/user-profiles/normalized-user-profile-schema)
+* [Sample User Profiles](/docs/manage-users/user-accounts/user-profiles/sample-user-profiles)

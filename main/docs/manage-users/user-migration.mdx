@@ -11,15 +11,15 @@ title: Import and Export Users
 ---
 <Warning>
 
-The **User Import/Export Extension** will be deprecated in September 2025. You can access the same features now available [directly in the Auth0 Management Dashboard](/manage-users/user-migration/bulk-user-import-export).
+The **User Import/Export Extension** will be deprecated in September 2025. You can access the same features now available [directly in the Auth0 Management Dashboard](/docs/manage-users/user-migration/bulk-user-import-export).
 
 </Warning>
 
-Auth0 supports importing users from external applications using custom database connections, the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>, or the User Import/Export Extension.
+Auth0 supports importing users from external applications using custom database connections, the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>, or the User Import/Export Extension.
 
 ## Automatic migrations
 
-Auth0 supports automatic migration of users from a [custom database connection](/authenticate/database-connections/custom-db) to Auth0. This practice is sometimes known as **trickle migration** or **lazy migration**. By activating this feature, your users are:
+Auth0 supports automatic migration of users from a [custom database connection](/docs/authenticate/database-connections/custom-db) to Auth0. This practice is sometimes known as **trickle migration** or **lazy migration**. By activating this feature, your users are:
 
 * Moved to Auth0 the first time they log in after you set up the integration.
 * Not asked to reset their password as a result of the migration.
@@ -37,7 +37,7 @@ When a user authenticates via a custom database connection marked for import to 
 * Subsequent logins result in the user's credentials retrieved from Auth0, **NOT** your custom database.
 * New users are automatically added to the Auth0 database.
 
-<Frame>![User Migration Diagram](/images/cdy7uua7fh8z/JAHBs6NzVRf0N5iXI7Wby/d0bfa23a1485aeb5d64bd52fe977d4fe/import-export-diagram.png)</Frame>
+<Frame>![User Migration Diagram](/docs/images/cdy7uua7fh8z/JAHBs6NzVRf0N5iXI7Wby/d0bfa23a1485aeb5d64bd52fe977d4fe/import-export-diagram.png)</Frame>
 
 ## Bulk user imports with the Management API
 
@@ -52,10 +52,10 @@ The User Import/Export feature allows you to:
 
 To use bulk import, you must be Dashboard Editor - Users or an Admin. To use bulk export, you must be Dashboard Viewer - Users, Editor - Users, or an Admin.
 
-You can import and export user data using the [User Import/Export feature](/manage-users/user-migration/bulk-user-import-export) available on the dashboard.
+You can import and export user data using the [User Import/Export feature](/docs/manage-users/user-migration/bulk-user-import-export) available on the dashboard.
 
 ## Learn more
 
-* [Configure Automatic Migration from Your Database](/manage-users/user-migration/configure-automatic-migration-from-your-database)
-* [Bulk User Imports](/manage-users/user-migration/bulk-user-imports)
-* [User Import / Export Extension](/manage-users/user-migration/user-import-export-extension)
+* [Configure Automatic Migration from Your Database](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database)
+* [Bulk User Imports](/docs/manage-users/user-migration/bulk-user-imports)
+* [User Import / Export Extension](/docs/manage-users/user-migration/user-import-export-extension)

@@ -10,7 +10,7 @@ title: Embedded Passwordless Login in Regular Web Applications
   login in regular applications.
 'twitter:title': Embedded Passwordless Login in Regular Web Applications
 ---
-To use the Embedded <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> APIs in Regular Web Applications, make sure you enable the **Passwordless OTP** grant at [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) in your application's settings under **Advanced Settings** > **Grant Types**.
+To use the Embedded <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> APIs in Regular Web Applications, make sure you enable the **Passwordless OTP** grant at [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) in your application's settings under **Advanced Settings** > **Grant Types**.
 
 Passwordless authentication for Regular Web Applications consists of two steps:
 
@@ -1077,17 +1077,17 @@ When you send a magic link, you don't need to call an API to authenticate the us
 
 ## Setting the auth0-forwarded-for header for rate-limit purposes
 
-The `/passwordless/start` endpoint has a [rate limit](/troubleshoot/customer-support/operational-policies/rate-limit-policy) of 50 requests per hour per IP. If you call the API from the server-side, your backend's IP may easily hit these rate limits. To learn how to address this issue, read the Rate Limiting in Passwordless Endpoints section of [Using Passwordless APIs](/authenticate/passwordless/implement-login/embedded-login/relevant-api-endpoints).
+The `/passwordless/start` endpoint has a [rate limit](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy) of 50 requests per hour per IP. If you call the API from the server-side, your backend's IP may easily hit these rate limits. To learn how to address this issue, read the Rate Limiting in Passwordless Endpoints section of [Using Passwordless APIs](/docs/authenticate/passwordless/implement-login/embedded-login/relevant-api-endpoints).
 
 ## Customize MFA
 
 <Warning>
-Customizable MFA with the Resource Owner Password Grant, Embedded, or Refresh Token flows is in Early Access. To learn more, read [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages). To participate in the early access, contact [Auth0 Support](https://support.auth0.com/).
+Customizable MFA with the Resource Owner Password Grant, Embedded, or Refresh Token flows is in Early Access. To learn more, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages). To participate in the early access, contact [Auth0 Support](https://support.auth0.com/).
 </Warning>
 
-Customize <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> with embedded flows. Use the MFA API to allow users to enroll and challenge with factors of their choice that are supported by your application.
+Customize <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> with embedded flows. Use the MFA API to allow users to enroll and challenge with factors of their choice that are supported by your application.
 
-When using [Lock for Web](/libraries/lock#2-authenticating-and-getting-user-info), the `oauth/token` endpoint returns the `mfa_required` error and includes the `mfa_token` you need to use the MFA API and `mfa_requirements` parameter with a list of authenticators your application currently supports:
+When using [Lock for Web](/docs/libraries/lock#2-authenticating-and-getting-user-info), the `oauth/token` endpoint returns the `mfa_required` error and includes the `mfa_token` you need to use the MFA API and `mfa_requirements` parameter with a list of authenticators your application currently supports:
 
 ```json lines
 {
@@ -1129,4 +1129,4 @@ Use the `mfa_token` to call the [`mfa/authenticator`](https://auth0.com/docs/api
 
 Proceed to enforce the MFA challenge by calling the [`request/mfa/challenge`](https://auth0.com/docs/api/authentication/muti-factor-authentication/request-mfa-challenge) endpoint.
 
-Further customize your MFA flow with Auth0 Actions. To learn more, read [Actions Triggers: post-challenge - API Object](/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).
+Further customize your MFA flow with Auth0 Actions. To learn more, read [Actions Triggers: post-challenge - API Object](/docs/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).

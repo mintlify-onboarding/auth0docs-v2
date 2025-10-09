@@ -9,17 +9,17 @@ title: Retrieve Organizations
   and Management API.
 'twitter:title': Retrieve Organizations
 ---
-When working with [organizations](/manage-users/organizations/organizations-overview) programmatically, you may need to retrieve either a list of all organizations or organizations individually by name or ID.
+When working with [organizations](/docs/manage-users/organizations/organizations-overview) programmatically, you may need to retrieve either a list of all organizations or organizations individually by name or ID.
 
 <Warning>
 
-The Management API should be accessed using only a confidential client. Its use is subject to [Auth0 Management API rate limits](/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
+The Management API should be accessed using only a confidential client. Its use is subject to [Auth0 Management API rate limits](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
 
 </Warning>
 
 ## Retrieve tenant organizations
 
-You can retrieve all organizations for a tenant via the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can retrieve all organizations for a tenant via the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Warning>
 
@@ -27,7 +27,7 @@ To retrieve more than 1000 results, you must use the checkpoint pagination metho
 
 </Warning>
 
-Make a `GET` call to the `Get Organizations` endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN` placeholder value with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>.
+Make a `GET` call to the `Get Organizations` endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN` placeholder value with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>.
 
 <CodeGroup>
 
@@ -215,7 +215,7 @@ If you are using custom domains, this should be your custom domain name.
 
 | Value | Description |
 | --- | --- |
-| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
+| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
 
 ### Response status codes
 
@@ -424,7 +424,7 @@ If you are using custom domains, this should be your custom domain name.
 | Value | Description |
 | --- | --- |
 | `ORG_ID` | ID of the organization you want to retrieve. |
-| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
+| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
 
 ### Response status codes
 
@@ -632,7 +632,7 @@ If you are using custom domains, this should be your custom domain name.
 | Value | Description |
 | --- | --- |
 | `ORG_ NAME` | Name of the organization you want to retrieve. Maximum length of 50 characters. |
-| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
+| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the scope `read:organizations`. |
 
 ### Response status codes
 

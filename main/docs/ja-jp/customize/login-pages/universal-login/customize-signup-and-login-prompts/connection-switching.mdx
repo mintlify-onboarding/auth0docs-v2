@@ -9,27 +9,27 @@ permalink: "connection-switching"
 'twitter:description': "Learn how you can implement flexible connection switching with Universal Login"
 ---
 
-Flexible connection switching is an optional feature that allows users to choose their method of authentication when logging in to an application. When implemented, your application's login screen presents users with the option to authenticate with either traditional database credentials or a <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=passwordless" tip="パスワードレス: 最初の要素としてパスワードに依存しない認証の形式。" cta="用語集の表示">passwordless</Tooltip> connection. Users who select a [passwordless connection](/ja-jp/authenticate/passwordless) receive a one-time password (OTP) through email or SMS that they can use to log in to your application.
+Flexible connection switching is an optional feature that allows users to choose their method of authentication when logging in to an application. When implemented, your application's login screen presents users with the option to authenticate with either traditional database credentials or a <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=passwordless" tip="パスワードレス: 最初の要素としてパスワードに依存しない認証の形式。" cta="用語集の表示">passwordless</Tooltip> connection. Users who select a [passwordless connection](/docs/ja-jp/authenticate/passwordless) receive a one-time password (OTP) through email or SMS that they can use to log in to your application.
 
-Flexible connection switching uses [custom Universal Login prompts](/ja-jp/customize/login-pages/universal-login/customize-signup-and-login-prompts) to provide users with a more autonomous authentication experience.
+Flexible connection switching uses [custom Universal Login prompts](/docs/ja-jp/customize/login-pages/universal-login/customize-signup-and-login-prompts) to provide users with a more autonomous authentication experience.
 
 ## Before you begin
 
 Before you can implement flexible connection switching, ensure the following requirements are met:
 
-* Use [Universal Login](/ja-jp/authenticate/login/auth0-universal-login).
+* Use [Universal Login](/docs/ja-jp/authenticate/login/auth0-universal-login).
 
   + This feature is not available for custom login pages.
-* Configure a [custom domain](/ja-jp/customize/custom-domains).
+* Configure a [custom domain](/docs/ja-jp/customize/custom-domains).
 * Enable the following for your application:
 
-  + [Identifier First authentication](/ja-jp/authenticate/login/auth0-universal-login/identifier-first)
-  + [Database connection](/ja-jp/authenticate/database-connections)
-  + [Email or SMS passwordless authentication](/ja-jp/authenticate/login/auth0-universal-login/passwordless-login/email-or-sms)
+  + [Identifier First authentication](/docs/ja-jp/authenticate/login/auth0-universal-login/identifier-first)
+  + [Database connection](/docs/ja-jp/authenticate/database-connections)
+  + [Email or SMS passwordless authentication](/docs/ja-jp/authenticate/login/auth0-universal-login/passwordless-login/email-or-sms)
 
 ## Implement flexible connection switching
 
-To implement this feature, use the [Auth0 Management API](/api/management/v2) to configure custom signup and login prompt partials. Partials refer to custom code inserted into an entry point within a prompt screen, such as the login screen. To learn more, review [Customize Signup and Login Prompts](/ja-jp/customize/login-pages/universal-login/customize-signup-and-login-prompts).
+To implement this feature, use the [Auth0 Management API](/docs/api/management/v2) to configure custom signup and login prompt partials. Partials refer to custom code inserted into an entry point within a prompt screen, such as the login screen. To learn more, review [Customize Signup and Login Prompts](/docs/ja-jp/customize/login-pages/universal-login/customize-signup-and-login-prompts).
 
 To implement flexible connection switching, you will configure custom prompt partials with the following parameters:
 
@@ -43,7 +43,7 @@ To implement flexible connection switching, you will configure custom prompt par
 <tbody>
 <tr>
 <td><code>state</code></td>
-<td>Renders the current page's state value, which is opaque and used for security purposes.<br/><br/>To learn more about current screen information, review <a href="/customize/login-pages/universal-login/customize-templates#current-screen-information">Customize Univeral Login Page Templates</a>.</td>
+<td>Renders the current page's state value, which is opaque and used for security purposes.<br/><br/>To learn more about current screen information, review <a href="/docs/customize/login-pages/universal-login/customize-templates#current-screen-information">Customize Univeral Login Page Templates</a>.</td>
 <td><code>&lt;input type='hidden' name='state' value='{{state}}'&gt;</code></td>
 </tr>
 <tr>
@@ -65,7 +65,7 @@ In the code samples below, ensure you replace the placeholders with the appropri
 
 ### Configure signup prompt
 
-You can configure the `signup-password` prompt using the [Set partials for a prompt](/api/management/v2/prompts/put-partials) endpoint:
+You can configure the `signup-password` prompt using the [Set partials for a prompt](/docs/api/management/v2/prompts/put-partials) endpoint:
 
 <CodeGroup>
 ```bash cURL lines
@@ -243,7 +243,7 @@ As a result, a **Send a secure code by email button** is added to the `signup-pa
 
 For best results, configuring the login prompt for both password and passwordless connections is recommended.
 
-You can configure the `login-password` prompt using the [Set partials for a prompt](/api/management/v2/prompts/put-partials) endpoint:
+You can configure the `login-password` prompt using the [Set partials for a prompt](/docs/api/management/v2/prompts/put-partials) endpoint:
 
 <CodeGroup>
 ```bash cURL lines
@@ -417,7 +417,7 @@ dataTask.resume()
 
 As a result, a **Send a secure code by email button** is added to the `login-password` screen. When a user selects this button, it submits a form body containing the login state parameter and the name of the desired connection.
 
-Similarly, you can configure the `login-passwordless` prompt using the [Set partials for a prompt](/api/management/v2/prompts/put-partials) endpoint:
+Similarly, you can configure the `login-passwordless` prompt using the [Set partials for a prompt](/docs/api/management/v2/prompts/put-partials) endpoint:
 
 <CodeGroup>
 ```bash cURL lines

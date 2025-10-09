@@ -14,9 +14,9 @@ title: Create Rules
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
@@ -26,7 +26,7 @@ To read more about the Rules and Hooks deprecation, read our blog post: [Prepari
 
 Because we plan to remove Rules and Hooks functions in 2026, you should create new Rules or Hooks only in your Development environment and only to test migration to Actions.
 
-To learn how to migrate your Rules to Actions, read [Migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions). To learn how to migrate your Hooks to Actions, read [Migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions).
+To learn how to migrate your Rules to Actions, read [Migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions). To learn how to migrate your Hooks to Actions, read [Migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions).
 
 </Warning>
 
@@ -34,11 +34,11 @@ You can build your own rule(s) to support your specific functionality requiremen
 
 ## How rules work
 
-Rules are JavaScript functions that execute when a user authenticates to your application. They run once the authentication process is complete, and you can use them to customize and extend Auth0's capabilities. For security reasons, your rules code executes isolated from the code of other Auth0 tenants in a sandbox. Rules also run during the token refresh flow. To learn more, read [Refresh Tokens](/secure/tokens/refresh-tokens).
+Rules are JavaScript functions that execute when a user authenticates to your application. They run once the authentication process is complete, and you can use them to customize and extend Auth0's capabilities. For security reasons, your rules code executes isolated from the code of other Auth0 tenants in a sandbox. Rules also run during the token refresh flow. To learn more, read [Refresh Tokens](/docs/secure/tokens/refresh-tokens).
 
 In Auth0, the authentication transaction flow works as follows when you use rules:
 
-<Frame>![Rules in the Authentication Flow diagram](/images/cdy7uua7fh8z/2gtBtkPChIyguA24x6enx2/ffbb8e21e86920ef9914f6fc126dc1df/flow.png)</Frame>
+<Frame>![Rules in the Authentication Flow diagram](/docs/images/cdy7uua7fh8z/2gtBtkPChIyguA24x6enx2/ffbb8e21e86920ef9914f6fc126dc1df/flow.png)</Frame>
 
 1. An app initiates an authentication request to Auth0.
 2. Auth0 routes the request to an identity provider through a configured connection.
@@ -47,23 +47,23 @@ In Auth0, the authentication transaction flow works as follows when you use rule
 
 ## Prerequisite
 
-If you plan to use global variables in your rule, be sure to configure your rules variables first. To learn more, read [Configure Global Variables for Rules](/customize/rules/configure-global-variables-for-rules).
+If you plan to use global variables in your rule, be sure to configure your rules variables first. To learn more, read [Configure Global Variables for Rules](/docs/customize/rules/configure-global-variables-for-rules).
 
 ## Use the Dashboard
 
 1. Go to [Dashboard > Auth Pipeline > Rules](https://manage.auth0.com/#/rules) and click **Create**.
 
-   <Frame>![Dashboard - Auth Pipeline - Rules ](/images/cdy7uua7fh8z/4OiSXzc5fYgPagHdOGbfvj/a589bdf811df66658fe21c509aed610c/Dashboard_-_Auth_Pipeline_-_Rules.png)</Frame>
+   <Frame>![Dashboard - Auth Pipeline - Rules ](/docs/images/cdy7uua7fh8z/4OiSXzc5fYgPagHdOGbfvj/a589bdf811df66658fe21c509aed610c/Dashboard_-_Auth_Pipeline_-_Rules.png)</Frame>
 2. Select a rule template.
 
-   <Frame>![Dashboard - Auth Pipeline - Rules - Template](/images/cdy7uua7fh8z/6IydSSjg2oQrdSzErcTYtN/d17348a98c597a74b2989c298764b9e1/dashboard-rules-create_choose-template.png)</Frame>
+   <Frame>![Dashboard - Auth Pipeline - Rules - Template](/docs/images/cdy7uua7fh8z/6IydSSjg2oQrdSzErcTYtN/d17348a98c597a74b2989c298764b9e1/dashboard-rules-create_choose-template.png)</Frame>
 3. Name the rule, modify the script to suit your needs, and click **Save changes**.
 
-   <Frame>![Dashboard - Auth Pipeline - Rules - Edit Rule](/images/cdy7uua7fh8z/5CoC6cnazv2uT1iSq6OGsm/6cb30d9479971be771313da80acc4802/Dashboard_-_Auth_Pipeline_-_Rules_-_Edit_Rule.png)</Frame>
+   <Frame>![Dashboard - Auth Pipeline - Rules - Edit Rule](/docs/images/cdy7uua7fh8z/5CoC6cnazv2uT1iSq6OGsm/6cb30d9479971be771313da80acc4802/Dashboard_-_Auth_Pipeline_-_Rules_-_Edit_Rule.png)</Frame>
 
 ## Use the Management API
 
-Make a `POST` call to the [Create Rule endpoint](https://auth0.com/docs/api/management/v2#!/Rules/post_rules). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `RULE_NAME`, `RULE_SCRIPT`, `RULE_ORDER`, and `RULE_ENABLED` placeholder values with your <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, rule name, rule script, rule order number, and rule enabled value, respectively.
+Make a `POST` call to the [Create Rule endpoint](https://auth0.com/docs/api/management/v2#!/Rules/post_rules). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `RULE_NAME`, `RULE_SCRIPT`, `RULE_ORDER`, and `RULE_ENABLED` placeholder values with your <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, rule name, rule script, rule order number, and rule enabled value, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -321,7 +321,7 @@ We expose IPv6 addresses in our public endpoints (e.g., `travel0.us.auth0.com`).
 
 ## Manage rate limits
 
-For rules that call Auth0 APIs, you should always handle rate limiting by checking the `X-RateLimit-Remaining` header and acting appropriately when the number returned nears 0. You should also add logic to handle cases in which you exceed the provided rate limits and receive the HTTP Status Code 429 (Too Many Requests); in this case, if a retry is needed, it is best to allow for a back-off to avoid going into an infinite retry loop. To learn more about rate limits, read [Rate Limit Policy For Auth0 APIs](/troubleshoot/customer-support/operational-policies/rate-limit-policy).
+For rules that call Auth0 APIs, you should always handle rate limiting by checking the `X-RateLimit-Remaining` header and acting appropriately when the number returned nears 0. You should also add logic to handle cases in which you exceed the provided rate limits and receive the HTTP Status Code 429 (Too Many Requests); in this case, if a retry is needed, it is best to allow for a back-off to avoid going into an infinite retry loop. To learn more about rate limits, read [Rate Limit Policy For Auth0 APIs](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy).
 
 ## Available modules
 
@@ -331,5 +331,5 @@ The sandbox supports all versions of the JavaScript language (and associated syn
 
 ## Learn more
 
-* [Configure Global Variables for Rules](/customize/rules/configure-global-variables-for-rules)
-* [Rules Environment Best Practices](/rules-best-practices/rules-environment-best-practices)
+* [Configure Global Variables for Rules](/docs/customize/rules/configure-global-variables-for-rules)
+* [Rules Environment Best Practices](/docs/rules-best-practices/rules-environment-best-practices)

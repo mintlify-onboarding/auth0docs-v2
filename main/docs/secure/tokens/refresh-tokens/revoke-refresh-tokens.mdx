@@ -10,15 +10,15 @@ title: Revoke Refresh Tokens
   using the Authentication API, the Management API, or the Auth0 Dashboard.
 'twitter:title': Revoke Refresh Tokens
 ---
-You can revoke <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip> in case they become compromised. Auth0 handles token revocation as though the token has been potentially exposed to malicious adversaries.
+You can revoke <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip> in case they become compromised. Auth0 handles token revocation as though the token has been potentially exposed to malicious adversaries.
 
-You can also use [refresh token rotation](/secure/tokens/refresh-tokens/refresh-token-rotation) so that every time a client exchanges a refresh token to get a new <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>, a new refresh token is also returned. Therefore, you no longer have a long-lived refresh token that, if compromised, could provide illegitimate access to resources. As refresh tokens are continually exchanged and invalidated, the threat is reduced.
+You can also use [refresh token rotation](/docs/secure/tokens/refresh-tokens/refresh-token-rotation) so that every time a client exchanges a refresh token to get a new <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, a new refresh token is also returned. Therefore, you no longer have a long-lived refresh token that, if compromised, could provide illegitimate access to resources. As refresh tokens are continually exchanged and invalidated, the threat is reduced.
 
 You can revoke a refresh token in the following ways:
 
 * In the Dashboard
 * Post a request to the Authentication API `/oauth/revoke` endpoint
-* Post a request to the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> `/api/v2/device-credentials` endpoint
+* Post a request to the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> `/api/v2/device-credentials` endpoint
 
 ## Refresh tokens and grants
 
@@ -265,7 +265,7 @@ Where:
 </tr>
 <tr>
 <td><code>client_secret</code></td>
-<td>Your application's Client Secret. Required for <a href="/get-started/applications/confidential-and-public-applications#confidential-applications">confidential applications</a>.</td>
+<td>Your application's Client Secret. Required for <a href="/docs/get-started/applications/confidential-and-public-applications#confidential-applications">confidential applications</a>.</td>
 </tr>
 <tr>
 <td><code>token</code> <br/><span class="label label-danger">Required</span></td>
@@ -278,7 +278,7 @@ The application should match the one for which the refresh token was issued.
 
 ### Revoke tokens without the client secret
 
-For applications that cannot keep the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip> safe (such as native apps), the `/oauth/revoke` endpoint supports access without the client secret. However, the application itself must have the property `tokenEndpointAuthMethod` set to `none`. You can change the `tokenEndpointAuthMethod` value, either from the [Dashboard > Applications > Applications](https://manage.auth0.com/#/applications), or using the Management API.
+For applications that cannot keep the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip> safe (such as native apps), the `/oauth/revoke` endpoint supports access without the client secret. However, the application itself must have the property `tokenEndpointAuthMethod` set to `none`. You can change the `tokenEndpointAuthMethod` value, either from the [Dashboard > Applications > Applications](https://manage.auth0.com/#/applications), or using the Management API.
 
 If the request is valid, the refresh token is revoked, and the response is `HTTP 200`, with an empty response body. Otherwise, the response body contains the error code and description.
 
@@ -373,16 +373,16 @@ The response will be `HTTP 204: The credential no longer exists.`
 
 ## Considerations and limitations
 
-With the [Device Authorization Flow](/get-started/authentication-and-authorization-flow/device-authorization-flow), the only way to force a device to reauthorize is to revoke the refresh token assigned to the device. See [Unlink Devices from Users](/manage-users/user-accounts/unlink-devices-from-users) for details. The device will not be forced to reauthorize until the current access token expires and the application tries to use the revoked refresh token.
+With the [Device Authorization Flow](/docs/get-started/authentication-and-authorization-flow/device-authorization-flow), the only way to force a device to reauthorize is to revoke the refresh token assigned to the device. See [Unlink Devices from Users](/docs/manage-users/user-accounts/unlink-devices-from-users) for details. The device will not be forced to reauthorize until the current access token expires and the application tries to use the revoked refresh token.
 
-When using [Refresh Token Rotation](/secure/tokens/refresh-tokens/refresh-token-rotation), if a previously invalidated token is used, the entire set of refresh tokens issued since that invalidated token was issued will immediately be revoked, requiring the end-user to re-authenticate.
+When using [Refresh Token Rotation](/docs/secure/tokens/refresh-tokens/refresh-token-rotation), if a previously invalidated token is used, the entire set of refresh tokens issued since that invalidated token was issued will immediately be revoked, requiring the end-user to re-authenticate.
 
 * Use the Authentication API `/oauth/revoke` [endpoint](https://auth0.com/docs/api/authentication#revoke-refresh-token) to revoke a refresh token. This endpoint does not delete the underlying grant. You can change this behavior to also delete the underlying grant in the Dashboard: [Dashboard > Tenant Settings > Advanced](https://manage.auth0.com/#/tenant/advanced). Scroll to **Settings** and enable the **Refresh Token Revocation Deletes Grant** toggle.
 * Use the Management API `/api/v2/device-credentials` [endpoint](https://auth0.com/docs/api/management/v2#!/Device_Credentials/get_device_credentials) to revoke refresh tokens configured for rotation.
 
 ## Learn more
 
-* [Get Refresh Tokens](/secure/tokens/refresh-tokens/get-refresh-tokens)
-* [Use Refresh Tokens](/secure/tokens/refresh-tokens/use-refresh-tokens)
-* [Refresh Token Rotation](/secure/tokens/refresh-tokens/refresh-token-rotation)
-* [Configure Refresh Token Expiration](/secure/tokens/refresh-tokens/configure-refresh-token-expiration)
+* [Get Refresh Tokens](/docs/secure/tokens/refresh-tokens/get-refresh-tokens)
+* [Use Refresh Tokens](/docs/secure/tokens/refresh-tokens/use-refresh-tokens)
+* [Refresh Token Rotation](/docs/secure/tokens/refresh-tokens/refresh-token-rotation)
+* [Configure Refresh Token Expiration](/docs/secure/tokens/refresh-tokens/configure-refresh-token-expiration)

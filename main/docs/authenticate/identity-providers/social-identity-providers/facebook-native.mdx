@@ -23,7 +23,7 @@ Check the [Facebook GDPR](https://www.facebook.com/business/m/one-sheeters/gdpr-
 
 The Native Facebook login flow works as follows:
 
-* **Step 1**: The application authenticates a user via the Facebook SDK and acquires an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>.
+* **Step 1**: The application authenticates a user via the Facebook SDK and acquires an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>.
 * **Step 2**: The application uses that Access Token to request a special [Facebook Session Info Access Token](https://developers.facebook.com/docs/facebook-login/access-tokens/session-info-access-token).
 * **Step 3**: Use the Facebook SDK to retrieve the users's profile.
 * **Step 4**: The application can then use the Facebook Session Info token to authenticate with Auth0.
@@ -37,7 +37,7 @@ Before you configure Native Facebook login for your native app via Auth0, you mu
 3. Navigate to [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications), and create an application with Auth0 (if you have not already).
 4. At the bottom of the settings page, select **Show Advanced Settings** and then the **Device Settings** view. Under **Native Social Login**, enable the **Enable Sign In with Facebook** toggle.
 
-   <Frame>![Native Social Login Settings](/images/cdy7uua7fh8z/5p2RaaeAtZyJzcoCfkF4tW/7326854f031e9c0a70f6b19de9cf9030/Native_Social_Login_-_English.png)</Frame>
+   <Frame>![Native Social Login Settings](/docs/images/cdy7uua7fh8z/5p2RaaeAtZyJzcoCfkF4tW/7326854f031e9c0a70f6b19de9cf9030/Native_Social_Login_-_English.png)</Frame>
 
 ## Implementation
 
@@ -143,6 +143,6 @@ Since the native login implementation does not make use of standard browser-base
 
 ## Keep reading
 
-* [Native Facebook Login with iOS Swift](/quickstart/native/ios-swift)
-* [Native Facebook Login with Android](/quickstart/native/android-facebook-login)
-* [Rate Limits on Native Social Logins](/troubleshoot/customer-support/operational-policies/rate-limit-policy)
+* [Native Facebook Login with iOS Swift](/docs/quickstart/native/ios-swift)
+* [Native Facebook Login with Android](/docs/quickstart/native/android-facebook-login)
+* [Rate Limits on Native Social Logins](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy)

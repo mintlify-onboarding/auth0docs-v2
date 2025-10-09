@@ -14,12 +14,12 @@ If you have custom code executing in Auth0 that calls a service inside your netw
 
 Features that may require you to allow inbound traffic from Auth0 include:
 
-* [Actions](/customize/actions)
-* [Rules](/customize/rules)
-* [Hooks](/customize/hooks)
-* [Custom Database Action Scripts](/authenticate/database-connections/custom-db/templates)
-* [Log Streams](/customize/log-streams)
-* [External STMP Email Providers](/customize/email/smtp-email-providers)
+* [Actions](/docs/customize/actions)
+* [Rules](/docs/customize/rules)
+* [Hooks](/docs/customize/hooks)
+* [Custom Database Action Scripts](/docs/authenticate/database-connections/custom-db/templates)
+* [Log Streams](/docs/customize/log-streams)
+* [External STMP Email Providers](/docs/customize/email/smtp-email-providers)
 
 ## Outbound calls
 
@@ -63,7 +63,7 @@ The list of IP addresses for each region are listed below:
 
 ### Private Cloud
 
-For Private Cloud tenants, the IP addresses that you must allow through your firewall are unique to the tenant's environment. Auth0 may receive your tenant's private IP addresses if you enable features like Tenant Logs, <Tooltip tip="Suspicious IP Throttling: Form of attack protection that protects your tenant against suspicious logins targeting too many accounts from a single IP address." cta="View Glossary" href="/glossary?term=Suspicious+IP+throttling">Suspicious IP throttling</Tooltip>, Custom Databases, and Actions that rely on them.
+For Private Cloud tenants, the IP addresses that you must allow through your firewall are unique to the tenant's environment. Auth0 may receive your tenant's private IP addresses if you enable features like Tenant Logs, <Tooltip tip="Suspicious IP Throttling: Form of attack protection that protects your tenant against suspicious logins targeting too many accounts from a single IP address." cta="View Glossary" href="/docs/glossary?term=Suspicious+IP+throttling">Suspicious IP throttling</Tooltip>, Custom Databases, and Actions that rely on them.
 
 These IP addresses are known as **Primary Egress IPs** and are listed under the environment's configuration data available in the [Auth0 Support Center](https://support.auth0.com/tenants/private).
 
@@ -71,10 +71,10 @@ These IP addresses are known as **Primary Egress IPs** and are listed under the 
 
 IP addresses related to inbound calls to Auth0 may be variable due to the lack of fixed IP addresses on the load balancers. In this case, firewall rules should operate on the name of the service (for example: `<YOUR_TENANT>.<YOUR_REGION>.auth0.com`).
 
-If your Auth0 subscription allows you to configure a self-managed <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>, you can configure that custom domain to have a static IP address. Self-managed custom domains give you control over the network entry point and let you ensure that the IP address is fixed. For information on subscription plans, see [Auth0 Pricing](https://auth0.com/pricing).
+If your Auth0 subscription allows you to configure a self-managed <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>, you can configure that custom domain to have a static IP address. Self-managed custom domains give you control over the network entry point and let you ensure that the IP address is fixed. For information on subscription plans, see [Auth0 Pricing](https://auth0.com/pricing).
 
 ## Learn more
 
-* [Auth0 Public Cloud Service Endpoints](/troubleshoot/customer-support/operational-policies/public-cloud-service-endpoints)
-* [Configure External SMTP Email Providers](/customize/email/smtp-email-providers)
-* [Custom Database Connection Security Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts/connection-security)
+* [Auth0 Public Cloud Service Endpoints](/docs/troubleshoot/customer-support/operational-policies/public-cloud-service-endpoints)
+* [Configure External SMTP Email Providers](/docs/customize/email/smtp-email-providers)
+* [Custom Database Connection Security Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/connection-security)

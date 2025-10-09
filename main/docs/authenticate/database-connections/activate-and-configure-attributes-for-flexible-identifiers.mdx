@@ -12,7 +12,7 @@ title: Activate and Configure Attributes for Flexible Identifiers
 ---
 <Warning>
 
-Enabling Flexible Identifiers on your tenant has the potential to introduce breaking changes to your production environment. For more information on potential problems and limitations, see [Flexible Identifiers and Attributes](/authenticate/database-connections/flexible-identifiers-and-attributes).
+Enabling Flexible Identifiers on your tenant has the potential to introduce breaking changes to your production environment. For more information on potential problems and limitations, see [Flexible Identifiers and Attributes](/docs/authenticate/database-connections/flexible-identifiers-and-attributes).
 
 </Warning>
 
@@ -165,13 +165,13 @@ Navigate to the **Attributes** tab and choose **Activate**, then choose from the
 
 ### Configure or remove existing Attributes on a connection
 
-All Attributes can be changed or deleted from your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Users cannot log in, sign up or reset passwords using the removed Attribute, and a minimum of one Attribute must remain active on every connection.
+All Attributes can be changed or deleted from your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Users cannot log in, sign up or reset passwords using the removed Attribute, and a minimum of one Attribute must remain active on every connection.
 
 To change or remove an Attribute, navigate to the Attributes tab, then choose the **...** menu button next to an Attribute and select **Configure** or **Remove** from the dropdown menu.
 
 ### Revert a connection
 
-To revert a connection back to its original state, use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [Update a connection](https://auth0.com/docs/api/management/v2/connections/patch-connections-by-id) endpoint with an `options` object that does not include the `attributes` parameter, as shown below.
+To revert a connection back to its original state, use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Update a connection](https://auth0.com/docs/api/management/v2/connections/patch-connections-by-id) endpoint with an `options` object that does not include the `attributes` parameter, as shown below.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

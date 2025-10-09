@@ -15,11 +15,11 @@ Learn how to configure mTLS authentication for a client with the [Management API
 You can use the Auth0 Dashboard to configure mTLS for a client to enable mTLS client authentication to the Authorization Server.
 
 1. Navigate to [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications).
-2. Select the application you want to use with mTLS or [create a new application](/get-started/auth0-overview/create-applications).
+2. Select the application you want to use with mTLS or [create a new application](/docs/get-started/auth0-overview/create-applications).
 3. Select the **Credentials** tab.
 4. Choose the required **Authentication Method**, which can be either:
 
-   * mTLS with a [self-signed certificate](/customize/custom-domains/self-managed-certificates)
+   * mTLS with a [self-signed certificate](/docs/customize/custom-domains/self-managed-certificates)
    * mTLS with a certificate authority signed certificate
 5. Once you select your preferred type of certificate, you can:
 
@@ -32,7 +32,7 @@ Use the [Auth0 Management API](https://auth0.com/docs/api/management/v2) to conf
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The following examples specify **$management_access_token**, or a [Management API access token](/secure/tokens/access-tokens/management-api-access-tokens). This must be replaced with an access token that contains at least the following scopes:
+The following examples specify **$management_access_token**, or a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens). This must be replaced with an access token that contains at least the following scopes:
 
 * `create:custom_domains`
 * `read:custom_domains`
@@ -42,7 +42,7 @@ The following examples specify **$management_access_token**, or a [Management AP
 * `update:client_keys`
 * `update:tenant_settings`
 
-To learn more about retrieving an access token with the required scopes, read [Get Access Tokens](/secure/tokens/access-tokens/get-access-tokens).
+To learn more about retrieving an access token with the required scopes, read [Get Access Tokens](/docs/secure/tokens/access-tokens/get-access-tokens).
 
 </Callout>
 
@@ -187,7 +187,7 @@ CA-signed certificates have embedded in their identity information the notion of
 
 ##### Generate a certificate
 
-The method of generating a CA-signed client certificate is highly dependent on the Public Key Infrastructure and outside of the scope of this document. We recommend generating at least a [2048-bit RSA key pair](/secure/application-credentials/generate-rsa-key-pair).
+The method of generating a CA-signed client certificate is highly dependent on the Public Key Infrastructure and outside of the scope of this document. We recommend generating at least a [2048-bit RSA key pair](/docs/secure/application-credentials/generate-rsa-key-pair).
 
 ##### Create a new client
 
@@ -275,7 +275,7 @@ Once you have configured your client for mTLS, you won't be able to authenticate
 
 ##### Create the credential resource
 
-Once you have [generated a key pair](/secure/application-credentials/generate-rsa-key-pair) exclusively for mTLS, create the credential resource. Make the following POST request to the `/clients` endpoint:
+Once you have [generated a key pair](/docs/secure/application-credentials/generate-rsa-key-pair) exclusively for mTLS, create the credential resource. Make the following POST request to the `/clients` endpoint:
 
 ```bash lines
 curl --location --request POST 'https://$tenant/api/v2/clients/$client_id/credentials' \
@@ -375,6 +375,6 @@ For more information, see the [Update a client](https://auth0.com/docs/api/manag
 
 ## Learn more
 
-* [Authenticate with mTLS](/get-started/authentication-and-authorization-flow/authenticate-with-mtls)
-* [Set up the Customer Edge](/get-started/applications/configure-mtls/set-up-the-customer-edge)
-* [Configure mTLS Authentication for a Tenant](/get-started/applications/configure-mtls/configure-mtls-for-a-tenant)
+* [Authenticate with mTLS](/docs/get-started/authentication-and-authorization-flow/authenticate-with-mtls)
+* [Set up the Customer Edge](/docs/get-started/applications/configure-mtls/set-up-the-customer-edge)
+* [Configure mTLS Authentication for a Tenant](/docs/get-started/applications/configure-mtls/configure-mtls-for-a-tenant)

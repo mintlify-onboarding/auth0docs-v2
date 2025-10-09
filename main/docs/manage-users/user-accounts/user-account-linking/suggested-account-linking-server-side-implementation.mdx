@@ -10,13 +10,13 @@ title: 'User Account Linking: Server-Side Implementation'
   using server-side code using a sample scenario.
 'twitter:title': 'User Account Linking: Server-Side Implementation'
 ---
-Auth0 supports the linking of user accounts from various <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip>. You can use server-side code to link accounts on a regular web application, engaging the user and asking them for permission before proceeding. Your code will authenticate users and search for and identify users using their email addresses. Your application will then prompt the user to link their accounts by authenticating with the target account's credentials, and later link the accounts.
+Auth0 supports the linking of user accounts from various <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip>. You can use server-side code to link accounts on a regular web application, engaging the user and asking them for permission before proceeding. Your code will authenticate users and search for and identify users using their email addresses. Your application will then prompt the user to link their accounts by authenticating with the target account's credentials, and later link the accounts.
 
 You can find the full source of this sample application [on GitHub](https://github.com/auth0-samples/auth0-link-accounts-sample/tree/master/RegularWebApp).
 
 1. Log the user into your application.<br />
 
-   The user authenticates to your application using [Universal Login](/authenticate/login/auth0-universal-login). To learn more, read the [Regular Web App Quickstart](/quickstart/webapp), asking for a token for the Auth0 Management API audience (audience=`https://{yourDomain}/api/v2/`).
+   The user authenticates to your application using [Universal Login](/docs/authenticate/login/auth0-universal-login). To learn more, read the [Regular Web App Quickstart](/docs/quickstart/webapp), asking for a token for the Auth0 Management API audience (audience=`https://{yourDomain}/api/v2/`).
 2. Search for users with identical email addresses.<br />
 
    You can get the user profile and the list of users with the same verified email.
@@ -57,7 +57,7 @@ You can find the full source of this sample application [on GitHub](https://gith
 
    
 
-   To get a list of all of the user records with the same email address, your application calls the Auth0 Management API's [Get Users By Email endpoint](https://auth0.com/docs/api/v2#!/users-by-email/get_users_by_email) using a [Management API Access Token](/secure/tokens/access-tokens/management-api-access-tokens) with the `read:users` scope.
+   To get a list of all of the user records with the same email address, your application calls the Auth0 Management API's [Get Users By Email endpoint](https://auth0.com/docs/api/v2#!/users-by-email/get_users_by_email) using a [Management API Access Token](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the `read:users` scope.
 
    ```javascript lines
    const request = require('request');
@@ -79,7 +79,7 @@ You can find the full source of this sample application [on GitHub](https://gith
    1. If Auth0 returns one or more records with matching email addresses, the user will see the list along with the following message prompting them to link the accounts.
    2. If the user wants to link a given account, they can click **Link** next to the appropriate account.
 
-      <Frame>![Example application with server-side account linking page](/images/cdy7uua7fh8z/7unQjUtxTZUc4tRFOxhaP3/050fb853d2b3be37795ce88b8a60ffed/account-linking-webapp-small__1_.png)</Frame>
+      <Frame>![Example application with server-side account linking page](/docs/images/cdy7uua7fh8z/7unQjUtxTZUc4tRFOxhaP3/050fb853d2b3be37795ce88b8a60ffed/account-linking-webapp-small__1_.png)</Frame>
 4. When the user clicks **Link**, your application will ask the user to authenticate with the target account, and then perform account linking.
 
    <Warning>
@@ -132,7 +132,7 @@ You can find the full source of this sample application [on GitHub](https://gith
    
 
    
-5. Your application calls the Auth0 Management API's [Link a User Account endpoint](https://auth0.com/docs/api/v2#!/Users/post_identities) using a [Management API Access Token](/secure/tokens/access-tokens/management-api-access-tokens) with the `update:users` scope.
+5. Your application calls the Auth0 Management API's [Link a User Account endpoint](https://auth0.com/docs/api/v2#!/Users/post_identities) using a [Management API Access Token](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the `update:users` scope.
 
 ## Metadata merge example
 
@@ -181,5 +181,5 @@ async function mergeMetadata(primaryUserId, secondaryUserId) {
 
 ## Learn more
 
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
-* [Troubleshoot Invalid Token Errors](/troubleshoot/basic-issues/invalid-token-errors)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)
+* [Troubleshoot Invalid Token Errors](/docs/troubleshoot/basic-issues/invalid-token-errors)

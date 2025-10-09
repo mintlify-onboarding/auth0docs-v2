@@ -10,7 +10,7 @@ title: Configure Features to Use Custom Domains
   features.
 'twitter:title': Configure Features to Use Custom Domains
 ---
-To configure Auth0 features to use your <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>, you may need to complete additional steps depending on the features you are using. For example, you may need to make changes before you can use your custom domain on your login page or to call your APIs.
+To configure Auth0 features to use your <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>, you may need to complete additional steps depending on the features you are using. For example, you may need to make changes before you can use your custom domain on your login page or to call your APIs.
 
 If you have been using Auth0 for some time and decide to enable a custom domain, you will have to migrate your existing apps and update the settings as described below, including to any VPN or firewall you use. Note that existing sessions created at `{yourDomain}` will no longer be valid once you start using your custom domain, so users will have to log in again.
 
@@ -28,7 +28,7 @@ You should have already configured and verified your custom domain.
 </thead>
 <tbody>
 <tr>
-<td><Tooltip tip="Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> with a customized login page</td>
+<td><Tooltip tip="Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> with a customized login page</td>
 <td><a href="#universal-login">Universal Login</a></td>
 </tr>
 <tr>
@@ -56,7 +56,7 @@ You should have already configured and verified your custom domain.
 <td><a href="#apis">APIs</a></td>
 </tr>
 <tr>
-<td><Tooltip tip="Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> Identity Providers</td>
+<td><Tooltip tip="Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> Identity Providers</td>
 <td><a href="#configure-saml-identity-providers">Configure SAML identity providers</a></td>
 </tr>
 <tr>
@@ -84,9 +84,9 @@ You should have already configured and verified your custom domain.
 
 ## Universal Login
 
-If you use [Auth0 Universal Login](/authenticate/login/auth0-universal-login) and you have customized the login page, you must update the code to use your custom domain. If you use the **default** login page without customization, you do not need to make any changes. To learn more, read Auth0 <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip>.
+If you use [Auth0 Universal Login](/docs/authenticate/login/auth0-universal-login) and you have customized the login page, you must update the code to use your custom domain. If you use the **default** login page without customization, you do not need to make any changes. To learn more, read Auth0 <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip>.
 
-If you use [Lock for Web](/libraries/lock), you must set the `configurationBaseUrl` and `overrides` options as seen in the following sample script:
+If you use [Lock for Web](/docs/libraries/lock), you must set the `configurationBaseUrl` and `overrides` options as seen in the following sample script:
 
 ```javascript lines
 var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
@@ -105,7 +105,7 @@ var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
 
 
 
-If you use [Auth0.js](/libraries/auth0js) on the Universal Login page, you must set the `overrides` option.
+If you use [Auth0.js](/docs/libraries/auth0js) on the Universal Login page, you must set the `overrides` option.
 
 ```javascript lines
 var webAuth = new auth0.WebAuth({
@@ -129,7 +129,7 @@ For most, the Auth0.js and Lock libraries retrieve the tenant name (required for
 
 ## Embedded Lock
 
-If you use [Lock for Web](/libraries/lock) embedded in your application, you must update the code to use your custom domain when initializing Lock. You will also need to set the `configurationBaseUrl` to the appropriate CDN URL.
+If you use [Lock for Web](/docs/libraries/lock) embedded in your application, you must update the code to use your custom domain when initializing Lock. You will also need to set the `configurationBaseUrl` to the appropriate CDN URL.
 
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
@@ -157,7 +157,7 @@ The CDN URL varies by region. Tenants created before 11 June 2020 should use `ht
 
 ## Auth0 SPA SDK, Auth0.js, and other SDKs
 
-If you use the [Auth0 SPA SDK](/libraries/auth0-single-page-app-sdk), [Auth0.js](/libraries/auth0js), or [other SDKs](/troubleshoot/customer-support/product-support-matrix#auth0-sdks), you will have to initialize the SDK using your custom domain. For example, if you are using the Auth0.js SDK, you must set the following:
+If you use the [Auth0 SPA SDK](/docs/libraries/auth0-single-page-app-sdk), [Auth0.js](/docs/libraries/auth0js), or [other SDKs](/docs/troubleshoot/customer-support/product-support-matrix#auth0-sdks), you will have to initialize the SDK using your custom domain. For example, if you are using the Auth0.js SDK, you must set the following:
 
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
@@ -191,7 +191,7 @@ const auth0 = await createAuth0Client({
 
 
 
-See APIs section below if you use a custom domain and also intend to perform [Management API actions with Auth0.js](/libraries/auth0js#user-management).
+See APIs section below if you use a custom domain and also intend to perform [Management API actions with Auth0.js](/docs/libraries/auth0js#user-management).
 
 ## Use custom domains in emails
 
@@ -202,13 +202,13 @@ If you want to use your custom domain with your Auth0 emails, you must enable th
 
 ## Configure Social identity providers
 
-If you want to use your custom domain with Social <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> (IdP), you must update your IdP's list of Authorized Redirect URIs to include your custom domain (such as `https://login.northwind.com/login/callback`).
+If you want to use your custom domain with Social <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> (IdP), you must update your IdP's list of Authorized Redirect URIs to include your custom domain (such as `https://login.northwind.com/login/callback`).
 
-You cannot use [Auth0 developer keys](/authenticate/identity-providers/social-identity-providers/devkeys) with custom domains.
+You cannot use [Auth0 developer keys](/docs/authenticate/identity-providers/social-identity-providers/devkeys) with custom domains.
 
 ## Configure Google Workspace connections
 
-If you want to use your custom domain with Google Workspace connections, you must update the Authorized Redirect URI in your <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> Client Settings. In the Google Developer Console, go to **Credentials**, choose your OAuth client in the list, and you will see a settings page with the app <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>, secret, and other fields. In the **Authorized redirect URIs** field, add a URL in the format `https://<YOUR-CUSTOM-DOMAIN>/login/callback` that includes your custom domain (such as `https://login.northwind.com/login/callback`).
+If you want to use your custom domain with Google Workspace connections, you must update the Authorized Redirect URI in your <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> Client Settings. In the Google Developer Console, go to **Credentials**, choose your OAuth client in the list, and you will see a settings page with the app <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>, secret, and other fields. In the **Authorized redirect URIs** field, add a URL in the format `https://<YOUR-CUSTOM-DOMAIN>/login/callback` that includes your custom domain (such as `https://login.northwind.com/login/callback`).
 
 ## APIs
 
@@ -222,7 +222,7 @@ Continue to use your default tenant domain name (such as `https://{yourDomain}/u
 
 All requests (i.e. obtaining the token, and actually calling the API) must use the same domain. Tokens obtained via a custom domain must be used on an Auth0 API using the same custom domain.
 
-If you use an authentication flow with your Custom Domain to request <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Tokens">Access Tokens</Tooltip> to access the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>, you must call the Management API endpoint with your Custom Domain too.
+If you use an authentication flow with your Custom Domain to request <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Tokens">Access Tokens</Tooltip> to access the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>, you must call the Management API endpoint with your Custom Domain too.
 
 ```json lines
 POST https://mycustomdomain.com/oauth/token
@@ -252,7 +252,7 @@ Authorization: Bearer <access_token>
 
 ##### Custom APIs
 
-If you use Auth0 with a custom domain to issue Access Tokens for your APIs, you must validate the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> issuer(s) against your custom domain. For example, if you use the [express-jwt](https://github.com/auth0/express-jwt) middleware, you must make the following change:
+If you use Auth0 with a custom domain to issue Access Tokens for your APIs, you must validate the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> issuer(s) against your custom domain. For example, if you use the [express-jwt](https://github.com/auth0/express-jwt) middleware, you must make the following change:
 
 ```js lines
 app.use(jwt({
@@ -268,7 +268,7 @@ app.use(jwt({
 
 ## Configure SAML identity providers
 
-To use your custom domain with <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> Identity Providers (IdPs), you must update your **Assertion Consumer Service (ACS) URL(s)** with the Identity Provider(s). Depending on what is supported by the IdP, you can do this in one of two ways:
+To use your custom domain with <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> Identity Providers (IdPs), you must update your **Assertion Consumer Service (ACS) URL(s)** with the Identity Provider(s). Depending on what is supported by the IdP, you can do this in one of two ways:
 
 1. You can get the service provider metadata from Auth0 at `https://<YOUR-CUSTOM-DOMAIN>/samlp/metadata?connection=<YOUR-CONNECTION-NAME>`. This will include the updated ACS URL. Then, you must manually update this value in your IdP(s) settings. This change to your IdP(s) must happen at the same time as you begin using your custom domain in your applications. This can pose a problem if there are multiple IdPs to configure.
 2. If supported by the IdP, you can use signed requests to fulfill this requirement:
@@ -294,7 +294,7 @@ If you have an IdP-initiated authentication flow, you will need to update the UR
 
 ## Configure WS-Fed applications
 
-If you want to use your custom domain with <Tooltip tip="Web Service Federation (WS-Fed): Protocol for managing user identities across domains." cta="View Glossary" href="/glossary?term=WS-Fed">WS-Fed</Tooltip> applications with Auth0 as the IdP, you must update your Service Provider with new identity provider metadata from Auth0. You can obtain the metadata reflecting the custom domain from `https://<YOUR-CUSTOM-DOMAIN>/wsfed/FederationMetadata/2007-06/FederationMetadata.xml`.
+If you want to use your custom domain with <Tooltip tip="Web Service Federation (WS-Fed): Protocol for managing user identities across domains." cta="View Glossary" href="/docs/glossary?term=WS-Fed">WS-Fed</Tooltip> applications with Auth0 as the IdP, you must update your Service Provider with new identity provider metadata from Auth0. You can obtain the metadata reflecting the custom domain from `https://<YOUR-CUSTOM-DOMAIN>/wsfed/FederationMetadata/2007-06/FederationMetadata.xml`.
 
 ## Configure Azure AD connections
 
@@ -308,14 +308,14 @@ If you want to use your custom domain with ADFS connections, you must update the
 
 If you do not need Kerberos support, AD/LDAP connections do not require further configuration.
 
-In order to use AD/LDAP connections with Kerberos support, you will need to update the Ticket endpoint to work with the custom domain. As mentioned in the [Auth0 AD/LDAP connector documentation](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-to-auth0#point-an-ad-ldap-connector-to-a-new-connection), the `config.json` file needs to be modified, with the `PROVISIONING_TICKET` value changed to use your custom domain in the format `https://<YOUR-CUSTOM-DOMAIN>/p/ad/jUG0dN0R`.
+In order to use AD/LDAP connections with Kerberos support, you will need to update the Ticket endpoint to work with the custom domain. As mentioned in the [Auth0 AD/LDAP connector documentation](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-to-auth0#point-an-ad-ldap-connector-to-a-new-connection), the `config.json` file needs to be modified, with the `PROVISIONING_TICKET` value changed to use your custom domain in the format `https://<YOUR-CUSTOM-DOMAIN>/p/ad/jUG0dN0R`.
 
 Once this change is saved, you need to restart the AD/LDAP Connector service for the change to take effect.
 
 ## Learn more
 
-* [Configure Custom Domains with Auth0-Managed Certificates](/customize/custom-domains/auth0-managed-certificates)
-* [Configure Custom Domains with Self-Managed Certificates](/customize/custom-domains/self-managed-certificates)
-* [Troubleshoot Custom Domains](/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
-* [Troubleshoot SAML Configurations](/troubleshoot/authentication-issues/troubleshoot-saml-configurations)
+* [Configure Custom Domains with Auth0-Managed Certificates](/docs/customize/custom-domains/auth0-managed-certificates)
+* [Configure Custom Domains with Self-Managed Certificates](/docs/customize/custom-domains/self-managed-certificates)
+* [Troubleshoot Custom Domains](/docs/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)
+* [Troubleshoot SAML Configurations](/docs/troubleshoot/authentication-issues/troubleshoot-saml-configurations)

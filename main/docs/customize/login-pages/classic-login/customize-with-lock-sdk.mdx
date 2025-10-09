@@ -10,9 +10,9 @@ title: Customize Classic Login Pages with Lock or SDK
   a custom UI built on top of an Auth0 SDK.
 'twitter:title': Customize Classic Login Pages with Lock or SDK
 ---
-Classic Login is an Auth0-hosted login experience that relies on JavaScript for [advanced customization](/customize/login-pages/classic-login/customization-classic). Implementing Classic Login is less complex than embedding the authentication process directly in your app, and it can help prevent the dangers of cross-origin authentication.
+Classic Login is an Auth0-hosted login experience that relies on JavaScript for [advanced customization](/docs/customize/login-pages/classic-login/customization-classic). Implementing Classic Login is less complex than embedding the authentication process directly in your app, and it can help prevent the dangers of cross-origin authentication.
 
-By default, the Classic Login page uses the Lock widget for user authentication. However, you can also customize templates for Lock in <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> Mode or a custom UI built with the Auth0.js SDK.
+By default, the Classic Login page uses the Lock widget for user authentication. However, you can also customize templates for Lock in <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> Mode or a custom UI built with the Auth0.js SDK.
 
 To customize your Classic Login page templates, you must first enable advanced customization. To do so, follow the steps below:
 
@@ -26,7 +26,7 @@ The templates available include:
 * Lock (passwordless)
 * Custom Login Form
 
-Both Lock templates allow you to customize the Lock widget used for authentication. The Lock widget provides a standard set of behaviors and a customizable user interface. Alternatively, you can use the Custom Login Form template to customize your login page with the [Auth0 SDK for Web](/libraries/auth0js) or [Authentication API](https://auth0.com/docs/api/authentication).
+Both Lock templates allow you to customize the Lock widget used for authentication. The Lock widget provides a standard set of behaviors and a customizable user interface. Alternatively, you can use the Custom Login Form template to customize your login page with the [Auth0 SDK for Web](/docs/libraries/auth0js) or [Authentication API](https://auth0.com/docs/api/authentication).
 
 Auth0 SDKs are client-side libraries that **do not** offer a user interface but allow for expanded customization of the behavior and appearance of the login page. The Authentication API provides direct integration without the use of Auth0 SDKs.
 
@@ -34,7 +34,7 @@ The template you use to customize your login page will depend on the unique need
 
 ## Using the Lock widget
 
-[Lock](/libraries/lock) is a login form that makes it easy for your users to authenticate using a selected connection. Lock automatically handles most of the details involved in creating and authenticating users.
+[Lock](/docs/libraries/lock) is a login form that makes it easy for your users to authenticate using a selected connection. Lock automatically handles most of the details involved in creating and authenticating users.
 
 With Lock, you will be implementing a UI that:
 
@@ -104,7 +104,7 @@ languageDictionary = {
 
 If the requirements of your app cannot be met by the standardized behavior of Lock, or if you have a complex custom authentication process, a custom user interface is needed. You may also prefer this option if you have an existing user interface that you wish to use.
 
-With [Auth0's library for Web](/libraries/auth0js), you can customize the behavior and flow of the process used to trigger signup and authentication. You can also directly use the Authentication API, without any wrapper at all, if you so choose.
+With [Auth0's library for Web](/docs/libraries/auth0js), you can customize the behavior and flow of the process used to trigger signup and authentication. You can also directly use the Authentication API, without any wrapper at all, if you so choose.
 
 Unlike with Lock, neither of these options includes a user interface. You will have complete control over the user experience for signup and authentication flow, and for the UI aspects of layout, look and feel, branding, internationalization, RTL support, and more.
 
@@ -116,10 +116,10 @@ Consider implementing a custom user interface in conjunction with an Auth0 libra
 * You only need to handle username/password and social provider authentication
 * You have multiple database or Active Directory Connections
 
-You can also see specific examples of the usage of both Lock and Auth0 SDKs for a wide variety of programming languages and platforms in our [Quickstarts](/quickstart). These guides may further assist you in your decision about which to use for your specific app needs.
+You can also see specific examples of the usage of both Lock and Auth0 SDKs for a wide variety of programming languages and platforms in our [Quickstarts](/docs/quickstart). These guides may further assist you in your decision about which to use for your specific app needs.
 
 ## Learn more
 
-* [Classic Login Experience](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience)
-* [Add Bot Detection to Custom Login Pages](/secure/attack-protection/bot-detection/bot-detection-custom-login-pages)
-* [Deprecation Errors](/troubleshoot/basic-issues/check-deprecation-errors)
+* [Classic Login Experience](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience)
+* [Add Bot Detection to Custom Login Pages](/docs/secure/attack-protection/bot-detection/bot-detection-custom-login-pages)
+* [Deprecation Errors](/docs/troubleshoot/basic-issues/check-deprecation-errors)

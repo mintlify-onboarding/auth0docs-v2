@@ -11,7 +11,7 @@ title: 'User-Initiated Account Linking: Client-Side Implementation'
   a SPA.
 'twitter:title': 'User-Initiated Account Linking: Client-Side Implementation'
 ---
-Auth0 supports the linking of user accounts from various <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip>. One way to implement this functionality is to enable the user to explicitly link accounts. In this scenario, the user authenticates through the UI of your Single Page Application (SPA) and can later use a link or button to link another account to the first one. When the user clicks on this link/button, your application makes a call so that when the user logs in with the second provider, the second account is linked with the first.
+Auth0 supports the linking of user accounts from various <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip>. One way to implement this functionality is to enable the user to explicitly link accounts. In this scenario, the user authenticates through the UI of your Single Page Application (SPA) and can later use a link or button to link another account to the first one. When the user clicks on this link/button, your application makes a call so that when the user logs in with the second provider, the second account is linked with the first.
 
 When you initiate account linking, you can select which identity to use as the primary account and which to use as the secondary. This choice depends on which set of attributes you want to retain in the primary profile, as you will only retain the attributes from the primary account.
 
@@ -23,16 +23,16 @@ Add `http://localhost:3000` in the “Allowed Callback URLs”, “Allowed Logou
 
 1. Log the user in to your application.<br/><br/>
 
-   The user authenticates to your SPA using using [Universal Login](/authenticate/login/auth0-universal-login), requesting an [Access Token for the Management API](https://auth0.com/docs/api/management/v2/get-access-tokens-for-spas).<br/><br/>
+   The user authenticates to your SPA using using [Universal Login](/docs/authenticate/login/auth0-universal-login), requesting an [Access Token for the Management API](https://auth0.com/docs/api/management/v2/get-access-tokens-for-spas).<br/><br/>
 
-   In the typical SPA login, the callback is handled client-side by the same page, and a JWT is received after successful authentication. To learn more, read the [Single-Page App Quickstart](/quickstart/spa).
+   In the typical SPA login, the callback is handled client-side by the same page, and a JWT is received after successful authentication. To learn more, read the [Single-Page App Quickstart](/docs/quickstart/spa).
 2. The user initiates account linking. Your SPA must provide a UI for the user to initiate a link to their other accounts. For example, your SPA could contain a user's settings page:<br/><br/>
 
    When the user clicks on the **Link Account** button, your app redirects the user to the Universal Login page, when they log in with the connection they want to link to. After successful authentication, use the obtained token to link the accounts.<br/><br/>
 
    You could also add a button for each connection (e.g. 'Link Facebook Account', 'Link Google Account') and redirect the user to `/authorize` with the `connection` parameter set (e.g. `/authorize?connection=facebook`).
 
-   <Frame>![Example profile page with user account linking](/images/cdy7uua7fh8z/4qxdXGBnlVRDaTkw2wv9WP/8792cff7c5fc21910ec12495828539da/account-linking-spa.png)</Frame>
+   <Frame>![Example profile page with user account linking](/docs/images/cdy7uua7fh8z/4qxdXGBnlVRDaTkw2wv9WP/8792cff7c5fc21910ec12495828539da/account-linking-spa.png)</Frame>
 3. Link accounts by calling the Auth0 Management API's [Link a User Account endpoint](https://auth0.com/docs/api/v2#!/Users/post_identities).
 
    <Warning>
@@ -80,12 +80,12 @@ Add `http://localhost:3000` in the “Allowed Callback URLs”, “Allowed Logou
 
 <Card title="Account Linking: Access Tokens vs. ID Tokens">
 
-Previously, in some cases, you could use ID Tokens to link and unlink user accounts. This functionality is being deprecated. You will have to use Access Tokens in all cases. The change in the unlinking of accounts is that you can no longer use an ID Token in the Authorization header. An Access Token must be used instead. The functionality is still available but not recommended and affected users are encouraged to migrate. See [Migration Guide: Account Linking with Access Tokens vs. ID Tokens](/troubleshoot/product-lifecycle/past-migrations/link-user-accounts-with-access-tokens-migration) for details.
+Previously, in some cases, you could use ID Tokens to link and unlink user accounts. This functionality is being deprecated. You will have to use Access Tokens in all cases. The change in the unlinking of accounts is that you can no longer use an ID Token in the Authorization header. An Access Token must be used instead. The functionality is still available but not recommended and affected users are encouraged to migrate. See [Migration Guide: Account Linking with Access Tokens vs. ID Tokens](/docs/troubleshoot/product-lifecycle/past-migrations/link-user-accounts-with-access-tokens-migration) for details.
 
 </Card>
 
 ## Learn more
 
-* [Link User Accounts](/manage-users/user-accounts/user-account-linking/link-user-accounts)
-* [Unlink User Accounts](/manage-users/user-accounts/user-account-linking/unlink-user-accounts)
-* [User Account Linking: Server-Side Implementation](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
+* [Link User Accounts](/docs/manage-users/user-accounts/user-account-linking/link-user-accounts)
+* [Unlink User Accounts](/docs/manage-users/user-accounts/user-account-linking/unlink-user-accounts)
+* [User Account Linking: Server-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)

@@ -9,7 +9,7 @@ title: Customize Adaptive MFA
   (MFA).
 'twitter:title': Customize Adaptive MFA
 ---
-You can customize <Tooltip tip="Adaptive Multi-factor Authentication: Multi-factor authentication (MFA) that is only triggered for users when an attempted login is determined to be a low confidence login." cta="View Glossary" href="/glossary?term=Adaptive+MFA">Adaptive MFA</Tooltip> for a variety of scenarios with [Auth0 Actions](/customize/actions).
+You can customize <Tooltip tip="Adaptive Multi-factor Authentication: Multi-factor authentication (MFA) that is only triggered for users when an attempted login is determined to be a low confidence login." cta="View Glossary" href="/docs/glossary?term=Adaptive+MFA">Adaptive MFA</Tooltip> for a variety of scenarios with [Auth0 Actions](/docs/customize/actions).
 
 ## When to customize Adaptive MFA
 
@@ -19,7 +19,7 @@ You should only consider customizing Adaptive MFA if your users are enrolled in 
 
 </Callout>
 
-If your users are not enrolled in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip>, you should use the default policy for Adaptive MFA. If a user is not enrolled in MFA and your Action assesses a high risk, you have limited options to stop a <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/glossary?term=bad+actor">bad actor</Tooltip>.
+If your users are not enrolled in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip>, you should use the default policy for Adaptive MFA. If a user is not enrolled in MFA and your Action assesses a high risk, you have limited options to stop a <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/docs/glossary?term=bad+actor">bad actor</Tooltip>.
 
 Before you begin to customize Adaptive MFA, ask yourself a few questions:
 
@@ -30,7 +30,7 @@ Before you begin to customize Adaptive MFA, ask yourself a few questions:
 
 ## Evaluate confidence
 
-Adaptive MFA calculates an overall confidence score based on the analysis of three assessments. Each assessment has its own confidence score. To learn more, read [Adaptive MFA](/secure/multi-factor-authentication/adaptive-mfa).
+Adaptive MFA calculates an overall confidence score based on the analysis of three assessments. Each assessment has its own confidence score. To learn more, read [Adaptive MFA](/docs/secure/multi-factor-authentication/adaptive-mfa).
 
 ### Confidence scores
 
@@ -788,7 +788,7 @@ To learn more about custom confidence scoring, read [Custom confidence scoring](
 
 Use the [assessments](#assessments-object) object to access the details for individual assessments, including the `code` property.
 
-Block the login transaction from completing by returning the callback function with an `UnauthorizedError` object as the [error parameter](/troubleshoot/error-handling-best-practices). The `UnauthorizedError` object always sets `error` to `unauthorized`, but you can customize the `error_message`:
+Block the login transaction from completing by returning the callback function with an `UnauthorizedError` object as the [error parameter](/docs/troubleshoot/error-handling-best-practices). The `UnauthorizedError` object always sets `error` to `unauthorized`, but you can customize the `error_message`:
 
 ```js lines
 exports.onExecutePostLogin = async (event, api) => {
@@ -816,7 +816,7 @@ To mitigate this scenario, use the [assessments](#assessments-object) object to 
 
 ## Learn more
 
-* [Enable Adaptive MFA](/secure/multi-factor-authentication/adaptive-mfa/enable-adaptive-mfa)
-* [Adaptive MFA Log Events](/secure/multi-factor-authentication/adaptive-mfa/adaptive-mfa-log-events)
-* [Actions Triggers: post-login - API Object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object)
-* [Actions Triggers: post-login - Event Object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object)
+* [Enable Adaptive MFA](/docs/secure/multi-factor-authentication/adaptive-mfa/enable-adaptive-mfa)
+* [Adaptive MFA Log Events](/docs/secure/multi-factor-authentication/adaptive-mfa/adaptive-mfa-log-events)
+* [Actions Triggers: post-login - API Object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object)
+* [Actions Triggers: post-login - Event Object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object)

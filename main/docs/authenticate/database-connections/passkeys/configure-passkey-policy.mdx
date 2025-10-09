@@ -10,7 +10,7 @@ title: Configure Passkey Policy
   configure your passkey policy.
 'twitter:title': Configure Passkey Policy
 ---
-You can enable passkeys as an authentication method and configure your passkey policy in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+You can enable passkeys as an authentication method and configure your passkey policy in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ To enable passkeys as an authentication method for your database connection, you
 
 If these prerequisites are not met and you try to enable passkeys, the Auth0 Dashboard displays the **Passkey Authentication Prerequisites** readiness checklist and shows any unmet requirements.
 
-<Frame>![](/images/cdy7uua7fh8z/51aI3GgLqE4rTw93V26DZ0/73a0fe3efc42e2963586a01718f36ab7/Passkey_policy_-_English.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/51aI3GgLqE4rTw93V26DZ0/73a0fe3efc42e2963586a01718f36ab7/Passkey_policy_-_English.png)</Frame>
 
 After you enable passkeys as an authentication method for a database connection, you can use the readiness checklist to monitor the status of each requirement and access the relevant settings.
 
@@ -31,18 +31,18 @@ To view the **Passkey Authentication Prerequisites** readiness checklist:
 
 ### Enable New Universal Login Experience
 
-Enable and configure the [New Universal Login Experience](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience).
+Enable and configure the [New Universal Login Experience](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience).
 
 #### Disable Custom Login Page setting
 
-The **Customize Login Page** setting allows you to customize login pages when using a [custom domain](/customize/custom-domains).
+The **Customize Login Page** setting allows you to customize login pages when using a [custom domain](/docs/customize/custom-domains).
 
 1. In the Auth0 Dashboard, go to [Branding > Universal Login > Advanced Options > Login](https://manage.auth0.com/#/login_page).
 2. Disable the **Custom Login Page** toggle.
 
 ### Enable Identifier First authentication
 
-Enable and configure [Identifier First authentication](/authenticate/login/auth0-universal-login/identifier-first).
+Enable and configure [Identifier First authentication](/docs/authenticate/login/auth0-universal-login/identifier-first).
 
 ### Update database connection settings
 
@@ -59,9 +59,9 @@ The **Requires Username** setting requires users to provide both a username and 
 
 #### Disable Use my own database setting unless Import Users to Auth0 setting is enabled
 
-The **Use my own database** setting allows you to use an external database to store users on a [custom database](/authenticate/database-connections/custom-db/create-db-connection) connection.
+The **Use my own database** setting allows you to use an external database to store users on a [custom database](/docs/authenticate/database-connections/custom-db/create-db-connection) connection.
 
-The **Import Users to Auth0** settings allows you to automatically import users from an external database to Auth0. For more information, read [Import and Export Users](/manage-users/user-migration/user-migration-scenarios).
+The **Import Users to Auth0** settings allows you to automatically import users from an external database to Auth0. For more information, read [Import and Export Users](/docs/manage-users/user-migration/user-migration-scenarios).
 
 If the **Import Users to Auth0** setting is not enabled on your tenant, you must disable the **Use my own database** setting to configure passkeys:
 
@@ -74,9 +74,9 @@ If the **Import Users to Auth0** setting is not enabled on your tenant, you must
 
 To ensure the best experience for end users when using passkeys, consider the items below.
 
-* **Configure a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>:** When a user enrolls a passkey, it associates with the <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=relying+party">relying party</Tooltip> domain. If the domain name changes at any time, all of the passkeys associated with the old domain become invalid. Configure a [custom domain](/customize/custom-domains) for your tenant prior to enabling passkeys to avoid any interruptions for end-users.
+* **Configure a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>:** When a user enrolls a passkey, it associates with the <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=relying+party">relying party</Tooltip> domain. If the domain name changes at any time, all of the passkeys associated with the old domain become invalid. Configure a [custom domain](/docs/customize/custom-domains) for your tenant prior to enabling passkeys to avoid any interruptions for end-users.
 * **Enable passkeys for a single database connection**: Enable passkeys for a maximum of one database connection.
-* **Consider limitations for Organization users:** Users cannot use passkeys when creating an account through an [Organization invitation email](/manage-users/organizations/configure-organizations/invite-members). To allow these users to create passkeys, use an alternate method of user creation or ensure [progressive enrollment](#progressive-enrollment) is enabled.
+* **Consider limitations for Organization users:** Users cannot use passkeys when creating an account through an [Organization invitation email](/docs/manage-users/organizations/configure-organizations/invite-members). To allow these users to create passkeys, use an alternate method of user creation or ensure [progressive enrollment](#progressive-enrollment) is enabled.
 
 ## Enable passkeys as an authentication method
 
@@ -140,7 +140,7 @@ Users can only use autofill if the functionality has been enabled in their brows
 
 </Callout>
 
-<Frame>![](/images/cdy7uua7fh8z/Q8xHHuKUvs4BMAJOKvq6M/9b21eedf85e43080cdbe673c97ffc378/login-passkey_default.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/Q8xHHuKUvs4BMAJOKvq6M/9b21eedf85e43080cdbe673c97ffc378/login-passkey_default.png)</Frame>
 
 ### Progressive Enrollment
 

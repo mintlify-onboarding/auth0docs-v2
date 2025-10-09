@@ -18,19 +18,19 @@ You will be required to supply the following details for your API:
 
 * **Name**: a friendly name for the API. Does not affect any functionality.
 * **Identifier**: a unique identifier for the API. We recommend using a URL but note that this doesn't have to be a publicly available URL, Auth0 will not call your API at all. This value cannot be modified afterwards.
-* **<Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/glossary?term=Signing+Algorithm">Signing Algorithm</Tooltip>**: the algorithm to sign the tokens with. The available values are `HS256` and `RS256`. When selecting RS256 the token will be signed with the tenant's private key. To learn more about signing algorithms, see [Signing Algorithms](/get-started/applications/signing-algorithms).
+* **<Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/docs/glossary?term=Signing+Algorithm">Signing Algorithm</Tooltip>**: the algorithm to sign the tokens with. The available values are `HS256` and `RS256`. When selecting RS256 the token will be signed with the tenant's private key. To learn more about signing algorithms, see [Signing Algorithms](/docs/get-started/applications/signing-algorithms).
 
-<Frame>![Dashboard - Applications - APIs - Create API - Popup](/images/cdy7uua7fh8z/4kIH4BQc4vDel2zhJ6lwCE/094cff6e8e1788c39796eb28ab1925ca/2024-06-27_14-50-24.png)</Frame>
+<Frame>![Dashboard - Applications - APIs - Create API - Popup](/docs/images/cdy7uua7fh8z/4kIH4BQc4vDel2zhJ6lwCE/094cff6e8e1788c39796eb28ab1925ca/2024-06-27_14-50-24.png)</Frame>
 
 Fill in the required information and click the **Create** button.
 
 #### Signing Algorithms
 
-When you create an API you have to select the algorithm your tokens will be signed with. The signature is used to verify that the sender of the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> is who it says it is and to ensure that the message wasn't changed along the way.
+When you create an API you have to select the algorithm your tokens will be signed with. The signature is used to verify that the sender of the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> is who it says it is and to ensure that the message wasn't changed along the way.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The signature is part of a JWT. If you are unfamiliar with JWT structure, please see [JSON Web Token Structure](/secure/tokens/json-web-tokens/json-web-token-structure).
+The signature is part of a JWT. If you are unfamiliar with JWT structure, please see [JSON Web Token Structure](/docs/secure/tokens/json-web-tokens/json-web-token-structure).
 
 </Callout>
 
@@ -57,7 +57,7 @@ Once the application has been created you will need to configure the Permissions
 
 In the settings for your API, go to the **Permissions** tab. In this section you can add all four of the scopes which were discussed before, namely `read:timesheets`, `create:timesheets`, `delete:timesheets`, `approve:timesheets`.
 
-<Frame>![Dashboard - Applications - APIs - Permissions](/images/cdy7uua7fh8z/xxMOKezob6gNHJ0CcKhcg/ccbb9bbab29576a96ed8425329ecffb4/dashboard-apis-edit_view-permissions.png)</Frame>
+<Frame>![Dashboard - Applications - APIs - Permissions](/docs/images/cdy7uua7fh8z/xxMOKezob6gNHJ0CcKhcg/ccbb9bbab29576a96ed8425329ecffb4/dashboard-apis-edit_view-permissions.png)</Frame>
 
 ## Create the Application
 
@@ -71,7 +71,7 @@ Click **Create**.
 
 ## Configure the Authorization Extension
 
-You will need to ensure that the Authorization Extension is installed for your tenant. You can refer to the [Authorization Extension documentation](/customize/extensions/authorization-extension) for details on how to do this.
+You will need to ensure that the Authorization Extension is installed for your tenant. You can refer to the [Authorization Extension documentation](/docs/customize/extensions/authorization-extension) for details on how to do this.
 
 ### Define Permissions
 
@@ -85,7 +85,7 @@ Head over to the Roles tab and create two Roles. Click the **Create Role** 
 
 Next, follow the same process to create a **Manager** role, and ensure that you have selected all the permissions:
 
-<Frame>![Dashboard - Extensions - Authorization Extension - Create Manager Role](/images/cdy7uua7fh8z/3ver0yyJpTLypmcIDzwSNt/d880e8ae74e6e973c7ce1c8b0f7e7c87/create-manager-role.png)</Frame>
+<Frame>![Dashboard - Extensions - Authorization Extension - Create Manager Role](/docs/images/cdy7uua7fh8z/3ver0yyJpTLypmcIDzwSNt/d880e8ae74e6e973c7ce1c8b0f7e7c87/create-manager-role.png)</Frame>
 
 ### Assign Users to Roles
 
@@ -99,9 +99,9 @@ Ensure that you have enabled **Permissions** and then click the **Publish Rul
 
 ### Create a Rule to validate token scopes
 
-The final step in this process is to create a Rule which will validate that the scopes contained in an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> is valid based on the permissions assigned to the user. Any scopes which are not valid for a user should be removed from the Access Token.
+The final step in this process is to create a Rule which will validate that the scopes contained in an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> is valid based on the permissions assigned to the user. Any scopes which are not valid for a user should be removed from the Access Token.
 
-In your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, go to the Rules tab. You should see the Rule created by the Authorization Extension.
+In your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, go to the Rules tab. You should see the Rule created by the Authorization Extension.
 
 Click on the **Create Rule** button and select the **Empty Rule** template. You can give the Rule a name, such as **Access Token Scopes**, and then specify the following code for the Rule:
 
@@ -132,6 +132,6 @@ The code above will ensure that all Access Tokens will only contain the properly
 
 Rules execute in the order they are displayed on the Rules page, so ensure that the new rule you created is positioned below the rule for the Authorization Extension, so it executes after the Authorization Extension rule.
 
-PREVIOUS TUTORIAL [1. Solution Overview](/get-started/architecture-scenarios/mobile-api/part-1)
+PREVIOUS TUTORIAL [1. Solution Overview](/docs/get-started/architecture-scenarios/mobile-api/part-1)
 
-NEXT TUTORIAL [3. API + Mobile Implementation](/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs)
+NEXT TUTORIAL [3. API + Mobile Implementation](/docs/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs)

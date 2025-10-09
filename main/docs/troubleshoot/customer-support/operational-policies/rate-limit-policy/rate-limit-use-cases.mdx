@@ -14,11 +14,11 @@ There are a handful of ways to determine if a customer product is being rate lim
 
 ### Tenant logs
 
-By subscribing to different tenant logs, you can track issues related to request volumes. To understand how tenant and operations event logs work in Auth0, read [Logs](/deploy-monitor/logs).
+By subscribing to different tenant logs, you can track issues related to request volumes. To understand how tenant and operations event logs work in Auth0, read [Logs](/docs/deploy-monitor/logs).
 
 #### api_limit
 
-The `api_limit` event is triggered immediately after a rate limit is exceeded for the global rate limit bucket for the Authentication or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. If the number of request tokens utilized remains above 80% after one minute for the same rate limit bucket, a second warning log is generated. If a rate limit is exceeded for a different rate limit bucket, a new `api_limit` event is generated. This helps customers identify which rate limit configuration their API calls are triggering, which is a critical first step in diagnosing the root cause.
+The `api_limit` event is triggered immediately after a rate limit is exceeded for the global rate limit bucket for the Authentication or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. If the number of request tokens utilized remains above 80% after one minute for the same rate limit bucket, a second warning log is generated. If a rate limit is exceeded for a different rate limit bucket, a new `api_limit` event is generated. This helps customers identify which rate limit configuration their API calls are triggering, which is a critical first step in diagnosing the root cause.
 
 #### api_limit_warning
 
@@ -34,11 +34,11 @@ Auth0 API responses deliver [HTTP 429 (Too Many Requests)](http://tools.ietf.org
 
 ### SDK error handling
 
-If you are using an SDK, refer to the [Management API SDK libraries](/libraries#mgmt) error pages.
+If you are using an SDK, refer to the [Management API SDK libraries](/docs/libraries#mgmt) error pages.
 
 ### Error pages
 
-The error page response is sent for endpoints that render HTML content to the end user. If your tenant is configured to use generic (Auth0 hosted) pages, Auth0 renders the error page instead of the expected content when you exceed the response limit.  If your tenant is configured to use [custom error pages](/customize/login-pages/custom-error-pages), the user is redirected to the custom error page URL with the relevant error in the `error_description` query string parameter.  For more information, see [Affected endpoints](/troubleshoot/customer-support/operational-policies/rate-limit-policy/authentication-api-endpoint-rate-limits#affected-endpoints) and the [JSON Error](/troubleshoot/customer-support/operational-policies/rate-limit-policy/authentication-api-endpoint-rate-limits#json-error) descriptions.
+The error page response is sent for endpoints that render HTML content to the end user. If your tenant is configured to use generic (Auth0 hosted) pages, Auth0 renders the error page instead of the expected content when you exceed the response limit.  If your tenant is configured to use [custom error pages](/docs/customize/login-pages/custom-error-pages), the user is redirected to the custom error page URL with the relevant error in the `error_description` query string parameter.  For more information, see [Affected endpoints](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/authentication-api-endpoint-rate-limits#affected-endpoints) and the [JSON Error](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/authentication-api-endpoint-rate-limits#json-error) descriptions.
 
 ## Find out why a tenant is being rate limited
 
@@ -94,7 +94,7 @@ Key points:
 
  Example scenario with rate limits:
 
-<Frame>![](/images/cdy7uua7fh8z/30m5xST81Db6mROVGCV5Bj/34d9638eb7467f02c2d0ecbe87ff0fd8/Examples_of_how_rate_limits_are_enforced_-_Page_1.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/30m5xST81Db6mROVGCV5Bj/34d9638eb7467f02c2d0ecbe87ff0fd8/Examples_of_how_rate_limits_are_enforced_-_Page_1.png)</Frame>
 
 In this scenario:
 
@@ -116,7 +116,7 @@ Key points:
 
 Example scenario with rate limits:
 
-<Frame>![](/images/cdy7uua7fh8z/PhtwGBwS9PfEpNQbPeA1o/dc2b05c72ef960a19958dbafa0295e70/Examples_of_how_rate_limits_are_enforced_-_Page_1__1_.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/PhtwGBwS9PfEpNQbPeA1o/dc2b05c72ef960a19958dbafa0295e70/Examples_of_how_rate_limits_are_enforced_-_Page_1__1_.png)</Frame>
 
 In this scenario:
 
@@ -136,7 +136,7 @@ An end user's login initiates multiple API calls to Authentication API endpoints
 
 The precise number of API calls is a function of a handful of configurations:
 
-* Authentication Experience (e.g., New <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> or Classic Login)
+* Authentication Experience (e.g., New <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> or Classic Login)
 * Authentication Flow (e.g., Login, Signup, or Change Password)
 * Authentication Flow Type (e.g., Login via Username / Password; Login via Social Login; Login when an existing Authentication Token already exists)
 
@@ -144,7 +144,7 @@ Below, we describe some common customer configurations, and their impact on API 
 
 ### Universal Login
 
-[Auth0 Universal Login](/authenticate/login/auth0-universal-login) provides the essential feature of an <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip>: the login flow. When a user needs to prove their identity to gain access to your application, you can redirect them to Universal Login and let Auth0 handle the authentication process.
+[Auth0 Universal Login](/docs/authenticate/login/auth0-universal-login) provides the essential feature of an <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip>: the login flow. When a user needs to prove their identity to gain access to your application, you can redirect them to Universal Login and let Auth0 handle the authentication process.
 
 <table class="table"><thead>
 <tr>
@@ -221,7 +221,7 @@ Certain authentication configurations modify the base request count. These adjus
 
 ### Classic login
 
-[Classic Login](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) is an Auth0-hosted login experience that relies on JavaScript for customization. Implementing Classic Login is less complex than embedding the authentication process directly in your app, and can help prevent the dangers of cross-origin authentication.
+[Classic Login](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) is an Auth0-hosted login experience that relies on JavaScript for customization. Implementing Classic Login is less complex than embedding the authentication process directly in your app, and can help prevent the dangers of cross-origin authentication.
 
 <table class="table"><thead>
 <tr>
@@ -256,7 +256,7 @@ Certain authentication configurations modify the base request count. These adjus
 
 <Warning>
 
-Customers configuring Custom Databases should add two (2) additional authentication API calls to each authentication flow described above. For more details, see [Custom Database Connections](/authenticate/database-connections/custom-db).
+Customers configuring Custom Databases should add two (2) additional authentication API calls to each authentication flow described above. For more details, see [Custom Database Connections](/docs/authenticate/database-connections/custom-db).
 
 </Warning>
 

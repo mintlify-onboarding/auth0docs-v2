@@ -53,7 +53,7 @@ You must create a custom connection to associate your TikTok instance with Auth0
    4. Scope: `user.info.basic`
    5. Client ID: Client key assigned to you by TikTok
    6. Client Secret: Client secret assigned to you by TikTok
-5. Configure the [Fetch User Profile Script](/authenticate/identity-providers/social-identity-providers/oauth2#fetch-user-profile-script) to fetch profile information from [TikTok's user_info endpoint](https://developers.tiktok.com/doc/tiktok-api-v2-get-user-info/). Map attributes to Auth0’s normalized user profile.
+5. Configure the [Fetch User Profile Script](/docs/authenticate/identity-providers/social-identity-providers/oauth2#fetch-user-profile-script) to fetch profile information from [TikTok's user_info endpoint](https://developers.tiktok.com/doc/tiktok-api-v2-get-user-info/). Map attributes to Auth0’s normalized user profile.
 
    <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -97,9 +97,9 @@ function fetchUserProfile(accessToken, context, cb) {
 
 ## Pass customs parameters to TikTok with the Management API
 
-Since TikTok uses a `client_key` parameter instead of `client_id`, you must use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to pass the `client_key` parameter during authentication.
+Since TikTok uses a `client_key` parameter instead of `client_id`, you must use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to pass the `client_key` parameter during authentication.
 
-To use the Management API, you need to generate an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>.
+To use the Management API, you need to generate an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>.
 
 1. Navigate to Auth0 [Dashboard > Applications > APIs](http://manage.auth0.com/#/apis) and select the **Auth0 Management API**.
 2. Select the **API Explorer** tab.
@@ -108,7 +108,7 @@ To use the Management API, you need to generate an <Tooltip tip="Access Token: A
 5. Navigate to the [Auth0 Management API Explorer](https://auth0.com/docs/api/management/v2). You may need to open an incognito window.
 6. Select **Set API Token** in the top, left-hand corner.
 
-   <Frame>![Screenshot of Set API Token for TikTok](/images/cdy7uua7fh8z/6994KjTIdvDNrye8ghN4og/a6d1eb83bce4a5b38f8ebce7188ee2ca/image2.png)</Frame>
+   <Frame>![Screenshot of Set API Token for TikTok](/docs/images/cdy7uua7fh8z/6994KjTIdvDNrye8ghN4og/a6d1eb83bce4a5b38f8ebce7188ee2ca/image2.png)</Frame>
 7. Paste the token and select **Set Token**.
 
 You should now be able to configure your Auth0 tenant with the Management API.
@@ -156,7 +156,7 @@ You should now be able to configure your Auth0 tenant with the Management API.
 
 ## Access token request
 
-You cannot pass custom parameters in a request to the Authentication API's [`/token`](https://developers.tiktok.com/doc/login-kit-manage-user-access-tokens/) endpoint to gain an access or <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip>. You must proxy the request to the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=token+endpoint">token endpoint</Tooltip> and append the `client_key` parameter programmatically with proxy endpoints in your environment.
+You cannot pass custom parameters in a request to the Authentication API's [`/token`](https://developers.tiktok.com/doc/login-kit-manage-user-access-tokens/) endpoint to gain an access or <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip>. You must proxy the request to the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=token+endpoint">token endpoint</Tooltip> and append the `client_key` parameter programmatically with proxy endpoints in your environment.
 
 ### Deploy TikTok integration proxy
 

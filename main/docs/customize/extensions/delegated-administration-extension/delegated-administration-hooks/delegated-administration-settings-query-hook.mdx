@@ -72,7 +72,7 @@ To use custom fields, you must:
 * Add your list of **userFields** to the Settings Query Hook
 * Implement a Write Hook. Custom fields require the use of the Write Hook to properly update `user_metadata` and `app_metadata`. You must update the user object passed to the callback function with the `user_metadata` and `app_metadata` from the context (`ctx` object) provided to the Hook.
 
-To learn more about Write Hooks, read [Delegated Administration: Write Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-write-hook).
+To learn more about Write Hooks, read [Delegated Administration: Write Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-write-hook).
 
 Sample schema for **userFields**:
 
@@ -196,7 +196,7 @@ You can override the default behavior by adding the field as a userField and the
 * **email**: User's email
 * **identity.connection**: Connection value
 * **isBlocked**: Whether or not the user is blocked
-* **blocked_for**: Whether or not the user has <Tooltip tip="Attack Protection: Features that Auth0 provides to detect and mitigate attacks, including brute-force protection, suspicious IP throttling, breached password detection, bot detection, and adaptive multi-factor authentication." cta="View Glossary" href="/glossary?term=attack+protection">attack protection</Tooltip> blocks
+* **blocked_for**: Whether or not the user has <Tooltip tip="Attack Protection: Features that Auth0 provides to detect and mitigate attacks, including brute-force protection, suspicious IP throttling, breached password detection, bot detection, and adaptive multi-factor authentication." cta="View Glossary" href="/docs/glossary?term=attack+protection">attack protection</Tooltip> blocks
 * **last_ip**: Last IP the user used to log in
 * **logins_count**: Number of times the user has logged in
 * **currentMemberships**: List of memberships for this user
@@ -355,7 +355,7 @@ function(ctx, callback) {
 
 ## Learn more
 
-* [Delegated Administration: Access Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-access-hook)
-* [Delegated Administration: Filter Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-filter-hook)
-* [Delegated Administration: Write Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-write-hook)
-* [Delegated Administration: Memberships Query Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-memberships-query-hook)
+* [Delegated Administration: Access Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-access-hook)
+* [Delegated Administration: Filter Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-filter-hook)
+* [Delegated Administration: Write Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-write-hook)
+* [Delegated Administration: Memberships Query Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-memberships-query-hook)

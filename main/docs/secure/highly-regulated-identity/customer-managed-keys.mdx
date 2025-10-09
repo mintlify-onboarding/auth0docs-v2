@@ -13,20 +13,20 @@ Using Auth0 Customer Managed Keys allows you to configure the lifecycle of your 
 
 Customer Managed Keys provides two methods of managing your keys:
 
-* **Control Your Own Key:** Allows users with the  [Key Management Editor role](/get-started/manage-dashboard-access/add-dashboard-users) to customize the lifecycle of the Tenant Master Key in Auth0 KMS.
-* **Bring Your Own Key:** Allows users with the  [Key Management Editor role](/get-started/manage-dashboard-access/add-dashboard-users) to replace the Auth0 Environment Root Key and import their own wrapped encryption key to the corresponding Auth0 Cloud Hardware Security Module (HSM).
+* **Control Your Own Key:** Allows users with the  [Key Management Editor role](/docs/get-started/manage-dashboard-access/add-dashboard-users) to customize the lifecycle of the Tenant Master Key in Auth0 KMS.
+* **Bring Your Own Key:** Allows users with the  [Key Management Editor role](/docs/get-started/manage-dashboard-access/add-dashboard-users) to replace the Auth0 Environment Root Key and import their own wrapped encryption key to the corresponding Auth0 Cloud Hardware Security Module (HSM).
 
-To learn more about Auth0 Keys, [read Auth0 key hierarchy](/secure/highly-regulated-identity/customer-managed-keys#auth0-key-hierarchy).
+To learn more about Auth0 Keys, [read Auth0 key hierarchy](/docs/secure/highly-regulated-identity/customer-managed-keys#auth0-key-hierarchy).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The Customer Managed Keys feature is available to users with the Key Management Editor role. This role is not applied to users by default and needs to be explicitly applied to a Tenant member. To learn more, read [Add Tenant Members](/get-started/manage-dashboard-access/add-dashboard-users).
+The Customer Managed Keys feature is available to users with the Key Management Editor role. This role is not applied to users by default and needs to be explicitly applied to a Tenant member. To learn more, read [Add Tenant Members](/docs/get-started/manage-dashboard-access/add-dashboard-users).
 
 </Callout>
 
 ## Control Your Own Key
 
-You can control the lifecycle of your Tenant Master Key using the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [Rekey](https://auth0.com/docs/api/management/v2/keys/post-encryption-rekey) endpoint to:
+You can control the lifecycle of your Tenant Master Key using the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Rekey](https://auth0.com/docs/api/management/v2/keys/post-encryption-rekey) endpoint to:
 
 * Rotate the old Tenant Master Key with a newly-created Tenant Master Key.
 * Rotate and re-encrypt Namespace Keys with the new Tenant Master Key.
@@ -68,7 +68,7 @@ Use the Management API [Rekey](https://auth0.com/docs/api/management/v2/keys/pos
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The endpoint is only available to tenant members with specific authorization scopes in Auth0, by default these scopes are granted to users with the  [Key Management Editor role](/get-started/manage-dashboard-access/add-dashboard-users).
+The endpoint is only available to tenant members with specific authorization scopes in Auth0, by default these scopes are granted to users with the  [Key Management Editor role](/docs/get-started/manage-dashboard-access/add-dashboard-users).
 
 </Callout>
 
@@ -87,7 +87,7 @@ Using Bring Your Own Key you can:
 * Replace the default Auth0 generated Environment Root Key with a new Customer Provided Root Key.
 * Rotate and re-encrypt the key hierarchy with the Customer Provided Root Key. For example: create and re-encrypt a new Tenant Master Key and a new Namespace Key.
 
-You can use the [Dashboard](/secure/highly-regulated-identity/customer-managed-keys/customer-managed-keys-dashboard) or the [Management API](/secure/highly-regulated-identity/customer-managed-keys/customer-managed-keys-management-api) to enable Bring Your Own Key.
+You can use the [Dashboard](/docs/secure/highly-regulated-identity/customer-managed-keys/customer-managed-keys-dashboard) or the [Management API](/docs/secure/highly-regulated-identity/customer-managed-keys/customer-managed-keys-management-api) to enable Bring Your Own Key.
 
 ## Monitor Customer Managed Keys log events
 
@@ -100,7 +100,7 @@ Auth0 automatically rotates tenant encryption keys once a year, adding the follo
 
 </Callout>
 
-The Customer Managed Keys operations adds the following log event in your [tenant logs](/deploy-monitor/logs):
+The Customer Managed Keys operations adds the following log event in your [tenant logs](/docs/deploy-monitor/logs):
 
 A `sapi` event code indicating:
 

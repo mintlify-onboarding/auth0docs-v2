@@ -16,15 +16,15 @@ title: Redirect Users from Within Rules
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
 </Warning>
 
-You can use [Auth0 Rules](/customize/rules) to redirect users before an authentication transaction is complete. This lets you implement custom authentication flows that require additional user interaction beyond the standard login form. Redirect rules are commonly used to do custom <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=Multi-factor+Authentication">Multi-factor Authentication</Tooltip> (MFA) in Auth0, but they can also be used for:
+You can use [Auth0 Rules](/docs/customize/rules) to redirect users before an authentication transaction is complete. This lets you implement custom authentication flows that require additional user interaction beyond the standard login form. Redirect rules are commonly used to do custom <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=Multi-factor+Authentication">Multi-factor Authentication</Tooltip> (MFA) in Auth0, but they can also be used for:
 
 * Custom privacy policy acceptance, terms of service, and data disclosure forms.
 * Securely performing a one-time collection of additional required profile data.
@@ -34,7 +34,7 @@ You can use [Auth0 Rules](/customize/rules) to redirect users before an authenti
 
 You can redirect a user **once** per authentication flow. If you have one rule that redirects a user, you **cannot** invoke a second rule to redirect the user at a later time.
 
-To learn more, see [Multi-Factor Authentication in Auth0](/secure/multi-factor-authentication).
+To learn more, see [Multi-Factor Authentication in Auth0](/docs/secure/multi-factor-authentication).
 
 ## Start redirect and resume authentication
 
@@ -65,7 +65,7 @@ https://example.com/foo?state=abc123
 
 
 
-Your redirect URL needs to extract the `state` parameter and send it back to Auth0 to resume the authentication transaction. State is an opaque value, used to prevent [Cross-Site Request Forgery (CSRF) attacks](/secure/security-guidance/prevent-threats#cross-site-request-forgery).
+Your redirect URL needs to extract the `state` parameter and send it back to Auth0 to resume the authentication transaction. State is an opaque value, used to prevent [Cross-Site Request Forgery (CSRF) attacks](/docs/secure/security-guidance/prevent-threats#cross-site-request-forgery).
 
 After the redirect, resume authentication by redirecting the user to the `/continue` endpoint and include the `state` parameter you received in the URL. If you do not send the original state back to the `/continue` endpoint, Auth0 will lose the context of the login transaction and the user will not be able to log in due to an `invalid_request` error.
 
@@ -80,7 +80,7 @@ https://{yourDomain}/continue?state={originalState}
 
 
 
-If you're using a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>:
+If you're using a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>:
 
 ```http lines
 https://{yourAuth0CustomDomain}/continue?state={originalState}
@@ -105,7 +105,7 @@ https://{yourDomain}/continue?state=abc123
 When a user has been redirected to the `/continue` endpoint:
 
 * **all rules will be run again**, however, the `context.redirect` will be ignored to allow authentication to continue.
-* any changes to the user object are made during the redirect, prior to calling the `/continue` endpoint. For example, updates through the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> are available after continuing the transaction.
+* any changes to the user object are made during the redirect, prior to calling the `/continue` endpoint. For example, updates through the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> are available after continuing the transaction.
 
 ## Validate resumed login
 
@@ -202,13 +202,13 @@ Beware of storing too much data in the Auth0 profile. This data is intended to b
 
 ## Security considerations
 
-Passing information back and forth in the front channel opens up surface area for <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/glossary?term=bad+actors">bad actors</Tooltip> to attack. This should definitely be done only in conditions where you must take action in the rule (such as rejecting the authorization attempt with `UnauthorizedError`).
+Passing information back and forth in the front channel opens up surface area for <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/docs/glossary?term=bad+actors">bad actors</Tooltip> to attack. This should definitely be done only in conditions where you must take action in the rule (such as rejecting the authorization attempt with `UnauthorizedError`).
 
 If, however, you need to communicate directly back to Auth0 and give it instructions for restricting access (you are implementing CAPTCHA checks or custom MFA), then you must have a way to securely tell Auth0 that the requirements of that operation were performed. Likewise, if you need to hand information to the application that you are redirecting to, then you must have a secure way to ensure that the information transferred has not been tampered with.
 
 ### Ensure app is logging into the same user
 
-The application is going to redirect the user back to the Auth0 tenant, so any data related to the user can be gathered through the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> that is returned to the application. However, you may want to ensure that the application is logging into the same user that is being redirected from to ensure that there is no tampering of any sort in-between. Therefore you will likely want to send a token along with the request.
+The application is going to redirect the user back to the Auth0 tenant, so any data related to the user can be gathered through the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> that is returned to the application. However, you may want to ensure that the application is logging into the same user that is being redirected from to ensure that there is no tampering of any sort in-between. Therefore you will likely want to send a token along with the request.
 
 The token sent to the app should have the following requirements:
 
@@ -309,14 +309,14 @@ If you are not passing information back to the `/continue` endpoint, you may wan
 Redirect Rules won't work with:
 
 * [Resource Owner endpoint](https://auth0.com/docs/api/authentication/reference#resource-owner)
-* [Password exchange](/get-started/authentication-and-authorization-flow/resource-owner-password-flow)
-* [Refresh Token exchange](/secure/tokens/refresh-tokens)
+* [Password exchange](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow)
+* [Refresh Token exchange](/docs/secure/tokens/refresh-tokens)
 
 You can detect the above cases by checking `context.protocol`:
 
 * For Password exchange: `context.protocol === 'oauth2-password'`
-* For <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip> exchange: `context.protocol === 'oauth2-refresh-token'`
-* For <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/glossary?term=Resource+Owner">Resource Owner</Tooltip> logins: `context.protocol === 'oauth2-resource-owner'`
+* For <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip> exchange: `context.protocol === 'oauth2-refresh-token'`
+* For <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/docs/glossary?term=Resource+Owner">Resource Owner</Tooltip> logins: `context.protocol === 'oauth2-resource-owner'`
 
 ### Session timeout
 
@@ -346,6 +346,6 @@ In this specific case, we recommend that you use refresh tokens exclusively, bec
 
 ## Learn more
 
-* [Redirect Users](/authenticate/login/redirect-users-after-login)
-* [Understand How Progressive Profiling Works](/manage-users/user-accounts/user-profiles/progressive-profiling)
-* [Redirect Users with Alternative Logout](/authenticate/login/logout/redirect-users-after-logout)
+* [Redirect Users](/docs/authenticate/login/redirect-users-after-login)
+* [Understand How Progressive Profiling Works](/docs/manage-users/user-accounts/user-profiles/progressive-profiling)
+* [Redirect Users with Alternative Logout](/docs/authenticate/login/logout/redirect-users-after-logout)

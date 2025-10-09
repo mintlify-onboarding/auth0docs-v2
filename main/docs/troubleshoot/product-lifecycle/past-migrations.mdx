@@ -18,7 +18,7 @@ These are migrations that have already been enabled for all customers. If you ha
 
 **End of life**: August 5, 2024
 
-Access to view [Subscription Tickets](/troubleshoot/customer-support/open-and-manage-support-tickets) within the Auth0 Support Center is changing on August 5, 2024. To retain access to view and manage all support tickets created by all users across a tenant, the new Elevated Support Access role is required.
+Access to view [Subscription Tickets](/docs/troubleshoot/customer-support/open-and-manage-support-tickets) within the Auth0 Support Center is changing on August 5, 2024. To retain access to view and manage all support tickets created by all users across a tenant, the new Elevated Support Access role is required.
 
 ## Password Reset and Email Verification Links in Tenant Logs Deprecation
 
@@ -26,7 +26,7 @@ Access to view [Subscription Tickets](/troubleshoot/customer-support/open-and-ma
 
 **End of life**: February 5, 2024
 
-Password reset and email verification links will no longer be logged to tenant logs. These links can be retrieved from the password reset or email verification <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> request response.
+Password reset and email verification links will no longer be logged to tenant logs. These links can be retrieved from the password reset or email verification <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> request response.
 
 ## Reducing Maximum Expiration Time for Login Transactions
 
@@ -45,9 +45,9 @@ With this change, we will enforce a maximum lifetime of 1 hour for redirection-b
 
 **End of life**: January 17, 2024
 
-We are improving scope evaluation during <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+token">refresh token</Tooltip> exchange to ensure that unregistered scopes cannot be requested. Custom scope values not registered against the `aud` or `audience` value (for an API registered in your tenant) are considered unregistered scopes.
+We are improving scope evaluation during <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip> exchange to ensure that unregistered scopes cannot be requested. Custom scope values not registered against the `aud` or `audience` value (for an API registered in your tenant) are considered unregistered scopes.
 
-With this change, the API scope evaluation will include any custom scopes requested during user authentication or injected through extensibility, such as [Rules](/customize/rules). This evaluation will validate that all scopes are registered, returning an error if any are not registered.
+With this change, the API scope evaluation will include any custom scopes requested during user authentication or injected through extensibility, such as [Rules](/docs/customize/rules). This evaluation will validate that all scopes are registered, returning an error if any are not registered.
 
 ## auth0-cordova, angular-auth0, and express-oauth2-bearer Repo Deprecations
 
@@ -82,7 +82,7 @@ Node.js 18 is now generally available (GA) across our entire suite of extensibil
 After June 21, 2023, Auth0 will no longer support running .NET and C# from Node.js in Extensibility features. Auth0 previously supported a subset of the C# language to write extensibility code for Rules, Hooks, and Custom Database Scripts via a Node.js module called edge.js.
 
 Deprecating support for running .NET and C# from Node.js in Extensibility is critical to maintaining a performant and secure platform for running untrusted code. This change will allow us to continue improving our next-generation Extensibility offerings.
-To learn more, read [Migrate from edge.js extensibility features](/troubleshoot/product-lifecycle/past-migrations/migrate-from-edge-js-extensibility-features).
+To learn more, read [Migrate from edge.js extensibility features](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-from-edge-js-extensibility-features).
 
 ## Support for oracledb in Extensibility Features
 
@@ -96,7 +96,7 @@ After June 21, 2023, Auth0 will no longer support connecting to Oracle Databases
 
 Deprecating support for connecting to Oracle Databases from Node.js in Extensibility is critical to maintaining a performant and secure platform for running untrusted code. This change will allow us to continue improving our next-generation Extensibility offerings.
 
-To learn more, read [Migrate from oracledb extensibility features](/troubleshoot/product-lifecycle/past-migrations/migrate-from-oracledb-extensibility-features).
+To learn more, read [Migrate from oracledb extensibility features](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-from-oracledb-extensibility-features).
 
 ## Auth0 Claims Provider for SharePoint 2010 / 2013
 
@@ -124,20 +124,20 @@ For implementation details for the two pagination methods, read the [Management 
 
 **End of life:** January 30, 2023 (Public Cloud), April 18, 2023 (Private Cloud)
 
-Beginning January 30, 2023 in Public Cloud and April 18, 2023 in Private Cloud, Auth0 will allow the addition of non-namespaced custom claims to <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> tokens using Auth0 Actions and in responses from the Authentication API `/userinfo` endpoint. Previously, Auth0 allowed namespaced claims on access and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+tokens">ID tokens</Tooltip> via extensibility code ([Rules](/customize/rules) / [Hooks](/customize/hooks) / [Actions](/customize/actions)). The migration to custom claims allows private, non-namespaced custom claims and OIDC user profile claims to be added to <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip>; ID tokens currently support user profile claims and will additionally support private, non-namespaced custom claims. These claims will also be added to the Auth0 `/userinfo` response. To begin the migration, read the [Custom Claims Migration Guide](/troubleshoot/product-lifecycle/past-migrations/custom-claims-migration).
+Beginning January 30, 2023 in Public Cloud and April 18, 2023 in Private Cloud, Auth0 will allow the addition of non-namespaced custom claims to <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> tokens using Auth0 Actions and in responses from the Authentication API `/userinfo` endpoint. Previously, Auth0 allowed namespaced claims on access and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip> via extensibility code ([Rules](/docs/customize/rules) / [Hooks](/docs/customize/hooks) / [Actions](/docs/customize/actions)). The migration to custom claims allows private, non-namespaced custom claims and OIDC user profile claims to be added to <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>; ID tokens currently support user profile claims and will additionally support private, non-namespaced custom claims. These claims will also be added to the Auth0 `/userinfo` response. To begin the migration, read the [Custom Claims Migration Guide](/docs/troubleshoot/product-lifecycle/past-migrations/custom-claims-migration).
 
-If your tenant is running extensibility code ([Rules](/customize/rules) / [Hooks](/customize/hooks) / [Actions](/customize/actions)) that tries to set non-namespaced custom claims that are being ignored until this deprecation, then those claims will begin to appear on the tokens and the `/userinfo` response. We recommend you review your configuration and Auth0 logs.
+If your tenant is running extensibility code ([Rules](/docs/customize/rules) / [Hooks](/docs/customize/hooks) / [Actions](/docs/customize/actions)) that tries to set non-namespaced custom claims that are being ignored until this deprecation, then those claims will begin to appear on the tokens and the `/userinfo` response. We recommend you review your configuration and Auth0 logs.
 
 With the addition of non-namespaced, private claims, Auth0 is enforcing the following restrictions that could potentially affect your tenant:
 
 * Auth0 will restrict the custom claims payload to a maximum of 100KB.
-* Auth0 will restrict the customization/modification of <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OPENID">OPENID</Tooltip> standard claims or claims used internally by Auth0.
+* Auth0 will restrict the customization/modification of <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OPENID">OPENID</Tooltip> standard claims or claims used internally by Auth0.
 * In the future, Auth0 may restrict the use of other claims not included in the above list. In those cases, customers will be notified with a reasonable time to migrate.
-* Auth0 will restrict the creation of private, non-namespaced custom claims on access tokens with an Auth0 <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>, excluding the `/userinfo` endpoint.
+* Auth0 will restrict the creation of private, non-namespaced custom claims on access tokens with an Auth0 <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>, excluding the `/userinfo` endpoint.
 * Only specified OIDC user profile claims can be added to access tokens.
 * Auth0 will restrict creating a custom claim starting with a $ character.
 
-To learn more about custom claims, review [Create Custom Claims](/secure/tokens/json-web-tokens/create-custom-claims).
+To learn more about custom claims, review [Create Custom Claims](/docs/secure/tokens/json-web-tokens/create-custom-claims).
 
 ## Legacy Private Cloud Platform
 
@@ -180,7 +180,7 @@ Beginning November 2, 2022 in Public Cloud and December 21, 2022 in Private Clou
 * Logs to AppInsights
 * Logs to Azure Blob Storage
 
-All the Log extensions listed above are now deprecated. You can set up equivalent functionality using log event streams or integrations on the [Auth0 Marketplace](https://marketplace.auth0.com/). On November 2, 2022 in Public Cloud and December 21, 2022 in Private Cloud, Auth0 will no longer support the installed log extensions from the list above. For more information, read [Migrate from Log Extensions](/troubleshoot/product-lifecycle/past-migrations/migrate-from-log-extensions).
+All the Log extensions listed above are now deprecated. You can set up equivalent functionality using log event streams or integrations on the [Auth0 Marketplace](https://marketplace.auth0.com/). On November 2, 2022 in Public Cloud and December 21, 2022 in Private Cloud, Auth0 will no longer support the installed log extensions from the list above. For more information, read [Migrate from Log Extensions](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-from-log-extensions).
 
 ## Tenant Hostname Validation
 
@@ -200,7 +200,7 @@ If your application or API calls any of the listed endpoints, you must configure
 * `/mfa/challenge`
 * `/p/<connection-type>/<ticket>` (Enterprise connection provisioning endpoint)
 
-To learn more, read [Tenant Hostname Validation Migration](/troubleshoot/product-lifecycle/past-migrations/tenant-hostname-migration).
+To learn more, read [Tenant Hostname Validation Migration](/docs/troubleshoot/product-lifecycle/past-migrations/tenant-hostname-migration).
 
 ## Node.js 16 Migration
 
@@ -226,9 +226,9 @@ Customers with systems configured to rely on specific-sized authorization code a
 
 **End of life**: 25 February 2022 (Public Cloud), April 2022 (Private Cloud release)
 
-Beginning 13 December 2019, [Node.js v8 was no longer under long-term support (LTS)](https://github.com/nodejs/Release#release-schedule). This means that critical security fixes were no longer back-ported to this version. Customers who are still on Node 8 are out of security compliance and must migrate to Node 12 to eliminate security risks. To learn more about how to migrate your tenant-level Node version from 8 to 12, read [Migrate from Node.js 8 to Node.js 12](/troubleshoot/product-lifecycle/past-migrations/migrate-to-nodejs-12).
+Beginning 13 December 2019, [Node.js v8 was no longer under long-term support (LTS)](https://github.com/nodejs/Release#release-schedule). This means that critical security fixes were no longer back-ported to this version. Customers who are still on Node 8 are out of security compliance and must migrate to Node 12 to eliminate security risks. To learn more about how to migrate your tenant-level Node version from 8 to 12, read [Migrate from Node.js 8 to Node.js 12](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-to-nodejs-12).
 
-Because Node.js v12 is also going out of LTS in 2022, we also highly encourage all customers using Rules and Hooks to migrate to Actions using Node 16 as soon as possible, and before Node 12 support expires formally from the Node.js community on 30 April 2022. To learn more about required migration steps, read [Migrate Rules and Hooks to Actions](/customize/actions/migrate/migrate-from-rules-to-actions).
+Because Node.js v12 is also going out of LTS in 2022, we also highly encourage all customers using Rules and Hooks to migrate to Actions using Node 16 as soon as possible, and before Node 12 support expires formally from the Node.js community on 30 April 2022. To learn more about required migration steps, read [Migrate Rules and Hooks to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions).
 
 ## Legacy Network Edge Deprecation
 
@@ -236,7 +236,7 @@ Because Node.js v12 is also going out of LTS in 2022, we also highly encourage a
 
 **End of life**: 03 November 2021 (Public Cloud)
 
-Auth0 legacy network edge will cease to function on Public Cloud. After 03 November 2021, Public Cloud tenants who have not completed a migration to the new Auth0 network edge will no longer receive traffic. All new <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domains">custom domains</Tooltip> are automatically created on the new network edge.
+Auth0 legacy network edge will cease to function on Public Cloud. After 03 November 2021, Public Cloud tenants who have not completed a migration to the new Auth0 network edge will no longer receive traffic. All new <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domains">custom domains</Tooltip> are automatically created on the new network edge.
 
 ## Unpaginated Management API v2 Request deprecation
 
@@ -254,7 +254,7 @@ After 26 January 2021, requests to the following Management API v2 endpoints wil
 * [`GET /api/v2/resource-servers`](https://auth0.com/docs/api/management/v2#!/Clients/resource_servers)
 * [`GET /api/v2/rules`](https://auth0.com/docs/api/management/v2#!/Clients/rules)
 
-All Public Cloud tenants are affected that are created before 21 July 2020 and are actively calling affected endpoints without passing the `per_page` parameter for queries that can return more than 1 result. Tenants are not affected if they are created after 21 July 2020, are not using the affected endpoints, are using the affected endpoints and passing the `per_page` parameter, or are making queries that always return only 1 result. To learn more, read [Migrate to Management API v2 Endpoint Paginated Queries](/troubleshoot/product-lifecycle/past-migrations/migrate-to-paginated-queries).
+All Public Cloud tenants are affected that are created before 21 July 2020 and are actively calling affected endpoints without passing the `per_page` parameter for queries that can return more than 1 result. Tenants are not affected if they are created after 21 July 2020, are not using the affected endpoints, are using the affected endpoints and passing the `per_page` parameter, or are making queries that always return only 1 result. To learn more, read [Migrate to Management API v2 Endpoint Paginated Queries](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-to-paginated-queries).
 
 ## Private Cloud Custom Domain Deprecation
 
@@ -262,7 +262,7 @@ All Public Cloud tenants are affected that are created before 21 July 2020 and a
 
 **End of life**: 20 December 2021
 
-To achieve consistency across all Auth0 deployments and focus on enhancing the Auth0 Custom Domain feature, we are discontinuing the Private Cloud Custom Domain capability on December 20, 2021. Consistency enables us to enhance the feature and fix reliability issues faster, improving operational efficiency and enabling customers to get value out of custom domains more quickly. To learn more about migration to Auth0 Custom Domains, read [Migrate Private Cloud Custom Domains](/migrate-private-cloud-custom-domains).
+To achieve consistency across all Auth0 deployments and focus on enhancing the Auth0 Custom Domain feature, we are discontinuing the Private Cloud Custom Domain capability on December 20, 2021. Consistency enables us to enhance the feature and fix reliability issues faster, improving operational efficiency and enabling customers to get value out of custom domains more quickly. To learn more about migration to Auth0 Custom Domains, read [Migrate Private Cloud Custom Domains](/docs/migrate-private-cloud-custom-domains).
 
 ## Logout Redirect Validation
 
@@ -270,7 +270,7 @@ To achieve consistency across all Auth0 deployments and focus on enhancing the A
 
 **End of life**: 01 December 2021
 
-On 01 December 2021, the logout behavior will change to always redirect users to the URI passed to the Auth0 logout APIs instead of using the `returnTo` query parameter passed by <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Providers">Identity Providers</Tooltip> to `/login/callback` during the execution of the logout. If Auth0 does not have a record of a preceding call to one of these APIs, logout will complete, but redirection will not occur and an error page will be displayed to end users. To learn more, read [Logout Redirects Migration Guide](/troubleshoot/product-lifecycle/deprecations-and-migrations/logout-return-to).
+On 01 December 2021, the logout behavior will change to always redirect users to the URI passed to the Auth0 logout APIs instead of using the `returnTo` query parameter passed by <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Providers">Identity Providers</Tooltip> to `/login/callback` during the execution of the logout. If Auth0 does not have a record of a preceding call to one of these APIs, logout will complete, but redirection will not occur and an error page will be displayed to end users. To learn more, read [Logout Redirects Migration Guide](/docs/troubleshoot/product-lifecycle/deprecations-and-migrations/logout-return-to).
 
 ## Application Admin Dashboard Role deprecation
 
@@ -288,7 +288,7 @@ Your tenants will be affected by this deprecation if the following criteria are 
 * Have at least one tenant member with the **Application Admin** role
 * Haven't opted-in to the Dashboard roles feature preview
 
-Beginning on 01 February 2021, Auth0 will display a migration toggle to help you prepare for this change. To learn more, read [Migrate to Manage Dashboard New Roles](/troubleshoot/product-lifecycle/past-migrations/migrate-tenant-member-roles).
+Beginning on 01 February 2021, Auth0 will display a migration toggle to help you prepare for this change. To learn more, read [Migrate to Manage Dashboard New Roles](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-tenant-member-roles).
 
 ## Legacy TLS Deprecation
 
@@ -312,7 +312,7 @@ Auth0 has deprecated the use of the [auth0-analytics.js library](https://github.
 
 **End of life**: 17 December 2020
 
-Auth0 now requires that you provide the `user_id` when you use the [GET /api/v2/device-credentials endpoint](https://auth0.com/docs/api/management/v2/#!/Device_Credentials/get_device_credentials). If your request does not provide a `user_id`, it will return a 400 status code. Check the `depnote` in your tenant logs to see if you are affected by this deprecation. To learn more, read [Check Deprecation Errors](/troubleshoot/basic-issues/check-deprecation-errors).
+Auth0 now requires that you provide the `user_id` when you use the [GET /api/v2/device-credentials endpoint](https://auth0.com/docs/api/management/v2/#!/Device_Credentials/get_device_credentials). If your request does not provide a `user_id`, it will return a 400 status code. Check the `depnote` in your tenant logs to see if you are affected by this deprecation. To learn more, read [Check Deprecation Errors](/docs/troubleshoot/basic-issues/check-deprecation-errors).
 
 Auth0 has identified tenants affected by this deprecation and contacted the administrators for those tenants. If your tenant is currently making requests without a `user_id`, you should make the change as soon as possible.
 
@@ -330,7 +330,7 @@ Auth0 has identified tenants affected by this deprecation and contacted the admi
 
 Auth0 previously set the `email_verified` field to true in Azure AD and ADFS connections. If you used Azure AD/ADFS connections before this deprecation date, you have a tenant setting that overrides the connection setting for email verification and keeps the previous behavior.
 
-On 18 May 2021 in Public Cloud and the June Private Cloud Release (v2106), Auth0 begins using the connection-level property for all Azure AD/ADFS connections. You should make sure all your connections are configured properly before that date. To learn more, read [Email Verification for Azure AD and ADFS](/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification).
+On 18 May 2021 in Public Cloud and the June Private Cloud Release (v2106), Auth0 begins using the connection-level property for all Azure AD/ADFS connections. You should make sure all your connections are configured properly before that date. To learn more, read [Email Verification for Azure AD and ADFS](/docs/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification).
 
 ## sameSite cookie attribute changes
 
@@ -341,7 +341,7 @@ Google Chrome v80 is changing the way it handles cookies. To that end, Auth0 wil
 * Cookies without the `samesite` attribute set will be set to `lax`
 * Cookies with `sameSite=none` must be secured, otherwise they cannot be saved in the browser's cookie jar
 
-The goal of these changes is to improve security and help mitigate CSRF attacks. For details, see [sameSite Cookie Attribute Changes](/manage-users/cookies/samesite-cookie-attribute-changes).
+The goal of these changes is to improve security and help mitigate CSRF attacks. For details, see [sameSite Cookie Attribute Changes](/docs/manage-users/cookies/samesite-cookie-attribute-changes).
 
 ## User Search v2 deprecation
 
@@ -355,9 +355,9 @@ For Private Cloud, User Search v1 and v2 endpoints will be no longer be availabl
 
 ## Passwordless Endpoint from Confidential Applications deprecation
 
-Auth0 has deprecated the use of the `/passwordless/start` endpoint from confidential applications when Auth0 cannot authenticate that the call is made on behalf of the application. To learn more, read [Migrate to Passwordless Endpoint from Confidential Applications](/troubleshoot/product-lifecycle/past-migrations/migrate-to-passwordless).Clickjacking Protection for <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> changes
+Auth0 has deprecated the use of the `/passwordless/start` endpoint from confidential applications when Auth0 cannot authenticate that the call is made on behalf of the application. To learn more, read [Migrate to Passwordless Endpoint from Confidential Applications](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-to-passwordless).Clickjacking Protection for <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> changes
 
-To prevent clickjacking, in cases where you render your login page in an iframe, Auth0 has added an opt-in to add headers which we strongly recommend you enable. For details, see [Clickjacking Protection for Universal Login Change](/troubleshoot/product-lifecycle/past-migrations/clickjacking-protection-for-universal-login).
+To prevent clickjacking, in cases where you render your login page in an iframe, Auth0 has added an opt-in to add headers which we strongly recommend you enable. For details, see [Clickjacking Protection for Universal Login Change](/docs/troubleshoot/product-lifecycle/past-migrations/clickjacking-protection-for-universal-login).
 
 ## Management API endpoints using ID token credentials deprecation
 
@@ -365,7 +365,7 @@ To prevent clickjacking, in cases where you render your login page in an iframe,
 
 **End of life**: TBD
 
-Auth0 is deprecating the use of ID tokens as credentials to call some of the users and device endpoints and replacing it with the use of access tokens instead. For details, see [Migrate to Management API Endpoints with Access Tokens](/troubleshoot/product-lifecycle/past-migrations/migrate-to-calling-api-with-access-tokens) and [Migrate to Link User Accounts with Access Tokens](/troubleshoot/product-lifecycle/past-migrations/link-user-accounts-with-access-tokens-migration).
+Auth0 is deprecating the use of ID tokens as credentials to call some of the users and device endpoints and replacing it with the use of access tokens instead. For details, see [Migrate to Management API Endpoints with Access Tokens](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-to-calling-api-with-access-tokens) and [Migrate to Link User Accounts with Access Tokens](/docs/troubleshoot/product-lifecycle/past-migrations/link-user-accounts-with-access-tokens-migration).
 
 ## Resource Owner Password /oauth/ro deprecation
 
@@ -373,7 +373,7 @@ Auth0 is deprecating the use of ID tokens as credentials to call some of the use
 
 **End of life**: TBD
 
-As of 08 July 2017 Auth0 has deprecated the`/oauth/ro` endpoint for both password and <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=passwordless">passwordless</Tooltip> connections. You can now implement the same functionality using the `/oauth/token` endpoint. To learn more, read [Resource Owner Password Flow Migration](/troubleshoot/product-lifecycle/past-migrations/migration-oauthro-oauthtoken).
+As of 08 July 2017 Auth0 has deprecated the`/oauth/ro` endpoint for both password and <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> connections. You can now implement the same functionality using the `/oauth/token` endpoint. To learn more, read [Resource Owner Password Flow Migration](/docs/troubleshoot/product-lifecycle/past-migrations/migration-oauthro-oauthtoken).
 
 ## Management API v1 deprecation
 
@@ -392,7 +392,7 @@ Management API v1 will reach its End of Life in the Public Cloud on 13 July 2020
 
 **End of life**: 31 March 2020
 
-Facebook announced that on 31 March 2020 that they will turn off the Instagram legacy APIs, and they won't provide an alternative to implement login with Instagram. For details, see [Instagram Connection Deprecation](/troubleshoot/product-lifecycle/past-migrations/instagram-connection-deprecation).
+Facebook announced that on 31 March 2020 that they will turn off the Instagram legacy APIs, and they won't provide an alternative to implement login with Instagram. For details, see [Instagram Connection Deprecation](/docs/troubleshoot/product-lifecycle/past-migrations/instagram-connection-deprecation).
 
 ## Yahoo API changes
 
@@ -400,7 +400,7 @@ Facebook announced that on 31 March 2020 that they will turn off the Instagram l
 
 **End of life**: 01 March 2020
 
-Yahoo changed the way to retrieve the user profile and the information included in it. For details, see [Yahoo API Changes](/troubleshoot/product-lifecycle/past-migrations/yahoo-api-changes).
+Yahoo changed the way to retrieve the user profile and the information included in it. For details, see [Yahoo API Changes](/docs/troubleshoot/product-lifecycle/past-migrations/yahoo-api-changes).
 
 ## Google Cloud Messaging deprecation
 
@@ -408,7 +408,7 @@ Yahoo changed the way to retrieve the user profile and the information included 
 
 **End of life**: 11 April 2019
 
-As of 11 April 2019, [Google deprecated](https://firebase.googleblog.com/2018/04/time-to-upgrade-from-gcm-to-fcm.html) and replaced Google Cloud Messaging (GCM) with Firebase Cloud Messaging (FCM). For details, see [Google to Firebase Cloud Messaging Migration](/troubleshoot/product-lifecycle/past-migrations/google-firebase-migration).
+As of 11 April 2019, [Google deprecated](https://firebase.googleblog.com/2018/04/time-to-upgrade-from-gcm-to-fcm.html) and replaced Google Cloud Messaging (GCM) with Firebase Cloud Messaging (FCM). For details, see [Google to Firebase Cloud Messaging Migration](/docs/troubleshoot/product-lifecycle/past-migrations/google-firebase-migration).
 
 ## Facebook Social Context field deprecation
 
@@ -416,7 +416,7 @@ As of 11 April 2019, [Google deprecated](https://firebase.googleblog.com/2018/04
 
 **End of life**: 30 July 2019
 
-On 30 April 2019, Facebook deprecated the use of the **Social Context** field for new applications. For details, see [Facebook Social Context Field Deprecation](/troubleshoot/product-lifecycle/past-migrations/facebook-social-context-field-deprecation).
+On 30 April 2019, Facebook deprecated the use of the **Social Context** field for new applications. For details, see [Facebook Social Context Field Deprecation](/docs/troubleshoot/product-lifecycle/past-migrations/facebook-social-context-field-deprecation).
 
 ## Facebook Graph API changes
 
@@ -424,7 +424,7 @@ On 30 April 2019, Facebook deprecated the use of the **Social Context** field fo
 
 **End of life**: Graph API v3 released 08 January 2019
 
-As of 01 August 2018, Facebook has changed the Facebook Graph API permissions and fields that can be requested. Auth0 has updated Facebook Connections to reflect these changes and modified the connection interface for clarity. See [Facebook Login Changelog: Recent Changes to Facebook Login](https://developers.facebook.com/docs/facebook-login/changelog#2018-07-02) for complete details and key dates. For details, see [Facebook Graph API Changes](/troubleshoot/product-lifecycle/past-migrations/facebook-graph-api-changes).
+As of 01 August 2018, Facebook has changed the Facebook Graph API permissions and fields that can be requested. Auth0 has updated Facebook Connections to reflect these changes and modified the connection interface for clarity. See [Facebook Login Changelog: Recent Changes to Facebook Login](https://developers.facebook.com/docs/facebook-login/changelog#2018-07-02) for complete details and key dates. For details, see [Facebook Graph API Changes](/docs/troubleshoot/product-lifecycle/past-migrations/facebook-graph-api-changes).
 
 ## Lock v11 and Auth0.js v9
 
@@ -455,7 +455,7 @@ Libraries and SDKs not explicitly named here are not affected by this migration.
 * Professional (former Developer Pro): 20 August 2019
 * Enterprise: 04 November 2019
 
-To provide our customers with the most reliable and scalable solution, Auth0 has deprecated Tenant Logs Search Engine v2 in favor of v3. Auth0 is proactively migrating customers unaffected by this change, while those who are potentially affected are being notified to opt in for v3 during the provided grace period. For details, see [Migrate to Tenant Log Search v1 to V2](/troubleshoot/product-lifecycle/past-migrations/migrate-to-tenant-log-search-v3).
+To provide our customers with the most reliable and scalable solution, Auth0 has deprecated Tenant Logs Search Engine v2 in favor of v3. Auth0 is proactively migrating customers unaffected by this change, while those who are potentially affected are being notified to opt in for v3 during the provided grace period. For details, see [Migrate to Tenant Log Search v1 to V2](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-to-tenant-log-search-v3).
 
 ## New IP addresses for Allowlisting in Australia
 
@@ -487,7 +487,7 @@ You are affected if you use Lock (hosted by our CDN) in Europe or Australia. Thi
 
 ## Password and refresh token exchange rules migration
 
-On 31 May 2017, as part of Auth0's efforts to improve security, we added the ability to execute rules during the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=Resource+Owner">Resource Owner</Tooltip> Password Grant exchange (the password exchange) and the refresh token exchange.
+On 31 May 2017, as part of Auth0's efforts to improve security, we added the ability to execute rules during the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=Resource+Owner">Resource Owner</Tooltip> Password Grant exchange (the password exchange) and the refresh token exchange.
 
 ### Features affected
 

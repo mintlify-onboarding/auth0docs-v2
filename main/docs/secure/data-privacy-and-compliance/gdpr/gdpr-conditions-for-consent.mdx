@@ -22,7 +22,7 @@ The contents of these documents are not intended to be legal advice, nor should 
 
 ## Ask for consent
 
-Upon signup you have to ask your users for consent. With Auth0, you can save this information with the user metadata. There are several available options depending on how you use Auth0 to authenticate your users. Before you design your solution using metadata make sure you are aware of the restrictions. Auth0 limits the total size of the `user_metadata` to **16 MB**. To learn more, read [Metadata Field Names and Data Types](/manage-users/user-accounts/metadata/metadata-fields-data).
+Upon signup you have to ask your users for consent. With Auth0, you can save this information with the user metadata. There are several available options depending on how you use Auth0 to authenticate your users. Before you design your solution using metadata make sure you are aware of the restrictions. Auth0 limits the total size of the `user_metadata` to **16 MB**. To learn more, read [Metadata Field Names and Data Types](/docs/manage-users/user-accounts/metadata/metadata-fields-data).
 
 <Warning>
 
@@ -32,29 +32,29 @@ Auth0 metadata is not a secure data store and should not be used to store sensit
 
 ### Use Lock
 
-You can customize the Lock UI to display links to your terms and conditions and/or privacy statement pages, and a consent checkbox that the user has to check in order to sign up. This can be done with the `mustAcceptTerm`s Lock option. This property, when set to `true`, displays a checkbox alongside the terms and conditions that must be checked before signing up. The terms and conditions can be specified using the languageDictionary option. To learn more, read [Lock Configuration Options](/libraries/lock/lock-configuration).
+You can customize the Lock UI to display links to your terms and conditions and/or privacy statement pages, and a consent checkbox that the user has to check in order to sign up. This can be done with the `mustAcceptTerm`s Lock option. This property, when set to `true`, displays a checkbox alongside the terms and conditions that must be checked before signing up. The terms and conditions can be specified using the languageDictionary option. To learn more, read [Lock Configuration Options](/docs/libraries/lock/lock-configuration).
 
-Once the user accepts and signs up, save the consent information at the `user_metadata` using a rule that will run upon first login. To learn more about rules, read [Auth0 Rules](/customize/rules).
+Once the user accepts and signs up, save the consent information at the `user_metadata` using a rule that will run upon first login. To learn more about rules, read [Auth0 Rules](/docs/customize/rules).
 
 If you want to get more information from the users during signup, and you authenticate users with a database connection, you can add custom fields to the Lock UI. This can be done with the additionalSignUpFields Lock option. Any custom fields are automatically added to the `user_metadata`.
 
-If you are using social logins, adding custom fields is not an option, but you can redirect the user to another page where you ask for consent and any additional info, and then redirect back to finish the authentication transaction. This can be done with redirect rules. To learn more, read [Redirect Users from Within Rules](/customize/rules/redirect-users). Once the signup process is complete, save the consent information at the `user_metadata` by calling the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [**Update User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id).
+If you are using social logins, adding custom fields is not an option, but you can redirect the user to another page where you ask for consent and any additional info, and then redirect back to finish the authentication transaction. This can be done with redirect rules. To learn more, read [Redirect Users from Within Rules](/docs/customize/rules/redirect-users). Once the signup process is complete, save the consent information at the `user_metadata` by calling the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [**Update User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id).
 
-To learn how to implement any of these scenarios, read [GDPR: Track Consent with Lock](/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-lock).
+To learn how to implement any of these scenarios, read [GDPR: Track Consent with Lock](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-lock).
 
 ### Use custom UI
 
 If you use a custom signup form with a database connection, you have to add an extra field to the signup screen in order to capture the user's consent. Afterward, call the Authentication API [**Signup** endpoint](https://auth0.com/docs/api/authentication#signup) in order to create the user in Auth0. At this point, you can set the consent information as part of the `user_metadata`.
 
-Alternatively, if you use Auth0.js from a SPA, you can [use the `signup` method](/libraries/auth0js) to create the user in Auth0 and set the consent info as part of the `user_metadata`.
+Alternatively, if you use Auth0.js from a SPA, you can [use the `signup` method](/docs/libraries/auth0js) to create the user in Auth0 and set the consent info as part of the `user_metadata`.
 
 If you use a custom signup form with social providers, you cannot set the user's consent information upon signup but you can update it as soon as the user is created. Save the consent information at the `user_metadata` by calling the Management API [**Update User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id).
 
-To learn how to implement any of these scenarios, read [GDPR: Track Consent with Custom UI](/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-custom-ui).
+To learn how to implement any of these scenarios, read [GDPR: Track Consent with Custom UI](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-custom-ui).
 
 ### Re-consent and user migration
 
-If you need to ask for consent from existing users and you decide to migrate your users from an existing database to Auth0, you can [use our Automatic User Migration](/manage-users/user-migration/configure-automatic-migration-from-your-database) feature. By activating this, each time a user logs in for the first time (since this was activated), they will be created in Auth0 without having to reset their password. To do this you must:
+If you need to ask for consent from existing users and you decide to migrate your users from an existing database to Auth0, you can [use our Automatic User Migration](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database) feature. By activating this, each time a user logs in for the first time (since this was activated), they will be created in Auth0 without having to reset their password. To do this you must:
 
 * Write up the notification users will see around how users' data is being used, how long data will be used, users' rights, etc. as well as customize the UI sign-up box.
 * Determine if re-consent is required for your users, depending on your old terms and conditions and previous privacy certifications.
@@ -69,11 +69,11 @@ With Auth0 you can save the user's consent information as part of the `user_meta
 
 The Management API also offers several options when it comes to user search and endpoints to update user metadata or batch export users.
 
-To access the Management API, you will need an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>. To learn how to get an access token for the Management API, read [Management API Access Tokens](/secure/tokens/access-tokens/management-api-access-tokens).
+To access the Management API, you will need an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>. To learn how to get an access token for the Management API, read [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens).
 
 ### Search for users by email address
 
-To search for a user using their email address, use the [**Search User by Email** endpoint](/manage-users/user-search/user-search-best-practices).
+To search for a user using their email address, use the [**Search User by Email** endpoint](/docs/manage-users/user-search/user-search-best-practices).
 
 Set the **fields** request parameter to `user_metadata` in order to limit the fields returned. This way, only the user_metadata will be returned instead of the complete user profile.
 
@@ -273,7 +273,7 @@ Sample response:
 
 ### Search for users by ID
 
-To search for a user using their ID, use the [**Get a User** endpoint](/manage-users/user-search/user-search-best-practices).
+To search for a user using their ID, use the [**Get a User** endpoint](/docs/manage-users/user-search/user-search-best-practices).
 
 Set the **fields** request parameter to `user_metadata` in order to limit the fields returned. This way, only the `user_metadata` will be returned instead of the complete user profile.
 
@@ -962,11 +962,11 @@ This will add a new property to the user profile, the **user_metadata.consent.da
 
 ### Export consent information
 
-To export a list of your users using the Management API, use the [**User Export** endpoint](/manage-users/user-search/user-search-best-practices).
+To export a list of your users using the Management API, use the [**User Export** endpoint](/docs/manage-users/user-search/user-search-best-practices).
 
 This endpoint creates a job that exports all users associated with a connection. You will need the ID of the connection. To find this ID, use the [**Get Connections** endpoint](https://auth0.com/docs/api/management/v2#!/Connections/get_connections) (you can set the **name** parameter to the name of the connection to retrieve only this one).
 
-Once you have the connection ID and an access token for the Management API, you are ready to start exporting users. To see a sample request and response, read [Import and Export Users](/manage-users/user-migration). To learn how to get an access token for the Management API, read [Management API Access Tokens](/secure/tokens/access-tokens/management-api-access-tokens).
+Once you have the connection ID and an access token for the Management API, you are ready to start exporting users. To see a sample request and response, read [Import and Export Users](/docs/manage-users/user-migration). To learn how to get an access token for the Management API, read [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens).
 
 You also must:
 
@@ -1404,7 +1404,7 @@ You also must:
 
 ## Learn more
 
-* [GDPR: Data Minimization](/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization)
-* [GDPR: Data Portability](/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
-* [GDPR: Protect and Secure User Data](/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data)
-* [GDPR: Right to Access, Correct, and Erase Data](/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)
+* [GDPR: Data Minimization](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization)
+* [GDPR: Data Portability](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
+* [GDPR: Protect and Secure User Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data)
+* [GDPR: Right to Access, Correct, and Erase Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)

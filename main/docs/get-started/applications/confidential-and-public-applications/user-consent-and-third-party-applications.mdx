@@ -9,7 +9,7 @@ title: User Consent and Third-Party Applications
   and define third-party apps that you don't control or may not trust.
 'twitter:title': User Consent and Third-Party Applications
 ---
-The [OIDC](/authenticate/protocols/openid-connect-protocol)-conformant authentication pipeline supports defining <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+servers">resource servers</Tooltip> (such as APIs) as entities separate from applications. This lets you decouple APIs from the applications that consume them, and also lets you define [third-party applications](/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) that allow external parties to securely access protected resources behind your API.
+The [OIDC](/docs/authenticate/protocols/openid-connect-protocol)-conformant authentication pipeline supports defining <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+servers">resource servers</Tooltip> (such as APIs) as entities separate from applications. This lets you decouple APIs from the applications that consume them, and also lets you define [third-party applications](/docs/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) that allow external parties to securely access protected resources behind your API.
 
 ## Consent dialog
 
@@ -35,7 +35,7 @@ client_id=some_third_party_client
 
 Will result in this user consent dialog:
 
-<Frame>![Authorization - User consent and applications - consent-dialog](/images/cdy7uua7fh8z/5Cz3aZKw8RRVlMkc5Zl6x7/62ac54cbc470286d5c2139d47c604ebc/2025-02-28_14-57-52.png)</Frame>
+<Frame>![Authorization - User consent and applications - consent-dialog](/docs/images/cdy7uua7fh8z/5Cz3aZKw8RRVlMkc5Zl6x7/62ac54cbc470286d5c2139d47c604ebc/2025-02-28_14-57-52.png)</Frame>
 
 If the user allows the application's request, this creates a user grant, which represents the user's consent to this combination of application, resource server, and requested scopes. The application then receives a successful authentication response from Auth0 as usual.
 
@@ -45,7 +45,7 @@ Once consent has been given, the user won't see the consent dialog during subseq
 
 By default, the consent page will use the scopes' names to prompt for the user's consent. As shown below, you should define scopes using the **action:resource_name** format.
 
-<Frame>![Authorization - User consent and applications - Consent scopes](/images/cdy7uua7fh8z/3Z4Ofbj5yF7eg5cLfcauh9/556bab9e627b0ff68b20664d149f1483/Blog_API_Permissions_-_English.png)</Frame>
+<Frame>![Authorization - User consent and applications - Consent scopes](/docs/images/cdy7uua7fh8z/3Z4Ofbj5yF7eg5cLfcauh9/556bab9e627b0ff68b20664d149f1483/Blog_API_Permissions_-_English.png)</Frame>
 
 The consent page groups scopes for the same resource and displays all actions for that resource in a single line. For example, the configuration above would result in **Posts: read and write your posts**.
 
@@ -311,7 +311,7 @@ If a user has provided consent but you would like to revoke it:
 
 ## Password-based flows
 
-When using the [Resource Owner Password Flow](/get-started/authentication-and-authorization-flow/resource-owner-password-flow), no consent dialog is involved because the user directly provides their password to the application, which is equivalent to granting the application full access to the user's account.
+When using the [Resource Owner Password Flow](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow), no consent dialog is involved because the user directly provides their password to the application, which is equivalent to granting the application full access to the user's account.
 
 ## Force users to provide consent
 
@@ -319,8 +319,8 @@ When redirecting to the `/authorize` endpoint, including the `prompt=consent` pa
 
 ## Learn more
 
-* [First-Party and Third-Party Applications](/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications)
-* [View Application Ownership](/get-started/applications/confidential-and-public-applications/view-application-ownership)
-* [Confidential and Public Applications](/get-started/applications/confidential-and-public-applications)
-* [Enable Third-Party Applications](/get-started/applications/confidential-and-public-applications/enable-third-party-applications)
-* [Application Grant Types](/get-started/applications/application-grant-types)
+* [First-Party and Third-Party Applications](/docs/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications)
+* [View Application Ownership](/docs/get-started/applications/confidential-and-public-applications/view-application-ownership)
+* [Confidential and Public Applications](/docs/get-started/applications/confidential-and-public-applications)
+* [Enable Third-Party Applications](/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications)
+* [Application Grant Types](/docs/get-started/applications/application-grant-types)

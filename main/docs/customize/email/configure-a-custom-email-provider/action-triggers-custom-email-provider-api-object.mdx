@@ -70,9 +70,9 @@ Returns a cache record if an item is found in the cache for the supplied `key`. 
 
 Store or update a string value in the cache at the specified key.
 
-Values stored in this cache are scoped to the Trigger in which they are set. They are subject to the [Actions Cache Limits](/customize/actions/limitations).
+Values stored in this cache are scoped to the Trigger in which they are set. They are subject to the [Actions Cache Limits](/docs/customize/actions/limitations).
 
-Values stored in this way will have lifetimes of up to the specified `ttl` or `expires_at` values. If no lifetime is specified, a default of lifetime of 15 minutes will be used. Lifetimes may not exceed the maximum duration listed at [Actions Cache Limits](/customize/actions/limitations).
+Values stored in this way will have lifetimes of up to the specified `ttl` or `expires_at` values. If no lifetime is specified, a default of lifetime of 15 minutes will be used. Lifetimes may not exceed the maximum duration listed at [Actions Cache Limits](/docs/customize/actions/limitations).
 
 <table class="table">
 <thead>
@@ -139,7 +139,7 @@ If several calls are made, only the last one is considered.
 
 When called, the notification event is considered failed without recovery.
 
-We will log an error for this event [`(fn)`](/deploy-monitor/logs/log-event-type-codes), but won't be sending it again to the action in the future.
+We will log an error for this event [`(fn)`](/docs/deploy-monitor/logs/log-event-type-codes), but won't be sending it again to the action in the future.
 
 If you need this notification event to be retried, consider calling `api.notification.retry` instead.
 
@@ -166,7 +166,7 @@ If you need this notification event to be retried, consider calling `api.notific
 
 When called, the notification event is considered failed, but recoverable.
 
-We will log an error for this event [`(fn)`](/deploy-monitor/logs/log-event-type-codes), but we will retry it up to 5 times in the next few minutes.
+We will log an error for this event [`(fn)`](/docs/deploy-monitor/logs/log-event-type-codes), but we will retry it up to 5 times in the next few minutes.
 
 If you consider that this notification event should not be retried, consider calling `api.notification.drop` instead.
 

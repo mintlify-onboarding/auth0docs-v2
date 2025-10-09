@@ -13,11 +13,11 @@ title: Hybrid Flow
   safe retrieval of Access and Refresh Tokens.
 'twitter:title': Hybrid Flow
 ---
-Applications that are able to securely store [Client Credentials](/secure/application-credentials) may benefit from the use of the Hybrid Flow (defined in the [OpenID Connect specification, section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth)). The Hybrid flow allows your application to have immediate access to an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> while ensuring secure and safe retrieval of <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip>. This can be useful in situations where your application needs to immediately access information about the user, but must perform some processing before gaining access to protected resources for an extended period of time.
+Applications that are able to securely store [Client Credentials](/docs/secure/application-credentials) may benefit from the use of the Hybrid Flow (defined in the [OpenID Connect specification, section 3.3](https://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth)). The Hybrid flow allows your application to have immediate access to an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> while ensuring secure and safe retrieval of <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip>. This can be useful in situations where your application needs to immediately access information about the user, but must perform some processing before gaining access to protected resources for an extended period of time.
 
 ## How it works
 
-The Hybrid Flow combines steps from the [Implicit Flow with Form Post](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post) and [Authorization Code Flow](/get-started/authentication-and-authorization-flow/authorization-code-flow):
+The Hybrid Flow combines steps from the [Implicit Flow with Form Post](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post) and [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow):
 
 1. User selects **Login** within application.
 2. Application redirects user to Auth0 Authorization Server ([`/authorize` endpoint](https://auth0.com/docs/api/authentication#authorization-code-flow)), passing along `response_type` parameter indicating type of requested credential (ID token and authorization code), and `response_mode` parameter of `form_post` to ensure security.
@@ -38,13 +38,13 @@ If your application only needs to use Hybrid Flow for sign-on, you will not need
 
 ## How to implement it
 
-You can follow our tutorial to use the Authentication API to [Call Your API Using the Hybrid Flow](/get-started/authentication-and-authorization-flow/hybrid-flow/call-api-hybrid-flow).
+You can follow our tutorial to use the Authentication API to [Call Your API Using the Hybrid Flow](/docs/get-started/authentication-and-authorization-flow/hybrid-flow/call-api-hybrid-flow).
 
 ## Learn more
 
-* [Auth0 Rules](/customize/rules)
-* [Auth0 Hooks](/customize/hooks)
-* [Tokens](/secure/tokens)
-* [Token Best Practices](/secure/tokens/token-best-practices)
-* [Which OAuth 2.0 Flow Should I Use?](/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
-* [Application Credentials](/secure/application-credentials)
+* [Auth0 Rules](/docs/customize/rules)
+* [Auth0 Hooks](/docs/customize/hooks)
+* [Tokens](/docs/secure/tokens)
+* [Token Best Practices](/docs/secure/tokens/token-best-practices)
+* [Which OAuth 2.0 Flow Should I Use?](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
+* [Application Credentials](/docs/secure/application-credentials)

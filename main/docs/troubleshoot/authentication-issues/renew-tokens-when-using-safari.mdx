@@ -12,15 +12,15 @@ In some cases, renewing tokens with silent authentication does not work as expec
 
 ## ITP and browser behavior
 
-Enabling ITP causes the browser to behave as if you had disabled third-party cookies in the browser, which makes it impossible to obtain a new token without displaying anything to the user. This is akin to the way <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) uses iframes for handling [sessions](/manage-users/sessions) in SPAs.
+Enabling ITP causes the browser to behave as if you had disabled third-party cookies in the browser, which makes it impossible to obtain a new token without displaying anything to the user. This is akin to the way <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) uses iframes for handling [sessions](/docs/manage-users/sessions) in SPAs.
 
-In the SPA SDK (which is our recommendation) `getTokenSilently` performs [silent authentication](/authenticate/login/configure-silent-authentication) unless you configure the SDK to use rotating <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip>.
+In the SPA SDK (which is our recommendation) `getTokenSilently` performs [silent authentication](/docs/authenticate/login/configure-silent-authentication) unless you configure the SDK to use rotating <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip>.
 
 ## Workarounds
 
-Recent advancements in user privacy controls in browsers adversely impact the user experience by preventing access to third-party cookies. You can use [Refresh Token Rotation](/secure/tokens/refresh-tokens/refresh-token-rotation) as an alternative that provides a secure method for using refresh tokens in SPAs while providing end-users with seamless access to resources without the disruption in UX caused by browser privacy technology like ITP.
+Recent advancements in user privacy controls in browsers adversely impact the user experience by preventing access to third-party cookies. You can use [Refresh Token Rotation](/docs/secure/tokens/refresh-tokens/refresh-token-rotation) as an alternative that provides a secure method for using refresh tokens in SPAs while providing end-users with seamless access to resources without the disruption in UX caused by browser privacy technology like ITP.
 
-Alternatively, you can work around the issues posed by ITP by using Auth0's [custom domains](/customize/custom-domains) functionality, particularly if the <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip> lives on a subdomain of the application's website domain. For example, if your application is hosted on **example.com**, the custom domain would need to be of the format **subdomain.example.com**.
+Alternatively, you can work around the issues posed by ITP by using Auth0's [custom domains](/docs/customize/custom-domains) functionality, particularly if the <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip> lives on a subdomain of the application's website domain. For example, if your application is hosted on **example.com**, the custom domain would need to be of the format **subdomain.example.com**.
 
 ## ITP debug mode
 

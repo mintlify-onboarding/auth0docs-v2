@@ -8,7 +8,7 @@ title: Auth0.Android
 'twitter:description': Learn how to install, initialize, and use Auth0.Android
 'twitter:title': Auth0.Android
 ---
-Auth0.Android is a client-side library you can use with your Android app to authenticate users and access [Auth0 APIs](/api).
+Auth0.Android is a client-side library you can use with your Android app to authenticate users and access [Auth0 APIs](/docs/api).
 
 Check out the [Auth0.Android repository](https://github.com/auth0/Auth0.Android) on GitHub.
 
@@ -105,7 +105,7 @@ It's a good practice to define reusable resources like `@string/com_auth0_domain
 
 ## Initialize Auth0
 
-Create a new `Auth0` object using your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip> and domain value. Objects will later use this when interacting with Auth0's endpoints.
+Create a new `Auth0` object using your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip> and domain value. Objects will later use this when interacting with Auth0's endpoints.
 
 ```kotlin lines
 val auth0 = Auth0("YOUR_CLIENT_ID", "YOUR_DOMAIN")
@@ -115,7 +115,7 @@ You can also initialize this object using an Android Context, as shown in [this 
 
 ## Next steps
 
-[Log users in and out of your application](/libraries/auth0-android/auth0-android-login-logout-and-user-profiles) using the `WebAuthProvider` class.
+[Log users in and out of your application](/docs/libraries/auth0-android/auth0-android-login-logout-and-user-profiles) using the `WebAuthProvider` class.
 
 ### Reset user password
 
@@ -125,9 +125,9 @@ Password reset requests will fail on network-related errors, but will not fail i
 
 ## Learn more
 
-* [Auth0.Android Login, Logout, and User Profiles](/libraries/auth0-android/auth0-android-login-logout-and-user-profiles)
-* [Auth0.Android Configuration Options](/libraries/auth0-android/auth0-android-configuration)
-* [Auth0.Android Database Authentication](/auth0-android-database-authentication)
-* [Auth0.Android Passwordless Authentication](/auth0-android-passwordless)
-* [Auth0.Android Save and Renew Tokens](/auth0-android-save-and-renew-tokens)
-* [Auth0.Android: User Management](/auth0-android-user-management)
+* [Auth0.Android Login, Logout, and User Profiles](/docs/libraries/auth0-android/auth0-android-login-logout-and-user-profiles)
+* [Auth0.Android Configuration Options](/docs/libraries/auth0-android/auth0-android-configuration)
+* [Auth0.Android Database Authentication](/docs/auth0-android-database-authentication)
+* [Auth0.Android Passwordless Authentication](/docs/auth0-android-passwordless)
+* [Auth0.Android Save and Renew Tokens](/docs/auth0-android-save-and-renew-tokens)
+* [Auth0.Android: User Management](/docs/auth0-android-user-management)

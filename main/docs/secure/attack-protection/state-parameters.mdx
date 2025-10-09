@@ -18,9 +18,9 @@ The primary reason for using the `state` parameter is to mitigate [CSRF attacks]
 
 The `state` parameter is a string so you can encode any other information in it. You send a random value when starting an authentication request and validate the received value when processing the response. You store something on the client application side (in cookies, session, or localstorage) that allows you to perform the validation. If you receive a response with a state that doesn't match, you can infer that you may be the target of an attack because this is either a response for an unsolicited request or someone trying to forge the response.
 
-A CSRF attack specifically targets state-changing requests to initiate an action instead of getting user data because the attacker has no way to see the response to the forged request. For the most basic cases the state parameter should be a <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/glossary?term=nonce">nonce</Tooltip>, used to correlate the request with the response received from the authentication.
+A CSRF attack specifically targets state-changing requests to initiate an action instead of getting user data because the attacker has no way to see the response to the forged request. For the most basic cases the state parameter should be a <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/docs/glossary?term=nonce">nonce</Tooltip>, used to correlate the request with the response received from the authentication.
 
-Most modern OIDC and <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> SDKs, including Auth0.js in single-page applications, handle the state generation and validation automatically.
+Most modern OIDC and <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> SDKs, including Auth0.js in single-page applications, handle the state generation and validation automatically.
 
 ### Set and compare state parameter values
 
@@ -105,7 +105,7 @@ Generate and store a nonce locally (in cookies, session, or local storage) along
    
 
    
-3. Authenticate the user, [sending the generated nonce as the state](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post/mitigate-replay-attacks-when-using-the-implicit-flow).
+3. Authenticate the user, [sending the generated nonce as the state](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post/mitigate-replay-attacks-when-using-the-implicit-flow).
 4. As part of the callback processing and response validation, verify that the state returned matches the nonce stored locally. If it does, retrieve the rest of the application state (like the `redirectUrl`).
 5. Once you complete the callback processing, redirect the user to the URL previously stored.
 
@@ -150,5 +150,5 @@ Generate and store a nonce locally (in cookies, session, or local storage) along
 
 ## Learn more
 
-* [Which OAuth 2.0 Flow Should I Use?](/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
-* [Sessions](/manage-users/sessions)
+* [Which OAuth 2.0 Flow Should I Use?](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
+* [Sessions](/docs/manage-users/sessions)

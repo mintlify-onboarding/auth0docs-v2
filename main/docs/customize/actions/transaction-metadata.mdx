@@ -12,11 +12,11 @@ title: Actions Transaction Metadata
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Actions Transaction Metadata is currently in Early Access. To learn more, read [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages).
+Actions Transaction Metadata is currently in Early Access. To learn more, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
 
 </Callout>
 
-Actions Transaction Metadata stores, accesses, and/or shares, custom metadata within a [post-login](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger) Action for the duration of a transaction.
+Actions Transaction Metadata stores, accesses, and/or shares, custom metadata within a [post-login](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger) Action for the duration of a transaction.
 
 Previously, each Action operated independently, making it difficult to pass information between them. With Actions Transaction Metadata, now it's possible to:
 
@@ -25,15 +25,15 @@ Previously, each Action operated independently, making it difficult to pass info
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Before using transaction metadata in development, we recommend reviewing the limitations. To learn more, read [Actions Limitations](/customize/actions/limitations).
+Before using transaction metadata in development, we recommend reviewing the limitations. To learn more, read [Actions Limitations](/docs/customize/actions/limitations).
 
 </Callout>
 
 ## How it works
 
-Use the [post-login API object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object) `api.transaction.setMetadata` to set the key/value pair in order to store transaction metadata.
+Use the [post-login API object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object) `api.transaction.setMetadata` to set the key/value pair in order to store transaction metadata.
 
-Use the [post-login Event object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object) `event.transaction.metadata` to access stored key/value pair in the same Action or subsequent Actions on the post-login trigger for a single execution.
+Use the [post-login Event object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object) `event.transaction.metadata` to access stored key/value pair in the same Action or subsequent Actions on the post-login trigger for a single execution.
 
 The API and Event objects accept the following parameters:
 
@@ -58,11 +58,11 @@ The API and Event objects accept the following parameters:
 </tbody>
 </table>
 
-To learn more about writing Actions, read [Write Your First Action](/customize/actions/write-your-first-action).
+To learn more about writing Actions, read [Write Your First Action](/docs/customize/actions/write-your-first-action).
 
 ## Latency
 
-Using Actions Transaction Metadata could cause a nominal additional latency. Any latency would be proportional to the metadata payload size and would be relevant when Action suspensions happen. For example, triggering <Tooltip tip="" cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip>, redirecting from Actions, or rendering Forms, could cause latency issues due to the need of reloading data from storage.
+Using Actions Transaction Metadata could cause a nominal additional latency. Any latency would be proportional to the metadata payload size and would be relevant when Action suspensions happen. For example, triggering <Tooltip tip="" cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip>, redirecting from Actions, or rendering Forms, could cause latency issues due to the need of reloading data from storage.
 
 Still, the potential latency should be minimal than the redundant outgoing HTTP requests to retrieve data the sequence of Actions needs.
 
@@ -112,7 +112,7 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Serialize values
 
-Serialize values as `strings` within [limits](/customize/actions/limitations#transaction-metadata).
+Serialize values as `strings` within [limits](/docs/customize/actions/limitations#transaction-metadata).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -303,7 +303,7 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Preserve values on redirect to external sites
 
-Preserve transaction metadata during [redirects](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions). Values are available when users continue the authentication flow.
+Preserve transaction metadata during [redirects](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions). Values are available when users continue the authentication flow.
 
 **Action 1**
 
@@ -359,9 +359,9 @@ exports.onContinuePostLogin = async (event, api) => {
 
 ### Preserve values on Forms rendering
 
-[Render Forms using Actions](/customize/forms/render) and transaction metadata values would be preserved and available when users continue the authentication flow.
+[Render Forms using Actions](/docs/customize/forms/render) and transaction metadata values would be preserved and available when users continue the authentication flow.
 
-To learn more about using Forms with Actions, read [Render Forms using Actions](/customize/forms/render).
+To learn more about using Forms with Actions, read [Render Forms using Actions](/docs/customize/forms/render).
 
 **Action 1**
 

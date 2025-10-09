@@ -11,7 +11,7 @@ title: Login Script Templates
 ---
 The Login script implements the function executed each time a user is required to authenticate. We recommend naming this function `login`.
 
-This script is required for both legacy authentication and for [automatic migration](/manage-users/user-migration/configure-automatic-migration-from-your-database). If automatic migration is configured for the connection, the migration process will be triggered after the first time the user logs in successfully.
+This script is required for both legacy authentication and for [automatic migration](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database). If automatic migration is configured for the connection, the migration process will be triggered after the first time the user logs in successfully.
 
 ## Login function
 
@@ -176,7 +176,7 @@ The profile data returned by the Login script for a user must be consistent with
 
 </Warning>
 
-If the user authenticates successfully, their profile data must be returned in the `profile` object in [normalized form](/manage-users/user-accounts/user-profiles/normalized-user-profile-schema). In addition to the standard fields, you can include the `user_metadata`, `app_metadata`, and `mfa_factors` fields.
+If the user authenticates successfully, their profile data must be returned in the `profile` object in [normalized form](/docs/manage-users/user-accounts/user-profiles/normalized-user-profile-schema). In addition to the standard fields, you can include the `user_metadata`, `app_metadata`, and `mfa_factors` fields.
 
 #### Example
 
@@ -213,7 +213,7 @@ If an error occurs, the `error` parameter should contain relevant information ab
 
 #### WrongUsernameOrPasswordError type object
 
-The `WrongUsernameOrPasswordError` custom error type object allows you to pass data that will be displayed in your [Tenant Logs](/deploy-monitor/logs).
+The `WrongUsernameOrPasswordError` custom error type object allows you to pass data that will be displayed in your [Tenant Logs](/docs/deploy-monitor/logs).
 
 ##### Constructor
 
@@ -953,9 +953,9 @@ function login(username, password, callback) {
 
 ## Learn more
 
-* [Change Password Script Templates](/authenticate/database-connections/custom-db/templates/change-password)
-* [Create Script Templates](/authenticate/database-connections/custom-db/templates/create)
-* [Delete Script Templates](/authenticate/database-connections/custom-db/templates/delete)
-* [Get User Script Templates](/authenticate/database-connections/custom-db/templates/get-user)
-* [Verify Script Templates](/authenticate/database-connections/custom-db/templates/verify)
-* [Change Email Script Template](/authenticate/database-connections/custom-db/templates/change-email)
+* [Change Password Script Templates](/docs/authenticate/database-connections/custom-db/templates/change-password)
+* [Create Script Templates](/docs/authenticate/database-connections/custom-db/templates/create)
+* [Delete Script Templates](/docs/authenticate/database-connections/custom-db/templates/delete)
+* [Get User Script Templates](/docs/authenticate/database-connections/custom-db/templates/get-user)
+* [Verify Script Templates](/docs/authenticate/database-connections/custom-db/templates/verify)
+* [Change Email Script Template](/docs/authenticate/database-connections/custom-db/templates/change-email)

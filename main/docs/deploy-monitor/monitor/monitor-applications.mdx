@@ -28,9 +28,9 @@ The simplest approach to monitor Auth0:
   + an issue specific to the tenant used for the synthetic transaction
   + or just a single failed request.
 
-For synthetic transactions, use an environment as close to your production tenant configuration as possible. You may potentially even use the same production tenant. Since setting up synthetic transactions with redirect flows and third party providers can be tricky, using the [Resource Owner Password Grant](/get-started/authentication-and-authorization-flow/resource-owner-password-flow/call-your-api-using-resource-owner-password-flow) is recommended. This flow doesn't involve browser redirects or require a UI.
+For synthetic transactions, use an environment as close to your production tenant configuration as possible. You may potentially even use the same production tenant. Since setting up synthetic transactions with redirect flows and third party providers can be tricky, using the [Resource Owner Password Grant](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow/call-your-api-using-resource-owner-password-flow) is recommended. This flow doesn't involve browser redirects or require a UI.
 
-If you are using [rules](/customize/rules) or [custom database connection(s)](/authenticate/database-connections/custom-db) or other extensibility points, the synthetic transaction(s) should be configured to utilize the rules and/or custom DB scripts to ensure that aspect of the system is working.
+If you are using [rules](/docs/customize/rules) or [custom database connection(s)](/docs/authenticate/database-connections/custom-db) or other extensibility points, the synthetic transaction(s) should be configured to utilize the rules and/or custom DB scripts to ensure that aspect of the system is working.
 
 Tools like [Pingdom](http://pingdom.com/) make setting up synthetic transactions a simple thing.
 
@@ -59,7 +59,7 @@ This approach is useful because it allows you to know about real errors that you
 This approach is useful if calls to Auth0 are performed from a backend you control. This is the case for:
 
 * Most calls to [Auth0's Management API](https://auth0.com/docs/api/management/v2)
-* Calls to the [Authentication API](https://auth0.com/docs/api/authentication) from Regular Web Applications and Machine-to-machine applications ([learn more about client types](/get-started/applications)).
+* Calls to the [Authentication API](https://auth0.com/docs/api/authentication) from Regular Web Applications and Machine-to-machine applications ([learn more about client types](/docs/get-started/applications)).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -73,10 +73,10 @@ The approach consists of using metrics and/or logs to track error rates on calls
 
 Regardless of the monitoring approaches you use, it's common to get an alert or page when errors happen at a particular rate. That rate depends on your application.
 
-When your team gets an alert from Auth0, we recommend adding a link to [Check Auth0 Status](/deploy-monitor/monitor/check-auth0-status) to the alert payload/playbook. This will allow them to quickly check Auth0's official status reporting channel to see if the issue is coming from Auth0 or your application/service.
+When your team gets an alert from Auth0, we recommend adding a link to [Check Auth0 Status](/docs/deploy-monitor/monitor/check-auth0-status) to the alert payload/playbook. This will allow them to quickly check Auth0's official status reporting channel to see if the issue is coming from Auth0 or your application/service.
 
 ## Learn more
 
-* [Check Auth0 Status](/deploy-monitor/monitor/check-auth0-status)
-* [Check External Services Status](/deploy-monitor/monitor/check-external-services-status)
-* [Monitor Auth0 Using System Center Operations Manager](/deploy-monitor/monitor/monitor-using-scom)
+* [Check Auth0 Status](/docs/deploy-monitor/monitor/check-auth0-status)
+* [Check External Services Status](/docs/deploy-monitor/monitor/check-external-services-status)
+* [Monitor Auth0 Using System Center Operations Manager](/docs/deploy-monitor/monitor/monitor-using-scom)

@@ -11,7 +11,7 @@ title: User Account Linking
   identity providers.
 'twitter:title': User Account Linking
 ---
-Auth0 supports the linking of user accounts from various <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip>. This allows a user to authenticate from any of their accounts and still be recognized by your app and associated with the same user profile.
+Auth0 supports the linking of user accounts from various <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip>. This allows a user to authenticate from any of their accounts and still be recognized by your app and associated with the same user profile.
 
 <Card title="Availability varies by Auth0 plan">
 
@@ -24,7 +24,7 @@ Auth0 treats all identities as separate by default. For example, if a user logs 
 ## Advantages of linking accounts
 
 * Allows users to log in with any identity provider without creating a separate profile for each
-* Allows registered users to use a new social or <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=passwordless">passwordless</Tooltip> login but continue using their existing profile
+* Allows registered users to use a new social or <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> login but continue using their existing profile
 * Allows users that registered using a passwordless login to link to an account with a more complete profile
 * Allows your apps to retrieve user profile data stored in various connections
 
@@ -162,7 +162,7 @@ Metadata is not automatically merged during account linking. If you want to merg
 
 The [Auth0 Node.js SDK for APIv2](https://github.com/auth0/node-auth0/) is also available.
 
-To learn more, read [Understand How Metadata Works in User Profiles](/manage-users/user-accounts/metadata)
+To learn more, read [Understand How Metadata Works in User Profiles](/docs/manage-users/user-accounts/metadata)
 
 ## Scenarios
 
@@ -175,7 +175,7 @@ There are two different ways of implementing account linking:
 
 Typically, account linking will be initiated by an authenticated user. Your app must provide the UI, such as a **Link accounts** button on the user's profile page.
 
-To learn more about how to implement user-initiated account linking in a Single Page Application, read [Client-Side Account Linking](/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation). To learn more about how to implement user-initiated account linking in a Regular Web Application, read [Server-Side Account Linking](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation).
+To learn more about how to implement user-initiated account linking in a Single Page Application, read [Client-Side Account Linking](/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation). To learn more about how to implement user-initiated account linking in a Regular Web Application, read [Server-Side Account Linking](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation).
 
 ### Suggested account linking
 
@@ -183,7 +183,7 @@ You can find accounts with the same email, and prompt the users to link them. Fo
 
 If that occurs, you can show users the list of available accounts so they can link them, by first authenticating with the account they will be linking to.
 
-You can also use the [Account Link Extension](/customize/extensions/account-link-extension) to achieve the same outcome.
+You can also use the [Account Link Extension](/docs/customize/extensions/account-link-extension) to achieve the same outcome.
 
 <Warning>
 
@@ -193,7 +193,7 @@ Previously, in some cases, you could use ID Tokens to link and unlink user accou
 
 ## Learn more
 
-* [Link User Accounts](/manage-users/user-accounts/user-account-linking/link-user-accounts)
-* [Unlink User Accounts](/manage-users/user-accounts/user-account-linking/unlink-user-accounts)
-* [User-Initiated Account Linking: Client-Side Implementation](/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
-* [User Account Linking: Server-Side Implementation](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
+* [Link User Accounts](/docs/manage-users/user-accounts/user-account-linking/link-user-accounts)
+* [Unlink User Accounts](/docs/manage-users/user-accounts/user-account-linking/unlink-user-accounts)
+* [User-Initiated Account Linking: Client-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
+* [User Account Linking: Server-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)

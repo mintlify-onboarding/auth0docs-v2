@@ -8,14 +8,14 @@ title: Sessions with Actions
 'twitter:description': Learn about managing sessions with Actions
 'twitter:title': Sessions with Actions
 ---
-Using Sessions with [Actions](/customize/actions) allows you to configure post-authentication risk detection and response capabilities to protect your applications and users against session hijacking. You can also dynamically customize the [session lifetime limits](/manage-users/sessions/configure-session-lifetime-settings).
+Using Sessions with [Actions](/docs/customize/actions) allows you to configure post-authentication risk detection and response capabilities to protect your applications and users against session hijacking. You can also dynamically customize the [session lifetime limits](/docs/manage-users/sessions/configure-session-lifetime-settings).
 
 To facilitate this, post-login Actions feature two key objects:
 
 * **event.session**: Provides relevant information including unique `id`, `created_at`, `expires_at`, `idle_expires_at`, `updated_at` dates, `clients`, `authentication_at`, and `device` information, such as `ASN`, `IP`, and `User_agent`.
 * **api.session:** Allows you to manage existing sessions by revoking sessions or changing `expiry` dates.
 
-The `event.session` and `api.session` objects both support interactive web-based flows, including [authorization code flow](/get-started/authentication-and-authorization-flow/authorization-code-flow), implicit flow, device code flow, as well as <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> and <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=WS-Fed">WS-Fed</Tooltip>.
+The `event.session` and `api.session` objects both support interactive web-based flows, including [authorization code flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow), implicit flow, device code flow, as well as <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> and <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=WS-Fed">WS-Fed</Tooltip>.
 
 You can use the `event.session` object to review timestamps of the latest interactions and evaluate risks associated with the current transactions. You can also combine the `event.session` object with other event objects, such as `event.authentication` or `event.request`.
 
@@ -23,20 +23,20 @@ You can then use the `api.session` object to either reset the existing session e
 
 To learn more about these objects, review:
 
-* [Event object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object): Learn about the session Event object and properties.
-* [API object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object): Learn about the session API object and methods.
+* [Event object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object): Learn about the session Event object and properties.
+* [API object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object): Learn about the session API object and methods.
 
 ## Revoke sessions with Actions
 
-The post-login **api.session.revoke(reason, options)** method allows you to react to risks associated with a transaction. This method includes an option to allow you to preserve the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip> bound to the revoked transaction.
+The post-login **api.session.revoke(reason, options)** method allows you to react to risks associated with a transaction. This method includes an option to allow you to preserve the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip> bound to the revoked transaction.
 
-In addition to revoking the session, the method will also initiate a `session-revoked` [OIDC Back-Channel Logout Initiator](/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators) to log out users from all applications bound to the current session and log a [session_revoked](/deploy-monitor/logs/log-event-type-codes) event in the tenant logs.
+In addition to revoking the session, the method will also initiate a `session-revoked` [OIDC Back-Channel Logout Initiator](/docs/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators) to log out users from all applications bound to the current session and log a [session_revoked](/docs/deploy-monitor/logs/log-event-type-codes) event in the tenant logs.
 
 You can use this method to:
 
 * Invalidate the current session transaction in Auth0
 * Deny the current transaction
-* Revoke all [refresh tokens](/secure/tokens/refresh-tokens) associated with the existing session with a matching `session_id` value.
+* Revoke all [refresh tokens](/docs/secure/tokens/refresh-tokens) associated with the existing session with a matching `session_id` value.
 
   + This is a customizable option; you can choose to preserve the refresh tokens rather than revoke them. This operation runs asynchronously and eventually becomes consistent.
 
@@ -50,13 +50,13 @@ Different from `api.access.deny()`, `api.session.revoke()` will deny the current
 
 ### Monitor revoke log events
 
-The revoke operation adds the following log event in your [tenant logs](/deploy-monitor/logs):
+The revoke operation adds the following log event in your [tenant logs](/docs/deploy-monitor/logs):
 
 A `session_revoked` event code indicating a revoked session with its associated `session_id` attribute.
 
 ## Change sessions expiry dates with Actions
 
-You can modify session [expiry dates](/manage-users/sessions/session-lifetime-limits) with the following post-login methods:
+You can modify session [expiry dates](/docs/manage-users/sessions/session-lifetime-limits) with the following post-login methods:
 
 * **api.session.setExpiresAt(absolute)** allows you to define a new absolute (Require log in after) session expiration date for a specified session.
 * **api.session.setIdleExpiresAt(idle)** allows you to set a new inactivity timeout date for a specified session.
@@ -87,11 +87,11 @@ Sessions issued before the release of the post-login API method `api.session.rev
 * `initial_asn`
 * `initial_user_agent`
 
-For security reasons, inactivity and absolute timeouts cannot be set above the session settings defined in the [session lifetime limits](/manage-users/sessions/configure-session-lifetime-settings) for the tenant. If you attempt to set a date above the lifetime limits, the API methods will update up to the lifetime limits and log a warning event (`w`) in the tenant logs.
+For security reasons, inactivity and absolute timeouts cannot be set above the session settings defined in the [session lifetime limits](/docs/manage-users/sessions/configure-session-lifetime-settings) for the tenant. If you attempt to set a date above the lifetime limits, the API methods will update up to the lifetime limits and log a warning event (`w`) in the tenant logs.
 
 ## Use cases: Revoke a session
 
-You can use [Actions](/customize/actions) to configure risk detections and revoke risky sessions and their associated refresh tokens with the post-login `api.session.revoke(reason, options)` method and the `event.session` object.
+You can use [Actions](/docs/customize/actions) to configure risk detections and revoke risky sessions and their associated refresh tokens with the post-login `api.session.revoke(reason, options)` method and the `event.session` object.
 
 ### Revoke a session due to ASN network binding
 
@@ -154,7 +154,7 @@ In this example, a check occurs at the start of the Action to verify that the `e
 
 ## Use cases: Customize a session expiry dates
 
-You can use [Actions](/customize/actions) to customize session idle and absolute expiration dates. Specifically, you can configure the expiry dates for a particular session transaction using the post-login `api.session.setExpiresAt(absolute)` and `api.session.setIdleExpiresAt(idle)` methods and the `event.session` object.
+You can use [Actions](/docs/customize/actions) to customize session idle and absolute expiration dates. Specifically, you can configure the expiry dates for a particular session transaction using the post-login `api.session.setExpiresAt(absolute)` and `api.session.setIdleExpiresAt(idle)` methods and the `event.session` object.
 
 ### Customize absolute session expiration time based on connections
 

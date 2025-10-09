@@ -18,8 +18,8 @@ To use Highly Regulated Identity features, you must have an Enterprise Plan with
 To help customers configure their Auth0 tenant to adhere to one of the Financial-grade API (FAPI) profiles, the Application model includes a `compliance_level` property that can be set to one of three values:
 
 * `null` or undefined: No compliance level is required. This is the default.
-* `fapi1_adv_mtls_par`: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [mTLS](/get-started/applications/configure-mtls) and [PAR](/get-started/applications/configure-par).
-* `fapi1_adv_pkj_par`: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [Private Key JWT](/get-started/applications/configure-private-key-jwt) and [PAR](/get-started/applications/configure-par).
+* `fapi1_adv_mtls_par`: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [mTLS](/docs/get-started/applications/configure-mtls) and [PAR](/docs/get-started/applications/configure-par).
+* `fapi1_adv_pkj_par`: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [Private Key JWT](/docs/get-started/applications/configure-private-key-jwt) and [PAR](/docs/get-started/applications/configure-par).
 
 Complying with a FAPI profile requires a number of configuration changes. Setting the `compliance_level` ensures that no authorization request can succeed unless the request and the configuration is compliant with the selected standard.
 
@@ -37,7 +37,7 @@ For example, both the `fapi1_adv_pkj_par` and `fapi1_adv_mtls_par` compliance le
 
 
 
-In some cases, setting a compliance level also changes Auth0’s behavior. For example, both the `fapi1_adv_pkj_par` and `fapi1_adv_mtls_par` compliance levels cause Auth0 to include a `s_hash` claim in the returned <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> containing a SHA256 hash of the state value. This allows the ID tokens to act as a detached signature.
+In some cases, setting a compliance level also changes Auth0’s behavior. For example, both the `fapi1_adv_pkj_par` and `fapi1_adv_mtls_par` compliance levels cause Auth0 to include a `s_hash` claim in the returned <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> containing a SHA256 hash of the state value. This allows the ID tokens to act as a detached signature.
 
 The following tables summarize the additional validation rules and changes to Auth0’s behavior that each compliance level enables:
 
@@ -148,8 +148,8 @@ To perform this using the Auth0 Dashboard:
 The options to configure FAPI compliance are:
 
 * **None**: No compliance level is required. This is the default.
-* **FAPI 1 Advanced profile using Private Key JWT and PAR**: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [Private Key JWT](/get-started/applications/configure-private-key-jwt) and [PAR](/get-started/applications/configure-par).
-* **FAPI 1 Advanced profile using mTLS and PAR**: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [mTLS](/get-started/applications/configure-mtls) and [PAR](/get-started/applications/configure-par).
+* **FAPI 1 Advanced profile using Private Key JWT and PAR**: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [Private Key JWT](/docs/get-started/applications/configure-private-key-jwt) and [PAR](/docs/get-started/applications/configure-par).
+* **FAPI 1 Advanced profile using mTLS and PAR**: The customer would like this client to behave in accordance with the FAPI1 Advanced profile using [mTLS](/docs/get-started/applications/configure-mtls) and [PAR](/docs/get-started/applications/configure-par).
 
 </Tab><Tab title="Management API">
 
@@ -185,6 +185,6 @@ curl --location 'https://$tenant/api/v2/clients/$client_id \
 
 ## Learn more
 
-* [Configure Private Key JWT Authentication](/get-started/applications/configure-private-key-jwt)
-* [Configure Pushed Authorization Requests (PAR)](/get-started/applications/configure-par)
-* [Configure mTLS Authentication](/get-started/applications/configure-mtls)
+* [Configure Private Key JWT Authentication](/docs/get-started/applications/configure-private-key-jwt)
+* [Configure Pushed Authorization Requests (PAR)](/docs/get-started/applications/configure-par)
+* [Configure mTLS Authentication](/docs/get-started/applications/configure-mtls)

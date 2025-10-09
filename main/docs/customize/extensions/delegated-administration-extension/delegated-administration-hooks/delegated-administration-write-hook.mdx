@@ -39,9 +39,9 @@ Auth0 only supports user creation with Database Connections.
     - **user_metadata**: Data that's included if a Custom Field being modified is saved in `user_metadata`.
   + **userFields**: User fields array (if specified in the settings query)
   + **method**: Either **create** or **update** depending on whether this is being called as a result of a create or an update call.
-* **callback(error, user)**: Callback to which you can return an error and the user object that should be sent to the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+* **callback(error, user)**: Callback to which you can return an error and the user object that should be sent to the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
-For more information about **userFields**, read [Delegated Administration: Settings Query Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-settings-query-hook).
+For more information about **userFields**, read [Delegated Administration: Settings Query Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-settings-query-hook).
 
 ## Sample use
 
@@ -95,7 +95,7 @@ function(ctx, callback) {
 
 ## Learn more
 
-* [Delegated Administration: Access Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-access-hook)
-* [Delegated Administration: Filter Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-filter-hook)
-* [Delegated Administration: Memberships Query Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-memberships-query-hook)
-* [Delegated Administration: Settings Query Hook](/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-settings-query-hook)
+* [Delegated Administration: Access Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-access-hook)
+* [Delegated Administration: Filter Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-filter-hook)
+* [Delegated Administration: Memberships Query Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-memberships-query-hook)
+* [Delegated Administration: Settings Query Hook](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks/delegated-administration-settings-query-hook)

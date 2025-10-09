@@ -14,15 +14,15 @@ To use Highly Regulated Identity features, you must have an Enterprise Plan with
 
 </Callout>
 
-By default, Auth0 issues <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> that are formatted as a signed [JSON Web Token (JWT)](/secure/tokens/json-web-tokens), meaning that while they are integrity protected, clients and other intermediaries can still inspect them. This can lead to a loss of information privacy on data intended only to be exposed to a <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+server">resource server</Tooltip>.
+By default, Auth0 issues <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> that are formatted as a signed [JSON Web Token (JWT)](/docs/secure/tokens/json-web-tokens), meaning that while they are integrity protected, clients and other intermediaries can still inspect them. This can lead to a loss of information privacy on data intended only to be exposed to a <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+server">resource server</Tooltip>.
 
-To prevent unauthorized inspection of access tokens, Auth0 supports the use of nested <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> access tokens, where access information is signed in a JWT and then encrypted and represented with JSON Web Encryption (JWE). Resource servers are expected to both decrypt these access tokens and verify the signature of the JWT payload while the information is opaque to any other parties.
+To prevent unauthorized inspection of access tokens, Auth0 supports the use of nested <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> access tokens, where access information is signed in a JWT and then encrypted and represented with JSON Web Encryption (JWE). Resource servers are expected to both decrypt these access tokens and verify the signature of the JWT payload while the information is opaque to any other parties.
 
 ## Generate RSA key pair
 
-Before configuring an API to use JWE, you must [generate an RSA key pair](/secure/application-credentials/generate-rsa-key-pair).
+Before configuring an API to use JWE, you must [generate an RSA key pair](/docs/secure/application-credentials/generate-rsa-key-pair).
 
-The private key must be kept secret. Upload the public key to Auth0 encoded in PEM format as described in [Generate RSA Key Pair](/secure/application-credentials/generate-rsa-key-pair). Only the resource server or API server can securely access the private key to decrypt the access token.
+The private key must be kept secret. Upload the public key to Auth0 encoded in PEM format as described in [Generate RSA Key Pair](/docs/secure/application-credentials/generate-rsa-key-pair). Only the resource server or API server can securely access the private key to decrypt the access token.
 
 ## Configure JWE for an API
 
@@ -30,7 +30,7 @@ The private key must be kept secret. Upload the public key to Auth0 encoded in P
 
 Use the [Auth0 Dashboard](https://manage.auth0.com/) to configure JWE for your API. To begin, enable the **JSON Web Encryption (JWE)** toggle under **Token Settings** for your API.
 
-<Frame>![](/images/cdy7uua7fh8z/5xHKQ3rKN7DZogzD5qFDLp/8747f7f3d36c578e0f4622929cefb8e9/Access_Tokens_Settings_-_English.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/5xHKQ3rKN7DZogzD5qFDLp/8747f7f3d36c578e0f4622929cefb8e9/Access_Tokens_Settings_-_English.png)</Frame>
 
 When prompted, add a JSON Web Encryption (JWE) key:
 
@@ -144,4 +144,4 @@ exportJWK(publicKeyObject).then((jwk) => {
 
 ## Learn more
 
-* [JSON Web Encryption](/secure/tokens/access-tokens/json-web-encryption)
+* [JSON Web Encryption](/docs/secure/tokens/access-tokens/json-web-encryption)

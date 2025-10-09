@@ -42,7 +42,7 @@ export const AUTH_CONFIG: AuthConfig = {
 
 ### Create an Authorization Service
 
-The best way to manage and coordinate the tasks necessary for user authentication is to create a reusable service. With the service in place, you'll be able to call its methods throughout your application. An instance of the `WebAuth` object from [auth0.js](/libraries/auth0js) can be created in the service.
+The best way to manage and coordinate the tasks necessary for user authentication is to create a reusable service. With the service in place, you'll be able to call its methods throughout your application. An instance of the `WebAuth` object from [auth0.js](/docs/libraries/auth0js) can be created in the service.
 
 ```jsx lines expandable
 import { Injectable } from '@angular/core';
@@ -133,9 +133,9 @@ export class AuthService {
 
 The service includes several methods for handling authentication.
 
-* **login**: calls `authorize` from auth0.js which initiates <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip>
+* **login**: calls `authorize` from auth0.js which initiates <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip>
 * **handleAuthentication**: looks for an authentication result in the URL hash and processes it with the `parseHash` method from auth0.js
-* **setSession**: sets the user's <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip>, and a time at which the Access Token will expire
+* **setSession**: sets the user's <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip>, and a time at which the Access Token will expire
 * **logout**: removes the user's tokens from browser storage
   isAuthenticated: checks whether the expiry time for the Access Token has passed
 
@@ -360,8 +360,8 @@ You can call this method to determine whether we should display a specific UI el
         <li><a *ngIf="auth.isAuthenticated() && auth.userHasScopes(['approve:timesheets'])" routerLink="/approval">Approve Timesheets</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a *ngIf="!auth.isAuthenticated()" href="/javascript:void(0)" (click)="auth.login()">Log In</a></li>
-        <li><a *ngIf="auth.isAuthenticated()" href="/javascript:void(0)" (click)="auth.logout()">Log Out</a></li>
+        <li><a *ngIf="!auth.isAuthenticated()" href="/docs/javascript:void(0)" (click)="auth.login()">Log In</a></li>
+        <li><a *ngIf="auth.isAuthenticated()" href="/docs/javascript:void(0)" (click)="auth.logout()">Log Out</a></li>
       </ul>
     </div>
   </div>
@@ -443,7 +443,7 @@ export const ROUTES: Routes = [
 
 ## Step 5. Call the API
 
-The [angular2-jwt](https://github.com/auth0/angular2-jwt) module can be used to automatically attach <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JSON+Web+Tokens">JSON Web Tokens</Tooltip> to requests made to your API. It does this by providing an `AuthHttp` class which is a wrapper over Angular's `Http` class.
+The [angular2-jwt](https://github.com/auth0/angular2-jwt) module can be used to automatically attach <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Tokens">JSON Web Tokens</Tooltip> to requests made to your API. It does this by providing an `AuthHttp` class which is a wrapper over Angular's `Http` class.
 
 Install `angular2-jwt`:
 
@@ -586,5 +586,5 @@ Finally you need to initiate the schedule renewal. This can be done by calling 
 <Info>
 ### Refresh Token Rotation
 
-Recent advancements in user privacy controls in browsers adversely impact the user experience by preventing access to third-party cookies. Auth0 recommends using [Refresh Token Rotation](/secure/tokens/refresh-tokens/refresh-token-rotation), which provides a secure method for using refresh tokens in SPAs while providing end-users with seamless access to resources without the disruption in UX caused by browser privacy technology like ITP.
+Recent advancements in user privacy controls in browsers adversely impact the user experience by preventing access to third-party cookies. Auth0 recommends using [Refresh Token Rotation](/docs/secure/tokens/refresh-tokens/refresh-token-rotation), which provides a secure method for using refresh tokens in SPAs while providing end-users with seamless access to resources without the disruption in UX caused by browser privacy technology like ITP.
 </Info>

@@ -58,7 +58,7 @@ The table below compares each deployment option for Private Cloud on AWS.
 </tbody>
 </table>
 
-\*The RPS capacity is provided as a general guideline. The actual performance could vary based on the types and volume of transactions processed within the customer's Private Cloud environment. The test transactions used for the stated capacity benchmarks might not match individual customer's unique transaction patterns and workloads. As an example, the following capacity is supported when using the [Resource Owner Password Flow](/get-started/authentication-and-authorization-flow/resource-owner-password-flow):
+\*The RPS capacity is provided as a general guideline. The actual performance could vary based on the types and volume of transactions processed within the customer's Private Cloud environment. The test transactions used for the stated capacity benchmarks might not match individual customer's unique transaction patterns and workloads. As an example, the following capacity is supported when using the [Resource Owner Password Flow](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow):
 
 <table class="table"><thead>
 <tr>
@@ -112,7 +112,7 @@ Private Cloud on AWS instances have a 99.99% Service Level Agreement (SLA).  Av
 
 ### High demand apps
 
-If your application requires a significantly high amount of requests per second (RPS), you may also wish to consider Private Cloud on AWS. See the [rate limits policies](/troubleshoot/customer-support/operational-policies/rate-limit-policy) for more information about the standard rate limits. The Private Cloud on AWS deployments have a rate limit of 100 RPS for Private Basic, and enhanced rate limits of 500 RPS, 1,500 RPS, 3,000 RPS, and 6,000 RPS for Private Performance options.
+If your application requires a significantly high amount of requests per second (RPS), you may also wish to consider Private Cloud on AWS. See the [rate limits policies](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy) for more information about the standard rate limits. The Private Cloud on AWS deployments have a rate limit of 100 RPS for Private Basic, and enhanced rate limits of 500 RPS, 1,500 RPS, 3,000 RPS, and 6,000 RPS for Private Performance options.
 
 ## Additional dev environments
 
@@ -171,7 +171,7 @@ At the end of this process, you're ready for the environment handover and your P
 
 ## Secure Outbound Networking
 
-Some Auth0 platform customizations—[Actions](/customize/actions), [custom webhooks](/customize/log-streams/custom-log-streams), and [custom database action scripts](/authenticate/database-connections/custom-db/templates), for example—let you make outbound connections from the Auth0 platform to your own services. With Private Cloud on AWS, you can establish network connectivity between your Private Cloud deployment and your own services without exposing your data to the Internet.
+Some Auth0 platform customizations—[Actions](/docs/customize/actions), [custom webhooks](/docs/customize/log-streams/custom-log-streams), and [custom database action scripts](/docs/authenticate/database-connections/custom-db/templates), for example—let you make outbound connections from the Auth0 platform to your own services. With Private Cloud on AWS, you can establish network connectivity between your Private Cloud deployment and your own services without exposing your data to the Internet.
 
 Secure outbound networking uses AWS PrivateLink. First, you share your service through PrivateLink by [establishing an endpoint service](https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html) in your AWS account. The underlying service can be an AWS-native service or a service running in a data center. The service must be in a VPC in the same AWS region as your Private Cloud deployment.
 
@@ -193,7 +193,7 @@ Load tests and penetration tests are not allowed during change freeze periods.
 
 </Warning>
 
-To view the currently scheduled change freeze periods, read [Change Freeze Policy](/troubleshoot/customer-support/operational-policies/change-freeze-policy).
+To view the currently scheduled change freeze periods, read [Change Freeze Policy](/docs/troubleshoot/customer-support/operational-policies/change-freeze-policy).
 
 ### Load testing
 
@@ -205,7 +205,7 @@ To be considered for approval, the request must:
 
 * Be filed at least two (2) weeks prior to the desired test date; in many cases, Auth0 encourages one (1) month of advance notice to ensure time for a thorough review and any required modifications.
 * Receive approval in writing before any testing is conducted.
-* Stay within our [published production rate limits](/troubleshoot/customer-support/operational-policies/rate-limit-policy).
+* Stay within our [published production rate limits](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy).
 
 If changes to infrastructure are requested, the cost will be determined based on your specific requirements.
 
@@ -267,7 +267,7 @@ Private Cloud environments can be upsized via contract addendum; please contact 
 </tbody>
 </table>
 
-For more information on load testing in Private Cloud, see [Environment request limits (Private Cloud Only)](/troubleshoot/customer-support/operational-policies/rate-limit-policy#environment-request-limits-private-cloud-only-).
+For more information on load testing in Private Cloud, see [Environment request limits (Private Cloud Only)](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy#environment-request-limits-private-cloud-only-).
 
 #### High load notifications
 
@@ -279,7 +279,7 @@ To conduct a security test, please notify us in advance via the Auth0 Support Ce
 
 If the test is isolated to your infrastructure (that is, there will be no testing of Auth0 services), you do not need to notify Auth0.
 
-For the information that we require, see our [Penetration Testing Policy](/troubleshoot/customer-support/operational-policies/penetration-testing-policy).
+For the information that we require, see our [Penetration Testing Policy](/docs/troubleshoot/customer-support/operational-policies/penetration-testing-policy).
 
 ### Failover testing
 
@@ -299,14 +299,14 @@ Please note that Okta reserves the right to suggest alternative windows for the 
 
 Auth0-managed certificates (in the format \*.auth0app.com) are the responsibility of Auth0 to both obtain and apply. Auth0 will manage the process end-to-end and will prompt you with any action required.
 
-Renewal of Auth0-issued certificates for <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domains">custom domains</Tooltip> is managed by Auth0.
+Renewal of Auth0-issued certificates for <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domains">custom domains</Tooltip> is managed by Auth0.
 
-Renewal of customer-managed certificates for [custom domains](/customize/custom-domains) (in the format \*.\<CustomerName>.com) is the customer’s responsibility to manage and obtain.
+Renewal of customer-managed certificates for [custom domains](/docs/customize/custom-domains) (in the format \*.\<CustomerName>.com) is the customer’s responsibility to manage and obtain.
 
 ## Reporting and monitoring
 
-Auth0 provides logs that are accessible via the Dashboard or the [log streaming endpoint](/customize/log-streams).
+Auth0 provides logs that are accessible via the Dashboard or the [log streaming endpoint](/docs/customize/log-streams).
 
 ## Support
 
-You can reach out to the Auth0 [Support](https://support.auth0.com/) team with any questions or concerns you might have. To help expedite your request, please provide as much information as possible in the [Support ticket you open](/troubleshoot/customer-support/open-and-manage-support-tickets).
+You can reach out to the Auth0 [Support](https://support.auth0.com/) team with any questions or concerns you might have. To help expedite your request, please provide as much information as possible in the [Support ticket you open](/docs/troubleshoot/customer-support/open-and-manage-support-tickets).

@@ -62,7 +62,7 @@ The following example shows how to specify to only manage `actions`, `clients
 
 Some resource types support exclusions of the individual resource by ID. This is useful if you work in a multi-environment context and wish to omit a production-specific resource from your lower-level environments.
 
-This method is supported for rules, clients, databases, connections and <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+servers">resource servers</Tooltip> with the `AUTH0_EXCLUDED_RULES`, `AUTH0_EXCLUDED_CLIENTS`, `AUTH0_EXCLUDED_DATABASES`, `AUTH0_EXCLUDED_CONNECTIONS`, `AUTH0_EXCLUDED_RESOURCE_SERVERS` configuration values respectively.
+This method is supported for rules, clients, databases, connections and <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+servers">resource servers</Tooltip> with the `AUTH0_EXCLUDED_RULES`, `AUTH0_EXCLUDED_CLIENTS`, `AUTH0_EXCLUDED_DATABASES`, `AUTH0_EXCLUDED_CONNECTIONS`, `AUTH0_EXCLUDED_RESOURCE_SERVERS` configuration values respectively.
 
 ### Example
 
@@ -116,7 +116,7 @@ roles: # roles configuration is not omitted
 
 ### Empty
 
-Resource configuration that is explicitly defined as empty. For set-based configurations like hooks, organizations, and actions, setting these configurations to an empty set expresses an intentional emptying of those resources. This would signal a deletion, so long as the AUTH0_ALLOW_DELETE deletion configuration property is enabled. To learn more about this property, read [Configure the Deploy CLI](/deploy-monitor/deploy-cli-tool/configure-the-deploy-cli).
+Resource configuration that is explicitly defined as empty. For set-based configurations like hooks, organizations, and actions, setting these configurations to an empty set expresses an intentional emptying of those resources. This would signal a deletion, so long as the AUTH0_ALLOW_DELETE deletion configuration property is enabled. To learn more about this property, read [Configure the Deploy CLI](/docs/deploy-monitor/deploy-cli-tool/configure-the-deploy-cli).
 
 For non-set-based resource configuration like tenant and branding, the concept of emptiness does not apply, and will not trigger any deletions or removals.
 

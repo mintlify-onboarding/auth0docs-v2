@@ -11,11 +11,11 @@ title: Call Your API Using the Device Authorization Flow
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-This tutorial will help you call your own API from an input-constrained device using the Device Authorization Flow. If you want to learn how the flow works and why you should use it, see [Device Authorization Flow](/get-started/authentication-and-authorization-flow/device-authorization-flow).
+This tutorial will help you call your own API from an input-constrained device using the Device Authorization Flow. If you want to learn how the flow works and why you should use it, see [Device Authorization Flow](/docs/get-started/authentication-and-authorization-flow/device-authorization-flow).
 
 </Callout>
 
-Auth0 makes it easy for your app to implement the Device <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/glossary?term=Authorization+flow">Authorization flow</Tooltip> using:
+Auth0 makes it easy for your app to implement the Device <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=Authorization+flow">Authorization flow</Tooltip> using:
 
 * [Authentication API](https://auth0.com/docs/api/authentication): Keep reading to learn how to call our API directly. For an interactive experience, read [Device Flow Playground](https://auth0.github.io/device-flow-playground/).
 
@@ -24,18 +24,18 @@ Auth0 makes it easy for your app to implement the Device <Tooltip tip="Authoriza
 Before beginning this tutorial:
 
 * Check limitations (below) to be sure the Device Authorization flow is suitable for your implementation.
-* [Register the Application with Auth0](/get-started/auth0-overview/create-applications/native-apps).
+* [Register the Application with Auth0](/docs/get-started/auth0-overview/create-applications/native-apps).
 
   + Select an **Application Type** of **Native**.
   + If necessary, set **Allowed Web Origins**. You can use this to allow localhost as an origin for local development, or to set an allowed origin for specific TV software with architecture subject to CORS (e.g., HTML5 + JS). Most applications will not use this setting.
   + Ensure that the **OIDC Conformant** toggle is enabled. This setting is in the [Dashboard](https://manage.auth0.com/#) under **Applications > Application > Advanced Settings > OAuth**.
-  + Make sure the Application's **Grant Types** include **Device Code**. To learn how, read [Update Grant Types](/get-started/applications/update-grant-types).
-  + If you want your Application to be able to use Refresh Tokens, make sure the Application's **Grant Types** include **Refresh Token**. To learn how, read [Update Grant Types](/get-started/applications/update-grant-types). To learn more about Refresh Tokens, read [Refresh Tokens](/secure/tokens/refresh-tokens).
-* Set up and enable at least one connection for the Application: [Database connections](/get-started/applications/set-up-database-connections), [Social connections](/authenticate/identity-providers/social-identity-providers)
-* [Register your API with Auth0](/get-started/architecture-scenarios/mobile-api/part-2#create-the-api)
+  + Make sure the Application's **Grant Types** include **Device Code**. To learn how, read [Update Grant Types](/docs/get-started/applications/update-grant-types).
+  + If you want your Application to be able to use Refresh Tokens, make sure the Application's **Grant Types** include **Refresh Token**. To learn how, read [Update Grant Types](/docs/get-started/applications/update-grant-types). To learn more about Refresh Tokens, read [Refresh Tokens](/docs/secure/tokens/refresh-tokens).
+* Set up and enable at least one connection for the Application: [Database connections](/docs/get-started/applications/set-up-database-connections), [Social connections](/docs/authenticate/identity-providers/social-identity-providers)
+* [Register your API with Auth0](/docs/get-started/architecture-scenarios/mobile-api/part-2#create-the-api)
 
-  + If you want your API to receive Refresh Tokens to allow it to obtain new tokens when the previous ones expire, enable **Allow Offline Access**. To learn more about Refresh Tokens, read [Refresh Tokens](/secure/tokens/refresh-tokens).
-* [Configure Device User Code Settings](/get-started/tenant-settings/configure-device-user-code-settings) to define the character set, format, and length of your randomly-generated user code.
+  + If you want your API to receive Refresh Tokens to allow it to obtain new tokens when the previous ones expire, enable **Allow Offline Access**. To learn more about Refresh Tokens, read [Refresh Tokens](/docs/secure/tokens/refresh-tokens).
+* [Configure Device User Code Settings](/docs/get-started/tenant-settings/configure-device-user-code-settings) to define the character set, format, and length of your randomly-generated user code.
 
 ## Steps
 
@@ -55,7 +55,7 @@ Optional: [Troubleshoot](#troubleshoot).
 
 Once the user has started their device app and wants to authorize the device, you'll need to get a device code. When the user begins their session in their browser-based device, this code will be bound to that session.
 
-To get the device code, your app must request a code from the [device code URL](https://auth0.com/docs/api/authentication#get-device-code), including the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>.
+To get the device code, your app must request a code from the [device code URL](https://auth0.com/docs/api/authentication#get-device-code), including the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>.
 
 #### Example POST to device code URL
 
@@ -255,7 +255,7 @@ dataTask.resume()
 
 Note that when requesting a device code to call a custom API, you:
 
-* must include an <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> parameter
+* must include an <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> parameter
 * can include additional scopes supported by the target API
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -277,7 +277,7 @@ If your app wants an Access Token only to retrieve info about the authenticated 
 </tr>
 <tr>
 <td><code>scope</code></td>
-<td>The <a href="/get-started/apis/scopes">scopes</a> for which you want to request authorization. These must be separated by a space. You can request any of the <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard OIDC scopes</a> about users, such as <code>profile</code> and <code>email</code>, <a href="/secure/tokens/json-web-tokens/json-web-token-claims#custom-claims">custom claims</a> conforming to a <a href="/secure/tokens/json-web-tokens/create-custom-claims">namespaced format</a>, or any <a href="/get-started/apis/scopes/api-scopes">scopes supported by the target API</a> (e.g., <code>read:contacts</code>). Include <code>openid</code> to get an ID Token or to be able to use the <a href="https://auth0.com/docs/api/authentication#user-profile">/userinfo endpoint</a> to retrieve profile information for the user. Include <code>offline_access</code> to get a Refresh Token (make sure that the <strong>Allow Offline Access</strong> field is enabled in the <a href="https://manage.auth0.com/#/apis">API Settings</a>). Note that this must be URL encoded.</td>
+<td>The <a href="/docs/get-started/apis/scopes">scopes</a> for which you want to request authorization. These must be separated by a space. You can request any of the <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard OIDC scopes</a> about users, such as <code>profile</code> and <code>email</code>, <a href="/docs/secure/tokens/json-web-tokens/json-web-token-claims#custom-claims">custom claims</a> conforming to a <a href="/docs/secure/tokens/json-web-tokens/create-custom-claims">namespaced format</a>, or any <a href="/docs/get-started/apis/scopes/api-scopes">scopes supported by the target API</a> (e.g., <code>read:contacts</code>). Include <code>openid</code> to get an ID Token or to be able to use the <a href="https://auth0.com/docs/api/authentication#user-profile">/userinfo endpoint</a> to retrieve profile information for the user. Include <code>offline_access</code> to get a Refresh Token (make sure that the <strong>Allow Offline Access</strong> field is enabled in the <a href="https://manage.auth0.com/#/apis">API Settings</a>). Note that this must be URL encoded.</td>
 </tr>
 <tr>
 <td><code>audience</code></td>
@@ -315,7 +315,7 @@ If all goes well, you'll receive an `HTTP 200` response with a payload containin
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-You can [configure the character set, format, and length of your randomly-generated user code](/get-started/tenant-settings/configure-device-user-code-settings) in your tenant settings.
+You can [configure the character set, format, and length of your randomly-generated user code](/docs/get-started/tenant-settings/configure-device-user-code-settings) in your tenant settings.
 
 To prevent brute force attacks, we enforce the following limits on `user_code`:
 
@@ -338,7 +338,7 @@ To prevent brute force attacks, we enforce the following limits on `user_code`:
 
 Once you have received a `device_code` and `user_code`, you must ask the user to go to the `verification_uri` on their laptop or smartphone and enter the `user_code`:
 
-<Frame>![Auth0 Flows Device Authorization Request, sample page showing two activation methods, user_code and QR code](/images/cdy7uua7fh8z/2WzaeNXIYCVduRuzyRd0Sb/cdb4d59b657166d0a9a555a662b9ed63/request-device-activation.png)</Frame>
+<Frame>![Auth0 Flows Device Authorization Request, sample page showing two activation methods, user_code and QR code](/docs/images/cdy7uua7fh8z/2WzaeNXIYCVduRuzyRd0Sb/cdb4d59b657166d0a9a555a662b9ed63/request-device-activation.png)</Frame>
 
 The `device_code` is not intended for the user directly and should not be displayed during the interaction to avoid confusing the user.
 
@@ -350,7 +350,7 @@ When building a CLI, you could skip this step and immediately open the browser w
 
 ### Request tokens
 
-While you are waiting for the user to activate the device, begin polling the token URL to request an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>. Using the extracted polling interval (`interval`) from the previous step, you will need to `POST` to the [token URL](https://auth0.com/docs/api/authentication#device-auth) sending along the `device_code`.
+While you are waiting for the user to activate the device, begin polling the token URL to request an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>. Using the extracted polling interval (`interval`) from the previous step, you will need to `POST` to the [token URL](https://auth0.com/docs/api/authentication#device-auth) sending along the `device_code`.
 
 To avoid errors due to network latency, you should start counting each interval after receipt of the last polling request's response.
 
@@ -657,31 +657,31 @@ HTTP/1.1 403 Forbidden
 This can occur for a variety of reasons, including:
 
 * the user refused to authorize the device
-* the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip> denied the transaction
-* a configured rule denied access (To learn more, read [Auth0 Rules](/customize/rules).)
+* the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> denied the transaction
+* a configured rule denied access (To learn more, read [Auth0 Rules](/docs/customize/rules).)
 
 ### Authorize user
 
 The user will either scan the QR code, or else will open the activation page and enter the user code:
 
-<Frame>![Auth0 Flows Device Authorization prompt directing the user to enter the code displayed on their device](/images/cdy7uua7fh8z/7KRZGb2QcksaEVewXK5bc2/b688b813428f0750ea76b7bcac418bba/enter-user-code__1_.png)</Frame>
+<Frame>![Auth0 Flows Device Authorization prompt directing the user to enter the code displayed on their device](/docs/images/cdy7uua7fh8z/7KRZGb2QcksaEVewXK5bc2/b688b813428f0750ea76b7bcac418bba/enter-user-code__1_.png)</Frame>
 
 A confirmation page will be shown to have the user confirm that this is the right device:
 
-<Frame>![Auth0 Flows Device Authorization sample confirmation prompt directing the user to confirm the code](/images/cdy7uua7fh8z/4udH69PJSo20QyK8cwhhtc/193488ee0f689f0724345a40dcdb6478/confirm-device__1_.png)</Frame>
+<Frame>![Auth0 Flows Device Authorization sample confirmation prompt directing the user to confirm the code](/docs/images/cdy7uua7fh8z/4udH69PJSo20QyK8cwhhtc/193488ee0f689f0724345a40dcdb6478/confirm-device__1_.png)</Frame>
 
 The user will complete the transaction by signing in. This step may include one or more of the following processes:
 
 * Authenticating the user;
-* Redirecting the user to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip> to handle authentication;
-* Checking for active <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> sessions;
+* Redirecting the user to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> to handle authentication;
+* Checking for active <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> sessions;
 * Obtaining user consent for the device, unless consent has been previously given.
 
-<Frame>![Auth0 Flows Device Authorization User authorization prompt directing the user to log in with email and password or with Google or another identity](/images/cdy7uua7fh8z/4UbIdGQMucMhoaXxvFLcki/8c1616d7f28bbd37c253a0145a93a17d/user-auth__1_.png)</Frame>
+<Frame>![Auth0 Flows Device Authorization User authorization prompt directing the user to log in with email and password or with Google or another identity](/docs/images/cdy7uua7fh8z/4UbIdGQMucMhoaXxvFLcki/8c1616d7f28bbd37c253a0145a93a17d/user-auth__1_.png)</Frame>
 
 Upon successful authentication and consent, the confirmation prompt will be shown:
 
-<Frame>![Flows - Device Authorization - Congratulations notification for user](/images/cdy7uua7fh8z/7ze8nZU4b0q3YOzLQSJ6nJ/48ef5170035a200cebb821c581cec9bb/user-confirmation__1_.png)</Frame>
+<Frame>![Flows - Device Authorization - Congratulations notification for user](/docs/images/cdy7uua7fh8z/7ze8nZU4b0q3YOzLQSJ6nJ/48ef5170035a200cebb821c581cec9bb/user-confirmation__1_.png)</Frame>
 
 At this point, the user has authenticated, and the device has been authorized.
 
@@ -708,15 +708,15 @@ Once the user has successfully authorized the device, you'll receive an `HTTP 20
 
 <Warning>
 
-Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens).
+Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/docs/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
 </Warning>
 
-Access Tokens are used to call the Auth0 Authentication API's [`/userinfo` endpoint](https://auth0.com/docs/api/authentication#get-user-info) or another API. (To learn more about Access Tokens, read [Access Tokens](/secure/tokens/access-tokens).) You will be able to use the Access Token to call `/userinfo` only if you included the `openid` scope. If you are calling your own API, the first thing your API will need to do is [verify the Access Token](/secure/tokens/access-tokens/validate-access-tokens).
+Access Tokens are used to call the Auth0 Authentication API's [`/userinfo` endpoint](https://auth0.com/docs/api/authentication#get-user-info) or another API. (To learn more about Access Tokens, read [Access Tokens](/docs/secure/tokens/access-tokens).) You will be able to use the Access Token to call `/userinfo` only if you included the `openid` scope. If you are calling your own API, the first thing your API will need to do is [verify the Access Token](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
-<Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Tokens">ID Tokens</Tooltip> contain user information that must be decoded and extracted. (To learn more about ID Tokens, read [ID Tokens](/secure/tokens/id-tokens).) The `id_token` will only be present in the response if you included the `openid` scope.
+<Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Tokens">ID Tokens</Tooltip> contain user information that must be decoded and extracted. (To learn more about ID Tokens, read [ID Tokens](/docs/secure/tokens/id-tokens).) The `id_token` will only be present in the response if you included the `openid` scope.
 
-<Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip> are used to obtain a new Access Token or ID Token after the previous one has expired. (To learn more about Refresh Tokens, read [Refresh Tokens](/secure/tokens/refresh-tokens).) The `refresh_token` will only be present in the response if you included the `offline_access` scope and enabled **Allow Offline Access** for your API in the Dashboard.
+<Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip> are used to obtain a new Access Token or ID Token after the previous one has expired. (To learn more about Refresh Tokens, read [Refresh Tokens](/docs/secure/tokens/refresh-tokens).) The `refresh_token` will only be present in the response if you included the `offline_access` scope and enabled **Allow Offline Access** for your API in the Dashboard.
 
 <Warning>
 
@@ -1176,7 +1176,7 @@ If all goes well, you'll receive an `HTTP 200` response with a payload containin
 
 <Warning>
 
-Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens).
+Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/docs/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
 </Warning>
 
@@ -1184,7 +1184,7 @@ Validate your tokens before saving them. To learn how, read [Validate ID Tokens]
 
 ### Detect device authorization flow use
 
-You can use Rules to detect whether the current transaction is using the Device Authorization Flow. (To learn more about rules, read [Auth0 Rules](/customize/rules).) To do so, check the `context` object's `protocol` property:
+You can use Rules to detect whether the current transaction is using the Device Authorization Flow. (To learn more about rules, read [Auth0 Rules](/docs/customize/rules).) To do so, check the `context` object's `protocol` property:
 
 ```javascript lines
 function (user, context, callback) {
@@ -1209,7 +1209,7 @@ function (user, context, callback) {
 
 ## Troubleshoot
 
-Tenant logs are created for any interaction that takes place and can be used to troubleshoot issues. To learn more, read [Logs](/deploy-monitor/logs).
+Tenant logs are created for any interaction that takes place and can be used to troubleshoot issues. To learn more, read [Logs](/docs/deploy-monitor/logs).
 
 ### Error codes
 
@@ -1253,23 +1253,23 @@ Tenant logs are created for any interaction that takes place and can be used to 
 
 To use the Device Authorization Flow, devices must:
 
-* Support Server Name Indication (SNI) when [Custom Domains](/customize/custom-domains) are used
-* Have an [Auth0 application type](/get-started/applications) of **Native**
-* Have the [Token Endpoint Authentication Method](/get-started/applications/application-settings) set to **None**
-* Be [OIDC-conformant](/get-started/applications/application-settings)
-* Not be created through [Dynamic Client Registration](/get-started/applications/dynamic-client-registration)
+* Support Server Name Indication (SNI) when [Custom Domains](/docs/customize/custom-domains) are used
+* Have an [Auth0 application type](/docs/get-started/applications) of **Native**
+* Have the [Token Endpoint Authentication Method](/docs/get-started/applications/application-settings) set to **None**
+* Be [OIDC-conformant](/docs/get-started/applications/application-settings)
+* Not be created through [Dynamic Client Registration](/docs/get-started/applications/dynamic-client-registration)
 
 In addition, the Device Authorization Flow does not allow:
 
-* [Social Connections](/authenticate/identity-providers/social-identity-providers) using [Auth0 developer keys](/authenticate/identity-providers/social-identity-providers/devkeys) unless you are using the [Universal Login experience](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience)
+* [Social Connections](/docs/authenticate/identity-providers/social-identity-providers) using [Auth0 developer keys](/docs/authenticate/identity-providers/social-identity-providers/devkeys) unless you are using the [Universal Login experience](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience)
 * Query string parameters to be accessed from hosted login page or Rules or Actions
-* [User account linking](/manage-users/user-accounts/user-account-linking)
+* [User account linking](/docs/manage-users/user-accounts/user-account-linking)
 
-We support the full Draft 15, except for <Tooltip tip="Confidential Client: A client (application) that can hold credentials securely by using a trusted backend server. Examples include a web application with a secure backend and a machine-to-machine (M2M) application." cta="View Glossary" href="/glossary?term=confidential+Clients">confidential Clients</Tooltip>. To learn more, read [OAuth 2.0 Device Authorization Grant Draft 15 on ietf.org](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-15).
+We support the full Draft 15, except for <Tooltip tip="Confidential Client: A client (application) that can hold credentials securely by using a trusted backend server. Examples include a web application with a secure backend and a machine-to-machine (M2M) application." cta="View Glossary" href="/docs/glossary?term=confidential+Clients">confidential Clients</Tooltip>. To learn more, read [OAuth 2.0 Device Authorization Grant Draft 15 on ietf.org](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-15).
 
 ## Learn more
 
-* [OAuth 2.0 Authorization Framework](/authenticate/protocols/oauth)
-* [OpenID Connect Protocol](/authenticate/protocols/openid-connect-protocol)
-* [Tokens](/secure/tokens)
-* [Logs](/deploy-monitor/logs)
+* [OAuth 2.0 Authorization Framework](/docs/authenticate/protocols/oauth)
+* [OpenID Connect Protocol](/docs/authenticate/protocols/openid-connect-protocol)
+* [Tokens](/docs/secure/tokens)
+* [Logs](/docs/deploy-monitor/logs)

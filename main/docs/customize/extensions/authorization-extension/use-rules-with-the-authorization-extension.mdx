@@ -14,8 +14,8 @@ title: Use Rules with the Authorization Extension
 
 Auth0 provides two ways to implement role-based access control (RBAC), which you can use in place of or in combination with your API's own internal access control system:
 
-* [Authorization Core](/manage-users/access-control/rbac)
-* [Authorization Extension](/customize/extensions/authorization-extension)
+* [Authorization Core](/docs/manage-users/access-control/rbac)
+* [Authorization Extension](/docs/customize/extensions/authorization-extension)
 
 The Authorization Core feature set matches the functionality of the Authorization Extension, improves performance and scalability, and provides a more flexible RBAC system than the Authorization Extension.
 
@@ -32,13 +32,13 @@ You can use Auth0 Rules with the Authorization Extension to do things like:
 
 Because the above logic is part of a rule, it will only be executed in the context of a login. If users are added to or removed from a group, this change will only be reflected in Auth0 after the user's next login.
 
-To learn more, read [Auth0 Rules](/customize/rules).
+To learn more, read [Auth0 Rules](/docs/customize/rules).
 
 ## Add custom claims to the issued token
 
 To add custom claims to your tokens, you can do so by creating an additional rule that allows the Authorization Extension to do so. Custom claims can be namespaced or non-namespaced.
 
-To learn more, read [Create Custom Claims.](/secure/tokens/json-web-tokens/create-custom-claims)
+To learn more, read [Create Custom Claims.](/docs/secure/tokens/json-web-tokens/create-custom-claims)
 
 You should limit the number of claims you add to the token.
 
@@ -68,7 +68,7 @@ When calling the `/authorize` endpoint or configuring Lock, you'll need to speci
 
 You can also write rules that are executed after the Authorization Extension rule to do things like control access to your application. One method of doing this is to specify the roles that are required for each application using the application metadata.
 
-For more details, review [Manage Metadata with Rules](/manage-users/user-accounts/metadata/manage-metadata-rules).
+For more details, review [Manage Metadata with Rules](/docs/manage-users/user-accounts/metadata/manage-metadata-rules).
 
 ### Set app metadata required roles
 
@@ -117,6 +117,6 @@ Now that each app has a role associated with it, you can create the rule execute
 
 ## Learn more
 
-* [Import and Export Authorization Extension Data](/customize/extensions/authorization-extension/import-and-export-authorization-extension-data)
-* [Enable API Access to Authorization Extension](/customize/extensions/authorization-extension/enable-api-access-to-authorization-extension)
-* [Troubleshoot Authorization Extension](/troubleshoot/authentication-issues/troubleshoot-authorization-extension)
+* [Import and Export Authorization Extension Data](/docs/customize/extensions/authorization-extension/import-and-export-authorization-extension-data)
+* [Enable API Access to Authorization Extension](/docs/customize/extensions/authorization-extension/enable-api-access-to-authorization-extension)
+* [Troubleshoot Authorization Extension](/docs/troubleshoot/authentication-issues/troubleshoot-authorization-extension)

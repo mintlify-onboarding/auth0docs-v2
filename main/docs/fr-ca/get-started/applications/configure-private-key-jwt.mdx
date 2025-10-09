@@ -15,7 +15,7 @@ La Clé privée JWT est disponible pour les clients du plan Enterprise. Pour met
 
 </Callout>
 
-L’authentification par clé privée <Tooltip href="/docs/fr-ca/glossary?term=json-web-token" tip="Jeton Web JSON (JWT)
+L’authentification par clé privée <Tooltip href="/docs/docs/fr-ca/glossary?term=json-web-token" tip="Jeton Web JSON (JWT)
 Format standard de jeton d’ID (et souvent de jeton d’accès) utilisé pour représenter en toute sécurité des demandes entre deux parties." cta="Voir le glossaire">JWT</Tooltip> prend en charge l’authentification client [OIDC Connect Core Client Authentication 1.0](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) en utilisant des assertions signées par des paires de clés asymétriques. Vous pouvez créer une nouvelle application pour qu’elle utilise `private_key_jwt` ou permettre aux applications existantes d’utiliser des paires de clés privées pour l’authentification.
 
 ## Prérequis
@@ -146,7 +146,7 @@ curl --location --request POST 'https://{domain}/api/v2/clients' \
 </tr>
 <tr>
 <td>`managementApiAccessToken`</td>
-<td><a href="/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès pour Management API</a> avec la permission `create:credentials`.</td>
+<td><a href="/docs/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès pour Management API</a> avec la permission `create:credentials`.</td>
 </tr>
 <tr>
 <td>`pem`</td>
@@ -235,7 +235,7 @@ curl --location --request POST 'https://{domain}/api/v2/clients/{clientId}/crede
 </tr>
 <tr>
 <td>`managementApiAccessToken`</td>
-<td><a href="/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès à Management API</a> avec la permission `create:credentials`.</td>
+<td><a href="/docs/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès à Management API</a> avec la permission `create:credentials`.</td>
 </tr>
 <tr>
 <td>`pem`</td>
@@ -305,7 +305,7 @@ curl --location --request PATCH 'https://{domain}/api/v2/clients/{clientId} \
 </tr>
 <tr>
 <td>`managementApiAccessToken`</td>
-<td><a href="/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès à Management API</a> avec les permissions `update:client` et `update:credentials`.</td>
+<td><a href="/docs/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès à Management API</a> avec les permissions `update:client` et `update:credentials`.</td>
 </tr>
 <tr>
 <td>`credentialId`</td>
@@ -359,7 +359,7 @@ curl --location --request PATCH 'https://{domain}/api/v2/clients/{clientId} \
 </tr>
 <tr>
 <td>`managementApiAccessToken`</td>
-<td><a href="/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès pour Management API</a> avec les permissions `update:client`</td>
+<td><a href="/docs/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens">Jeton d’accès pour Management API</a> avec les permissions `update:client`</td>
 </tr>
 <tr>
 <td>`tokenEndpointAuthMethod`</td>

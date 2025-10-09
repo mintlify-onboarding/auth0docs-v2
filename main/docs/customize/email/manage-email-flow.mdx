@@ -14,9 +14,9 @@ title: Customize Email Handling
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
@@ -26,7 +26,7 @@ To read more about the Rules and Hooks deprecation, read our blog post: [Prepari
 
 Because we plan to remove Rules and Hooks functions in 2026, you should create new Rules or Hooks only in your Development environment and only to test migration to Actions.
 
-To learn how to migrate your Rules to Actions, read [Migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions). To learn how to migrate your Hooks to Actions, read [Migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions).
+To learn how to migrate your Rules to Actions, read [Migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions). To learn how to migrate your Hooks to Actions, read [Migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions).
 
 </Warning>
 
@@ -36,7 +36,7 @@ Our default email flow can address the requirements of most applications. Someti
 * custom **Redirect To** URLs based on user or tenant
 * different email templates per application or tenant
 
-The Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> provides endpoints to help you manage your email flow to control when and how emails are sent. If necessary, you can also implement your own Custom Email endpoints and use the Auth0 Management API endpoints to help manage the rest of the flow.
+The Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> provides endpoints to help you manage your email flow to control when and how emails are sent. If necessary, you can also implement your own Custom Email endpoints and use the Auth0 Management API endpoints to help manage the rest of the flow.
 
 ## Verification emails
 
@@ -270,7 +270,7 @@ dataTask.resume()
 
 </Tab><Tab title="Rules">
 
-Using [Auth0 Rules](/customize/rules), you can call your API when a user logs in for the first time with an email address that has not been verified. After calling your API, add a flag to the user's profile [metadata](/manage-users/user-accounts/metadata) that indicates that the verification email has been sent:
+Using [Auth0 Rules](/docs/customize/rules), you can call your API when a user logs in for the first time with an email address that has not been verified. After calling your API, add a flag to the user's profile [metadata](/docs/manage-users/user-accounts/metadata) that indicates that the verification email has been sent:
 
 ```javascript lines expandable
 function (user, context, callback) {
@@ -338,7 +338,7 @@ function (user, context, callback) {
 
 A custom redirect is useful when you want to direct users to certain URLs based on user attributes or on the tenant. The Auth0 Management API provides a [Create Email Verification Ticket endpoint](https://auth0.com/docs/api/management/v2/#!/Tickets/post_email_verification) that generates the verification link for each user. This endpoint allows you to specify the `result_url` to which users will be redirected after they have validated their email address by clicking the link in the verification email.
 
-We recommend AllowList the URL in the [Auth0 Dashboard](https://manage.auth0.com/#/templates/provider). For details, see [Add Addresses to AllowList](/secure/security-guidance/data-security/allowlist).
+We recommend AllowList the URL in the [Auth0 Dashboard](https://manage.auth0.com/#/templates/provider). For details, see [Add Addresses to AllowList](/docs/secure/security-guidance/data-security/allowlist).
 
 ## Welcome emails
 
@@ -346,7 +346,7 @@ A welcome email is sent to users once they have verified their email address.
 
 ### Send welcome email using your own API
 
-Using a [rule](/customize/rules), you can call your API to send a welcome email only if the user's email address has been verified and the email has not been sent previously.
+Using a [rule](/docs/customize/rules), you can call your API to send a welcome email only if the user's email address has been verified and the email has not been sent previously.
 
 ```javascript lines
 function (user, context, callback) {
@@ -383,9 +383,9 @@ function (user, context, callback) {
 
 ## Password reset emails
 
-You can create a password change ticket using the Auth0 Management API [Create a Password Change Ticket](https://auth0.com/docs/api/management/v2/#!/Tickets/post_password_change) endpoint, and then send the password change ticket URL in an email to the user. When the user clicks the link, they will be prompted to reset their password through the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> flow.
+You can create a password change ticket using the Auth0 Management API [Create a Password Change Ticket](https://auth0.com/docs/api/management/v2/#!/Tickets/post_password_change) endpoint, and then send the password change ticket URL in an email to the user. When the user clicks the link, they will be prompted to reset their password through the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> flow.
 
 ## Learn more
 
-* [Customize Email Templates](/customize/email/email-templates)
-* [Configure External SMTP Email Providers](/customize/email/smtp-email-providers)
+* [Customize Email Templates](/docs/customize/email/email-templates)
+* [Configure External SMTP Email Providers](/docs/customize/email/smtp-email-providers)

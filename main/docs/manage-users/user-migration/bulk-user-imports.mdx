@@ -23,12 +23,12 @@ Before you launch the import users job:
 
 * Configure a database connection to import the users into and enable it for at least one application.
 * If you are importing passwords, make sure the passwords are hashed using one of the supported algorithms. Users with passwords hashed by unsupported algorithms will need to reset their password when they log in for the first time after the bulk import.
-* If you are importing <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> enrollments, make sure they are a supported type: `email`, `phone`, or `totp`.
-* [Get a Management API token](/secure/tokens/access-tokens/management-api-access-tokens) for job endpoint requests.
+* If you are importing <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> enrollments, make sure they are a supported type: `email`, `phone`, or `totp`.
+* [Get a Management API token](/docs/secure/tokens/access-tokens/management-api-access-tokens) for job endpoint requests.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you are using an export file from an Auth0 tenant, you must convert the exported file from `ndjson` to [JSON](/manage-users/user-migration/bulk-user-exports#json-compatible-format). To keep the same user IDs, you must remove the `auth0| prefix` from all imported user IDs.
+If you are using an export file from an Auth0 tenant, you must convert the exported file from `ndjson` to [JSON](/docs/manage-users/user-migration/bulk-user-exports#json-compatible-format). To keep the same user IDs, you must remove the `auth0| prefix` from all imported user IDs.
 
 The import process automatically adds the `auth0| prefix` to the imported user IDs. If you do not remove the `auth0|` prefix before importing, the user IDs return as `auth0|auth0|...`
 
@@ -36,9 +36,9 @@ The import process automatically adds the `auth0| prefix` to the imported user I
 
 ## Create users JSON file
 
-Create a JSON file with the user data you want to import into Auth0. How you export user data to a JSON file will vary depending on your existing user database. The <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> endpoint expects sections of the JSON file. So instead of using `fs.readFileSync`, it requires `fs.createReadStream`. The endpoint expects a piped read stream instead of the whole JSON file.
+Create a JSON file with the user data you want to import into Auth0. How you export user data to a JSON file will vary depending on your existing user database. The <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> endpoint expects sections of the JSON file. So instead of using `fs.readFileSync`, it requires `fs.createReadStream`. The endpoint expects a piped read stream instead of the whole JSON file.
 
-To learn more about the JSON file schema and see examples, read [Bulk Import Database Schema and Examples](/manage-users/user-migration/bulk-user-import-database-schema-and-examples).
+To learn more about the JSON file schema and see examples, read [Bulk Import Database Schema and Examples](/docs/manage-users/user-migration/bulk-user-import-database-schema-and-examples).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -48,7 +48,7 @@ The file size limit for a bulk import is 500KB. You will need to start multiple 
 
 ## Request bulk user import
 
-To start a bulk user import job, make a `POST` request to the [Create Import Users Job](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports) endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN`, `USERS_IMPORT_FILE.json`, `CONNECTION_ID`, and `EXTERNAL_ID` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, users JSON file, database [connection ID](/authenticate/identity-providers/locate-the-connection-id), and external ID, respectively.
+To start a bulk user import job, make a `POST` request to the [Create Import Users Job](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports) endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN`, `USERS_IMPORT_FILE.json`, `CONNECTION_ID`, and `EXTERNAL_ID` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, users JSON file, database [connection ID](/docs/authenticate/identity-providers/locate-the-connection-id), and external ID, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -326,7 +326,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>upsert</code></td>
-<td>Boolean value; <code>false</code> by default. When set to <code>false</code>, pre-existing users that match on email address, user ID, phone, or username will fail. When set to true, pre-existing users that match on email address will be updated, but only with upsertable attributes. For a list of user profile fields that can be upserted during import, see <a href="/manage-users/user-accounts/user-profiles/user-profile-structure#user-profile-attributes">User Profile Structure: User profile attributes</a>. Note: Providing a duplicated user entry in the import file will cause an error. In this case, Auth0 will not do an insert followed by an update.</td>
+<td>Boolean value; <code>false</code> by default. When set to <code>false</code>, pre-existing users that match on email address, user ID, phone, or username will fail. When set to true, pre-existing users that match on email address will be updated, but only with upsertable attributes. For a list of user profile fields that can be upserted during import, see <a href="/docs/manage-users/user-accounts/user-profiles/user-profile-structure#user-profile-attributes">User Profile Structure: User profile attributes</a>. Note: Providing a duplicated user entry in the import file will cause an error. In this case, Auth0 will not do an insert followed by an update.</td>
 </tr>
 <tr>
 <td><code>external_id</code></td>
@@ -893,7 +893,7 @@ Each error object will include an error code and a message explaining the error 
 
 ## Learn more
 
-* [Configure Automatic Migration from Your Database](/manage-users/user-migration/configure-automatic-migration-from-your-database)
-* [User Import / Export Extension](/manage-users/user-migration/user-import-export-extension)
-* [Bulk User Import Database Schema and Examples](/manage-users/user-migration/bulk-user-import-database-schema-and-examples)
-* [User Migration Scenarios](/manage-users/user-migration/user-migration-scenarios)
+* [Configure Automatic Migration from Your Database](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database)
+* [User Import / Export Extension](/docs/manage-users/user-migration/user-import-export-extension)
+* [Bulk User Import Database Schema and Examples](/docs/manage-users/user-migration/bulk-user-import-database-schema-and-examples)
+* [User Migration Scenarios](/docs/manage-users/user-migration/user-migration-scenarios)

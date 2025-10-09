@@ -16,11 +16,11 @@ To use Highly Regulated Identity features, you must have an Enterprise Plan with
 
 </Callout>
 
-<Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip>-Secured Authorization Requests (JAR) allow OAuth2 authorization request parameters to be packaged into a single JWT request parameter which is then signed for integrity protection.
+<Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip>-Secured Authorization Requests (JAR) allow OAuth2 authorization request parameters to be packaged into a single JWT request parameter which is then signed for integrity protection.
 
 ## Prerequisites
 
-Before configuring your application for using JAR, you must [generate an RSA key pair](/secure/application-credentials/generate-rsa-key-pair).
+Before configuring your application for using JAR, you must [generate an RSA key pair](/docs/secure/application-credentials/generate-rsa-key-pair).
 
 <Warning>
 
@@ -30,7 +30,7 @@ You should generate a separate key pair for each type of credential usage. For e
 
 ## Configure JAR for an application
 
-You can configure JAR for an application with the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can configure JAR for an application with the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Tabs><Tab title="Auth0 Dashboard">
 
@@ -42,10 +42,10 @@ Use the Auth0 Dashboard to configure your application to use JAR with previously
 4. In the **Authorization Requests** section, enable **Require JWT-Secured Authorization Requests**.
 5. If no credential is assigned and there are credentials available, you will be prompted to assign an existing credential.
 
-   <Frame>![Dashboard > Application > Settings > Assign Existing Credentials](/images/cdy7uua7fh8z/HQHhFWTtdfNa5TnZ1dwx6/e47068cc9e85c538f80476162f4314a3/Existing_Creds_-_English.png)</Frame>
+   <Frame>![Dashboard > Application > Settings > Assign Existing Credentials](/docs/images/cdy7uua7fh8z/HQHhFWTtdfNa5TnZ1dwx6/e47068cc9e85c538f80476162f4314a3/Existing_Creds_-_English.png)</Frame>
 6. You will also have the option to assign a new credential.
 
-   <Frame>![Auth0 Dashboard > Applications > Settings > Assign New Credentials](/images/cdy7uua7fh8z/7JfsCBwytWO6Q7hUvdtSwJ/b85fd39fea7330a31496f51347767ae7/New_Creds_-_EN.png)</Frame>
+   <Frame>![Auth0 Dashboard > Applications > Settings > Assign New Credentials](/docs/images/cdy7uua7fh8z/7JfsCBwytWO6Q7hUvdtSwJ/b85fd39fea7330a31496f51347767ae7/New_Creds_-_EN.png)</Frame>
 7. Add and assign a new credential by uploading a previously generated RSA key pair. When prompted, enter the following:
 
    * **Name**: a name to identify the credential
@@ -57,12 +57,12 @@ Use the Auth0 Dashboard to configure your application to use JAR with previously
 
 Use the [Management API](https://auth0.com/docs/api/management/v2) to configure JAR for your application using the `signed_request_object` client configuration property. This object property contains the following fields:
 
-* `required`: forces all authorization requests to the `/authorize` and `/oauth/par` to use JAR. To learn more, read [Authorization Code Flow with JWT-Secured Authorization Requests](/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar) and [Authorization Code Flow with PAR and JAR](/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-par-and-jar).
+* `required`: forces all authorization requests to the `/authorize` and `/oauth/par` to use JAR. To learn more, read [Authorization Code Flow with JWT-Secured Authorization Requests](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar) and [Authorization Code Flow with PAR and JAR](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-par-and-jar).
 * `credentials`: an array of credential IDs used to verify signatures.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The credentials parameter behaves similarly to the Private Key JWT parameter `client_authentication_methods.private_key_jwt.credentials` which supports credential creation when you create a new application. To learn more, read [Configure Private Key JWT](/get-started/applications/configure-private-key-jwt).
+The credentials parameter behaves similarly to the Private Key JWT parameter `client_authentication_methods.private_key_jwt.credentials` which supports credential creation when you create a new application. To learn more, read [Configure Private Key JWT](/docs/get-started/applications/configure-private-key-jwt).
 
 </Callout>
 
@@ -153,5 +153,5 @@ Content-Type: application/json
 
 ## Learn more
 
-* [Authorization Code Flow with JWT-Secured Authorization Requests (JAR)](/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar)
-* [Authorization Code Flow with PAR and JAR](/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-par-and-jar)
+* [Authorization Code Flow with JWT-Secured Authorization Requests (JAR)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar)
+* [Authorization Code Flow with PAR and JAR](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-par-and-jar)

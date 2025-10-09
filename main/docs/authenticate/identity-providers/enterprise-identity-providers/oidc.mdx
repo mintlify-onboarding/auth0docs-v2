@@ -12,15 +12,15 @@ title: Connect to OpenID Connect Identity Provider
 ---
 ## Prerequisites
 
-* [Register your Application with Auth0](/get-started/auth0-overview/create-applications).
+* [Register your Application with Auth0](/docs/get-started/auth0-overview/create-applications).
 
   + Select an appropriate **Application Type**.
   + Add an **Allowed Callback URL** of **`{https://yourApp/callback}`**.
-  + Make sure your Application's [Grant Types](/get-started/applications/update-grant-types) include the appropriate flows.
+  + Make sure your Application's [Grant Types](/docs/get-started/applications/update-grant-types) include the appropriate flows.
 
 ## Steps
 
-To connect your application to an OIDC <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip>, you must:
+To connect your application to an OIDC <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip>, you must:
 
 1. [Set up your app in the OpenID Connect Identity Provider](#set-up-your-app-in-the-openid-connect-identity-provider)
 2. [Create an enterprise connection in Auth0](#create-an-enterprise-connection-in-auth0)
@@ -35,21 +35,21 @@ Generally, you will want to make sure that at some point you enter your callback
 
 <Card title="Find your Auth0 domain name for redirects">
 
-If your Auth0 domain name is not shown above and you are not using our [custom domains](/customize/custom-domains) feature, your domain name is a concatenation of your tenant name, your regional subdomain, and `auth0.com`, separated by the dot (`.`) symbol.
+If your Auth0 domain name is not shown above and you are not using our [custom domains](/docs/customize/custom-domains) feature, your domain name is a concatenation of your tenant name, your regional subdomain, and `auth0.com`, separated by the dot (`.`) symbol.
 
 For example, if your tenant name is `exampleco-enterprises`, and your tenant is in the US region, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your **Redirect URI** would be `https://exampleco-enterprises.us.auth0.com/login/callback`.
 
 However, if your tenant is in the US region and was created before June 2020, then your Auth0 domain name would be `exampleco-enterprises.auth0.com` and your **Redirect URI** would be `https://exampleco-enterprises.auth0.com/login/callback`.
 
-If you are using [custom domains](/customize/custom-domains), your **Redirect URI** would be `https://<YOUR CUSTOM DOMAIN>/login/callback`.
+If you are using [custom domains](/docs/customize/custom-domains), your **Redirect URI** would be `https://<YOUR CUSTOM DOMAIN>/login/callback`.
 
 </Card>
 
-During this process, your OIDC Identity Provider will generate a unique identifier for the registered API, usually called a **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>** or an **Application ID**. Make note of this value; you will need it later.
+During this process, your OIDC Identity Provider will generate a unique identifier for the registered API, usually called a **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>** or an **Application ID**. Make note of this value; you will need it later.
 
 ## Create an enterprise connection in Auth0
 
-Before you configure a OIDC Enterprise Connection in Auth0, ensure you have the **Application (client) ID** and the **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=Client+secret">Client secret</Tooltip>** generated when you set up your app in the OIDC provider.
+Before you configure a OIDC Enterprise Connection in Auth0, ensure you have the **Application (client) ID** and the **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=Client+secret">Client secret</Tooltip>** generated when you set up your app in the OIDC provider.
 
 ### Create an enterprise connection using the Auth0 Dashboard
 
@@ -61,7 +61,7 @@ To be configurable through the Auth0 Dashboard, the OpenID Connect (OIDC) Identi
 
 1. Navigate to [Auth0 Dashboard > Authentication > Enterprise](https://manage.auth0.com/#/connections/enterprise), locate **Open ID Connect**, and click its `+`.
 
-   <Frame>![Dashboard - Connections - Enterprise](/images/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/b3454e60a4463e99353603fd11a71983/Enterprise_Connections_-_EN.png)</Frame>
+   <Frame>![Dashboard - Connections - Enterprise](/docs/images/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/b3454e60a4463e99353603fd11a71983/Enterprise_Connections_-_EN.png)</Frame>
 2. Enter details for your connection, and select **Create:**
 
 <table class="table"><thead>
@@ -77,7 +77,7 @@ To be configurable through the Auth0 Dashboard, the OpenID Connect (OIDC) Identi
 </tr>
 <tr>
 <td><strong>OpenID Connect Discovery URL</strong></td>
-<td>URL where Auth0 can find the <strong><a href="https://openid.net/specs/openid-connect-discovery-1_0.html">well-known OpenID Connect discovery endpoint</a></strong>, usually available at the <code>/.well-known/openid-configuration</code> endpoint. You can enter the base URL or the full URL. You will see a green checkmark if it can be found at that location, a red mark if it cannot be found, or an error message if the file is found but the required information is not present in the configuration file. For more information, read <a href="/get-started/applications/configure-applications-with-oidc-discovery">Configure Applications with OIDC Discovery</a>.</td>
+<td>URL where Auth0 can find the <strong><a href="https://openid.net/specs/openid-connect-discovery-1_0.html">well-known OpenID Connect discovery endpoint</a></strong>, usually available at the <code>/.well-known/openid-configuration</code> endpoint. You can enter the base URL or the full URL. You will see a green checkmark if it can be found at that location, a red mark if it cannot be found, or an error message if the file is found but the required information is not present in the configuration file. For more information, read <a href="/docs/get-started/applications/configure-applications-with-oidc-discovery">Configure Applications with OIDC Discovery</a>.</td>
 </tr>
 <tr>
 <td><strong>Communication Channel</strong></td>
@@ -101,7 +101,7 @@ To be configurable through the Auth0 Dashboard, the OpenID Connect (OIDC) Identi
 </tr>
 </tbody>
 </table>
-3. <Frame>![Enter OIDC Connection Details](/images/cdy7uua7fh8z/4PO4eBhEM3R0ZMhaTlDVfB/a46be0e0bdd58c4230ea118a9bca0eed/2025-02-25_09-47-00.png)</Frame>
+3. <Frame>![Enter OIDC Connection Details](/docs/images/cdy7uua7fh8z/4PO4eBhEM3R0ZMhaTlDVfB/a46be0e0bdd58c4230ea118a9bca0eed/2025-02-25_09-47-00.png)</Frame>
 
    In the **Settings** view, make additional configuration adjustments, if necessary.
 
@@ -146,7 +146,7 @@ To be configurable through the Auth0 Dashboard, the OpenID Connect (OIDC) Identi
 </tr>
 <tr>
 <td><strong>Connection Profile</strong></td>
-<td>To understand how to change your connection profile, read <a href="/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc">Configure PKCE and Claim Mapping for OIDC Connections.</a></td>
+<td>To understand how to change your connection profile, read <a href="/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc">Configure PKCE and Claim Mapping for OIDC Connections.</a></td>
 </tr>
 </tbody>
 </table>
@@ -165,7 +165,7 @@ To be configurable through the Auth0 Dashboard, the OpenID Connect (OIDC) Identi
 </tr>
 <tr>
 <td><strong>Sync user profiles using SCIM</strong></td>
-<td>When enabled, Auth0 allows user profile data to be synced using SCIM. For more information, see <a href="/authenticate/protocols/scim/configure-inbound-scim">Configure Inbound SCIM</a>.</td>
+<td>When enabled, Auth0 allows user profile data to be synced using SCIM. For more information, see <a href="/docs/authenticate/protocols/scim/configure-inbound-scim">Configure Inbound SCIM</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -180,7 +180,7 @@ To be configurable through the Auth0 Dashboard, the OpenID Connect (OIDC) Identi
 <tbody>
 <tr>
 <td><strong>Home Realm Discovery</strong></td>
-<td>Compares a user's email domain with the provided identity provider domains. For more information, read <a href="/authenticate/login/auth0-universal-login/identifier-first">Configure Identifier First Authentication</a></td>
+<td>Compares a user's email domain with the provided identity provider domains. For more information, read <a href="/docs/authenticate/login/auth0-universal-login/identifier-first">Configure Identifier First Authentication</a></td>
 </tr>
 <tr>
 <td><strong>Display connection button</strong></td>
@@ -206,7 +206,7 @@ To be configurable through the Auth0 Dashboard, the OpenID Connect (OIDC) Identi
 
 ### Create an enterprise connection using the Management API
 
-These examples will show you the variety of ways you can create the connection using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. You ca configure the connection by either providing a metadata URI or by setting the OIDC URLs explicitly. For more information, read [Identity Providers](/authenticate/identity-providers).
+These examples will show you the variety of ways you can create the connection using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. You ca configure the connection by either providing a metadata URI or by setting the OIDC URLs explicitly. For more information, read [Identity Providers](/docs/authenticate/identity-providers).
 
 #### Use front-channel with discovery endpoint
 
@@ -1060,15 +1060,15 @@ dataTask.resume()
 
 ## Configure PKCE and claims mapping
 
-This Enterprise connection can support Proof Key for Code Exchange (PKCE), as well as attribute and token mapping. To learn more, review [Configure PKCE and Claim Mapping for OIDC Connections](/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc).
+This Enterprise connection can support Proof Key for Code Exchange (PKCE), as well as attribute and token mapping. To learn more, review [Configure PKCE and Claim Mapping for OIDC Connections](/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc).
 
 ## Enable the enterprise connection for your Auth0 application
 
-To use your new enterprise connection, you must first [enable the connection](/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) for your Auth0 Applications.
+To use your new enterprise connection, you must first [enable the connection](/docs/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) for your Auth0 Applications.
 
 ## Test the connection
 
-Now you're ready to [test your connection](/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
+Now you're ready to [test your connection](/docs/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
 
 ## Manually configure Issuer metadata
 
@@ -1076,7 +1076,7 @@ If you click **Show Issuer Details** on the Issuer URL endpoint, you can see the
 
 ## Federate with Auth0
 
-The <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect enterprise connection is useful when federating to another Auth0 tenant. Enter your Auth0 tenant URL (for example, `https://<tenant>.us.auth0.com`) in the **Issuer** field, and enter the Client ID for any application in the tenant to which you want to federate in the **Client ID** field.
+The <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect enterprise connection is useful when federating to another Auth0 tenant. Enter your Auth0 tenant URL (for example, `https://<tenant>.us.auth0.com`) in the **Issuer** field, and enter the Client ID for any application in the tenant to which you want to federate in the **Client ID** field.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -1086,8 +1086,8 @@ New tenants will have `us` as part of the URL. Tenants created before the region
 
 ## Configure Global Token Revocation
 
-This connection type supports a Global Token Revocation endpoint, which allows a compliant identity provider to revoke Auth0 user sessions, revoke <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip>, and trigger back-channel logout for applications using a secure back-channel.
+This connection type supports a Global Token Revocation endpoint, which allows a compliant identity provider to revoke Auth0 user sessions, revoke <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip>, and trigger back-channel logout for applications using a secure back-channel.
 
 This feature can be used with Universal Logout in Okta Workforce Identity.
 
-For more information and configuration instructions, see [Universal Logout](/authenticate/login/logout/universal-logout).
+For more information and configuration instructions, see [Universal Logout](/docs/authenticate/login/logout/universal-logout).

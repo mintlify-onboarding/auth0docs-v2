@@ -10,9 +10,9 @@ title: Default Auth0 Error Page
   and parameters used for authorization error events.
 'twitter:title': Default Auth0 Error Page
 ---
-If your callback URL is valid, when an authorization error occurs, the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip> returns the appropriate error and state parameters to your callback URL. In cases where your callback URL is invalid, your application will display the default generic Auth0 error page. Alternatively, you can customize the error pages. To learn more, read [Custom Error Pages](/customize/login-pages/custom-error-pages).
+If your callback URL is valid, when an authorization error occurs, the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip> returns the appropriate error and state parameters to your callback URL. In cases where your callback URL is invalid, your application will display the default generic Auth0 error page. Alternatively, you can customize the error pages. To learn more, read [Custom Error Pages](/docs/customize/login-pages/custom-error-pages).
 
-To find the default page name for the generic error page, see [Use Version Control to Manage Your Universal Login Pages](/customize/login-pages/classic-login/version-control).
+To find the default page name for the generic error page, see [Use Version Control to Manage Your Universal Login Pages](/docs/customize/login-pages/classic-login/version-control).
 
 ## Display
 
@@ -82,8 +82,8 @@ The Authorization Server returns parameters appended to the URL as a query strin
 </tbody>
 </table>
 
-Parameters presented vary depending on the error type and are specific to the request. For example, if the request did not contain a `client_id` and resulted in an error, no <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip> will be returned by the error page.
+Parameters presented vary depending on the error type and are specific to the request. For example, if the request did not contain a `client_id` and resulted in an error, no <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip> will be returned by the error page.
 
 ## Learn more
 
-* [Customize Error Pages](/customize/login-pages/custom-error-pages)
+* [Customize Error Pages](/docs/customize/login-pages/custom-error-pages)

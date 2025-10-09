@@ -9,9 +9,9 @@ title: Enable Organization Connections
   and Management API.
 'twitter:title': Enable Organization Connections
 ---
-You can enable specific connections for each [organization](/manage-users/organizations/organizations-overview) to provide users with different login options. After you enable a connection, it is added to the organization login prompt, and users can authenticate through that connection to access your applications.
+You can enable specific connections for each [organization](/docs/manage-users/organizations/organizations-overview) to provide users with different login options. After you enable a connection, it is added to the organization login prompt, and users can authenticate through that connection to access your applications.
 
-To enable a connection for an organization, the connection **must** already exist in your tenant. Supported connections include [database connections](/authenticate/database-connections), [social connections](/authenticate/identity-providers/social-identity-providers), and [enterprise connections](/authenticate/identity-providers/enterprise-identity-providers).
+To enable a connection for an organization, the connection **must** already exist in your tenant. Supported connections include [database connections](/docs/authenticate/database-connections), [social connections](/docs/authenticate/identity-providers/social-identity-providers), and [enterprise connections](/docs/authenticate/identity-providers/enterprise-identity-providers).
 
 ## Organization Properties
 
@@ -52,7 +52,7 @@ When using organizations, some connections have additional properties that you c
       <td>
         This optional property determines whether or not a specific connection displays as an option on the organization login prompt. <br/><br/>
         <strong>Note</strong>: If this option is disabled for a connection, end-users can still authenticate via the connection and log in to applications in the context of the organization by sending the connection parameter directly in the authorization request. <br/><br/>
-        They can also authenticate with this connection if you are using the <a href="/authenticate/login/auth0-universal-login/identifier-first">Identifier First with Home Realm Discovery</a> authentication profile in combination with the <a href="/manage-users/organizations/login-flows-for-organizations#configure-the-login-flow-for-your-application">Prompt for Credentials</a> organization login flow. <br/><br/>
+        They can also authenticate with this connection if you are using the <a href="/docs/authenticate/login/auth0-universal-login/identifier-first">Identifier First with Home Realm Discovery</a> authentication profile in combination with the <a href="/docs/manage-users/organizations/login-flows-for-organizations#configure-the-login-flow-for-your-application">Prompt for Credentials</a> organization login flow. <br/><br/>
         This only works if you do <b>not</b> provide an <code>org_id</code> with the authorization request.
       </td>
     </tr>
@@ -68,7 +68,7 @@ End-users can only log in to applications in the context of a specific organizat
 
 ## Configure Organization Connections
 
-You can configure connections for organizations using either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can configure connections for organizations using either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Tabs><Tab title="Auth0 Dashboard">
 
@@ -350,7 +350,7 @@ If you are using custom domains, this should be your custom domain name.
     </tr>
     <tr>
       <td><code>{"{mgmtApiAccessToken}"}</code></td>
-      <td><a href="/secure/tokens/access-tokens/management-api-access-tokens">Access Token for the Management API</a> with the scope <code>create:organization_connections</code>.</td>
+      <td><a href="/docs/secure/tokens/access-tokens/management-api-access-tokens">Access Token for the Management API</a> with the scope <code>create:organization_connections</code>.</td>
     </tr>
     <tr>
       <td><code>{"{connectionId}"}</code></td>

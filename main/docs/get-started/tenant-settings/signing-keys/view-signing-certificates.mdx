@@ -10,7 +10,7 @@ title: View Signing Certificates
   the Auth0 Dashboard or the Management API.
 'twitter:title': View Signing Certificates
 ---
-You can view your tenant's application <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secrets">client secrets</Tooltip> and signing keys using the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. The application signing key is used to sign <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=ID+tokens">ID tokens</Tooltip>, <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip>, <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> assertions, and <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=WS-Fed">WS-Fed</Tooltip> assertions sent to your application. These keys are different from those used to sign interactions with connections, including signing SAML requests to <Tooltip tip="Web Service Federation (WS-Fed): Protocol for managing user identities across domains." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> (IdPs) and encrypting responses from IdPs. By default, SAML assertions for IdP connections are signed, which we recommend. To learn more, read [SAML Identity Provider Configuration Settings](/authenticate/protocols/saml/saml-identity-provider-configuration-settings).
+You can view your tenant's application <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secrets">client secrets</Tooltip> and signing keys using the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. The application signing key is used to sign <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip>, <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>, <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> assertions, and <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=WS-Fed">WS-Fed</Tooltip> assertions sent to your application. These keys are different from those used to sign interactions with connections, including signing SAML requests to <Tooltip tip="Web Service Federation (WS-Fed): Protocol for managing user identities across domains." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> (IdPs) and encrypting responses from IdPs. By default, SAML assertions for IdP connections are signed, which we recommend. To learn more, read [SAML Identity Provider Configuration Settings](/docs/authenticate/protocols/saml/saml-identity-provider-configuration-settings).
 
 ## Use the Dashboard
 
@@ -18,7 +18,7 @@ You can view your tenant's application <Tooltip tip="Client Secret: Secret used 
 
 1. Go to [Dashboard > Settings > Signing Keys](https://manage.auth0.com/#/tenant/signing_keys).
 
-   <Frame>![Dashboard Tenant Settings Signing Keys tab](/images/cdy7uua7fh8z/7r8t3EGctFmvkCgPrU0i2R/f79ac74dac5cded37b39bd8a8b80951d/dashboard-tenant-settings-signing-keys.png)</Frame>
+   <Frame>![Dashboard Tenant Settings Signing Keys tab](/docs/images/cdy7uua7fh8z/7r8t3EGctFmvkCgPrU0i2R/f79ac74dac5cded37b39bd8a8b80951d/dashboard-tenant-settings-signing-keys.png)</Frame>
 2. In the **Rotation Settings** section, locate **List of Valid Keys** and **List of Revoked Keys**.
 
    1. The **List of Valid Keys** section lists the current signing key being used by your tenant, plus the next signing key that will be assigned should you choose to rotate your signing keys. If you have previously rotated signing keys, this section also lists the previously-used keys.
@@ -26,7 +26,7 @@ You can view your tenant's application <Tooltip tip="Client Secret: Secret used 
 
 ### Application settings
 
-You can also view an application's signing key and/or client secret depending on the type of <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/glossary?term=signing+algorithm">signing algorithm</Tooltip> you are using.
+You can also view an application's signing key and/or client secret depending on the type of <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/docs/glossary?term=signing+algorithm">signing algorithm</Tooltip> you are using.
 
 #### If using the RS256 signing algorithm
 
@@ -34,14 +34,14 @@ You can also view an application's signing key and/or client secret depending on
 2. Scroll to the bottom of the **Settings** tab, and select **Advanced Settings**.
 3. Go to the **Certificates** tab and locate the **Signing Certificate** field.
 
-   <Frame>![Dashboard Applications Advanced Settings Certificates tab](/images/cdy7uua7fh8z/5eB167clrfOiBEtyrMOtkn/fba0b689fda32cb9fd16eba1c0725c65/dashboard-applications-applications-settings-advanced-certificates.png)</Frame>
+   <Frame>![Dashboard Applications Advanced Settings Certificates tab](/docs/images/cdy7uua7fh8z/5eB167clrfOiBEtyrMOtkn/fba0b689fda32cb9fd16eba1c0725c65/dashboard-applications-applications-settings-advanced-certificates.png)</Frame>
 
 #### If using the HS256 signing algorithm
 
 1. Go to [Dashboard > Applications](https://manage.auth0.com/#/applications), and select the name of the application to view.
 2. Under **Basic Information**, locate the **Client Secret** field for the client secret.
 
-   <Frame>![Dashboard Applications Application Settings Tab Basic Information](/images/cdy7uua7fh8z/2GPUw7BODYuYYH3658Upz3/92a49ec57e6b4d07be96093989baac03/2023-04-11_15-34-58.png)</Frame>
+   <Frame>![Dashboard Applications Application Settings Tab Basic Information](/docs/images/cdy7uua7fh8z/2GPUw7BODYuYYH3658Upz3/92a49ec57e6b4d07be96093989baac03/2023-04-11_15-34-58.png)</Frame>
 
 ## Use the Management API
 
@@ -414,7 +414,7 @@ dataTask.resume()
 <tbody>
 <tr>
 <td><code>YOUR_KEY_ID</code></td>
-<td>ID of the signing key to be viewed. To learn how to find your signing key ID, see <a href="/secure/tokens/json-web-tokens/locate-json-web-key-sets">Locate JSON Web Key Sets</a>.</td>
+<td>ID of the signing key to be viewed. To learn how to find your signing key ID, see <a href="/docs/secure/tokens/json-web-tokens/locate-json-web-key-sets">Locate JSON Web Key Sets</a>.</td>
 </tr>
 <tr>
 <td><code>MGMT_API_ACCESS_TOKEN</code></td>
@@ -425,7 +425,7 @@ dataTask.resume()
 
 ## Learn more
 
-* [Revoke Signing Keys](/get-started/tenant-settings/signing-keys/revoke-signing-keys)
-* [Rotate Signing Keys](/get-started/tenant-settings/signing-keys/rotate-signing-keys)
-* [Signing Algorithms](/get-started/applications/signing-algorithms)
-* [Change Application Signing Algorithms](/get-started/applications/change-application-signing-algorithms)
+* [Revoke Signing Keys](/docs/get-started/tenant-settings/signing-keys/revoke-signing-keys)
+* [Rotate Signing Keys](/docs/get-started/tenant-settings/signing-keys/rotate-signing-keys)
+* [Signing Algorithms](/docs/get-started/applications/signing-algorithms)
+* [Change Application Signing Algorithms](/docs/get-started/applications/change-application-signing-algorithms)

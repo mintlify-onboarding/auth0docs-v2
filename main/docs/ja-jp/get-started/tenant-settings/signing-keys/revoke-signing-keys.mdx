@@ -9,11 +9,11 @@ permalink: "revoke-signing-keys"
 'twitter:description': "Auth0 DashboardまたはManagement APIを使って、テナントのアプリケーションの署名鍵を取り消す方法について説明します。"
 ---
 
-<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>や<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使って、テナントのアプリケーションの署名鍵を取り消すことができます。署名鍵は、アプリケーションやAPIに送信されたIDトークン、アクセストークン、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>アサーション、および<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/ja-jp/glossary?term=ws-fed" tip="Webサービスフェデレーション（WS-Fed）: ドメイン全体でユーザーIDを管理するためのプロトコル。" cta="用語集の表示">WS-Fed</Tooltip>アサーションを署名するのに使用されます。詳細については、「[署名鍵](/ja-jp/get-started/tenant-settings/signing-keys)」をお読みください。
+<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>や<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使って、テナントのアプリケーションの署名鍵を取り消すことができます。署名鍵は、アプリケーションやAPIに送信されたIDトークン、アクセストークン、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>アサーション、および<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=ws-fed" tip="Webサービスフェデレーション（WS-Fed）: ドメイン全体でユーザーIDを管理するためのプロトコル。" cta="用語集の表示">WS-Fed</Tooltip>アサーションを署名するのに使用されます。詳細については、「[署名鍵](/docs/ja-jp/get-started/tenant-settings/signing-keys)」をお読みください。
 
 ## 前提条件
 
-* 以前使用された署名鍵を取り消す前に、必ず署名鍵をローテーションしなければなりません。詳細については、「[署名鍵をローテーションする](/ja-jp/get-started/tenant-settings/signing-keys/rotate-signing-keys)」または以下の「**署名鍵をローテーションして取り消す** 」セクションをお読みください。
+* 以前使用された署名鍵を取り消す前に、必ず署名鍵をローテーションしなければなりません。詳細については、「[署名鍵をローテーションする](/docs/ja-jp/get-started/tenant-settings/signing-keys/rotate-signing-keys)」または以下の「**署名鍵をローテーションして取り消す** 」セクションをお読みください。
 * 以前の鍵を取り消す前に、必ず、新しい鍵でアプリケーションやAPIを更新してください。
 
 <Warning>
@@ -44,8 +44,8 @@ permalink: "revoke-signing-keys"
 
 </Warning>
 
-1. 署名鍵のリストを取得するには、[全アプリケーション署名鍵の取得](/ja-jp/api/management/v2#!/Keys/get_signing_keys)エンドポイントに`GET`呼び出しを行います。
-2. [鍵のIDでアプリケーションの署名鍵取り消し](/ja-jp/api/management/v2#!/Keys/put_signing_keys)エンドポイントに`PUT`呼び出しを行います。`{yourKeyId}`と`{yourMgmtApiAccessToken}`のプレースホルダーの値を、それぞれ署名鍵IDとManagement APIのアクセストークンに置き換えてください。
+1. 署名鍵のリストを取得するには、[全アプリケーション署名鍵の取得](/docs/ja-jp/api/management/v2#!/Keys/get_signing_keys)エンドポイントに`GET`呼び出しを行います。
+2. [鍵のIDでアプリケーションの署名鍵取り消し](/docs/ja-jp/api/management/v2#!/Keys/put_signing_keys)エンドポイントに`PUT`呼び出しを行います。`{yourKeyId}`と`{yourMgmtApiAccessToken}`のプレースホルダーの値を、それぞれ署名鍵IDとManagement APIのアクセストークンに置き換えてください。
 
    <CodeGroup>
    ```bash cURL lines
@@ -236,6 +236,6 @@ permalink: "revoke-signing-keys"
 
 ## もっと詳しく
 
-* [署名鍵をローテーションする](/ja-jp/get-started/tenant-settings/signing-keys/rotate-signing-keys)
-* [署名証明書を確認する](/ja-jp/get-started/tenant-settings/signing-keys/view-signing-certificates)
-* [アプリケーションの署名アルゴリズムを変更する](/ja-jp/get-started/applications/change-application-signing-algorithms)
+* [署名鍵をローテーションする](/docs/ja-jp/get-started/tenant-settings/signing-keys/rotate-signing-keys)
+* [署名証明書を確認する](/docs/ja-jp/get-started/tenant-settings/signing-keys/view-signing-certificates)
+* [アプリケーションの署名アルゴリズムを変更する](/docs/ja-jp/get-started/applications/change-application-signing-algorithms)

@@ -10,7 +10,7 @@ title: Embedded Passwordless Login in Native Applications
   login in native applications.
 'twitter:title': Embedded Passwordless Login in Native Applications
 ---
-To use the Embedded <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> APIs in Native applications, make sure you enable the **Passwordless OTP** grant at [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) in your application's settings under **Advanced Settings** > **Grant Types**.
+To use the Embedded <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> APIs in Native applications, make sure you enable the **Passwordless OTP** grant at [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) in your application's settings under **Advanced Settings** > **Grant Types**.
 
 Passwordless authentication for Native applications consists of two steps:
 
@@ -1048,20 +1048,20 @@ dataTask.resume()
 
 If you prefer, you can use the Android or iOS SDKs, which wrap this APIs in a platform-friendly way:
 
-* [Lock.Android Passwordless](/libraries/lock-android/lock-android-passwordless)
-* [Lock.swift Passwordless](/lock-swift-passwordless)
-* [Auth0.Android Passwordless](/auth0-android-passwordless)
-* [Auth0.swift Passwordless](/libraries/auth0-swift/auth0-swift-passwordless)
+* [Lock.Android Passwordless](/docs/libraries/lock-android/lock-android-passwordless)
+* [Lock.swift Passwordless](/docs/lock-swift-passwordless)
+* [Auth0.Android Passwordless](/docs/auth0-android-passwordless)
+* [Auth0.swift Passwordless](/docs/libraries/auth0-swift/auth0-swift-passwordless)
 
 ## Customize MFA with Embedded
 
 <Warning>
-Customizable MFA with the Resource Owner Password Grant, Embedded, or Refresh Token flows is in Early Access. To learn more, read [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages). To participate in the early access, contact [Auth0 Support](https://support.auth0.com/).
+Customizable MFA with the Resource Owner Password Grant, Embedded, or Refresh Token flows is in Early Access. To learn more, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages). To participate in the early access, contact [Auth0 Support](https://support.auth0.com/).
 </Warning>
 
-Customize <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> with embedded flows. Use the MFA API to allow users to enroll and challenge with factors of their choice that are supported by your application.
+Customize <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> with embedded flows. Use the MFA API to allow users to enroll and challenge with factors of their choice that are supported by your application.
 
-When your application requests an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token+at+the">access token at the</Tooltip> `oauth/token` endpoint, the returned response includes the `mfa_token` to use the MFA API and the `mfa_requirements` parameter with a list of authenticators your application currently supports:
+When your application requests an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token+at+the">access token at the</Tooltip> `oauth/token` endpoint, the returned response includes the `mfa_token` to use the MFA API and the `mfa_requirements` parameter with a list of authenticators your application currently supports:
 
 ```json lines
 {
@@ -1100,5 +1100,5 @@ Use the `mfa_token` to call the [`mfa/authenticator`](https://auth0.com/docs/api
 
 Proceed to enforce the MFA challenge by calling the [`request/mfa/challenge`](https://auth0.com/docs/api/authentication/muti-factor-authentication/request-mfa-challenge) endpoint.
 
-Further customize your MFA flow with Auth0 Actions. To learn more, read [Actions Triggers: post-challenge - API Object](/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).
+Further customize your MFA flow with Auth0 Actions. To learn more, read [Actions Triggers: post-challenge - API Object](/docs/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).
 

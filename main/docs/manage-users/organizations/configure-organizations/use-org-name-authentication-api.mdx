@@ -16,18 +16,18 @@ By default, the [Authentication API](https://auth0.com/docs/api/authentication) 
 Configuring your tenant to support organization names in the Authentication API results in the following:
 
 * The `organization` parameter in the [/authorize](https://auth0.com/docs/api/authentication#authorize-application) and [SAML](https://auth0.com/docs/api/authentication#saml) endpoints can accept both organization names and IDs.
-* Access and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+tokens">ID tokens</Tooltip> automatically include both `org_name` and `org_id` claims.
+* Access and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip> automatically include both `org_name` and `org_id` claims.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-* [Organizations](/manage-users/organizations/configure-organizations/create-organizations) can be configured with two names: a required Name value that serves as a unique logical identifier and an optional, user-friendly Display Name. The `org_name` parameter only accepts the required Name value and does not support Display Name values.
+* [Organizations](/docs/manage-users/organizations/configure-organizations/create-organizations) can be configured with two names: a required Name value that serves as a unique logical identifier and an optional, user-friendly Display Name. The `org_name` parameter only accepts the required Name value and does not support Display Name values.
 * This feature is managed at the tenant level. It cannot be individually enabled for specific organizations.
 
 </Callout>
 
-You can enable this feature through your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>:
+You can enable this feature through your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>:
 
-* **Auth0 Dashboard**: Select [Settings](/get-started/tenant-settings) from the left-side menu and choose the **Advanced** tab. In the **Settings** section, enable the **Allow Organization Names in Authentication API** toggle.
+* **Auth0 Dashboard**: Select [Settings](/docs/get-started/tenant-settings) from the left-side menu and choose the **Advanced** tab. In the **Settings** section, enable the **Allow Organization Names in Authentication API** toggle.
 * **Management API**: Use the `PATCH /api/v2/tenants/settings` endpoint to set `allow_organization_name_in_authentication_api` to `true`. For more information, review the [Management API](https://auth0.com/docs/api/management/v2) documentation.
 
 ### Example flow

@@ -10,7 +10,7 @@ title: Authenticate Using the Resource Owner Password Flow with MFA
   Flow with MFA.
 'twitter:title': Authenticate Using the Resource Owner Password Flow with MFA
 ---
-You can use the [Auth0 MFA API](https://auth0.com/docs/api/authentication#multi-factor-authentication) to complete the authentication flow using the [Resource Owner Password Flow](/get-started/authentication-and-authorization-flow/resource-owner-password-flow) (sometimes called <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/glossary?term=Resource+Owner">Resource Owner</Tooltip> Password Grant or ROPG) when <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> is enabled.
+You can use the [Auth0 MFA API](https://auth0.com/docs/api/authentication#multi-factor-authentication) to complete the authentication flow using the [Resource Owner Password Flow](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow) (sometimes called <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/docs/glossary?term=Resource+Owner">Resource Owner</Tooltip> Password Grant or ROPG) when <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> is enabled.
 
 ## Prerequisites
 
@@ -255,7 +255,7 @@ The default expiry time of access tokens with the `https://{yourDomain}/mfa/*` a
 
 ## Retrieve enrolled authenticators
 
-After getting the error above, you need to find out if the user has an MFA factor enrolled or not. Call the [MFA Authenticators endpoint](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api), using the MFA token obtained in the previous section.
+After getting the error above, you need to find out if the user has an MFA factor enrolled or not. Call the [MFA Authenticators endpoint](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api), using the MFA token obtained in the previous section.
 
 <CodeGroup>
 ```bash cURL lines
@@ -467,10 +467,10 @@ You will get an array with the available authenticators. The array will be empty
 
 If the user is not enrolled in MFA, use the MFA token obtained earlier and enroll it using the MFA Associate endpoint. See the following links to implement this flow based on the authentication factor:
 
-* [SMS or voice](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
-* [One-time password (OTP)](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
-* [Push](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
-* [Email](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
+* [SMS or voice](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
+* [One-time password (OTP)](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
+* [Push](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
+* [Email](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
 
 ## Challenge user with MFA
 
@@ -480,10 +480,10 @@ After the challenge is complete, call `/oauth/token` endpoint again to finalize 
 
 See the links below to implement this flow depending on the authentication factor:
 
-* [SMS or voice](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
-* [One-time password (OTP)](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
-* [Push](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
-* [Email](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
+* [SMS or voice](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
+* [One-time password (OTP)](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
+* [Push](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
+* [Email](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
 
 ### MFA OTP code limitations and restrictions
 
@@ -495,9 +495,9 @@ See the links below to implement this flow depending on the authentication facto
 
 ## Learn more
 
-* [Enroll and Challenge SMS and Voice Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
-* [Enroll and Challenge OTP Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
-* [Enroll and Challenge Push Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
-* [Enroll and Challenge Email Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
-* [Manage Authentication Factors with Authentication API](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
-* [Multi-Factor Authentication Factors](/secure/multi-factor-authentication/multi-factor-authentication-factors)
+* [Enroll and Challenge SMS and Voice Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
+* [Enroll and Challenge OTP Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
+* [Enroll and Challenge Push Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
+* [Enroll and Challenge Email Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
+* [Manage Authentication Factors with Authentication API](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
+* [Multi-Factor Authentication Factors](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors)

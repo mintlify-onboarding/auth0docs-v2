@@ -14,7 +14,7 @@ To use Highly Regulated Identity features, you must have an Enterprise Plan with
 
 </Callout>
 
-[Sender constraining](/secure/sender-constraining) is an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> security mechanism that cryptographically binds access and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip> to the client application that requested them. This ensures that only the legitimate client that obtained the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> can use it to access protected resources, providing a strong defense against token theft and replay attacks.
+[Sender constraining](/docs/secure/sender-constraining) is an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> security mechanism that cryptographically binds access and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip> to the client application that requested them. This ensures that only the legitimate client that obtained the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> can use it to access protected resources, providing a strong defense against token theft and replay attacks.
 
 Mutual-TLS (mTLS) Client Certificate-Bound Access Tokens, or mTLS sender constraining, achieves this binding by leveraging the client's TLS certificate. With mTLS, the client's access token is bound to its unique client certificate, making the token unusable by any other party.
 
@@ -23,26 +23,26 @@ Mutual-TLS (mTLS) Client Certificate-Bound Access Tokens, or mTLS sender constra
 To implement mTLS sender constraining, you must:
 
 * Have an Enterprise Plan with the Highly Regulated Identity add-on for your Auth0 tenant.
-* [Configure sender constraining](/secure/sender-constraining/configure-sender-constraining) for your client application and <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+server">resource server</Tooltip> within Auth0.
-* Ensure your client application is a <Tooltip tip="Confidential Client: A client (application) that can hold credentials securely by using a trusted backend server. Examples include a web application with a secure backend and a machine-to-machine (M2M) application." cta="View Glossary" href="/glossary?term=confidential+client">confidential client</Tooltip>, as only confidential clients support mTLS sender constraining.
+* [Configure sender constraining](/docs/secure/sender-constraining/configure-sender-constraining) for your client application and <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+server">resource server</Tooltip> within Auth0.
+* Ensure your client application is a <Tooltip tip="Confidential Client: A client (application) that can hold credentials securely by using a trusted backend server. Examples include a web application with a secure backend and a machine-to-machine (M2M) application." cta="View Glossary" href="/docs/glossary?term=confidential+client">confidential client</Tooltip>, as only confidential clients support mTLS sender constraining.
 
 ## How it works
 
 This section outlines the process of obtaining and using an mTLS-bound access token.
 
-<Frame>![](/images/cdy7uua7fh8z/Nrf2Jm8Gq1yuMlS35jqDR/3972d735b883ea1ce5ae0999b678db2f/Screenshot_2025-07-30_at_4.07.34â__PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/Nrf2Jm8Gq1yuMlS35jqDR/3972d735b883ea1ce5ae0999b678db2f/Screenshot_2025-07-30_at_4.07.34â__PM.png)</Frame>
 
 ## Phase 1: Request an mTLS-bound access token
 
 ### Step 1: Client application establishes mTLS connection
 
-* Before requesting an access token, your client application initiates a TLS handshake with the Auth0 <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip>'s `/token` endpoint.
+* Before requesting an access token, your client application initiates a TLS handshake with the Auth0 <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip>'s `/token` endpoint.
 * During this handshake, the client application presents its client certificate to the Auth0 Authorization Server as part of the mutual TLS authentication process.
 
 ### Step 2: Client application requests access token
 
 * The client application sends a standard OAuth 2.0 token request, such as using `grant_type=client_credentials` or `authorization_code`, to the Auth0 Authorization Server's `/token` endpoint.
-* The token request does not include any special DPoP headers or additional proof <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWTs">JWTs</Tooltip> for mTLS. The proof of possession is derived directly from the mTLS connection.
+* The token request does not include any special DPoP headers or additional proof <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWTs">JWTs</Tooltip> for mTLS. The proof of possession is derived directly from the mTLS connection.
 
 ### Step 3: Auth0 Authorization Server processes request and binds token
 
@@ -119,7 +119,7 @@ To understand how the thumbprint is calculated and the format of the `cnf` claim
 
 When implementing mTLS sender constraining, consider the following:
 
-* **Confidential clients only:** mTLS sender constraining is designed for and supported only by confidential clients, such as backend services, that can securely manage client certificates and establish mTLS connections. <Tooltip tip="Public Client: Client (application) that cannot hold credentials securely. Examples include a native desktop or mobile application and a JavaScript-based client-side web application (such as a single-page app (SPA))." cta="View Glossary" href="/glossary?term=Public+clients">Public clients</Tooltip> like SPAs and mobile apps should use DPoP.
+* **Confidential clients only:** mTLS sender constraining is designed for and supported only by confidential clients, such as backend services, that can securely manage client certificates and establish mTLS connections. <Tooltip tip="Public Client: Client (application) that cannot hold credentials securely. Examples include a native desktop or mobile application and a JavaScript-based client-side web application (such as a single-page app (SPA))." cta="View Glossary" href="/docs/glossary?term=Public+clients">Public clients</Tooltip> like SPAs and mobile apps should use DPoP.
 * **Certificate management:** The security of your mTLS implementation relies heavily on your certificate management practices, such as how you provision, manage, and rotate client certificates.
 * **Infrastructure requirements:** Implementing mTLS requires specific infrastructure, including proxies, load balancers, and APIs capable of terminating mTLS connections and passing client certificate information to the application or resource server.
 * **Resource server enforcement:** When you enable mTLS sender constraining for an API in Auth0, the resource server must perform the thumbprint verification as described in [Step 5](#step-5-resource-server-verifies-token-and-certificate).
@@ -128,4 +128,4 @@ When implementing mTLS sender constraining, consider the following:
 
 ## Learn more
 
-* [Configure Sender Constraining](/secure/sender-constraining/configure-sender-constraining)
+* [Configure Sender Constraining](/docs/secure/sender-constraining/configure-sender-constraining)

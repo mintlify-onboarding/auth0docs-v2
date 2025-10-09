@@ -14,9 +14,9 @@ You must configure a From address at the provider or template level to send cust
 
 </Callout>
 
-You must configure your own email provider using a third-party service (such as Amazon SES, Mandrill, SendGrid, SparkPost, Mailgun, or a custom SMTP provider) to be able to customize your emails. To learn more, read [Configure External SMTP Providers](/customize/email/smtp-email-providers).
+You must configure your own email provider using a third-party service (such as Amazon SES, Mandrill, SendGrid, SparkPost, Mailgun, or a custom SMTP provider) to be able to customize your emails. To learn more, read [Configure External SMTP Providers](/docs/customize/email/smtp-email-providers).
 
-Auth0 allows you to customize your [Email Templates](https://manage.auth0.com/#/templates) in the Dashboard ([Dashboard > Branding > Email Templates](https://manage.auth0.com/#/templates)), also providing templating with some contextual attributes in Liquid. To learn more, read [Using Liquid Syntax in Email Templates](/customize/email/email-templates/use-liquid-syntax-in-email-templates). This can include references to the context of the current application or user.
+Auth0 allows you to customize your [Email Templates](https://manage.auth0.com/#/templates) in the Dashboard ([Dashboard > Branding > Email Templates](https://manage.auth0.com/#/templates)), also providing templating with some contextual attributes in Liquid. To learn more, read [Using Liquid Syntax in Email Templates](/docs/customize/email/email-templates/use-liquid-syntax-in-email-templates). This can include references to the context of the current application or user.
 
 You can only use one template for each template type. Auth0 does not support plaintext/text-based emails.
 
@@ -60,7 +60,7 @@ You can access the following common variables when using Liquid Syntax in the **
   + `friendly_name`
   + `support_email`
   + `support_url`
-* Multiple <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domains">custom domains</Tooltip> information:
+* Multiple <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domains">custom domains</Tooltip> information:
 
   + `custom_domain.domain` - the tenant's domain name
 
@@ -78,15 +78,15 @@ In addition, any `user.user_metadata` properties that may contain user-provided 
 
 </Callout>
 
-The following email templates can be further customized for [Organizations](/manage-users/organizations/organizations-overview):
+The following email templates can be further customized for [Organizations](/docs/manage-users/organizations/organizations-overview):
 
 * **Welcome**: Received by the end-user once they verify their email address or, if email verification is disabled, when they sign up (or log in for the first time).
 * **Password Change**: Received by the end-user when they request a password change. Contains a link that redirects them to the Password Reset page.
 * **Blocked Account**: Received by the end-user when a user attempts to log in ten or more times unsuccessfully from the same IP address.
 * **Breached Password Alerts**: Received by the end-user when Auth0 detects that the user is trying to access the application using a password that has been leaked by a third party.
-* **Invite User**: Received by the end-user when they are invited to an organization. Contains a link that redirects them to a custom invitation page. To learn more, see [Invite Organization Members](/manage-users/organizations/configure-organizations/invite-members).
+* **Invite User**: Received by the end-user when they are invited to an organization. Contains a link that redirects them to a custom invitation page. To learn more, see [Invite Organization Members](/docs/manage-users/organizations/configure-organizations/invite-members).
 
-When a user logs in through an [Organization](/manage-users/organizations/organizations-overview), the following additional variables are available:
+When a user logs in through an [Organization](/docs/manage-users/organizations/organizations-overview), the following additional variables are available:
 
 * `organization.id`
 * `organization.display_name`
@@ -116,7 +116,7 @@ You need to configure the following fields:
 <AccordionGroup>
 <Accordion title="1 From address">
 
-Users will see the email address in the **From Address** field as the sender when receiving an email from Auth0. If you do not configure the **From Address** field for an email template, Auth0 will use the email address in the **From** field configured for your [Email Provider](/customize/email/smtp-email-providers).
+Users will see the email address in the **From Address** field as the sender when receiving an email from Auth0. If you do not configure the **From Address** field for an email template, Auth0 will use the email address in the **From** field configured for your [Email Provider](/docs/customize/email/smtp-email-providers).
 
 <Warning>
 
@@ -219,7 +219,7 @@ If users click on an expired link and a **Redirect To** URL is configured, they 
 
 The **Redirect To** URL is an optional destination to redirect the user to after the relevant action (verify account, reset password, unblock account) was performed.
 
-With the Universal Login Classic Experience, you can provide a URL to which users are redirected after they reset their password. Auth0 sends a `success` indicator and a `message` to the URL. To learn more about these two parameters, see [Email Template Descriptions](/customize/email/email-templates/email-template-descriptions).
+With the Universal Login Classic Experience, you can provide a URL to which users are redirected after they reset their password. Auth0 sends a `success` indicator and a `message` to the URL. To learn more about these two parameters, see [Email Template Descriptions](/docs/customize/email/email-templates/email-template-descriptions).
 
 With the New Universal Login Experience, Auth0 redirects users to the default log in route when the user succeeds in resetting the password. If not, Auth0 handles the errors as part of the Universal Login flow and ignores the redirect URL provided in the email template.
 
@@ -302,7 +302,7 @@ Message bodies have HTML content, and Liquid syntax is the currently supported t
 
 ##### Multilingual email templates
 
-You can use Liquid syntax along with the `user_metadata.lang` property from the user object to alter the content based on the user preferred language. For example, you can [use an action](/customize/actions/actions-overview) to set the `user_metadata.lang` property to `it` for Italian. You must set the language property with an action or otherwise.
+You can use Liquid syntax along with the `user_metadata.lang` property from the user object to alter the content based on the user preferred language. For example, you can [use an action](/docs/customize/actions/actions-overview) to set the `user_metadata.lang` property to `it` for Italian. You must set the language property with an action or otherwise.
 
 ##### Debug Liquid template variables
 
@@ -314,8 +314,8 @@ To assist your template development, we've added a custom `{% debug %}` liquid t
 
 ## Learn more
 
-* [Email Template Descriptions](/customize/email/email-templates/email-template-descriptions)
-* [Customize Blocked Account Emails](/customize/email/customize-blocked-account-emails)
-* [Customize Email Handling](/customize/email/manage-email-flow)
-* [Configure Email Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa)
-* [Use Liquid Syntax in Email Templates](/customize/email/email-templates/use-liquid-syntax-in-email-templates)
+* [Email Template Descriptions](/docs/customize/email/email-templates/email-template-descriptions)
+* [Customize Blocked Account Emails](/docs/customize/email/customize-blocked-account-emails)
+* [Customize Email Handling](/docs/customize/email/manage-email-flow)
+* [Configure Email Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa)
+* [Use Liquid Syntax in Email Templates](/docs/customize/email/email-templates/use-liquid-syntax-in-email-templates)

@@ -12,10 +12,10 @@ title: User Attribute Profile
 ---
 
 <Warning>
-User Attribute Profile with Self-Service SSO is currently in Early Access for B2B Professional and B2B Enterprise customers. By using this feature, you agree to the applicable Free Trial terms in Okta’s [Master Subscription Agreement](https://www.okta.com/legal/). To learn more about Auth0 release stages, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
+User Attribute Profile with Self-Service SSO is currently in Early Access for B2B Professional and B2B Enterprise customers. By using this feature, you agree to the applicable Free Trial terms in Okta’s [Master Subscription Agreement](https://www.okta.com/legal/). To learn more about Auth0 release stages, read [Product Release Stages](/docs/docs/troubleshoot/product-lifecycle/product-release-stages).
 </Warning>
 
-The User Attribute Profile (UAP) provides a consistent way to define, manage, and map user attributes across protocols such as [SCIM](/docs/authenticate/protocols/scim), [SAML](/docs/authenticate/protocols/saml), and [OIDC](/docs/authenticate/login/oidc-conformant-authentication). UAP with [Self-Service SSO](/docs/authenticate/enterprise-connections/self-service-SSO) gives administrators greater control over user identity data by defining user attributes and applying the profile across authentication protocols.
+The User Attribute Profile (UAP) provides a consistent way to define, manage, and map user attributes across protocols such as [SCIM](/docs/docs/authenticate/protocols/scim), [SAML](/docs/docs/authenticate/protocols/saml), and [OIDC](/docs/docs/authenticate/login/oidc-conformant-authentication). UAP with [Self-Service SSO](/docs/docs/authenticate/enterprise-connections/self-service-SSO) gives administrators greater control over user identity data by defining user attributes and applying the profile across authentication protocols.
 
 ## How it works
 * **Profile Definition**
@@ -71,7 +71,7 @@ Each attribute must be provided as a key/value pair:
     * `saml_mapping`
     * `scim_mapping`
     * `oidc_mapping` an object with properties
-      * `mapping` represents the incoming claim from the IdP (literal value, dynamic context object, or both using `${variable}` syntax supporting the [context object](/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#context-object))
+      * `mapping` represents the incoming claim from the IdP (literal value, dynamic context object, or both using `${variable}` syntax supporting the [context object](/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#context-object))
       * `display_name` the label shown to end users in self-service flows
 
 ### Strategy overrides
@@ -150,7 +150,7 @@ You can define a UAP through Self-Service SSO using the Auth0 Dashboard or the M
 Your new UAP is available to configure for SSO.
 </Tab>
 <Tab title="Management API">
-To call the Management API, you must have an access token. To learn how to obtain one, read [Management API Access Token](/docs/secure/tokens/access-tokens/management-api-access-tokens).
+To call the Management API, you must have an access token. To learn how to obtain one, read [Management API Access Token](/docs/docs/secure/tokens/access-tokens/management-api-access-tokens).
 1. Make a `POST` call to the UAP `/api/v2/user-attribute-profiles` endpoint.
   ```curl
   curl --location 'https: //auth0.com/api/v2/user-attribute-profiles' \
@@ -703,7 +703,7 @@ To manage User Attribute Profiles, the following [Management API](https://auth0.
 * `GET` `/api/v2/user-attribute-profiles/templates/{id}`
 
 ## Learn more
-* [Self-Service SSO](/docs/authenticate/enterprise-connections/self-service-SSO)
-* [Configure PKCE and Claim Mapping for OIDC Connections](/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc)
-* [Map SAML Attributes with Auth0 as IdP/SAML Add-on](/docs/authenticate/protocols/saml/saml-configuration/saml-attribute-mapping-examples)
-* [Map AD/LDAP Profile Attributes to Auth0 User Profile](/docs/authenticate/protocols/saml/saml-configuration/saml-attribute-mapping-examples)
+* [Self-Service SSO](/docs/docs/authenticate/enterprise-connections/self-service-SSO)
+* [Configure PKCE and Claim Mapping for OIDC Connections](/docs/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc)
+* [Map SAML Attributes with Auth0 as IdP/SAML Add-on](/docs/docs/authenticate/protocols/saml/saml-configuration/saml-attribute-mapping-examples)
+* [Map AD/LDAP Profile Attributes to Auth0 User Profile](/docs/docs/authenticate/protocols/saml/saml-configuration/saml-attribute-mapping-examples)

@@ -16,7 +16,7 @@ Features and breaking changes released in Actions are listed below.
 
 ### Login Flow
 
-New features and breaking changes were released to triggers in the Login Flow. To learn about these changes, read [Login Flow: Releases](/releases).
+New features and breaking changes were released to triggers in the Login Flow. To learn about these changes, read [Login Flow: Releases](/docs/releases).
 
 ## v2 (GA)
 
@@ -92,14 +92,14 @@ Direct access to the query and body parameters is available using the `event.req
 
 ### User Profile properties
 
-In general, the `event.user` object has had its properties changed from camel case to snake case in order to match the [Auth0 User Profile structure](/manage-users/user-accounts/user-profiles/user-profile-structure). For example, `event.user.appMetadata` has been changed to `event.user.app_metadata`.
+In general, the `event.user` object has had its properties changed from camel case to snake case in order to match the [Auth0 User Profile structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure). For example, `event.user.appMetadata` has been changed to `event.user.app_metadata`.
 
 ### Performing side effects
 
 In the pre-GA version of the post-login trigger, side effects were performed by returning an object from an Action. In Actions GA, an `api` object is provided to encapsulate these changes and provide better in-editor type hints and inline documentation.
 
-To learn more about these changes and see code examples, read [Login Flow: Releases](/releases).
+To learn more about these changes and see code examples, read [Login Flow: Releases](/docs/releases).
 
 ### Manipulating scopes
 
-Although we experimented with providing direct manipulation of ID and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> scopes during the Actions Beta, we do not support this functionality in Actions GA.
+Although we experimented with providing direct manipulation of ID and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> scopes during the Actions Beta, we do not support this functionality in Actions GA.

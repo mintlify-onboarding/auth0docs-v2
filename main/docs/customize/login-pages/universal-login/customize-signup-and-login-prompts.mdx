@@ -12,13 +12,13 @@ title: Customize Signup and Login Prompts
 ---
 <Card title="Before you start">
 
-1. Make sure your tenant has a [**Custom Domain**](/customize/custom-domains) configured.
-2. Confirm you are using [**Universal Login**](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience) for all signup and login prompts, and ensure the **Customize Login Page** toggle has been disabled for Login Prompts.
-3. Check that you have a [Custom Page Template](/customize/login-pages/universal-login/customize-templates#custom-sign-up-prompts) configured.
+1. Make sure your tenant has a [**Custom Domain**](/docs/customize/custom-domains) configured.
+2. Confirm you are using [**Universal Login**](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience) for all signup and login prompts, and ensure the **Customize Login Page** toggle has been disabled for Login Prompts.
+3. Check that you have a [Custom Page Template](/docs/customize/login-pages/universal-login/customize-templates#custom-sign-up-prompts) configured.
 
 </Card>
 
-**Customize Signup and Login Prompts** is a feature that allows customers with <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=Custom+Domain">Custom Domain</Tooltip> and Custom Page Template enabled to add custom fields and content to their app’s signup and login prompts.
+**Customize Signup and Login Prompts** is a feature that allows customers with <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=Custom+Domain">Custom Domain</Tooltip> and Custom Page Template enabled to add custom fields and content to their app’s signup and login prompts.
 
 #### Use Cases
 
@@ -28,7 +28,7 @@ Customize Signup and Login Prompts supports two use cases: **custom content** an
 
 **Data capture** uses form elements dynamically added to the signup and login prompts, which is useful for collecting and validating user consent or user-produced data like surname.
 
-Data capture is available for database connections authenticated by password . When using a <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=passwordless">passwordless</Tooltip> connection, data capture is available when authenticating by email or SMS one-time password. Passkeys and magic links are not yet supported.
+Data capture is available for database connections authenticated by password . When using a <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> connection, data capture is available when authenticating by email or SMS one-time password. Passkeys and magic links are not yet supported.
 
 <Warning>
 Only use Signup and Login Prompt Customizations to convey or collect sensitive or regulated data as permitted under your agreement with Okta.
@@ -51,7 +51,7 @@ The following prompts can be customized:
   + `login-passwordless-sms-otp`
   + `login-passwordless-email-code`
 
-Partials support HTML, CSS, Javascript, and [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers) to power conditional logic and dynamic variables. In addition, any Liquid variable that is available to the [Page Template](/customize/login-pages/universal-login/customize-templates) is also supported.
+Partials support HTML, CSS, Javascript, and [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers) to power conditional logic and dynamic variables. In addition, any Liquid variable that is available to the [Page Template](/docs/customize/login-pages/universal-login/customize-templates) is also supported.
 
 These entry points available when a database or passwordless connection is enabled:
 
@@ -65,7 +65,7 @@ The following entry points are available when at least one social or enterprise 
 * `secondary-actions-start`
 * `secondary-actions-end`
 
-<Frame>![Screenshots of each Custom Prompt option and their partials](/images/cdy7uua7fh8z/7sQVWVbaTp4VMW4nJjsn2G/74d0b30da7b034bd695274dbd146964b/Custom_Prompts.png)</Frame>
+<Frame>![Screenshots of each Custom Prompt option and their partials](/docs/images/cdy7uua7fh8z/7sQVWVbaTp4VMW4nJjsn2G/74d0b30da7b034bd695274dbd146964b/Custom_Prompts.png)</Frame>
 
 #### Use the Management API to Manage Partials
 
@@ -89,9 +89,9 @@ body: {
 
 
 
-Partials can also be managed using Auth0 CLI’s <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> Customize Interface by running `auth0 ul customize` in your terminal.
+Partials can also be managed using Auth0 CLI’s <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> Customize Interface by running `auth0 ul customize` in your terminal.
 
-<Frame>![An image showing the command-line interface for Partials. ](/images/cdy7uua7fh8z/KxWfVAMkumyI2jrUqkEp8/b9315709899864a2f8758ad7f5a4f5b2/Partials_CLI_Image.jpg)</Frame>
+<Frame>![An image showing the command-line interface for Partials. ](/docs/images/cdy7uua7fh8z/KxWfVAMkumyI2jrUqkEp8/b9315709899864a2f8758ad7f5a4f5b2/Partials_CLI_Image.jpg)</Frame>
 
 #### Style and Validate Form Inputs
 
@@ -259,7 +259,7 @@ Partial content can be localized by defining new custom text variables using the
 
 The Custom Text API is available [here](https://auth0.com/docs/api/management/v2/prompts/get-custom-text-by-language) and each variable follows a `var-<name>` naming convention. Calls to the API must specify the screen when adding, updating, or deleting a custom text variable. Markdown links are supported and are converted to HTML `<a>` elements before being displayed to users.
 
-Below is an example call to add a variable for the text of a terms of service checkbox label in English and Spanish. See the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to learn more.
+Below is an example call to add a variable for the text of a terms of service checkbox label in English and Spanish. See the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to learn more.
 
 ```json lines
 # PUT /api/v2/prompts/signup-id/custom-text/en
@@ -364,4 +364,4 @@ exports.onExecutePreUserRegistration = async (event, api) => {
 
 ## Learn more
 
-* [Use Dynamic Variables to Internationalize Custom Form Elements](/customize/login-pages/universal-login/customize-signup-and-login-prompts/use-dynamic-variables-to-internationalize-custom-form-elements)
+* [Use Dynamic Variables to Internationalize Custom Form Elements](/docs/customize/login-pages/universal-login/customize-signup-and-login-prompts/use-dynamic-variables-to-internationalize-custom-form-elements)

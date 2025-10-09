@@ -15,9 +15,9 @@ Sender constraining tokens using Demonstrating Proof-of-Possession (DPoP) is cur
 
 </Callout>
 
-Sender constraining is an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> and <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) security mechanism that cryptographically binds access and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip> to the application that requested them, preventing token theft and misuse.
+Sender constraining is an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> and <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) security mechanism that cryptographically binds access and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip> to the application that requested them, preventing token theft and misuse.
 
-Traditionally, OAuth 2.0 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> are bearer tokens, which means whoever “bears” or possesses the token can use it. If a bearer token is stolen or leaked, an attacker can present it to a <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+server">resource server</Tooltip> (API) and gain unauthorized access by impersonating the legitimate client application or user.
+Traditionally, OAuth 2.0 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> are bearer tokens, which means whoever “bears” or possesses the token can use it. If a bearer token is stolen or leaked, an attacker can present it to a <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+server">resource server</Tooltip> (API) and gain unauthorized access by impersonating the legitimate client application or user.
 
 Sender constraining ensures that the client application presenting the access token to a resource server is the valid owner of the access token. If the client application is not the valid owner of the access token, then the resource server rejects the API request.
 
@@ -87,15 +87,15 @@ To get started with Sender Constraining at Auth0, read the following:
 </thead>
 <tbody>
 <tr>
-<td><a href="/secure/sender-constraining/mtls-sender-constraining">mTLS Sender Constraining</a></td>
+<td><a href="/docs/secure/sender-constraining/mtls-sender-constraining">mTLS Sender Constraining</a></td>
 <td>How mTLS sender constraining works in Auth0, step by step.</td>
 </tr>
 <tr>
-<td><a href="/secure/sender-constraining/demonstrating-proof-of-possession-dpop">Demonstrating Proof-of-Possession (DPoP)</a></td>
+<td><a href="/docs/secure/sender-constraining/demonstrating-proof-of-possession-dpop">Demonstrating Proof-of-Possession (DPoP)</a></td>
 <td>How DPoP works in Auth0, step by step.</td>
 </tr>
 <tr>
-<td><a href="/secure/sender-constraining/configure-sender-constraining">Configure Sender Constraining</a></td>
+<td><a href="/docs/secure/sender-constraining/configure-sender-constraining">Configure Sender Constraining</a></td>
 <td>How to configure sender constraining for a client application and resource server in Auth0.</td>
 </tr>
 </tbody>

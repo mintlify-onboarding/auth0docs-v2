@@ -56,7 +56,7 @@ There are two ways to control when the user gets the verification email :
 
 ## One-time passwords
 
-One-time passwords (OTPs) can be emailed to each new user at the time of account creation to ensure every user has an verified email. Because email verification links can lead to accidental verification by email scanners or the users themselves, OTPs ensures each user actively verifies an existing email address. To use OTPs, your tenant must have [Universal Login](/authenticate/login/auth0-universal-login), [Flexible Identifiers](/authenticate/database-connections/flexible-identifiers-and-attributes), and [Identifer-First login](/authenticate/login/auth0-universal-login/identifier-first) enabled.
+One-time passwords (OTPs) can be emailed to each new user at the time of account creation to ensure every user has an verified email. Because email verification links can lead to accidental verification by email scanners or the users themselves, OTPs ensures each user actively verifies an existing email address. To use OTPs, your tenant must have [Universal Login](/docs/authenticate/login/auth0-universal-login), [Flexible Identifiers](/docs/authenticate/database-connections/flexible-identifiers-and-attributes), and [Identifer-First login](/docs/authenticate/login/auth0-universal-login/identifier-first) enabled.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -66,7 +66,7 @@ OTP tokens for phone and email identifier verification have a lifetime of 900 se
 
 To set up OTPs, go to [**Authentication > Database**](https://manage.auth0.com/#/authentication) and select the connection to change, then pick **Attributes**, locate **Email,** choose the menu button,and enable **One-Time Password (OTP)**.
 
-<Frame>![](/images/cdy7uua7fh8z/5SO4gvkdOOZEnPInXrIN1m/5b30204358ac42dcbc3ec0f7e6af9dcf/Email_Config_-_English.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/5SO4gvkdOOZEnPInXrIN1m/5b30204358ac42dcbc3ec0f7e6af9dcf/Email_Config_-_English.png)</Frame>
 
 ## Custom or bulk verification with the Management API
 
@@ -82,9 +82,9 @@ In these cases you can use the [PATCH `/api/v2/users` endpoint](https://auth0.co
 
 ## Special verification support
 
-For Azure AD and ADFS enterprise connections, Auth0 supports some custom email verification workflows. This can help you ensure users coming from other systems have verified emails in an accurate and secure way. To learn more, read [Email Verification for Azure AD and ADFS](/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification).
+For Azure AD and ADFS enterprise connections, Auth0 supports some custom email verification workflows. This can help you ensure users coming from other systems have verified emails in an accurate and secure way. To learn more, read [Email Verification for Azure AD and ADFS](/docs/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification).
 
 ## Learn more
 
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
-* [Check User Profiles](/troubleshoot/authentication-issues/check-user-profiles)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)
+* [Check User Profiles](/docs/troubleshoot/authentication-issues/check-user-profiles)

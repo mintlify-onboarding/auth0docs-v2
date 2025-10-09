@@ -10,7 +10,7 @@ title: Configure SAML Identity Provider-Initiated Single Sign-On
   Single Sign-on (SSO).
 'twitter:title': Configure SAML Identity Provider-Initiated Single Sign-On
 ---
-Many instructions for setting up a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> federation begin with <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) initiated by the service provider. The service provider redirects the user to the <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> (IdP) for the purposes of authentication. This process is commonly used for consumer-facing scenarios.
+Many instructions for setting up a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> federation begin with <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) initiated by the service provider. The service provider redirects the user to the <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP) for the purposes of authentication. This process is commonly used for consumer-facing scenarios.
 
 However, in enterprise scenarios, it is sometimes common to begin with the IdP initiating SSO instead of the service provider. For example, an enterprise might set up a portal to ensure that users navigate to the correct application after they sign on to the portal.
 
@@ -22,7 +22,7 @@ Make sure you understand the risks before enabling IdP-Initiated SSO. In this sc
 
 ### OpenID Connect IdP-initiated flow
 
-<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) does not support the concept of an IdP-Initiated flow. So while Auth0 offers the possibility of translating a SAML IdP-Initiated flow (from a SAML connection) into an OIDC response for an application, any application that properly implements the OIDC/OAuth2 protocol will reject an unrequested response.
+<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) does not support the concept of an IdP-Initiated flow. So while Auth0 offers the possibility of translating a SAML IdP-Initiated flow (from a SAML connection) into an OIDC response for an application, any application that properly implements the OIDC/OAuth2 protocol will reject an unrequested response.
 
 When using OIDC applications, the best option is to have your application create a login endpoint. This endpoint’s sole purpose is to initiate the redirect back to the IdP (your Auth0 tenant).
 
@@ -43,7 +43,7 @@ https://{yourDomain}/login/callback?connection={yourConnectionName}
 
 
 
-If you are using the [Organizations](/manage-users/organizations) feature, you can optionally include an organization parameter containing the organization ID of the desired organization:
+If you are using the [Organizations](/docs/manage-users/organizations) feature, you can optionally include an organization parameter containing the organization ID of the desired organization:
 
 ```http wrap lines
 https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}
@@ -56,7 +56,7 @@ https://{yourDomain}/login/callback?connection={yourConnectionName}&organization
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-In order for users to successfully log-in using this method, the connection must be enabled for the Organization. Additionally, you must either configure [auto-membership](/manage-users/organizations/configure-organizations/grant-just-in-time-membership) for the enabled connection or ensure users have membership for the Organization.
+In order for users to successfully log-in using this method, the connection must be enabled for the Organization. Additionally, you must either configure [auto-membership](/docs/manage-users/organizations/configure-organizations/grant-just-in-time-membership) for the enabled connection or ensure users have membership for the Organization.
 
 </Callout>
 
@@ -90,7 +90,7 @@ Note that the `enableIdPInitiatedLogin` flag is preceded by one underscore when 
 1. Go to the [Dashboard > Authentication > Enterprise](https://manage.auth0.com/#/connections/enterprise) and choose **SAMLP Identity Provider**.
 2. Under **Settings** you can see the configuration for IdP-Initiated SSO.
 
-   <Frame>![Protocols IdP-initiated SSO Configuration Screen](/images/cdy7uua7fh8z/1HORCAp4fZQg0BOoIopvoS/0009d4b5f405c2436af5729d52a3867d/2025-01-28_13-47-26.png)</Frame>
+   <Frame>![Protocols IdP-initiated SSO Configuration Screen](/docs/images/cdy7uua7fh8z/1HORCAp4fZQg0BOoIopvoS/0009d4b5f405c2436af5729d52a3867d/2025-01-28_13-47-26.png)</Frame>
 
 * **IdP-initiated SSO Behavior**: This option allows you to enable IdP-initiated logins for the SAML connection. Select **Accept Requests** and complete all the required fields.
 * **Default Application:** When the IdP initiated login succeeds this is the application where users are routed. This setting shows available applications enabled for this connection. Select the application from the dropdown that you want the users to login with IdP initiated. Only one application can be selected for an IdP-initiated login per SAML connection.
@@ -130,7 +130,7 @@ Note that the `enableIdPInitiatedLogin` flag is preceded by one underscore when 
 
 ## Application drop-down list limited to 100
 
-If you want to select an application as the **Default Application** in IdP-initiated SSO, and the application isn't in the first 100 applications listed in the drop-down list for your tenant, you must use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to select that application. You must run a patch:
+If you want to select an application as the **Default Application** in IdP-initiated SSO, and the application isn't in the first 100 applications listed in the drop-down list for your tenant, you must use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to select that application. You must run a patch:
 
 ```json lines
 {
@@ -149,4 +149,4 @@ If you want to select an application as the **Default Application** in IdP-initi
 
 ## Learn more
 
-* [Work with Certificates and Keys as Strings](/authenticate/protocols/saml/saml-sso-integrations/work-with-certificates-and-keys-as-strings)
+* [Work with Certificates and Keys as Strings](/docs/authenticate/protocols/saml/saml-sso-integrations/work-with-certificates-and-keys-as-strings)

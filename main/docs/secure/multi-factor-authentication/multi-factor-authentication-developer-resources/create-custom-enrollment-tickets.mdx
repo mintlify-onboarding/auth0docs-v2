@@ -9,7 +9,7 @@ title: Create Custom Enrollment Tickets
   API.
 'twitter:title': Create Custom Enrollment Tickets
 ---
-If you want to customize and manage your users' [Multi-Factor Authentication (MFA)](/secure/multi-factor-authentication) enrollments, you can use Custom Enrollment Tickets. Auth0's Custom Enrollment Tickets generate a single-use link to direct your users to enroll in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> with the [factor(s)](/secure/multi-factor-authentication/multi-factor-authentication-factors) you specify.
+If you want to customize and manage your users' [Multi-Factor Authentication (MFA)](/docs/secure/multi-factor-authentication) enrollments, you can use Custom Enrollment Tickets. Auth0's Custom Enrollment Tickets generate a single-use link to direct your users to enroll in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> with the [factor(s)](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors) you specify.
 
 ### Use cases
 
@@ -22,7 +22,7 @@ Use Custom Enrollment Tickets for:
 
 ### Configure Custom Enrollment Tickets
 
-Make a post call to <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>'s [`/guardian/post_ticket`](https://auth0.com/docs/api/management/v2#!/Guardian/post_ticket) endpoint.
+Make a post call to <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>'s [`/guardian/post_ticket`](https://auth0.com/docs/api/management/v2#!/Guardian/post_ticket) endpoint.
 
 <CodeGroup>
 ```bash cURL lines
@@ -277,7 +277,7 @@ dataTask.resume()
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-These parameters can only be used with [Universal Login](/authenticate/login/auth0-universal-login) and cannot be used with Classic Login or custom MFA pages.
+These parameters can only be used with [Universal Login](/docs/authenticate/login/auth0-universal-login) and cannot be used with Classic Login or custom MFA pages.
 
 </Callout>
 
@@ -297,11 +297,11 @@ Sample response:
 
 
 
-If you enable [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains), you need to include the `auth0-custom-domain` HTTP header. To learn more, review [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains#customize-email-handling-using-the-management-api).
+If you enable [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains), you need to include the `auth0-custom-domain` HTTP header. To learn more, review [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains#customize-email-handling-using-the-management-api).
 
 ### Custom Enrollment Tickets with Classic Login
 
-If you are using the [Classic Login](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) experience and need to customize how the page looks when the user navigates to the `ticket_url`, you can edit the MFA page.
+If you are using the [Classic Login](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) experience and need to customize how the page looks when the user navigates to the `ticket_url`, you can edit the MFA page.
 
 1. Navigate to [Dashboard > Branding > Universal Login > Advanced options > Multi-factor Authentication.](https://manage.auth0.com/#/mfa_page)
 2. If **Customize MFA Page** is not selected, toggle this option on.
@@ -323,6 +323,6 @@ If you are using the [Classic Login](/authenticate/login/auth0-universal-login/u
 
 ## Learn more
 
-* [MFA Widget Theme Options](/secure/multi-factor-authentication/customize-mfa/mfa-widget-theme-options)
-* [Guardian Error Code Reference](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/guardian-error-code-reference)
-* [Auth0 MFA API](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)
+* [MFA Widget Theme Options](/docs/secure/multi-factor-authentication/customize-mfa/mfa-widget-theme-options)
+* [Guardian Error Code Reference](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/guardian-error-code-reference)
+* [Auth0 MFA API](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)

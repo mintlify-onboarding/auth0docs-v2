@@ -79,13 +79,13 @@ During registration, configure the following settings:
 
 <Card title="Find your Auth0 domain name for redirects">
 
-If your Auth0 domain name is not shown above and you are not using our [custom domains](/customize/custom-domains) feature, your domain name is a concatenation of your tenant name, your regional subdomain, and `auth0.com`, separated by the dot (`.`) symbol.
+If your Auth0 domain name is not shown above and you are not using our [custom domains](/docs/customize/custom-domains) feature, your domain name is a concatenation of your tenant name, your regional subdomain, and `auth0.com`, separated by the dot (`.`) symbol.
 
 For example, if your tenant name is `exampleco-enterprises`, and your tenant is in the US region, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your **Redirect URI** would be `https://exampleco-enterprises.us.auth0.com/login/callback`.
 
 However, if your tenant is in the US region and was created before June 2020, then your Auth0 domain name would be `exampleco-enterprises.auth0.com` and your **Redirect URI** would be `https://exampleco-enterprises.auth0.com/login/callback`.
 
-If you are using [custom domains](/customize/custom-domains), your **Redirect URI** would be `https://<YOUR CUSTOM DOMAIN>/login/callback`.
+If you are using [custom domains](/docs/customize/custom-domains), your **Redirect URI** would be `https://<YOUR CUSTOM DOMAIN>/login/callback`.
 
 </Card>
 
@@ -93,7 +93,7 @@ During this process, Microsoft generates an **Application (client) ID** for your
 
 #### Create a client secret
 
-To create a <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip>, see Microsoft's [Quickstart: Configure a client application to access web APIs - Add Credentials to your web application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-credentials).
+To create a <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip>, see Microsoft's [Quickstart: Configure a client application to access web APIs - Add Credentials to your web application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-credentials).
 
 Once generated, **make note of this value**.
 
@@ -135,7 +135,7 @@ Create and configure an Azure AD Enterprise Connection in Auth0. Make sure you h
 
 1. Navigate to [Auth0 Dashboard > Authentication > Enterprise](https://manage.auth0.com/#/connections/enterprise), locate **Microsoft Azure AD**, and select its `+`.
 
-   <Frame>![Dashboard - Connections - Enterprise](/images/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/b3454e60a4463e99353603fd11a71983/Enterprise_Connections_-_EN.png)</Frame>
+   <Frame>![Dashboard - Connections - Enterprise](/docs/images/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/b3454e60a4463e99353603fd11a71983/Enterprise_Connections_-_EN.png)</Frame>
 2. Enter details for your connection, and select **Create**:
 
 <table class="table"><thead>
@@ -187,12 +187,12 @@ Create and configure an Azure AD Enterprise Connection in Auth0. Make sure you h
 </tr>
 <tr>
 <td><strong>Email Verification</strong></td>
-<td>Choose how Auth0 sets the <code>email_verified</code> field in the user profile. To learn more, see <a href="/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification">Email Verification for Azure AD and ADFS</a>.</td>
+<td>Choose how Auth0 sets the <code>email_verified</code> field in the user profile. To learn more, see <a href="/docs/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification">Email Verification for Azure AD and ADFS</a>.</td>
 </tr>
 </tbody>
 </table>
 
-   <Frame>![Create new Azure AD connection](/images/cdy7uua7fh8z/1r6WTgLJUlbiV9jligIwER/55904e9d3c1eec62c2e8421b71cff94b/Enterprise_Connection_-_MSFT_-_English.png)</Frame>
+   <Frame>![Create new Azure AD connection](/docs/images/cdy7uua7fh8z/1r6WTgLJUlbiV9jligIwER/55904e9d3c1eec62c2e8421b71cff94b/Enterprise_Connection_-_MSFT_-_English.png)</Frame>
 3. In the **Provisioning** view, you can configure how user profiles get created and updated in Auth0.
 
    <table class="table"><thead>
@@ -208,7 +208,7 @@ Create and configure an Azure AD Enterprise Connection in Auth0. Make sure you h
 </tr>
 <tr>
 <td><strong>Sync user profiles using SCIM</strong></td>
-<td>When enabled, Auth0 allows user profile data to be synced using SCIM. For more information, see <a href="/authenticate/protocols/scim/configure-inbound-scim">Configure Inbound SCIM</a>.</td>
+<td>When enabled, Auth0 allows user profile data to be synced using SCIM. For more information, see <a href="/docs/authenticate/protocols/scim/configure-inbound-scim">Configure Inbound SCIM</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -223,7 +223,7 @@ Create and configure an Azure AD Enterprise Connection in Auth0. Make sure you h
 <tbody>
 <tr>
 <td><strong>Home Realm Discovery</strong></td>
-<td>Compares a user's email domain with the provided identity provider domains. For more information, read <a href="/authenticate/login/auth0-universal-login/identifier-first">Configure Identifier First Authentication</a></td>
+<td>Compares a user's email domain with the provided identity provider domains. For more information, read <a href="/docs/authenticate/login/auth0-universal-login/identifier-first">Configure Identifier First Authentication</a></td>
 </tr>
 <tr>
 <td><strong>Display connection button</strong></td>
@@ -250,11 +250,11 @@ Create and configure an Azure AD Enterprise Connection in Auth0. Make sure you h
 
 ### Enable the enterprise connection for your Auth0 application
 
-To use your new Azure AD enterprise connection, you must first [enable the connection](/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) for your Auth0 Applications.
+To use your new Azure AD enterprise connection, you must first [enable the connection](/docs/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) for your Auth0 Applications.
 
 ### Test the connection
 
-Now you're ready to [test your connection](/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
+Now you're ready to [test your connection](/docs/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
 
 ## Troubleshooting
 
@@ -268,27 +268,27 @@ You may have accidentally registered your app in the wrong Azure AD directory (o
 
 To resolve this, try changing the **Supported account types** for your registered Azure AD app. Make sure you have chosen an appropriate multitenant option in the Azure AD app's Authentication settings. Multitenant options include the following: **Accounts in any organizational directory (Any Azure AD directory - Multitenant)**.
 
-**When users try to log in, we receive the following error message: "invalid_request; failed to obtain <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>".**
+**When users try to log in, we receive the following error message: "invalid_request; failed to obtain <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>".**
 
 The most likely reason for this error is an invalid or expired Azure AD **Client secret**. To resolve this, generate a new **Client secret** for your app in Azure AD, then update the **Client Secret** in the enterprise connection configured with Auth0.
 
 ## Signing Key Rollover in Azure AD
 
-Signing keys are used by the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> to sign the authentication token it issues, and by the consumer application (Auth0 in this case) to validate the authenticity of the generated token.
+Signing keys are used by the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> to sign the authentication token it issues, and by the consumer application (Auth0 in this case) to validate the authenticity of the generated token.
 
 For security purposes, Azure AD’s signing key [rolls on a periodic basis](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-signing-key-rollover). If this happens, **you do not need to take any action**. Auth0 will use the new key automatically.
 
 ## Remove unverified label
 
-If you're using a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>, the application consent prompt for Azure AD login may label your domain as "unverified". To remove the unverified label:
+If you're using a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>, the application consent prompt for Azure AD login may label your domain as "unverified". To remove the unverified label:
 
 1. Verify the domain for the Auth0 application: [Add your custom domain name using the Azure Active Directory portal](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain#add-your-custom-domain-name-to-azure-ad).
 2. Assign the verified domain to the Auth0 application: [How to: Configure an application's publisher domain](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-configure-publisher-domain#configure-publisher-domain-using-the-azure-portal).
 
 ## Next Steps
 
-* [Integrate with Auth0 using one of our libraries](/libraries)
+* [Integrate with Auth0 using one of our libraries](/docs/libraries)
 * [Integrate with Auth0 using our Authentication API](https://auth0.com/docs/api/authentication)
-* [Read more about the authentication flow](/get-started/authentication-and-authorization-flow)
-* [Pass additional parameters to the Identity Provider](/authenticate/identity-providers/pass-parameters-to-idps)
-* [Re-prompt users for permissions](/authenticate/identity-providers/social-identity-providers/reprompt-permissions)
+* [Read more about the authentication flow](/docs/get-started/authentication-and-authorization-flow)
+* [Pass additional parameters to the Identity Provider](/docs/authenticate/identity-providers/pass-parameters-to-idps)
+* [Re-prompt users for permissions](/docs/authenticate/identity-providers/social-identity-providers/reprompt-permissions)

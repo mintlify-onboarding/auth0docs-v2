@@ -12,7 +12,7 @@ title: Configure Rules
 ---
 <Card title="Before you start">
 
-To configure a Tenant ACL rule, you need a [Management API access token](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the following scopes:
+To configure a Tenant ACL rule, you need a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the following scopes:
 
 * `create:network_acls`
 * `update:network_acls`
@@ -27,7 +27,7 @@ Tenant Access Control List (ACL) is an Early Access Service and currently availa
 
 By using this feature, you agree to the applicable Free Trial Service terms described in [Okta’s Master Subscription Agreement](https://www.okta.com/agreements/) and to [Okta’s Privacy Policy](https://www.okta.com/privacy-policy/).
 
-To learn more about Auth0 releases, review [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages).
+To learn more about Auth0 releases, review [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
 
 </Callout>
 
@@ -51,7 +51,7 @@ Coming soon
 
 </Callout>
 
-You can configure Tenant Access Control List (ACL) rules with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can configure Tenant Access Control List (ACL) rules with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Create a rule
 
@@ -138,7 +138,7 @@ Here’s an example of a Tenant ACL rule that blocks all incoming traffic from t
 
 ## Enable monitoring mode for a rule
 
-You can enable [monitoring mode](/secure/tenant-access-control-list) for a Tenant ACL rule with the Management API [Update access control list](https://auth0.com/docs/api/management/v2/network-acls/put-network-acls-by-id) endpoint.
+You can enable [monitoring mode](/docs/secure/tenant-access-control-list) for a Tenant ACL rule with the Management API [Update access control list](https://auth0.com/docs/api/management/v2/network-acls/put-network-acls-by-id) endpoint.
 
 Add the `log` property to the `rule.action` object and set its value to `true`.
 

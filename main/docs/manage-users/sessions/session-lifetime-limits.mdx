@@ -11,10 +11,10 @@ title: Session Lifetime Limits
 ---
 Session lifetime limits determine how long the system should retain a login session. In Auth0, two settings can be configured for session lifetime:
 
-* **Idle Session Lifetime**: Timeframe after which a user's session will expire if their <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/glossary?term=session+cookie">session cookie</Tooltip> hasn't interacted with the <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip>. Will be superseded by system limits if over 3 days for self-service plans or 100 days for enterprise plans.
+* **Idle Session Lifetime**: Timeframe after which a user's session will expire if their <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/docs/glossary?term=session+cookie">session cookie</Tooltip> hasn't interacted with the <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip>. Will be superseded by system limits if over 3 days for self-service plans or 100 days for enterprise plans.
 * **Maximum Session Lifetime**: Timeframe after which a user will be required to log in again, regardless of their activity. Will be superseded by system limits if over 30 days for self-service plans or 365 days for enterprise plans.
 
-These settings are configured on the tenant; you can configure them using either the [Auth0 Dashboard](/manage-users/sessions/configure-session-lifetime-settings) or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+These settings are configured on the tenant; you can configure them using either the [Auth0 Dashboard](/docs/manage-users/sessions/configure-session-lifetime-settings) or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 When a user performs a new standard login, it resets the login session. Here's an example:
 
@@ -35,7 +35,7 @@ There are two important things to consider when you use application-specific log
 
 After the user logout occurs Auth0 will only redirect to a URL that is defined in this list.
 
-If you redirect the user back to the application after logout and the application redirects to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> that still has an authenticated session for that user, the user will be silently logged back into your application and it may appear that logout didn’t work. In these cases, we recommend that you have a specific logout landing page in your application so you can tell the user that they successfully logged out - and, if desired, you can also warn them that they may still be logged into their identity provider.
+If you redirect the user back to the application after logout and the application redirects to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> that still has an authenticated session for that user, the user will be silently logged back into your application and it may appear that logout didn’t work. In these cases, we recommend that you have a specific logout landing page in your application so you can tell the user that they successfully logged out - and, if desired, you can also warn them that they may still be logged into their identity provider.
 
 In the case where a user has not taken any actions that cause the Auth0 session to be updated, we recommend that you warn the user to choose to explicitly continue their session. The intent of this approach allows the session to go inactive if the user is no longer present but otherwise provides a means to trigger the silent token refresh so that they can continue their session without the need to be prompted again for credentials.
 
@@ -49,8 +49,8 @@ In the case where a user has not taken any actions that cause the Auth0 session 
 
 ## Learn more
 
-* [Configure Session Lifetime Settings](/manage-users/sessions/configure-session-lifetime-settings)
-* [Update Access Token Lifetime](/secure/tokens/access-tokens/update-access-token-lifetime)
-* [Update ID Token Lifetime](/secure/tokens/id-tokens/update-id-token-lifetime)
-* [Check Login and Logout Issues](/troubleshoot/authentication-issues/check-login-and-logout-issues)
-* [Troubleshoot Invalid Token Errors](/troubleshoot/basic-issues/invalid-token-errors)
+* [Configure Session Lifetime Settings](/docs/manage-users/sessions/configure-session-lifetime-settings)
+* [Update Access Token Lifetime](/docs/secure/tokens/access-tokens/update-access-token-lifetime)
+* [Update ID Token Lifetime](/docs/secure/tokens/id-tokens/update-id-token-lifetime)
+* [Check Login and Logout Issues](/docs/troubleshoot/authentication-issues/check-login-and-logout-issues)
+* [Troubleshoot Invalid Token Errors](/docs/troubleshoot/basic-issues/invalid-token-errors)

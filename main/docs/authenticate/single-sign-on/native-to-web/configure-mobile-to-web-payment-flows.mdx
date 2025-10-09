@@ -21,12 +21,12 @@ title: 'Use Case: Configure mobile-to-web payment flows using Native to Web SSO'
 
 3. Add Auth0 Authentication to your native application using the appropriate Quickstarts for your platform:
 
-* [iOS Swift Quickstart](/quickstart/native/ios-swift/interactive)
-* [Android Quickstart](/quickstart/native/android/interactive)
+* [iOS Swift Quickstart](/docs/quickstart/native/ios-swift/interactive)
+* [Android Quickstart](/docs/quickstart/native/android/interactive)
 
-4. Add [refresh_token](/secure/tokens/refresh-tokens/get-refresh-tokens) support to your native application.
+4. Add [refresh_token](/docs/secure/tokens/refresh-tokens/get-refresh-tokens) support to your native application.
 
-5. Add Auth0 Authentication to your web application using the [React Single Page App Quickstart](/quickstart/spa/react/interactive).
+5. Add Auth0 Authentication to your web application using the [React Single Page App Quickstart](/docs/quickstart/spa/react/interactive).
 
 </Card>
 
@@ -36,7 +36,7 @@ Native to Web SSO is currently available in Early Access. To use this feature, y
 
 </Warning>
 
-[Native to Web Single Sign-On (SSO)](/authenticate/single-sign-on/native-to-web) allows you to create a seamless, secure user experience between your native application and a web-based paid membership flow. Native to Web <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> enables the native application to send the user’s authentication context to the web application using a short-lived, secure `session_transfer_token`.
+[Native to Web Single Sign-On (SSO)](/docs/authenticate/single-sign-on/native-to-web) allows you to create a seamless, secure user experience between your native application and a web-based paid membership flow. Native to Web <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> enables the native application to send the user’s authentication context to the web application using a short-lived, secure `session_transfer_token`.
 
 The sections below outline how you can add:
 
@@ -55,7 +55,7 @@ If you are using a different framework, such as Node or Express, the logic for m
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Use the [Auth0 CLI](https://github.com/auth0/auth0-cli) to configure your Auth0 tenant. You can also use the [Auth0 Management API](https://auth0.com/docs/api/management/v2); to learn more read [Configure Native to Web SSO](/authenticate/single-sign-on/native-to-web/configure-implement-native-to-web#configure-native-applications).
+Use the [Auth0 CLI](https://github.com/auth0/auth0-cli) to configure your Auth0 tenant. You can also use the [Auth0 Management API](https://auth0.com/docs/api/management/v2); to learn more read [Configure Native to Web SSO](/docs/authenticate/single-sign-on/native-to-web/configure-implement-native-to-web#configure-native-applications).
 
 </Callout>
 
@@ -91,7 +91,7 @@ How would you like to authenticate?
 
 ### Enable Native to Web SSO in your native application
 
-Native to Web SSO uses a `session_transfer_token` to establish SSO from a native to a web application. The `session_transfer_token` allows Auth0 to identify the user, the origin native application, and additional context securely. To learn more, read [Native to Web SSO](/authenticate/single-sign-on/native-to-web/configure-implement-native-to-web).
+Native to Web SSO uses a `session_transfer_token` to establish SSO from a native to a web application. The `session_transfer_token` allows Auth0 to identify the user, the origin native application, and additional context securely. To learn more, read [Native to Web SSO](/docs/authenticate/single-sign-on/native-to-web/configure-implement-native-to-web).
 
 Enable Native to Web SSO using Auth0 CLI:
 
@@ -212,7 +212,7 @@ import JoinMembership from "./views/JoinMembership";
 
 The new `/join-membership` route:
 
-* Determines if the user is authenticated. If not, it will redirect the user to the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> page.
+* Determines if the user is authenticated. If not, it will redirect the user to the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> page.
 * If a `session_transfer_token` is appended as a URL parameter, the token is passed in the authentication request.
 * Once authenticated, the user will be presented with buttons to subscribe to different membership plans.
 
@@ -394,7 +394,7 @@ struct MainView: View {
 
 This sample uses the audience `https://sample.api.com` for demonstration purposes. You can create an API with this identifier in your Auth0 tenant or replace it with your own API identifier.
 
-To learn more, read [Set Up APIs](/get-started/auth0-overview/set-up-apis).
+To learn more, read [Set Up APIs](/docs/get-started/auth0-overview/set-up-apis).
 
 </Callout>
 
@@ -519,7 +519,7 @@ private fun loginWithBrowser() {
 
 This sample uses the audience `https://sample.api.com` for demonstration purposes. You can create an API with this identifier in your Auth0 tenant or replace it with your own API identifier.
 
-To learn more, read [Set Up APIs](/get-started/auth0-overview/set-up-apis).
+To learn more, read [Set Up APIs](/docs/get-started/auth0-overview/set-up-apis).
 
 </Callout>
 
@@ -589,5 +589,5 @@ You have created a seamless experience where a mobile native application user ca
 
 ## Next Steps
 
-* Explore more configuration options for Native to Web SSO:Dive deeper into session lifetime, <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+token">refresh token</Tooltip> rotation, device binding, and cascade revocation in the [Native to Web SSO documentation](/authenticate/single-sign-on/native-to-web).
-* Customize the post-login experience with Progressive Profiling:Use Auth0’s [Progressive Profile Form](/customize/forms/configure-progressive-profile-form) to collect additional user data after login — such as plan preferences, address, or payment intent — before showing subscription options.
+* Explore more configuration options for Native to Web SSO:Dive deeper into session lifetime, <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip> rotation, device binding, and cascade revocation in the [Native to Web SSO documentation](/docs/authenticate/single-sign-on/native-to-web).
+* Customize the post-login experience with Progressive Profiling:Use Auth0’s [Progressive Profile Form](/docs/customize/forms/configure-progressive-profile-form) to collect additional user data after login — such as plan preferences, address, or payment intent — before showing subscription options.

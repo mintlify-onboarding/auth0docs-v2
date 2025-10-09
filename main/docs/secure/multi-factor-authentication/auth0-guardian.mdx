@@ -10,7 +10,7 @@ title: Auth0 Guardian
   you build your own authenticator and Guardian-like applications.
 'twitter:title': Auth0 Guardian
 ---
-Auth0 Guardian is a mobile application for iOS and Android devices that allows users to complete [multi-factor authentication (MFA)](/secure/multi-factor-authentication) with push notifications or temporary one-time passwords.
+Auth0 Guardian is a mobile application for iOS and Android devices that allows users to complete [multi-factor authentication (MFA)](/docs/secure/multi-factor-authentication) with push notifications or temporary one-time passwords.
 
 Auth Guardian can deliver push notifications to users’ enrolled devices (typically mobile phones or tablets) or generate one-time passwords directly within the app. Users can then quickly respond to these push notifications or retrieve a one-time password to complete their login.
 
@@ -18,7 +18,7 @@ Users can download the Auth0 Guardian app from the [Apple App Store](https://app
 
 ## Push Notifications
 
-In order to use push notifications, users must have either the Auth0 Guardian app or a custom app built with the Guardian SDK installed on their device. When a user attempts to authenticate, push notifications are sent to the installed app. The user must respond to the notification to complete their login, proving they both know their login information and possess the device set up for <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip>.
+In order to use push notifications, users must have either the Auth0 Guardian app or a custom app built with the Guardian SDK installed on their device. When a user attempts to authenticate, push notifications are sent to the installed app. The user must respond to the notification to complete their login, proving they both know their login information and possess the device set up for <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip>.
 
 Auth0 push notifications can be implemented using AWS Simple Notification Service (SNS) or one or more of the following direct-to-vendor services to configure vendor-specific integrations:
 
@@ -29,25 +29,25 @@ Auth0 push notifications can be implemented using AWS Simple Notification Servic
 
   + To learn more about modifying push notification content, review [Apple's documentation](https://developer.apple.com/documentation/usernotifications/modifying-content-in-newly-delivered-notifications).
 
-<Frame>![Auth0 Guardian flow diagram](/images/cdy7uua7fh8z/TdN0nXfYs0mqHpi9U3JQ9/7bf919773ed8f94c7d5be25cc345eebd/diagram.png)</Frame>
+<Frame>![Auth0 Guardian flow diagram](/docs/images/cdy7uua7fh8z/TdN0nXfYs0mqHpi9U3JQ9/7bf919773ed8f94c7d5be25cc345eebd/diagram.png)</Frame>
 
 ### Enroll in push notifications
 
 When you use Auth0 Guardian to configure push notifications, users are prompted to download the mobile app when they first sign up or log in to your application. If you use the Guardian SDK to implement push notifications in a custom app, users are not prompted to download any applications during enrollment.
 
-You can enable push notifications from the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> under [Security > Multi-factor Auth > Push Notification using Auth0 Guardian](https://manage.auth0.com/#/security/mfa/guardian).
+You can enable push notifications from the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> under [Security > Multi-factor Auth > Push Notification using Auth0 Guardian](https://manage.auth0.com/#/security/mfa/guardian).
 
-<Frame>![Auth0 Dashboard > Security > Multi-factor Auth > Push Notification using Auth0 Guardian](/images/cdy7uua7fh8z/fwjSKFNhsvObzdPDiA79N/65850980f88029cb23eef5eaef4f9b20/Auth0_Dashboard_-_Push_Notification_screen.png)</Frame>
+<Frame>![Auth0 Dashboard > Security > Multi-factor Auth > Push Notification using Auth0 Guardian](/docs/images/cdy7uua7fh8z/fwjSKFNhsvObzdPDiA79N/65850980f88029cb23eef5eaef4f9b20/Auth0_Dashboard_-_Push_Notification_screen.png)</Frame>
 
-When a user first signs up or logs in to your application, [Universal Login](/authenticate/login/auth0-universal-login) provides a QR code they can use to register the Auth0 Guardian app or custom Guardian SDK app as a secondary authentication factor. The user has a short amount of time to scan this code with the designated app to complete their enrollment.
+When a user first signs up or logs in to your application, [Universal Login](/docs/authenticate/login/auth0-universal-login) provides a QR code they can use to register the Auth0 Guardian app or custom Guardian SDK app as a secondary authentication factor. The user has a short amount of time to scan this code with the designated app to complete their enrollment.
 
 After the user enrolls, they can use push notifications as an authentication factor. Whenever the user attempts to log in to your application, they will receive a push notification on their device via the Auth0 Guardian or custom Guardian SDK app. The user must approve this request to successfully log in to your application.
 
-To learn how to reset MFA for users who have lost their devices or recovery codes, review [Reset Multi-Factor Authentication and Recovery Codes](/secure/multi-factor-authentication/reset-user-mfa). For additional assistance, review [Troubleshooting Multi-Factor Authentication Issues](/troubleshoot/authentication-issues/troubleshoot-mfa-issues).
+To learn how to reset MFA for users who have lost their devices or recovery codes, review [Reset Multi-Factor Authentication and Recovery Codes](/docs/secure/multi-factor-authentication/reset-user-mfa). For additional assistance, review [Troubleshooting Multi-Factor Authentication Issues](/docs/troubleshoot/authentication-issues/troubleshoot-mfa-issues).
 
 ## Temporary one-time passwords
 
-The Auth0 Guardian app and the Guardian SDK also support the use of temporary one-time passwords (OTPs) as secondary authentication factors. Both the app and the SDK can generate temporary OTPs that users can use to complete <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> MFA challenges.
+The Auth0 Guardian app and the Guardian SDK also support the use of temporary one-time passwords (OTPs) as secondary authentication factors. Both the app and the SDK can generate temporary OTPs that users can use to complete <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> MFA challenges.
 
 By default, the Auth0 Guardian app lists the user’s enrolled applications. After selecting an application, the corresponding OTP for that application displays. Each 6-digit OTP remains valid for 30 seconds. OTPs that are nearing expiration display in red. Upon expiration, the app immediately generates a new OTP. To avoid failed authentications, users should not use any red OTPs
 
@@ -58,7 +58,7 @@ In custom Guardian SDK apps, OTP appearance may vary.
 You can leverage OTPs in two primary ways:
 
 * As a fallback option to push notifications in the event that the Auth0 Guardian app or other custom app does not receive a push request.
-* As an MFA challenge, if you enable the [One-Time Password factor](/secure/multi-factor-authentication/multi-factor-authentication-factors) in your tenant.
+* As an MFA challenge, if you enable the [One-Time Password factor](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors) in your tenant.
 
 <AccordionGroup>
 
@@ -71,7 +71,7 @@ If a user does not receive a push notification through the Auth0 Guardian or oth
 1. A user attempts to log in to your application. They reach the Universal Login MFA prompt but do not receive a push notification.
 2. On the MFA prompt, the user selects the **Manually Enter Code** button. The user must select this option to authenticate using OTPs.
 
-   <Frame>![An example MFA prompt displaying the Manually Enter Code button](/images/cdy7uua7fh8z/7reEOLI5CWxbpRzgZY7gxg/58da830927a33545d9a576974ec3ba6e/MFA_-_Push_-_English.png)</Frame>
+   <Frame>![An example MFA prompt displaying the Manually Enter Code button](/docs/images/cdy7uua7fh8z/7reEOLI5CWxbpRzgZY7gxg/58da830927a33545d9a576974ec3ba6e/MFA_-_Push_-_English.png)</Frame>
 3. The user opens the Auth0 Guardian or custom Guardian SDK app and selects the application they are attempting to access.
 4. The user copies the OTP displayed at the bottom of the Account Detail page.
 5. The user enters the OTP in the MFA prompt to complete the challenge.
@@ -80,17 +80,17 @@ If a user does not receive a push notification through the Auth0 Guardian or oth
 
 <Accordion title="MFA challenge: Use OTPs as an MFA challenge">
 
-To allow users to authenticate with OTPs, you must enable **One-Time Password** as an [MFA factor](/secure/multi-factor-authentication/multi-factor-authentication-factors) for your tenant. Once enabled, users can complete MFA prompts using OTPs when logging in through Universal Login. To enable MFA factors, navigate to your [Auth0 Dashboard > Security > Multi-factor Auth](https://manage.auth0.com/#/security/mfa).
+To allow users to authenticate with OTPs, you must enable **One-Time Password** as an [MFA factor](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors) for your tenant. Once enabled, users can complete MFA prompts using OTPs when logging in through Universal Login. To enable MFA factors, navigate to your [Auth0 Dashboard > Security > Multi-factor Auth](https://manage.auth0.com/#/security/mfa).
 
-Users can enroll in OTP as an MFA factor when first signing up or logging in to your application. Depending on the type of device used, [Universal Login](/authenticate/login/auth0-universal-login) displays one of the following:
+Users can enroll in OTP as an MFA factor when first signing up or logging in to your application. Depending on the type of device used, [Universal Login](/docs/authenticate/login/auth0-universal-login) displays one of the following:
 
 * **For non-mobile devices**: Universal Login presents a QR code the user can scan to continue enrollment.
 
-<Frame>![An example OTP enrollment prompt displaying the Trouble Scanning? link](/images/cdy7uua7fh8z/3kbyOBiLOpJiY8vI0kUqwg/b10f58a3b3ace74de613e28517726069/OTP_Challenge_3_-_English.png)</Frame>
+<Frame>![An example OTP enrollment prompt displaying the Trouble Scanning? link](/docs/images/cdy7uua7fh8z/3kbyOBiLOpJiY8vI0kUqwg/b10f58a3b3ace74de613e28517726069/OTP_Challenge_3_-_English.png)</Frame>
 
 * **For mobile devices**: Universal Login skips the QR code and instead displays the enrollment code directly.
 
-<Frame>![The temporary one-time password enrollment screen as displayed on a mobile device. ](/images/cdy7uua7fh8z/5QvQ9FLYnVZXINFAeLkIr9/04df9be004169ac06b8d9fee456dc599/OTP_prompt_-_English.png)</Frame>
+<Frame>![The temporary one-time password enrollment screen as displayed on a mobile device. ](/docs/images/cdy7uua7fh8z/5QvQ9FLYnVZXINFAeLkIr9/04df9be004169ac06b8d9fee456dc599/OTP_prompt_-_English.png)</Frame>
 
 Through either method, users can follow the steps on screen to register either the Auth0 Guardian app or a custom Guardian SDK app as their secondary authentication factor. Typically, this process involves having the user add your application to the appropriate app and retrieving the resulting OTP for that application. The user then enters the OTP into the Universal Login prompt to finish the enrollment process.
 
@@ -493,7 +493,7 @@ To make it easier for users to distinguish between their protected applications 
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The default name assigned to your application in the Auth0 Guardian app is determined by your [tenant name](/get-started/tenant-settings/find-your-tenant-name-or-tenant-id) or the Friendly Name set in your [tenant settings](/get-started/tenant-settings). Similarly, the default logo stems from the Logo URL provided in your tenant settings.
+The default name assigned to your application in the Auth0 Guardian app is determined by your [tenant name](/docs/get-started/tenant-settings/find-your-tenant-name-or-tenant-id) or the Friendly Name set in your [tenant settings](/docs/get-started/tenant-settings). Similarly, the default logo stems from the Logo URL provided in your tenant settings.
 
 To edit your tenant settings, navigate to [Auth0 Dashboard > Settings > General](https://manage.auth0.com/dashboard/#/tenant/general).
 
@@ -510,7 +510,7 @@ To customize a protected application:
 
 ## Guardian SDKs
 
-You can [install the Guardian SDK](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/install-guardian-sdk) (available for [iOS](/secure/multi-factor-authentication/auth0-guardian/guardian-for-ios-sdk) and [Android](/secure/multi-factor-authentication/auth0-guardian/guardian-for-android-sdk)) to build your own multi-factor authentication application with complete control over the branding and look-and-feel. With the Guardian SDK, you can build your own custom mobile applications that work like Guardian or integrate some Guardian functionalities, such as receiving push notifications in your existing mobile applications. A typical scenario could be for a banking app. You can use the Guardian SDK in your existing mobile app to receive and confirm push notifications when someone performs an ATM transaction.
+You can [install the Guardian SDK](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/install-guardian-sdk) (available for [iOS](/docs/secure/multi-factor-authentication/auth0-guardian/guardian-for-ios-sdk) and [Android](/docs/secure/multi-factor-authentication/auth0-guardian/guardian-for-android-sdk)) to build your own multi-factor authentication application with complete control over the branding and look-and-feel. With the Guardian SDK, you can build your own custom mobile applications that work like Guardian or integrate some Guardian functionalities, such as receiving push notifications in your existing mobile applications. A typical scenario could be for a banking app. You can use the Guardian SDK in your existing mobile app to receive and confirm push notifications when someone performs an ATM transaction.
 
 ## Use Actions to enable Multi-Factor with Auth0 Guardian
 
@@ -564,9 +564,9 @@ api.multifactor.enable('guardian', { allowRememberBrowser: false });
 
 ## Learn more
 
-* [Install Guardian SDK](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/install-guardian-sdk)
-* [Guardian.swift iOS SDK](/secure/multi-factor-authentication/auth0-guardian/guardian-for-ios-sdk)
-* [Guardian for Android SDK](/secure/multi-factor-authentication/auth0-guardian/guardian-for-android-sdk)
-* [Configure Push Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
-* [Reset User Multi-Factor Authentication and Recovery Codes](/secure/multi-factor-authentication/reset-user-mfa)
-* [Guardian Error Code Reference](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/guardian-error-code-reference)
+* [Install Guardian SDK](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/install-guardian-sdk)
+* [Guardian.swift iOS SDK](/docs/secure/multi-factor-authentication/auth0-guardian/guardian-for-ios-sdk)
+* [Guardian for Android SDK](/docs/secure/multi-factor-authentication/auth0-guardian/guardian-for-android-sdk)
+* [Configure Push Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
+* [Reset User Multi-Factor Authentication and Recovery Codes](/docs/secure/multi-factor-authentication/reset-user-mfa)
+* [Guardian Error Code Reference](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/guardian-error-code-reference)

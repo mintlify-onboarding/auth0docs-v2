@@ -65,13 +65,13 @@ To deploy multiple instances of the AD/LDAP Connector, you'll need to:
 3. Restart the Auth0 AD/LDAP and Auth0 AD/LDAP Admin Windows Services on the new server(s).
 4. Open the troubleshooting screen (`http://localhost:8357/#troubleshoot`) and run the troubleshooting test. Make sure all tests pass.
 
-To learn more, read [Install and Configure the AD/LDAP Connector](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector) and [Import and Export AD/LDAP Connector Configurations](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs).
+To learn more, read [Install and Configure the AD/LDAP Connector](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector) and [Import and Export AD/LDAP Connector Configurations](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs).
 
 ## Verify connections
 
-In the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, go to the [Authentication > Enterprise > Active Directory / LDAP](https://manage.auth0.com/#/connections/enterprise/ad), and confirm that the connection is active.
+In the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, go to the [Authentication > Enterprise > Active Directory / LDAP](https://manage.auth0.com/#/connections/enterprise/ad), and confirm that the connection is active.
 
-If you are encountering issues getting your connection online, read [Troubleshoot AD/LDAP Connector](/troubleshoot/integration-extensibility-issues/troubleshoot-ad-ldap-connector).
+If you are encountering issues getting your connection online, read [Troubleshoot AD/LDAP Connector](/docs/troubleshoot/integration-extensibility-issues/troubleshoot-ad-ldap-connector).
 
 ## Using Kerberos or client certificates
 
@@ -82,13 +82,13 @@ If you are using a high-availability configuration with multiple connectors, Aut
 1. Use the `SERVER_URL` parameter to publish the public location where the AD/LDAP Connector will be listening to incoming requests.
 2. Map the `SERVER_URL` in the network load balancer to all internal instances of the deployed AD/LDAP Connectors. A special distribution policy is not required (for example, uniform round-robin with no sticky sessions works).
 
-To learn more, read [Configure AD/LDAP Connector Authentication with Kerberos](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos) or [Configure AD/LDAP Connector Authentication with Client Certificates](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates).
+To learn more, read [Configure AD/LDAP Connector Authentication with Kerberos](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos) or [Configure AD/LDAP Connector Authentication with Client Certificates](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates).
 
 ## Learn more
 
-* [Install and Configure AD/LDAP Connector](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
-* [Import and Export AD/LDAP Connector Configurations](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs)
-* [Configure AD/LDAP Connector Authentication with Client Certificates](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates)
-* [Configure AD/LDAP Connector Authentication with Kerberos](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos)
-* [Point AD/LDAP Connector to Auth0 Connections](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-to-auth0)
-* [Update AD/LDAP Connectors](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/update-ad-ldap-connectors)
+* [Install and Configure AD/LDAP Connector](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
+* [Import and Export AD/LDAP Connector Configurations](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs)
+* [Configure AD/LDAP Connector Authentication with Client Certificates](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates)
+* [Configure AD/LDAP Connector Authentication with Kerberos](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos)
+* [Point AD/LDAP Connector to Auth0 Connections](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-to-auth0)
+* [Update AD/LDAP Connectors](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/update-ad-ldap-connectors)

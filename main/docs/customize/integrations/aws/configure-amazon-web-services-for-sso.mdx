@@ -10,9 +10,9 @@ title: Configure Amazon Web Services for Single Sign-On
   Amazon Web Services (AWS).
 'twitter:title': Configure Amazon Web Services for Single Sign-On
 ---
-By integrating Auth0 with AWS, you'll allow your users to log in to AWS using any supported <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>.
+By integrating Auth0 with AWS, you'll allow your users to log in to AWS using any supported <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>.
 
-To configure AWS for <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip>, you need to complete the following steps:
+To configure AWS for <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip>, you need to complete the following steps:
 
 1. Create an external identity provider in AWS.
 2. Configure the SAML2 Web App addon for your Auth0 application.
@@ -30,7 +30,7 @@ To configure AWS for <Tooltip tip="Single Sign-On (SSO): Service that, after a u
 
 ## Configure SAML SSO for Auth0
 
-Configure the SAML2 Web App add-on for your application using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. To learn how, read [Configure Auth0 as Identity Provider for Amazon Web Services](/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider/configure-saml2-web-app-addon-for-aws).
+Configure the SAML2 Web App add-on for your application using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. To learn how, read [Configure Auth0 as Identity Provider for Amazon Web Services](/docs/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider/configure-saml2-web-app-addon-for-aws).
 
 ## Complete AWS identity provider configuration
 
@@ -72,13 +72,13 @@ To use the provider, you must create an IAM role using the provider in the role'
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-To see an example of defining a server-side rule that assigns a role in an advanced use case, see the [Amazon API Gateway tutorial](/customize/integrations/aws/aws-api-gateway-delegation/aws-api-gateway-delegation-5).
+To see an example of defining a server-side rule that assigns a role in an advanced use case, see the [Amazon API Gateway tutorial](/docs/customize/integrations/aws/aws-api-gateway-delegation/aws-api-gateway-delegation-5).
 
 </Callout>
 
 The **AWS roles** specified will be associated with an **IAM policy** that enforces the type of access allowed to a resource, including the AWS Consoles. To learn more about roles and policies, read [Creating IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-creatingrole.html).
 
-1. To map an AWS role to a user, create a [rule](/customize/rules):
+1. To map an AWS role to a user, create a [rule](/docs/customize/rules):
 
    ```javascript lines
    function (user, context, callback) {
@@ -181,7 +181,7 @@ function (user, context, callback) {
 
 ## Configure session expiration
 
-To extend the amount of time allowed to elapse before the AWS session expires (3600 seconds), use a custom [rule](/customize/rules). Your rule sets the [**SessionDuration** attribute](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_assertions.html) that changes the duration of the session.
+To extend the amount of time allowed to elapse before the AWS session expires (3600 seconds), use a custom [rule](/docs/customize/rules). Your rule sets the [**SessionDuration** attribute](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_assertions.html) that changes the duration of the session.
 
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
@@ -218,4 +218,4 @@ function (user, context, callback) {
 
 ## Learn more
 
-* [Configure Amazon Web Services as SAML Service Provider](/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider/configure-saml2-web-app-addon-for-aws)
+* [Configure Amazon Web Services as SAML Service Provider](/docs/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider/configure-saml2-web-app-addon-for-aws)

@@ -14,11 +14,11 @@ Your Auth0 plan or custom agreement affects whether this feature is available. T
 
 </Card>
 
-If you have your own user database, you can use it as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> in Auth0 to authenticate users. In this process, you will create the custom database connection, create database action scripts, and add configuration parameters.
+If you have your own user database, you can use it as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> in Auth0 to authenticate users. In this process, you will create the custom database connection, create database action scripts, and add configuration parameters.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Make sure that your database has the appropriate fields to store user profiles attributes, such as `id`, `nickname`, `email`, and `password`. To learn about Auth0's user profile schema, read [Normalized User Profiles](/manage-users/user-accounts/user-profiles/normalized-user-profiles). To learn more about updating user profiles, read [Update User Profiles Using Your Database](/manage-users/user-accounts/user-profiles/update-user-profiles-using-your-database).
+Make sure that your database has the appropriate fields to store user profiles attributes, such as `id`, `nickname`, `email`, and `password`. To learn about Auth0's user profile schema, read [Normalized User Profiles](/docs/manage-users/user-accounts/user-profiles/normalized-user-profiles). To learn more about updating user profiles, read [Update User Profiles Using Your Database](/docs/manage-users/user-accounts/user-profiles/update-user-profiles-using-your-database).
 
 </Callout>
 
@@ -32,7 +32,7 @@ Auth0 allows you to create connections and scripts for most of the commonly-used
 * Windows Azure SQL Database
 * Web services accessed via Basic Auth
 
-You can connect to any kind of database or web service with a properly-configured custom script. Note that input sanitization must be completed on the customer end; Auth0 does not sanitize or validate any username/password combination passed by a custom database. Custom Database scripts are subject to Auth0's [Rate Limit Policy](/troubleshoot/customer-support/operational-policies/rate-limit-policy).
+You can connect to any kind of database or web service with a properly-configured custom script. Note that input sanitization must be completed on the customer end; Auth0 does not sanitize or validate any username/password combination passed by a custom database. Custom Database scripts are subject to Auth0's [Rate Limit Policy](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy).
 
 <Card title="Network firewall">
 
@@ -78,7 +78,7 @@ If you are behind a firewall, this feature may require that you add the appropri
    * Applications
 3. Select the **Custom Database** view, and enable the **Use my own database** switch.
 
-   <Frame>![Enable Custom Database Use My Own Database Option](/images/cdy7uua7fh8z/3kgHDpBFdVWNq9XOfhsTXI/2efa43e44793b8dd69b9f9e8b54bf752/2025-02-25_10-20-20.png)</Frame>
+   <Frame>![Enable Custom Database Use My Own Database Option](/docs/images/cdy7uua7fh8z/3kgHDpBFdVWNq9XOfhsTXI/2efa43e44793b8dd69b9f9e8b54bf752/2025-02-25_10-20-20.png)</Frame>
 
 ## Create database action scripts
 
@@ -129,7 +129,7 @@ The available database action scripts are:
 </tbody>
 </table>
 
-To learn more about the scripts, read [Custom Database Action Script Templates](/authenticate/database-connections/custom-db/templates) and [Custom Database Action Script Execution Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution).
+To learn more about the scripts, read [Custom Database Action Script Templates](/docs/authenticate/database-connections/custom-db/templates) and [Custom Database Action Script Execution Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution).
 
 ### Create a Login script
 
@@ -137,7 +137,7 @@ To learn more about the scripts, read [Custom Database Action Script Templates](
 
 The `id` (or alternatively `user_id`) property in the returned user profile will be used by Auth0 to identify the user.
 
-If you are using multiple custom database connections, then `id` value must be unique across all the custom database connections to avoid user ID collisions. Our recommendation is to prefix the value of `id` with the connection name (omitting any whitespace). To learn more about user IDs, read [Identify Users](/manage-users/user-accounts/identify-users).
+If you are using multiple custom database connections, then `id` value must be unique across all the custom database connections to avoid user ID collisions. Our recommendation is to prefix the value of `id` with the connection name (omitting any whitespace). To learn more about user IDs, read [Identify Users](/docs/manage-users/user-accounts/identify-users).
 
 </Card>
 
@@ -194,13 +194,13 @@ The following steps use an example for a MySQL database login script
 3. Click **Save and Try**.
 4. In the pop-up modal, enter your email and password and click **Try**. This provides a dropdown to select from a list of available runtimes, with your current runtime on top.
 
-   <Frame>![Modal to try the login script.](/images/cdy7uua7fh8z/8uBGZhHYZwOcO19ljJNNp/ccd69d84fdbdff90dc779a6b1ea8a6fd/Try_the_Login_Script_-_English.png)</Frame>
+   <Frame>![Modal to try the login script.](/docs/images/cdy7uua7fh8z/8uBGZhHYZwOcO19ljJNNp/ccd69d84fdbdff90dc779a6b1ea8a6fd/Try_the_Login_Script_-_English.png)</Frame>
 
 Script templates are not used by Auth0 until you click **Save** or **Try**. This is true even if you only modify one script and haven't made changes to any others. You must click **Save** at least once for all the scripts to be in place.
 
 ## Custom database support for Organizations
 
-If you use custom database connections in conjunction with Organizations, you can use the `context` parameter in the script signature to make Organization details like `id`, `name`, and `metadata` available to your custom database action scripts. Organization data is passed in the context object when the associated action happens in the context of an organization; for example, when a user authenticates on an organization’s login prompt, the login action script is passed. To learn more, read [Database Connections](/authenticate/database-connections).
+If you use custom database connections in conjunction with Organizations, you can use the `context` parameter in the script signature to make Organization details like `id`, `name`, and `metadata` available to your custom database action scripts. Organization data is passed in the context object when the associated action happens in the context of an organization; for example, when a user authenticates on an organization’s login prompt, the login action script is passed. To learn more, read [Database Connections](/docs/authenticate/database-connections).
 
 ### Enable context object
 
@@ -350,6 +350,6 @@ function login (username, password, callback) {
 
 ## Learn more
 
-* [Custom Database Connection and Action Script Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts)
-* [Troubleshoot Custom Databases](/authenticate/database-connections/custom-db/error-handling)
-* [Import and Export Users](/manage-users/user-migration)
+* [Custom Database Connection and Action Script Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts)
+* [Troubleshoot Custom Databases](/docs/authenticate/database-connections/custom-db/error-handling)
+* [Import and Export Users](/docs/manage-users/user-migration)

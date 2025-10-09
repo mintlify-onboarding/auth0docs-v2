@@ -11,7 +11,7 @@ title: Configure Auth0 as SAML Service Provider
   in a SAML federation.
 'twitter:title': Configure Auth0 as SAML Service Provider
 ---
-To configure Auth0 as the service provider (SP) in a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> federation, you will need to create an Enterprise connection in Auth0 and then update your SAML <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> (IdP) with the connection's metadata.
+To configure Auth0 as the service provider (SP) in a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> federation, you will need to create an Enterprise connection in Auth0 and then update your SAML <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP) with the connection's metadata.
 
 Auth0 supports using Auth0 as the SP in configurations that conform to the SAML 1.1 or SAML 2.0 protocol.
 
@@ -43,7 +43,7 @@ You'll need to collect some configuration metadata from the IdP to create a conn
 
 ## Create SAML Enterprise connection in Auth0
 
-You can create a SAML Enterprise connection in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>:
+You can create a SAML Enterprise connection in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>:
 
 <Tabs><Tab title="Dashboard">
 
@@ -325,7 +325,7 @@ Variables can be placed into the `AuthnRequest` template using the `@@VariableNa
 </tr>
 <tr>
 <td><code>LoginHint</code></td>
-<td>The username or email of the user logging in. If you are using <a href="/authenticate/login/auth0-universal-login/identifier-first">Identifier First Authentication</a>, Auth0 can send this value to the IdP to pre-populate it in the IdP's login form.</td>
+<td>The username or email of the user logging in. If you are using <a href="/docs/authenticate/login/auth0-universal-login/identifier-first">Identifier First Authentication</a>, Auth0 can send this value to the IdP to pre-populate it in the IdP's login form.</td>
 </tr>
 <tr>
 <td><code>ProtocolBinding</code></td>
@@ -344,17 +344,17 @@ Variables can be placed into the `AuthnRequest` template using the `@@VariableNa
 
 ## Configure the IdP
 
-Go to [SAML Identity Provider Configuration Settings](/authenticate/protocols/saml/saml-identity-provider-configuration-settings) to find the metadata you'll need to provide to the IdP.
+Go to [SAML Identity Provider Configuration Settings](/docs/authenticate/protocols/saml/saml-identity-provider-configuration-settings) to find the metadata you'll need to provide to the IdP.
 
 Auth0 supports all SAML IdPs that conform to the SAML 1.1 or SAML 2.0 protocol. We have detailed instructions for configuring specific providers:
 
-* [ADFS](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-adfs-saml-connections)
-* [Okta](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-okta-as-saml-identity-provider)
-* [OneLogin](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-onelogin-as-saml-identity-provider)
-* [Ping](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-pingfederate-as-saml-identity-provider)
-* [Salesforce](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-salesforce-as-saml-identity-provider)
-* [SiteMinder](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-siteminder-as-saml-identity-provider)
-* [SSOCircle](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-ssocircle-as-saml-identity-provider)
+* [ADFS](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-adfs-saml-connections)
+* [Okta](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-okta-as-saml-identity-provider)
+* [OneLogin](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-onelogin-as-saml-identity-provider)
+* [Ping](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-pingfederate-as-saml-identity-provider)
+* [Salesforce](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-salesforce-as-saml-identity-provider)
+* [SiteMinder](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-siteminder-as-saml-identity-provider)
+* [SSOCircle](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-ssocircle-as-saml-identity-provider)
 
 ## Test connection
 
@@ -363,7 +363,7 @@ To test your connection in the Dashboard:
 1. Go to [Dashboard > Authentication > Enterprise > SAML](https://manage.auth0.com/#/connections/enterprise/samlp).
 2. Locate the connection you created, select the **...** (three dots) menu icon, and select **Try**.
 3. A Universal Login Page will appear and prompt you to enter credentials.
-4. Enter the email address of a user who exists in the IdP. If you configured [Home Realm Discovery](/authenticate/login/auth0-universal-login/identifier-first#define-home-realm-discovery-identity-providers), make sure you enter an email address that uses one of the specified domains.
+4. Enter the email address of a user who exists in the IdP. If you configured [Home Realm Discovery](/docs/authenticate/login/auth0-universal-login/identifier-first#define-home-realm-discovery-identity-providers), make sure you enter an email address that uses one of the specified domains.
 5. After you are redirected to the login screen for the IdP, log in as you normally would.
 6. You will be redirected to a page on Auth0 that displays the contents of the authentication assertion sent to Auth0 from the IdP.
 
@@ -373,11 +373,11 @@ If your connection is not working as expected, try the following steps:
 
 * Clear your browser history, cookies, and cache before each test. If you do not, the browser may not pick up the latest configuration information, or it may have stale cookies that affect execution.
 * Ensure that your browser allows cookies and has JavaScript enabled.
-* [Capture a HAR file](/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) of the transaction, and then use the [Auth0 SAML Tool](http://samltool.io/) to decode the SAML assertion and inspect its contents.
+* [Capture a HAR file](/docs/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) of the transaction, and then use the [Auth0 SAML Tool](http://samltool.io/) to decode the SAML assertion and inspect its contents.
 
 ## Learn more
 
-* [Customize SAML Assertions](/authenticate/protocols/saml/saml-configuration/customize-saml-assertions)
-* [Sign and Encrypt SAML Requests](/authenticate/protocols/saml/saml-sso-integrations/sign-and-encrypt-saml-requests)
-* [Troubleshoot SAML Configurations](/troubleshoot/authentication-issues/troubleshoot-saml-configurations)
-* [Troubleshoot SAML Errors](/troubleshoot/authentication-issues/saml-errors)
+* [Customize SAML Assertions](/docs/authenticate/protocols/saml/saml-configuration/customize-saml-assertions)
+* [Sign and Encrypt SAML Requests](/docs/authenticate/protocols/saml/saml-sso-integrations/sign-and-encrypt-saml-requests)
+* [Troubleshoot SAML Configurations](/docs/troubleshoot/authentication-issues/troubleshoot-saml-configurations)
+* [Troubleshoot SAML Errors](/docs/troubleshoot/authentication-issues/saml-errors)

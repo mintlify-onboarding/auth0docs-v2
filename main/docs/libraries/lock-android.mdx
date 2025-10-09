@@ -10,7 +10,7 @@ title: 'Lock.Android: Get Started'
   frictionless login and signup experience for your native Android apps.
 'twitter:title': 'Lock.Android: Get Started'
 ---
-Lock for Android can integrate into your native Android apps to provide a beautiful way to log your users in and to sign them up in your app. It provides support for social <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> such as Facebook, Google, or X, as well as enterprise providers such as Active Directory.
+Lock for Android can integrate into your native Android apps to provide a beautiful way to log your users in and to sign them up in your app. It provides support for social <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> such as Facebook, Google, or X, as well as enterprise providers such as Active Directory.
 
 Check out the [Lock.Android repository](https://github.com/auth0/Lock.Android) on GitHub.
 
@@ -49,7 +49,7 @@ You need to fill in a few settings in your [Auth0 Dashboard](https://manage.auth
 
 ### Callback URL
 
-Head over to your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and go to the application's settings. Add the following URL to the application's **Allowed Callback URLs**:
+Head over to your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and go to the application's settings. Add the following URL to the application's **Allowed Callback URLs**:
 
 `https://{yourDomain}/android/{yourAppPackageName}/callback`
 
@@ -59,11 +59,11 @@ Replace `{yourAppPackageName}` with your actual application's package name, avai
 
 Android applications need to be signed before they can be installed on a device. For this purpose, the Android Studio IDE the first time it runs generates a default "Android Debug Keystore" that it will use to sign development builds. This [Keystore](https://developer.android.com/studio/publish/app-signing) will probably be different for your production build, as it will be used to identify you as the developer.
 
-When using the Web Authentication feature (i.e. social connections), Lock will be set up by default to attempt to use Android App Links. This requires an additional setting in the Auth0 application's dashboard. Use our [Android Keystores and Key Hashes Guide](/android-development-keystores-hashes) to complete this step.
+When using the Web Authentication feature (i.e. social connections), Lock will be set up by default to attempt to use Android App Links. This requires an additional setting in the Auth0 application's dashboard. Use our [Android Keystores and Key Hashes Guide](/docs/android-development-keystores-hashes) to complete this step.
 
 ## Implementing Lock (Social, Database, Enterprise)
 
-The following instructions discuss implementing Classic Lock for Android. If you specifically are looking to implement <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> Lock for Android, see [Lock.Android: Passwordless](/libraries/lock-android/lock-android-passwordless).
+The following instructions discuss implementing Classic Lock for Android. If you specifically are looking to implement <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> Lock for Android, see [Lock.Android: Passwordless](/docs/libraries/lock-android/lock-android-passwordless).
 
 ### Configuring the SDK
 
@@ -107,7 +107,7 @@ In the activity where you plan to invoke Lock, create an instance of `Auth0` wit
 val account = Auth0(context)
 ```
 
-Declare an `AuthenticationCallback` implementation that will handle user authentication events. The `Credentials` object returned in successful authentication scenarios will contain the tokens that your application or API will end up consuming. See [Tokens](/secure/tokens) for more specifics.
+Declare an `AuthenticationCallback` implementation that will handle user authentication events. The `Credentials` object returned in successful authentication scenarios will contain the tokens that your application or API will end up consuming. See [Tokens](/docs/secure/tokens) for more specifics.
 
 ```kotlin lines
 private val callback = object : AuthenticationCallback() {
@@ -121,7 +121,7 @@ private val callback = object : AuthenticationCallback() {
 }
 ```
 
-Prepare a new Lock instance by using the Builder class to configure it. Provide the account details and the callback implementation declared above. Values like <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>, scope, and available connections can be configured here.
+Prepare a new Lock instance by using the Builder class to configure it. Provide the account details and the callback implementation declared above. Values like <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>, scope, and available connections can be configured here.
 
 When done, build the Lock instance. This instance is meant to be reused and must be disposed of when it is no longer needed. A good place to do this is in your activity's `onDestroy` method.
 
@@ -183,16 +183,16 @@ The scheme value must be all lowercase. A warning message will be logged if this
 
 ## Lock configuration
 
-For a full list of Lock's configuration options, check out [Lock.Android: Configuration](/libraries/lock-android/lock-android-configuration).
+For a full list of Lock's configuration options, check out [Lock.Android: Configuration](/docs/libraries/lock-android/lock-android-configuration).
 
 ## Error messages
 
-For descriptions of common error messages, check out the [Error Messages](/troubleshoot/basic-issues/check-error-messages) page. Also, if your callback receives an `AuthenticationException` you can check [source](https://github.com/auth0/Auth0.Android/blob/main/auth0/src/main/java/com/auth0/android/authentication/AuthenticationException.kt) to learn how to identify each error scenario.
+For descriptions of common error messages, check out the [Error Messages](/docs/troubleshoot/basic-issues/check-error-messages) page. Also, if your callback receives an `AuthenticationException` you can check [source](https://github.com/auth0/Auth0.Android/blob/main/auth0/src/main/java/com/auth0/android/authentication/AuthenticationException.kt) to learn how to identify each error scenario.
 
 ## Learn more
 
-* [Lock.Android: Custom Theming](/libraries/lock-android/lock-android-custom-theming)
-* [Lock.Android: Configuration](/libraries/lock-android/lock-android-configuration)
-* [Lock.Android: Custom Fields at Signup](/lock-android-custom-fields-at-signup)
-* [Lock.Android Internationalization](/customize/internationalization-and-localization/lock-android-internationalization)
-* [Logout](/authenticate/login/logout)
+* [Lock.Android: Custom Theming](/docs/libraries/lock-android/lock-android-custom-theming)
+* [Lock.Android: Configuration](/docs/libraries/lock-android/lock-android-configuration)
+* [Lock.Android: Custom Fields at Signup](/docs/lock-android-custom-fields-at-signup)
+* [Lock.Android Internationalization](/docs/customize/internationalization-and-localization/lock-android-internationalization)
+* [Logout](/docs/authenticate/login/logout)

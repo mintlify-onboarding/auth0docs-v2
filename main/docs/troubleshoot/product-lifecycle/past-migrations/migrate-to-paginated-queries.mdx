@@ -10,7 +10,7 @@ title: Migrate to Management API v2 Endpoint Paginated Queries
   Management API v2 endpoint queries.
 'twitter:title': Migrate to Management API v2 Endpoint Paginated Queries
 ---
-After **26 January 2021** (or Private Cloud version 2202), requests to <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> v2 endpoints will return a maximum of 50 items for tenants in the Public Cloud. To retrieve more items, you must include the `page` and `per_page` parameters. Beginning on **21 July 2020** (or Private Cloud version 2108), Auth0 will display tenant logs and a migration toggle to help you prepare for this change.
+After **26 January 2021** (or Private Cloud version 2202), requests to <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> v2 endpoints will return a maximum of 50 items for tenants in the Public Cloud. To retrieve more items, you must include the `page` and `per_page` parameters. Beginning on **21 July 2020** (or Private Cloud version 2108), Auth0 will display tenant logs and a migration toggle to help you prepare for this change.
 
 Affected tenants are those that meet the following criteria:
 
@@ -73,11 +73,11 @@ Deprecation notices will be recorded in your tenant logs for all requests withou
 
 ### Update extensions
 
-You may need to update from previous versions of [Auth0 Extensions](/customize/extensions) and custom extensions to the latest versions to make sure they are only performing paginated queries.
+You may need to update from previous versions of [Auth0 Extensions](/docs/customize/extensions) and custom extensions to the latest versions to make sure they are only performing paginated queries.
 
 1. Check your tenant logs for deprecation notices for clients with an ID matching an extension URL. It means you will need to update that extension.
 2. Go to [Dashboard > Extensions](https://manage.auth0.com/#/extensions), select **Installed Extensions**, and click on the extension's **Update** link if present.
 
 ### Update Deploy CLI tool
 
-If you are using the `auth0-deploy-cli` tool, you must update to version **5.3.0 or later**. To learn more, see [Deploy CLI Tool](/deploy-monitor/deploy-cli-tool).
+If you are using the `auth0-deploy-cli` tool, you must update to version **5.3.0 or later**. To learn more, see [Deploy CLI Tool](/docs/deploy-monitor/deploy-cli-tool).

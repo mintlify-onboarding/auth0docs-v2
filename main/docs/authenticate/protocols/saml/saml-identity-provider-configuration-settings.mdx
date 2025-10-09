@@ -10,17 +10,17 @@ title: SAML Identity Provider Configuration Settings
 ---
 ## Common settings
 
-These are the settings used to configure a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> (IdP).
+These are the settings used to configure a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you have configured a [Custom Domain](/customize/custom-domains), you must use your custom domain CNAME in place of the Auth0 domain. To learn more, read [Configure Features to Use Custom Domains](/customize/custom-domains/configure-features-to-use-custom-domains#configure-saml-identity-providers).
+If you have configured a [Custom Domain](/docs/customize/custom-domains), you must use your custom domain CNAME in place of the Auth0 domain. To learn more, read [Configure Features to Use Custom Domains](/docs/customize/custom-domains/configure-features-to-use-custom-domains#configure-saml-identity-providers).
 
 </Callout>
 
 ### post-back URL
 
-When using IdP-Initiated <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip>, make sure to include the connection parameter in the post-back URL:
+When using IdP-Initiated <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip>, make sure to include the connection parameter in the post-back URL:
 
 ```http wrap lines
 https://{yourDomain}/login/callback?connection={yourConnectionName}
@@ -31,7 +31,7 @@ https://{yourDomain}/login/callback?connection={yourConnectionName}
 
 
 
-If you are using the [Organizations](/manage-users/organizations) feature, you can optionally include an organization parameter containing the organization ID of the desired organization:
+If you are using the [Organizations](/docs/manage-users/organizations) feature, you can optionally include an organization parameter containing the organization ID of the desired organization:
 
 ```http wrap lines
 https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}
@@ -44,7 +44,7 @@ https://{yourDomain}/login/callback?connection={yourConnectionName}&organization
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-In order for users to successfully log-in using this method, the connection must be enabled for the Organization. Additionally, you must either configure [auto-membership](/manage-users/organizations/configure-organizations/grant-just-in-time-membership) for the enabled connection or ensure users have membership for the Organization.
+In order for users to successfully log-in using this method, the connection must be enabled for the Organization. Additionally, you must either configure [auto-membership](/docs/manage-users/organizations/configure-organizations/grant-just-in-time-membership) for the enabled connection or ensure users have membership for the Organization.
 
 </Callout>
 
@@ -61,7 +61,7 @@ urn:auth0:{yourTenant}:{yourConnectionName}
 
 
 
-You can create a custom Entity ID using the property `connection.options.entityId`. To learn more, read [Specify a Custom Entity ID](/authenticate/identity-providers/enterprise-identity-providers/saml#specify-a-custom-entity-id).
+You can create a custom Entity ID using the property `connection.options.entityId`. To learn more, read [Specify a Custom Entity ID](/docs/authenticate/identity-providers/enterprise-identity-providers/saml#specify-a-custom-entity-id).
 
 You can obtain the custom Entity ID value using the Get a Connection endpoint:
 
@@ -234,7 +234,7 @@ dataTask.resume()
 ```
 </CodeGroup>
 
-Replace the `ACCESS_TOKEN` header value, with a Management APIv2 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>.
+Replace the `ACCESS_TOKEN` header value, with a Management APIv2 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>.
 
 ### SAML Request Binding
 
@@ -305,7 +305,7 @@ Download the certificate in the format requested by the IdP.
 
 ### IdP-initiated Single Sign-on
 
-To learn about IdP-initiated SSO, read [Configure SAML IdP-Initiated Single Sign-On](/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
+To learn about IdP-initiated SSO, read [Configure SAML IdP-Initiated Single Sign-On](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
 
 ## Metadata
 
@@ -331,6 +331,6 @@ https://{yourDomain}/samlp?connection={yourConnectionName}&organization=${yourOr
 
 ## Learn more
 
-* [Locate the Connection ID or Name](/authenticate/identity-providers/locate-the-connection-id)
-* [Customize SAML Assertions](/authenticate/protocols/saml/saml-configuration/customize-saml-assertions)
-* [Troubleshoot SAML Configurations](/troubleshoot/authentication-issues/troubleshoot-saml-configurations)
+* [Locate the Connection ID or Name](/docs/authenticate/identity-providers/locate-the-connection-id)
+* [Customize SAML Assertions](/docs/authenticate/protocols/saml/saml-configuration/customize-saml-assertions)
+* [Troubleshoot SAML Configurations](/docs/troubleshoot/authentication-issues/troubleshoot-saml-configurations)

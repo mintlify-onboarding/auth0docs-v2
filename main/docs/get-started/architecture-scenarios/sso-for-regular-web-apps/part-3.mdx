@@ -14,17 +14,17 @@ The sample contains an application which uses Active Directory integration to au
 
 ## User Login
 
-Auth0 provides a Lock widget which serves as a login component for your application, meaning that you do not have to implement your own login screen. The Lock widget seamlessly integrates with all of the connections you configure inside your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+dashboard">Auth0 dashboard</Tooltip>, whether they be database, social or enterprise connections.
+Auth0 provides a Lock widget which serves as a login component for your application, meaning that you do not have to implement your own login screen. The Lock widget seamlessly integrates with all of the connections you configure inside your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+dashboard">Auth0 dashboard</Tooltip>, whether they be database, social or enterprise connections.
 
 There are a number of different ways in which you can implement a Login screen using a web application and Auth0:
 
 * **Hosted Lock**: Use an instance of the Lock widget which is hosted on the Auth0 infrastructure.
 * **Embedded Lock**: Embed the Lock widget inside a web page of your application. You have some customization options for the actual Lock widget and full control over the rest of the HTML on the page.
-* **Custom UI**: Develop a completely custom web page for the login screen. The custom HTML form will post back to your server which will, in turn, authenticate the user using the Authentication API. For more information on when to use a Custom UI, refer to [Customize Classic Login Pages with Lock or SDK](/customize/login-pages/classic-login/customize-with-lock-sdk).
+* **Custom UI**: Develop a completely custom web page for the login screen. The custom HTML form will post back to your server which will, in turn, authenticate the user using the Authentication API. For more information on when to use a Custom UI, refer to [Customize Classic Login Pages with Lock or SDK](/docs/customize/login-pages/classic-login/customize-with-lock-sdk).
 
 ### Automate Home Realm Discovery (HRD)
 
-By default, Lock will display all the connections available for login. Selecting the appropriate <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Providers">Identity Providers</Tooltip> from multiple options is called Home Realm Discovery (HRD). In our case, the options are either authenticating with Active Directory (for company employees) or using email/password for our database connection (external contractors).
+By default, Lock will display all the connections available for login. Selecting the appropriate <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Providers">Identity Providers</Tooltip> from multiple options is called Home Realm Discovery (HRD). In our case, the options are either authenticating with Active Directory (for company employees) or using email/password for our database connection (external contractors).
 
 You may however want to avoid that first step, where the user needs to choose the Identity Provider (IdP), and have the system identify it instead of asking every time. Lock offers you the following options:
 
@@ -33,7 +33,7 @@ You may however want to avoid that first step, where the user needs to choose th
   + There are multiple practical ways of getting the `connection` value. One of them is to use **vanity URLs**: for example, company employees will use `https://internal.yoursite.com`, while external contractors will use `https://external.yoursite.com`.
 * **Use email domains**: Lock can use email domains as a way of routing authentication requests. Enterprise connections in Auth0 can be mapped to `domains`. If a connection has this setup, then the password textbox gets disabled automatically when typing an email with a mapped domain. Note that you can associate multiple domains to a single connection.
 
-For additional information on this topic refer to [Select from Multiple Connection Options](/libraries/lock/selecting-from-multiple-connection-options).
+For additional information on this topic refer to [Select from Multiple Connection Options](/docs/libraries/lock/selecting-from-multiple-connection-options).
 
 ## Session Management
 
@@ -55,7 +55,7 @@ The reason why you would use the expiration of the token to determine the expira
 
 The login flow is as follows:
 
-<Frame>![undefined](/images/cdy7uua7fh8z/4bqozVk6fF4JrWRP1BJK7Y/1403eb1c0efb12552307358a26c6e7f7/login-flow.png)</Frame>
+<Frame>![undefined](/docs/images/cdy7uua7fh8z/4bqozVk6fF4JrWRP1BJK7Y/1403eb1c0efb12552307358a26c6e7f7/login-flow.png)</Frame>
 
 1. **Initiate OIDC Authentication Flow**: The user's browser will send a request to Auth0 to initiate the OIDC flow.
 2. **Set SSO Cookie**: Auth0 will set a cookie to store the user's information.
@@ -73,21 +73,21 @@ Auth0 manages its own single-sign-on session. Applications can choose to honor o
 If they do so, they are signed in without having to re-enter their credentials with the actual IDP. Even though the user didn't authenticate, the application still performs an authentication flow with Auth0 and obtains a new ID Token, which can be used to then manage the new local application session.
 </Info>
 
-**See the implementation in** [**ASP.NET Core**](/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore#configure-the-cookie-and-oidc-middleware).
+**See the implementation in** [**ASP.NET Core**](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore#configure-the-cookie-and-oidc-middleware).
 
 ## User Logout
 
 When logging the user out, you will once again need to think about the three layers of sessions which we spoke about before:
 
 * **Application Session**: You need to log out the user from your Web Application, by clearing their session.
-* **Auth0 session**: You need to log out the user from Auth0. To do this you redirect the user to `https://{yourDomain}/v2/logout`. Redirecting the user to this URL clears all <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=single+sign-on">single sign-on</Tooltip> cookies set by Auth0 for the user.
+* **Auth0 session**: You need to log out the user from Auth0. To do this you redirect the user to `https://{yourDomain}/v2/logout`. Redirecting the user to this URL clears all <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=single+sign-on">single sign-on</Tooltip> cookies set by Auth0 for the user.
 * **Identity Provider session**: Although this is not common practice, you can force the user to log out from the Identity Provider used, for example Facebook or Google. To do this add a `federated` query string parameter to the logout URL: `https://{yourDomain}/v2/logout?federated`.
 
-To redirect a user after logout, add a `returnTo` query string parameter with the target URL as the value: `https://{yourDomain}/v2/logout?returnTo=http://www.example.com`. Note, that you will need to add the `returnTo` URL as an **Allowed Logout URLs**. For more information on how to implement this refer to: [Logout](/authenticate/login/logout).
+To redirect a user after logout, add a `returnTo` query string parameter with the target URL as the value: `https://{yourDomain}/v2/logout?returnTo=http://www.example.com`. Note, that you will need to add the `returnTo` URL as an **Allowed Logout URLs**. For more information on how to implement this refer to: [Logout](/docs/authenticate/login/logout).
 
 The logout flow (not including federated logout) is as follows:
 
-<Frame>![undefined](/images/cdy7uua7fh8z/5t5iXTeGMUzyKHhqOAGRmp/d51797c6513686ea758f0613d01b55d4/logout-flow.png)</Frame>
+<Frame>![undefined](/docs/images/cdy7uua7fh8z/5t5iXTeGMUzyKHhqOAGRmp/d51797c6513686ea758f0613d01b55d4/logout-flow.png)</Frame>
 
 1. **Initiate Logout Flow**: The logout flow will be initiated from the browser, for example by the user clicking a **Logout** link. A request will be made to the web server.
 2. **Clear user’s local session**: The user's Application Session / Cookie will be cleared.
@@ -95,19 +95,19 @@ The logout flow (not including federated logout) is as follows:
 4. **Clear SSO Cookie**: Auth0 will clear the user's SSO Cookie.
 5. **Redirect to post-logout URL**: Auth0 will return a redirect response and redirect the user's browser to the `returnTo` query string parameter.
 
-**See the implementation in** [**ASP.NET Core**](/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore#implement-the-logout).
+**See the implementation in** [**ASP.NET Core**](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore#implement-the-logout).
 
 ## Access Control
 
 Authorization refers to the process of determining what actions a user can perform inside your application.
 
-You can either implement authorization directly inside your application, independently of Auth0, or use one of the available ways to retrieve the user authorization levels, put them as authorization claims inside the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> and validate these claims inside your application, once you retrieve the token, to control access.
+You can either implement authorization directly inside your application, independently of Auth0, or use one of the available ways to retrieve the user authorization levels, put them as authorization claims inside the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> and validate these claims inside your application, once you retrieve the token, to control access.
 
 There are various ways in which you can retrieve and set the user authorization claims when using Auth0:
 
-* By configuring and using the [Auth0 Authorization Extension](/customize/extensions/authorization-extension).
+* By configuring and using the [Auth0 Authorization Extension](/docs/customize/extensions/authorization-extension).
 * By using Active Directory groups. These can be used in combination with the Authorization Extension by mapping Active Directory Groups to Groups you define using the Authorization extension.
-* Add metadata to the user's profile by making use of [rules](/customize/rules).
+* Add metadata to the user's profile by making use of [rules](/docs/customize/rules).
 * By calling an external services from inside a rule.
 
 Since in our case the company has already Active Directory set up, we will enforce access control using the Authorization Extension in combination with Active Directory groups.
@@ -139,19 +139,19 @@ When you click on the link to open the extension for the first time, you will be
 
 Once on the Authorization Dashboard, navigate to Groups in the navigation menu, and create a new group called Admin.
 
-<Frame>![undefined](/images/cdy7uua7fh8z/6zOF0mCrLV2rwdpxn9JD1e/5d6e227c4a96260856afd8f94c4212d9/create-admin-group.png)</Frame>
+<Frame>![undefined](/docs/images/cdy7uua7fh8z/6zOF0mCrLV2rwdpxn9JD1e/5d6e227c4a96260856afd8f94c4212d9/create-admin-group.png)</Frame>
 
 After the group has been added you can click on the new group to go to the group management section. Go to the Group Mappings tab and add a new group mapping which will map all Active Directory users in the `Timesheet Admins` groups to the `Admin` group you just created.
 
-<Frame>![undefined](/images/cdy7uua7fh8z/RaMHHJ1G9LoO5xoz3BJnN/b01c93948b1a54b599f1eb106bd8ef26/add-group-mapping.png)</Frame>
+<Frame>![undefined](/docs/images/cdy7uua7fh8z/RaMHHJ1G9LoO5xoz3BJnN/b01c93948b1a54b599f1eb106bd8ef26/add-group-mapping.png)</Frame>
 
 Once you click **Save** you can see the new mapping listed.
 
-<Frame>![undefined](/images/cdy7uua7fh8z/1whRHGlsRhGhA6vcrsElsv/093716ca939c843729c3022c810ee6a7/view-group-mapping.png)</Frame>
+<Frame>![undefined](/docs/images/cdy7uua7fh8z/1whRHGlsRhGhA6vcrsElsv/093716ca939c843729c3022c810ee6a7/view-group-mapping.png)</Frame>
 
 With the mapping configured you only need to maintain membership to the `Timesheet Admins` group in Active Directory, and those users will be automatically mapped to the `Admin` group inside our application.
 
-For more information refer to the [Authorization Extension documentation](/customize/extensions/authorization-extension).
+For more information refer to the [Authorization Extension documentation](/docs/customize/extensions/authorization-extension).
 
 ### Enforce permissions in your application
 
@@ -176,6 +176,6 @@ In your application you will therefore need to decode the ID Token returned when
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-See the implementation in [ASP.NET Core](/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore#implement-admin-permissions).
+See the implementation in [ASP.NET Core](/docs/get-started/architecture-scenarios/sso-for-regular-web-apps/implementation-aspnetcore#implement-admin-permissions).
 
 </Callout>

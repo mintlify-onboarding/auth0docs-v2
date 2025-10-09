@@ -12,18 +12,18 @@ title: Troubleshoot Login by Auth0 WordPress Plugin
 ---
 Here are some common troubleshooting questions. If the items below do not solve your issue, then consider the following alternatives:
 
-* If you're setting up the plugin for the first time or having problems with users logging in, please read [Configure Login by Auth0](/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0).
+* If you're setting up the plugin for the first time or having problems with users logging in, please read [Configure Login by Auth0](/docs/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0).
 * If you found a bug in the plugin code, [submit an issue](https://github.com/auth0/wp-auth0/issues) or [create a pull request](https://github.com/auth0/wp-auth0/pulls) in GitHub.
 * If you have questions about how to use Auth0 or the plugin, please [post on our community site](https://community.auth0.com/) or [create a request in the plugin's WordPress support forum](https://wordpress.org/support/plugin/auth0).
 * To see additional documentation and find more answers, [visit our support site](https://support.auth0.com). Customers on a paid Auth0 plan can [submit a trouble ticket](https://support.auth0.com/tickets) for a fast response.
 
 ## I'm seeing the error message "Invalid state" that prevents me from logging in
 
-State validation is a security feature added in [version 3.6.0](https://github.com/auth0/wp-auth0/releases/tag/3.6.0). A cached callback URL usually causes this error message (see your Application settings for the callback URLs that should not be cached). To learn more, read [Troubleshoot WordPress Plugin Invalid State Errors](/customize/integrations/cms/wordpress-plugin/troubleshoot-wordpress-plugin-invalid-state-errors).
+State validation is a security feature added in [version 3.6.0](https://github.com/auth0/wp-auth0/releases/tag/3.6.0). A cached callback URL usually causes this error message (see your Application settings for the callback URLs that should not be cached). To learn more, read [Troubleshoot WordPress Plugin Invalid State Errors](/docs/customize/integrations/cms/wordpress-plugin/troubleshoot-wordpress-plugin-invalid-state-errors).
 
 ## I'm having an issue logging in or changing email/password using a custom database
 
-To learn about possible solutions, read [User Migration in Login by Auth0 WordPress Plugin](/customize/integrations/cms/wordpress-plugin/user-migration-in-login-by-auth0).
+To learn about possible solutions, read [User Migration in Login by Auth0 WordPress Plugin](/docs/customize/integrations/cms/wordpress-plugin/user-migration-in-login-by-auth0).
 
 ## I'm seeing the error message "Invalid ID token" or "Expired ID token" that prevents me from logging in
 
@@ -42,7 +42,7 @@ This would provide a 120 second leeway. You may need to adjust this depending up
 
 ## I see the error message "This account does not have an email associated..." that prevents me from logging in
 
-If you get this error, make sure you are requesting an email from each provider in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> under **Connections > Social** (expand each provider). Take into account that not all providers return email addresses for users (e.g., X). If this happens, you can always add an Email address to any logged in user through the Auth0 Dashboard (or API). See **Users > Edit**.
+If you get this error, make sure you are requesting an email from each provider in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> under **Connections > Social** (expand each provider). Take into account that not all providers return email addresses for users (e.g., X). If this happens, you can always add an Email address to any logged in user through the Auth0 Dashboard (or API). See **Users > Edit**.
 
 For Connections that don't provide an `email_verified` flag (some Enterprise connections will not include this) or to skip this validation for specific Social Connections, add the strategy for that Connection in the "Skip Strategies" field. This field is located below the **Require Verified Email** switch accessible via **wp-admin** > **Auth0** > **Settings** > **Advanced**.
 
@@ -57,17 +57,17 @@ This means that there is a user in WordPress that has the same email as the one 
 3. View the user's profile and scroll down to the bottom
 4. Click **Delete Auth0 Data** and confirm
 
-If you have 2 user accounts in Auth0 with the same email address, this error message will persist. We recommend that you [link user accounts](/manage-users/user-accounts/user-account-linking/link-user-accounts).
+If you have 2 user accounts in Auth0 with the same email address, this error message will persist. We recommend that you [link user accounts](/docs/manage-users/user-accounts/user-account-linking/link-user-accounts).
 
 ## I see the error message "Failed cross origin authentication" or "No verifier returned from client" in my browser's console logs when trying to log in
 
 Go to [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications), select your WordPress application to view its settings, and check that the **Allowed Callback URLs** and **Allowed Origins (CORS)** match your WordPress site.
 
-If you're using a Chromium-based browser, make sure you don't have third-party cookies turned off. To learn more, read [Cross-Origin Authentication](/authenticate/login/cross-origin-authentication).
+If you're using a Chromium-based browser, make sure you don't have third-party cookies turned off. To learn more, read [Cross-Origin Authentication](/docs/authenticate/login/cross-origin-authentication).
 
 ## I need to rerun the Setup Wizard, but I don't see that menu option anymore.
 
-This means that the plugin is already configured with a Domain, <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>, and <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+Secret">Client Secret</Tooltip>. Running the Setup Wizard a second time can have unpredictable results. If you're setting up WordPress for the first time and want to start over before any logins have occurred:
+This means that the plugin is already configured with a Domain, <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>, and <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+Secret">Client Secret</Tooltip>. Running the Setup Wizard a second time can have unpredictable results. If you're setting up WordPress for the first time and want to start over before any logins have occurred:
 
 1. Go to **wp-admin** > **Auth0** > **Settings** > **Basic**.
 2. Delete the Domain and Client ID. Scroll down and click **Save Changes**.
@@ -81,7 +81,7 @@ This means that the plugin is already configured with a Domain, <Tooltip tip="Cl
 
 ## How do I setup Passwordless login?
 
-<Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> login is possible any Auth0-enabled website using email or SMS. To make this work on your WordPress site:
+<Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> login is possible any Auth0-enabled website using email or SMS. To make this work on your WordPress site:
 
 1. Turn on **Passwordless Login** from the plugin settings' **Features** view and save.
 2. Go to [Auth0 Dashboard > Authentication > Passwordless](https://manage.auth0.com/#/connections/passwordless).
@@ -153,9 +153,9 @@ The shortcode will automatically redirect to the same page where the user was be
 
 The current version of the plugin does not provide a way to migrate users to Auth0 automatically, but you have a few options:
 
-* The plugin exposes two endpoints to mark your custom database connection for **import to Auth0** mode. To learn more about the endpoints, read [Configure Automatic Migration from Your Database](/manage-users/user-migration/configure-automatic-migration-from-your-database). You can [use these plugin scripts](https://github.com/auth0/wp-auth0/blob/master/lib/WP_Auth0_CustomDBLib.php) to set up your connection.
-* Export your user data to a JSON file and upload it for batch-import into Auth0. Initially, your users will have to reset their passwords when logging in using Auth0 because there is no way for Auth0 to decrypt the WordPress passwords during migration. To learn how to generate the JSON file, read [Bulk User Imports](/manage-users/user-migration/bulk-user-imports). Then you will need to upload the file using the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>'s [Import Users endpoint](https://auth0.com/docs/api/v2#!/Jobs/post_users_imports).
-* [Use this script](https://gist.github.com/glena/b31716e3c8fe48927be2) and the WordPress XML RPC endpoint to set up the migration flow using a custom database connection. To learn more about setting up the migration flow, read [Configure Automatic Migration from Your Database](/manage-users/user-migration/configure-automatic-migration-from-your-database). To learn more about the WordPress XML RPC endpoint, read [XML-RPC Support on wordpress.org](https://codex.wordpress.org/XML-RPC_Support).
+* The plugin exposes two endpoints to mark your custom database connection for **import to Auth0** mode. To learn more about the endpoints, read [Configure Automatic Migration from Your Database](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database). You can [use these plugin scripts](https://github.com/auth0/wp-auth0/blob/master/lib/WP_Auth0_CustomDBLib.php) to set up your connection.
+* Export your user data to a JSON file and upload it for batch-import into Auth0. Initially, your users will have to reset their passwords when logging in using Auth0 because there is no way for Auth0 to decrypt the WordPress passwords during migration. To learn how to generate the JSON file, read [Bulk User Imports](/docs/manage-users/user-migration/bulk-user-imports). Then you will need to upload the file using the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>'s [Import Users endpoint](https://auth0.com/docs/api/v2#!/Jobs/post_users_imports).
+* [Use this script](https://gist.github.com/glena/b31716e3c8fe48927be2) and the WordPress XML RPC endpoint to set up the migration flow using a custom database connection. To learn more about setting up the migration flow, read [Configure Automatic Migration from Your Database](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database). To learn more about the WordPress XML RPC endpoint, read [XML-RPC Support on wordpress.org](https://codex.wordpress.org/XML-RPC_Support).
 
 ## The form_title setting is ignored when I set up the dict setting
 
@@ -178,9 +178,9 @@ To change the form_title in this case, you need to add the following attribute t
 
 ## How can I modify the embedded Auth0 login form?
 
-There are many options on the **Appearance** tab of the plugin settings page that can change the look and feel of the login form that is embedded on your site (`wp-login/php` page, shortcodes, or widgets). To learn more about these options, read [Configure Login by Auth0](/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0). This will not affect the the login form on the Auth0-hosted <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> Page.
+There are many options on the **Appearance** tab of the plugin settings page that can change the look and feel of the login form that is embedded on your site (`wp-login/php` page, shortcodes, or widgets). To learn more about these options, read [Configure Login by Auth0](/docs/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0). This will not affect the the login form on the Auth0-hosted <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> Page.
 
-There is also a field called "Extra Settings" on the **Advanced** tab that accepts a valid JSON object with all the settings you want to configure. This will override any changes made on the **Appearance** tab. To see all possible configuration options, read [Lock Configuration Options](/libraries/lock/lock-configuration).
+There is also a field called "Extra Settings" on the **Advanced** tab that accepts a valid JSON object with all the settings you want to configure. This will override any changes made on the **Appearance** tab. To see all possible configuration options, read [Lock Configuration Options](/docs/libraries/lock/lock-configuration).
 
 External style sheets and JS files should be loaded in your theme using the `wp_enqueue_scripts` hook for shortcodes/widgets and the `login_enqueue_scripts` hook for `wp-login.php`. To learn more, read [`do_action( 'wp_enqueue_scripts' )` on wordpress.org](https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/) and [`do_action( 'login_enqueue_scripts' )` on wordpress.org](https://developer.wordpress.org/reference/hooks/login_enqueue_scripts/).
 
@@ -190,7 +190,7 @@ The Auth0 plugin does not handle sessions; it uses the WordPress settings. By de
 
 ## How do I implement a Refresh Token?
 
-We implemented additional parameters in the login methods used by the plugin to allow for <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip>. Use the `auth0_auth_scope` filter combined with the `auth0_user_login` action to accomplish this.
+We implemented additional parameters in the login methods used by the plugin to allow for <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip>. Use the `auth0_auth_scope` filter combined with the `auth0_user_login` action to accomplish this.
 
 ## Profile data saved in WordPress is not being synced to the Auth0 user account.
 
@@ -237,7 +237,7 @@ Everything should now be working as expected with the new plugin and updates wil
 
 ## Learn more
 
-* [Integrate with WordPress](/customize/integrations/cms/wordpress-plugin/integrate-with-wordpress)
-* [Install Login by Auth0](/customize/integrations/cms/wordpress-plugin/install-login-by-auth0)
-* [Configure Login by Auth0](/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0)
-* [Extend Login by Auth0 WordPress Plugin](/customize/integrations/cms/wordpress-plugin/extend-login-by-auth0)
+* [Integrate with WordPress](/docs/customize/integrations/cms/wordpress-plugin/integrate-with-wordpress)
+* [Install Login by Auth0](/docs/customize/integrations/cms/wordpress-plugin/install-login-by-auth0)
+* [Configure Login by Auth0](/docs/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0)
+* [Extend Login by Auth0 WordPress Plugin](/docs/customize/integrations/cms/wordpress-plugin/extend-login-by-auth0)

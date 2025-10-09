@@ -9,7 +9,7 @@ permalink: "view-signing-certificates"
 'twitter:description': "Auth0 DashboardまたはManagement APIを使用した、クライアントシークレットと署名鍵の確認方法について説明します。"
 ---
 
-<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>や<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使用すると、テナントのアプリケーションのクライアントシークレットと署名鍵を確認することができます。アプリケーションの署名鍵は、アプリケーションに送信されたIDトークン、アクセストークン、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>アサーション、および<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/ja-jp/glossary?term=ws-fed" tip="Webサービスフェデレーション（WS-Fed）: ドメイン全体でユーザーIDを管理するためのプロトコル。" cta="用語集の表示">WS-Fed</Tooltip>アサーションを署名するのに使用されます。これらの鍵は、IDプロバイダー（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>）に対するSAML要求の署名やIdPからの応答の暗号化など、接続とのやり取りを署名する鍵とは異なります。IdP接続のSAMLアサーションはデフォルトで署名されます（これは、推奨されている動作です）。詳しくは、「[SAML IDプロバイダーの構成設定](/ja-jp/authenticate/protocols/saml/saml-identity-provider-configuration-settings)」をお読みください。
+<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>や<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使用すると、テナントのアプリケーションのクライアントシークレットと署名鍵を確認することができます。アプリケーションの署名鍵は、アプリケーションに送信されたIDトークン、アクセストークン、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>アサーション、および<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=ws-fed" tip="Webサービスフェデレーション（WS-Fed）: ドメイン全体でユーザーIDを管理するためのプロトコル。" cta="用語集の表示">WS-Fed</Tooltip>アサーションを署名するのに使用されます。これらの鍵は、IDプロバイダー（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>）に対するSAML要求の署名やIdPからの応答の暗号化など、接続とのやり取りを署名する鍵とは異なります。IdP接続のSAMLアサーションはデフォルトで署名されます（これは、推奨されている動作です）。詳しくは、「[SAML IDプロバイダーの構成設定](/docs/ja-jp/authenticate/protocols/saml/saml-identity-provider-configuration-settings)」をお読みください。
 
 ## Dashboardを使用する
 
@@ -17,7 +17,7 @@ permalink: "view-signing-certificates"
 
 1. [［Dashboard］ > ［Settings（設定）］ > ［Signing Keys（署名鍵）］](https://manage.auth0.com/#/tenant/signing_keys)に移動します。
 
-   <Frame>![Dashboard テナントの設定 署名鍵タブ](/images/ja-jp/cdy7uua7fh8z/7r8t3EGctFmvkCgPrU0i2R/502f133ec9528c3bc8b73fa49a159d8a/Tenant_Settings_-_Signing_Keys.png)</Frame>
+   <Frame>![Dashboard テナントの設定 署名鍵タブ](/docs/images/ja-jp/cdy7uua7fh8z/7r8t3EGctFmvkCgPrU0i2R/502f133ec9528c3bc8b73fa49a159d8a/Tenant_Settings_-_Signing_Keys.png)</Frame>
 
 2. **［Rotation Settings（ローテーション設定）］ ** セクションから、**［List of Valid Keys（有効な鍵のリスト）］** と **［List of Revoked Keys（取り消された鍵のリスト）］** を見つけます。
 
@@ -34,14 +34,14 @@ permalink: "view-signing-certificates"
 2. **［Settings（設定）］** タブの下までスクロールし、**［Advanced Settings（高度な設定）］** を選択します。
 3. **［Certificates（証明書）］** タブに移動し、**［Signing Certificate（署名証明書）］** フィールドを見つけてください。
 
-   <Frame>![Dashboard - アプリケーション - 高度な設定 - 証明書タブ](/images/ja-jp/cdy7uua7fh8z/5eB167clrfOiBEtyrMOtkn/421d091708adf74f5ba9b8a450fb824c/Applications_-_Advanced_-_Certificates.png)</Frame>
+   <Frame>![Dashboard - アプリケーション - 高度な設定 - 証明書タブ](/docs/images/ja-jp/cdy7uua7fh8z/5eB167clrfOiBEtyrMOtkn/421d091708adf74f5ba9b8a450fb824c/Applications_-_Advanced_-_Certificates.png)</Frame>
 
 #### 署名アルゴリズムにHS256を使用している場合
 
 1. [［Dashboard］ > ［Applications（アプリケーション）］](https://manage.auth0.com/#/applications)に移動し、アプリケーションの名前を選択すると表示されます。
 2. **［Basic Information（基本情報）］** の下に、クライアントシークレットに対する **［Client Secret（クライアントシークレット）］** フィールドを見つけてください。
 
-   <Frame>![Dashboard アプリケーション アプリケーション設定タブ 基本情報](/images/ja-jp/cdy7uua7fh8z/2GPUw7BODYuYYH3658Upz3/e7a6df376f8bd58c2bec78ebb28d5dcd/App_Settings_-_Basic_Info.png)</Frame>
+   <Frame>![Dashboard アプリケーション アプリケーション設定タブ 基本情報](/docs/images/ja-jp/cdy7uua7fh8z/2GPUw7BODYuYYH3658Upz3/e7a6df376f8bd58c2bec78ebb28d5dcd/App_Settings_-_Basic_Info.png)</Frame>
 
 ## Management APIを使用する
 
@@ -425,7 +425,7 @@ dataTask.resume()
 
 ## もっと詳しく
 
-* [署名鍵を取り消す](/ja-jp/get-started/tenant-settings/signing-keys/revoke-signing-keys)
-* [署名鍵をローテーションする](/ja-jp/get-started/tenant-settings/signing-keys/rotate-signing-keys)
-* [署名アルゴリズム](/ja-jp/get-started/applications/signing-algorithms)
-* [アプリケーションの署名アルゴリズムを変更する](/ja-jp/get-started/applications/change-application-signing-algorithms)
+* [署名鍵を取り消す](/docs/ja-jp/get-started/tenant-settings/signing-keys/revoke-signing-keys)
+* [署名鍵をローテーションする](/docs/ja-jp/get-started/tenant-settings/signing-keys/rotate-signing-keys)
+* [署名アルゴリズム](/docs/ja-jp/get-started/applications/signing-algorithms)
+* [アプリケーションの署名アルゴリズムを変更する](/docs/ja-jp/get-started/applications/change-application-signing-algorithms)

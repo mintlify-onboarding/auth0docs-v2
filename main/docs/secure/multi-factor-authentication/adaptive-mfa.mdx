@@ -17,7 +17,7 @@ To use Adaptive MFA, you must have an Enterprise Plan with the Adaptive MFA addo
 
 </Callout>
 
-<Tooltip tip="Adaptive Multi-factor Authentication: Multi-factor authentication (MFA) that is only triggered for users when an attempted login is determined to be a low confidence login." cta="View Glossary" href="/glossary?term=Adaptive+MFA">Adaptive MFA</Tooltip> is a flexible, extensible <Tooltip tip="Adaptive Multi-factor Authentication: Multi-factor authentication (MFA) that is only triggered for users when an attempted login is determined to be a low confidence login." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> policy that can help you protect your tenant from <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=bad+actors">bad actors</Tooltip> without increasing friction for real users. It assesses potential risk during every login transaction, and then prompts the user for additional verification if appropriate.
+<Tooltip tip="Adaptive Multi-factor Authentication: Multi-factor authentication (MFA) that is only triggered for users when an attempted login is determined to be a low confidence login." cta="View Glossary" href="/docs/glossary?term=Adaptive+MFA">Adaptive MFA</Tooltip> is a flexible, extensible <Tooltip tip="Adaptive Multi-factor Authentication: Multi-factor authentication (MFA) that is only triggered for users when an attempted login is determined to be a low confidence login." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> policy that can help you protect your tenant from <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=bad+actors">bad actors</Tooltip> without increasing friction for real users. It assesses potential risk during every login transaction, and then prompts the user for additional verification if appropriate.
 
 ## How it works
 
@@ -49,7 +49,7 @@ During a login transaction, Adaptive MFA calculates an overall confidence score 
 <tr>
 <td>Overall Risk Score</td>
 <td>A combination of all 3 factors above.</td>
-<td>Auth0 uses all 3 scores to assign an overall score. Use <a href="/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa">Actions</a> if you want to implement your own business logic.</td>
+<td>Auth0 uses all 3 scores to assign an overall score. Use <a href="/docs/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa">Actions</a> if you want to implement your own business logic.</td>
 </tr>
 </tbody>
 </table>
@@ -58,7 +58,7 @@ When Adaptive MFA determines the overall confidence score is low (that the login
 
 Adaptive MFA includes a comprehensive security flow that ensures the authenticity of users:
 
-<Frame>![Auth0 Login Adaptive multi-factor authentication flow diagram](/images/cdy7uua7fh8z/6NpeGW8jtQIma1jTVydW7U/d0f80c28226abfe10863f34d30f1a0be/Adaptive_MFA_Flow.png)</Frame>
+<Frame>![Auth0 Login Adaptive multi-factor authentication flow diagram](/docs/images/cdy7uua7fh8z/6NpeGW8jtQIma1jTVydW7U/d0f80c28226abfe10863f34d30f1a0be/Adaptive_MFA_Flow.png)</Frame>
 
 Adaptive MFA ignores any and all existing MFA sessions (for example, a user selected **Remember this browser** during a previous MFA flow), and does not allow users to bypass MFA challenges.
 
@@ -66,13 +66,13 @@ Adaptive MFA ignores any and all existing MFA sessions (for example, a user sele
 
 You can use Actions to customize the MFA flow and provide the best experience for your users.
 
-To learn more about risk assessments, confidence scores, and customization options, read [Customize Adaptive MFA](/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa).
+To learn more about risk assessments, confidence scores, and customization options, read [Customize Adaptive MFA](/docs/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa).
 
 ## Support and limitations
 
 ### Authorization flows
 
-Adaptive MFA is supported by all authentication and <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/glossary?term=authorization+flows">authorization flows</Tooltip> that start with the end user. To learn more about the different flows and protocols, read [Authentication and Authorization Flows](/get-started/authentication-and-authorization-flow) and [Protocols](/authenticate/protocols).
+Adaptive MFA is supported by all authentication and <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=authorization+flows">authorization flows</Tooltip> that start with the end user. To learn more about the different flows and protocols, read [Authentication and Authorization Flows](/docs/get-started/authentication-and-authorization-flow) and [Protocols](/docs/authenticate/protocols).
 
 <table class="table"><thead>
 <tr>
@@ -140,7 +140,7 @@ Adaptive MFA is supported by all authentication and <Tooltip tip="Authorization 
 </tbody>
 </table>
 
-\*Adaptive MFA is not supported for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=IdP">IdP</Tooltip>-initiated flows, but you can simulate the flow with OIDC applications. To learn more, read [Configure IdP-Initiated SAML Sign-on to OIDC Apps](/authenticate/protocols/saml/saml-sso-integrations/configure-idp-initiated-saml-sign-on-to-oidc-apps).
+\*Adaptive MFA is not supported for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=IdP">IdP</Tooltip>-initiated flows, but you can simulate the flow with OIDC applications. To learn more, read [Configure IdP-Initiated SAML Sign-on to OIDC Apps](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-idp-initiated-saml-sign-on-to-oidc-apps).
 
 ### Social connections
 
@@ -206,6 +206,6 @@ The following table lists Auth0 implementations and their functionality with Ada
 
 ## Learn more
 
-* [Enable Adaptive MFA](/secure/multi-factor-authentication/adaptive-mfa/enable-adaptive-mfa)
-* [Customize Adaptive MFA](/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa)
-* [Adaptive MFA Log Events](/secure/multi-factor-authentication/adaptive-mfa/adaptive-mfa-log-events)
+* [Enable Adaptive MFA](/docs/secure/multi-factor-authentication/adaptive-mfa/enable-adaptive-mfa)
+* [Customize Adaptive MFA](/docs/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa)
+* [Adaptive MFA Log Events](/docs/secure/multi-factor-authentication/adaptive-mfa/adaptive-mfa-log-events)

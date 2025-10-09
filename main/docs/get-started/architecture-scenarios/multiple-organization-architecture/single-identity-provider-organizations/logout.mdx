@@ -10,13 +10,13 @@ title: 'Single Identity Provider: Logout'
   architectures.
 'twitter:title': 'Single Identity Provider: Logout'
 ---
-Terminating an authenticated session when it's no longer needed, otherwise known as Logout, is a good practice when it comes to security hygiene. Providing logout capability helps mitigate a number of potential security issues, including the likelihood that unauthorized parties can "take over" a session. In our architecture scenarios, we provide general purpose guidance on [B2B Logout](/get-started/architecture-scenarios/business-to-business/logout), which we recommend reviewing alongside the guidance provided here. For this scenario, Logout is almost identical to logout in any other system, so it will have the same level of complexity as described in our standard documentation.
+Terminating an authenticated session when it's no longer needed, otherwise known as Logout, is a good practice when it comes to security hygiene. Providing logout capability helps mitigate a number of potential security issues, including the likelihood that unauthorized parties can "take over" a session. In our architecture scenarios, we provide general purpose guidance on [B2B Logout](/docs/get-started/architecture-scenarios/business-to-business/logout), which we recommend reviewing alongside the guidance provided here. For this scenario, Logout is almost identical to logout in any other system, so it will have the same level of complexity as described in our standard documentation.
 
 ## Database Connection
 
 Using our Hoekstra & Associates example, the following diagram illustrates the flow typically encountered when dealing with a user authenticated via an Auth0 Database Connection. Let’s walk through this flow to see what occurs; note that most of the workflow described will typically be handled by using the relevant Auth0 SDK or library associated with your technology stack:
 
-<Frame>![Architecture Scenarios - MOA - Isolated Users, Shared Apps, Logout Flow](/images/cdy7uua7fh8z/5fQIKm5Izpy4zKw7ZsZoAE/e3661e2fa3e5bcd2258cfb6ef895f161/Isolated_Users__Shared_Apps__Logout_Flow__1_.png)</Frame>
+<Frame>![Architecture Scenarios - MOA - Isolated Users, Shared Apps, Logout Flow](/docs/images/cdy7uua7fh8z/5fQIKm5Izpy4zKw7ZsZoAE/e3661e2fa3e5bcd2258cfb6ef895f161/Isolated_Users__Shared_Apps__Logout_Flow__1_.png)</Frame>
 
 1. Jennifer clicks `logout`.
 2. Hoekstra & Associates' Instance of Travel0 Corporate Booking redirects the browser to the Travel0 Auth0 Tenant at https://auth.travel0.net with the following parameters:
@@ -28,7 +28,7 @@ Using our Hoekstra & Associates example, the following diagram illustrates the f
 
       **Best Practice**
 
-      Define Applications independently in Auth0 to make it easier to configure the `returnTo` URL where the corresponding `client_id` is used to provide correct validation of the supplied URL. To learn more, see [Provisioning](/get-started/architecture-scenarios/multiple-organization-architecture/single-identity-provider-organizations/provisioning).
+      Define Applications independently in Auth0 to make it easier to configure the `returnTo` URL where the corresponding `client_id` is used to provide correct validation of the supplied URL. To learn more, see [Provisioning](/docs/get-started/architecture-scenarios/multiple-organization-architecture/single-identity-provider-organizations/provisioning).
 
       </Callout>
 3. The Travel0 Auth0 Tenant terminates the Auth0 session established on behalf of the user, removing any SSO information, and redirects the browser to the specified `returnTo` URL.
@@ -44,11 +44,11 @@ If you do not wish to remove the user’s SSO session with Auth0, then the appli
 
 ## Enterprise Connection
 
-For this scenario, implementing Logout can be a little more complex than it is when using a Database Connection. You still have the option to either logout from only the application or to have logout from the application result in logout from the Auth0 Tenant, too. However, you may also have the option of allowing logout from the organization’s <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP), which most applications avoid, especially if users have access to other corporate applications to which they may need to stay logged in. Avoiding this, however, may result in users who subsequently click the `login` button being authenticated automatically without interactively providing first-factor credentials. Such functionality may make for an unexpected user experience, so you should consider communicating this to the user.
+For this scenario, implementing Logout can be a little more complex than it is when using a Database Connection. You still have the option to either logout from only the application or to have logout from the application result in logout from the Auth0 Tenant, too. However, you may also have the option of allowing logout from the organization’s <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP), which most applications avoid, especially if users have access to other corporate applications to which they may need to stay logged in. Avoiding this, however, may result in users who subsequently click the `login` button being authenticated automatically without interactively providing first-factor credentials. Such functionality may make for an unexpected user experience, so you should consider communicating this to the user.
 
 Using our MetaHexa Bank example, let's see how this Logout implementation might flow with a user authenticated via an Enterprise Connection to MetaHexa Bank; again, most of the workflow described will typically be handled by using the relevant Auth0 SDK or library associated with your technology stack:
 
-<Frame>![Architecture Scenarios - MOA - Isolated Users, Shared Apps, Enterprise Logout Flow](/images/cdy7uua7fh8z/36ulIzcfP3GIymWql7SDW2/b350f739f26644364400330fce0a604c/Isolated_Users__Shared_Apps__Enterprise_Logout_Flow__1_.png)</Frame>
+<Frame>![Architecture Scenarios - MOA - Isolated Users, Shared Apps, Enterprise Logout Flow](/docs/images/cdy7uua7fh8z/36ulIzcfP3GIymWql7SDW2/b350f739f26644364400330fce0a604c/Isolated_Users__Shared_Apps__Enterprise_Logout_Flow__1_.png)</Frame>
 
 1. Amintha clicks `logout`.
 2. MetaHexa Bank's Instance of Travel0 Corporate Booking redirects the browser to the Travel0 Auth0 Tenant at https://auth.travel0.net with the following parameters:
@@ -61,7 +61,7 @@ Using our MetaHexa Bank example, let's see how this Logout implementation might 
 
       **Best Practice**
 
-      Define Applications independently in Auth0 to make it easier to configure the `returnTo` URL where the corresponding `client_id` is used to provide correct validation of the supplied URL. To learn more, see [Provisioning](/get-started/architecture-scenarios/multiple-organization-architecture/single-identity-provider-organizations/provisioning).
+      Define Applications independently in Auth0 to make it easier to configure the `returnTo` URL where the corresponding `client_id` is used to provide correct validation of the supplied URL. To learn more, see [Provisioning](/docs/get-started/architecture-scenarios/multiple-organization-architecture/single-identity-provider-organizations/provisioning).
 
       </Callout>
 

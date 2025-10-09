@@ -20,13 +20,13 @@ This message indicates that the application doesn't have an active connection as
 2. Click **SAML**.
 3. Click on the connection you want to check.
 4. Click the **Applications** tab.
-5. Enable at least one application (if you don't see any in the list, you will need to [create an application](/get-started/applications) before proceeding).
+5. Enable at least one application (if you don't see any in the list, you will need to [create an application](/docs/get-started/applications) before proceeding).
 
 ## IdP-Initiated Default App Not Configured
 
 ### Cause
 
-This error appears if you haven't provided the necessary information to support <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=IdP">IdP</Tooltip>-initiated login flows.
+This error appears if you haven't provided the necessary information to support <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=IdP">IdP</Tooltip>-initiated login flows.
 
 ### Solution
 
@@ -60,7 +60,7 @@ Work with the identity provider to ensure that it returns the `RelayState` param
 
 ## Audience is Invalid
 
-This error occurs if the value of the `audience` element from the identity provider's <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> response doesn't match the value expected by Auth0. Auth0 expects the value to be the Entity ID for the connection.
+This error occurs if the value of the `audience` element from the identity provider's <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> response doesn't match the value expected by Auth0. Auth0 expects the value to be the Entity ID for the connection.
 
 ### Solution
 
@@ -71,7 +71,7 @@ This error occurs if the value of the `audience` element from the identity provi
 
 ## Incorrect protocol specified
 
-There is an incorrect response protocol on the **IdP-Initiated** tab. The response protocol is the one used between Auth0 and the Application (not the remote identity provider). For example, if you set this value to **SAML** when your application expects **<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect** or **<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=WS-Fed">WS-Fed</Tooltip>** results in errors due to the incorrect configuration.
+There is an incorrect response protocol on the **IdP-Initiated** tab. The response protocol is the one used between Auth0 and the Application (not the remote identity provider). For example, if you set this value to **SAML** when your application expects **<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect** or **<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=WS-Fed">WS-Fed</Tooltip>** results in errors due to the incorrect configuration.
 
 ### Solution
 

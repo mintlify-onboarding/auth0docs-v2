@@ -10,11 +10,11 @@ title: Add Bot Detection to Native Applications
   application that use Auth0.Swift, Auth0.Android, Lock.Swift, and Lock.Android.
 'twitter:title': Add Bot Detection to Native Applications
 ---
-You can add [Bot Detection](/secure/attack-protection/bot-detection) to your native applications with little to no additional configuration depending on the SDK and authentication flow you are using.
+You can add [Bot Detection](/docs/secure/attack-protection/bot-detection) to your native applications with little to no additional configuration depending on the SDK and authentication flow you are using.
 
 ## Auth0.swift and Auth0.Android
 
-If you’re using <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip>, <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Bot+Detection">Bot Detection</Tooltip> is supported automatically by the following SDK versions:
+If you’re using <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip>, <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Bot+Detection">Bot Detection</Tooltip> is supported automatically by the following SDK versions:
 
 * `Auth0.swift` version 1.28.0+
 * `Auth0.Android` version 1.25.0+
@@ -30,7 +30,7 @@ If your application performs database login/signup through the [Authentication A
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-This verification step is web-based, so you need to use [Universal Login](/authenticate/login/auth0-universal-login) to complete it.
+This verification step is web-based, so you need to use [Universal Login](/docs/authenticate/login/auth0-universal-login) to complete it.
 
 </Callout>
 
@@ -68,7 +68,7 @@ Auth0
 
 
 
-In the case of signup, you can add [an additional parameter](/authenticate/login/auth0-universal-login) to make the user land directly on the signup page:
+In the case of signup, you can add [an additional parameter](/docs/authenticate/login/auth0-universal-login) to make the user land directly on the signup page:
 
 `.parameters(["login_hint": email, "screen_hint": "signup"])`
 
@@ -80,7 +80,7 @@ If your application performs database login/signup through the Authentication AP
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-This verification step is web-based, so you need to use [Universal Login](/authenticate/login/auth0-universal-login) to complete it.
+This verification step is web-based, so you need to use [Universal Login](/docs/authenticate/login/auth0-universal-login) to complete it.
 
 </Callout>
 
@@ -134,7 +134,7 @@ authentication.login(email, password, realm)
 
 
 
-In the case of signup, you can add [an additional parameter](/authenticate/login/auth0-universal-login) to make the user land directly on the signup page:
+In the case of signup, you can add [an additional parameter](/docs/authenticate/login/auth0-universal-login) to make the user land directly on the signup page:
 
 `params.put("screen_hint", "signup");`
 
@@ -160,4 +160,4 @@ If you’re using the Authentication API directly, Bot Detection is supported, b
 
 ## Learn more
 
-* [Add Bot Detection to Custom Login Pages](/secure/attack-protection/bot-detection/bot-detection-custom-login-pages)
+* [Add Bot Detection to Custom Login Pages](/docs/secure/attack-protection/bot-detection/bot-detection-custom-login-pages)

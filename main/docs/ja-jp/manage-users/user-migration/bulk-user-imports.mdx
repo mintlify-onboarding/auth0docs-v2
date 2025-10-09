@@ -9,7 +9,7 @@ permalink: "bulk-user-imports"
 'twitter:description': "Management APIを使用して一括ユーザーインポートを行う方法について説明します。"
 ---
 
-ユーザーデータを一括してAuth0にインポートするには、[ユーザーインポートジョブ作成](/ja-jp/api/management/v2#!/Jobs/post_users_imports)エンドポイントを使用します。一括インポートは、ユーザーを既存のデータベースやサービスからAuth0に移行するのに便利です。
+ユーザーデータを一括してAuth0にインポートするには、[ユーザーインポートジョブ作成](/docs/ja-jp/api/management/v2#!/Jobs/post_users_imports)エンドポイントを使用します。一括インポートは、ユーザーを既存のデータベースやサービスからAuth0に移行するのに便利です。
 
 <Warning>
 
@@ -23,8 +23,8 @@ permalink: "bulk-user-imports"
 
 * データベース接続をユーザーのインポートに構成して、少なくとも1つのアプリケーションに有効化します。
 * パスワードをインポートする場合には、対応しているアルゴリズムの1つを使ってパスワードがハッシュ化されていることを確認します。ユーザーのパスワードが非対応のアルゴリズムでハッシュ化されている場合には、一括インポート後に初回のログインでユーザーがパスワードをリセットする必要があります。
-* <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>の登録をインポートする場合には、対応している`email`、`phone`または`totp`のタイプであることを確認します。
-* ジョブエンドポイントの要求に、[Management APIトークンを取得](/ja-jp/secure/tokens/access-tokens/management-api-access-tokens)します。
+* <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>の登録をインポートする場合には、対応している`email`、`phone`または`totp`のタイプであることを確認します。
+* ジョブエンドポイントの要求に、[Management APIトークンを取得](/docs/ja-jp/secure/tokens/access-tokens/management-api-access-tokens)します。
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -36,9 +36,9 @@ Auth0テナントからエクスポートしたファイルを使用する場合
 
 ## ユーザーのJSONファイルを作成する
 
-Auth0にインポートしたいユーザーデータを含むJSONファイルを作成します。ユーザーデータをJSONファイルにエクスポートする方法は、既存のユーザーデータベースによって異なります。<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>のエンドポイントはJSONファイルを期待します。そのため、`fs.readFileSync`ではなく、`fs.createReadStream`を使用する必要があります。エンドポイントは、JSONファイルではなく、パイプで連結された読み出しストリームを期待します。
+Auth0にインポートしたいユーザーデータを含むJSONファイルを作成します。ユーザーデータをJSONファイルにエクスポートする方法は、既存のユーザーデータベースによって異なります。<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>のエンドポイントはJSONファイルを期待します。そのため、`fs.readFileSync`ではなく、`fs.createReadStream`を使用する必要があります。エンドポイントは、JSONファイルではなく、パイプで連結された読み出しストリームを期待します。
 
-JSONファイルのスキーマと例については、「[一括インポートのデータベーススキーマと例](/ja-jp/manage-users/user-migration/bulk-user-import-database-schema-and-examples)」をお読みください。
+JSONファイルのスキーマと例については、「[一括インポートのデータベーススキーマと例](/docs/ja-jp/manage-users/user-migration/bulk-user-import-database-schema-and-examples)」をお読みください。
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -48,7 +48,7 @@ JSONファイルのスキーマと例については、「[一括インポート
 
 ## 一括ユーザーインポートを要求する
 
-一括ユーザーインポートジョブを始めるには、`POST`要求を[一括ユーザーインポートジョブ作成](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports)エンドポイントに対して行います。必ず、`MGMT_API_ACCESS_TOKEN`、`USERS_IMPORT_FILE.json`、`CONNECTION_ID`、および`EXTERNAL_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークン、ユーザーのJSONファイル、データベース[接続ID](/ja-jp/authenticate/identity-providers/locate-the-connection-id)と外部IDに置き換えます。
+一括ユーザーインポートジョブを始めるには、`POST`要求を[一括ユーザーインポートジョブ作成](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports)エンドポイントに対して行います。必ず、`MGMT_API_ACCESS_TOKEN`、`USERS_IMPORT_FILE.json`、`CONNECTION_ID`、および`EXTERNAL_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークン、ユーザーのJSONファイル、データベース[接続ID](/docs/ja-jp/authenticate/identity-providers/locate-the-connection-id)と外部IDに置き換えます。
 
 <CodeGroup>
 ```bash cURL lines
@@ -626,7 +626,7 @@ dataTask.resume()
 
 </Warning>
 
-ユーザーインポートジョブにエラーがある場合には、`GET`要求を[ジョブエラー詳細取得](/ja-jp/api/management/v2#!/Jobs/get_errors)エンドポイントに行って、エラー詳細を取得することができます。必ず、`MGMT_API_ACCESS_TOKEN`および`JOB_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークンとユーザーインポートジョブIDに置き換えます。
+ユーザーインポートジョブにエラーがある場合には、`GET`要求を[ジョブエラー詳細取得](/docs/ja-jp/api/management/v2#!/Jobs/get_errors)エンドポイントに行って、エラー詳細を取得することができます。必ず、`MGMT_API_ACCESS_TOKEN`および`JOB_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークンとユーザーインポートジョブIDに置き換えます。
 
 <CodeGroup>
 ```bash cURL lines
@@ -863,7 +863,7 @@ dataTask.resume()
 
 ## もっと詳しく
 
-* [データベースからの自動移行を構成する](/ja-jp/manage-users/user-migration/configure-automatic-migration-from-your-database)
-* [ユーザーのインポート/エクスポート拡張機能](/ja-jp/manage-users/user-migration/user-import-export-extension)
-* [一括ユーザーインポートのデータベーススキーマと例](/ja-jp/manage-users/user-migration/bulk-user-import-database-schema-and-examples)
-* [ユーザー移行のシナリオ](/ja-jp/manage-users/user-migration/user-migration-scenarios)
+* [データベースからの自動移行を構成する](/docs/ja-jp/manage-users/user-migration/configure-automatic-migration-from-your-database)
+* [ユーザーのインポート/エクスポート拡張機能](/docs/ja-jp/manage-users/user-migration/user-import-export-extension)
+* [一括ユーザーインポートのデータベーススキーマと例](/docs/ja-jp/manage-users/user-migration/bulk-user-import-database-schema-and-examples)
+* [ユーザー移行のシナリオ](/docs/ja-jp/manage-users/user-migration/user-migration-scenarios)

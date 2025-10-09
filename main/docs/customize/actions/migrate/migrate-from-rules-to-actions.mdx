@@ -14,7 +14,7 @@ When converting existing Rules to Actions, you should associate the new Action w
 
 ## Plan your migration
 
-Post-Login Actions run after existing Rules, so you can either convert Rules one at a time in the Dashboard or all at once using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+Post-Login Actions run after existing Rules, so you can either convert Rules one at a time in the Dashboard or all at once using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 You will need to convert code, and then activate the Action and deactivate the Rule. Activating the Action and deactivating the Rule can be done quickly in succession, but depending on the order, there might be a short period of time where either both or neither are running.
 
@@ -26,8 +26,8 @@ Because of this, we recommend migrating your pipeline step by step: convert piec
 * Use flags in user metadata to avoid duplicating expensive or one-time operations.
 * Start at the end of your Rules pipeline and work backwards; because active Rules run before deployed Actions, you can keep some logic in Rules as you build and test other logic in Actions.
 * Make sure to run changes at a time when impact and traffic will be lowest.
-* Consider temporarily [customizing your login page](/customize) to halt logins if the cutover could cause invalid logins or gaps in protection.
-* Consider using the [Auth0 Deploy CLI](/deploy-monitor/deploy-cli-tool) to script, test, and quickly implement the migration all at once or iteratively.
+* Consider temporarily [customizing your login page](/docs/customize) to halt logins if the cutover could cause invalid logins or gaps in protection.
+* Consider using the [Auth0 Deploy CLI](/docs/deploy-monitor/deploy-cli-tool) to script, test, and quickly implement the migration all at once or iteratively.
 
 </Card>
 
@@ -35,9 +35,9 @@ Because of this, we recommend migrating your pipeline step by step: convert piec
 
 While Actions can handle the vast majority of things that Rules can, you should be aware of a few limitations before you start your migration. (Remember: you can have both Rules and Actions running as you migrate.)
 
-* Actions are not provided with [an access token for the Management API](/customize/rules/use-management-api) or [access to the global `auth0` object](/rules-best-practices/rules-environment-best-practices) as in Rules. To learn how Management API calls can still be made, read the [Convert Code](#convert-code) section.
+* Actions are not provided with [an access token for the Management API](/docs/customize/rules/use-management-api) or [access to the global `auth0` object](/docs/rules-best-practices/rules-environment-best-practices) as in Rules. To learn how Management API calls can still be made, read the [Convert Code](#convert-code) section.
 
-For the full list of limitations, see [Actions Limitations](/customize/actions/limitations).
+For the full list of limitations, see [Actions Limitations](/docs/customize/actions/limitations).
 
 ## Convert code
 
@@ -47,7 +47,7 @@ To convert a Rule to an Action, you must replace Rule-specific code with Actions
 
 * In general, look for the read-only properties of Rules `user` and `context` objects on the Actions `event` object. Look for any side effects your Actions have on the system (like failing a login or updating user metadata) in the `api` object functions.
 * Use the Actions Code Editor in the Auth0 Dashboard to write your code; it will help by highlighting errors and supplying auto-complete suggestions.
-* Before you go live, thoroughly [test your new Actions](/customize/actions/test-actions) in a [staging or test environment](/get-started/auth0-overview/create-tenants/set-up-multiple-environments).
+* Before you go live, thoroughly [test your new Actions](/docs/customize/actions/test-actions) in a [staging or test environment](/docs/get-started/auth0-overview/create-tenants/set-up-multiple-environments).
 
 </Card>
 
@@ -102,7 +102,7 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Change how user data is accessed
 
-In Rules, data about the user logging in is stored in the [`user` object](/customize/rules/user-object-in-rules). In Actions, this data is found in the `user` property of the [`event` object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object). The majority of existing properties are accessible in this new location.
+In Rules, data about the user logging in is stored in the [`user` object](/docs/customize/rules/user-object-in-rules). In Actions, this data is found in the `user` property of the [`event` object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object). The majority of existing properties are accessible in this new location.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -150,7 +150,7 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Change how context data is accessed
 
-In Rules, data about the current login session is stored in the [`context` object](/customize/rules/context-object). For Actions, this data has been reshaped and moved to the [`event` object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object). Many of the properties moved over as-is, but some have been combined to increase clarity.
+In Rules, data about the current login session is stored in the [`context` object](/docs/customize/rules/context-object). For Actions, this data has been reshaped and moved to the [`event` object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object). Many of the properties moved over as-is, but some have been combined to increase clarity.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -218,7 +218,7 @@ If your `npm` modules are not on the latest version, this is a great time to get
 
 1. Search for `require` statements inside your Rule code.
 2. Remove version numbers, but make a note of them.
-3. Add the dependency by following the steps in the "Add a Dependency" section of [Write Your First Action](/customize/actions/write-your-first-action) (if the dependency is not a [core NodeJS module](https://github.com/nodejs/node/tree/master/lib); if the dependency is a core NodeJS module, you do not need to include it).
+3. Add the dependency by following the steps in the "Add a Dependency" section of [Write Your First Action](/docs/customize/actions/write-your-first-action) (if the dependency is not a [core NodeJS module](https://github.com/nodejs/node/tree/master/lib); if the dependency is a core NodeJS module, you do not need to include it).
 4. Move the found `require` statements outside of the `function` declaration:
 
 **Before**
@@ -303,12 +303,12 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Change handling of secrets
 
-In Rules, you set configuration values globally, which means that all Rules can access all secret values. (To learn more, read [Store Rule Configurations](/customize/rules/configuration).) In Actions, you set configuration values for each individual Action. You can't access an Action's secret value from outside the context of the Action.
+In Rules, you set configuration values globally, which means that all Rules can access all secret values. (To learn more, read [Store Rule Configurations](/docs/customize/rules/configuration).) In Actions, you set configuration values for each individual Action. You can't access an Action's secret value from outside the context of the Action.
 
 To convert secrets from Rules to Actions:
 
 1. Save the values needed for the specific Action you are working on.
-2. Add a Secret for each value you need to access from inside the Action. To learn how, read the **Add a Secret** section in [Write Your First Action](/customize/actions/write-your-first-action).
+2. Add a Secret for each value you need to access from inside the Action. To learn how, read the **Add a Secret** section in [Write Your First Action](/docs/customize/actions/write-your-first-action).
 3. Convert your code:
 
 **Before**
@@ -345,7 +345,7 @@ As with Rules, Auth0 encrypts all secret values at rest.
 
 ### Convert custom claims in tokens
 
-Rules and Actions can both add custom claims to ID and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip>. In Rules, this is a property of the `context` object, while Actions uses a method on the [`api` object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object).
+Rules and Actions can both add custom claims to ID and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>. In Rules, this is a property of the `context` object, while Actions uses a method on the [`api` object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object).
 
 **Before**
 
@@ -393,7 +393,7 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Convert multi-factor triggering
 
-In Rules, <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> can be triggered by modifying the `multifactor` property of the [`context` object](/customize/rules/context-object). In Actions, this is done with a [method on the `api` object](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object).
+In Rules, <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> can be triggered by modifying the `multifactor` property of the [`context` object](/docs/customize/rules/context-object). In Actions, this is done with a [method on the `api` object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object).
 
 **Before**
 
@@ -434,7 +434,7 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Convert user metadata updates
 
-Updating the `user_metadata` and `app_metadata` properties in Rules requires a call to the Management API, which can lead to [rate limit](/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits) errors. Actions, however, provides a way to indicate multiple user metadata changes but only call the Management API once.
+Updating the `user_metadata` and `app_metadata` properties in Rules requires a call to the Management API, which can lead to [rate limit](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits) errors. Actions, however, provides a way to indicate multiple user metadata changes but only call the Management API once.
 
 **Before**
 
@@ -458,7 +458,7 @@ function myRulesFunction(user, context, callback) {
 
 
 
-If subsequent Rules need to update the user metadata, then they would have to call the Management API separately, making it more likely that you would hit the [rate limit](/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
+If subsequent Rules need to update the user metadata, then they would have to call the Management API separately, making it more likely that you would hit the [rate limit](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
 
 **After**
 
@@ -484,13 +484,13 @@ If subsequent Actions needed to update the user metadata, then they would need t
 
 ### Convert other Management API calls
 
-In general, we do not recommend calling the Management API from a high-traffic, critical path like Rules or Actions. Requests to all Auth0 APIs are [rate limited](/troubleshoot/customer-support/operational-policies/rate-limit-policy), including calls from extensibility points, and calling an API for all logins could easily result in failed logins at high-traffic times.
+In general, we do not recommend calling the Management API from a high-traffic, critical path like Rules or Actions. Requests to all Auth0 APIs are [rate limited](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy), including calls from extensibility points, and calling an API for all logins could easily result in failed logins at high-traffic times.
 
 However, If the calls are necessary and are configured to avoid rate limits, it's possible to call the Management API from within Actions. As mentioned in the "Understand limitations" section earlier in this article, Actions are not provided with an access token for the Management API, so you will need to get an access token before activating your Action:
 
-1. [Register a Machine-to-Machine application and authorize it for the Management API](/get-started/auth0-overview/create-applications/machine-to-machine-apps).
+1. [Register a Machine-to-Machine application and authorize it for the Management API](/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps).
 2. Save the **Client ID** and **Client Secret** in the Action.
-3. [Get an access token for the Management API](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
+3. [Get an access token for the Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
 4. Call the Management API:
 
    <Warning>
@@ -572,7 +572,7 @@ In Actions, the Action pipeline is paused when the redirect happens and picks up
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Doing all redirects correctly in Actions is beyond the scope of this guide. For more detailed information, read [Redirect with Actions](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions).
+Doing all redirects correctly in Actions is beyond the scope of this guide. For more detailed information, read [Redirect with Actions](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions).
 
 </Callout>
 
@@ -621,7 +621,7 @@ exports.onExecutePostLogin = async (event, api) => {
 
 ### Convert current SSO clients references
 
-The Rules `context.sso` object provides details about the current session and clients using it. For more information, see the `context.sso` entry in [Context Object Properties in Rules](/customize/rules/context-object). Similar information is available in the Actions `event.session` object.
+The Rules `context.sso` object provides details about the current session and clients using it. For more information, see the `context.sso` entry in [Context Object Properties in Rules](/docs/customize/rules/context-object). Similar information is available in the Actions `event.session` object.
 
 **Before**
 

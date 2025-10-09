@@ -9,11 +9,11 @@ title: Customize Classic Login Pages
   experience.
 'twitter:title': Customize Classic Login Pages
 ---
-[Classic Login](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) is an Auth0-hosted login experience that relies on JavaScript for page customization.
+[Classic Login](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) is an Auth0-hosted login experience that relies on JavaScript for page customization.
 
-From the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, you can configure basic customization options that apply to all login pages. For advanced customization, you can directly modify the HTML template of one or more pages.
+From the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, you can configure basic customization options that apply to all login pages. For advanced customization, you can directly modify the HTML template of one or more pages.
 
-Additionally, you can manage your page content using the [version control syste](/customize/login-pages/classic-login/version-control) of your choice.
+Additionally, you can manage your page content using the [version control syste](/docs/customize/login-pages/classic-login/version-control) of your choice.
 
 ## Basic Customization
 
@@ -30,14 +30,14 @@ By default, these settings affect all Classic Login pages, such as the login scr
 For further customization, you can directly modify the HTML template of the following pages:
 
 * Login (see below)
-* [Password reset](/customize/login-pages/classic-login/customize-password-reset-page)
-* [Multi-factor authentication](/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login)
+* [Password reset](/docs/customize/login-pages/classic-login/customize-password-reset-page)
+* [Multi-factor authentication](/docs/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login)
 
 ### Responsibility for updates
 
 **When you enable customization for a specific page, you assume responsibility for maintaining that page**, as it will no longer receive automatic updates from Auth0. Such maintenance includes updating the version numbers of any included Auth0 SDKs or widgets.
 
-As sensitive security-related information often flows through the login page, introducing cross-site scripting (XSS) vulnerabilities is a point of concern. Additionally, if your organization uses [home realm discovery](/get-started/architecture-scenarios/business-to-business/authentication#home-realm-discovery) in conjunction with Classic Login, a list of available connections is publicly visible in the Auth0.setClient property. Considering this, Auth0 encourages you to exercise caution when using third-party JavaScript on your login page.
+As sensitive security-related information often flows through the login page, introducing cross-site scripting (XSS) vulnerabilities is a point of concern. Additionally, if your organization uses [home realm discovery](/docs/get-started/architecture-scenarios/business-to-business/authentication#home-realm-discovery) in conjunction with Classic Login, a list of available connections is publicly visible in the Auth0.setClient property. Considering this, Auth0 encourages you to exercise caution when using third-party JavaScript on your login page.
 
 ### Enable page customization
 
@@ -70,9 +70,9 @@ To customize the login page template, you must first choose a base template to w
 
 The available templates use the following libraries:
 
-* [Lock](/libraries/lock)
-* [Lock (Passwordless Mode)](/libraries/lock)
-* [Auth0.js](/libraries/auth0js)
+* [Lock](/docs/libraries/lock)
+* [Lock (Passwordless Mode)](/docs/libraries/lock)
+* [Auth0.js](/docs/libraries/auth0js)
 * [Authentication API](https://auth0.com/docs/api/authentication)
 
 You can use these libraries within Classic Login or embed them directly into an application. To better understand how you can customize your login experience, review the documentation for your preferred library.
@@ -87,7 +87,7 @@ For example, you can configure the Lock widget to:
 * Customize the login page with different colors, text, or default languages
 * Present users with only one or more specific login methods
 
-To learn more about customizing the Lock widget, review the [Lock Configuration Options](/libraries/lock/lock-configuration).
+To learn more about customizing the Lock widget, review the [Lock Configuration Options](/docs/libraries/lock/lock-configuration).
 
 #### Custom Login Form template
 
@@ -95,6 +95,6 @@ If you want to significantly modify the login page, you can use the Custom Login
 
 ## Learn more
 
-* [Classic Login Experience](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience)
-* [Customize Classic Login Pages with Lock or SDK](/customize/login-pages/classic-login/customize-with-lock-sdk)
-* [Customize MFA for Classic Login](/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login)
+* [Classic Login Experience](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience)
+* [Customize Classic Login Pages with Lock or SDK](/docs/customize/login-pages/classic-login/customize-with-lock-sdk)
+* [Customize MFA for Classic Login](/docs/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login)

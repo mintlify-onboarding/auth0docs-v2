@@ -10,9 +10,9 @@ title: Set Root Attributes During User Import
   the Auth0 Management API.
 'twitter:title': Set Root Attributes During User Import
 ---
-This guide will show you how to set root attributes for a user during import using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. This allows you to minimize the number of API calls required to set root attributes when importing users. To see which attributes you can import, visit [Normalized User Profile Structure](/manage-users/user-accounts/user-profiles/user-profile-structure).
+This guide will show you how to set root attributes for a user during import using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. This allows you to minimize the number of API calls required to set root attributes when importing users. To see which attributes you can import, visit [Normalized User Profile Structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure).
 
-Make a `POST` call to the [Create Job to Import Users endpoint](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `CONNECTION_ID`, and `JSON_USER_FILE_PATH` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, connection ID, and users filename, respectively.
+Make a `POST` call to the [Create Job to Import Users endpoint](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `CONNECTION_ID`, and `JSON_USER_FILE_PATH` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, connection ID, and users filename, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -225,7 +225,7 @@ dataTask.resume()
 <tbody>
 <tr>
 <td><code>MGMT_API_ACCESS_TOKEN</code></td>
-<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Token for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/glossary?term=scope">scope</Tooltip> <code>create:users</code>.</td>
+<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Token for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/docs/glossary?term=scope">scope</Tooltip> <code>create:users</code>.</td>
 </tr>
 <tr>
 <td><code>CONNECTION_ID</code></td>
@@ -233,13 +233,13 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>JSON_USER_FILE_PATH</code></td>
-<td>Filename of the file that contains the users to be imported. File should be in JSON format and include root attributes for users. For a list of available attributes, see <a href="/manage-users/user-accounts/user-profiles/user-profile-structure#attributes">User Profile Attributes</a>. For an example of the file format, see <a href="/manage-users/user-migration/bulk-user-import-database-schema-and-examples">Bulk User Import Database Schema and Examples</a>.</td>
+<td>Filename of the file that contains the users to be imported. File should be in JSON format and include root attributes for users. For a list of available attributes, see <a href="/docs/manage-users/user-accounts/user-profiles/user-profile-structure#attributes">User Profile Attributes</a>. For an example of the file format, see <a href="/docs/manage-users/user-migration/bulk-user-import-database-schema-and-examples">Bulk User Import Database Schema and Examples</a>.</td>
 </tr>
 </tbody>
 </table>
 
 ## Learn more
 
-* [User Profile Structure](/manage-users/user-accounts/user-profiles/user-profile-structure)
-* [Update Root Attributes for Users](/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users)
-* [Set Root Attributes During User Signup](/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-sign-up)
+* [User Profile Structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure)
+* [Update Root Attributes for Users](/docs/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users)
+* [Set Root Attributes During User Signup](/docs/manage-users/user-accounts/user-profiles/root-attributes/set-root-attributes-during-user-sign-up)

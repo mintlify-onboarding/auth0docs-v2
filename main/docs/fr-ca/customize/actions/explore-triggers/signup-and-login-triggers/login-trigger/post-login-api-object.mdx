@@ -462,9 +462,9 @@ Ce cache est conçu pour des données éphémères. Les éléments peuvent ne pa
 
 Stockez ou modifiez une valeur de chaîne dans le cache à la clé spécifiée.
 
-Les valeurs stockées dans ce cache sont limitées au déclencheur dans lequel elles sont définies. Elles sont soumises aux [Limites de cache des actions](/docs/fr-ca/customize/actions/limitations).
+Les valeurs stockées dans ce cache sont limitées au déclencheur dans lequel elles sont définies. Elles sont soumises aux [Limites de cache des actions](/docs/docs/fr-ca/customize/actions/limitations).
 
-Les valeurs stockées de cette manière auront des durées de vie allant jusqu’aux valeurs `ttl` ou `expires_at`. Si aucune durée de vie n’est précisée, une durée de vie par défaut de 15 minutes sera utilisée. Les durées de vie ne doivent pas dépasser la durée maximale indiquée dans [Limite du cache des actions](/docs/fr-ca/customize/actions/limitations).
+Les valeurs stockées de cette manière auront des durées de vie allant jusqu’aux valeurs `ttl` ou `expires_at`. Si aucune durée de vie n’est précisée, une durée de vie par défaut de 15 minutes sera utilisée. Les durées de vie ne doivent pas dépasser la durée maximale indiquée dans [Limite du cache des actions](/docs/docs/fr-ca/customize/actions/limitations).
 
 Renvoie `CacheWriteSuccess` si les valeurs sont stockées avec succès. Dans le cas contraire, vous recevrez `CacheWriteError`.
 
@@ -595,7 +595,7 @@ Renvoie une référence à l’objet `api`.
 <tr>
 <td><code>options.allowRememberBrowser</code></td>
 <td>
-<em>Booléen facultatif</em>. Lorsque le fournisseur est défini sur <code>google-authenticator</code> ou <code>duo</code>, l’utilisateur est invité à s’authentifier avec la MFA une fois tous les 30 jours. Lorsque le fournisseur est <code>guardian</code>, l’invite MFA affiche la case à cocher pour l’inscription pour que les utilisateurs choisissent de s’inscrire ou non. La valeur par défaut est <code>false</code>. Pour en savoir plus, lisez <a href="/docs/secure/multi-factor-authentication/customize-mfa ">Personnaliser les pages d’authentification multifacteur</a>
+<em>Booléen facultatif</em>. Lorsque le fournisseur est défini sur <code>google-authenticator</code> ou <code>duo</code>, l’utilisateur est invité à s’authentifier avec la MFA une fois tous les 30 jours. Lorsque le fournisseur est <code>guardian</code>, l’invite MFA affiche la case à cocher pour l’inscription pour que les utilisateurs choisissent de s’inscrire ou non. La valeur par défaut est <code>false</code>. Pour en savoir plus, lisez <a href="/docs/docs/secure/multi-factor-authentication/customize-mfa ">Personnaliser les pages d’authentification multifacteur</a>
 </td>
 </tr>
 <tr>

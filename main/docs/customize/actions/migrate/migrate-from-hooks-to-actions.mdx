@@ -14,7 +14,7 @@ When converting existing Hooks to Actions, you should associate the new Action w
 
 ## Plan your migration
 
-Deployed Actions run after active Hooks, so you can either convert Hooks one at a time in the Dashboard or all at once using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+Deployed Actions run after active Hooks, so you can either convert Hooks one at a time in the Dashboard or all at once using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 You will need to convert code, and then activate the Action and deactivate the Hook. Activating the Action and deactivating the Hook can be done quickly in succession, but depending on the order, there might be a short period of time where either both or neither are running.
 
@@ -24,7 +24,7 @@ Because of this, we recommend migrating your pipeline step by step: convert piec
 
 * Use flags to avoid duplicating expensive or one-time operations.
 * Make sure to run changes at a time when impact and traffic will be lowest.
-* Consider using the [Auth0 Deploy CLI](/deploy-monitor/deploy-cli-tool) to script, test, and quickly implement the migration all at once or iteratively.
+* Consider using the [Auth0 Deploy CLI](/docs/deploy-monitor/deploy-cli-tool) to script, test, and quickly implement the migration all at once or iteratively.
 
 </Card>
 
@@ -32,10 +32,10 @@ Because of this, we recommend migrating your pipeline step by step: convert piec
 
 While Actions can handle the vast majority of things that Hooks can, you should be aware of a few limitations before you start your migration .(Remember: you can have both Hooks and Actions running as you migrate.)
 
-* Actions cannot persist data, like <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> or API responses, across executions.
-* Actions are not provided with [an access token for the Management API](/customize/rules/use-management-api) or [access to the global `auth0` object](/customize/actions/action-coding-guidelines#global-object) as in Hooks.
+* Actions cannot persist data, like <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> or API responses, across executions.
+* Actions are not provided with [an access token for the Management API](/docs/customize/rules/use-management-api) or [access to the global `auth0` object](/docs/customize/actions/action-coding-guidelines#global-object) as in Hooks.
 
-For the full list of limitations, see [Actions Limitations](/customize/actions/limitations).
+For the full list of limitations, see [Actions Limitations](/docs/customize/actions/limitations).
 
 ## Convert code
 
@@ -45,7 +45,7 @@ To convert a Hook to an Action, you must replace Hook-specific code with Actions
 
 * In general, look for the read-only properties of objects passed into the Hooks function on the Actions `event` object.
 * Use the Actions Code Editor in the Auth0 Dashboard to write your code; it will help by highlighting errors and supplying auto-complete suggestions.
-* Before you go live, thoroughly [test your new Actions](/customize/actions/test-actions) in a [staging or test environment](/get-started/auth0-overview/create-tenants/set-up-multiple-environments).
+* Before you go live, thoroughly [test your new Actions](/docs/customize/actions/test-actions) in a [staging or test environment](/docs/get-started/auth0-overview/create-tenants/set-up-multiple-environments).
 
 </Card>
 
@@ -181,7 +181,7 @@ If your `npm` modules are not on the latest version, this is a great time to get
 
 1. Search for `require` statements inside your Hook code.
 2. Remove version numbers, but make a note of them.
-3. Add the dependency by following the steps in the "Add a Dependency" section of [Write Your First Action](/customize/actions/write-your-first-action) (if the dependency is not a [core NodeJS module](https://github.com/nodejs/node/tree/master/lib); if the dependency is a core NodeJS module, you do not need to include it).
+3. Add the dependency by following the steps in the "Add a Dependency" section of [Write Your First Action](/docs/customize/actions/write-your-first-action) (if the dependency is not a [core NodeJS module](https://github.com/nodejs/node/tree/master/lib); if the dependency is a core NodeJS module, you do not need to include it).
 4. Move the found `require` statements outside of the `function` declaration.
 
 ### Convert secrets
@@ -191,7 +191,7 @@ Hooks and Actions handle secrets in a similar way. With both, Secrets are added 
 To convert secrets from Hooks to Actions:
 
 1. Save the values needed for the specific Action you are working on.
-2. Add a Secret for each value you need to access from inside the Action. To learn how, read the **Add a Secret** section in [Write Your First Action](/customize/actions/write-your-first-action).
+2. Add a Secret for each value you need to access from inside the Action. To learn how, read the **Add a Secret** section in [Write Your First Action](/docs/customize/actions/write-your-first-action).
 3. Convert your code:
 
 **Before**
@@ -232,11 +232,11 @@ With Hooks, data about the user, client, request, and other contextual data are 
 
 Depending on the type of Hook you are converting, the `event` object will change:
 
-* [Client Credentials Exchange - Actions Event Object](/customize/actions/explore-triggers/machine-to-machine-trigger/credentials-exchange-event-object)
-* [Post-Change Password - Actions Event Object](/customize/actions/explore-triggers/password-reset-triggers/post-change-password-trigger/post-change-password-event-object)
-* [Post-User Registration - Actions Event Object](/customize/actions/explore-triggers/signup-and-login-triggers/post-user-registration-trigger/post-user-registration-event-object)
-* [Pre-User Registration - Actions Event Object](/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger/pre-user-registration-event-object)
-* [Send Phone Message - Actions Event Object](/customize/actions/explore-triggers/mfa-notifications-trigger/send-phone-message-event-object)
+* [Client Credentials Exchange - Actions Event Object](/docs/customize/actions/explore-triggers/machine-to-machine-trigger/credentials-exchange-event-object)
+* [Post-Change Password - Actions Event Object](/docs/customize/actions/explore-triggers/password-reset-triggers/post-change-password-trigger/post-change-password-event-object)
+* [Post-User Registration - Actions Event Object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/post-user-registration-trigger/post-user-registration-event-object)
+* [Pre-User Registration - Actions Event Object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger/pre-user-registration-event-object)
+* [Send Phone Message - Actions Event Object](/docs/customize/actions/explore-triggers/mfa-notifications-trigger/send-phone-message-event-object)
 
 **Before**
 
@@ -272,7 +272,7 @@ async (event, api) => {
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Unlike the Hooks `context` object, data stored on or modified in properties of the `event` object does not persist in subsequent Actions. If your Hook is setting data on these properties to trigger core functionality, you will need to use the `api` interface available in the [Machine to Machine](/customize/actions/explore-triggers/machine-to-machine-trigger/credentials-exchange-api-object) and [Pre User Registration](/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger/pre-user-registration-api-object) Actions Flows to persist data across Actions.
+Unlike the Hooks `context` object, data stored on or modified in properties of the `event` object does not persist in subsequent Actions. If your Hook is setting data on these properties to trigger core functionality, you will need to use the `api` interface available in the [Machine to Machine](/docs/customize/actions/explore-triggers/machine-to-machine-trigger/credentials-exchange-api-object) and [Pre User Registration](/docs/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger/pre-user-registration-api-object) Actions Flows to persist data across Actions.
 
 </Callout>
 
@@ -302,7 +302,7 @@ module.exports = function(client, scope, audience, context, cb) {
 
 
 
-You can now use the Actions [Client Credentials Exchange API Object](/customize/actions/explore-triggers/machine-to-machine-trigger/credentials-exchange-api-object):
+You can now use the Actions [Client Credentials Exchange API Object](/docs/customize/actions/explore-triggers/machine-to-machine-trigger/credentials-exchange-api-object):
 
 ```javascript lines
 // Client Credentials Exchange Action
@@ -344,7 +344,7 @@ module.exports = function (user, context, cb) {
 
 
 
-You can now use the [Pre User Registration API Object](/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger/pre-user-registration-api-object):
+You can now use the [Pre User Registration API Object](/docs/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger/pre-user-registration-api-object):
 
 ```javascript lines
 // Pre User Registration Action

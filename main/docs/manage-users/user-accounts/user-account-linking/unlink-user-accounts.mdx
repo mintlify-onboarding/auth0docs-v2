@@ -10,7 +10,7 @@ title: Unlink User Accounts
   again.
 'twitter:title': Unlink User Accounts
 ---
-Use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [Unlink a User Account](https://auth0.com/docs/api/management/v2#!/Users/delete_user_identity_by_user_id) endpoint or the Auth0.js library to unlink an identity from the target user account making it a separate user account again.
+Use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Unlink a User Account](https://auth0.com/docs/api/management/v2#!/Users/delete_user_identity_by_user_id) endpoint or the Auth0.js library to unlink an identity from the target user account making it a separate user account again.
 
 The result of the unlinking process is the following:
 
@@ -18,12 +18,12 @@ The result of the unlinking process is the following:
 * A new secondary user account is created.
 * The secondary account will have no metadata.
 
-If your goal is to delete the secondary identity entirely, you must first unlink the accounts, and then [delete the newly created secondary account](/manage-users/user-accounts/delete-users).
+If your goal is to delete the secondary identity entirely, you must first unlink the accounts, and then [delete the newly created secondary account](/docs/manage-users/user-accounts/delete-users).
 
 Depending on from where you call the endpoint, use one of these two scopes:
 
-* `update:current_user_identities` from [client-side code](/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
-* `update:users` from [server-side code](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
+* `update:current_user_identities` from [client-side code](/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
+* `update:users` from [server-side code](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
 
 The endpoint uses the following parameters:
 
@@ -86,7 +86,7 @@ If your instance has users from multiple providers, you may also include `[conne
 
 ## Use JWT from the primary account
 
-To unlink accounts, call the Management API [Unlink a User Account endpoint](https://auth0.com/docs/api/v2#!/Users/delete_user_identity_by_user_id) using the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> from the primary account for authorization:
+To unlink accounts, call the Management API [Unlink a User Account endpoint](https://auth0.com/docs/api/v2#!/Users/delete_user_identity_by_user_id) using the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> from the primary account for authorization:
 
 ```javascript lines
 function unlinkAccount(secondaryProvider, secondaryUserId){
@@ -215,6 +215,6 @@ module.exports = new Auth0Client();
 
 ## Learn more
 
-* [Link User Accounts](/manage-users/user-accounts/user-account-linking/link-user-accounts)
-* [User Account Linking: Server-Side Implementation](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
-* [User-Initiated Account Linking: Client-Side Implementation](/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
+* [Link User Accounts](/docs/manage-users/user-accounts/user-account-linking/link-user-accounts)
+* [User Account Linking: Server-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
+* [User-Initiated Account Linking: Client-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)

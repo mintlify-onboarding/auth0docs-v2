@@ -9,11 +9,11 @@ title: User Profiles
 'twitter:description': Understand how user profiles work in Auth0.
 'twitter:title': User Profiles
 ---
-To access any of the applications in your tenant, each user must have a profile in the tenant. User profiles contain information about your users such as name and contact information. You can manage user profiles through the [Auth0 Dashboard](/get-started/auth0-overview/dashboard) and the [Auth0 Management API](https://auth0.com/docs/api/management/v2).
+To access any of the applications in your tenant, each user must have a profile in the tenant. User profiles contain information about your users such as name and contact information. You can manage user profiles through the [Auth0 Dashboard](/docs/get-started/auth0-overview/dashboard) and the [Auth0 Management API](https://auth0.com/docs/api/management/v2).
 
 ## User data sources
 
-User data can come from many sources, including your own databases as well as social, legal, and enterprise <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip>. Some examples include Google, Facebook, Active Directory, or <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>. You can normalize user data that comes from any supported data source.
+User data can come from many sources, including your own databases as well as social, legal, and enterprise <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip>. Some examples include Google, Facebook, Active Directory, or <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>. You can normalize user data that comes from any supported data source.
 
 User profile attributes can include information from the identity provider. These are examples:
 
@@ -43,13 +43,13 @@ Auth0 refers to all user data sources as **connections** because Auth0 connects 
 
 ### User data normalization
 
-Auth0 supports a variety of [Identity Providers](/authenticate/identity-providers) and [Database Connections](/authenticate/database-connections). Each connection can return a different set of user attributes. Sometimes different connections use different names for the same attribute. For example, `surname` from one connection might be `last_name` and `family_name` from other user data sources.
+Auth0 supports a variety of [Identity Providers](/docs/authenticate/identity-providers) and [Database Connections](/docs/authenticate/database-connections). Each connection can return a different set of user attributes. Sometimes different connections use different names for the same attribute. For example, `surname` from one connection might be `last_name` and `family_name` from other user data sources.
 
-To handle this complexity, Auth0 provides a [normalized user profile](/manage-users/user-accounts/user-profiles/normalized-user-profiles), an Auth0-specific standard for storing user data.
+To handle this complexity, Auth0 provides a [normalized user profile](/docs/manage-users/user-accounts/user-profiles/normalized-user-profiles), an Auth0-specific standard for storing user data.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-To view the Auth0 [user profile data structure](/manage-users/user-accounts/user-profiles/user-profile-structure), go to [Dashboard > User Management > Users](https://manage.auth0.com/#/users) and then click on a user.
+To view the Auth0 [user profile data structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure), go to [Dashboard > User Management > Users](https://manage.auth0.com/#/users) and then click on a user.
 
 </Callout>
 
@@ -89,41 +89,41 @@ Auth0 provides a mechanism to link the two accounts. When Auth0 links the two ac
 
 Auth0 does not merge user profile attributes from multiple providers. Auth0 sources **core** user profile attributes from the first provider used.
 
-To learn more, read [User Account Linking](/manage-users/user-accounts/user-account-linking).
+To learn more, read [User Account Linking](/docs/manage-users/user-accounts/user-account-linking).
 
 ### Caching user profiles
 
-Auth0 caches the user profile received from a connection before passing it on to the calling application. This cache is in the Auth0 database. Each time the user authenticates, Auth0 updates the cache. To learn more, read [Update User Profile Using Your Database](/manage-users/user-accounts/user-profiles/update-user-profiles-using-your-database).
+Auth0 caches the user profile received from a connection before passing it on to the calling application. This cache is in the Auth0 database. Each time the user authenticates, Auth0 updates the cache. To learn more, read [Update User Profile Using Your Database](/docs/manage-users/user-accounts/user-profiles/update-user-profiles-using-your-database).
 
 ## Custom user profile data
 
-Auth0 lets you store [metadata](/manage-users/user-accounts/metadata), which is data related to each user that has not come from the identity provider. You can use `user_metadata` to store custom attributes such as the user's favorite color or hobby.
+Auth0 lets you store [metadata](/docs/manage-users/user-accounts/metadata), which is data related to each user that has not come from the identity provider. You can use `user_metadata` to store custom attributes such as the user's favorite color or hobby.
 
 ## Change user profile data
 
 You can modify a user's profile information in a number of ways.
 
-* [Scopes](/get-started/apis/scopes): The authentication flows supported by Auth0 include an optional parameter that lets you specify a scope. This controls the user profile information (claims) included in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> (<Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip>).
-* [Auth0 Dashboard](/manage-users/user-accounts/manage-users-using-the-dashboard): The Dashboard lets you manually edit the `user_metadata` and `app_metadata` portions of any user’s profile.
-* [Management API](/manage-users/user-accounts/manage-users-using-the-management-api): You can read, update, and delete user profiles stored in the Auth0 database.
-* [Custom database scripts](/authenticate/database-connections/custom-db/templates): If you’re using a custom database as a connection, you can write scripts to implement lifecycle events such as create, login, verify, delete and change password. Auth0 provides templates for these scripts that you can modify for the particular database and schema.
-* [Rules](/manage-users/user-accounts/metadata/manage-metadata-rules): Use Rules to augment the user profile during the authentication transaction, and optionally persist those changes back to Auth0.
+* [Scopes](/docs/get-started/apis/scopes): The authentication flows supported by Auth0 include an optional parameter that lets you specify a scope. This controls the user profile information (claims) included in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> (<Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip>).
+* [Auth0 Dashboard](/docs/manage-users/user-accounts/manage-users-using-the-dashboard): The Dashboard lets you manually edit the `user_metadata` and `app_metadata` portions of any user’s profile.
+* [Management API](/docs/manage-users/user-accounts/manage-users-using-the-management-api): You can read, update, and delete user profiles stored in the Auth0 database.
+* [Custom database scripts](/docs/authenticate/database-connections/custom-db/templates): If you’re using a custom database as a connection, you can write scripts to implement lifecycle events such as create, login, verify, delete and change password. Auth0 provides templates for these scripts that you can modify for the particular database and schema.
+* [Rules](/docs/manage-users/user-accounts/metadata/manage-metadata-rules): Use Rules to augment the user profile during the authentication transaction, and optionally persist those changes back to Auth0.
 
 ## Access user profiles
 
-Both apps and the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> can a user's profile information.
+Both apps and the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> can a user's profile information.
 
 ### Access user profiles from apps
 
-Once Auth0 completes authentication and returns control to your application, it provides the user profile to the application. At a low level, you can accomplish this using one of the application [protocols](/authenticate/protocols) supported by Auth0. However, most developers prefer to use the Auth0 SDKs. To learn more, read [Quickstarts](/quickstarts).
+Once Auth0 completes authentication and returns control to your application, it provides the user profile to the application. At a low level, you can accomplish this using one of the application [protocols](/docs/authenticate/protocols) supported by Auth0. However, most developers prefer to use the Auth0 SDKs. To learn more, read [Quickstarts](/docs/quickstarts).
 
 One SDK is the Auth0 Lock widget, which provides a user login interface. To learn more, read:
 
-* [Lock for Web](/libraries/lock)
-* [Lock Swift](/libraries/lock-swift)
-* [Lock.Android](/libraries/lock-android)
+* [Lock for Web](/docs/libraries/lock)
+* [Lock Swift](/docs/libraries/lock-swift)
+* [Lock.Android](/docs/libraries/lock-android)
 
-If you want your web app to have a custom login UI, you can use Auth0.js. This headless JavaScript library for Auth0 invokes authentication flow (and other tasks) and receives a User Profile object in return. To learn more, read [Auth0.js v9 Reference](/libraries/auth0js).
+If you want your web app to have a custom login UI, you can use Auth0.js. This headless JavaScript library for Auth0 invokes authentication flow (and other tasks) and receives a User Profile object in return. To learn more, read [Auth0.js v9 Reference](/docs/libraries/auth0js).
 
 ### Access user profiles from the Management API
 
@@ -143,23 +143,23 @@ The Auth0 Authentication API is specifically for authentication flows. To learn 
 
 In the authentication flows described above, Auth0 returns a set of tokens in lieu of a full user profile.
 
-One of the returned tokens is the ID token, which is a JSON Web Token (JWT) that contains user profile attributes represented in the form of claims. These claims are statements about the user. A claim can be trusted if the consumer of the token can verify its signature, which (in the case of HS256) is generated with the Auth0 app’s <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip>. If your app uses RS256 encryption, the ID token will be signed with a private key and verified with a public key. Your app can then decode the JWT and get the user information contained in its payload. Examples of this information are the user's name, email, and other data that is typically part of the user experience.
+One of the returned tokens is the ID token, which is a JSON Web Token (JWT) that contains user profile attributes represented in the form of claims. These claims are statements about the user. A claim can be trusted if the consumer of the token can verify its signature, which (in the case of HS256) is generated with the Auth0 app’s <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip>. If your app uses RS256 encryption, the ID token will be signed with a private key and verified with a public key. Your app can then decode the JWT and get the user information contained in its payload. Examples of this information are the user's name, email, and other data that is typically part of the user experience.
 
-The claims within a JWT generally contain only a subset of the information available in the user profile. The purpose is to minimize the token size. To learn more, read [JSON Web Tokens](/secure/tokens/json-web-tokens).
+The claims within a JWT generally contain only a subset of the information available in the user profile. The purpose is to minimize the token size. To learn more, read [JSON Web Tokens](/docs/secure/tokens/json-web-tokens).
 
 There are three other types of tokens that can be returned during authentication:
 
-* Auth0 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>
+* Auth0 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>
 * Third-party provider access token
-* <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+token">Refresh token</Tooltip>
+* <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+token">Refresh token</Tooltip>
 
-To learn more about tokens and claims, read [Tokens](/secure/tokens).
+To learn more about tokens and claims, read [Tokens](/docs/secure/tokens).
 
 ## Learn more
 
-* [Check User Profiles](/troubleshoot/authentication-issues/check-user-profiles)
-* [Troubleshoot Custom Domains](/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
-* [Troubleshoot SAML Errors](/troubleshoot/authentication-issues/saml-errors)
-* [Verify Connections](/troubleshoot/basic-issues/verify-connections)
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
-* [Auth0.Android Login, Logout, and User Profiles](/libraries/auth0-android/auth0-android-login-logout-and-user-profiles)
+* [Check User Profiles](/docs/troubleshoot/authentication-issues/check-user-profiles)
+* [Troubleshoot Custom Domains](/docs/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
+* [Troubleshoot SAML Errors](/docs/troubleshoot/authentication-issues/saml-errors)
+* [Verify Connections](/docs/troubleshoot/basic-issues/verify-connections)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)
+* [Auth0.Android Login, Logout, and User Profiles](/docs/libraries/auth0-android/auth0-android-login-logout-and-user-profiles)

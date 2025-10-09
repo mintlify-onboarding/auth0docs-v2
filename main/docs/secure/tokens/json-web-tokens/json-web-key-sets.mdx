@@ -10,9 +10,9 @@ title: JSON Web Key Sets
   of JSON Web Keys (a JSON object that represents a cryptographic key).
 'twitter:title': JSON Web Key Sets
 ---
-The JSON Web Key Set (JWKS) is a set of keys containing the public keys used to verify any <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JSON+Web+Token+%28JWT%29">JSON Web Token (JWT)</Tooltip> issued by the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip> and signed using the RS256 [signing algorithm](/get-started/applications/signing-algorithms).
+The JSON Web Key Set (JWKS) is a set of keys containing the public keys used to verify any <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Token+%28JWT%29">JSON Web Token (JWT)</Tooltip> issued by the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip> and signed using the RS256 [signing algorithm](/docs/get-started/applications/signing-algorithms).
 
-When creating applications and APIs in Auth0, two algorithms are supported for signing <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=JWTs">JWTs</Tooltip>: **RS256** and **HS256**. RS256 generates an asymmetric signature, which means a private key must be used to sign the JWT and a different public key must be used to verify the signature.
+When creating applications and APIs in Auth0, two algorithms are supported for signing <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=JWTs">JWTs</Tooltip>: **RS256** and **HS256**. RS256 generates an asymmetric signature, which means a private key must be used to sign the JWT and a different public key must be used to verify the signature.
 
 Auth0 uses the [JSON Web Key (JWK) specification](https://tools.ietf.org/html/rfc7517) to represent the cryptographic keys used for signing RS256 tokens. This specification defines two high-level data structures: **JSON Web Key (JWK)** and **JSON Web Key Set (JWKS)**. Here are the definitions from the specification:
 
@@ -38,13 +38,13 @@ Auth0 exposes a JWKS endpoint for each tenant, which is found at `https://{yourD
 
 <Warning>
 
-Currently, Auth0 signs with only one JWK at a time; however, it is important to assume this endpoint could contain multiple JWKs. As an example, multiple keys can be found in the JWKS when [rotating application signing keys](/get-started/tenant-settings/signing-keys/rotate-signing-keys).
+Currently, Auth0 signs with only one JWK at a time; however, it is important to assume this endpoint could contain multiple JWKs. As an example, multiple keys can be found in the JWKS when [rotating application signing keys](/docs/get-started/tenant-settings/signing-keys/rotate-signing-keys).
 
 </Warning>
 
 ## Learn more
 
-* [Signing Keys](/get-started/tenant-settings/signing-keys)
-* [JSON Web Key Set Properties](/secure/tokens/json-web-tokens/json-web-key-set-properties)
-* [Locate JSON Web Key Sets](/secure/tokens/json-web-tokens/locate-json-web-key-sets)
-* [View Signing Certificates](/get-started/tenant-settings/signing-keys/view-signing-certificates)
+* [Signing Keys](/docs/get-started/tenant-settings/signing-keys)
+* [JSON Web Key Set Properties](/docs/secure/tokens/json-web-tokens/json-web-key-set-properties)
+* [Locate JSON Web Key Sets](/docs/secure/tokens/json-web-tokens/locate-json-web-key-sets)
+* [View Signing Certificates](/docs/get-started/tenant-settings/signing-keys/view-signing-certificates)

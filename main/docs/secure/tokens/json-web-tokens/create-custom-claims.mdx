@@ -8,13 +8,13 @@ title: Create Custom Claims
 'twitter:description': Learn how to create collision-resistant names for custom claims.
 'twitter:title': Create Custom Claims
 ---
-To read custom claims on access and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+tokens">ID tokens</Tooltip>, you must use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=JSON+Web+Tokens">JSON Web Tokens</Tooltip> (JWT) and pass an <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> (`aud`) in an OIDC login flow. To learn more, read [Access Tokens](/secure/tokens/access-tokens).
+To read custom claims on access and <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip>, you must use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Tokens">JSON Web Tokens</Tooltip> (JWT) and pass an <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> (`aud`) in an OIDC login flow. To learn more, read [Access Tokens](/docs/secure/tokens/access-tokens).
 
 When configuring custom claims on JWTs, you want to avoid collisions. To keep your custom claims from colliding with any reserved claims or claims from other resources, give them a collision-resistant name. Auth0 recommends using a namespaced format.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Auth0 allows namespaced and non-namespaced claims, but certain restrictions apply (see [General restrictions](/secure/tokens/json-web-tokens/create-custom-claims#general-restrictions)). To avoid name collisions, we recommend using namespaced claims. In case of collisions, the transaction won't fail, but your custom claim won't be added to your tokens.
+Auth0 allows namespaced and non-namespaced claims, but certain restrictions apply (see [General restrictions](/docs/secure/tokens/json-web-tokens/create-custom-claims#general-restrictions)). To avoid name collisions, we recommend using namespaced claims. In case of collisions, the transaction won't fail, but your custom claim won't be added to your tokens.
 
 </Callout>
 
@@ -24,7 +24,7 @@ Auth0 applies the following restrictions to custom claims:
 
 * Custom claims payload is set to a maximum of 100KB
 * [OPENID standard claims](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) and claims used internally by Auth0 cannot be customized or modified
-* <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+tokens">Access tokens</Tooltip> with an Auth0 API audience, excluding the `/userinfo` endpoint, cannot have private, non-namespaced custom claims
+* <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+tokens">Access tokens</Tooltip> with an Auth0 API audience, excluding the `/userinfo` endpoint, cannot have private, non-namespaced custom claims
 * Only specified OIDC user profile claims can be added to access tokens
 
 The following claims are subject to Auth0's restrictions:
@@ -92,7 +92,7 @@ The following claims are subject to Auth0's restrictions:
 
 ### Non-restricted claims
 
-You can create claims for sensitive user information to enhance the user profile and add to the user experience. These claims are consumed by your application from ID tokens. To learn more about using non-restricted claims, read [ID Tokens](/secure/tokens/id-tokens), and keep in mind [Token Best Practices](/secure/tokens/token-best-practices) if you use them.
+You can create claims for sensitive user information to enhance the user profile and add to the user experience. These claims are consumed by your application from ID tokens. To learn more about using non-restricted claims, read [ID Tokens](/docs/secure/tokens/id-tokens), and keep in mind [Token Best Practices](/docs/secure/tokens/token-best-practices) if you use them.
 
 The following claims are only subject to general restrictions:
 
@@ -149,7 +149,7 @@ Use the following guidelines for non-namespaced custom claims:
 * Keep the claim names and values as light as possible, passing only the data strictly necessary for your application.
 * Avoid assigning heavy payloads to custom claims.
 
-For more examples of custom claims added to a token, see [Sample Use Cases: Scopes and Claims](/get-started/apis/scopes/sample-use-cases-scopes-and-claims).
+For more examples of custom claims added to a token, see [Sample Use Cases: Scopes and Claims](/docs/get-started/apis/scopes/sample-use-cases-scopes-and-claims).
 
 ## Create custom claims
 
@@ -170,5 +170,5 @@ exports.onExecuteCredentialsExchange = async (event, api) => {
 
 ## Learn more
 
-* [JSON Web Token Claims](/secure/tokens/json-web-tokens/json-web-token-claims)
-* [OpenID Connect Scopes](/get-started/apis/scopes/openid-connect-scopes)
+* [JSON Web Token Claims](/docs/secure/tokens/json-web-tokens/json-web-token-claims)
+* [OpenID Connect Scopes](/docs/get-started/apis/scopes/openid-connect-scopes)

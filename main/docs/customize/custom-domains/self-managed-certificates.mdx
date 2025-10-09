@@ -14,11 +14,11 @@ title: Configure Custom Domains with Self-Managed Certificates
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-You must have an Enterprise subscription to manage certificates in your custom domain. To learn more, read [Auth0 Pricing](https://auth0.com/pricing/) and [Login](/authenticate/login).
+You must have an Enterprise subscription to manage certificates in your custom domain. To learn more, read [Auth0 Pricing](https://auth0.com/pricing/) and [Login](/docs/authenticate/login).
 
 </Callout>
 
-If you choose to manage the certificates for your <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domains">custom domains</Tooltip> without assistance from Auth0, you need to know how to manage your own proxy and certificates for inbound connections that require multiple DNS records on the domain. You have to purchase or provide the certificates and manage the renewals yourself. You will also need a reverse proxy where the certificate will be installed. Once the domain is verified, we will accept traffic from the proxy.
+If you choose to manage the certificates for your <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domains">custom domains</Tooltip> without assistance from Auth0, you need to know how to manage your own proxy and certificates for inbound connections that require multiple DNS records on the domain. You have to purchase or provide the certificates and manage the renewals yourself. You will also need a reverse proxy where the certificate will be installed. Once the domain is verified, we will accept traffic from the proxy.
 
 Choose this option to:
 
@@ -45,7 +45,7 @@ Before you can use the domain with Auth0, you'll need to verify that you own it.
 
 1. Go to [Dashboard > Branding > Custom Domains](https://manage.auth0.com/#/branding/custom_domains).
 
-   <Frame>![Auth0 Branding Custom Domains Self-Managed Certificate Verify Domain](/images/cdy7uua7fh8z/4XhEmQwKfoqydOldfHnnud/c63a58c72f79b4d19cd417f70ba262cc/Custom_Domains_-_Self_-_English.png)</Frame>
+   <Frame>![Auth0 Branding Custom Domains Self-Managed Certificate Verify Domain](/docs/images/cdy7uua7fh8z/4XhEmQwKfoqydOldfHnnud/c63a58c72f79b4d19cd417f70ba262cc/Custom_Domains_-_Self_-_English.png)</Frame>
 2. Add the TXT verification information to your domain's DNS record.
    These steps may vary for your domain host provider:
 
@@ -97,7 +97,7 @@ Before you can use the domain with Auth0, you'll need to verify that you own it.
 
 The reverse proxy server retrieves resources on behalf of your application from one or more servers. These resources are then returned to the application, appearing as if they originated from the proxy server itself.
 
-You can use a service such as [Cloudflare](/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy), [Azure CDN](/customize/custom-domains/self-managed-certificates/configure-azure-cdn-for-use-as-reverse-proxy), [Google Cloud Platform](/customize/custom-domains/self-managed-certificates/configure-gcp-as-reverse-proxy), or [AWS Cloudfront](/customize/custom-domains/self-managed-certificates/configure-aws-cloudfront-for-use-as-reverse-proxy) and configure settings for your custom domain. You will add the new CNAME value to your DNS for your custom domain pointing to the reverse proxy server domain name for distribution.
+You can use a service such as [Cloudflare](/docs/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy), [Azure CDN](/docs/customize/custom-domains/self-managed-certificates/configure-azure-cdn-for-use-as-reverse-proxy), [Google Cloud Platform](/docs/customize/custom-domains/self-managed-certificates/configure-gcp-as-reverse-proxy), or [AWS Cloudfront](/docs/customize/custom-domains/self-managed-certificates/configure-aws-cloudfront-for-use-as-reverse-proxy) and configure settings for your custom domain. You will add the new CNAME value to your DNS for your custom domain pointing to the reverse proxy server domain name for distribution.
 
 1. After you've created the reverse proxy settings on your service, go to [Auth0 Dashboard > Branding > Custom Domains](https://manage.auth0.com/#/branding/custom_domains) tab.
 2. Add a new CNAME record to your DNS for your custom domain pointing to the service domain name for your distribution. You can find this by looking for the **Distribution ID** on your reverse proxy server configuration.
@@ -217,7 +217,7 @@ For more information on retrieving the details of your custom domain, see [Get c
 
 ## Additional steps for specific Auth0 features
 
-There are additional configuration steps you must complete depending on which Auth0 features you are using. To learn more, read [Configure Features to Use Custom Domains](/customize/custom-domains/configure-features-to-use-custom-domains).
+There are additional configuration steps you must complete depending on which Auth0 features you are using. To learn more, read [Configure Features to Use Custom Domains](/docs/customize/custom-domains/configure-features-to-use-custom-domains).
 
 Cloudflare uses a feature called CNAME Flattening, which affects Auth0 verification and certificate renewal in the way that it handles DNS records. We recommend that you turn off CNAME Flattening unless it's absolutely necessary. To learn more, read [Cloudflare documentation](https://support.cloudflare.com/hc/en-us/articles/200169056-Understand-and-configure-CNAME-Flattening).
 
@@ -225,9 +225,9 @@ Because this feature puts you in control of your own certificates, you need to d
 
 ## Learn more
 
-* [Configure Features to Use Custom Domains](/customize/custom-domains/configure-features-to-use-custom-domains)
-* [Configure Google Cloud Platform with Load Balancing as Reverse Proxy](/customize/custom-domains/self-managed-certificates/configure-gcp-as-reverse-proxy)
-* [Configure Cloudflare as Reverse Proxy](/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy)
-* [Configure AWS CloudFront as Reverse Proxy](/customize/custom-domains/self-managed-certificates/configure-aws-cloudfront-for-use-as-reverse-proxy)
-* [Configure Azure CDN as Reverse Proxy](/customize/custom-domains/self-managed-certificates/configure-azure-cdn-for-use-as-reverse-proxy)
-* [Configure Akamai as Reverse Proxy](/customize/custom-domains/self-managed-certificates/configure-akamai-for-use-as-reverse-proxy)
+* [Configure Features to Use Custom Domains](/docs/customize/custom-domains/configure-features-to-use-custom-domains)
+* [Configure Google Cloud Platform with Load Balancing as Reverse Proxy](/docs/customize/custom-domains/self-managed-certificates/configure-gcp-as-reverse-proxy)
+* [Configure Cloudflare as Reverse Proxy](/docs/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy)
+* [Configure AWS CloudFront as Reverse Proxy](/docs/customize/custom-domains/self-managed-certificates/configure-aws-cloudfront-for-use-as-reverse-proxy)
+* [Configure Azure CDN as Reverse Proxy](/docs/customize/custom-domains/self-managed-certificates/configure-azure-cdn-for-use-as-reverse-proxy)
+* [Configure Akamai as Reverse Proxy](/docs/customize/custom-domains/self-managed-certificates/configure-akamai-for-use-as-reverse-proxy)

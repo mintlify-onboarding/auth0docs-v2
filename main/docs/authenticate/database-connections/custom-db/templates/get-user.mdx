@@ -11,7 +11,7 @@ title: Get User Script Templates
 ---
 The Get User script implements the function executed to determine the current state of existence of a user. We recommend naming this function `getUser`.
 
-This script is required for [automatic migration](/manage-users/user-migration/configure-automatic-migration-from-your-database), and conditionally required for legacy authentication depending on the operations configured for the connection. To avoid creating duplicate users, set a consistent, unchanging `user_id` on the returned user profile for the same user.
+This script is required for [automatic migration](/docs/manage-users/user-migration/configure-automatic-migration-from-your-database), and conditionally required for legacy authentication depending on the operations configured for the connection. To avoid creating duplicate users, set a consistent, unchanging `user_id` on the returned user profile for the same user.
 
 If automatic migration is configured for the connection and the user profile has not yet been created, the script is executed whenever the following operations occur:
 
@@ -157,7 +157,7 @@ The profile data returned by the Get User script for a user must be consistent w
 
 </Warning>
 
-If the user is found, pass a `null` value to the `error` parameter, and pass the user's profile data to the `profile` parameter in [normalized form](/manage-users/user-accounts/user-profiles/normalized-user-profile-schema). In addition to the standard fields, you can include the `user_metadata`, `app_metadata`, and `mfa_factors` fields.
+If the user is found, pass a `null` value to the `error` parameter, and pass the user's profile data to the `profile` parameter in [normalized form](/docs/manage-users/user-accounts/user-profiles/normalized-user-profile-schema). In addition to the standard fields, you can include the `user_metadata`, `app_metadata`, and `mfa_factors` fields.
 
 #### Example
 
@@ -205,7 +205,7 @@ return callback(null);
 
 ### Return an error
 
-If an error occurs, pass error data to the `error` parameter with relevant information about what went wrong. For more information, read [Troubleshoot Custom Databases](/authenticate/database-connections/custom-db/error-handling).
+If an error occurs, pass error data to the `error` parameter with relevant information about what went wrong. For more information, read [Troubleshoot Custom Databases](/docs/authenticate/database-connections/custom-db/error-handling).
 
 #### Example
 
@@ -627,9 +627,9 @@ function getByEmail(email, callback) {
 
 ## Learn more
 
-* [Change Password Script Templates](/authenticate/database-connections/custom-db/templates/change-password)
-* [Create Script Templates](/authenticate/database-connections/custom-db/templates/create)
-* [Delete Script Templates](/authenticate/database-connections/custom-db/templates/delete)
-* [Login Script Templates](/authenticate/database-connections/custom-db/templates/login)
-* [Verify Script Templates](/authenticate/database-connections/custom-db/templates/verify)
-* [Change Email Script Template](/authenticate/database-connections/custom-db/templates/change-email)
+* [Change Password Script Templates](/docs/authenticate/database-connections/custom-db/templates/change-password)
+* [Create Script Templates](/docs/authenticate/database-connections/custom-db/templates/create)
+* [Delete Script Templates](/docs/authenticate/database-connections/custom-db/templates/delete)
+* [Login Script Templates](/docs/authenticate/database-connections/custom-db/templates/login)
+* [Verify Script Templates](/docs/authenticate/database-connections/custom-db/templates/verify)
+* [Change Email Script Template](/docs/authenticate/database-connections/custom-db/templates/change-email)

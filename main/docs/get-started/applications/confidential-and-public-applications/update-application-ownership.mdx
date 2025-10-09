@@ -12,9 +12,9 @@ title: Update Application Ownership
   a first-party or third-party application.
 'twitter:title': Update Application Ownership
 ---
-You can use Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to update application ownership, which allows you to specify whether an application is registered with Auth0 as a first-party or third-party application.
+You can use Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to update application ownership, which allows you to specify whether an application is registered with Auth0 as a first-party or third-party application.
 
-Make a `PATCH` call to the [Update a Client endpoint](https://auth0.com/docs/api/management/v2#!/Clients/patch_clients_by_id). Be sure to replace `{yourClientId}`, `{yourMgmtApiAccessToken}`, and `{ownershipBoolean}` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip>, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, and boolean representing the application's ownership, respectively.
+Make a `PATCH` call to the [Update a Client endpoint](https://auth0.com/docs/api/management/v2#!/Clients/patch_clients_by_id). Be sure to replace `{yourClientId}`, `{yourMgmtApiAccessToken}`, and `{ownershipBoolean}` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip>, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, and boolean representing the application's ownership, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -243,7 +243,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>MGMT_API_ACCESS_TOKEN</code></td>
-<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Tokens for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/glossary?term=scope">scope</Tooltip> <code>update:clients</code>.</td>
+<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Tokens for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/docs/glossary?term=scope">scope</Tooltip> <code>update:clients</code>.</td>
 </tr>
 <tr>
 <td><code>OWNERSHIP_BOOLEAN</code></td>
@@ -254,7 +254,7 @@ dataTask.resume()
 
 ## Learn more
 
-* [First-Party and Third-Party Applications](/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications)
-* [View Application Ownership](/get-started/applications/confidential-and-public-applications/view-application-ownership)
-* [User Consent and Third-Party Applications](/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications)
-* [Enable Third-Party Applications](/get-started/applications/confidential-and-public-applications/enable-third-party-applications)
+* [First-Party and Third-Party Applications](/docs/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications)
+* [View Application Ownership](/docs/get-started/applications/confidential-and-public-applications/view-application-ownership)
+* [User Consent and Third-Party Applications](/docs/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications)
+* [Enable Third-Party Applications](/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications)

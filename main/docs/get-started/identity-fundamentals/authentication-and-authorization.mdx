@@ -8,7 +8,7 @@ title: Authentication vs. Authorization
 'twitter:description': Explore the differences between authentication and authorization.
 'twitter:title': Authentication vs. Authorization
 ---
-While often used interchangeably, [authentication](/authenticate) and authorization represent fundamentally different functions. In this article, we compare and contrast the two to show how they protect applications in complementary ways.
+While often used interchangeably, [authentication](/docs/authenticate) and authorization represent fundamentally different functions. In this article, we compare and contrast the two to show how they protect applications in complementary ways.
 
 ## What are authentication and authorization?
 
@@ -41,10 +41,10 @@ Here's a quick overview of the differences between authentication and authorizat
 </tr>
 <tr>
 <td>Generally, transmits info through an ID Token</td>
-<td>Generally, transmits info through an <Tooltip tip="Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip></td>
+<td>Generally, transmits info through an <Tooltip tip="Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip></td>
 </tr>
 <tr>
-<td>Generally governed by the <Tooltip tip="Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID+Connect+%28OIDC%29+protocol">OpenID Connect (OIDC) protocol</Tooltip></td>
+<td>Generally governed by the <Tooltip tip="Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID+Connect+%28OIDC%29+protocol">OpenID Connect (OIDC) protocol</Tooltip></td>
 <td>Generally governed by the OAuth 2.0 framework</td>
 </tr>
 <tr>
@@ -56,4 +56,4 @@ Here's a quick overview of the differences between authentication and authorizat
 
 In short, access to a resource is protected by both authentication and authorization. If you can't prove your identity, you won't be allowed into a resource. And even if you can prove your identity, if you are not authorized for that resource, you will still be denied access.
 
-Auth0 has products and services for authentication, like [passwordless](/authenticate/passwordless/passwordless-with-universal-login), [multi-factor authentication](/secure/multi-factor-authentication) (<Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip>), and [Single-Sign On (SSO)](/authenticate/single-sign-on) you can configure using <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. For authorization, Auth0 offers [role-based access control](/manage-users/access-control/rbac) (RBAC) or [fine grained authorization](https://docs.fga.dev/fga) <Tooltip tip="Fine-grained Authorization (FGA): Auth0 product allowing individual users access to specific objects or resources." cta="View Glossary" href="/glossary?term=FGA">FGA</Tooltip>).
+Auth0 has products and services for authentication, like [passwordless](/docs/authenticate/passwordless/passwordless-with-universal-login), [multi-factor authentication](/docs/secure/multi-factor-authentication) (<Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip>), and [Single-Sign On (SSO)](/docs/authenticate/single-sign-on) you can configure using <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. For authorization, Auth0 offers [role-based access control](/docs/manage-users/access-control/rbac) (RBAC) or [fine grained authorization](https://docs.fga.dev/fga) <Tooltip tip="Fine-grained Authorization (FGA): Auth0 product allowing individual users access to specific objects or resources." cta="View Glossary" href="/docs/glossary?term=FGA">FGA</Tooltip>).

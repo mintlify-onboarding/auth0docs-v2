@@ -14,7 +14,7 @@ title: Configure Application Metadata
 ---
 Application metadata is optional and consists of customizable keys and values (max 255 characters each), that you can set for each application. Metadata is exposed in the `Client` object as `client_metadata`, and in Rules as `context.clientMetadata`. You might store, for example, the URL for the application’s home page (a field that Auth0 doesn’t provide by default in the application settings).
 
-Client metadata is stored as part of the application (client) properties. To learn more about data types, field names, and storage limitations, read [Metadata Field Names and Data Types](/manage-users/user-accounts/metadata/metadata-fields-data).
+Client metadata is stored as part of the application (client) properties. To learn more about data types, field names, and storage limitations, read [Metadata Field Names and Data Types](/docs/manage-users/user-accounts/metadata/metadata-fields-data).
 
 <Card title="Where to store client secrets">
 
@@ -34,7 +34,7 @@ Claims in the ID token are not encrypted, so depending on the flow that you use,
 
 Existing applications will have no value for this property.
 
-You can access application metadata in [Actions](/customize/actions):
+You can access application metadata in [Actions](/docs/customize/actions):
 
 ```js lines
 exports.onExecutePostLogin = async (event, api) => {
@@ -45,7 +45,7 @@ exports.onExecutePostLogin = async (event, api) => {
 }
 ```
 
-... or in [Rules](/customize/rules):
+... or in [Rules](/docs/customize/rules):
 
 ```javascript lines
 function applicationMetadataExample (user, context, callback){
@@ -62,7 +62,7 @@ function applicationMetadataExample (user, context, callback){
 
 
 
-You can read and add to the application metadata using either the Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. To learn how to manage client metadata with the Management API, read [Manage Metadata Using the Management API](/manage-users/user-accounts/metadata/manage-metadata-api).
+You can read and add to the application metadata using either the Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. To learn how to manage client metadata with the Management API, read [Manage Metadata Using the Management API](/docs/manage-users/user-accounts/metadata/manage-metadata-api).
 
 ## Add application metadata key/value pairs
 
@@ -70,7 +70,7 @@ You can read and add to the application metadata using either the Dashboard or t
 2. Scroll down and click **Advanced Settings**.
 3. On the **Application Metadata** tab, enter the key's name and value, then click **Add**.
 
-   <Frame>![Dashboard Applications Applications Settings Tab Advanced Settings Application Metadata Tab](/images/cdy7uua7fh8z/7GWHyQloNihda3fuYiVEWQ/b3cced7c53690e6f3cbf7b2e23ff8646/App_Metadata_-_English.png)</Frame>
+   <Frame>![Dashboard Applications Applications Settings Tab Advanced Settings Application Metadata Tab](/docs/images/cdy7uua7fh8z/7GWHyQloNihda3fuYiVEWQ/b3cced7c53690e6f3cbf7b2e23ff8646/App_Metadata_-_English.png)</Frame>
 4. Click **Save Changes**.
 
 ## Update application metadata value
@@ -90,7 +90,7 @@ You can read and add to the application metadata using either the Dashboard or t
 
 ## Learn more
 
-* [Metadata Field Names and Data Types](/manage-users/user-accounts/metadata/metadata-fields-data)
-* [Manage Metadata Using the Management API](/manage-users/user-accounts/metadata/manage-metadata-api)
-* [Manage Metadata with Rules](/manage-users/user-accounts/metadata/manage-metadata-rules)
-* [Rotate Client Secrets](/get-started/applications/rotate-client-secret)
+* [Metadata Field Names and Data Types](/docs/manage-users/user-accounts/metadata/metadata-fields-data)
+* [Manage Metadata Using the Management API](/docs/manage-users/user-accounts/metadata/manage-metadata-api)
+* [Manage Metadata with Rules](/docs/manage-users/user-accounts/metadata/manage-metadata-rules)
+* [Rotate Client Secrets](/docs/get-started/applications/rotate-client-secret)

@@ -15,7 +15,7 @@ The following Auth0 Log Extensions are now deprecated and will be supported unti
 The following will reach EOL in Private Cloud on **January 6, 2023**:
 
 * Auth0 Authentication API Webhooks
-* Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> Webhooks
+* Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> Webhooks
 * Logs to Cloudwatch
 * Logs to Logentries
 * Logs to Loggly
@@ -50,7 +50,7 @@ Make sure your destination can handle an array of log objects.
 2. Go to **Extensions** and select your **Auth0 Authentication API webhook** in the **Installed Extensions** tab.
 3. Copy the **Webhook URL** and **Authorization Header** (if you have one).
 4. Next, go to **Monitoring > Streams > New Event Stream**.
-5. Select [**Custom Webhook**](/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
+5. Select [**Custom Webhook**](/docs/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
 6. Configure your webhook.
 
    * For the **Payload URL**, enter the webhook URL you copied from the extension.
@@ -67,7 +67,7 @@ Make sure your destination can handle an array of log objects.
 2. Go to **Extensions** and select your **Auth0 Management API webhook** in the **Installed Extensions** tab.
 3. Copy the **Webhook URL** and **Authorization Header** (if you have one).
 4. Go to **Monitoring > Streams > New Event Stream**.
-5. Select [**Custom Webhook**](/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
+5. Select [**Custom Webhook**](/docs/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
 6. Configure your webhook.
 
    * For the **Payload URL**, enter the webhook URL you copied from the extension.
@@ -92,7 +92,7 @@ Set up the [Amazon EventBridge Integration](https://marketplace.auth0.com/integr
 4. Copy your token.
 5. [Login to your Auth0 Dashboard](https://manage.auth0.com/).
 6. Go to **Monitoring > Streams > New Event Stream**.
-7. Select [**Custom Webhook**](/customize/log-streams/custom-log-streams), enter a name and click **Create**.
+7. Select [**Custom Webhook**](/docs/customize/log-streams/custom-log-streams), enter a name and click **Create**.
 8. Configure your webhook.
 
    * For the **Payload URL**, replace `LOGGLY_TOKEN` with the token you copied from your Loggly account: `https://logs-01.loggly.com/bulk/{LOGGLY_TOKEN}/tag/auth0-{TENANT_NAME}/`.
@@ -106,7 +106,7 @@ Set up the [Amazon EventBridge Integration](https://marketplace.auth0.com/integr
 
 1. [Login to your Auth0 Dashboard](https://manage.auth0.com/).
 2. Go to **Monitoring > Streams > New Event Stream**.
-3. Select [**Custom Webhook**](/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
+3. Select [**Custom Webhook**](/docs/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
 4. Configure your webhook.
 
    * For the **Payload URL**, enter the URL of your Logstash server.
@@ -123,7 +123,7 @@ Set up the [Amazon EventBridge Integration](https://marketplace.auth0.com/integr
 5. Click **Create**.
 6. [Login to your Auth0 Dashboard](https://manage.auth0.com/).
 7. Go to **Monitoring > Streams > New Event Stream**.
-8. Select [**Custom Webhook**](/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
+8. Select [**Custom Webhook**](/docs/customize/log-streams/custom-log-streams), enter a name, and click **Create**.
 9. Configure your webhook.
 
    * Set the **Payload URL** to `https://logs.collector.solarwinds.com/v1/logs`.

@@ -9,11 +9,11 @@ title: Error Handling Best Practices
 ---
 ## Send error logs to an external service
 
-We recommend sending error event logs to an external service to provide better visibility and diagnosis of anomalous operation. To retain and analyze your log events past the log retention period offered for your subscription plan, [use Auth0 log streaming](/customize/log-streams). You can use services like DataDog and AWS EventBridge. We also offer the ability to send logs to an external service in our [Log Streaming](https://marketplace.auth0.com/features/log-streaming) section in Auth0 Marketplace.
+We recommend sending error event logs to an external service to provide better visibility and diagnosis of anomalous operation. To retain and analyze your log events past the log retention period offered for your subscription plan, [use Auth0 log streaming](/docs/customize/log-streams). You can use services like DataDog and AWS EventBridge. We also offer the ability to send logs to an external service in our [Log Streaming](https://marketplace.auth0.com/features/log-streaming) section in Auth0 Marketplace.
 
 ## Use error objects in rules
 
-There are time constraints regarding how much time a rule has to execute. To learn more, read [Custom Database Action Script Execution Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution). If recovery from an error condition is not possible (or probable) within this time period, then an error condition should be explicitly returned; this is as simple as completing rule execution by returning an instance of a Node `Error` object, as in:
+There are time constraints regarding how much time a rule has to execute. To learn more, read [Custom Database Action Script Execution Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution). If recovery from an error condition is not possible (or probable) within this time period, then an error condition should be explicitly returned; this is as simple as completing rule execution by returning an instance of a Node `Error` object, as in:
 
 `return callback(new Error('some description'));`
 
@@ -50,7 +50,7 @@ return new Promise(function(resolve, reject) {
     });
   });
 ```
-Alternatively, you can use `try...catch` processing to handle JavaScript exceptions that occur during synchronous operation. To learn more, read [`try...catch` in MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch).Setting up this type of exception handling can often incur performance costs, so use it sparingly; rule performance should be as optimal as possible. A more pragmatic approach is to implement processing that prevents exceptions from occurring rather than handling them once they have occurred. To learn more about best practices, see [Performance Best Practices](/troubleshoot/performance-best-practices).
+Alternatively, you can use `try...catch` processing to handle JavaScript exceptions that occur during synchronous operation. To learn more, read [`try...catch` in MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch).Setting up this type of exception handling can often incur performance costs, so use it sparingly; rule performance should be as optimal as possible. A more pragmatic approach is to implement processing that prevents exceptions from occurring rather than handling them once they have occurred. To learn more about best practices, see [Performance Best Practices](/docs/troubleshoot/performance-best-practices).
 
 ## Avoid uninitialized objects in rules
 

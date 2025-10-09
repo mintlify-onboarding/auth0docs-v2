@@ -10,7 +10,7 @@ title: Resend Verification Emails
   Auth0 Management Dashboard and the Auth0 Management API.
 'twitter:title': Resend Verification Emails
 ---
-If you need to resend a verification email to a user, you can resend it using the Auth0 User Management Dashboard or the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+If you need to resend a verification email to a user, you can resend it using the Auth0 User Management Dashboard or the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Tabs><Tab title="Use Auth0 Dashboard">
 
@@ -20,13 +20,13 @@ You can use the Auth0 Dashboard to resend a verification email to a user.
 2. Select the user.
 3. Select the **Actions** dropdown menu, and then select **Send Verification Email**.
 
-If you enable [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains), you have the option **Domain** to select the notification domain for your tenant.
+If you enable [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains), you have the option **Domain** to select the notification domain for your tenant.
 
 </Tab><Tab title="Use Auth0 Management API">
 
 You can use the Auth0 Management API to resend a verification email to a user.
 
-1. Get a [Management API access token](/secure/tokens/access-tokens/management-api-access-tokens) with the `update:users` scope.
+1. Get a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the `update:users` scope.
 2. Call the Management API [Send an email address verification email](https://auth0.com/docs/api/management/v2#!/Jobs/post_verification_email) endpoint with the user's `user_id`.
 
 #### Request example
@@ -58,7 +58,7 @@ You can use the Auth0 Management API to resend a verification email to a user.
 
 
 
-If you enable [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains), you need to include the `auth0-custom-domain` HTTP header. To learn more, review [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains#customize-email-handling-using-the-management-api).
+If you enable [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains), you need to include the `auth0-custom-domain` HTTP header. To learn more, review [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains#customize-email-handling-using-the-management-api).
 
 #### Check job status
 

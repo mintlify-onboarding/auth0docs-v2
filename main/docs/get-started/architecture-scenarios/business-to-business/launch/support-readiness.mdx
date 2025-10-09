@@ -10,11 +10,11 @@ title: Support Readiness (B2B)
 ---
 ## Review Auth0 Policies
 
-When starting to prepare for your launch, be sure to read through [Auth0 Policies](/troubleshoot/customer-support/operational-policies) and prepare your production operations accordingly for any required lead times or responsibilities on your part, according to the policies.
+When starting to prepare for your launch, be sure to read through [Auth0 Policies](/docs/troubleshoot/customer-support/operational-policies) and prepare your production operations accordingly for any required lead times or responsibilities on your part, according to the policies.
 
 ## Review your Support plan, SLAs, Severity definitions and Support center documentation
 
-You should review the specifics of the [support plan](/troubleshoot/customer-support) you’ve purchased and the Service Level Agreements associated with it, to ensure it is adequate for your needs. If you haven’t already done so, explore the [support center](https://support.auth0.com/) and familiarize yourself with support features such as viewing suggested solutions to common issues and [filing tickets](/troubleshoot/customer-support/open-and-manage-support-tickets) and viewing your quota usage. It will be helpful to review the severity level definitions for support tickets so that you file tickets with the correct severity. One important note is that it is not possible today in the Support Center to increase the severity of a support ticket. If you file a ticket for a medium-grade issue which later becomes a high severity issue, you should file a new urgent, high severity ticket that explains anything new that triggers the urgency and references the original ticket for details.
+You should review the specifics of the [support plan](/docs/troubleshoot/customer-support) you’ve purchased and the Service Level Agreements associated with it, to ensure it is adequate for your needs. If you haven’t already done so, explore the [support center](https://support.auth0.com/) and familiarize yourself with support features such as viewing suggested solutions to common issues and [filing tickets](/docs/troubleshoot/customer-support/open-and-manage-support-tickets) and viewing your quota usage. It will be helpful to review the severity level definitions for support tickets so that you file tickets with the correct severity. One important note is that it is not possible today in the Support Center to increase the severity of a support ticket. If you file a ticket for a medium-grade issue which later becomes a high severity issue, you should file a new urgent, high severity ticket that explains anything new that triggers the urgency and references the original ticket for details.
 
 You should also ensure your development and support teams are familiar with the [Auth0 community forum](https://community.auth0.com/), discussed further below. Customers can often find answers there right away to common issues, avoiding the need to file a ticket, so it should be your first stop for technical questions.
 
@@ -28,7 +28,7 @@ It’s a good idea to check out the Auth0 Community on a regular basis, not just
 
 ## Gather Auth0 troubleshooting information needed for support tickets
 
-We recommend your support team become familiar with our [troubleshooting guides](/troubleshoot) specific to identity protocols and Auth0. This includes the questions to research and information to collect before posting a question on the Auth0 forum or filing a support ticket. Authentication transactions often span multiple systems so there are some specialized troubleshooting techniques that are helpful to learn.
+We recommend your support team become familiar with our [troubleshooting guides](/docs/troubleshoot) specific to identity protocols and Auth0. This includes the questions to research and information to collect before posting a question on the Auth0 forum or filing a support ticket. Authentication transactions often span multiple systems so there are some specialized troubleshooting techniques that are helpful to learn.
 
 ## Have troubleshooting tools ready
 
@@ -53,7 +53,7 @@ To learn more, read the following articles on [Auth0 Community](https://communit
 
 ### Capture HAR file
 
-A [HAR file](/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) captures a sequence of browser interactions and is a commonly used tool when debugging authentication issues. The process of authenticating a user often involves redirecting the user’s browser from an application to Auth0, and possibly to another remote <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip>, depending on the type of connection used. You can capture the redirection and the responses and analyze it to find clues about the cause of an issue.
+A [HAR file](/docs/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) captures a sequence of browser interactions and is a commonly used tool when debugging authentication issues. The process of authenticating a user often involves redirecting the user’s browser from an application to Auth0, and possibly to another remote <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip>, depending on the type of connection used. You can capture the redirection and the responses and analyze it to find clues about the cause of an issue.
 
 ### Analyze HAR file
 
@@ -61,15 +61,15 @@ Analyze the HAR file to obtain valuable troubleshooting information. It shows 
 
 ### View JWT
 
-The [jwt.io](https://jwt.io/) tool was written by Auth0 and allows you to view the contents of a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip>-formatted token. Applications that delegate authentication to Auth0 via OIDC will receive an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> from Auth0. Depending on your type of application, the ID Token may be captured in a HAR file. The ID Token is in JWT format and can be pasted into jwt.io to view the contents of the ID Token.
+The [jwt.io](https://jwt.io/) tool was written by Auth0 and allows you to view the contents of a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip>-formatted token. Applications that delegate authentication to Auth0 via OIDC will receive an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> from Auth0. Depending on your type of application, the ID Token may be captured in a HAR file. The ID Token is in JWT format and can be pasted into jwt.io to view the contents of the ID Token.
 
 ### View SAML request/response
 
-There are many <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> decoders available. The [samltool.io](https://samltool.io/) decoder was written by Auth0 and allows you to view the contents of a SAML Request or Response. Applications that delegate authentication to Auth0 via SAML or use a SAML type of connection in Auth0 will use SAML Requests and Responses. These SAML Requests and Responses may be captured in a HAR file. The requests and responses can be pasted into samltool.io or other SAML decoders to view the contents of the SAML Request or Response.
+There are many <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> decoders available. The [samltool.io](https://samltool.io/) decoder was written by Auth0 and allows you to view the contents of a SAML Request or Response. Applications that delegate authentication to Auth0 via SAML or use a SAML type of connection in Auth0 will use SAML Requests and Responses. These SAML Requests and Responses may be captured in a HAR file. The requests and responses can be pasted into samltool.io or other SAML decoders to view the contents of the SAML Request or Response.
 
 ## Review Auth0 support matrix
 
-One potential cause of issues is using out of date versions of SDKs or libraries. We strongly recommend your team check your software stack, browsers, SDKs and libraries against the [Auth0 support matrix](/troubleshoot/customer-support/product-support-matrix) to ensure you are running on up-to-date, supported versions. In the event of an issue, the Auth0 support team may ask you to upgrade to a supported version. To avoid slowing down progress on issue resolution, be sure you are on up-to-date versions.
+One potential cause of issues is using out of date versions of SDKs or libraries. We strongly recommend your team check your software stack, browsers, SDKs and libraries against the [Auth0 support matrix](/docs/troubleshoot/customer-support/product-support-matrix) to ensure you are running on up-to-date, supported versions. In the event of an issue, the Auth0 support team may ask you to upgrade to a supported version. To avoid slowing down progress on issue resolution, be sure you are on up-to-date versions.
 
 ## Use Auth0 feedback portal
 
@@ -77,13 +77,13 @@ Auth0 welcomes feedback and ideas from Auth0 customers. If you have a suggestion
 
 ## Prepare real-time webtask log extension
 
-For debugging and supporting custom code in Auth0, including Actions, Rules, Hooks, custom database scripts, and custom <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> connections, knowledge of the [Realtime Webtask Log](/customize/extensions/real-time-webtask-logs) is essential. This enables you to view output from your custom code, including output from console.log statements.
+For debugging and supporting custom code in Auth0, including Actions, Rules, Hooks, custom database scripts, and custom <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> connections, knowledge of the [Realtime Webtask Log](/docs/customize/extensions/real-time-webtask-logs) is essential. This enables you to view output from your custom code, including output from console.log statements.
 
 We recommend installing the real-time webtask log extension and getting familiar with using it to view log output from your custom code as a debugging and support tool.
 
 ## Troubleshooting
 
-You should prepare to [troubleshoot basic issues](/troubleshoot/basic-issues) both during your development as well as after your application or API goes live. Make sure your development and support teams are prepared with knowledge of troubleshooting tools, and the list of common issues to check when troubleshooting an issue.
+You should prepare to [troubleshoot basic issues](/docs/troubleshoot/basic-issues) both during your development as well as after your application or API goes live. Make sure your development and support teams are prepared with knowledge of troubleshooting tools, and the list of common issues to check when troubleshooting an issue.
 
 ## Project Planning Guide
 

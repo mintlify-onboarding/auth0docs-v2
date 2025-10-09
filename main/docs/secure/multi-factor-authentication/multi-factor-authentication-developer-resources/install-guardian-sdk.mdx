@@ -52,11 +52,11 @@ var auth0GuardianJS = require('auth0-guardian-js')({
 
 
 
-Use of `requestToken` or `ticket` depends on the authentication method. Ticket corresponds to a previously generated [enrollment ticket](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/create-custom-enrollment-tickets).
+Use of `requestToken` or `ticket` depends on the authentication method. Ticket corresponds to a previously generated [enrollment ticket](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/create-custom-enrollment-tickets).
 
 ### Use a custom domain
 
-If you have a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip> configured for your Auth0 tenant, you'll need to update the `serviceUrl` property to point to the Guardian endpoint:
+If you have a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip> configured for your Auth0 tenant, you'll need to update the `serviceUrl` property to point to the Guardian endpoint:
 
 ```javascript lines
 var auth0GuardianJS = require('auth0-guardian-js')({
@@ -248,4 +248,4 @@ function authenticate(method) {
 
 ## Learn more
 
-* [Guardian Error Code Reference](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/guardian-error-code-reference)
+* [Guardian Error Code Reference](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/guardian-error-code-reference)

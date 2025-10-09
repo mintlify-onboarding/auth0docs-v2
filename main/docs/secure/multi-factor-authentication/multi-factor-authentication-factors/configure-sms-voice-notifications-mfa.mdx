@@ -11,13 +11,13 @@ title: Configure SMS and Voice Notifications for MFA
 ---
 <Warning>
 
-The Unified Phone Experience centralizes all your phone provider configurations in one place in your tenant, so you don’t need to configure the same phone provider multiple times for various phone authentication factors. To learn more, read [Use Auth0's Unified Phone Experience for Multi-Factor Authentication](/customize/phone-messages/unified-phone/use-auth0s-unified-phone-experience-for-multi-factor-authentication).
+The Unified Phone Experience centralizes all your phone provider configurations in one place in your tenant, so you don’t need to configure the same phone provider multiple times for various phone authentication factors. To learn more, read [Use Auth0's Unified Phone Experience for Multi-Factor Authentication](/docs/customize/phone-messages/unified-phone/use-auth0s-unified-phone-experience-for-multi-factor-authentication).
 
 </Warning>
 
-If you use SMS or voice as authentication factors, when an end user attempts to authenticate with your application, they are sent a code via SMS or voice, which they will have to enter to complete the transaction. This implies that they both know their login credentials and are in possession of the device that they have registered for <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> use.
+If you use SMS or voice as authentication factors, when an end user attempts to authenticate with your application, they are sent a code via SMS or voice, which they will have to enter to complete the transaction. This implies that they both know their login credentials and are in possession of the device that they have registered for <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> use.
 
-You can configure the SMS and Voice factor using the Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to send messages through SMS, voice, or to let the end users choose how they want the code to be delivered. You can configure your delivery provider using Actions, configure your Twilio account, or if you want to send customers SMS only, configure Auth0's default message delivery service. You must use the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> experience to enable voice notifications for MFA.
+You can configure the SMS and Voice factor using the Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to send messages through SMS, voice, or to let the end users choose how they want the code to be delivered. You can configure your delivery provider using Actions, configure your Twilio account, or if you want to send customers SMS only, configure Auth0's default message delivery service. You must use the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> experience to enable voice notifications for MFA.
 
 <Card title="Availability varies by Auth0 plan">
 
@@ -29,11 +29,11 @@ Both your specific login implementation and your Auth0 plan or custom agreement 
 
 When SMS and Voice are enabled, users are given the option to enroll by getting the code sent by SMS or voice:
 
-<Frame>![Configure SMS and Voice for MFA User Experience Voice](/images/cdy7uua7fh8z/2Q4BViGl71sdrytUDgNJ10/693969bb00444c6bef030e90bb1015f2/2025-02-12_10-06-29.png)</Frame>
+<Frame>![Configure SMS and Voice for MFA User Experience Voice](/docs/images/cdy7uua7fh8z/2Q4BViGl71sdrytUDgNJ10/693969bb00444c6bef030e90bb1015f2/2025-02-12_10-06-29.png)</Frame>
 
 When you only enable SMS, the flow is simpler:
 
-<Frame>![Configure SMS and Voice for MFA User Experience SMS](/images/cdy7uua7fh8z/64PgR0CO1Wjfie2Hxy1Ptw/e6dcf80c0739f8235b473c0291a01e63/2025-02-12_10-07-15.png)</Frame>
+<Frame>![Configure SMS and Voice for MFA User Experience SMS](/docs/images/cdy7uua7fh8z/64PgR0CO1Wjfie2Hxy1Ptw/e6dcf80c0739f8235b473c0291a01e63/2025-02-12_10-07-15.png)</Frame>
 
 After users are enrolled, the next time they authenticate they will get the voice or SMS message at their registered phone.
 
@@ -46,7 +46,7 @@ After users are enrolled, the next time they authenticate they will get the voic
 
    1. **Auth0**: You can't use this provider to send voice messages. Sends SMS messages using Auth0's internally-configured SMS delivery provider. It can be used for evaluation and testing purposes only, and there is a maximum of 100 messages per tenant during the entire tenant lifetime. New codes are not received after reaching the 100 message limit.
    2. **Twilio**: Sends the messages using the [Twilio Programmable SMS API](https://www.twilio.com/sms) for SMS or [Twilio Programmable Voice API](https://www.twilio.com/voice) for voice. Use Twilio Life Credentials, not Test Credentials, which are only meant to send messages in a production environment.
-   3. **Custom**: Sends the messages by invoking an Action in the [Send Phone Message Flow](/customize/actions/explore-triggers/mfa-notifications-trigger).
+   3. **Custom**: Sends the messages by invoking an Action in the [Send Phone Message Flow](/docs/customize/actions/explore-triggers/mfa-notifications-trigger).
 
    You can also choose to give users the option of getting SMS text messages, voice calls, or both.
 
@@ -74,11 +74,11 @@ If you choose to deliver SMS via Twilio, follow these steps to configure your SM
 
 ### Customize SMS or voice message templates
 
-You can customize your SMS and voice message templates. To learn more, read [Customize SMS and Voice Messages](/customize/customize-sms-or-voice-messages).
+You can customize your SMS and voice message templates. To learn more, read [Customize SMS and Voice Messages](/docs/customize/customize-sms-or-voice-messages).
 
 ## Use the Management API
 
-You can use the Management API to configure which message delivery methods are enabled by using the `/api/v2/guardian/factors/phone/message-types` endpoint. The `message_types` parameter is an array that can have `["sms"]`, `["voice"]`, or `["sms", "voice"]`. You need a [Management API access token](/secure/tokens/access-tokens/management-api-access-tokens) with the `update:guardian_factors` scope as a bearer token to call the API:
+You can use the Management API to configure which message delivery methods are enabled by using the `/api/v2/guardian/factors/phone/message-types` endpoint. The `message_types` parameter is an array that can have `["sms"]`, `["voice"]`, or `["sms", "voice"]`. You need a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the `update:guardian_factors` scope as a bearer token to call the API:
 
 <CodeGroup>
 ```bash cURL lines
@@ -286,7 +286,7 @@ dataTask.resume()
 
 ## Integrated SMS messaging providers
 
-Auth0 defaults to support for sending messages through Twilio. However, you can use a different SMS provider, and add specific logic before sending a message or send a different message depending on the user or the application. To do this, you configure SMS MFA to use one of our integrated [Actions](/customize/actions) in the [Send Phone Message Flow](/customize/actions/explore-triggers/mfa-notifications-trigger).
+Auth0 defaults to support for sending messages through Twilio. However, you can use a different SMS provider, and add specific logic before sending a message or send a different message depending on the user or the application. To do this, you configure SMS MFA to use one of our integrated [Actions](/docs/customize/actions) in the [Send Phone Message Flow](/docs/customize/actions/explore-triggers/mfa-notifications-trigger).
 
 Integrated SMS messaging providers include:
 
@@ -300,7 +300,7 @@ Integrated SMS messaging providers include:
 
 ## Custom phone providers
 
-You can also configure custom phone providers using Actions. To learn more, read [Configure a Custom Phone Provider](/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider).
+You can also configure custom phone providers using Actions. To learn more, read [Configure a Custom Phone Provider](/docs/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider).
 
 ## Security considerations
 
@@ -308,8 +308,8 @@ When using any phone messaging provider, be aware that attackers abusing the sig
 
 Auth0 limits a single user to send up to 10 SMS or voice messages per hour, and OTP flows via email or authenticators are limited to five requests every five minutes. (The burst rate is 10 but only 1 voice message per hour will be sent for new requests.) To further protect your account, consider:
 
-* Enabling [Brute Force Protection](/secure/attack-protection/brute-force-protection). Auth0 will block an IP if it attempts to do more than 50 signup requests per minute.
-* Enabling [Log Streaming](/customize/log-streams) and creating alerts using your favorite monitoring tool when you see spikes in the number of `gd_send_voice` or `gd_send_voice_failure` [log events](/deploy-monitor/logs/log-event-type-codes).
+* Enabling [Brute Force Protection](/docs/secure/attack-protection/brute-force-protection). Auth0 will block an IP if it attempts to do more than 50 signup requests per minute.
+* Enabling [Log Streaming](/docs/customize/log-streams) and creating alerts using your favorite monitoring tool when you see spikes in the number of `gd_send_voice` or `gd_send_voice_failure` [log events](/docs/deploy-monitor/logs/log-event-type-codes).
 
 Phone Messaging providers have additional protections. If you are using Twilio, read the [Twilio's Anti-Fraud Developer Guide](https://www.twilio.com/docs/usage/anti-fraud-developer-guide). Consider the following options:
 
@@ -318,6 +318,6 @@ Phone Messaging providers have additional protections. If you are using Twilio, 
 
 ## Learn more
 
-* [Enroll and Challenge SMS and Voice Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
-* [Attack Protection](/secure/attack-protection)
-* [Log Streams](/customize/log-streams)
+* [Enroll and Challenge SMS and Voice Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
+* [Attack Protection](/docs/secure/attack-protection)
+* [Log Streams](/docs/customize/log-streams)

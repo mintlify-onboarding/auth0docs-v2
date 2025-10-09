@@ -10,7 +10,7 @@ title: Check for Deprecation Errors
 ---
 When Auth0 features are deprecated, there may be errors or notices in the tenant logs that show up to indicate that your applications are using the deprecated features. This guide will provide assistance with searching your logs for deprecation-related messages as well as explanations of potential causes and resolutions for particular items.
 
-There are two different ways to search for warning messages showing usage of deprecated features: The Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. Note that in either case, the [log retention period](/deploy-monitor/logs/log-data-retention) is governed by the subscription level of your account.
+There are two different ways to search for warning messages showing usage of deprecated features: The Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. Note that in either case, the [log retention period](/docs/deploy-monitor/logs/log-data-retention) is governed by the subscription level of your account.
 
 ## Use the Dashboard
 
@@ -24,12 +24,12 @@ If your application uses a deprecated feature, a **Deprecation Notice** message 
 
 You can also use the Management API to search through logs for such messages by looking for `type:"depnote"`.
 
-1. Go to the [Management API](https://auth0.com/docs/api/management/v2). If you have not already done so, [get an API token](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
+1. Go to the [Management API](https://auth0.com/docs/api/management/v2). If you have not already done so, [get an API token](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
 2. On the left, go to [Logs > Search log events](https://auth0.com/docs/api/management/v2/#!/Logs/get_logs) and then scroll down to **Parameters**.
 3. In the **q** field enter: `type:"depnote"`.
 4. Click on the **TRY** button. The **Client ID** field in the results will indicate which application on your tenant is using the deprecated feature.
 
 ## Learn more
 
-* [Log Data Retention](/deploy-monitor/logs/log-data-retention)
-* [Logs](/deploy-monitor/logs)
+* [Log Data Retention](/docs/deploy-monitor/logs/log-data-retention)
+* [Logs](/docs/deploy-monitor/logs)

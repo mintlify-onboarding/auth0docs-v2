@@ -10,7 +10,7 @@ title: Choose a Connection Type for Azure AD
 ---
 You can connected your Auth0 instance to Microsoft Azure Active Directory in three ways. Review the options to determine the best approach for your situation.
 
-Auth0 recommends starting with the native Microsoft Azure AD connection. If you need further customization, review the <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> connection configuration. Also, if your organization has additional restrictions on <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> code flows, review the Enterprise OIDC configuration.
+Auth0 recommends starting with the native Microsoft Azure AD connection. If you need further customization, review the <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> connection configuration. Also, if your organization has additional restrictions on <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> code flows, review the Enterprise OIDC configuration.
 
 The table below illustrates the main differences in these connection types. Review these capabilities to determine the best connection type for your organization.
 
@@ -122,7 +122,7 @@ The table below compares the Azure AD Graph Attributes across the connection typ
 </tbody>
 </table>
 
-You must [enable permission to query the Microsoft Graph API](/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2#add-permissions) to receive the following extended profile attributes:
+You must [enable permission to query the Microsoft Graph API](/docs/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2#add-permissions) to receive the following extended profile attributes:
 
 * `businessPhones`
 * `jobTitle`
@@ -130,7 +130,7 @@ You must [enable permission to query the Microsoft Graph API](/authenticate/iden
 
 ### Group Configuration
 
-If you [enable permission to query the Microsoft Graph API](/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2#add-permissions), Auth0 automatically retrieves groups for the user and maps these to the `groups` attribute in the Auth0 profile. Auth0 maps these group "friendly names" and does not need to configure a custom claim because these groups map directly from the Microsoft Graph API.
+If you [enable permission to query the Microsoft Graph API](/docs/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2#add-permissions), Auth0 automatically retrieves groups for the user and maps these to the `groups` attribute in the Auth0 profile. Auth0 maps these group "friendly names" and does not need to configure a custom claim because these groups map directly from the Microsoft Graph API.
 
 ## SAML
 
@@ -152,11 +152,11 @@ The SAML and OIDC connection types use object identifiers rather than friendly n
 
 ## Enterprise OIDC
 
-The Enterprise Open ID Connect type can use either OAuth Implicit or Authorization Code workflows. This connection maps custom claims in the `id_token` to the Auth0 User Profile. To learn more about authentication flows, visit the [Authentication and Authorization Flows documentation](/get-started/authentication-and-authorization-flow).
+The Enterprise Open ID Connect type can use either OAuth Implicit or Authorization Code workflows. This connection maps custom claims in the `id_token` to the Auth0 User Profile. To learn more about authentication flows, visit the [Authentication and Authorization Flows documentation](/docs/get-started/authentication-and-authorization-flow).
 
 ### Connection features and considerations
 
-If you cannot provide <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secrets">client secrets</Tooltip> in your login flow due to regulations or privacy protocols, the Implicit Flow the OIDC connection offers could be a preferred method. If you require custom claims but do not want to configure the additional SAML features, the OIDC connection can reduce complexity.
+If you cannot provide <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secrets">client secrets</Tooltip> in your login flow due to regulations or privacy protocols, the Implicit Flow the OIDC connection offers could be a preferred method. If you require custom claims but do not want to configure the additional SAML features, the OIDC connection can reduce complexity.
 
 ### Group configuration
 
@@ -170,4 +170,4 @@ The SAML and OIDC connection types use object identifiers rather than friendly n
 
 ## Learn more
 
-* [Connect Your App to Microsoft Azure Active Directory](/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2)
+* [Connect Your App to Microsoft Azure Active Directory](/docs/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2)

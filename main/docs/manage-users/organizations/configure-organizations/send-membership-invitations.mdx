@@ -9,7 +9,7 @@ title: Send Organization Membership Invitations
   using the Auth0 Dashboard or Management API.
 'twitter:title': Send Organization Membership Invitations
 ---
-You can send [organization](/manage-users/organizations/organizations-overview) membership invitations to users using either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can send [organization](/docs/manage-users/organizations/organizations-overview) membership invitations to users using either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Auth0 Dashboard
 
@@ -25,18 +25,18 @@ To invite members via the Auth0 Dashboard:
 
    </Callout>
 
-If you enable [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains), you have the option to select **Domain** under the **Send Invite(s)** section to select the notification domain for your tenant.
+If you enable [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains), you have the option to select **Domain** under the **Send Invite(s)** section to select the notification domain for your tenant.
 
 ## Management API
 
 <Warning>
 
-If you are exposing the invitation feature from an admin dashboard you have customized for your application, use a [confidential application](/get-started/applications/confidential-and-public-applications) to validate the authenticated user belongs to an organization before inviting new members, or you can restrict users from inviting new members unless they are assigned a specific role.
+If you are exposing the invitation feature from an admin dashboard you have customized for your application, use a [confidential application](/docs/get-started/applications/confidential-and-public-applications) to validate the authenticated user belongs to an organization before inviting new members, or you can restrict users from inviting new members unless they are assigned a specific role.
 
 </Warning>
 
 To invite members via the Management API:
-Make a `POST` call to the Create Organization Invitations endpoint. Be sure to replace `ORG_ID`, `MGMT_API_ACCESS_TOKEN`, `NAME_OF_USER`, `EMAIL_ADDRESS`, `CLIENT_ID`, `CONNECTION_ID`, `EXP_TIME`, `ROLE_ID`, and `SEND_INVITATION_EMAIL_OPTION` placeholder values with your organization ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, name of invited user, email address of invited user, <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip>, connection ID, expiration time, and role IDs, respectively.
+Make a `POST` call to the Create Organization Invitations endpoint. Be sure to replace `ORG_ID`, `MGMT_API_ACCESS_TOKEN`, `NAME_OF_USER`, `EMAIL_ADDRESS`, `CLIENT_ID`, `CONNECTION_ID`, `EXP_TIME`, `ROLE_ID`, and `SEND_INVITATION_EMAIL_OPTION` placeholder values with your organization ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, name of invited user, email address of invited user, <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip>, connection ID, expiration time, and role IDs, respectively.
 
 ```json lines
 {
@@ -54,7 +54,7 @@ Make a `POST` call to the Create Organization Invitations endpoint. Be sure to r
 }
 ```
 
-If you enable [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains), you need to include the `auth0-custom-domain` HTTP header. To learn more, review [Multiple Custom Domains](/customize/custom-domains/multiple-custom-domains#customize-email-handling-using-the-management-api).
+If you enable [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains), you need to include the `auth0-custom-domain` HTTP header. To learn more, review [Multiple Custom Domains](/docs/customize/custom-domains/multiple-custom-domains#customize-email-handling-using-the-management-api).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -69,7 +69,7 @@ If you are using custom domains, this should be your custom domain name.
 | Value | Description |
 | --- | --- |
 | `ORG_ID` | ID of the organization for which you want to assign membership. |
-| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/secure/tokens/access-tokens/management-api-access-tokens) with the scope `create:organization_invitations`. |
+| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the scope `create:organization_invitations`. |
 | `NAME_OF_USER` | Name of the user to whom you want to send the invitation. Maximum of 300 characters. |
 | `EMAIL_ADDRESS` | Email address to which the invitation should be sent. |
 | `CLIENT_ID` | ID of the application to which the invited user should authenticate. |
@@ -88,7 +88,7 @@ Possible response status codes are as follows:
 | `400` | `invalid_body` | The specified client\_id does not exist. | The request payload is not valid. |
 | `400` | `invalid_body` | The specified connection does not exist. | The request payload is not valid. |
 | `400` | `invalid_body` | Passwordless connections are not supported. | The request payload is not valid. |
-| `400` | `invalid_body` | A default login route is required to generate the invitation url. To learn more, see [Configure default login routes](/authenticate/login/auth0-universal-login/configure-default-login-routes). | The request payload is not valid. |
+| `400` | `invalid_body` | A default login route is required to generate the invitation url. To learn more, see [Configure default login routes](/docs/authenticate/login/auth0-universal-login/configure-default-login-routes). | The request payload is not valid. |
 | `400` | `invalid_body` | One or more of the specified roles do not exist: role1, role2'. | The request payload is not valid. |
 | `400` | `invalid_body` | Invalid request body. The message will vary depending on the cause. | The request payload is not valid. |
 | `400` | `invalid_query_string` | Invalid request query string. The message will vary depending on the cause. | The query string is not valid. |

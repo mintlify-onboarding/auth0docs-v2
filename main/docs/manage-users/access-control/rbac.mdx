@@ -43,7 +43,7 @@ Essentially, a role is a collection of permissions that you can apply to users. 
 
 You can also use roles to collect permissions defined for various APIs. For example, say you have a marketing module that allows users to create and distribute newsletters to customers. Your marketing content specialist creates all of the newsletters and prepares them for distribution. Similarly, you have an event module that allows users to create, publish, and manage event registration. Your event coordinator creates the events. Once the VP of Marketing approves the newsletters and events, their assistant publishes the events and distributes the newsletters. In this case, your Newsletter API could have a `distribute:newsletters` permission and your Event API could have a `publish:events` permission. These permissions could then be gathered into a role called `Marketing Publisher` and assigned to the VP of Marketing's assistant.
 
-In addition, Organization-specific roles can be [added to Organization members](/manage-users/organizations/configure-organizations/add-member-roles) and used to allow access in your application based on the organizations with which an end-user is logging in. This is particularly useful when supporting multi-tenant & SaaS products, where a particular user might have a privileged role in one organization, but not in others.
+In addition, Organization-specific roles can be [added to Organization members](/docs/manage-users/organizations/configure-organizations/add-member-roles) and used to allow access in your application based on the organizations with which an end-user is logging in. This is particularly useful when supporting multi-tenant & SaaS products, where a particular user might have a privileged role in one organization, but not in others.
 
 ## Overlapping role assignments
 
@@ -55,31 +55,31 @@ For example, let's say you have an API that provides data for an event applicati
 
 Currently, we provide two ways of implementing role-based access control (RBAC), which you can use in place of or in combination with your API's own internal access control system:
 
-* [Authorization Core](/manage-users/access-control/configure-core-rbac)
-* [Authorization Extension](/customize/extensions/authorization-extension)
+* [Authorization Core](/docs/manage-users/access-control/configure-core-rbac)
+* [Authorization Extension](/docs/customize/extensions/authorization-extension)
 
 We are expanding our Authorization Core feature set to match the functionality of the Authorization Extension. Our new core RBAC implementation improves performance and scalability and will eventually provide a more flexible RBAC system than the Authorization Extension.
 
-For now, both implement the key features of RBAC and allow you to restrict the custom scopes defined for an API to those that have been assigned to the user as permissions. For a comparison, see [Authorization Core vs. Authorization Extension](/manage-users/access-control/authorization-core-vs-authorization-extension).
+For now, both implement the key features of RBAC and allow you to restrict the custom scopes defined for an API to those that have been assigned to the user as permissions. For a comparison, see [Authorization Core vs. Authorization Extension](/docs/manage-users/access-control/authorization-core-vs-authorization-extension).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The [Authorization Core](/manage-users/access-control/rbac) feature set and [Authorization Extension](/customize/extensions/authorization-extension) are completely separate features. To manage groups, roles, or permissions, you need to use the feature they were originally created in.
+The [Authorization Core](/docs/manage-users/access-control/rbac) feature set and [Authorization Extension](/docs/customize/extensions/authorization-extension) are completely separate features. To manage groups, roles, or permissions, you need to use the feature they were originally created in.
 
 </Callout><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Although the [Delegated Administration Extension (DAE)](/customize/extensions/delegated-administration-extension) and the [Authorization Core](/manage-users/access-control/rbac) feature set are completely separate features, you can use the Authorization Core feature set to create and manage roles for the DAE using Actions. To learn how, see [Sample Use Cases: Actions with Authorization](/manage-users/access-control/sample-use-cases-actions-with-authorization).
+Although the [Delegated Administration Extension (DAE)](/docs/customize/extensions/delegated-administration-extension) and the [Authorization Core](/docs/manage-users/access-control/rbac) feature set are completely separate features, you can use the Authorization Core feature set to create and manage roles for the DAE using Actions. To learn how, see [Sample Use Cases: Actions with Authorization](/docs/manage-users/access-control/sample-use-cases-actions-with-authorization).
 
 </Callout>
 
 ### Extending RBAC
 
-You can provide more control by using [rules](/customize/rules) to restrict access based on a combination of attributes, such as user department, time of day, location of access, or any other user or API attribute (for example, username, security clearance, or API name).
+You can provide more control by using [rules](/docs/customize/rules) to restrict access based on a combination of attributes, such as user department, time of day, location of access, or any other user or API attribute (for example, username, security clearance, or API name).
 
-For more info about using rules with authorization policies, see [Rules with Authorization Policies](/manage-users/access-control/rules-for-authorization-policies).
+For more info about using rules with authorization policies, see [Rules with Authorization Policies](/docs/manage-users/access-control/rules-for-authorization-policies).
 
 ## Learn more
 
-* [Enable Role-Based Access Control for APIs](/get-started/apis/enable-role-based-access-control-for-apis)
-* [Troubleshoot Role-Based Access Control and Authorization](/troubleshoot/authentication-issues/troubleshoot-rbac-authorization)
-* [Troubleshoot Authorization Extension](/troubleshoot/authentication-issues/troubleshoot-authorization-extension)
+* [Enable Role-Based Access Control for APIs](/docs/get-started/apis/enable-role-based-access-control-for-apis)
+* [Troubleshoot Role-Based Access Control and Authorization](/docs/troubleshoot/authentication-issues/troubleshoot-rbac-authorization)
+* [Troubleshoot Authorization Extension](/docs/troubleshoot/authentication-issues/troubleshoot-authorization-extension)

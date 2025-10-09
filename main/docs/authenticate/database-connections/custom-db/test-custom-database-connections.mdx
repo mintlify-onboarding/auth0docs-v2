@@ -14,11 +14,11 @@ If you use the Auth0-hosted database structure to store your users, you can test
 
 ## Test with import users to Auth0 enabled
 
-When import users is enabled, users are gradually migrated from your external user store to Auth0 user store. In the process, users will be authenticated against the external store the first time they successfully log in. All further login attempts will be executed against the Auth0 user store. To learn more, read about automatic migrations in [Import and Export Users](/manage-users/user-migration).
+When import users is enabled, users are gradually migrated from your external user store to Auth0 user store. In the process, users will be authenticated against the external store the first time they successfully log in. All further login attempts will be executed against the Auth0 user store. To learn more, read about automatic migrations in [Import and Export Users](/docs/manage-users/user-migration).
 
 ### Create a test tenant and application
 
-1. Use the Auth0 Dashboard to [create a new tenant](/get-started/auth0-overview/create-tenants).
+1. Use the Auth0 Dashboard to [create a new tenant](/docs/get-started/auth0-overview/create-tenants).
 2. Navigate to [Applications > Applications](https://manage.auth0.com/#/applications/applications) and create a [Machine-to-Machine](https://manage.auth0.com/#/applications/applications/create) application.
 
    <Warning>
@@ -28,7 +28,7 @@ When import users is enabled, users are gradually migrated from your external us
    </Warning>
 3. Enable both the **Password** and **Client Credential** grant for this application (both grants should be enabled for this test).
 
-   <Frame>![Auth0 Dashboard > Applications > Advanced Settings](/images/cdy7uua7fh8z/4caAveuhYurCDb5F8mdImm/38496efe6f670d828542b02a56e5ca64/Grant_Types_-_English.png)</Frame>
+   <Frame>![Auth0 Dashboard > Applications > Advanced Settings](/docs/images/cdy7uua7fh8z/4caAveuhYurCDb5F8mdImm/38496efe6f670d828542b02a56e5ca64/Grant_Types_-_English.png)</Frame>
 4. To authorize your application, navigate to [Applications > APIs](https://manage.auth0.com/#/apis).
 5. Select **Management API**.
 6. Under the **Machine-to-Machine Applications** tab, use the toggle to authorize your test application.
@@ -42,7 +42,7 @@ When import users is enabled, users are gradually migrated from your external us
    * `update:users_app_metadata`
    * `create:users_app_metadata`
 
-     <Frame>![Auth0 Dashboard > APIs > Management API >  M2M Tab > App Permissions](/images/cdy7uua7fh8z/2vW8zD1iIObuqb0i59yw77/c43bafa05b271a4343af51cb5c8ce1ce/2024-03-14_10-28-19.png)</Frame>
+     <Frame>![Auth0 Dashboard > APIs > Management API >  M2M Tab > App Permissions](/docs/images/cdy7uua7fh8z/2vW8zD1iIObuqb0i59yw77/c43bafa05b271a4343af51cb5c8ce1ce/2024-03-14_10-28-19.png)</Frame>
 
 ### Create test database connections
 
@@ -98,36 +98,36 @@ After you create a tenant and an application in Dashboard, create a source datab
 </tr>
 </tbody>
 </table>
-7. Update the [Login](/authenticate/database-connections/custom-db/test-custom-database-connections#login) and [Get User](/authenticate/database-connections/custom-db/test-custom-database-connections#get-user) database action scripts in your target database. To learn more about best practices using database action scripts, read [Custom Database Connection and Action Scripts Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts).
-8. Select **Save and Try** on each script. You should monitor the Real-time Webtask Logs Extension `console.log` output. To learn more, read [Real-time Webtask Logs Extension](/customize/extensions/real-time-webtask-logs).
+7. Update the [Login](/docs/authenticate/database-connections/custom-db/test-custom-database-connections#login) and [Get User](/docs/authenticate/database-connections/custom-db/test-custom-database-connections#get-user) database action scripts in your target database. To learn more about best practices using database action scripts, read [Custom Database Connection and Action Scripts Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts).
+8. Select **Save and Try** on each script. You should monitor the Real-time Webtask Logs Extension `console.log` output. To learn more, read [Real-time Webtask Logs Extension](/docs/customize/extensions/real-time-webtask-logs).
 9. Select **Try Connection** to test the connection live.
 
 ## Test without Import Users enabled
 
-1. Repeat steps in [Create a test tenant and application](/authenticate/database-connections/custom-db/test-custom-database-connections#create-a-test-tenant-and-application).
+1. Repeat steps in [Create a test tenant and application](/docs/authenticate/database-connections/custom-db/test-custom-database-connections#create-a-test-tenant-and-application).
 2. Create one test database connection.
 3. Make sure **Import Users to Auth0** under your source database settings is disabled. Users will authenticate against the external user store during each login attempt.
 4. Update all database actions scripts with the samples below.
 
 ### Get User script
 
-The [Get User](/authenticate/database-connections/custom-db/templates/get-user) script implements an executable function that determines the current state of a user.
+The [Get User](/docs/authenticate/database-connections/custom-db/templates/get-user) script implements an executable function that determines the current state of a user.
 
 When **Import Users to Auth0** is enabled, the Get User script runs when a user attempts to sign up to check if the user already exists in the external user store.
 
 The Get User script also runs when a user attempts to:
 
-* Change a user's email address ([Change Email](/authenticate/database-connections/custom-db/templates/change-email) script)
-* Log in ([Login](/authenticate/database-connections/custom-db/templates/login) script)
-* Change a user's password ([Change Password](/authenticate/database-connections/custom-db/templates/change-password) script)
+* Change a user's email address ([Change Email](/docs/authenticate/database-connections/custom-db/templates/change-email) script)
+* Log in ([Login](/docs/authenticate/database-connections/custom-db/templates/login) script)
+* Change a user's password ([Change Password](/docs/authenticate/database-connections/custom-db/templates/change-password) script)
 
 When **Import Users to Auth0** is disabled, the Get User script runs when a user attempts to sign up to check if the user already exists in the external user store. If a user already exists in the external user store, it will not execute the Create script.
 
 The Get User script also runs when a user attempts to:
 
-* Create a user ([Create](/authenticate/database-connections/custom-db/templates/create) script)
-* Change a user's email address ([Change Email](/authenticate/database-connections/custom-db/templates/change-email) script)
-* Change a user's password ([Change Password](/authenticate/database-connections/custom-db/templates/change-password) script)
+* Create a user ([Create](/docs/authenticate/database-connections/custom-db/templates/create) script)
+* Change a user's email address ([Change Email](/docs/authenticate/database-connections/custom-db/templates/change-email) script)
+* Change a user's password ([Change Password](/docs/authenticate/database-connections/custom-db/templates/change-password) script)
 
 #### Example
 
@@ -206,7 +206,7 @@ async function getUser(user, context, callback) {
 
 ### Login script
 
-The [Login](/authenticate/database-connections/custom-db/templates/login) script implements an executable function that authenticates a user when a user logs in. If the user exists in the target database (Auth0), it authenticates them using that record. Otherwise, it authenticates the user with their record in the source database (external).
+The [Login](/docs/authenticate/database-connections/custom-db/templates/login) script implements an executable function that authenticates a user when a user logs in. If the user exists in the target database (Auth0), it authenticates them using that record. Otherwise, it authenticates the user with their record in the source database (external).
 
 #### Example
 
@@ -264,7 +264,7 @@ function login(usernameOrEmail, password, context, callback) {
 
 ### Create script
 
-The [Create script](/authenticate/database-connections/custom-db/templates/create) implements an executable function that creates a corresponding user record in the external database when a user signs up through <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip>, or is created in the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+The [Create script](/docs/authenticate/database-connections/custom-db/templates/create) implements an executable function that creates a corresponding user record in the external database when a user signs up through <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip>, or is created in the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 #### Example
 
@@ -343,7 +343,7 @@ async function create(user, context, callback) {
 
 ### Delete script
 
-The [Delete script](/authenticate/database-connections/custom-db/templates/delete) implements an executable function that deletes a user from Auth0 and the external database in the same operation when a user is deleted in the Auth0 Dashboard or with the Auth0 Management API.
+The [Delete script](/docs/authenticate/database-connections/custom-db/templates/delete) implements an executable function that deletes a user from Auth0 and the external database in the same operation when a user is deleted in the Auth0 Dashboard or with the Auth0 Management API.
 
 #### Example
 
@@ -414,7 +414,7 @@ async function deleteUser(user, context, callback) {
 
 ### Verify script
 
-The [Verify script](/authenticate/database-connections/custom-db/templates/verify) implements an executable function that marks the verification status of a user’s email address in the external database when a user clicks on the link in the verification email sent by Auth0.
+The [Verify script](/docs/authenticate/database-connections/custom-db/templates/verify) implements an executable function that marks the verification status of a user’s email address in the external database when a user clicks on the link in the verification email sent by Auth0.
 
 #### Example
 
@@ -508,7 +508,7 @@ async function verify(user, context, callback) {
 
 ### Change Password script
 
-The [Change Password script](/authenticate/database-connections/custom-db/templates/change-password) implements an executable function that updates a user's password in the external database when a password change workflow starts from the Auth0 Dashboard or the Auth0 Management API.
+The [Change Password script](/docs/authenticate/database-connections/custom-db/templates/change-password) implements an executable function that updates a user's password in the external database when a password change workflow starts from the Auth0 Dashboard or the Auth0 Management API.
 
 #### Example
 
@@ -602,7 +602,7 @@ async function changePassword(user, newPassword, context, callback) {
 
 ### Change Email script
 
-The [Change Email](/authenticate/database-connections/custom-db/templates/change-email) script implements an executable function that updates a user's email address when the user changes their email address or their email address verification status.
+The [Change Email](/docs/authenticate/database-connections/custom-db/templates/change-email) script implements an executable function that updates a user's email address when the user changes their email address or their email address verification status.
 
 This script is not available in the Auth0 Dashboard. You must call the Management API [Update a connection](https://auth0.com/docs/api/management/v2/connections/patch-connections-by-id) endpoint and provide the `options.customScripts.change_email` property.
 
@@ -699,9 +699,9 @@ async function changeEmail(user, newEmail, verified, callback) {
 
 ## Learn more
 
-* [Password Strength in Auth0 Database Connections](/authenticate/database-connections/password-strength)
-* [Custom Database Action Script Environment Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts/environment)
-* [Password Options in Auth0 Database Connections](/authenticate/database-connections/password-options)
-* [Configure Identity Provider Connection for User Profile Updates](/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0)
-* [Connection Settings Best Practices](/authenticate/connection-settings-best-practices)
-* [Create Custom Database Connections](/authenticate/database-connections/custom-db/create-db-connection)
+* [Password Strength in Auth0 Database Connections](/docs/authenticate/database-connections/password-strength)
+* [Custom Database Action Script Environment Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/environment)
+* [Password Options in Auth0 Database Connections](/docs/authenticate/database-connections/password-options)
+* [Configure Identity Provider Connection for User Profile Updates](/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0)
+* [Connection Settings Best Practices](/docs/authenticate/connection-settings-best-practices)
+* [Create Custom Database Connections](/docs/authenticate/database-connections/custom-db/create-db-connection)

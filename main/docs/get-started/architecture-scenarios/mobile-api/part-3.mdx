@@ -31,15 +31,15 @@ For this implementation we will only define two endpoints; one for retrieving a 
 
 An `HTTP GET` request to the `/timesheets` endpoint will allow a user to retrieve their timesheets, and an `HTTP POST` request to the `/timesheets` endpoint will allow a user to add a new timesheet.
 
-See the implementation in [Node.js](/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#1-define-the-api-endpoints)
+See the implementation in [Node.js](/docs/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#1-define-the-api-endpoints)
 
 ### Secure the Endpoints
 
-When an API receives a request with a bearer <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> as part of the header, the first thing to do is to validate the token. This consists of a series of steps, and if any of these fails then the request must be rejected with a `Missing or invalid token` error message to the calling app.
+When an API receives a request with a bearer <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> as part of the header, the first thing to do is to validate the token. This consists of a series of steps, and if any of these fails then the request must be rejected with a `Missing or invalid token` error message to the calling app.
 
 The validations that the API should perform are:
 
-* Check that the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> is well formed
+* Check that the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> is well formed
 * Check the signature
 * Validate the standard claims
 
@@ -51,17 +51,17 @@ The validations that the API should perform are:
 
 Part of the validation process is to also check the Client permissions (scopes), but we will address this separately in the next paragraph of this document.
 
-For more information on validating Access Tokens, see [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens).
+For more information on validating Access Tokens, see [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
-See the implementation in [Node.js](/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#2-secure-the-api-endpoints)
+See the implementation in [Node.js](/docs/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#2-secure-the-api-endpoints)
 
 ### Check the Client's Permissions
 
 By now we have verified that the JWT is valid. The last step is to verify that the client has the permissions required to access the protected resources.
 
-To do so, the API needs to check the [scopes](/get-started/apis/scopes) of the decoded JWT. This claim is part of the payload and it is a space-separated list of strings.
+To do so, the API needs to check the [scopes](/docs/get-started/apis/scopes) of the decoded JWT. This claim is part of the payload and it is a space-separated list of strings.
 
-See the implementation in [Node.js](/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#3-check-the-client-permissions)
+See the implementation in [Node.js](/docs/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#3-check-the-client-permissions)
 
 ### Determine user identity
 
@@ -73,17 +73,17 @@ One of the standard JWT claims is the `sub` claim which identifies the princip
 
 You can also use a custom claim to add another attribute of the user - such as their email address - to the Access Token and use that to uniquely identify the user.
 
-See the implementation in [Node.js](/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#4-determine-the-user-identity)
+See the implementation in [Node.js](/docs/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs#4-determine-the-user-identity)
 
 ## Implement the Mobile App
 
 In this section we will see how we can implement a mobile application for our scenario.
 
-[See the implementation in Android.](/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#1-set-up-the-application)
+[See the implementation in Android.](/docs/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#1-set-up-the-application)
 
 ### Authorize the User
 
-To authorize the user we will implement the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce). The mobile application should first send the user to the [authorization URL](https://auth0.com/docs/api/authentication#authorization-code-grant-pkce-) along with the `code_challenge` and the method used to generate it:
+To authorize the user we will implement the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce). The mobile application should first send the user to the [authorization URL](https://auth0.com/docs/api/authentication#authorization-code-grant-pkce-) along with the `code_challenge` and the method used to generate it:
 
 ```http lines
 https://{yourDomain}/authorize?
@@ -120,7 +120,7 @@ The `GET` request to the authorization URL should include the following values
 </tr>
 <tr>
 <td><strong>scope</strong></td>
-<td>The <a href="/get-started/apis/scopes">scopes</a> which determine the claims to be returned in the ID Token and Access Token. For example, a scope of <code>openid</code> will return an ID Token in the response. In our example mobile app, we use the following scopes: <code>create:timesheets read:timesheets openid profile email offline_access</code>. These scopes allow the mobile app to call the API, obtain a <Tooltip tip="Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip>, and return the user's <code>name</code>, <code>picture</code>, and <code>email</code> claims in the ID Token.</td>
+<td>The <a href="/docs/get-started/apis/scopes">scopes</a> which determine the claims to be returned in the ID Token and Access Token. For example, a scope of <code>openid</code> will return an ID Token in the response. In our example mobile app, we use the following scopes: <code>create:timesheets read:timesheets openid profile email offline_access</code>. These scopes allow the mobile app to call the API, obtain a <Tooltip tip="Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip>, and return the user's <code>name</code>, <code>picture</code>, and <code>email</code> claims in the ID Token.</td>
 </tr>
 <tr>
 <td><strong>response_type</strong></td>
@@ -128,7 +128,7 @@ The `GET` request to the authorization URL should include the following values
 </tr>
 <tr>
 <td><strong>code_challenge</strong></td>
-<td>The generated code challenge from the code verifier. You can find instructions on generating a code challenge <a href="/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce#authorize-the-user%23create-a-code-verifier">here</a>.</td>
+<td>The generated code challenge from the code verifier. You can find instructions on generating a code challenge <a href="/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce#authorize-the-user%23create-a-code-verifier">here</a>.</td>
 </tr>
 <tr>
 <td><strong>code_challenge_method</strong></td>
@@ -141,7 +141,7 @@ The `GET` request to the authorization URL should include the following values
 </tbody>
 </table>
 
-[See the implementation in Android.](/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#2-authorize-the-user)
+[See the implementation in Android.](/docs/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#2-authorize-the-user)
 
 ### Get the Credentials
 
@@ -411,18 +411,18 @@ The response from the Token URL will contain:
 
 
 * **access_token**: An Access Token for the API, specified by the `audience`.
-* **refresh_token**: A [Refresh Token](/secure/tokens/refresh-tokens) will only be present if you included the `offline_access` scope AND enabled **Allow Offline Access** for your API in the Dashboard.
-* **id_token**: An <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> JWT containing user profile information.
+* **refresh_token**: A [Refresh Token](/docs/secure/tokens/refresh-tokens) will only be present if you included the `offline_access` scope AND enabled **Allow Offline Access** for your API in the Dashboard.
+* **id_token**: An <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> JWT containing user profile information.
 * **token_type**: A string containing the type of token, this will always be a Bearer token.
 * **expires_in**: The amount of seconds until the Access Token expires.
 
 You will need to store the above credentials in local storage for use in calling your API and retrieving the user profile.
 
-[See the implementation in Android](/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#store-credentials).
+[See the implementation in Android](/docs/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#store-credentials).
 
 ### Get the User Profile
 
-To retrieve the [User Profile](https://auth0.com/docs/api/authentication?http#user-profile), your mobile application can decode the [ID Token](/secure/tokens/id-tokens) using one of the [JWT libraries](https://jwt.io/#libraries-io). This is done by [verifying the signature](/secure/tokens/id-tokens/validate-id-tokens#verify-the-signature) and [verifying the claims](/secure/tokens/id-tokens/validate-id-tokens#verify-the-claims) of the token. After validating the ID Token, you can access its payload containing the user information:
+To retrieve the [User Profile](https://auth0.com/docs/api/authentication?http#user-profile), your mobile application can decode the [ID Token](/docs/secure/tokens/id-tokens) using one of the [JWT libraries](https://jwt.io/#libraries-io). This is done by [verifying the signature](/docs/secure/tokens/id-tokens/validate-id-tokens#verify-the-signature) and [verifying the claims](/docs/secure/tokens/id-tokens/validate-id-tokens#verify-the-claims) of the token. After validating the ID Token, you can access its payload containing the user information:
 
 ```json lines
 {
@@ -444,19 +444,19 @@ To retrieve the [User Profile](https://auth0.com/docs/api/authentication?http#u
 
 
 
-[See the implementation in Android.](/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#3-get-the-user-profile)
+[See the implementation in Android.](/docs/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#3-get-the-user-profile)
 
 ### Display UI Elements Conditionally Based on Scope
 
 Based on the `scope` of the user, you may want to show or hide certain UI elements. To determine the scope issued to a user, you will need to inspect the `scope` which was granted when the user was authenticated. This will be a string containing all the scopes, so you therefore need to inspect this string to see whether it contains the required `scope` and based on that make a decision whether to display a particular UI element.
 
-[See the implementation in Android](/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#4-display-ui-elements-conditionally-based-on-scope)
+[See the implementation in Android](/docs/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#4-display-ui-elements-conditionally-based-on-scope)
 
 ### Call the API
 
 To access secured resources from your API, the authenticated user's Access Token needs to be included in requests that are sent to it. This is accomplished by sending the Access Token in an `Authorization` header using the `Bearer` scheme.
 
-[See the implementation in Android.](/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#5-call-the-api)
+[See the implementation in Android.](/docs/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#5-call-the-api)
 
 ### Renew the Token
 
@@ -466,9 +466,9 @@ Refresh Tokens must be stored securely by an application since they do not expir
 
 </Warning>
 
-To refresh your Access Token, perform a `POST` request to the `/oauth/token` endpoint using the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip> from your authorization result.
+To refresh your Access Token, perform a `POST` request to the `/oauth/token` endpoint using the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip> from your authorization result.
 
-A [Refresh Token](/secure/tokens/refresh-tokens) will only be present if you included the `offline_access` scope in the previous authorization request and enabled **Allow Offline Access** for your API in the Dashboard.
+A [Refresh Token](/docs/secure/tokens/refresh-tokens) will only be present if you included the `offline_access` scope in the previous authorization request and enabled **Allow Offline Access** for your API in the Dashboard.
 
 Your request should include:
 
@@ -686,4 +686,4 @@ The response will include the new Access Token:
 
 
 
-[See the implementation in Android.](/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#store-the-credentials)
+[See the implementation in Android.](/docs/get-started/architecture-scenarios/mobile-api/mobile-implementation-android#store-the-credentials)

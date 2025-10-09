@@ -8,11 +8,11 @@ title: MFA Playbook
 'twitter:description': How to protect yourself from MFA attacks
 'twitter:title': MFA Playbook
 ---
-Attackers can exploit and misuse <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) alerts to gain access to your systems. Below are some common MFA attack vectors and guidance on how to investigate them.
+Attackers can exploit and misuse <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) alerts to gain access to your systems. Below are some common MFA attack vectors and guidance on how to investigate them.
 
 ### Find log events of interest
 
-The following log event types are relevant when investigating an MFA attack. They are found in the [Auth0 tenant logs](/deploy-monitor/logs/log-event-type-codes).
+The following log event types are relevant when investigating an MFA attack. They are found in the [Auth0 tenant logs](/docs/deploy-monitor/logs/log-event-type-codes).
 
 <table class="table"><thead>
 <tr>
@@ -56,6 +56,6 @@ The following log event types are relevant when investigating an MFA attack. The
 
 The following are example responses to attacks against MFA:
 
-* Migrate to stronger MFA options by replacing SMS/voice-based MFA with [OTP](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa) or [Webauthn](/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa) to mitigate SMS pumping or toll fraud attacks.
+* Migrate to stronger MFA options by replacing SMS/voice-based MFA with [OTP](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa) or [Webauthn](/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa) to mitigate SMS pumping or toll fraud attacks.
 * Enhance SMS/Voice Provider Security by **i**mplementing fraud protection like Twilio's [Preventing Fraud in Verify](https://www.twilio.com/docs/verify/preventing-toll-fraud) when using SMS/voice MFA.
 * Avoid MFA fatigue by enforcing push notification rate limits.

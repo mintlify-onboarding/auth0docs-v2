@@ -9,9 +9,9 @@ permalink: "customize-templates"
 'twitter:description': "ユニバーサルログインエクスペリエンスのためにログインページのテンプレートを作成する方法を説明します。"
 ---
 
-[Liquidテンプレート言語](https://shopify.github.io/liquid/basics/introduction/)で作成したページテンプレートを提供することで、ユニバーサルログインページをカスタマイズできます。ページテンプレートを使用して、ログインボックスや<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>チャレンジなどの、ユニバーサルログインプロンプトに関して表示するコンテンツを定義できます。同じページテンプレートがすべてのログインフローページに使用されるため、このカスタマイズ手法は、ユーザーに対して一貫性のあるブランドエクスペリエンスの実装を簡単にします。
+[Liquidテンプレート言語](https://shopify.github.io/liquid/basics/introduction/)で作成したページテンプレートを提供することで、ユニバーサルログインページをカスタマイズできます。ページテンプレートを使用して、ログインボックスや<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>チャレンジなどの、ユニバーサルログインプロンプトに関して表示するコンテンツを定義できます。同じページテンプレートがすべてのログインフローページに使用されるため、このカスタマイズ手法は、ユーザーに対して一貫性のあるブランドエクスペリエンスの実装を簡単にします。
 
-カスタマイズされたページテンプレートを使用するには、テナントに対して[カスタムドメイン](/ja-jp/customize/custom-domains)を構成する必要があります。さらに、[Management API](/ja-jp/api/management/v2)を使用してのみ、ユニバーサルログインのページテンプレートを更新できます。
+カスタマイズされたページテンプレートを使用するには、テナントに対して[カスタムドメイン](/docs/ja-jp/customize/custom-domains)を構成する必要があります。さらに、[Management API](/docs/ja-jp/api/management/v2)を使用してのみ、ユニバーサルログインのページテンプレートを更新できます。
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -186,7 +186,7 @@ Storybookを使用してテンプレートを表示する場合、`<script>`タ�
 
 #### Organizations
 
-以下の変数は、[Auth0 Organizations](/ja-jp/manage-users/organizations/organizations-overview)機能を参照します。
+以下の変数は、[Auth0 Organizations](/docs/ja-jp/manage-users/organizations/organizations-overview)機能を参照します。
 
 <table class="table"><thead>
 <tr>
@@ -316,7 +316,7 @@ Storybookを使用してテンプレートを表示する場合、`<script>`タ�
 <tbody>
 <tr>
 <td>`locale`</td>
-<td>ページの表示に使用されるロケール。<a href="/ja-jp/customize/internationalization-and-localization/universal-login-internationalization">対応するテナント言語</a>のいずれかに一致する</td>
+<td>ページの表示に使用されるロケール。<a href="/docs/ja-jp/customize/internationalization-and-localization/universal-login-internationalization">対応するテナント言語</a>のいずれかに一致する</td>
 <td>en-US</td>
 </tr>
 <tr>
@@ -344,7 +344,7 @@ Storybookを使用してテンプレートを表示する場合、`<script>`タ�
 
 ### プロンプト
 
-`prompt`という用語は、ログインフローの特定の手順を意味します。特定のプロンプトは、1つ以上のウィンドウからなります。[Auth0 Dashboard](https://manage.auth0.com/#/custom_text)または[Management API](/ja-jp/api/management/v2)のプロンプトエンドポイントで、プロンプトを管理できます。
+`prompt`という用語は、ログインフローの特定の手順を意味します。特定のプロンプトは、1つ以上のウィンドウからなります。[Auth0 Dashboard](https://manage.auth0.com/#/custom_text)または[Management API](/docs/ja-jp/api/management/v2)のプロンプトエンドポイントで、プロンプトを管理できます。
 
 以下のセクションでは、利用できるそれぞれのプロンプトについて詳細を説明しています。
 
@@ -354,7 +354,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：redeem-ticket
 
-<Frame>![redeem-ticketの参考スクリーンショット](/images/ja-jp/cdy7uua7fh8z/7H4DS8I8fnlUgtS4ttpMyK/90006ee36032cc1ee3d9674fe6bcf575/redeem-ticket.png)</Frame>
+<Frame>![redeem-ticketの参考スクリーンショット](/docs/images/ja-jp/cdy7uua7fh8z/7H4DS8I8fnlUgtS4ttpMyK/90006ee36032cc1ee3d9674fe6bcf575/redeem-ticket.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1418,7 +1418,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：login-passwordless-email-code
 
-<Frame>![login-passwordless-email-codeの参考スクリーンショット](/images/ja-jp/cdy7uua7fh8z/6zazshkUI5sdFDd2Fgbo6w/0193e17673250b5293d9581e34316c20/login-passwordless-email-code.png)</Frame>
+<Frame>![login-passwordless-email-codeの参考スクリーンショット](/docs/images/ja-jp/cdy7uua7fh8z/6zazshkUI5sdFDd2Fgbo6w/0193e17673250b5293d9581e34316c20/login-passwordless-email-code.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1476,7 +1476,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：login-passwordless-email-link
 
-<Frame>![login-passwordless-email-linkの参考スクリーンショット](/images/ja-jp/cdy7uua7fh8z/7EcEUmoEPC6GVgJjNyTugr/e160cb40af3a0c748ba1f9fe2307488b/login-passwordless-email-link.png)</Frame>
+<Frame>![login-passwordless-email-linkの参考スクリーンショット](/docs/images/ja-jp/cdy7uua7fh8z/7EcEUmoEPC6GVgJjNyTugr/e160cb40af3a0c748ba1f9fe2307488b/login-passwordless-email-link.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1510,7 +1510,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：login-passwordless-sms-otp
 
-<Frame>![login-passwordless-sms-otpの参考スクリーンショット](/images/ja-jp/cdy7uua7fh8z/5dk4vZpc06UojLdnelUInO/f5fb02e0adeeceaa1b8ce6eef8151bc2/login-passwordless-sms-otp.png)</Frame>
+<Frame>![login-passwordless-sms-otpの参考スクリーンショット](/docs/images/ja-jp/cdy7uua7fh8z/5dk4vZpc06UojLdnelUInO/f5fb02e0adeeceaa1b8ce6eef8151bc2/login-passwordless-sms-otp.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1646,7 +1646,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：logout
 
-<Frame>![logoutの参考スクリーンショット](/images/ja-jp/cdy7uua7fh8z/2lXg143oKAF4OlIilbwDCK/d770603ba5203adff07cf4e23e4fcbbb/logout.png)</Frame>
+<Frame>![logoutの参考スクリーンショット](/docs/images/ja-jp/cdy7uua7fh8z/2lXg143oKAF4OlIilbwDCK/d770603ba5203adff07cf4e23e4fcbbb/logout.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1692,7 +1692,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：mfa-detect-browser-capabilities
 
-<Frame>![mfa-detect-browser-capabilitiesの参考スクリーンショット](/images/ja-jp/cdy7uua7fh8z/2D7DbdMRJ7SdwxEzOYYsLX/595c1436aaa38ed342137c4a5227f4b0/mfa-detect-browser-capabilities.png)</Frame>
+<Frame>![mfa-detect-browser-capabilitiesの参考スクリーンショット](/docs/images/ja-jp/cdy7uua7fh8z/2D7DbdMRJ7SdwxEzOYYsLX/595c1436aaa38ed342137c4a5227f4b0/mfa-detect-browser-capabilities.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3164,7 +3164,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：mfa-webauthn-platform-enrollment
 
-<Frame>![mfa-webauthn-enrollmentの参考スクリーンショット](/media/articles/universal-login/text-customization/mfa-webauth-platform-enrollment.png)</Frame>
+<Frame>![mfa-webauthn-enrollmentの参考スクリーンショット](/docs/media/articles/universal-login/text-customization/mfa-webauth-platform-enrollment.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3222,7 +3222,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：mfa-webauthn-roaming-enrollment
 
-<Frame>![mfa-webauthn-guidance-enrollmentの参考スクリーンショット](/media/articles/universal-login/text-customization/mfa-webauth-roaming-enrollment.png)</Frame>
+<Frame>![mfa-webauthn-guidance-enrollmentの参考スクリーンショット](/docs/media/articles/universal-login/text-customization/mfa-webauth-roaming-enrollment.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3280,7 +3280,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：mfa-webauthn-platform-challenge
 
-<Frame>![mfa-webauthn-challenge-user-initiatedの参考スクリーンショット](/media/articles/universal-login/text-customization/mfa-webauth-platform-challenge.png)</Frame>
+<Frame>![mfa-webauthn-challenge-user-initiatedの参考スクリーンショット](/docs/media/articles/universal-login/text-customization/mfa-webauth-platform-challenge.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3334,7 +3334,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：mfa-webauthn-roaming-challenge
 
-<Frame>![mfa-webauthn-challenge-user-initiatedの参考スクリーンショット](/media/articles/universal-login/text-customization/mfa-webauth-roaming-challenge.png)</Frame>
+<Frame>![mfa-webauthn-challenge-user-initiatedの参考スクリーンショット](/docs/media/articles/universal-login/text-customization/mfa-webauth-roaming-challenge.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3388,7 +3388,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：mfa-webauthn-change-key-nickname
 
-<Frame>![mfa-webauthn-change-key-nicknameの参考スクリーンショット](/media/articles/universal-login/text-customization/mfa-webauth-change-key-nickname.png)</Frame>
+<Frame>![mfa-webauthn-change-key-nicknameの参考スクリーンショット](/docs/media/articles/universal-login/text-customization/mfa-webauth-change-key-nickname.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3470,7 +3470,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：mfa-webauthn-enrollment-success
 
-<Frame>![mfa-webauthn-enrollment-successの参考スクリーンショット](/media/articles/universal-login/text-customization/mfa-webauthn-enrollment-success.png)</Frame>
+<Frame>![mfa-webauthn-enrollment-successの参考スクリーンショット](/docs/media/articles/universal-login/text-customization/mfa-webauthn-enrollment-success.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -5000,7 +5000,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：phone-identifier-challenge
 
-<Frame>![phone-identifier-challengeの参考スクリーンショット](/ja-jp/media/articles/universal-login/text-customization/phone-identifier-challenge.png)</Frame>
+<Frame>![phone-identifier-challengeの参考スクリーンショット](/docs/ja-jp/media/articles/universal-login/text-customization/phone-identifier-challenge.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -5126,7 +5126,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## スクリーン：phone-identifier-enrollment
 
-<Frame>![phone-identifier-enrollmentの参考スクリーンショット](/ja-jp/media/articles/universal-login/text-customization/phone-identifier-enrollment.png)</Frame>
+<Frame>![phone-identifier-enrollmentの参考スクリーンショット](/docs/ja-jp/media/articles/universal-login/text-customization/phone-identifier-enrollment.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -5858,7 +5858,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## Screen: status
 
-<Frame>![status reference screenshot](/images/ja-jp/cdy7uua7fh8z/6sVCv5Bq3QI0rhe21wzU8E/8e03d84d711293ad9dbf13f5f6569994/Screenshot_2025-07-22_at_1.49.06%C3%A2__PM.png)</Frame>
+<Frame>![status reference screenshot](/docs/images/ja-jp/cdy7uua7fh8z/6sVCv5Bq3QI0rhe21wzU8E/8e03d84d711293ad9dbf13f5f6569994/Screenshot_2025-07-22_at_1.49.06%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -5908,7 +5908,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## Screen: brute-force-protection-unblock
 
-<Frame>![brute-force-protection-unblock reference screenshot](/images/ja-jp/cdy7uua7fh8z/7iOAN9mMRsGcnStYmli8iA/e4400cb427cb086119ddccd6e2c18d36/Screenshot_2025-07-22_at_1.34.29%C3%A2__PM.png)</Frame>
+<Frame>![brute-force-protection-unblock reference screenshot](/docs/images/ja-jp/cdy7uua7fh8z/7iOAN9mMRsGcnStYmli8iA/e4400cb427cb086119ddccd6e2c18d36/Screenshot_2025-07-22_at_1.34.29%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -5938,7 +5938,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## Screen: brute-force-protection-unblock-success
 
-<Frame>![brute-force-protection-unblock-success reference screenshot](/images/ja-jp/cdy7uua7fh8z/49UsY6k83g62qpp4c2at8q/74e93b893cb1495f9c618d02eb62c35d/Screenshot_2025-07-22_at_1.34.45%C3%A2__PM.png)</Frame>
+<Frame>![brute-force-protection-unblock-success reference screenshot](/docs/images/ja-jp/cdy7uua7fh8z/49UsY6k83g62qpp4c2at8q/74e93b893cb1495f9c618d02eb62c35d/Screenshot_2025-07-22_at_1.34.45%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -5968,7 +5968,7 @@ accordion.expand_all/accordion.collapse_all
 
 ## Screen: brute-force-protection-unblock-failure
 
-<Frame>![brute-force-protection-unblock-failure reference screenshot](/images/ja-jp/cdy7uua7fh8z/5Oxo7dieeeH9KtVLAjQiRR/ec4cc47ff2f5123cda905fca904f8e8d/Screenshot_2025-07-22_at_1.34.58%C3%A2__PM.png)</Frame>
+<Frame>![brute-force-protection-unblock-failure reference screenshot](/docs/images/ja-jp/cdy7uua7fh8z/5Oxo7dieeeH9KtVLAjQiRR/ec4cc47ff2f5123cda905fca904f8e8d/Screenshot_2025-07-22_at_1.34.58%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -6052,7 +6052,7 @@ accordion.expand_all/accordion.collapse_all
 </html>
 ```
 
-詳細については、「[サインアップとログインプロンプトのカスタマイズ](/ja-jp/customize/login-pages/universal-login/customize-signup-and-login-prompts)」を参照してください。
+詳細については、「[サインアップとログインプロンプトのカスタマイズ](/docs/ja-jp/customize/login-pages/universal-login/customize-signup-and-login-prompts)」を参照してください。
 
 以下のテンプレートは、ログイン/サインアップページでログインボックスを左に、画像を右に表示します。残りのページは、デフォルトのものが表示されます。
 
@@ -6134,7 +6134,7 @@ accordion.expand_all/accordion.collapse_all
 </html>
 ```
 
-<Frame>![メールユーザー名/パスワードのあるユニバーサルログインボックスと画像レイアウトの例](/images/ja-jp/cdy7uua7fh8z/7F2LIZ4qVdGqMUNnj66wcP/6e9d4cb34f84b77ed1ebd3f0ec7b7f09/Login_Screen_-_Background_-_JP.png)</Frame>
+<Frame>![メールユーザー名/パスワードのあるユニバーサルログインボックスと画像レイアウトの例](/docs/images/ja-jp/cdy7uua7fh8z/7F2LIZ4qVdGqMUNnj66wcP/6e9d4cb34f84b77ed1ebd3f0ec7b7f09/Login_Screen_-_Background_-_JP.png)</Frame>
 
 ### ページのフッター
 
@@ -6194,9 +6194,9 @@ accordion.expand_all/accordion.collapse_all
   </body></html>
 ```
 
-ページテンプレートを設定するには、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使用する必要があります。まず最初に、`update:branding`、`read:branding`、`delete:branding`スコープでManagement APIトークンを取得する必要があります。トークンの生成に`API Explorer Application`を使用している場合は、これらのスコープが`Auth0 Management API`で有効になっていることを確認してください。
+ページテンプレートを設定するには、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使用する必要があります。まず最初に、`update:branding`、`read:branding`、`delete:branding`スコープでManagement APIトークンを取得する必要があります。トークンの生成に`API Explorer Application`を使用している場合は、これらのスコープが`Auth0 Management API`で有効になっていることを確認してください。
 
-<Frame>![メールアドレス/パスワードのあるユニバーサルログインボックスとフッターレイアウトの例](/images/ja-jp/cdy7uua7fh8z/17BeLStId6jsxSfEnVFPMa/ebb3160f5d8689b4e7a0e2526786c601/UL_Footer.png)</Frame>
+<Frame>![メールアドレス/パスワードのあるユニバーサルログインボックスとフッターレイアウトの例](/docs/images/ja-jp/cdy7uua7fh8z/17BeLStId6jsxSfEnVFPMa/ebb3160f5d8689b4e7a0e2526786c601/UL_Footer.png)</Frame>
 
 ## ページテンプレートAPI
 
@@ -6802,7 +6802,7 @@ dataTask.resume()
 * ページテンプレートが適用されたログインページを示す[Storybook](https://storybook.js.org/)のブラウザーウィンドウ：
 
   + `--prompt-width`を使用して、コンテナー幅を調整します。デフォルト値は400pxです。
-  + [フォーム](/ja-jp/customize/forms)の場合：`--form-max-width`を使用して、フォームの最大幅を設定します。デフォルト値は500pxです。
+  + [フォーム](/docs/ja-jp/customize/forms)の場合：`--form-max-width`を使用して、フォームの最大幅を設定します。デフォルト値は500pxです。
 
     - コードをフォームページのみに適用するには、`{% if prompt.name == "custom-form" %}`を`<head>`要素に含めます。
 * Googleフォントを使用するには、Googleフォントをインポートして、CSS変数の`--font-family`をオーバーライドします。
@@ -6831,11 +6831,11 @@ Auth0 CLIが、2つのウィンドウを開きます。
 
 * ページテンプレートコードのデフォルトエディター：
 
-<Frame>![Page Templates Storybook](/images/ja-jp/cdy7uua7fh8z/1Ms4jj0pdMowoSZi54i72S/a2adcffa34a491ed7a587094884ad0f1/storybook.png)</Frame>
+<Frame>![Page Templates Storybook](/docs/images/ja-jp/cdy7uua7fh8z/1Ms4jj0pdMowoSZi54i72S/a2adcffa34a491ed7a587094884ad0f1/storybook.png)</Frame>
 
 * ページテンプレートコードのあるデフォルトのエディター：
 
-<Frame>![undefined](/images/ja-jp/cdy7uua7fh8z/3fTqpTmRRgVeLu5p8cioWa/e5a5c8a12dc93f5de95f12581ce0e5ff/vs-code.png)</Frame>
+<Frame>![undefined](/docs/images/ja-jp/cdy7uua7fh8z/3fTqpTmRRgVeLu5p8cioWa/e5a5c8a12dc93f5de95f12581ce0e5ff/vs-code.png)</Frame>
 
 ウィンドウを閉じると、テンプレートを保存するか尋ねられます。**［Yes（はい）］** と答えると、テンプレートがテナントにアップロードされます。
 

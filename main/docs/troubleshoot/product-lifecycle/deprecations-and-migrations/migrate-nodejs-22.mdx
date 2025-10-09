@@ -34,7 +34,7 @@ You can then paginate through all the existing custom social connections in a gi
 
 
 
-The <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> does not allow updating the scripts for custom social connections added through the Marketplace. If a script change is required to be compatible with Node 22, you must use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+The <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> does not allow updating the scripts for custom social connections added through the Marketplace. If a script change is required to be compatible with Node 22, you must use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Migration tasks
 
@@ -49,7 +49,7 @@ To create a new custom Action with Node 22 through the Auth0 Dashboard:
 
 ### Upgrade existing custom Actions
 
-You can individually upgrade existing custom Actions built on Node 12, 16, or 18 to Node 22 and [revert to the previous version](/customize/actions/manage-versions#revert-actions) using the older runtime. Upgrade Actions to Node 22 by creating and deploying a new version of the existing implementation with any required changes and set to use Node 22 as the runtime.
+You can individually upgrade existing custom Actions built on Node 12, 16, or 18 to Node 22 and [revert to the previous version](/docs/customize/actions/manage-versions#revert-actions) using the older runtime. Upgrade Actions to Node 22 by creating and deploying a new version of the existing implementation with any required changes and set to use Node 22 as the runtime.
 
 ### Choose Node 22 for other extensibility products
 
@@ -69,4 +69,4 @@ To change the tenant extensibility runtime setting in the Auth0 Dashboard:
 
 Given that this is a global setting that impacts multiple extensibility features simultaneously, we recommend that you perform this step in your development tenant first, complete testing of all applicable extensibility features, and proceed to your production tenant only when you see no issues in development.
 
-Specifically for Custom DB scripts you can [follow the steps as explained on this page](/authenticate/database-connections/custom-db/custom-database-connections-scripts/environment) to individually verify a script against a specific runtime version before proceeding to change the global runtime version.
+Specifically for Custom DB scripts you can [follow the steps as explained on this page](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/environment) to individually verify a script against a specific runtime version before proceeding to change the global runtime version.

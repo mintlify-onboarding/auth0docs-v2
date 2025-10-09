@@ -9,7 +9,7 @@ title: JSON Web Token Claims
   in Auth0.
 'twitter:title': JSON Web Token Claims
 ---
-[JSON web tokens (JWTs)](/secure/tokens/json-web-tokens) claims are pieces of information asserted about a subject. For example, an [ID token](/secure/tokens/id-tokens) (which is always a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip>) can contain a claim called `name` that asserts that the name of the user authenticating is "John Doe". In a JWT, a claim appears as a name/value pair where the name is always a string and the value can be any JSON value. Generally, when we talk about a claim in the context of a JWT, we are referring to the name (or key). For example, the following JSON object contains three claims (`sub`, `name`, `admin`):
+[JSON web tokens (JWTs)](/docs/secure/tokens/json-web-tokens) claims are pieces of information asserted about a subject. For example, an [ID token](/docs/secure/tokens/id-tokens) (which is always a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip>) can contain a claim called `name` that asserts that the name of the user authenticating is "John Doe". In a JWT, a claim appears as a name/value pair where the name is always a string and the value can be any JSON value. Generally, when we talk about a claim in the context of a JWT, we are referring to the name (or key). For example, the following JSON object contains three claims (`sub`, `name`, `admin`):
 
 ```json lines
 {
@@ -26,7 +26,7 @@ title: JSON Web Token Claims
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-To learn about OpenID Connect (OIDC) standard claims, see [OpenID Connect Scopes](/get-started/apis/scopes/openid-connect-scopes) and [OpenID Connect Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
+To learn about OpenID Connect (OIDC) standard claims, see [OpenID Connect Scopes](/docs/get-started/apis/scopes/openid-connect-scopes) and [OpenID Connect Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
 
 </Callout>
 
@@ -37,11 +37,11 @@ There are two types of JWT claims:
 
 ## Registered claims
 
-The JWT specification defines seven reserved claims that are not required, but are recommended to allow interoperability with [third-party applications](/get-started/applications/confidential-and-public-applications/enable-third-party-applications). These are:
+The JWT specification defines seven reserved claims that are not required, but are recommended to allow interoperability with [third-party applications](/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications). These are:
 
 * `iss` (issuer): Issuer of the JWT
 * `sub` (subject): Subject of the JWT (the user)
-* `aud` (<Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>): Recipient for which the JWT is intended
+* `aud` (<Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>): Recipient for which the JWT is intended
 * `exp` (expiration time): Time after which the JWT expires
 * `nbf` (not before time): Time before which the JWT must not be accepted for processing
 * `iat` (issued at time): Time at which the JWT was issued; can be used to determine age of the JWT
@@ -53,18 +53,18 @@ You can see a full list of registered claims at the [IANA JSON Web Token Claims 
 
 You can define your own custom claims which you control and you can add them to a token using Actions. Here are some examples:
 
-* Add a user's email address to an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> and use that to uniquely identify the user.
-* Add custom information stored in an Auth0 user profile to an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip>.
+* Add a user's email address to an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> and use that to uniquely identify the user.
+* Add custom information stored in an Auth0 user profile to an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip>.
 
-As long as the Action is in place, the custom claims it adds will appear in new tokens issued when using a [refresh token](/secure/tokens/refresh-tokens).
+As long as the Action is in place, the custom claims it adds will appear in new tokens issued when using a [refresh token](/docs/secure/tokens/refresh-tokens).
 
-For an example showing how to add custom claims to a token, see [Sample Use Cases: Scopes and Claims](/get-started/apis/scopes/sample-use-cases-scopes-and-claims).
+For an example showing how to add custom claims to a token, see [Sample Use Cases: Scopes and Claims](/docs/get-started/apis/scopes/sample-use-cases-scopes-and-claims).
 
 ### Public claims
 
 You can create custom claims for public consumption, which might contain generic information like name and email. If you create public claims, you must either register them or use collision-resistant names through namespacing and take reasonable precautions to make sure you are in control of the namespace you use.
 
-In the [IANA JSON Web Token Claims Registry](https://www.iana.org/assignments/jwt/jwt.xhtml#claims), you can see some examples of public claims registered by <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC):
+In the [IANA JSON Web Token Claims Registry](https://www.iana.org/assignments/jwt/jwt.xhtml#claims), you can see some examples of public claims registered by <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC):
 
 * `auth_time`
 * `acr`
@@ -83,11 +83,11 @@ Auth0 enforces the general restrictions on custom claims:
 * access tokens with an Auth0 API audience, excluding the `/userinfo` endpoint, cannot have private, non-namespaced custom claims
 * only specified OIDC user profile claims can be added to access tokens
 
-To learn more about custom claims, read [Create Custom Claims](/secure/tokens/json-web-tokens/create-custom-claims).
+To learn more about custom claims, read [Create Custom Claims](/docs/secure/tokens/json-web-tokens/create-custom-claims).
 
 ## Learn more
 
-* [Validate JSON Web Tokens](/secure/tokens/json-web-tokens/validate-json-web-tokens)
-* [JSON Web Token Structure](/secure/tokens/json-web-tokens/json-web-token-structure)
-* [JSON Web Key Sets](/secure/tokens/json-web-tokens/json-web-key-sets)
-* [JSON Web Key Set Properties](/secure/tokens/json-web-tokens/json-web-key-set-properties)
+* [Validate JSON Web Tokens](/docs/secure/tokens/json-web-tokens/validate-json-web-tokens)
+* [JSON Web Token Structure](/docs/secure/tokens/json-web-tokens/json-web-token-structure)
+* [JSON Web Key Sets](/docs/secure/tokens/json-web-tokens/json-web-key-sets)
+* [JSON Web Key Set Properties](/docs/secure/tokens/json-web-tokens/json-web-key-set-properties)

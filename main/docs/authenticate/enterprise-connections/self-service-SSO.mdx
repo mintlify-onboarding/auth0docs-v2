@@ -10,9 +10,9 @@ title: Self-Service Single Sign-On
 'twitter:description': Learn how to use Self-Service Single Sign-On to delegate SSO setup to your B2B customers.
 'twitter:title': Self-Service Single Sign-On
 ---
-Self-Service <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-On">Single Sign-On</Tooltip> (SSO) provides business-to-business (B2B) customers with the tools needed to delegate SSO setup to their enterprise customers. By delegating this task, you can streamline your onboarding process and grant customers more autonomy over their sign-on experience. You can also reduce the time and costs associated with managing SSO across your customer base.
+Self-Service <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-On">Single Sign-On</Tooltip> (SSO) provides business-to-business (B2B) customers with the tools needed to delegate SSO setup to their enterprise customers. By delegating this task, you can streamline your onboarding process and grant customers more autonomy over their sign-on experience. You can also reduce the time and costs associated with managing SSO across your customer base.
 
-Self-Service SSO requires minimal configuration in your Auth0 tenant and provides your customers with a setup assistant that guides them through the enablement process. After a customer completes their setup, the SSO integration is automatically added to your tenant as an [Enterprise connection](/authenticate/enterprise-connections).
+Self-Service SSO requires minimal configuration in your Auth0 tenant and provides your customers with a setup assistant that guides them through the enablement process. After a customer completes their setup, the SSO integration is automatically added to your tenant as an [Enterprise connection](/docs/authenticate/enterprise-connections).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -25,11 +25,11 @@ Users with the following Dashboard roles can engage with this feature:
 
 </Callout>
 
-To learn more about Auth0’s subscription, read [Manage Subscriptions](/docs/troubleshoot/customer-support/manage-subscriptions). To upgrade your subscriptions, contact your Technical Account Manager or [Auth0 Sales](https://auth0.com/get-started?place=header&type=button&text=talk%20to%20sales).
+To learn more about Auth0’s subscription, read [Manage Subscriptions](/docs/docs/troubleshoot/customer-support/manage-subscriptions). To upgrade your subscriptions, contact your Technical Account Manager or [Auth0 Sales](https://auth0.com/get-started?place=header&type=button&text=talk%20to%20sales).
 
 **Supported Providers**
 
-Self-Service SSO currently supports the following <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip>:
+Self-Service SSO currently supports the following <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip>:
 
 * Okta Workforce Identity (using OIDC)
 * Entra ID
@@ -38,7 +38,7 @@ Self-Service SSO currently supports the following <Tooltip tip="Identity Provide
 * Microsoft Active Directory Federation Services (ADFS)
 * PingFederate
 * Generic OIDC
-* Generic <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>
+* Generic <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>
 
 Self-Service Provisioning currently supports the following identity providers:
 * Okta Workforce Identity (using OIDC)
@@ -57,7 +57,7 @@ Self-Service SSO uses the following components to delegate setup to your custome
 
 ### Self-Service SSO workflow
 
-The steps below provide the general workflow for using Self-Service SSO. These tasks can be completed through either the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+The steps below provide the general workflow for using Self-Service SSO. These tasks can be completed through either the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 1. You (the Auth0 customer) create a self-service profile in your tenant.
 2. You then create a self-service access ticket associated with that self-service profile. When generating the ticket, you can decide whether the customer admin will create a new connection or modify an existing connection through the self-service assistant.
@@ -65,7 +65,7 @@ The steps below provide the general workflow for using Self-Service SSO. These t
 4. Your customer admin launches the self-service assistant via the ticket URL and follows the steps provided to configure their connection and optionally complete domain verification.
 5. A new or updated Enterprise connection pointing to the customer’s application becomes available in your Auth0 tenant.
 
-<Frame>![Workflow diagram for the Self-Service SSO feature.](/images/cdy7uua7fh8z/Self-Service-SSO-Workflow.png)</Frame>
+<Frame>![Workflow diagram for the Self-Service SSO feature.](/docs/images/cdy7uua7fh8z/Self-Service-SSO-Workflow.png)</Frame>
 
 ## Self-service assistant experience
 
@@ -87,34 +87,34 @@ While the exact requirements for configuring SSO vary by IdP, the general workfl
 
    * **If domain verification is set to Required**: The customer admin must complete domain verification before they can enable the connection.
    * **If domain verification is set to Optional**: The customer admin can choose to either enter their domain for verification or skip this step. In both cases, the customer admin can enable their connection regardless of its verification status.
-   * **If domain verification is set to Off:** If domain verification was not enabled at all, this step does not appear to the customer admin and their flow ends with Step 6 above. To learn more, review [Manage Self-Service SSO](/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso).
+   * **If domain verification is set to Off:** If domain verification was not enabled at all, this step does not appear to the customer admin and their flow ends with Step 6 above. To learn more, review [Manage Self-Service SSO](/docs/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso).
 
 ### Example self-service assistant flow
 
 The images below demonstrate an example self-service assistant experience. In this example, a customer admin configures SSO with Okta Workforce as their IdP.
 
 **1. Select Single Sign-On**
-<Frame>![Enterprise-Connection>Self-Service-SSO](/images/cdy7uua7fh8z/Enterprise-connections>Self-Service-SSO>IdP.png)</Frame>
+<Frame>![Enterprise-Connection>Self-Service-SSO](/docs/images/cdy7uua7fh8z/Enterprise-connections>Self-Service-SSO>IdP.png)</Frame>
 
 **2. Select Identity Provider**
 
-<Frame>![The first step of the self-service assistant that customer admins use to configure SSO. ](/images/cdy7uua7fh8z/self-service-sso-select-idp.png)</Frame>
+<Frame>![The first step of the self-service assistant that customer admins use to configure SSO. ](/docs/images/cdy7uua7fh8z/self-service-sso-select-idp.png)</Frame>
 
 **3. Create Application (truncated)**
 
-<Frame>![The second step of the self-service assistant that customer admins use to configure SSO. ](/images/cdy7uua7fh8z/Self-Service-SSO-create-application.png)</Frame>
+<Frame>![The second step of the self-service assistant that customer admins use to configure SSO. ](/docs/images/cdy7uua7fh8z/Self-Service-SSO-create-application.png)</Frame>
 
 **4. Configure Connection**
 
-<Frame>![The third step of the self-service assistant that customer admins use to configure SSO. ](/images/cdy7uua7fh8z/Self-Service-SSO-configure-connection.png)</Frame>
+<Frame>![The third step of the self-service assistant that customer admins use to configure SSO. ](/docs/images/cdy7uua7fh8z/Self-Service-SSO-configure-connection.png)</Frame>
 
 **5. Claims Mapping**
 
-<Frame>![The fourth step of the self-service assistant that customer admins use to configure SSO. ](/images/cdy7uua7fh8z/Self-Service-SSO-claims-mapping.png)</Frame>
+<Frame>![The fourth step of the self-service assistant that customer admins use to configure SSO. ](/docs/images/cdy7uua7fh8z/Self-Service-SSO-claims-mapping.png)</Frame>
 
 **6. Assign Access**
 
-<Frame>![The fifth step of the self-service assistant that customer admins use to configure SSO. ](/images/cdy7uua7fh8z/Self-Service-SSO-assign-access.png)</Frame>
+<Frame>![The fifth step of the self-service assistant that customer admins use to configure SSO. ](/docs/images/cdy7uua7fh8z/Self-Service-SSO-assign-access.png)</Frame>
 
 **7. Test SSO**
 
@@ -122,20 +122,20 @@ The images below demonstrate an example self-service assistant experience. In th
 
 **8. Provisioning - Create Application**
 
-<Frame>![Create an application to provision users.](/images/cdy7uua7fh8z/Self-Service-SSO-Provisioning-Create-App.png)</Frame>
+<Frame>![Create an application to provision users.](/docs/images/cdy7uua7fh8z/Self-Service-SSO-Provisioning-Create-App.png)</Frame>
 
 **9. Provisioning - Configure SCIM**
 
-<Frame>![Confgure SCIM to provision users to your application.](/images/cdy7uua7fh8z/Self-Service-SSO-Provisioning-configure-scim.png)</Frame>
+<Frame>![Confgure SCIM to provision users to your application.](/docs/images/cdy7uua7fh8z/Self-Service-SSO-Provisioning-configure-scim.png)</Frame>
 
 **10. Provisioning - SCIM Mapping**
 
-<Frame>![Map user attributes to guarantee attributes are passed from IdP to SP.](/images/cdy7uua7fh8z/Self-Service-SSO-Provisioning-SCIM-mapping.png)</Frame>
+<Frame>![Map user attributes to guarantee attributes are passed from IdP to SP.](/docs/images/cdy7uua7fh8z/Self-Service-SSO-Provisioning-SCIM-mapping.png)</Frame>
 
 **11. Domain Verification**
 
-<Frame>![The last step of the self-service assistant that customer admins use to configure SSO. ](/images/cdy7uua7fh8z/Self-Service-SSO-domain-verification.png)</Frame>
+<Frame>![The last step of the self-service assistant that customer admins use to configure SSO. ](/docs/images/cdy7uua7fh8z/Self-Service-SSO-domain-verification.png)</Frame>
 
 ## Using Self-Service SSO
 
-To learn how you can use Self-Service SSO for your customers, review [Manage Self-Service SSO](/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso). This resource provides technical information for creating self-service profiles and managing access tickets, as well as useful reference information such as rate limits.
+To learn how you can use Self-Service SSO for your customers, review [Manage Self-Service SSO](/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso). This resource provides technical information for creating self-service profiles and managing access tickets, as well as useful reference information such as rate limits.

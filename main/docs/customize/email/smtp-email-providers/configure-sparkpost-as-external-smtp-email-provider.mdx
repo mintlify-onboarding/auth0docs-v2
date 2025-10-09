@@ -13,7 +13,7 @@ Auth0 allows you to configure your own SMTP email provider so you can more compl
 
 ## Prerequisites
 
-* To ensure that emails can be sent from Auth0 to your SMTP, open ports and allow inbound connections from specific IP addresses. To update the list of IPs, navigate to [Dashboard > Branding > Email Provider](https://manage.auth0.com/#/branding/email_provider). See [Add IP Addresses to AllowList](/secure/security-guidance/data-security/allowlist) for details.
+* To ensure that emails can be sent from Auth0 to your SMTP, open ports and allow inbound connections from specific IP addresses. To update the list of IPs, navigate to [Dashboard > Branding > Email Provider](https://manage.auth0.com/#/branding/email_provider). See [Add IP Addresses to AllowList](/docs/secure/security-guidance/data-security/allowlist) for details.
 * You must have a [SparkPost](https://www.sparkpost.com/) account.
 
 ## Configure SparkPost
@@ -31,6 +31,6 @@ Auth0 allows you to configure your own SMTP email provider so you can more compl
 
 You can now send a test email using the **Send Test Email** button. If you have configured everything correctly, you will receive a confirmation email. If you do not receive an email after a few minutes, please check your [Auth0 logs](https://manage.auth0.com/#/logs) for any failures.
 
-If you haven't registered a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip> with SparkPost, you can send a maximum of five test emails from the `sparkpostbox.com` domain. For more details, see SparkPost's [Transmissions: The Sandox Domain](https://developers.sparkpost.com/api/transmissions.html#header-the-sandbox-domain).
+If you haven't registered a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip> with SparkPost, you can send a maximum of five test emails from the `sparkpostbox.com` domain. For more details, see SparkPost's [Transmissions: The Sandox Domain](https://developers.sparkpost.com/api/transmissions.html#header-the-sandbox-domain).
 
 The SparkPost [Message Events](https://app.sparkpost.com/reports/message-events) page will now display delivery insights for all emails that have been sent to your users.

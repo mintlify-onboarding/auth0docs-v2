@@ -12,7 +12,7 @@ title: Auth0 Single Page App SDK
 ---
 The Auth0 Single Page App SDK is a new JavaScript library for implementing authentication and authorization in single page apps (SPA) with Auth0. It provides a high-level API and handles a lot of the details so you can secure SPAs using best practices while writing less code.
 
-The Auth0 SPA SDK handles grant and protocol details, token expiration and renewal, as well as token storage and caching. Under the hood, it implements [Universal Login](/authenticate/login/auth0-universal-login) and the [Authorization Code Grant Flow with PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
+The Auth0 SPA SDK handles grant and protocol details, token expiration and renewal, as well as token storage and caching. Under the hood, it implements [Universal Login](/docs/authenticate/login/auth0-universal-login) and the [Authorization Code Grant Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
 
 The [library](https://github.com/auth0/auth0-spa-js) and [API documentation](https://auth0.github.io/auth0-spa-js/) are hosted on GitHub.
 
@@ -117,7 +117,7 @@ document.getElementById('login').addEventListener('click', () => {
 
 ### Call an API
 
-To call your API, start by getting the user's <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>. Then use the Access Token in your request. In this example, the `getTokenSilently` method is used to retrieve the Access Token:
+To call your API, start by getting the user's <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>. Then use the Access Token in your request. In this example, the `getTokenSilently` method is used to retrieve the Access Token:
 
 `<button id="callApi">Call an API</button>`
 
@@ -176,13 +176,13 @@ $('#logout').click(async () => {
 
 ### Change storage options
 
-The Auth0 SPA SDK stores tokens in memory by default. However, this does not provide persistence across page refreshes and browser tabs. Instead, you can opt-in to store tokens in local storage by setting the `cacheLocation` property to `localstorage` when initializing the SDK. This can help to mitigate some of the effects of browser privacy technology that prevents access to the Auth0 <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/glossary?term=session+cookie">session cookie</Tooltip> by storing Access Tokens for longer.
+The Auth0 SPA SDK stores tokens in memory by default. However, this does not provide persistence across page refreshes and browser tabs. Instead, you can opt-in to store tokens in local storage by setting the `cacheLocation` property to `localstorage` when initializing the SDK. This can help to mitigate some of the effects of browser privacy technology that prevents access to the Auth0 <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/docs/glossary?term=session+cookie">session cookie</Tooltip> by storing Access Tokens for longer.
 
 <Warning>
 
 Storing tokens in browser local storage provides persistence across page refreshes and browser tabs. However, if an attacker can achieve running JavaScript in the SPA using a cross-site scripting (XSS) attack, they can retrieve the tokens stored in local storage. A vulnerability leading to a successful XSS attack can be either in the SPA source code or in any third-party JavaScript code (such as bootstrap, jQuery, or Google Analytics) included in the SPA.
 
-Read more about [token storage](/secure/tokens/token-best-practices).
+Read more about [token storage](/docs/secure/tokens/token-best-practices).
 
 </Warning>
 
@@ -197,7 +197,7 @@ const auth0 = await createAuth0Client({
 
 ### Use rotating Refresh Tokens
 
-The Auth0 SPA SDK can be configured to use [rotating Refresh Tokens](/secure/tokens/refresh-tokens/refresh-token-rotation) to get new access tokens silently. These can be used to bypass browser privacy technology that prevents access to the Auth0 session cookie when authenticating silently, as well as providing built-in reuse detection.
+The Auth0 SPA SDK can be configured to use [rotating Refresh Tokens](/docs/secure/tokens/refresh-tokens/refresh-token-rotation) to get new access tokens silently. These can be used to bypass browser privacy technology that prevents access to the Auth0 session cookie when authenticating silently, as well as providing built-in reuse detection.
 
 Configure the SDK to do this by setting `useRefreshTokens` to `true` on initialization:
 
@@ -213,7 +213,7 @@ const auth0 = await createAuth0Client({
 const token = await auth0.getTokenSilently();
 ```
 
-<Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip> will also need to be [configured for your tenant](/secure/tokens/refresh-tokens/configure-refresh-token-rotation) before they can be used in your SPA.
+<Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip> will also need to be [configured for your tenant](/docs/secure/tokens/refresh-tokens/configure-refresh-token-rotation) before they can be used in your SPA.
 
 Once configured, the SDK will request the `offline_access` scope during the authorization step. Furthermore, `getTokenSilently` will then call the `/oauth/token` endpoint directly to exchange refresh tokens for access tokens.
 The SDK will obey the storage configuration when storing refresh tokens. If the SDK has been configured using the default in-memory storage mechanism, refresh tokens will be lost when refreshing the page.
@@ -224,7 +224,7 @@ Below are examples of usage for various methods in the SDK. Note that jQuery is 
 
 ### Login with redirect
 
-Redirect to the `/authorize` endpoint at Auth0, starting the [Universal Login](/authenticate/login/auth0-universal-login) flow:
+Redirect to the `/authorize` endpoint at Auth0, starting the [Universal Login](/docs/authenticate/login/auth0-universal-login) flow:
 
 ```jsx lines
 $('#loginRedirect').click(async () => {
@@ -238,7 +238,7 @@ $('#loginRedirect').click(async () => {
 
 ### Login with popup
 
-Use a popup window to log in using the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> page:
+Use a popup window to log in using the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> page:
 
 ```jsx lines
 $('#loginPopup').click(async () => {
@@ -297,7 +297,7 @@ Get a new Access Token silently using either a hidden iframe and `prompt=none`, 
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Getting an Access Token silently without using Refresh Tokens will not work in browsers that block third-party cookies, such as Safari and Brave. To learn more about the custom domain workaround, read [Troubleshoot Renew Tokens When Using Safari](/troubleshoot/authentication-issues/renew-tokens-when-using-safari).
+Getting an Access Token silently without using Refresh Tokens will not work in browsers that block third-party cookies, such as Safari and Brave. To learn more about the custom domain workaround, read [Troubleshoot Renew Tokens When Using Safari](/docs/troubleshoot/authentication-issues/renew-tokens-when-using-safari).
 
 </Callout>
 
@@ -309,7 +309,7 @@ $('#getToken').click(async () => {
 });
 ```
 
-The `getTokenSilently()` method requires you to have **Allow Skipping User Consent** enabled in your [API Settings in the Dashboard](https://manage.auth0.com/#/apis). Additionally, user consent [cannot be skipped on 'localhost'](/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications).
+The `getTokenSilently()` method requires you to have **Allow Skipping User Consent** enabled in your [API Settings in the Dashboard](https://manage.auth0.com/#/apis). Additionally, user consent [cannot be skipped on 'localhost'](/docs/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications).
 
 ### Get Access Token with popup
 
@@ -328,7 +328,7 @@ $('#getTokenPopup').click(async () => {
 
 ### Get Access Token for a different audience
 
-Options may be passed to `getTokenSilently` that get an Access Token with a different <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> and scope of that which was requested at user authentication time.
+Options may be passed to `getTokenSilently` that get an Access Token with a different <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> and scope of that which was requested at user authentication time.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -361,7 +361,7 @@ $('#getUser').click(async () => {
 
 ### Get ID Token claims
 
-You can get the claims of the authenticated user's <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> by calling the `getIdTokenClaims` method:
+You can get the claims of the authenticated user's <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> by calling the `getIdTokenClaims` method:
 
 ```jsx lines
 $('#getIdTokenClaims').click(async () => {
@@ -388,7 +388,7 @@ $('#logout').click(async () => {
 
 ### Logout with no client ID
 
-You can initiate a logout action with no <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip> specified by calling the `logout` method and including `clientId: null`:
+You can initiate a logout action with no <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip> specified by calling the `logout` method and including `clientId: null`:
 
 ```jsx lines
 $('#logoutNoClientId').click(async () => {
@@ -403,4 +403,4 @@ $('#logoutNoClientId').click(async () => {
 
 ## Learn more
 
-* [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens)
+* [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens)

@@ -128,7 +128,7 @@ Do this:
 
 Avoid using the same name for `app_metadata` fields and root profile fields. The `app_metadata` field is merged onto the root profile in both Rules and Actions, which may override root profile fields.
 
-For example, if a user has a `groups` field present on their root profile (returned from a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>) and a `groups` field within `app_metadata`, their profile might look like this:
+For example, if a user has a `groups` field present on their root profile (returned from a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>) and a `groups` field within `app_metadata`, their profile might look like this:
 
 ```json lines
 {
@@ -151,7 +151,7 @@ For example, if a user has a `groups` field present on their root profile (retur
 
 
 
-When you read the `groups` field on the [User object](/customize/rules/user-object-in-rules) from a [Rule](/manage-users/user-accounts/metadata/manage-metadata-rules), it will return: `["internal-group-1", "internal-group-2"]`.
+When you read the `groups` field on the [User object](/docs/customize/rules/user-object-in-rules) from a [Rule](/docs/manage-users/user-accounts/metadata/manage-metadata-rules), it will return: `["internal-group-1", "internal-group-2"]`.
 
 ## Metadata data types
 
@@ -168,7 +168,7 @@ Make sure to keep data types consistent between users. For example, if you store
 
 ### Rate limits
 
-When you update metadata during login with [Rules](/manage-users/user-accounts/metadata/manage-metadata-rules) or [Actions](/manage-users/user-accounts/metadata/manage-user-metadata), you are subject to your tenant’s rate limits. To learn more, read [Management API Endpoint Rate Limits](/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
+When you update metadata during login with [Rules](/docs/manage-users/user-accounts/metadata/manage-metadata-rules) or [Actions](/docs/manage-users/user-accounts/metadata/manage-user-metadata), you are subject to your tenant’s rate limits. To learn more, read [Management API Endpoint Rate Limits](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/management-api-endpoint-rate-limits).
 
 <Warning>
 
@@ -180,8 +180,8 @@ If you need to maintain detailed profile-related data for users, you should do s
 
 ### Size limits and storage
 
-* There is a 1 MB per-user limit on user data that can be indexed, queried, and returned by the [user search endpoint](https://auth0.com/docs/api/management/v2/users/get-users). If a user profile is larger than 1 MB, any attribute values larger than 256 characters within `app_metadata` and `user_metadata` will not be searchable or returned in a search result. If the user profile is still over 1 MB after omitting these large values, then none of the `app_metadata` and `user_metadata` attributes will be searchable or returnable for that user. Auth0 captures and logs instances where a user profile is still over 1MB after omittances under the `wum` [event code](/deploy-monitor/logs/log-event-type-codes). The [get user endpoint](https://auth0.com/docs/api/management/v2/users/get-users-by-id) must be used to retrieve all metadata attributes for oversized user profiles.
-* When you set the `user_metadata` field using the Auth0 Authentication API [Signup endpoint](https://auth0.com/docs/api/authentication?javascript#signup), you can include a maximum of 10 string fields whose values do not exceed 500 characters each. For an example of working with metadata during a custom signup process, read [Custom Signup](/libraries/custom-signup).
+* There is a 1 MB per-user limit on user data that can be indexed, queried, and returned by the [user search endpoint](https://auth0.com/docs/api/management/v2/users/get-users). If a user profile is larger than 1 MB, any attribute values larger than 256 characters within `app_metadata` and `user_metadata` will not be searchable or returned in a search result. If the user profile is still over 1 MB after omitting these large values, then none of the `app_metadata` and `user_metadata` attributes will be searchable or returnable for that user. Auth0 captures and logs instances where a user profile is still over 1MB after omittances under the `wum` [event code](/docs/deploy-monitor/logs/log-event-type-codes). The [get user endpoint](https://auth0.com/docs/api/management/v2/users/get-users-by-id) must be used to retrieve all metadata attributes for oversized user profiles.
+* When you set the `user_metadata` field using the Auth0 Authentication API [Signup endpoint](https://auth0.com/docs/api/authentication?javascript#signup), you can include a maximum of 10 string fields whose values do not exceed 500 characters each. For an example of working with metadata during a custom signup process, read [Custom Signup](/docs/libraries/custom-signup).
 * The `client_metadata` field can have a maximum of 10 keys. Its keys and values have a maximum length of 255 characters each and cannot contain UTF-8 special characters.
 
 ### Restrictions
@@ -209,7 +209,7 @@ The `app_metadata` field must not contain any of these properties:
 
 ## Learn more
 
-* [Manage Metadata with Rules](/manage-users/user-accounts/metadata/manage-metadata-rules)
-* [Manage Metadata Using the Management API](/manage-users/user-accounts/metadata/manage-metadata-api)
-* [Configure Application Metadata](/get-started/applications/configure-application-metadata)
-* [User Data Storage](/secure/security-guidance/data-security/user-data-storage)
+* [Manage Metadata with Rules](/docs/manage-users/user-accounts/metadata/manage-metadata-rules)
+* [Manage Metadata Using the Management API](/docs/manage-users/user-accounts/metadata/manage-metadata-api)
+* [Configure Application Metadata](/docs/get-started/applications/configure-application-metadata)
+* [User Data Storage](/docs/secure/security-guidance/data-security/user-data-storage)

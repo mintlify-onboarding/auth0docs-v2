@@ -14,7 +14,7 @@ Your Auth0 plan or custom agreement affects whether this feature is available. T
 
 </Card>
 
-If you have your own database (known as a legacy data store in Auth0) containing user identity data, you can use it as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> to authenticate users.
+If you have your own database (known as a legacy data store in Auth0) containing user identity data, you can use it as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> to authenticate users.
 You create and configure the connection to your legacy data store as a custom database in Auth0. You can choose to migrate data to Auth0's data store from your legacy database incrementally over time, or you can continue to use it without migrating data. We provide script templates to perform functions on the custom database that you can use and customize.
 
 There are two different types of custom database scripts:
@@ -24,13 +24,13 @@ There are two different types of custom database scripts:
 
 Auth0 provides the following custom database action scripts:
 
-* [Change Password](/authenticate/database-connections/custom-db/templates/change-password)
-* [Create User](/authenticate/database-connections/custom-db/templates/create)
-* [Delete User](/authenticate/database-connections/custom-db/templates/delete)
-* [Get User](/authenticate/database-connections/custom-db/templates/get-user)
-* [Login](/authenticate/database-connections/custom-db/templates/login)
-* [Verify User](/authenticate/database-connections/custom-db/templates/verify)
-* [Change Email](/authenticate/database-connections/custom-db/templates/change-email)
+* [Change Password](/docs/authenticate/database-connections/custom-db/templates/change-password)
+* [Create User](/docs/authenticate/database-connections/custom-db/templates/create)
+* [Delete User](/docs/authenticate/database-connections/custom-db/templates/delete)
+* [Get User](/docs/authenticate/database-connections/custom-db/templates/get-user)
+* [Login](/docs/authenticate/database-connections/custom-db/templates/login)
+* [Verify User](/docs/authenticate/database-connections/custom-db/templates/verify)
+* [Change Email](/docs/authenticate/database-connections/custom-db/templates/change-email)
 
 <Card title="Network firewall">
 
@@ -40,7 +40,7 @@ If you are behind a firewall, this feature may require that you add the appropri
 
 ## Script execution
 
-As described in [Custom Database Connections](/authenticate/database-connections/custom-db), a custom database connection type allows you to configure action scripts: custom code that is used when interfacing with your legacy identity store. Each action script is essentially a named JavaScript function that is passed a number of parameters, with the name of the function and the parameters passed depending on the script.
+As described in [Custom Database Connections](/docs/authenticate/database-connections/custom-db), a custom database connection type allows you to configure action scripts: custom code that is used when interfacing with your legacy identity store. Each action script is essentially a named JavaScript function that is passed a number of parameters, with the name of the function and the parameters passed depending on the script.
 
 ### Limits
 
@@ -72,5 +72,5 @@ Failure to execute the `callback` function will result in a stall of execution, 
 
 ## Learn more
 
-* [Custom Database Action Script Execution Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution)
-* [Troubleshoot Custom Databases](/authenticate/database-connections/custom-db/error-handling)
+* [Custom Database Action Script Execution Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution)
+* [Troubleshoot Custom Databases](/docs/authenticate/database-connections/custom-db/error-handling)

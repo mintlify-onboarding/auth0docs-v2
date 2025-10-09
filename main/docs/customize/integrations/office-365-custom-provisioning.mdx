@@ -8,9 +8,9 @@ title: Office 365 Custom Provisioning
 'twitter:description': Learn how to set up Microsoft Office 365 custom provisioning.
 'twitter:title': Office 365 Custom Provisioning
 ---
-The default Office 365 setup includes Active Directory and DirSync/Azure AD Sync Services, which synchronize and provision AD users living in your Azure AD for <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip>. In this configuration, Auth0 is the <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>, we provide Single Sign-on (SSO) for these users.
+The default Office 365 setup includes Active Directory and DirSync/Azure AD Sync Services, which synchronize and provision AD users living in your Azure AD for <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip>. In this configuration, Auth0 is the <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>, we provide Single Sign-on (SSO) for these users.
 
-But what if you want to allow contractors, partners or even customers to access your Office 365 environment (e.g., SharePoint)? In that case, the default approach is not optimal because these users would need to be created in your AD environment. Instead, you need to custom provision Azure AD users using [Auth0 Rules](/customize/rules).
+But what if you want to allow contractors, partners or even customers to access your Office 365 environment (e.g., SharePoint)? In that case, the default approach is not optimal because these users would need to be created in your AD environment. Instead, you need to custom provision Azure AD users using [Auth0 Rules](/docs/customize/rules).
 
 Custom provisioning allows you to create users in Azure AD (and effectively Office 365) just as they log in from any connection available in Auth0. (In this case, your rule takes over DirSync's task for any type of connection where DirSync would not work.) This configuration allows you to offer a variety of login options (including, Facebook, LinkedIn, Google Workspace) to your Office 365 environment.
 
@@ -18,7 +18,7 @@ Custom provisioning allows you to create users in Azure AD (and effectively Offi
 
 Before you can configure custom provisioning, you must:
 
-* [Configure Office 365](https://marketplace.auth0.com/integrations/office-365-sso): Register a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip> and configure Office 365 as a third-party application in Auth0.
+* [Configure Office 365](https://marketplace.auth0.com/integrations/office-365-sso): Register a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip> and configure Office 365 as a third-party application in Auth0.
 
 ## Configure Azure AD
 
@@ -54,7 +54,7 @@ The following rule shows the provisioning process:
 
 The username is generated with the `createAzureADUser` function, which by default, generates a username in the format `auth0-c3fb6eec-3afd-4d52-8e0a-d9f357dd19ab@fabrikamcorp.be`. You can change this to whatever you like; just make sure this value is unique for all your users.
 
-Make sure you set the correct values for the `AUTH0_OFFICE365_CLIENT_ID`, `AAD_CUSTOM_DOMAIN`, `AAD_DOMAIN`, `AAD_APPLICATION_ID` and `AAD_APPLICATION_API_KEY` values in your configuration object to make the values available in your rule code. To learn more, read [Store Configuration for Rules](/customize/rules/configuration).
+Make sure you set the correct values for the `AUTH0_OFFICE365_CLIENT_ID`, `AAD_CUSTOM_DOMAIN`, `AAD_DOMAIN`, `AAD_APPLICATION_ID` and `AAD_APPLICATION_API_KEY` values in your configuration object to make the values available in your rule code. To learn more, read [Store Configuration for Rules](/docs/customize/rules/configuration).
 
 In the code, you'll also see that the rule will wait about 15 seconds after the user is provisioned. This is because it takes a few seconds before the provisioned user is available for Office 365.
 
@@ -298,7 +298,7 @@ Certain implementations might require deep linking (for example, to SharePoint O
 https://login.microsoftonline.com/login.srf?wa=wsignin1.0&whr={yourCustomDomain}&wreply={deepLink}
 ```
 
-The first parameter, `{yourCustomDomain}`, should be the domain you've configured in Azure AD for <Tooltip tip="Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-on+%28SSO%29">Single Sign-on (SSO)</Tooltip> (e.g., `travel0.com`). By specifying this as the `whr`, Azure AD will know it needs to redirect to Auth0 instead of showing the login page.
+The first parameter, `{yourCustomDomain}`, should be the domain you've configured in Azure AD for <Tooltip tip="Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on+%28SSO%29">Single Sign-on (SSO)</Tooltip> (e.g., `travel0.com`). By specifying this as the `whr`, Azure AD will know it needs to redirect to Auth0 instead of showing the login page.
 
 The `DEEP_LINK` parameter should be an encoded URL within Office 365 (for example, a page in SharePoint Online or Exchange).
 

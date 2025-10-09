@@ -11,7 +11,7 @@ title: Universal Login Internationalization
 ---
 ## Universal Login localization
 
-The <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> experience is localized to the following languages. Entries marked with an asterisk are read right to left.
+The <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> experience is localized to the following languages. Entries marked with an asterisk are read right to left.
 
 <table class="table"><thead>
 <tr>
@@ -344,7 +344,7 @@ The language to render the pages will be selected based on:
 * The value of the `ui_locales` parameter sent to the [Authorization Request endpoint](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), which can be used to constrain the language list for an application or session. You can provide a space-delimited list of locales. The first locale on the list must match the enabled locale in your tenant to reflect in the UI.
 * The `Accept-Language` HTTP header sent by the browser. The pages will be rendered in this language if it is allowed by the settings above. If not, pages will be rendered in the default language.
 
-To add a language that's not listed above, use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to make a `PATCH` call to the [Tenants endpoint](https://auth0.com/docs/api/management/v2/tenants/patch-settings) with the following body, replacing `he` with the language code you want to add:
+To add a language that's not listed above, use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to make a `PATCH` call to the [Tenants endpoint](https://auth0.com/docs/api/management/v2/tenants/patch-settings) with the following body, replacing `he` with the language code you want to add:
 
 ```json lines
 {
@@ -568,11 +568,11 @@ dataTask.resume()
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Right-to-left text is currently in Early Access. To request this feature, [contact Auth0 Support](https://support.auth0.com/), and to learn more about Auth0's product release cycle, read [Product release stages](/troubleshoot/product-lifecycle/product-release-stages).
+Right-to-left text is currently in Early Access. To request this feature, [contact Auth0 Support](https://support.auth0.com/), and to learn more about Auth0's product release cycle, read [Product release stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
 
 </Callout>
 
-Right-to-left (RtL) language support allows your tenant to display Arabic (standard, Egyptian, and Saudi Arabian), Persian, Hebrew, and Urdu text. Tenants that use RtL text must be [WCAG 2.2 AA compliant](/authenticate/login/auth0-universal-login#accessibility), and if your tenant uses page templates, you must update the HTML tag to include the `dir` element.
+Right-to-left (RtL) language support allows your tenant to display Arabic (standard, Egyptian, and Saudi Arabian), Persian, Hebrew, and Urdu text. Tenants that use RtL text must be [WCAG 2.2 AA compliant](/docs/authenticate/login/auth0-universal-login#accessibility), and if your tenant uses page templates, you must update the HTML tag to include the `dir` element.
 
 ```liquid lines
 {% assign resolved_dir = dir | default: "auto" %}
@@ -584,14 +584,14 @@ Right-to-left (RtL) language support allows your tenant to display Arabic (stand
 
 
 
-Go to [Tenant Settings > Advanced](https://manage.auth0.com/#/tenant/advanced) and ensure the toggle shown below is disabled, then test any RtL languages in a dev environment with a custom page template before using them in production. To learn more, read [Customize Universal Login Page Templates](/customize/login-pages/universal-login/customize-templates).
+Go to [Tenant Settings > Advanced](https://manage.auth0.com/#/tenant/advanced) and ensure the toggle shown below is disabled, then test any RtL languages in a dev environment with a custom page template before using them in production. To learn more, read [Customize Universal Login Page Templates](/docs/customize/login-pages/universal-login/customize-templates).
 
-<Frame>![A photo of the right-to-left toggle in the Auth0 Tenant Settings.](/images/screenshot.png)</Frame>
+<Frame>![A photo of the right-to-left toggle in the Auth0 Tenant Settings.](/docs/images/screenshot.png)</Frame>
 
 ### Limitations
 
-* The `ui_locales` parameter can only be used in <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> flows, as it’s not available in <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> or WS-Federation.
-* The `ui_locales` parameter is not forwarded to upstream <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=IdPs">IdPs</Tooltip>. To learn more about passing parameters to IdPs, read [Pass Parameters to Identity Providers](/authenticate/identity-providers/pass-parameters-to-idps).
+* The `ui_locales` parameter can only be used in <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> flows, as it’s not available in <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> or WS-Federation.
+* The `ui_locales` parameter is not forwarded to upstream <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=IdPs">IdPs</Tooltip>. To learn more about passing parameters to IdPs, read [Pass Parameters to Identity Providers](/docs/authenticate/identity-providers/pass-parameters-to-idps).
 * It is not possible to localize the scopes in the Consent page.
 
 ### Known issues
@@ -601,13 +601,13 @@ Go to [Tenant Settings > Advanced](https://manage.auth0.com/#/tenant/advanced) a
 
 ## Classic Login localization
 
-In the Classic Login experience, localization is done using our JavaScript widgets for [login](/customize/internationalization-and-localization/lock-internationalization), the [password reset page](/customize/login-pages/classic-login/customize-password-reset-page) and [password policies](/customize/internationalization-and-localization/password-options-translation).
+In the Classic Login experience, localization is done using our JavaScript widgets for [login](/docs/customize/internationalization-and-localization/lock-internationalization), the [password reset page](/docs/customize/login-pages/classic-login/customize-password-reset-page) and [password policies](/docs/customize/internationalization-and-localization/password-options-translation).
 
-The [MFA page](/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login) by default uses the Auth0 <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> Widget, which cannot be localized. You can create localized versions by using [guardian.js](https://github.com/auth0/auth0-guardian.js).
+The [MFA page](/docs/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login) by default uses the Auth0 <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> Widget, which cannot be localized. You can create localized versions by using [guardian.js](https://github.com/auth0/auth0-guardian.js).
 
 It is not possible to localize the Consent page.
 
 ## Learn more
 
-* [Customize Universal Login Page Templates](/customize/login-pages/universal-login/customize-templates)
-* [Customize Classic Login Pages with Lock or SDK](/customize/login-pages/classic-login/customize-with-lock-sdk)
+* [Customize Universal Login Page Templates](/docs/customize/login-pages/universal-login/customize-templates)
+* [Customize Classic Login Pages with Lock or SDK](/docs/customize/login-pages/classic-login/customize-with-lock-sdk)

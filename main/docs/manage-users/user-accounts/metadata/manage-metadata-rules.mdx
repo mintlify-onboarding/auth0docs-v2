@@ -14,15 +14,15 @@ title: Manage Metadata with Rules
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
 </Warning>
 
-You can read, update, and delete metadata using [Auth0 Rules](/customize/rules). In the following sections, we will refer to this example where the user and their information is represented by the following JSON snippet:
+You can read, update, and delete metadata using [Auth0 Rules](/docs/customize/rules). In the following sections, we will refer to this example where the user and their information is represented by the following JSON snippet:
 
 ```json lines
 {
@@ -46,16 +46,16 @@ You can read, update, and delete metadata using [Auth0 Rules](/customize/rules).
 
 ## Read metadata
 
-You can read metadata using rules with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. You can also search for profile-related information in `user_metadata`, such as:
+You can read metadata using rules with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. You can also search for profile-related information in `user_metadata`, such as:
 
 * `name`
 * `nickname`
 * `given_name`
 * `family_name`
 
-By default, user profile attributes provided by <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> other than Auth0 (such as Google, Facebook, or X) are not directly editable because they are updated from the identity provider each time the user logs in. Fore more information on attributes from identity providers, read [Configure Identity Provider Connection for User Profile Updates](/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+By default, user profile attributes provided by <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> other than Auth0 (such as Google, Facebook, or X) are not directly editable because they are updated from the identity provider each time the user logs in. Fore more information on attributes from identity providers, read [Configure Identity Provider Connection for User Profile Updates](/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 
-To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `picture` root attributes on the normalized user profile, you must [configure your connection sync with Auth0](/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0) so that user attributes will be updated from the identity provider only on user profile creation. These root attributes will then be available to be edited individually or by bulk imports
+To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `picture` root attributes on the normalized user profile, you must [configure your connection sync with Auth0](/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0) so that user attributes will be updated from the identity provider only on user profile creation. These root attributes will then be available to be edited individually or by bulk imports
 
 As an example, assume the following metadata is stored for a user with the email address `jane.doe@example.com`:
 
@@ -76,7 +76,7 @@ As an example, assume the following metadata is stored for a user with the email
 
 
 
-Using the example metadata above, you can refer to specific items from the dataset in [Auth0 Rules](/customize/rules) or via a call to the [Management API](/manage-users/user-accounts/metadata) as follows:
+Using the example metadata above, you can refer to specific items from the dataset in [Auth0 Rules](/docs/customize/rules) or via a call to the [Management API](/docs/manage-users/user-accounts/metadata) as follows:
 
 ```js lines
 console.log(user.email); // "jane.doe@example.com"
@@ -478,6 +478,6 @@ This results in the following JSON representation of the user profile details:
 
 ## Learn more
 
-* [Use the Management API from within Rules](/customize/rules/use-management-api)
-* [Context Object Properties in Rules](/customize/rules/context-object)
-* [Auth0 Rules](/customize/rules)
+* [Use the Management API from within Rules](/docs/customize/rules/use-management-api)
+* [Context Object Properties in Rules](/docs/customize/rules/context-object)
+* [Auth0 Rules](/docs/customize/rules)

@@ -13,13 +13,13 @@ title: Device Authorization Flow
   use with native apps.
 'twitter:title': Device Authorization Flow
 ---
-With input-constrained devices that connect to the internet, rather than authenticate the user directly, the device asks the user to go to a link on their computer or smartphone and authorize the device. This avoids a poor user experience for devices that do not have an easy way to enter text. To do this, device apps use the Device <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/glossary?term=Authorization+Flow">Authorization Flow</Tooltip> (ratified in [OAuth 2.0](https://tools.ietf.org/html/rfc8628)), in which they pass along their <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip> to initiate the authorization process and get a token.
+With input-constrained devices that connect to the internet, rather than authenticate the user directly, the device asks the user to go to a link on their computer or smartphone and authorize the device. This avoids a poor user experience for devices that do not have an easy way to enter text. To do this, device apps use the Device <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=Authorization+Flow">Authorization Flow</Tooltip> (ratified in [OAuth 2.0](https://tools.ietf.org/html/rfc8628)), in which they pass along their <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip> to initiate the authorization process and get a token.
 
 ## How it works
 
 The Device Authorization Flow contains two different paths; one occurs on the device requesting authorization and the other occurs in a browser. The browser flow path, wherein a device code is bound to the session in the browser, occurs in parallel to part of the device flow path.
 
-<Frame>![Flows - Device Authorization - Authorization sequence diagram](/images/cdy7uua7fh8z/1A6jpG3W1H6SC9ZK92NyKd/40af53209f90a7c392f621f329fb4424/auth-sequence-device-auth.png)</Frame>
+<Frame>![Flows - Device Authorization - Authorization sequence diagram](/docs/images/cdy7uua7fh8z/1A6jpG3W1H6SC9ZK92NyKd/40af53209f90a7c392f621f329fb4424/auth-sequence-device-auth.png)</Frame>
 
 ### Device Flow
 
@@ -45,15 +45,15 @@ The Device Authorization Flow contains two different paths; one occurs on the de
 
 ## How to implement it
 
-The easiest way to implement the Device Authorization Flow is to follow our tutorial: [Call API Using Device Authorization Flow](/get-started/authentication-and-authorization-flow/device-authorization-flow/call-your-api-using-the-device-authorization-flow).
+The easiest way to implement the Device Authorization Flow is to follow our tutorial: [Call API Using Device Authorization Flow](/docs/get-started/authentication-and-authorization-flow/device-authorization-flow/call-your-api-using-the-device-authorization-flow).
 
 ## Force device reauthorization
 
-To force the user to reauthorize a device, you must revoke the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip> assigned to the device. To learn how, read [Unlink Devices from Users](/manage-users/user-accounts/unlink-devices-from-users). Note that the device will not be forced to reauthorize until the current <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> expires and the application tries to use the revoked Refresh Token. To learn more about Refresh Tokens, read [Refresh Tokens](/secure/tokens/refresh-tokens).
+To force the user to reauthorize a device, you must revoke the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip> assigned to the device. To learn how, read [Unlink Devices from Users](/docs/manage-users/user-accounts/unlink-devices-from-users). Note that the device will not be forced to reauthorize until the current <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> expires and the application tries to use the revoked Refresh Token. To learn more about Refresh Tokens, read [Refresh Tokens](/docs/secure/tokens/refresh-tokens).
 
 ## Learn more
 
-* [Tokens](/secure/tokens)
-* [Token Best Practices](/secure/tokens/token-best-practices)
-* [Which OAuth 2.0 Flow Should I Use?](/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
-* [Auth0 Actions](/customize/actions)
+* [Tokens](/docs/secure/tokens)
+* [Token Best Practices](/docs/secure/tokens/token-best-practices)
+* [Which OAuth 2.0 Flow Should I Use?](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
+* [Auth0 Actions](/docs/customize/actions)

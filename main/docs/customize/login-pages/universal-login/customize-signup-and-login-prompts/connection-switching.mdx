@@ -10,27 +10,27 @@ title: Configure Flexible Connection Switching
   Universal Login
 'twitter:title': Configure Flexible Connection Switching
 ---
-Flexible connection switching is an optional feature that allows users to choose their method of authentication when logging in to an application. When implemented, your application's login screen presents users with the option to authenticate with either traditional database credentials or a <Tooltip tip="" cta="View Glossary" href="/glossary?term=passwordless">passwordless</Tooltip> connection. Users who select a [passwordless connection](/authenticate/passwordless) receive a one-time password (OTP) through email or SMS that they can use to log in to your application.
+Flexible connection switching is an optional feature that allows users to choose their method of authentication when logging in to an application. When implemented, your application's login screen presents users with the option to authenticate with either traditional database credentials or a <Tooltip tip="" cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> connection. Users who select a [passwordless connection](/docs/authenticate/passwordless) receive a one-time password (OTP) through email or SMS that they can use to log in to your application.
 
-Flexible connection switching uses [custom Universal Login prompts](/customize/login-pages/universal-login/customize-signup-and-login-prompts) to provide users with a more autonomous authentication experience.
+Flexible connection switching uses [custom Universal Login prompts](/docs/customize/login-pages/universal-login/customize-signup-and-login-prompts) to provide users with a more autonomous authentication experience.
 
 ## Before you begin
 
 Before you can implement flexible connection switching, ensure the following requirements are met:
 
-* Use [Universal Login](/authenticate/login/auth0-universal-login).
+* Use [Universal Login](/docs/authenticate/login/auth0-universal-login).
 
   + This feature is not available for custom login pages.
-* Configure a [custom domain](/customize/custom-domains).
+* Configure a [custom domain](/docs/customize/custom-domains).
 * Enable the following for your application:
 
-  + [Identifier First authentication](/authenticate/login/auth0-universal-login/identifier-first)
-  + [Database connection](/authenticate/database-connections)
-  + [Email or SMS passwordless authentication](/authenticate/login/auth0-universal-login/passwordless-login/email-or-sms)
+  + [Identifier First authentication](/docs/authenticate/login/auth0-universal-login/identifier-first)
+  + [Database connection](/docs/authenticate/database-connections)
+  + [Email or SMS passwordless authentication](/docs/authenticate/login/auth0-universal-login/passwordless-login/email-or-sms)
 
 ## Implement flexible connection switching
 
-To implement this feature, use the [Auth0 Management API](https://auth0.com/docs/api/management/v2) to configure custom signup and login prompt partials. Partials refer to custom code inserted into an entry point within a prompt screen, such as the login screen. To learn more, review [Customize Signup and Login Prompts](/customize/login-pages/universal-login/customize-signup-and-login-prompts).
+To implement this feature, use the [Auth0 Management API](https://auth0.com/docs/api/management/v2) to configure custom signup and login prompt partials. Partials refer to custom code inserted into an entry point within a prompt screen, such as the login screen. To learn more, review [Customize Signup and Login Prompts](/docs/customize/login-pages/universal-login/customize-signup-and-login-prompts).
 
 To implement flexible connection switching, you will configure custom prompt partials with the following parameters:
 
@@ -44,7 +44,7 @@ To implement flexible connection switching, you will configure custom prompt par
 <tbody>
 <tr>
 <td><code>state</code></td>
-<td>Renders the current page's state value, which is opaque and used for security purposes.<br/><br/>To learn more about current screen information, review <a href="/customize/login-pages/universal-login/customize-templates#current-screen-information">Customize Univeral Login Page Templates</a>.</td>
+<td>Renders the current page's state value, which is opaque and used for security purposes.<br/><br/>To learn more about current screen information, review <a href="/docs/customize/login-pages/universal-login/customize-templates#current-screen-information">Customize Univeral Login Page Templates</a>.</td>
 <td><code>&lt;input type='hidden' name='state' value='{{state}}'&gt;</code></td>
 </tr>
 <tr>

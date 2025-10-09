@@ -12,7 +12,7 @@ title: Native Passkeys for Mobile Applications
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Native passkeys is currently available in limited Early Access. To learn more about Auth0 releases, review [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages).
+Native passkeys is currently available in limited Early Access. To learn more about Auth0 releases, review [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
 
 </Callout>
 
@@ -20,14 +20,14 @@ Passkeys are a phishing-resistant alternative to traditional forms of authentica
 
 Auth0 currently supports passkeys as an authentication method for database connections and offers two methods of implementation:
 
-* [Universal Login passkeys](/authenticate/database-connections/passkeys) for web-based applications.
+* [Universal Login passkeys](/docs/authenticate/database-connections/passkeys) for web-based applications.
 * Native passkeys for Android and iOS applications.
 
 To learn more about implementing passkeys for mobile applications, review the information below.
 
 ## How it works
 
-Native passkeys use a combination of the [Auth0 Authentication API](/native-passkeys-api) and native iOS or Android APIs to embed challenge flows directly into your mobile application. This allows you to create an integrated signup and login experience for your application that does not rely on redirecting users through their browsers to complete authentication.
+Native passkeys use a combination of the [Auth0 Authentication API](/docs/native-passkeys-api) and native iOS or Android APIs to embed challenge flows directly into your mobile application. This allows you to create an integrated signup and login experience for your application that does not rely on redirecting users through their browsers to complete authentication.
 
 The following example demonstrates what a new user may experience during the passkey signup flow:
 
@@ -44,15 +44,15 @@ Once this process is complete, the user can authenticate with their saved passke
 
 ### Configure a custom domain
 
-Native passkeys require the use of a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>. Before proceeding, ensure you have configured a custom domain for your tenant. To learn more, review [Custom Domains](/customize/custom-domains).
+Native passkeys require the use of a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>. Before proceeding, ensure you have configured a custom domain for your tenant. To learn more, review [Custom Domains](/docs/customize/custom-domains).
 
 ### Configure your passkey policy
 
-Before you can implement native passkeys for Android or iOS applications, you must configure a passkey policy in your Auth0 tenant. To prepare your tenant, follow the steps in [Configure Passkey Policy](/authenticate/database-connections/passkeys/configure-passkey-policy).
+Before you can implement native passkeys for Android or iOS applications, you must configure a passkey policy in your Auth0 tenant. To prepare your tenant, follow the steps in [Configure Passkey Policy](/docs/authenticate/database-connections/passkeys/configure-passkey-policy).
 
 ### Prepare your application
 
-To prepare your application for native passkeys, you must configure your Device Settings and add the `Passkey` grant. You can complete these configurations through your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+To prepare your application for native passkeys, you must configure your Device Settings and add the `Passkey` grant. You can complete these configurations through your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 #### Auth0 Dashboard
 
@@ -85,11 +85,11 @@ If the user provides an identifier that already exists, it’s recommended that 
 #### Flow steps
 
 1. A user visits your application and chooses to register a new account. The user provides an identifier requested by your application, such as their email address.
-2. Your application then initiates the signup challenge by calling the [Request Signup Challenge](/native-passkeys-api#request-signup-challenge) endpoint of the Auth0 Authentication API:
+2. Your application then initiates the signup challenge by calling the [Request Signup Challenge](/docs/native-passkeys-api#request-signup-challenge) endpoint of the Auth0 Authentication API:
 
   <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
    * If you do not specify a `realm`, your tenant’s default directory is used.
-   * By default, email is the required identifier. If you have enabled [Flexible Identifiers](/authenticate/database-connections/activate-and-configure-attributes-for-flexible-identifiers) for your database connection, you may use a combination of `email`, `phone_number`, or `username` instead. These options can be required or optional and must match your Flexible Identifier configuration.
+   * By default, email is the required identifier. If you have enabled [Flexible Identifiers](/docs/authenticate/database-connections/activate-and-configure-attributes-for-flexible-identifiers) for your database connection, you may use a combination of `email`, `phone_number`, or `username` instead. These options can be required or optional and must match your Flexible Identifier configuration.
    </Callout>
 
    ```text lines
@@ -147,7 +147,7 @@ If the user provides an identifier that already exists, it’s recommended that 
 
    * Review [Android registration documentation](https://developer.android.com/identity/sign-in/credential-manager#create-passkey).
    * Review [iOS registration documentation](https://developer.apple.com/documentation/authenticationservices/supporting-passkeys#Register-a-new-account-on-a-service).
-5. Your application then uses the credential information obtained through the registration process, including `authn_response` details, to call the [Token](/native-passkeys-api#authenticate-new-user) endpoint:
+5. Your application then uses the credential information obtained through the registration process, including `authn_response` details, to call the [Token](/docs/native-passkeys-api#authenticate-new-user) endpoint:
 
    ```text lines
    POST /oauth/token
@@ -203,7 +203,7 @@ An existing user initiates the passkey login flow when they attempt to log in to
 
 #### Flow Steps
 
-1. A user launches your application and begins the login process. Your application then initiates the login challenge by calling the [Request Login Challenge](/native-passkeys-api#request-login-challenge) endpoint of the Authentication API:
+1. A user launches your application and begins the login process. Your application then initiates the login challenge by calling the [Request Login Challenge](/docs/native-passkeys-api#request-login-challenge) endpoint of the Authentication API:
 
    <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -250,7 +250,7 @@ An existing user initiates the passkey login flow when they attempt to log in to
 
    * Review [Android login documentation](https://developer.android.com/identity/sign-in/credential-manager#sign-in).
    * Review [iOS login documentation](https://developer.apple.com/documentation/authenticationservices/supporting-passkeys#Connect-to-a-service-with-an-existing-account).
-4. Your application then uses the credential information obtained through the login process, including `authn_response` details, to call the [Token](/native-passkeys-api#authenticate-existing-user) endpoint:
+4. Your application then uses the credential information obtained through the login process, including `authn_response` details, to call the [Token](/docs/native-passkeys-api#authenticate-existing-user) endpoint:
 
    ```text lines
    POST /oauth/token
@@ -308,10 +308,10 @@ The following resources can be referenced when implementing native passkeys for 
 
 * Auth0 Authentication API
 
-  + [Request signup challenge](/native-passkeys-api#request-signup-challenge)
-  + [Authenticate new user](/native-passkeys-api#authenticate-new-user)
-  + [Request login challenge](/native-passkeys-api#request-login-challenge)
-  + [Authenticate existing user](/native-passkeys-api#authenticate-existing-user)
+  + [Request signup challenge](/docs/native-passkeys-api#request-signup-challenge)
+  + [Authenticate new user](/docs/native-passkeys-api#authenticate-new-user)
+  + [Request login challenge](/docs/native-passkeys-api#request-login-challenge)
+  + [Authenticate existing user](/docs/native-passkeys-api#authenticate-existing-user)
 * Android resources
 
   + [Registration documentation](https://developer.android.com/identity/sign-in/credential-manager#create-passkey)

@@ -11,35 +11,35 @@ title: User Profile Structure
 Auth0's normalized user profile consists of a few different components:
 
 * **Details**: Core User Profile object, which contains basic info, such as name, email, and timestamp of the user's latest login, in pre-defined attributes. This object may also contain info from a user's source connection. Most of the user attributes are root attributes (attributes stored at the first, or root, level of the `user` object), and some of these are editable.
-* **Metadata**: Two sub-objects that operate as secondary storage to store additional user info in customizable attributes: `user_metadata` and `app_metadata`. To learn more, including when to use `app_metadata` and `user_metadata`, read [Understand How Metadata Works in User Profiles](/manage-users/user-accounts/metadata).
+* **Metadata**: Two sub-objects that operate as secondary storage to store additional user info in customizable attributes: `user_metadata` and `app_metadata`. To learn more, including when to use `app_metadata` and `user_metadata`, read [Understand How Metadata Works in User Profiles](/docs/manage-users/user-accounts/metadata).
 
 ## User profile attributes
 
 The following attributes are available on the user profile. Many are root attributes (attributes stored at the first, or root, level of the `user` object), and some may be updated, imported, and exported, as noted below.
 
-If there are user fields that should not be stored by Auth0 due to privacy reasons, you can add the attributes you do not want persisting in Auth0 databases to the DenyList. To learn more, read [Add User Attributes to the Deny List](/secure/security-guidance/data-security/denylist).
+If there are user fields that should not be stored by Auth0 due to privacy reasons, you can add the attributes you do not want persisting in Auth0 databases to the DenyList. To learn more, read [Add User Attributes to the Deny List](/docs/secure/security-guidance/data-security/denylist).
 
-By default, user profile attributes provided by <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> other than Auth0 (such as Google, Facebook, or X) are not directly editable because they are updated from the identity provider each time the user logs in. Fore more information on attributes from identity providers, read [Configure Identity Provider Connection for User Profile Updates](/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+By default, user profile attributes provided by <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> other than Auth0 (such as Google, Facebook, or X) are not directly editable because they are updated from the identity provider each time the user logs in. Fore more information on attributes from identity providers, read [Configure Identity Provider Connection for User Profile Updates](/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 
-To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `picture` root attributes on the normalized user profile, you must [configure your connection sync with Auth0](/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0) so that user attributes will be updated from the identity provider only on user profile creation. These root attributes will then be available to be edited individually or by bulk imports
+To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `picture` root attributes on the normalized user profile, you must [configure your connection sync with Auth0](/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0) so that user attributes will be updated from the identity provider only on user profile creation. These root attributes will then be available to be edited individually or by bulk imports
 
 <table class="table"><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
-<th><a href="/manage-users/user-search">Search?</a></th>
+<th><a href="/docs/manage-users/user-search">Search?</a></th>
 <th><a href="https://auth0.com/docs/api/management/guides/users/update-root-attributes-users">Update?</a></th>
-<th><a href="/manage-users/user-migration/bulk-user-imports">Import?</a></th>
-<th><a href="/manage-users/user-migration/bulk-user-imports#request-bulk-import">Upsert during import?</a></th>
-<th><a href="/manage-users/user-migration/bulk-user-exports">Export?</a></th>
+<th><a href="/docs/manage-users/user-migration/bulk-user-imports">Import?</a></th>
+<th><a href="/docs/manage-users/user-migration/bulk-user-imports#request-bulk-import">Upsert during import?</a></th>
+<th><a href="/docs/manage-users/user-migration/bulk-user-exports">Export?</a></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>app_metadata</code></td>
 <td>object</td>
-<td>Custom fields that store info about a user that influences the user's access, such as support plan, security roles (if not using the Authorization Core feature set), or access control groups. To learn more, read <a href="/manage-users/user-accounts/metadata">Metadata Overview</a>.</td>
+<td>Custom fields that store info about a user that influences the user's access, such as support plan, security roles (if not using the Authorization Core feature set), or access control groups. To learn more, read <a href="/docs/manage-users/user-accounts/metadata">Metadata Overview</a>.</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
@@ -129,7 +129,7 @@ To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `pict
 <tr>
 <td><code>identities</code></td>
 <td>array (object)</td>
-<td><p>Contains info retrieved from the identity provider with which the user originally authenticates. Users may also <a href="/manage-users/user-accounts/user-account-linking">link their profile to multiple identity providers</a>; those identities will then also appear in this array. The contents of an individual identity provider object varies by provider, but it will typically include the following:</p><ul><li><code>connection</code> (text): Name of the Auth0 connection used to authenticate the user.</li><li><code>isSocial</code> (boolean): Indicates whether the connection is a social one.</li><li><code>provider</code> (text): Name of the entity that is authenticating the user, such as Facebook, Google, SAML, or your own provider.</li><li><code>user_id</code> (text): User's unique identifier for this connection/provider.</li><li><code>profileData</code> (object): User info associated with the connection. When profiles are linked, it is populated with the associated user info for secondary accounts.</li></ul>In some cases, it will also include an API Access Token to be used with the provider.</td>
+<td><p>Contains info retrieved from the identity provider with which the user originally authenticates. Users may also <a href="/docs/manage-users/user-accounts/user-account-linking">link their profile to multiple identity providers</a>; those identities will then also appear in this array. The contents of an individual identity provider object varies by provider, but it will typically include the following:</p><ul><li><code>connection</code> (text): Name of the Auth0 connection used to authenticate the user.</li><li><code>isSocial</code> (boolean): Indicates whether the connection is a social one.</li><li><code>provider</code> (text): Name of the entity that is authenticating the user, such as Facebook, Google, SAML, or your own provider.</li><li><code>user_id</code> (text): User's unique identifier for this connection/provider.</li><li><code>profileData</code> (object): User info associated with the connection. When profiles are linked, it is populated with the associated user info for secondary accounts.</li></ul>In some cases, it will also include an API Access Token to be used with the provider.</td>
 <td>Y</td>
 <td>N</td>
 <td>N</td>
@@ -149,7 +149,7 @@ To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `pict
 <tr>
 <td><code>last_login</code></td>
 <td>date time</td>
-<td>Timestamp indicating when the user last logged in. If a user is blocked and logs in, the blocked session updates <code>last_login</code>. If you are using this property from inside a <a href="/customize/rules">Rule</a> using the <code>user&lt;</code> object, its value will be associated with the login that triggered the rule; this is because rules execute after login.</td>
+<td>Timestamp indicating when the user last logged in. If a user is blocked and logs in, the blocked session updates <code>last_login</code>. If you are using this property from inside a <a href="/docs/customize/rules">Rule</a> using the <code>user&lt;</code> object, its value will be associated with the login that triggered the rule; this is because rules execute after login.</td>
 <td>Y</td>
 <td>N</td>
 <td>N</td>
@@ -239,7 +239,7 @@ To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `pict
 <tr>
 <td><code>picture</code></td>
 <td>text</td>
-<td>URL pointing to <a href="/manage-users/user-accounts/change-user-picture">the user's profile picture</a>.</td>
+<td>URL pointing to <a href="/docs/manage-users/user-accounts/change-user-picture">the user's profile picture</a>.</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
@@ -279,7 +279,7 @@ To be able to edit the `name`, `nickname`, `given_name`, `family_name`, or `pict
 <tr>
 <td><code>user_metadata</code></td>
 <td>object</td>
-<td>Custom fields that store info about a user that does not impact what they can or cannot access, such as work address, home address, or user preferences. To learn more, read <a href="/manage-users/user-accounts/metadata">Metadata Overview</a>.</td>
+<td>Custom fields that store info about a user that does not impact what they can or cannot access, such as work address, home address, or user preferences. To learn more, read <a href="/docs/manage-users/user-accounts/metadata">Metadata Overview</a>.</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
@@ -386,6 +386,6 @@ Three other fields are not technically part of the user profile, but may be of i
 
 ## Learn more
 
-* [Bulk User Imports](/manage-users/user-migration/bulk-user-imports)
-* [Bulk User Import Database Schema and Examples](/manage-users/user-migration/bulk-user-import-database-schema-and-examples)
-* [Check User Profiles](/troubleshoot/authentication-issues/check-user-profiles)
+* [Bulk User Imports](/docs/manage-users/user-migration/bulk-user-imports)
+* [Bulk User Import Database Schema and Examples](/docs/manage-users/user-migration/bulk-user-import-database-schema-and-examples)
+* [Check User Profiles](/docs/troubleshoot/authentication-issues/check-user-profiles)

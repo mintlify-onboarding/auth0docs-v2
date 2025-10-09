@@ -14,11 +14,11 @@ To make scheduled frequent calls for a production environment, you have to build
 
 ## Prerequisites
 
-* [Register Machine-to-Machine Applications](/get-started/auth0-overview/create-applications/machine-to-machine-apps).
+* [Register Machine-to-Machine Applications](/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps).
 
 ## Get access tokens
 
-To ask Auth0 for a <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> v2 token, perform a `POST` operation to the `https://{yourDomain}/oauth/token` endpoint, using the credentials of the Machine-to-Machine Application you created in the prerequisite step.
+To ask Auth0 for a <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> v2 token, perform a `POST` operation to the `https://{yourDomain}/oauth/token` endpoint, using the credentials of the Machine-to-Machine Application you created in the prerequisite step.
 
 The payload should be in the following format:
 
@@ -222,7 +222,7 @@ dataTask.resume()
 ```
 </CodeGroup>
 
-Remember to update `` `{yourClientSecret}` `` with the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip> in the [Settings tab of your Application](https://manage.auth0.com/#/applications/{yourClientId}/settings).
+Remember to update `` `{yourClientSecret}` `` with the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip> in the [Settings tab of your Application](https://manage.auth0.com/#/applications/{yourClientId}/settings).
 
 The request parameters are:
 
@@ -235,7 +235,7 @@ The request parameters are:
 <tbody>
 <tr>
 <td><strong>grant_type</strong></td>
-<td>Denotes which <a href="/authenticate/protocols/oauth#grant-types">OAuth 2.0 flow</a> you want to run. For machine to machine communication use the value <code>client_credentials</code>.</td>
+<td>Denotes which <a href="/docs/authenticate/protocols/oauth#grant-types">OAuth 2.0 flow</a> you want to run. For machine to machine communication use the value <code>client_credentials</code>.</td>
 </tr>
 <tr>
 <td><strong>client_id</strong></td>
@@ -258,7 +258,7 @@ Use the `update:client_grants` and `create:client_grants` scopes with only high-
 
 </Warning>
 
-The response will contain a [signed JWT](/secure/tokens/json-web-tokens), an expiration time, the scopes granted, and the token type.
+The response will contain a [signed JWT](/docs/secure/tokens/json-web-tokens), an expiration time, the scopes granted, and the token type.
 
 ```json lines
 {
@@ -274,7 +274,7 @@ The response will contain a [signed JWT](/secure/tokens/json-web-tokens), an exp
 
 
 
-From the above, we can see that our <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> will expire in 24 hours (86400 seconds), it has been authorized to read and create applications, and it is a [Bearer Access Token](https://tools.ietf.org/html/rfc6750).
+From the above, we can see that our <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> will expire in 24 hours (86400 seconds), it has been authorized to read and create applications, and it is a [Bearer Access Token](https://tools.ietf.org/html/rfc6750).
 
 ### Use Auth0's Node.js client library
 
@@ -664,7 +664,7 @@ Before you run it make sure that the following variables hold valid values:
 
 * `AUDIENCE`: The **Identifier** of the `Auth0 Management API`. You can find it at the [Settings tab of the API](https://manage.auth0.com/#/apis).
 * `DOMAIN`: The **Domain** of the Machine-to-Machine Application you created.
-* `CLIENT_ID`: The **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>** of the Machine to Machine Application you created.
+* `CLIENT_ID`: The **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>** of the Machine to Machine Application you created.
 * `CLIENT_SECRET`: The **Client Secret** of the Machine-to-Machine Application you created.
 
 ```python lines expandable
@@ -722,6 +722,6 @@ if __name__ == '__main__':
 
 ## Learn more
 
-* [Get Management API Access Tokens for Testing](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-testing)
-* [Get Management API Access Tokens for Single-Page Applications](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-tokens-for-single-page-applications)
-* [Applications in Auth0](/get-started/applications)
+* [Get Management API Access Tokens for Testing](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-testing)
+* [Get Management API Access Tokens for Single-Page Applications](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-tokens-for-single-page-applications)
+* [Applications in Auth0](/docs/get-started/applications)

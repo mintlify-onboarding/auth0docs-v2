@@ -15,11 +15,11 @@ title: Bot Detection
 ---
 <Card title="Before you start">
 
-To use one of the supported third-party CAPTCHA provider integrations, you need the provider’s configuration details. To learn more, read [Configure third-party CAPTCHA provider integrations](/secure/attack-protection/bot-detection/configure-captcha).
+To use one of the supported third-party CAPTCHA provider integrations, you need the provider’s configuration details. To learn more, read [Configure third-party CAPTCHA provider integrations](/docs/secure/attack-protection/bot-detection/configure-captcha).
 
 </Card>
 
-<Tooltip tip="Bot Detection: Form of attack protection in which Auth0 blocks suspected bot traffic by enabling a CAPTCHA during the login process." cta="View Glossary" href="/glossary?term=Bot+Detection">Bot Detection</Tooltip> mitigates scripted attacks by detecting when a request is likely coming from a bot. These types of attacks are sometimes called credential stuffing attacks or list validation attacks. Bot Detection provides support against certain attacks and adds very little friction to legitimate users. Auth Challenge is our default bot detection response, which provides a CAPTCHA-free user verification.
+<Tooltip tip="Bot Detection: Form of attack protection in which Auth0 blocks suspected bot traffic by enabling a CAPTCHA during the login process." cta="View Glossary" href="/docs/glossary?term=Bot+Detection">Bot Detection</Tooltip> mitigates scripted attacks by detecting when a request is likely coming from a bot. These types of attacks are sometimes called credential stuffing attacks or list validation attacks. Bot Detection provides support against certain attacks and adds very little friction to legitimate users. Auth Challenge is our default bot detection response, which provides a CAPTCHA-free user verification.
 
 To learn more, read [Credential Stuffing Attacks: What Are They and How to Combat Them](https://auth0.com/resources/whitepapers/credential-stuffing-attacks).
 
@@ -29,14 +29,14 @@ Auth0 uses a large amount of data and statistical models to identify patterns th
 
 Auth0 enables Bot Detection by default for all connections.
 
-If you do not configure **Response** settings with Bot Detection enabled, Bot Detection operates in [Monitoring](/secure/attack-protection#monitoring) mode. Monitoring mode records related events (with risk assessment information) in your tenant log for you to review. To learn more, read [View Attack Protection Log Events](/secure/attack-protection/view-attack-protection-events).
+If you do not configure **Response** settings with Bot Detection enabled, Bot Detection operates in [Monitoring](/docs/secure/attack-protection#monitoring) mode. Monitoring mode records related events (with risk assessment information) in your tenant log for you to review. To learn more, read [View Attack Protection Log Events](/docs/secure/attack-protection/view-attack-protection-events).
 
 You can enable tenant logs for Risk Assessment in the [Auth0 Dashboard](https://manage.auth0.com/#).
 
 1. Go to [Dashboard > Security > Attack Protection](https://manage.auth0.com/#/security/attack-protection) and select **Bot Detection**.
 2. In the **Detection** section, enable the toggle.
 
-   <Frame>![Detection section of the Attack protection screen](/images/cdy7uua7fh8z/3q0HlAm0m0aLilEOAhQ81h/d8626e6e7572a1eb026421d17799d2f0/Screenshot_2024-02-01_at_10.43.58_AM.png)</Frame>
+   <Frame>![Detection section of the Attack protection screen](/docs/images/cdy7uua7fh8z/3q0HlAm0m0aLilEOAhQ81h/d8626e6e7572a1eb026421d17799d2f0/Screenshot_2024-02-01_at_10.43.58_AM.png)</Frame>
 
    <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -45,7 +45,7 @@ You can enable tenant logs for Risk Assessment in the [Auth0 Dashboard](https://
    </Callout>
 3. In the **Response** section, choose a bot detection response.
 
-   <Frame>![Dashboard - Attack Protection - Bot Detection](/images/cdy7uua7fh8z/3vuVvc01mfCPdc70AU9Oq1/0d5b1519818211ba49c17f5c9e1d1887/2024-05-06_15-47-06.png)</Frame>
+   <Frame>![Dashboard - Attack Protection - Bot Detection](/docs/images/cdy7uua7fh8z/3vuVvc01mfCPdc70AU9Oq1/0d5b1519818211ba49c17f5c9e1d1887/2024-05-06_15-47-06.png)</Frame>
 
    When using Auth Challenge, the **Fail open** toggle is disabled by default.
 
@@ -64,9 +64,9 @@ You can enable tenant logs for Risk Assessment in the [Auth0 Dashboard](https://
 5. If you choose **When Risky** or **Always**, the **CAPTCHA Providers** field will appear in the **Response** section. Select **Auth Challenge** (provided by Auth0), **Simple CAPTCHA** (provided by Auth0), or one of the supported third-party provider integrations (requires external setup and registration).
 
    * If you choose **Auth Challenge** or **Simple CAPTCHA**, you are done. If your login experience does not support JavaScript, you must select **Simple CAPTCHA**.
-   * If you choose one of our third-party provider integrations, enter the provider’s configuration details. To learn more, read [Configure third-party CAPTCHA provider integrations](/secure/attack-protection/bot-detection/configure-captcha).
+   * If you choose one of our third-party provider integrations, enter the provider’s configuration details. To learn more, read [Configure third-party CAPTCHA provider integrations](/docs/secure/attack-protection/bot-detection/configure-captcha).
    * If you choose **Simple CAPTCHA,** the CAPTCHA image is not legible to screen readers.
-6. If you choose **When Risky**, the **Bot Detection Level** field will appear in the **Response** section. Select the security level that best fits your use case. For more information, read [Configure Bot Detection Level](/secure/attack-protection/bot-detection#configure-bot-detection-level).
+6. If you choose **When Risky**, the **Bot Detection Level** field will appear in the **Response** section. Select the security level that best fits your use case. For more information, read [Configure Bot Detection Level](/docs/secure/attack-protection/bot-detection#configure-bot-detection-level).
 7. Select **Save**.
 
 ## Configure Bot Detection Level
@@ -79,7 +79,7 @@ There are three settings to choose from:
 2. **Medium**: Default. Triggers CAPTCHA when there is a moderate chance of bot activity, providing a balance of security and experience for real users.
 3. **High**: Triggers CAPTCHA when there is a small chance of bot activity, providing more security but potentially more friction for real users.
 
-<Frame>![Auth0 Dashboard > Security > Attack Protection to access this slider](/images/cdy7uua7fh8z/6HSMEXmDHVks6aUH0FUTPo/e0ca6efd3de736113e5a53e9fc27ab7e/Bot_Detection_Levels_-_English.png)</Frame>
+<Frame>![Auth0 Dashboard > Security > Attack Protection to access this slider](/docs/images/cdy7uua7fh8z/6HSMEXmDHVks6aUH0FUTPo/e0ca6efd3de736113e5a53e9fc27ab7e/Bot_Detection_Levels_-_English.png)</Frame>
 
 ## Allow trusted IP addresses to bypass Bot Detection
 
@@ -105,7 +105,7 @@ If you enable this model while using an outdated library, your application may e
 
 </Warning>
 
-You can configure the detection model that Bot Detection uses for signup flows when using a [Custom Login Page](/customize/login-pages) or the [Classic Login Experience](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+You can configure the detection model that Bot Detection uses for signup flows when using a [Custom Login Page](/docs/customize/login-pages) or the [Classic Login Experience](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/classic-experience) in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 1. Go to [Dashboard > Security > Attack Protection](https://manage.auth0.com/#/security/attack-protection), and select **Bot Detection**.
 2. Locate the **Detection Models** section.
@@ -115,7 +115,7 @@ You can configure the detection model that Bot Detection uses for signup flows w
 
 ### Flow limitations
 
-Bot Detection works for web and mobile applications that use [Auth0 Universal Login](/authenticate/login/auth0-universal-login). For applications that do not use <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip>, levels of support are limited, in particular for flows that cannot support a CAPTCHA or reCAPTCHA challenge.
+Bot Detection works for web and mobile applications that use [Auth0 Universal Login](/docs/authenticate/login/auth0-universal-login). For applications that do not use <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip>, levels of support are limited, in particular for flows that cannot support a CAPTCHA or reCAPTCHA challenge.
 
 Ensure all of your login experiences are supported before you enable Bot Detection, or you may introduce errors into your application.
 
@@ -199,19 +199,19 @@ Depending on the types of connections you use, Bot Detection has the following l
 
 If you build a custom login page using Auth0.js, you can enable Bot Detection to render a CAPTCHA step in scenarios when a login request is determined by Auth0 to be high-risk.
 
-Your custom login form code must handle scenarios where the user is asked to pass a CAPTCHA step. To learn more, read [Add Bot Detection to Custom Login Pages](/secure/attack-protection/bot-detection/bot-detection-custom-login-pages).
+Your custom login form code must handle scenarios where the user is asked to pass a CAPTCHA step. To learn more, read [Add Bot Detection to Custom Login Pages](/docs/secure/attack-protection/bot-detection/bot-detection-custom-login-pages).
 
 ### Native application support
 
 If you build native applications using an Auth0 SDK for the login flow, you can enable Bot Detection to render a CAPTCHA step in scenarios when a login request is determined by Auth0 to be high-risk.
 
-Your custom login form code must handle scenarios where the user is asked to pass a CAPTCHA step. To learn more, read [Add Bot Detection to Native Applications](/secure/attack-protection/bot-detection/bot-detection-native-apps).
+Your custom login form code must handle scenarios where the user is asked to pass a CAPTCHA step. To learn more, read [Add Bot Detection to Native Applications](/docs/secure/attack-protection/bot-detection/bot-detection-native-apps).
 
 ## Learn more
 
-* [Configure Third-Party CAPTCHA Provider Integrations](/secure/attack-protection/bot-detection/configure-captcha)
-* [Add Bot Detection to Custom Login Pages](/secure/attack-protection/bot-detection/bot-detection-custom-login-pages)
-* [Add Bot Detection to Native Applications](/secure/attack-protection/bot-detection/bot-detection-native-apps)
-* [Breached Password Detection](/secure/attack-protection/breached-password-detection)
-* [Brute-Force Protection](/secure/attack-protection/brute-force-protection)
-* [Suspicious IP Throttling](/secure/attack-protection/suspicious-ip-throttling)
+* [Configure Third-Party CAPTCHA Provider Integrations](/docs/secure/attack-protection/bot-detection/configure-captcha)
+* [Add Bot Detection to Custom Login Pages](/docs/secure/attack-protection/bot-detection/bot-detection-custom-login-pages)
+* [Add Bot Detection to Native Applications](/docs/secure/attack-protection/bot-detection/bot-detection-native-apps)
+* [Breached Password Detection](/docs/secure/attack-protection/breached-password-detection)
+* [Brute-Force Protection](/docs/secure/attack-protection/brute-force-protection)
+* [Suspicious IP Throttling](/docs/secure/attack-protection/suspicious-ip-throttling)

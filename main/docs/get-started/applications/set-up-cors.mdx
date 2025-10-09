@@ -13,8 +13,8 @@ title: Configure Cross-Origin Resource Sharing
 <Card title="Before you start">
 
 * For security purposes, your application's origin URL must be listed as an approved URL. If you have not already added it to the **Allowed Callback URLs** for your application, you will need to add it to the list of **Allowed Origins (CORS)**.
-* Ensure that **Allowed Web Origins** in your application's **Settings** view is set to the domain making the request. The URLs can contain wildcards for subdomains, but cannot contain relative paths after the domain URL. To learn more, read [Placeholders for Subdomains](/get-started/applications/wildcards-for-subdomains).
-* If you don't enable [Custom Domains](/customize/custom-domains), you will need to create a verification page that uses Auth0.js as the fallback for the cross-origin authentication.
+* Ensure that **Allowed Web Origins** in your application's **Settings** view is set to the domain making the request. The URLs can contain wildcards for subdomains, but cannot contain relative paths after the domain URL. To learn more, read [Placeholders for Subdomains](/docs/get-started/applications/wildcards-for-subdomains).
+* If you don't enable [Custom Domains](/docs/customize/custom-domains), you will need to create a verification page that uses Auth0.js as the fallback for the cross-origin authentication.
 
 </Card>
 
@@ -39,17 +39,17 @@ If you do not need to use CORS for your application, ensure that **Allow Cross-O
 
 There are some cases when third-party cookies will not be available. Certain browser versions do not support third-party cookies and, if they do, they may be disabled in a user's settings.
 
-For [browsers that are supported](#browser-testing-support), you can use the `crossOriginVerification` method from the [Auth0.js SDK](/libraries/auth0js) in your application on a dedicated page to handle cases when third-party cookies are disabled.
+For [browsers that are supported](#browser-testing-support), you can use the `crossOriginVerification` method from the [Auth0.js SDK](/docs/libraries/auth0js) in your application on a dedicated page to handle cases when third-party cookies are disabled.
 
-For browsers that are not supported, such as Chrome, Opera, and Safari, cross-origin authentication will not work when third-party cookies are disabled unless you enable [Custom Domains](/customize/custom-domains).
+For browsers that are not supported, such as Chrome, Opera, and Safari, cross-origin authentication will not work when third-party cookies are disabled unless you enable [Custom Domains](/docs/customize/custom-domains).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-**Safari's** configuration is labeled as "Prevent cross-site tracking" and uses [Intelligent Tracking Prevention](https://webkit.org/blog/7675/intelligent-tracking-prevention/). Unfortunately, this also prevents third-party cookies from being useful in authentication scenarios. Here's an example of how it affects [token renewal](/troubleshoot/authentication-issues/renew-tokens-when-using-safari).
+**Safari's** configuration is labeled as "Prevent cross-site tracking" and uses [Intelligent Tracking Prevention](https://webkit.org/blog/7675/intelligent-tracking-prevention/). Unfortunately, this also prevents third-party cookies from being useful in authentication scenarios. Here's an example of how it affects [token renewal](/docs/troubleshoot/authentication-issues/renew-tokens-when-using-safari).
 
 </Callout>
 
-1. Create a page in your application that instantiates `WebAuth` from [Auth0.js](/libraries/auth0js). Call `crossOriginVerification` immediately. The name of the page is up to you.
+1. Create a page in your application that instantiates `WebAuth` from [Auth0.js](/docs/libraries/auth0js). Call `crossOriginVerification` immediately. The name of the page is up to you.
 
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
@@ -170,7 +170,7 @@ The following browsers can use cross-origin authentication when third-party cook
 
 <Card title="Samesite cookie attributes">
 
-Previously, the [`samesite` cookie attribute](/manage-users/cookies/samesite-cookie-attribute-changes) options were `true`, `false`, `strict` or `lax`. If you didn't set the attribute manually, Auth0 would use the default value of `false`.
+Previously, the [`samesite` cookie attribute](/docs/manage-users/cookies/samesite-cookie-attribute-changes) options were `true`, `false`, `strict` or `lax`. If you didn't set the attribute manually, Auth0 would use the default value of `false`.
 
 Effective February 2020, Google Chrome v80 changed the way it handles cookies, and Auth0 implemented the following changes accordingly:
 
@@ -183,7 +183,7 @@ The goal of these changes are to improve security and help mitigate cross-site r
 
 ## Learn more
 
-* [Embedded Login](/authenticate/login/embedded-login)
-* [Cross-Origin Authentication](/authenticate/login/cross-origin-authentication)
-* [Application Settings](/get-started/applications/application-settings)
-* [SameSite Cookie Attribute Changes](/manage-users/cookies/samesite-cookie-attribute-changes)
+* [Embedded Login](/docs/authenticate/login/embedded-login)
+* [Cross-Origin Authentication](/docs/authenticate/login/cross-origin-authentication)
+* [Application Settings](/docs/get-started/applications/application-settings)
+* [SameSite Cookie Attribute Changes](/docs/manage-users/cookies/samesite-cookie-attribute-changes)

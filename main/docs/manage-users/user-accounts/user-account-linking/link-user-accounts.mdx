@@ -20,7 +20,7 @@ Both your specific login implementation and your Auth0 plan or custom agreement 
 You can link user accounts through a variety of methods:
 
 * Action with external linking application
-* Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>
+* Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>
 * Auth0.js library
 
 ## Action with external linking application
@@ -384,7 +384,7 @@ exports.onContinuePostLogin = async (event, api) => {
 
 You can use the Management API [Link a user account](https://auth0.com/docs/api/v2#!/Users/post_identities) endpoint in two ways:
 
-* User-initiated client-side account linking using <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> with the `update:current_user_identities` scope.
+* User-initiated client-side account linking using <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> with the `update:current_user_identities` scope.
 * Server-side account linking using access tokens with the `update:users` scope.
 
 ### User-initiated client-side account linking
@@ -393,7 +393,7 @@ For user-initiated client-side account linking, you need an access token that co
 
 * `update:current_user_identites` scope
 * `user_id` of the primary account as part of the URL
-* <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> of the secondary account that is signed with RS256 and includes an `aud` claim identifying the client that matches the value of the requesting access token's `azp` claim.
+* <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> of the secondary account that is signed with RS256 and includes an `aud` claim identifying the client that matches the value of the requesting access token's `azp` claim.
 
 An access token that contains the `update:current_user_identities` scope can only be used to update the information of the currently logged-in user. Therefore, this method is suitable for scenarios where the user initiates the linking process.
 
@@ -1033,10 +1033,10 @@ dataTask.resume()
 
 ## Auth0.js library
 
-You can use the Auth0.js library to perform client-side account linking. Read [Auth0.js v9 Reference > User management](/libraries/auth0js#user-management) to learn more.
+You can use the Auth0.js library to perform client-side account linking. Read [Auth0.js v9 Reference > User management](/docs/libraries/auth0js#user-management) to learn more.
 
 ## Learn more
 
-* [User Account Linking: Server-Side Implementation](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
-* [User-Initiated Account Linking: Client-Side Implementation](/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
-* [Unlink User Accounts](/manage-users/user-accounts/user-account-linking/unlink-user-accounts)
+* [User Account Linking: Server-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
+* [User-Initiated Account Linking: Client-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
+* [Unlink User Accounts](/docs/manage-users/user-accounts/user-account-linking/unlink-user-accounts)

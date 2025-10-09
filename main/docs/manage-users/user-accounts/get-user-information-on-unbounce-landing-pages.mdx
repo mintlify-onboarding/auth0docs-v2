@@ -41,7 +41,7 @@ title: Get User Information on Unbounce Landing Pages
 
 
 
-You should use the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip> and Domain of the application you just configured.
+You should use the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip> and Domain of the application you just configured.
 
 Next, you need a way to pass the information coming from the social providers to Unbounce:
 
@@ -49,7 +49,7 @@ Next, you need a way to pass the information coming from the social providers to
 2. Return to the JavaScript editor at Unbounce.
 3. Add a click handler for each button to trigger the social authentication.
 
-   1. Replace the button ID you took note of previously and the [connection name](/authenticate/identity-providers/locate-the-connection-id). For example, for Google you would use `google-oauth2` and for LinkedIn, `linkedin`.
+   1. Replace the button ID you took note of previously and the [connection name](/docs/authenticate/identity-providers/locate-the-connection-id). For example, for Google you would use `google-oauth2` and for LinkedIn, `linkedin`.
    2. Make sure that you replace the IDs properly. Instead of `#name` and `#email` you should put the ID of the form fields in question (you can see them while editing the form, under `Field Name and ID`).
 
 ```js lines
@@ -81,4 +81,4 @@ webAuth.parseHash({ hash: window.location.hash }, function(err, authResult) {
 
 
 
-Now you will be able to see the information provided by the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=IdP">IdP</Tooltip> in the `Leads` section of your Unbounce Admin Panel, after the user submits the form.
+Now you will be able to see the information provided by the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=IdP">IdP</Tooltip> in the `Leads` section of your Unbounce Admin Panel, after the user submits the form.

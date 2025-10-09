@@ -18,7 +18,7 @@ Node 18 extensibility runtime is generally available (GA) across our entire suit
 
 ### Migrate Rules and Hooks to Actions
 
-If you are using a discontinued extensibility runtime, we recommend taking the review of your Rules and Hooks implementation as an opportunity for migrating them to (Node 18) Actions. Determine which Rules and Hooks you can migrate to Actions by visiting [Actions Limitations](/customize/actions/limitations). To learn more about migrating your Rules and Hooks to Actions, see [Migrate to Actions](/customize/actions/migrate).
+If you are using a discontinued extensibility runtime, we recommend taking the review of your Rules and Hooks implementation as an opportunity for migrating them to (Node 18) Actions. Determine which Rules and Hooks you can migrate to Actions by visiting [Actions Limitations](/docs/customize/actions/limitations). To learn more about migrating your Rules and Hooks to Actions, see [Migrate to Actions](/docs/customize/actions/migrate).
 
 ### Marketplace integrations
 
@@ -26,7 +26,7 @@ If you are using a discontinued extensibility runtime, we recommend taking the r
 
 Use the [Management API](https://auth0.com/docs/api/management/v2) to identify a complete list of social connections that a Node runtime version change may impact. In particular, all potentially impacted social connections, either explicitly created as a custom social connection or initially added through the Marketplace, have the `strategy` attribute with a value of either `oauth1` or `oauth2`.
 
-You can then paginate through all the existing custom social connections in a given tenant using the `GET` connections <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> endpoint. For example, the following query options returns the names and identifiers of up to 100 custom social connections:
+You can then paginate through all the existing custom social connections in a given tenant using the `GET` connections <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> endpoint. For example, the following query options returns the names and identifiers of up to 100 custom social connections:
 
 ```http wrap lines
 /api/v2/connections?strategy=oauth1&strategy=oauth2&include_totals=true&fields=name&per_page=100
@@ -37,7 +37,7 @@ You can then paginate through all the existing custom social connections in a gi
 
 
 
-The <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> does not allow updating the scripts for custom social connections added through the Marketplace. If a script change is required to be compatible with Node 18, you must use the Management API.
+The <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> does not allow updating the scripts for custom social connections added through the Marketplace. If a script change is required to be compatible with Node 18, you must use the Management API.
 
 ## Migration tasks
 
@@ -52,7 +52,7 @@ To create a new custom Action with Node 18 through the Auth0 Dashboard:
 
 ### Upgrade existing custom Actions
 
-You can individually upgrade existing custom Actions built on Node 12 or 16 to Node 18 and [revert to the previous version](/customize/actions/manage-versions#revert-actions) using the older runtime. Upgrade Actions to Node 18 by creating and deploying a new version of the existing implementation with any required changes and set to use Node 18 as the runtime.
+You can individually upgrade existing custom Actions built on Node 12 or 16 to Node 18 and [revert to the previous version](/docs/customize/actions/manage-versions#revert-actions) using the older runtime. Upgrade Actions to Node 18 by creating and deploying a new version of the existing implementation with any required changes and set to use Node 18 as the runtime.
 
 ### Choose Node 18 for other extensibility products
 
@@ -71,7 +71,7 @@ To change the tenant extensibility runtime setting in the Auth0 Dashboard:
 
 Given that this is a global setting that impacts multiple extensibility features simultaneously, we recommend that you perform this step in your development tenant first, complete testing of all applicable extensibility features, and proceed to your production tenant only when you see no issues in development.
 
-Specifically for Custom DB scripts you can [follow the steps as explained on this page](/authenticate/database-connections/custom-db/custom-database-connections-scripts/environment) to individually verify a script against a specific runtime version before proceeding to change the global runtime version.
+Specifically for Custom DB scripts you can [follow the steps as explained on this page](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/environment) to individually verify a script against a specific runtime version before proceeding to change the global runtime version.
 
 ## Known breaking changes
 
@@ -88,7 +88,7 @@ The Node 12 extensibility runtime supports using specific `npm` modules without 
 * couchbase
 * cql
 * ip
-* <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=jwt">jwt</Tooltip>
+* <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=jwt">jwt</Tooltip>
 * Knex
 * mongo
 * mysql

@@ -9,9 +9,9 @@ title: 'GDPR: Track Consent with Custom UI'
   to capture consent information when you use your own custom UI for logins.
 'twitter:title': 'GDPR: Track Consent with Custom UI'
 ---
-In this tutorial we will see how you can use auth0.js or the Auth0 APIs to ask for consent information and save the input at the user's metadata. To learn more, read [Understand How Metadata Works in User Profiles](/manage-users/user-accounts/metadata).
+In this tutorial we will see how you can use auth0.js or the Auth0 APIs to ask for consent information and save the input at the user's metadata. To learn more, read [Understand How Metadata Works in User Profiles](/docs/manage-users/user-accounts/metadata).
 
-If you would instead like to track consent using Lock, see [GDPR: Track Consent with Lock](/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-lock).
+If you would instead like to track consent using Lock, see [GDPR: Track Consent with Lock](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-lock).
 
 The contents of this document are **not** intended to be legal advice, nor should they be considered a substitute for legal assistance. The final responsibility for understanding and complying with GDPR resides with you, though Auth0 will assist you in meeting GDPR requirements where possible.
 
@@ -46,14 +46,14 @@ For example:
 
 We will see four different implementations for this:
 
-1. one that displays a flag, works for database connections, and uses the auth0.js library to create the user (used by Single-Page Applications). To learn more, read [Auth0.js v9 Reference](/libraries/auth0js).
+1. one that displays a flag, works for database connections, and uses the auth0.js library to create the user (used by Single-Page Applications). To learn more, read [Auth0.js v9 Reference](/docs/libraries/auth0js).
 2. one that displays a flag, works for database connections, and uses the Authentication API to create the user (used by Regular Web Apps)
 3. one that displays a flag, works for social connections, and uses the Management API to update the user's information (used either by SPAs or Regular Web Apps)
 4. one that redirects to another page where the Terms & Conditions and/or privacy policy information can be reviewed and consent info can be provided (used either by SPAs or Regular Web Apps)
 
 ## Option 1: Use auth0.js
 
-In this section, we will use a simple Single-Page Application and customize the login widget to add a flag which users can use to provide consent information. Instead of building an app from scratch, we will [use Auth0's JavaScript Quickstart sample](/quickstart/spa/vanillajs). We will also use Auth0's <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> pages so we can implement Universal Login, instead of embedding the login in our app. To learn more about Universal Login, read [Auth0 Universal Login](/authenticate/login/auth0-universal-login). To learn more about the differences between Universal Login and embedded login, read [Centralized Universal Login vs. Embedded Login](/authenticate/login/universal-vs-embedded-login).
+In this section, we will use a simple Single-Page Application and customize the login widget to add a flag which users can use to provide consent information. Instead of building an app from scratch, we will [use Auth0's JavaScript Quickstart sample](/docs/quickstart/spa/vanillajs). We will also use Auth0's <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> pages so we can implement Universal Login, instead of embedding the login in our app. To learn more about Universal Login, read [Auth0 Universal Login](/docs/authenticate/login/auth0-universal-login). To learn more about the differences between Universal Login and embedded login, read [Centralized Universal Login vs. Embedded Login](/docs/authenticate/login/universal-vs-embedded-login).
 
 This works **only** for database connections (we will use Auth0's infrastructure, instead of setting up our own database).
 
@@ -62,7 +62,7 @@ This works **only** for database connections (we will use Auth0's infrastructu
    This field holds the set of URLs to which Auth0 is allowed to redirect the users after they authenticate. Our sample app will run at `http://localhost:3000` hence we set this value.
 2. Copy the **Client Id** and **Domain** values. You will need them in a while.
 3. Go to [Auth0 Dashboard > Authentication > Database](https://manage.auth0.com/#/connections/database) and create a new connection. Click **Create DB Connection**, set a name for the new connection, and click **Save**. Go to the connection's **Applications** tab and make sure your newly created application is enabled.
-4. [Download the JavaScript SPA Sample](/quickstart/spa/vanillajs).
+4. [Download the JavaScript SPA Sample](/docs/quickstart/spa/vanillajs).
 5. [Set the Client ID and Domain values](https://github.com/auth0-samples/auth0-javascript-samples/tree/master/01-Login#set-the-client-id-and-domain).
 6. Go to [Auth0 Dashboard > Branding > Universal Login](https://manage.auth0.com/#/login_settings). At the **Login** tab enable the toggle.
 7. At the **Default Templates** dropdown make sure that `Custom Login Form` is picked. The code is pre-populated for you.
@@ -116,7 +116,7 @@ This works **only** for database connections (we will use Auth0's infrastructu
     
 11. To see what the login widget will look like, click the **Preview** tab.
 
-<Frame>![Dashboard Branding Universal Login Classic Login Tab Custom Login Form](/images/cdy7uua7fh8z/4m3WA0sKMoR0C1KVnVmZ1G/b311bdbc6c48b4910eac49cc8f1b9ba8/2025-02-26_15-17-18.png)</Frame>
+<Frame>![Dashboard Branding Universal Login Classic Login Tab Custom Login Form](/docs/images/cdy7uua7fh8z/4m3WA0sKMoR0C1KVnVmZ1G/b311bdbc6c48b4910eac49cc8f1b9ba8/2025-02-26_15-17-18.png)</Frame>
 
 1. To test this configuration run the application and go to `http://localhost:3000`. Sign up with a new user. Then go to [Auth0 Dashboard > User Management > Users](https://manage.auth0.com/#/users) and search for your new user. Go to **User Details** and scroll down to the **Metadata** section. At the **user_metadata** text area, you should see the `consentGiven` metadata set to `true`.
 
@@ -332,7 +332,7 @@ dataTask.resume()
 
 Note that we set the value of the metadata to a string with the value `true` and not to a boolean value due to the API restriction that accepts strings as values, not booleans.
 
-If setting boolean values is a requirement for you, you can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> instead. In this scenario you sign up your user as usual, and then you call the Management API [**Update User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id) to set the required metadata after the user has been created. For details on how to do that keep reading, the next paragraph uses that endpoint.
+If setting boolean values is a requirement for you, you can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> instead. In this scenario you sign up your user as usual, and then you call the Management API [**Update User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id) to set the required metadata after the user has been created. For details on how to do that keep reading, the next paragraph uses that endpoint.
 
 ## Option 3: Use the API (social)
 
@@ -340,11 +340,11 @@ If you use social connections, then you cannot use the Authentication API to cre
 
 What you have to do instead is let your user sign up with the social provider (which will create a user record at Auth0) and then use the Management API to update the user's information.
 
-Before you call the Management API you need to get a valid token. To learn more, read [Get Management API Access Tokens for Production](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
+Before you call the Management API you need to get a valid token. To learn more, read [Get Management API Access Tokens for Production](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
 
-The linked article uses the Client Credentials Flow to get a token, which you cannot use from an app running on the browser. What you can use instead is the Implicit Flow. To learn more about the Client Credentials Flow, read [Client Credentials Flow](/get-started/authentication-and-authorization-flow/client-credentials-flow). To learn more about the Implicit Flow, read [Implicit Flow](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post).
+The linked article uses the Client Credentials Flow to get a token, which you cannot use from an app running on the browser. What you can use instead is the Implicit Flow. To learn more about the Client Credentials Flow, read [Client Credentials Flow](/docs/get-started/authentication-and-authorization-flow/client-credentials-flow). To learn more about the Implicit Flow, read [Implicit Flow](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post).
 
-Set the **<Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>** request parameter to `https://YOUR_DOMAIN/api/v2/` and the **scope** parameter to the scope `create:current_user_metadata`. You can use the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> you will get at the response to call the Management API [**Update User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id).
+Set the **<Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>** request parameter to `https://YOUR_DOMAIN/api/v2/` and the **scope** parameter to the scope `create:current_user_metadata`. You can use the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> you will get at the response to call the Management API [**Update User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id).
 
 Once you have a valid token, use the following snippet to update the user's metadata.
 
@@ -552,11 +552,11 @@ dataTask.resume()
 ```
 </CodeGroup>
 
-Note that in order to make this call you need to know the unique `user_id`. You can retrieve this from the `sub` claim of the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip>, if you got one from the response. To learn more, read [ID Tokens](/secure/tokens/id-tokens). Alternatively, if all you have is the email, you can retrieve the Id by calling another endpoint of the Management API. To learn more, read [User Search Best Practices](/manage-users/user-search/user-search-best-practices).
+Note that in order to make this call you need to know the unique `user_id`. You can retrieve this from the `sub` claim of the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip>, if you got one from the response. To learn more, read [ID Tokens](/docs/secure/tokens/id-tokens). Alternatively, if all you have is the email, you can retrieve the Id by calling another endpoint of the Management API. To learn more, read [User Search Best Practices](/docs/manage-users/user-search/user-search-best-practices).
 
 ## Option 4: Redirect to another page
 
-If you want to display more information to your user, then upon signup you can redirect to another page where you ask for consent and any additional info, and then redirect back to finish the authentication transaction. This can be done with redirect rules. That same rule can be used to save the consent information at the user's metadata so you can track this information and not ask for consent upon next login. To learn more, read [Redirect Users from Within Rules](/customize/rules/redirect-users).
+If you want to display more information to your user, then upon signup you can redirect to another page where you ask for consent and any additional info, and then redirect back to finish the authentication transaction. This can be done with redirect rules. That same rule can be used to save the consent information at the user's metadata so you can track this information and not ask for consent upon next login. To learn more, read [Redirect Users from Within Rules](/docs/customize/rules/redirect-users).
 
 You will need to host this form, and the URL for the form must be publicly-accessible. You'll need to provide the URL where the form can be accessed to Auth0 at a later step of this tutorial.
 

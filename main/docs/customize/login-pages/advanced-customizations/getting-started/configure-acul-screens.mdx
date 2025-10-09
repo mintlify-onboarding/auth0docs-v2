@@ -10,7 +10,7 @@ title: Configure ACUL Screens
   for Universal Login
 'twitter:title': Configure ACUL Screens
 ---
-Advanced rendering mode is configured on a per-screen basis. You can configure advanced rendering mode and manage your ACUL screens in your Dashboard at [Branding > Universal Login > Customizations](https://manage.auth0.com/#/universal-login/customizations-new) or you can [use the command line](/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens#example-calls).
+Advanced rendering mode is configured on a per-screen basis. You can configure advanced rendering mode and manage your ACUL screens in your Dashboard at [Branding > Universal Login > Customizations](https://manage.auth0.com/#/universal-login/customizations-new) or you can [use the command line](/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens#example-calls).
 
 ## Configuration options
 
@@ -19,7 +19,7 @@ Screens that use advanced rendering mode have the following configuration option
 * Reference bundled assets for HTML tags that should be included in the `<head>` tag
 * Filter your configurations based on defined conditions
 * Provide context to your template
-* Customize the [Universal Login](/authenticate/login/auth0-universal-login) context object by specifying the optional transaction and configuration data
+* Customize the [Universal Login](/docs/authenticate/login/auth0-universal-login) context object by specifying the optional transaction and configuration data
 
 Each configuration option is described below.
 
@@ -141,7 +141,7 @@ To use the filter object, specify the `match_type` in conjunction with `includes
   + `includes_any`: Use your custom UI if any of the conditions you define are met.
   + `excludes_any`: Do not use your custom UI if any of the conditions you define are met.
 
-When you use filter, you must specify whether clients or organizations (or both) will see your customizations. For more information about application clients and organizations, read [Applications in Auth0](/get-started/applications) and [Auth0 Organizations](/manage-users/organizations).
+When you use filter, you must specify whether clients or organizations (or both) will see your customizations. For more information about application clients and organizations, read [Applications in Auth0](/docs/get-started/applications) and [Auth0 Organizations](/docs/manage-users/organizations).
 
 Which clients and organizations will use your ACUL customizations are identified by id or metadata:
 
@@ -178,7 +178,7 @@ If you only want your advanced customizations to be used for clients with the ID
 
 ### Template context
 
-The `use_page_template` configuration is optional and defaults to `false`. If you set a [custom page template](/customize/login-pages/universal-login/customize-templates) for your tenant, changing the setting to `true` activates it.
+The `use_page_template` configuration is optional and defaults to `false`. If you set a [custom page template](/docs/customize/login-pages/universal-login/customize-templates) for your tenant, changing the setting to `true` activates it.
 
 Because the default Auth0 UI is not being used, the `{%- auth0:head -%}` liquid tag is replaced by your custom defined head tags when set to `true` and the `{%- auth0:widget -%}` renders nothing. Everything else in the page template is rendered, including any JS or CSS used to customize the default widget.
 
@@ -206,7 +206,7 @@ Always include replacements for the `<title>` tag and robots `<meta>` tag when r
 
 ### Customize the Universal Login context object
 
-Optional data can be included the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> Context by adding it to the `context_configuration` array. Not all optional data is available on every screen; if the requested data is not available, the API returns an error. Refer to the [individual screen pages](/customize/login-pages/advanced-customizations/reference) for information about what data is available for each screen.
+Optional data can be included the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> Context by adding it to the `context_configuration` array. Not all optional data is available on every screen; if the requested data is not available, the API returns an error. Refer to the [individual screen pages](/docs/customize/login-pages/advanced-customizations/reference) for information about what data is available for each screen.
 
 Referencing `entity.metadata` or `authorization_parameters` without a specific key throws an error. For security reasons, full authorization parameters or metadata objects are not exposed.
 
@@ -298,11 +298,11 @@ interface untrustedData {
 
 </Tab></Tabs>
 
-To learn more, read [ACUL JS SDK screen references](/customize/login-pages/advanced-customizations/reference).
+To learn more, read [ACUL JS SDK screen references](/docs/customize/login-pages/advanced-customizations/reference).
 
 ## Example calls
 
-Below are examples of how to use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> and Auth0 Terraform Provider to configure ACUL screens.
+Below are examples of how to use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> and Auth0 Terraform Provider to configure ACUL screens.
 
 ### Management API example
 

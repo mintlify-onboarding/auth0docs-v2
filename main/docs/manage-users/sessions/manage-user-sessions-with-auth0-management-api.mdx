@@ -9,7 +9,7 @@ title: Manage User Sessions with Auth0 Management API
   API.
 'twitter:title': Manage User Sessions with Auth0 Management API
 ---
-Auth0 uses [sessions](/manage-users/sessions) to maintain the authentication state of a user across requests.
+Auth0 uses [sessions](/docs/manage-users/sessions) to maintain the authentication state of a user across requests.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -19,7 +19,7 @@ The Auth0 Management API session management endpoints are available to customers
 
 ## Management API endpoints
 
-The [Management API](https://auth0.com/docs/api/management/v2) provides out-of-band access to the internals of user sessions in the [Auth0 Session Layer](/manage-users/sessions/session-layers), and deletion methods to force session termination.
+The [Management API](https://auth0.com/docs/api/management/v2) provides out-of-band access to the internals of user sessions in the [Auth0 Session Layer](/docs/manage-users/sessions/session-layers), and deletion methods to force session termination.
 
 ### Session resource
 
@@ -105,13 +105,13 @@ For detailed information about these fields, refer to the [Management API docume
 
 ## OIDC Back-Channel Logout Initiators
 
-Session deletion events are connected to [OIDC Back-Channel Logout](/authenticate/login/logout/back-channel-logout) through the `session-deleted` initiator. To learn more, read [OIDC Back-Channel Logout Initiators](/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators).
+Session deletion events are connected to [OIDC Back-Channel Logout](/docs/authenticate/login/logout/back-channel-logout) through the `session-deleted` initiator. To learn more, read [OIDC Back-Channel Logout Initiators](/docs/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators).
 
 ## Sessions and refresh tokens
 
-Sessions and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip> collaborate to reduce the friction of user authentication while optimizing security. To learn more, read [Best Practices for Application Session Management on Auth0 Blog](https://auth0.com/blog/application-session-management-best-practices).
+Sessions and <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip> collaborate to reduce the friction of user authentication while optimizing security. To learn more, read [Best Practices for Application Session Management on Auth0 Blog](https://auth0.com/blog/application-session-management-best-practices).
 
-Refresh tokens can remain active after a session has expired or been deleted, or after the user logs out. You can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to [manage refresh tokens](/secure/tokens/manage-refresh-tokens-with-auth0-management-api) independently or in collaboration with sessions.
+Refresh tokens can remain active after a session has expired or been deleted, or after the user logs out. You can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to [manage refresh tokens](/docs/secure/tokens/manage-refresh-tokens-with-auth0-management-api) independently or in collaboration with sessions.
 
 ## Limitations
 
@@ -119,7 +119,7 @@ Delete session operations run asynchronously, and are eventually consistent.
 
 ## Learn more
 
-* [Log Users Out of Auth0 with OIDC Endpoint](/authenticate/login/logout/log-users-out-of-auth0)
-* [OIDC Back-Channel Logout](/authenticate/login/logout/back-channel-logout)
-* [OIDC Back-Channel Logout Initiators](/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators)
-* [Configure OIDC Back-Channel Logout](/authenticate/login/logout/back-channel-logout/configure-back-channel-logout)
+* [Log Users Out of Auth0 with OIDC Endpoint](/docs/authenticate/login/logout/log-users-out-of-auth0)
+* [OIDC Back-Channel Logout](/docs/authenticate/login/logout/back-channel-logout)
+* [OIDC Back-Channel Logout Initiators](/docs/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators)
+* [Configure OIDC Back-Channel Logout](/docs/authenticate/login/logout/back-channel-logout/configure-back-channel-logout)

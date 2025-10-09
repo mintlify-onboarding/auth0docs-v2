@@ -10,7 +10,7 @@ title: Migrate to Access Tokens for Account Linking
   when linking user accounts.
 'twitter:title': Migrate to Access Tokens for Account Linking
 ---
-Previously you could use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+tokens">ID tokens</Tooltip> to link and unlink user accounts for some use cases. Auth0 is deprecating this functionality. You will now need to use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> in all cases.
+Previously you could use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip> to link and unlink user accounts for some use cases. Auth0 is deprecating this functionality. You will now need to use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> in all cases.
 
 <Warning>
 
@@ -83,14 +83,14 @@ There are several ways you can link and unlink accounts. In the following list y
 
 Review all your calls to the account linking [Identities endpoint](https://auth0.com/docs/api/management/v2/#!/Users/post_identities) and update those that make use of the vulnerable flow described above. You can update your calls to either of the following:
 
-* **Client-side / user-initiated linking scenarios:** For client-side linking scenarios, make the call to the Identities endpoint using an access token with the `update:current_user_identities` scope, and provide the ID token of the secondary account in the payload (`link_with`). This ID token must be obtained through an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip>/OIDC-conformant flow.
+* **Client-side / user-initiated linking scenarios:** For client-side linking scenarios, make the call to the Identities endpoint using an access token with the `update:current_user_identities` scope, and provide the ID token of the secondary account in the payload (`link_with`). This ID token must be obtained through an <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip>/OIDC-conformant flow.
 * **Server-side linking scenarios**:For server-side linking scenarios, make the call to Identities endpoint using an access token with the `update:users` scope and provide the `user_id` of the secondary account in the payload.
 
-See [Link User Accounts](/manage-users/user-accounts/user-account-linking/link-user-accounts) for details.
+See [Link User Accounts](/docs/manage-users/user-accounts/user-account-linking/link-user-accounts) for details.
 
 ### Link user accounts
 
-To link user accounts you can either call the [Link a User Account endpoint](https://auth0.com/docs/api/management/v2#!/Users/post_identities) of the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> or use the [Auth0.js library](/libraries/auth0js).
+To link user accounts you can either call the [Link a User Account endpoint](https://auth0.com/docs/api/management/v2#!/Users/post_identities) of the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> or use the [Auth0.js library](/docs/libraries/auth0js).
 
 #### Link current user accounts with the Management API
 
@@ -100,7 +100,7 @@ Prior to the deprecation you could use the primary user's ID token or access tok
 
 Now you must get an access token (containing the `update:current_user_identities` scope) and use that to authenticate with the API and use the Link a User Account endpoint. The payload must be the ID token of the secondary user.
 
-1. Get an access token with the `update:current_user_identities` scope as shown in the following example. The example uses the [implicit flow](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post), however, you can [get access tokens](/secure/tokens/access-tokens/get-access-tokens) for any application type.
+1. Get an access token with the `update:current_user_identities` scope as shown in the following example. The example uses the [implicit flow](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post), however, you can [get access tokens](/docs/secure/tokens/access-tokens/get-access-tokens) for any application type.
 2. Using the previous method using an ID token, your code would look similar to this:
 
    ```http lines
@@ -194,7 +194,7 @@ Now you must get an access token (containing the `update:current_user_identities
 
 #### Link current user accounts with auth0.js
 
-If you use [auth0.js library](/libraries/auth0js) to access the Management API and link accounts, then you probably use the ID token of the user's primary identity to instantiate `auth0.Management` and use it to link accounts.
+If you use [auth0.js library](/docs/libraries/auth0js) to access the Management API and link accounts, then you probably use the ID token of the user's primary identity to instantiate `auth0.Management` and use it to link accounts.
 
 1. Get an access token with the `update:current_user_identities` scope, then use this token to instantiate `auth0.Management`. The final call to `linkUser` remains the same.
 2. Using the previous method using an ID token, your code would look similar to this:
@@ -562,4 +562,4 @@ You are impacted if you call the [Post Identities endpoint](https://auth0.com/do
 
 ## Learn more
 
-* [Migrate to Management API Endpoints with Access Tokens](/troubleshoot/product-lifecycle/past-migrations/migrate-to-calling-api-with-access-tokens)
+* [Migrate to Management API Endpoints with Access Tokens](/docs/troubleshoot/product-lifecycle/past-migrations/migrate-to-calling-api-with-access-tokens)

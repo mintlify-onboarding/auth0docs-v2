@@ -15,7 +15,7 @@ title: Configure OIDC Back-Channel Logout
 To use Back-Channel Logout, your application must meet the following requirements:
 
 * Your OIDC Back-Channel Logout URI endpoint must be exposed over the internet for your Auth0 tenant to access.
-* Production-ready applications must use TLS. To learn more, read [TLS (SSL) Versions and Ciphers](/customize/custom-domains/self-managed-certificates/tls-ssl).
+* Production-ready applications must use TLS. To learn more, read [TLS (SSL) Versions and Ciphers](/docs/customize/custom-domains/self-managed-certificates/tls-ssl).
 * The application must be able to store the provided session identifier (`sid`) and associate it with the user sessions it creates. We recommend production applications use durable session storage.
 * The application must be able to retrieve an existing session by the `sid` during the logout process without using client-side cookies. Cookies exist within the browser and are inaccessible to the logout callback endpoint.
 
@@ -49,7 +49,7 @@ Back-Channel Logout URLs are called on publicly-exposed endpoints and must adher
 
 ## Configure Auth0
 
-Register your application to receive Logout Tokens via <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+Register your application to receive Logout Tokens via <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Tabs><Tab title="Auth0 Dashboard">
 
@@ -61,7 +61,7 @@ Register your application to receive Logout Tokens via <Tooltip tip="Auth0 Dashb
 4. Under the **OpenID Connect Back-Channel Logout > Back-Channel Logout URI**, add the application logout URI that will receive the logout_tokens
 5. Once complete, select **Save Changes**.
 
-   <Frame>![Auth0 Dashboard > Applications > Settings](/images/cdy7uua7fh8z/19uQRkVswdmaO8gHTVTXCc/0564bfeda05bc7df90af9e8ee852047f/Screenshot_2024-11-05_at_13.31.54.png)</Frame>
+   <Frame>![Auth0 Dashboard > Applications > Settings](/docs/images/cdy7uua7fh8z/19uQRkVswdmaO8gHTVTXCc/0564bfeda05bc7df90af9e8ee852047f/Screenshot_2024-11-05_at_13.31.54.png)</Frame>
 
 #### Unsubscribe applications
 
@@ -76,9 +76,9 @@ To unsubscribe your application, delete the back-channel logout URL.
 5. Remove the back-channel URL.
 6. Once complete, select **Save Changes**.
 
-   <Frame>![Auth0 Dashboard > Applications > Settings](/images/cdy7uua7fh8z/5SlrBhwrNbJx0Wdw2kQ19t/9b69eb926e44c35b426daa76a851a5db/Screenshot_2024-11-05_at_13.31.54.png)</Frame>
+   <Frame>![Auth0 Dashboard > Applications > Settings](/docs/images/cdy7uua7fh8z/5SlrBhwrNbJx0Wdw2kQ19t/9b69eb926e44c35b426daa76a851a5db/Screenshot_2024-11-05_at_13.31.54.png)</Frame>
 
-For auditing purposes, the service always logs subscribing or unsubscribing back-channel logout URLs as `API Operation Event` in Auth0 tenant logs. To learn more, read [Logs](/deploy-monitor/logs).
+For auditing purposes, the service always logs subscribing or unsubscribing back-channel logout URLs as `API Operation Event` in Auth0 tenant logs. To learn more, read [Logs](/docs/deploy-monitor/logs).
 
 </Tab><Tab title="Management API">
 
@@ -201,15 +201,15 @@ If your application did not receive a logout request after a logout event.
 
 #### I can't find OIDC Back-Channel Logout tenant logs
 
-This feature will be gradually released to all tenants starting 3 October 2023. You may still receive [tenant log event codes](/deploy-monitor/logs/log-event-type-codes) `sslo` for `oidc_backchannel_logout_succeeded` or `fslo` for `oidc_backchannel_logout_failed`.
+This feature will be gradually released to all tenants starting 3 October 2023. You may still receive [tenant log event codes](/docs/deploy-monitor/logs/log-event-type-codes) `sslo` for `oidc_backchannel_logout_succeeded` or `fslo` for `oidc_backchannel_logout_failed`.
 
 ### Client app cannot verify the received Logout Token
 
 If the transaction still fails with a 400 error:
 
-1. Check if the token is a standard base64-encoded JWT. Some web servers may truncate long parameters. To learn more, read [Signing Algorithms](/get-started/applications/signing-algorithms).
+1. Check if the token is a standard base64-encoded JWT. Some web servers may truncate long parameters. To learn more, read [Signing Algorithms](/docs/get-started/applications/signing-algorithms).
 2. If possible, capture a token and verify that it’s a JWT. Use a verified source, like [JWT.IO](http://jwt.io).
-3. Make sure the verification function fetches the tenant signing key dynamically via [JSON Web Key Sets](/secure/tokens/json-web-tokens/json-web-key-sets) (JWKS).
+3. Make sure the verification function fetches the tenant signing key dynamically via [JSON Web Key Sets](/docs/secure/tokens/json-web-tokens/json-web-key-sets) (JWKS).
 
    <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -223,7 +223,7 @@ Auth0 will wait five seconds for the application OIDC Back-Channel Logout URL to
 
 ## Learn more
 
-* [Check Login and Logout Issues](/troubleshoot/authentication-issues/check-login-and-logout-issues)
-* [Log Users Out of Auth0 with OIDC Endpoint](/authenticate/login/logout/log-users-out-of-auth0)
-* [Log Users Out of Applications](/authenticate/login/logout/log-users-out-of-applications)
-* [Log Users Out of Identity Providers](/authenticate/login/logout/log-users-out-of-idps)
+* [Check Login and Logout Issues](/docs/troubleshoot/authentication-issues/check-login-and-logout-issues)
+* [Log Users Out of Auth0 with OIDC Endpoint](/docs/authenticate/login/logout/log-users-out-of-auth0)
+* [Log Users Out of Applications](/docs/authenticate/login/logout/log-users-out-of-applications)
+* [Log Users Out of Identity Providers](/docs/authenticate/login/logout/log-users-out-of-idps)

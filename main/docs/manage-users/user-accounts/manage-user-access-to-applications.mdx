@@ -12,9 +12,9 @@ title: Manage User Access to Applications
 ---
 All users associated with a single Auth0 tenant are shared between the tenant's applications (and therefore have access to the applications).
 
-* To keep users separate and restrict their access, we recommend that you [create an additional tenant](/get-started/auth0-overview/create-tenants/create-multiple-tenants) with applications you want groups of users to access.
+* To keep users separate and restrict their access, we recommend that you [create an additional tenant](/docs/get-started/auth0-overview/create-tenants/create-multiple-tenants) with applications you want groups of users to access.
 
-* To restrict users' access to certain applications, you can use [rules](/customize/rules).
+* To restrict users' access to certain applications, you can use [rules](/docs/customize/rules).
 
   + Inside a rule, the `context.clientName` and `context.clientID` variables are available to check which application the user is using for login.
   + See [this rule for an example](https://github.com/auth0/rules/blob/aeaf93bc058408e260192d0941a688963449d6be/src/rules/simple-user-whitelist-for-app.js).
@@ -24,10 +24,10 @@ All users associated with a single Auth0 tenant are shared between the tenant's 
   + Go to [Dashboard > Authentication > Social](https://manage.auth0.com/#/connections/social) and click on a connection.
   + On the **Applications** tab, enable/disable applications.
 
-* To disable users' access to your applications, you can [block and unblock users](/manage-users/user-accounts/block-and-unblock-users) in the Dashboard.
+* To disable users' access to your applications, you can [block and unblock users](/docs/manage-users/user-accounts/block-and-unblock-users) in the Dashboard.
 
 ## Learn more
 
-* [Create Multiple Tenants](/get-started/auth0-overview/create-tenants/create-multiple-tenants)
-* [Select from Multiple Connection Options](/libraries/lock/selecting-from-multiple-connection-options)
-* [Set Up Multiple Environments](/get-started/auth0-overview/create-tenants/set-up-multiple-environments)
+* [Create Multiple Tenants](/docs/get-started/auth0-overview/create-tenants/create-multiple-tenants)
+* [Select from Multiple Connection Options](/docs/libraries/lock/selecting-from-multiple-connection-options)
+* [Set Up Multiple Environments](/docs/get-started/auth0-overview/create-tenants/set-up-multiple-environments)

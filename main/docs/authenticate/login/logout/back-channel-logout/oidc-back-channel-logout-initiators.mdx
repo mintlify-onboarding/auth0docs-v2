@@ -10,11 +10,11 @@ title: OIDC Back-Channel Logout Initiators
   to configure them for your application(s).
 'twitter:title': OIDC Back-Channel Logout Initiators
 ---
-OIDC Back-Channel Logout Initiators allow you to remotely log out users from their applications based on session termination events. OIDC Back-Channel Logout Initiators work across protocols—for example, an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>-initiated (IdP-initiated) <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> logout request—and are unaffected by third-party cookie restrictions.
+OIDC Back-Channel Logout Initiators allow you to remotely log out users from their applications based on session termination events. OIDC Back-Channel Logout Initiators work across protocols—for example, an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>-initiated (IdP-initiated) <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> logout request—and are unaffected by third-party cookie restrictions.
 
 This feature is an extension to the standard OIDC back-channel specification. You can configure it to initiate an OIDC Back-Channel Logout request for specific session termination events, such as a password change or session expiration, or for all session termination events.
 
-Administrators can enable this feature for specific applications with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+Administrators can enable this feature for specific applications with the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## How OIDC Back-Channel Logout Initiators work
 
@@ -28,7 +28,7 @@ Initiators do not control session management in your tenant, including session t
 
 The following diagram illustrates how an OIDC Back-Channel Logout Initiator works for a password change event:
 
-<Frame>![](/images/cdy7uua7fh8z/2GwtCTwecxYONxL1DbewxO/b504426017276605735ab59dc3242794/OIDC_Back-Channel_Logout_Initiators_Diagram.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/2GwtCTwecxYONxL1DbewxO/b504426017276605735ab59dc3242794/OIDC_Back-Channel_Logout_Initiators_Diagram.png)</Frame>
 
 ## Configure OIDC Back-Channel Logout Initiators
 
@@ -38,7 +38,7 @@ You can configure OIDC Back-Channel Logout Initiators with the Auth0 Management 
 
 You can configure the OIDC Back-Channel Logout Initiators for an application with the Management API by using the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint.
 
-1. Get an [Management API access token](/secure/tokens/access-tokens/management-api-access-tokens) with the `update:clients` scope.
+1. Get an [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the `update:clients` scope.
 2. Call the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint with the appropriate configuration data in the payload. For example, to log out an application after a password change event, provide the following:
 
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
@@ -238,9 +238,9 @@ PATCH /api/v2/clients/{yourClientId}
 
 ### Dashboard
 
-<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect Back-Channel Logout can be configured alongside the rest of your application settings. This feature automatically activates once a Back-Channel Logout URI is provided.
+<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect Back-Channel Logout can be configured alongside the rest of your application settings. This feature automatically activates once a Back-Channel Logout URI is provided.
 
-<Frame>![Dashboard > Applications > Application Settings](/images/cdy7uua7fh8z/vgN0wudP38zgRZNL59Mhy/83199c9ea81dd94f5dd589c4c46bea80/Screenshot_2024-11-05_at_13.22.54.png)</Frame>
+<Frame>![Dashboard > Applications > Application Settings](/docs/images/cdy7uua7fh8z/vgN0wudP38zgRZNL59Mhy/83199c9ea81dd94f5dd589c4c46bea80/Screenshot_2024-11-05_at_13.22.54.png)</Frame>
 
 #### Selected initiators only
 

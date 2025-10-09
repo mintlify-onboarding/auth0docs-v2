@@ -12,23 +12,23 @@ title: Add a CAPTCHA
 
 You need:
 
-* An Auth0 development tenant configured with [Universal Login](/authenticate/login/auth0-universal-login) and [custom domain](/customize/custom-domains).
-* Enable [Identifier First Authentication](/authenticate/login/auth0-universal-login/identifier-first) on your tenant to render the ACUL Login ID screen.
-* A development application or an [Auth0 SDK sample application](/quickstart/spa/react/interactive) on `localhost` for Auth0 authentication.
-* A [database connection](/authenticate/database-connections) to authenticate users.
+* An Auth0 development tenant configured with [Universal Login](/docs/authenticate/login/auth0-universal-login) and [custom domain](/docs/customize/custom-domains).
+* Enable [Identifier First Authentication](/docs/authenticate/login/auth0-universal-login/identifier-first) on your tenant to render the ACUL Login ID screen.
+* A development application or an [Auth0 SDK sample application](/docs/quickstart/spa/react/interactive) on `localhost` for Auth0 authentication.
+* A [database connection](/docs/authenticate/database-connections) to authenticate users.
 * An [Auth0 ACUL sample application](https://github.com/auth0-samples/auth0-acul-samples) to render the ACUL screens.
 
 </Card>
 
-This guide will help you add a CAPTCHA to your [Identifier-First Login screen](/customize/login-pages/advanced-customizations/build-user-flows/id-first-login). To learn more, read the [Getting Started guide](/customize/login-pages/advanced-customizations/getting-started) and visit the [SDK reference guide](/customize/login-pages/advanced-customizations/getting-started/sdk-quickstart).
+This guide will help you add a CAPTCHA to your [Identifier-First Login screen](/docs/customize/login-pages/advanced-customizations/build-user-flows/id-first-login). To learn more, read the [Getting Started guide](/docs/customize/login-pages/advanced-customizations/getting-started) and visit the [SDK reference guide](/docs/customize/login-pages/advanced-customizations/getting-started/sdk-quickstart).
 
-For more information about Auth0 CAPTCHAs, read [Customize Signup and Login Prompts](/secure/attack-protection/bot-detection).
+For more information about Auth0 CAPTCHAs, read [Customize Signup and Login Prompts](/docs/secure/attack-protection/bot-detection).
 
 ### Setup
 
-Complete the [Build Identifier First Login with Password](/customize/login-pages/advanced-customizations/build-user-flows/id-first-login) guide and navigate to your local directory.
+Complete the [Build Identifier First Login with Password](/docs/customize/login-pages/advanced-customizations/build-user-flows/id-first-login) guide and navigate to your local directory.
 
-In your Auth0 tenant, navigate to [Dashboard > Security > Attack Protection](https://manage.auth0.com/#/security/attack-protection/bot-detection) and enable at least one <Tooltip tip="Bot Detection: Form of attack protection in which Auth0 blocks suspected bot traffic by enabling a CAPTCHA during the login process." cta="View Glossary" href="/glossary?term=Bot+Detection">Bot Detection</Tooltip> challenge, then choose `Auth Challenge` as your CAPTCHA provider when prompted.
+In your Auth0 tenant, navigate to [Dashboard > Security > Attack Protection](https://manage.auth0.com/#/security/attack-protection/bot-detection) and enable at least one <Tooltip tip="Bot Detection: Form of attack protection in which Auth0 blocks suspected bot traffic by enabling a CAPTCHA during the login process." cta="View Glossary" href="/docs/glossary?term=Bot+Detection">Bot Detection</Tooltip> challenge, then choose `Auth Challenge` as your CAPTCHA provider when prompted.
 
 ### Create the CAPTCHA file
 
@@ -193,6 +193,6 @@ export default function LoginId() {
 
 ## Learn more
 
-* [Advanced Customizations for Universal Login](/customize/login-pages/advanced-customizations)
-* [Getting Started with ACUL](/customize/login-pages/advanced-customizations/getting-started)
-* [Configure ACUL Screens](/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens)
+* [Advanced Customizations for Universal Login](/docs/customize/login-pages/advanced-customizations)
+* [Getting Started with ACUL](/docs/customize/login-pages/advanced-customizations/getting-started)
+* [Configure ACUL Screens](/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens)

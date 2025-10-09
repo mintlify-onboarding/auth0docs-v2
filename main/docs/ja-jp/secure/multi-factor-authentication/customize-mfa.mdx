@@ -15,31 +15,31 @@ permalink: "customize-mfa"
 
 </Note>
 
-Auth0 ダッシュボードの[ユニバーサル ログイン設定](https://manage.auth0.com/#/login_settings)セクションでユニバーサル ログインのブランド オプションを調整することで、ユーザーに表示される <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip> ページをカスタマイズできます。
+Auth0 ダッシュボードの[ユニバーサル ログイン設定](https://manage.auth0.com/#/login_settings)セクションでユニバーサル ログインのブランド オプションを調整することで、ユーザーに表示される <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip> ページをカスタマイズできます。
 
 ユニバーサル ログイン エクスペリエンスを使用している場合は、フローのカスタマイズ オプションを使用してページをカスタマイズできます。
 
-また、HTMLコンテンツの全体をカスタマイズして、組織に固有なユーザーエクスペリエンス要件を反映させることもできます。詳細については、「[MFAウィジェットテーマオプション](/ja-jp/secure/multi-factor-authentication/customize-mfa/mfa-widget-theme-options)」をご覧ください。
+また、HTMLコンテンツの全体をカスタマイズして、組織に固有なユーザーエクスペリエンス要件を反映させることもできます。詳細については、「[MFAウィジェットテーマオプション](/docs/ja-jp/secure/multi-factor-authentication/customize-mfa/mfa-widget-theme-options)」をご覧ください。
 
 ユニバーサル ログイン エクスペリエンスにより、MFA がユーザーにとってさらにシンプルに提供されます。ユーザーがログイン画面に資格情報を入力すると、MFA画面が表示されます。MFA要素を登録していない場合は登録が要求され、登録済みの場合はMFA資格情報の提示が要求されます。
 
 ## MFA APIを使用する
 
-Auth0は、次のシナリオで[MFA API](/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)を提供します。
+Auth0は、次のシナリオで[MFA API](/docs/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)を提供します。
 
-* [リソース所有者パスワード付与を使用してユーザーを認証します](/ja-jp/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa)。
-* [ユーザーが独自の認証要素を管理](/ja-jp/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)できるようにインターフェイスを構築します。
-* [登録チケット](/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/create-custom-enrollment-tickets)を使用して、ユーザーをMFAに登録するよう招待します。
+* [リソース所有者パスワード付与を使用してユーザーを認証します](/docs/ja-jp/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa)。
+* [ユーザーが独自の認証要素を管理](/docs/ja-jp/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)できるようにインターフェイスを構築します。
+* [登録チケット](/docs/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/create-custom-enrollment-tickets)を使用して、ユーザーをMFAに登録するよう招待します。
 
-MFA APIを使用するには、アプリケーションに対してMFAの付与タイプを有効にしなければなりません。<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>でMFA付与を有効にするには、以下を行います。
+MFA APIを使用するには、アプリケーションに対してMFAの付与タイプを有効にしなければなりません。<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>でMFA付与を有効にするには、以下を行います。
 
 1. [［Dashboard］>［Applications（アプリケーション）］>［Applications（アプリケーション）］](https://manage.auth0.com/#/applications)に移動して、アプリケーションを選択します。
 2. **［Settings（設定）］**タブの下部にある**［Advanced Settings（詳細設定）］**をクリックします。
 3. **［Grant Types（付与タイプ）］**タブをクリックし、**MFA** を選択します。
 
-   <Frame>![Dashboard Applications Applications Advanced Settings Grant Types tab](/images/ja-jp/cdy7uua7fh8z/3knG7flXhvUi0b2yhH0JEp/cff5c916af4c26edf42c9d635c3b321f/MFA_app_grants.png)</Frame>
+   <Frame>![Dashboard Applications Applications Advanced Settings Grant Types tab](/docs/images/ja-jp/cdy7uua7fh8z/3knG7flXhvUi0b2yhH0JEp/cff5c916af4c26edf42c9d635c3b321f/MFA_app_grants.png)</Frame>
 
-   詳細については、「[多要素認証（MFA）を有効にする](/ja-jp/secure/multi-factor-authentication/enable-mfa)」をお読みください。
+   詳細については、「[多要素認証（MFA）を有効にする](/docs/ja-jp/secure/multi-factor-authentication/enable-mfa)」をお読みください。
 4. **［Save Changes（変更を保存）］**をクリックします。
 
 ### 制限事項
@@ -50,13 +50,13 @@ MFA APIは、SMS、Guardianアプリケーションのプッシュ通知、メ�
 
 Actionsを使ってテナント向けのMFAポリシーをカスタマイズし、特定のアプリケーションのユーザーや、特定のユーザーメタデータまたはIPアドレス範囲を持つユーザーなどを対象にMFAを要求することができます。
 
-アクションの作成に慣れていない場合は、「[最初のアクションの作成](/ja-jp/customize/actions/write-your-first-action)」をお読みください。
+アクションの作成に慣れていない場合は、「[最初のアクションの作成](/docs/ja-jp/customize/actions/write-your-first-action)」をお読みください。
 
 <Note>
 
 Actionsで定義したMFA関連の動作は、ダッシュボードの**［Multi-factor Auth（多要素認証）］**セクションで構成した**［Define policy（ポリシーを定義）］**設定に優先します。
 
-詳細については、「[多要素認証（MFA）を有効にする](/ja-jp/secure/multi-factor-authentication/enable-mfa)」をお読みください。
+詳細については、「[多要素認証（MFA）を有効にする](/docs/ja-jp/secure/multi-factor-authentication/enable-mfa)」をお読みください。
 
 </Note>
 
@@ -189,7 +189,7 @@ exports.onExecutePostLogin = async (event, api) => {
 * `allowRememberBrowser` を `false` に設定します
 * `/authorize` エンドポイントを呼び出す際に、`acr_values` を`http://schemas.openid.net/pape/policies/2007/06/multi-factor`に設定します。
 
-ユーザーが信頼できるデバイスを紛失した場合、Auth0 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip> [Invalidate Remember Browser](https://auth0.com/docs/api/management/v2#!/Users/post_invalidate_remember_browser) エンドポイントを呼び出すことで、次回のログイン時に特定のユーザーに MFA を要求することができます。
+ユーザーが信頼できるデバイスを紛失した場合、Auth0 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip> [Invalidate Remember Browser](https://auth0.com/docs/api/management/v2#!/Users/post_invalidate_remember_browser) エンドポイントを呼び出すことで、次回のログイン時に特定のユーザーに MFA を要求することができます。
 
 ### ネットワーク外部のユーザーにMFAを要求する
 
@@ -220,13 +220,13 @@ exports.onExecutePostLogin = async (event, api) => {
 };
 ```
 
-アクションの`event`オブジェクトの詳細については、「[Actionsのトリガー:ログイン後 - eventオブジェクト](/ja-jp/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object)」を参照してください。
+アクションの`event`オブジェクトの詳細については、「[Actionsのトリガー:ログイン後 - eventオブジェクト](/docs/ja-jp/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object)」を参照してください。
 
 ## もっと詳しく
 
-* [クラシックログインにおけるMFAのカスタマイズ](/ja-jp/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login)
-* [MFAでリソース所有者のパスワードフロー使用して認証する](/ja-jp/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa)
-* [Auth0 MFA APIについて](/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)
-* [認証APIを使って認証要素を管理する](/ja-jp/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
-* [MFAウィジェットテーマオプション](/ja-jp/secure/multi-factor-authentication/customize-mfa/mfa-widget-theme-options)
-* [MFAテーマの言語辞書](/ja-jp/secure/multi-factor-authentication/customize-mfa/mfa-theme-language-dictionary)
+* [クラシックログインにおけるMFAのカスタマイズ](/docs/ja-jp/secure/multi-factor-authentication/customize-mfa/customize-mfa-classic-login)
+* [MFAでリソース所有者のパスワードフロー使用して認証する](/docs/ja-jp/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa)
+* [Auth0 MFA APIについて](/docs/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)
+* [認証APIを使って認証要素を管理する](/docs/ja-jp/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
+* [MFAウィジェットテーマオプション](/docs/ja-jp/secure/multi-factor-authentication/customize-mfa/mfa-widget-theme-options)
+* [MFAテーマの言語辞書](/docs/ja-jp/secure/multi-factor-authentication/customize-mfa/mfa-theme-language-dictionary)

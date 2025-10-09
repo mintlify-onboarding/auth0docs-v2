@@ -12,11 +12,11 @@ title: Fine-Grained Machine-to-Machine Token Quotas Early Access
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Fine-grained M2M token quotas are currently in Early Access. Reach out to your Auth0 contact to request access. To learn more about Auth0's product release cycle, read [Product release stages](/troubleshoot/product-lifecycle/product-release-stages).
+Fine-grained M2M token quotas are currently in Early Access. Reach out to your Auth0 contact to request access. To learn more about Auth0's product release cycle, read [Product release stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
 
 </Callout>
 
-The [Client Credentials Flow](/get-started/authentication-and-authorization-flow/client-credentials-flow) enables Machine-to-Machine (M2M) applications, such as CLIs, daemons, or backend services, to obtain <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> on their own behalf without any user interaction.
+The [Client Credentials Flow](/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) enables Machine-to-Machine (M2M) applications, such as CLIs, daemons, or backend services, to obtain <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> on their own behalf without any user interaction.
 
 Implementing access token caching best practices can minimize round trips to Auth0 and control the volume of token issuance. However, some applications, such as third-party systems or those in large, complex deployments, might not implement proper caching and exhibit bursty behavior. This can lead to Auth0 generating a large volume of M2M tokens in short periods of time, impacting your tenant's overall M2M token quota and causing unexpected service behavior.
 
@@ -364,7 +364,7 @@ In addition to the response body, Auth0 returns the following headers:
 * `X-RateLimit-Reset`: A UNIX timestamp (in seconds) representing the time when the quota is expected to reset and further requests will be allowed.
 * `Retry-After`: The number of seconds until the quota resets and further requests will succeed.
 
-To learn more about rate-limiting headers, read [Predict when requests to a tenant will be rate-limited](/troubleshoot/customer-support/operational-policies/rate-limit-policy/rate-limit-use-cases#predict-when-requests-to-a-tenant-will-be-rate-limited-).
+To learn more about rate-limiting headers, read [Predict when requests to a tenant will be rate-limited](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/rate-limit-use-cases#predict-when-requests-to-a-tenant-will-be-rate-limited-).
 
 Use the `Retry-After` header to determine the wait time for obtaining a new M2M token, allowing your application to decide whether to retry or throw an error. This is also important to avoid consuming the rate limit of your tenant.
 

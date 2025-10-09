@@ -16,7 +16,7 @@ You'll need a Microsoft account with access to the [Azure Portal](https://azure.
 
 </Card>
 
-The [Azure API Management](https://azure.microsoft.com/en-us/services/api-management/) service allows you to create new APIs or import existing API definitions and publish them for use by the approved audiences. Auth0 makes authorizing users of your API (using <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> standards) easy.
+The [Azure API Management](https://azure.microsoft.com/en-us/services/api-management/) service allows you to create new APIs or import existing API definitions and publish them for use by the approved audiences. Auth0 makes authorizing users of your API (using <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> standards) easy.
 
 In this tutorial, you'll learn how to use Auth0 to authenticate and authorize users when they access a Basic Calculator API managed by Azure API Management.
 
@@ -24,7 +24,7 @@ In this tutorial, you'll learn how to use Auth0 to authenticate and authorize us
 
 ### Create an API
 
-You'll need to create an API in Auth0 to represent the API managed by the Azure API Management Service. To learn more, read [Register APIs](/get-started/auth0-overview/set-up-apis).
+You'll need to create an API in Auth0 to represent the API managed by the Azure API Management Service. To learn more, read [Register APIs](/docs/get-started/auth0-overview/set-up-apis).
 
 1. Navigate to [Auth0 Dashboard > Applications > APIs](https://manage.auth0.com/#/apis), and select **Create API**.
 2. Set the following parameters:
@@ -54,7 +54,7 @@ You'll need to create an API in Auth0 to represent the API managed by the Azure 
 
 ### Create a Regular Web Application
 
-You'll need to create a Regular Web Application (RWA) in Auth0 to communicate with the OAuth 2.0 <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip> in Azure:
+You'll need to create a Regular Web Application (RWA) in Auth0 to communicate with the OAuth 2.0 <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> in Azure:
 
 1. Navigate to [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications), and select the **Create Application** button.
 2. Enter a **Name** for your application, and select **Regular Web Applications** for the application type.
@@ -74,7 +74,7 @@ You'll need to create a connection in Auth0 and enable it for your application:
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you already have a set of users, you can import them or create a [custom database connection](/authenticate/database-connections/custom-db).
+If you already have a set of users, you can import them or create a [custom database connection](/docs/authenticate/database-connections/custom-db).
 
 </Callout>
 
@@ -196,7 +196,7 @@ To use Auth0 to secure your Azure API, you'll need to register Auth0 as an OAuth
    </tr>
    <tr>
    <td><strong>Default scope</strong></td>
-   <td>Specify a default <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/glossary?term=scope">scope</Tooltip>, if required.</td>
+   <td>Specify a default <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/docs/glossary?term=scope">scope</Tooltip>, if required.</td>
    </tr>
    </tbody>
    </table>
@@ -238,6 +238,6 @@ In to the Azure Portal, open up your instance of the API Management Service.
 
 ### Configure a JWT validation policy for Access Tokens
 
-In the previous step, the user is prompted to sign in when they try to make a call from the Developer Console. The Developer Console attempts to obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> on behalf of the user to be included in the API request. All Access Tokens will be passed to the API via the `Authorization` header.
+In the previous step, the user is prompted to sign in when they try to make a call from the Developer Console. The Developer Console attempts to obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> on behalf of the user to be included in the API request. All Access Tokens will be passed to the API via the `Authorization` header.
 
 If you want to validate the Access Token included with each request, you can do so by using the [Validate JWT](https://docs.microsoft.com/en-us/azure/api-management/api-management-access-restriction-policies#ValidateJWT) policy. Please refer to Microsoft's documentation on [setting an API Management policy](https://docs.microsoft.com/en-us/azure/api-management/set-edit-policies).

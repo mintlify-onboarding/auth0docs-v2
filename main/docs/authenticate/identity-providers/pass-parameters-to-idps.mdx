@@ -8,7 +8,7 @@ title: Pass Parameters to Identity Providers
 'twitter:description': Describes how to pass parameters to an Identity Provider API.
 'twitter:title': Pass Parameters to Identity Providers
 ---
-You can pass provider-specific parameters to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP) during authentication. The values can either be static per connection or dynamic per user.
+You can pass provider-specific parameters to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP) during authentication. The values can either be static per connection or dynamic per user.
 
 ## Limitations
 
@@ -16,17 +16,17 @@ For this configuration, be aware of the following restrictions:
 
 * Only [valid OAuth 2.0/OIDC parameters](http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint) are accepted.
 * Not all IdPs support upstream parameters. Check with the specific IdP before you proceed with your implementation.
-* <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> IdPs do not support upstream parameters.
+* <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> IdPs do not support upstream parameters.
 
 ## Static parameters
 
 Use static parameters to configure your connection to send a standard set of parameters to the IdP when a user logs in.
 
-To configure static parameters, call the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [Create a connection](https://auth0.com/docs/api/management/v2/#!/Connections/post_connections) or [Update a connection](https://auth0.com/docs/api/management/v2/#!/Connections/patch_connections_by_id) endpoint, and pass the `upstream_params` object in the `options` object with the parameters you'd like to send to the IdP.
+To configure static parameters, call the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Create a connection](https://auth0.com/docs/api/management/v2/#!/Connections/post_connections) or [Update a connection](https://auth0.com/docs/api/management/v2/#!/Connections/patch_connections_by_id) endpoint, and pass the `upstream_params` object in the `options` object with the parameters you'd like to send to the IdP.
 
 ### Example: WordPress
 
-WordPress allows you to pass an optional `blog` parameter to its <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> authorization endpoint, and automatically request access to a specified blog for users when they log in. To learn more, read [WordPress's OAuth 2.0 documentation](https://developer.wordpress.com/docs/oauth2/).
+WordPress allows you to pass an optional `blog` parameter to its <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> authorization endpoint, and automatically request access to a specified blog for users when they log in. To learn more, read [WordPress's OAuth 2.0 documentation](https://developer.wordpress.com/docs/oauth2/).
 
 To follow this example, you'll need a working [WordPress Social connection](https://marketplace.auth0.com/integrations/wordpress-social-connection).
 

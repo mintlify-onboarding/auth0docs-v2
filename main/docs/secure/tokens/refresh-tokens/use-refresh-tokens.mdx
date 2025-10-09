@@ -8,9 +8,9 @@ title: Use Refresh Tokens
 'twitter:description': Describes how to use a Refresh Token you received during authorization.
 'twitter:title': Use Refresh Tokens
 ---
-<Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+tokens">Refresh tokens</Tooltip> are used to request a new <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> and/or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> for a user without requiring them to re-authenticate.
+<Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+tokens">Refresh tokens</Tooltip> are used to request a new <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> and/or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> for a user without requiring them to re-authenticate.
 
-Typically, you should request a new access token before the previous one expires (to avoid any service interruption), but not every time you call an API, as token exchanges are subject to our [Rate Limiting Policy](/troubleshoot/customer-support/operational-policies/rate-limit-policy).
+Typically, you should request a new access token before the previous one expires (to avoid any service interruption), but not every time you call an API, as token exchanges are subject to our [Rate Limiting Policy](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy).
 
 You may also use a refresh token to request a new ID token for a user, and should do so if you need to refresh the claims within the ID token.
 
@@ -483,7 +483,7 @@ The response will include a new access token, its type, its lifetime (in seconds
 
 ## Bypass MFA
 
-If [Multi-factor Authentication (MFA)](/secure/multi-factor-authentication) is enabled and the refresh token exchange flow fails, you can use the below Action code to bypass the <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> logic:
+If [Multi-factor Authentication (MFA)](/docs/secure/multi-factor-authentication) is enabled and the refresh token exchange flow fails, you can use the below Action code to bypass the <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> logic:
 
 ```js lines
 exports.onExecutePostLogin = async (event, api) => {
@@ -507,7 +507,7 @@ You can customize the code example when separate logic needs to be executed or b
 
 ## Learn more
 
-* [Get Refresh Tokens](/secure/tokens/refresh-tokens/get-refresh-tokens)
-* [Revoke Refresh Tokens](/secure/tokens/refresh-tokens/revoke-refresh-tokens)
-* [Configure Refresh Token Expiration](/secure/tokens/refresh-tokens/configure-refresh-token-expiration)
-* [Lock.Android: Refresh JSON Web Tokens](/libraries/lock-android/lock-android-refresh-jwt)
+* [Get Refresh Tokens](/docs/secure/tokens/refresh-tokens/get-refresh-tokens)
+* [Revoke Refresh Tokens](/docs/secure/tokens/refresh-tokens/revoke-refresh-tokens)
+* [Configure Refresh Token Expiration](/docs/secure/tokens/refresh-tokens/configure-refresh-token-expiration)
+* [Lock.Android: Refresh JSON Web Tokens](/docs/libraries/lock-android/lock-android-refresh-jwt)

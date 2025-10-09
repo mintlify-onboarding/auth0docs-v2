@@ -16,11 +16,11 @@ Some common cybersecurity threats include:
 * Replay attacks
 * Cross-site Request Forgery (CSRF or XSRF) attacks
 * Brute-force attacks
-* <Tooltip tip="Suspicious IP Throttling: Form of attack protection that protects your tenant against suspicious logins targeting too many accounts from a single IP address." cta="View Glossary" href="/glossary?term=Suspicious+IP+throttling">Suspicious IP throttling</Tooltip>
+* <Tooltip tip="Suspicious IP Throttling: Form of attack protection that protects your tenant against suspicious logins targeting too many accounts from a single IP address." cta="View Glossary" href="/docs/glossary?term=Suspicious+IP+throttling">Suspicious IP throttling</Tooltip>
 * Credential stuffing attacks
 * List validation attacks
 
-Auth0 has [attack protection features](/secure/attack-protection) that can shield against certain types of attacks.
+Auth0 has [attack protection features](/docs/secure/attack-protection) that can shield against certain types of attacks.
 
 ## Bucket brigade attacks
 
@@ -49,18 +49,18 @@ Replay attacks can be avoided by using session tokens. However, if these credent
 * Provide a way to add tokens to the DenyList that have been used (and possibly even the users)
 * Use one-time passwords
 
-The [JWT](/secure/tokens/json-web-tokens) spec provides the `jti` field as a way to prevent replay attacks. Though Auth0 tokens currently don't return the `jti`, you can add tokens to the DenyList using the `jti` to prevent a token being used more than a specified number of times. In this way, you are implementing something similar to a <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/glossary?term=nonce">nonce</Tooltip> (think of the token's signature as the nonce). If a token gets stolen or it gets used more than the specified number of times, it should be added to the DenyList. This prevents a valid token from being used maliciously. Once the token expires, the attacker will no longer be able to impersonate the user.
+The [JWT](/docs/secure/tokens/json-web-tokens) spec provides the `jti` field as a way to prevent replay attacks. Though Auth0 tokens currently don't return the `jti`, you can add tokens to the DenyList using the `jti` to prevent a token being used more than a specified number of times. In this way, you are implementing something similar to a <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/docs/glossary?term=nonce">nonce</Tooltip> (think of the token's signature as the nonce). If a token gets stolen or it gets used more than the specified number of times, it should be added to the DenyList. This prevents a valid token from being used maliciously. Once the token expires, the attacker will no longer be able to impersonate the user.
 
-You can also avoid replay attacks by using one-time passwords. With Auth0, you can use <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> Authentication, which relies on single-use codes and email links instead of traditional passwords. Auth0 also provides <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) which uses one-time passwords as a second-factor authentication which can be sent via push notifications and texts.
+You can also avoid replay attacks by using one-time passwords. With Auth0, you can use <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> Authentication, which relies on single-use codes and email links instead of traditional passwords. Auth0 also provides <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) which uses one-time passwords as a second-factor authentication which can be sent via push notifications and texts.
 
 ## Cross-site Request Forgery
 
 A Cross-site Request Forgery (CSRF or XSRF) attack occurs when a malicious program causes a user's web browser to perform an unwanted action on a trusted site on which the user is currently authenticated. This type of attack specifically targets state-changing requests to initiate a type of action instead of getting user data because the attacker has no way to see the response of the forged request.
 
-One way to verify the requests that are being sent is to utilize the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> protocol [state parameter](/secure/attack-protection/state-parameters) to authenticate the response.
+One way to verify the requests that are being sent is to utilize the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> protocol [state parameter](/docs/secure/attack-protection/state-parameters) to authenticate the response.
 
 ## Learn more
 
-* [Tokens](/secure/tokens)
-* [Attack Protection](/secure/attack-protection)
-* [General Security Tips](/secure/security-guidance/tips)
+* [Tokens](/docs/secure/tokens)
+* [Attack Protection](/docs/secure/attack-protection)
+* [General Security Tips](/docs/secure/security-guidance/tips)

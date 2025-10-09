@@ -9,11 +9,11 @@ title: Add API Permissions
   or the Management API.
 'twitter:title': Add API Permissions
 ---
-You can add permissions to an API using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can add permissions to an API using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Warning>
 
-By default, any user of any application can ask for any permission defined here. You can implement access policies to limit this behavior via [rules](/customize/rules).
+By default, any user of any application can ask for any permission defined here. You can implement access policies to limit this behavior via [rules](/docs/customize/rules).
 
 </Warning>
 
@@ -21,10 +21,10 @@ By default, any user of any application can ask for any permission defined here.
 
 1. Go to [Dashboard > Applications > APIs](https://manage.auth0.com/#/apis) and click the name of the API to view.
 
-   <Frame>![Dashboard Applications APIs List](/images/cdy7uua7fh8z/3rhmhghYZDSi6YWHRA5yMQ/c71340259481b0b6787d5f3887cfda0f/dashboard-apis-list.png)</Frame>
+   <Frame>![Dashboard Applications APIs List](/docs/images/cdy7uua7fh8z/3rhmhghYZDSi6YWHRA5yMQ/c71340259481b0b6787d5f3887cfda0f/dashboard-apis-list.png)</Frame>
 2. Go to the **Permissions** tab and enter a permission name and description for the permission you want to add. Be sure not to use any reserved permission names (see Reserved names section).
 
-   <Frame>![Dashboard Add API Permissions API Define Permissions Screen](/images/cdy7uua7fh8z/32Pb185OFs2mC6z2fmunEw/2708c52c2869d016066cc456dd00b6a2/dashboard-applications-apis-permissions.png)</Frame>
+   <Frame>![Dashboard Add API Permissions API Define Permissions Screen](/docs/images/cdy7uua7fh8z/32Pb185OFs2mC6z2fmunEw/2708c52c2869d016066cc456dd00b6a2/dashboard-applications-apis-permissions.png)</Frame>
 3. Click **Add**. Remember that individual Applications may need permissions and/or scopes updated to interact properly with the API.
 
 ## Use the Management API
@@ -35,7 +35,7 @@ Patching the permissions with an empty object removes the permissions completely
 
 </Callout>
 
-Make a `PATCH` call to the [Update Resource Server endpoint](https://auth0.com/docs/api/management/v2/resource-servers/patch-resource-servers-by-id). Be sure to replace `API_ID`, `MGMT_API_ACCESS_TOKEN`, `PERMISSION_NAME`, and `PERMISSION_DESC` placeholder values with your API ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, permission name(s), and permission description(s), respectively. Be sure not to use any reserved permission names (see Reserved names section).
+Make a `PATCH` call to the [Update Resource Server endpoint](https://auth0.com/docs/api/management/v2/resource-servers/patch-resource-servers-by-id). Be sure to replace `API_ID`, `MGMT_API_ACCESS_TOKEN`, `PERMISSION_NAME`, and `PERMISSION_DESC` placeholder values with your API ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, permission name(s), and permission description(s), respectively. Be sure not to use any reserved permission names (see Reserved names section).
 
 <CodeGroup>
 ```bash cURL lines
@@ -311,15 +311,15 @@ The following permission names are reserved and cannot be set as custom API perm
 * name
 * nickname
 * offline_access
-* <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=openid">openid</Tooltip>
+* <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=openid">openid</Tooltip>
 * phone
 * picture
 * profile
 
 ## Learn more
 
-* [Customize Consent Prompts](/customize/login-pages/customize-consent-prompts)
-* [Configure Logical API for Multiple APIs](/get-started/apis/set-logical-api)
-* [Role-Based Access Control](/manage-users/access-control/rbac)
-* [Enable Role-Based Access Control for APIs](/get-started/apis/enable-role-based-access-control-for-apis)
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
+* [Customize Consent Prompts](/docs/customize/login-pages/customize-consent-prompts)
+* [Configure Logical API for Multiple APIs](/docs/get-started/apis/set-logical-api)
+* [Role-Based Access Control](/docs/manage-users/access-control/rbac)
+* [Enable Role-Based Access Control for APIs](/docs/get-started/apis/enable-role-based-access-control-for-apis)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)

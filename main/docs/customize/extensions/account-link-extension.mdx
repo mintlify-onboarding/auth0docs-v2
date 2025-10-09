@@ -14,11 +14,11 @@ The Account Link extension prompts users that may have created a second account 
 
 ## How does the extension work?
 
-The extension triggers after authentication when the email address of the user who authenticated matches the email address of an existing user account attached to a different <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>.
+The extension triggers after authentication when the email address of the user who authenticated matches the email address of an existing user account attached to a different <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>.
 
 For example, if a user logs in with their Facebook account using the email `john@acme.com` and then later authenticates with Google using the same email address, they will be prompted with a page similar to the following:
 
-<Frame>![Dashboard - Extensions - Account Link - Extension Example](/images/cdy7uua7fh8z/5K3KBOkhyP1SbAVaYg1yxD/618568208eca3cd15000d716ae9a1e00/account-linking-extension.png)</Frame>
+<Frame>![Dashboard - Extensions - Account Link - Extension Example](/docs/images/cdy7uua7fh8z/5K3KBOkhyP1SbAVaYg1yxD/618568208eca3cd15000d716ae9a1e00/account-linking-extension.png)</Frame>
 
 The extension does not automatically link users with the same email, even if emails are verified, because verified emails are not enough evidence to prove that the user can currently authenticate to both accounts.
 
@@ -26,7 +26,7 @@ If the user selects **Continue**, they will be redirected to Facebook to authent
 
 ### Limitations
 
-Note that the extension does not support <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=passwordless">passwordless</Tooltip> connections, flows started using device authorization, or the <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> and WS-federation protocols. For connections not supported by the Account Link extension, see [Account Linking – Server-Side Implementation](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation) and [User Initiated Account Linking – Client-Side Implementation](/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation) as alternative options.
+Note that the extension does not support <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> connections, flows started using device authorization, or the <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> and WS-federation protocols. For connections not supported by the Account Link extension, see [Account Linking – Server-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation) and [User Initiated Account Linking – Client-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation) as alternative options.
 
 ## Install and configure extension
 
@@ -50,7 +50,7 @@ Log in to `http://localhost:3000` and select a connection. Enter an email addres
 
 To link the account, select **Continue.**
 
-Once logged in, check the user details on the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+dashboard">Auth0 dashboard</Tooltip>, we can see the user accounts are linked.
+Once logged in, check the user details on the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+dashboard">Auth0 dashboard</Tooltip>, we can see the user accounts are linked.
 
 ## Set up extension
 
@@ -60,9 +60,9 @@ We recommend changing the name of the default application used for the extension
 
 ### Update the login page
 
-By default, Auth0's <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> allows a user to both log in and sign up, as one may expect. However, when the account linking asks you to authenticate your primary account in order to link it with the new account, providing a signup option can be confusing for users.
+By default, Auth0's <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> allows a user to both log in and sign up, as one may expect. However, when the account linking asks you to authenticate your primary account in order to link it with the new account, providing a signup option can be confusing for users.
 
-To learn more about what you can do with Universal Login, see [Auth0 Universal Login](/authenticate/login/auth0-universal-login).
+To learn more about what you can do with Universal Login, see [Auth0 Universal Login](/docs/authenticate/login/auth0-universal-login).
 
 To prevent this, we send a query parameter to let the login page know that it should hide the **Sign Up** option. For this query parameter to take effect, however, you must customize the login page.
 
@@ -71,10 +71,10 @@ To prevent this, we send a query parameter to let the login page know that it sh
 3. Toward the bottom of the object configuring the Lock widget, add the following line (after the `closable` setting):
    `allowSignUp: !config.extraParams.prevent_sign_up,`
 
-   <Frame>![Dashboard - Branding - Universal Login - Login Setting - Account Link Hosted Page Code Example](/images/cdy7uua7fh8z/7gejLGgQB5hoLPqEAJXY5w/54168b097c99c4fd6def989d5b7fe545/Universal_Login_-_Login_-_English.png)</Frame>
+   <Frame>![Dashboard - Branding - Universal Login - Login Setting - Account Link Hosted Page Code Example](/docs/images/cdy7uua7fh8z/7gejLGgQB5hoLPqEAJXY5w/54168b097c99c4fd6def989d5b7fe545/Universal_Login_-_Login_-_English.png)</Frame>
 4. Save your changes and attempt to link an account. You'll notice that the **Sign Up** option is no longer present and your users are safe from an extra level of confusion.
 
-   <Frame>![Account Link Hosted Page Example](/images/cdy7uua7fh8z/5LHWcm49M29Y00rI5xDaZV/773621dc56b4bff67ea618b2c919f750/hosted-page-example.png)</Frame>
+   <Frame>![Account Link Hosted Page Example](/docs/images/cdy7uua7fh8z/5LHWcm49M29Y00rI5xDaZV/773621dc56b4bff67ea618b2c919f750/hosted-page-example.png)</Frame>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -86,7 +86,7 @@ Hiding the Signup link is not supported in the Universal Login Experience.
 
 At installation (or any time after by clicking the **Settings** icon for the Account Link Extension), you can add a URL to a custom stylesheet if you would like to customize the extension page to look a bit different from the default theme.
 
-<Frame>![Account Link Customize Theme](/images/cdy7uua7fh8z/2as3Sx9y6UB0tyIuyJikR7/ee4ce139c19a0c2b8125e28b9059939e/extension-page-example.png)</Frame>
+<Frame>![Account Link Customize Theme](/docs/images/cdy7uua7fh8z/2as3Sx9y6UB0tyIuyJikR7/ee4ce139c19a0c2b8125e28b9059939e/extension-page-example.png)</Frame>
 
 ## Administration Panel
 
@@ -103,7 +103,7 @@ You can customize your account linking login page and widget using the extension
 
 ## Custom domains
 
-If you're using a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>, you'll need to set the configs rule `customDomain` with the custom domain (for example, `auth.custom.com`).
+If you're using a <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>, you'll need to set the configs rule `customDomain` with the custom domain (for example, `auth.custom.com`).
 
 1. Go to [Auth0 Dashboard > Auth Pipeline > Rules](https://manage.auth0.com/#/rules).
 2. By default, line 27 of the rule is:
@@ -113,8 +113,8 @@ If you're using a <Tooltip tip="Custom Domain: Third-party domain with a special
 
 ## Learn more
 
-* [User Account Linking](/manage-users/user-accounts/user-account-linking)
-* [Link User Accounts](/manage-users/user-accounts/user-account-linking/link-user-accounts)
-* [User Account Linking: Server-Side Implementation](/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
-* [User-Initiated Account Linking: Client-Side Implementation](/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
-* [Migrate to Access Tokens for Account Linking](/troubleshoot/product-lifecycle/past-migrations/link-user-accounts-with-access-tokens-migration)
+* [User Account Linking](/docs/manage-users/user-accounts/user-account-linking)
+* [Link User Accounts](/docs/manage-users/user-accounts/user-account-linking/link-user-accounts)
+* [User Account Linking: Server-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/suggested-account-linking-server-side-implementation)
+* [User-Initiated Account Linking: Client-Side Implementation](/docs/manage-users/user-accounts/user-account-linking/user-initiated-account-linking-client-side-implementation)
+* [Migrate to Access Tokens for Account Linking](/docs/troubleshoot/product-lifecycle/past-migrations/link-user-accounts-with-access-tokens-migration)

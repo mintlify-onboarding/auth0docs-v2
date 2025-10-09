@@ -18,13 +18,13 @@ This feature uses delegation. By default, delegation is disabled for tenants wit
 
 In this final step, you will:
 
-* Flow identity to the service by passing your <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip> (JWT);
+* Flow identity to the service by passing your <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip> (JWT);
 * Validate the token;
 * Extract profile information to assign a buyer for a pet.
 
 ## Use an Identity Token
 
-You can use your Lambda function to process and obtain information about the user. For example, during a purchasing transaction, you retrieved the username from the profile returned with the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=identity+token">identity token</Tooltip>. However, you can also choose to have the user's information embedded with the identity itself, which is a JSON Web Token (JWT).
+You can use your Lambda function to process and obtain information about the user. For example, during a purchasing transaction, you retrieved the username from the profile returned with the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=identity+token">identity token</Tooltip>. However, you can also choose to have the user's information embedded with the identity itself, which is a JSON Web Token (JWT).
 
 The advantages of using JWTs is that you can:
 
@@ -39,7 +39,7 @@ There are several ways of adding a user's information to the JWT. The following 
 
 #### Use Rules
 
-One way to add a user's email address to the JWT is to use a [rule](/customize/rules). This is a good approach if you want to make sure that this value is always available in the JWT for an authenticating user.
+One way to add a user's email address to the JWT is to use a [rule](/docs/customize/rules). This is a good approach if you want to make sure that this value is always available in the JWT for an authenticating user.
 
 In `login.js`, you can see this scope specified in the parameters passed to `auth.signin`:
 
@@ -85,9 +85,9 @@ In addition to the custom files, there is a standard Node.js `package.json` file
 
 The code adds functionality to extract information from and validate the JWT. By default, Auth0 uses a symmetric key for signing the JWT, though you may opt to use asymmetric keys (if you need to allow third-party validation of your token, you should use an asymmetric key and share only your public key).
 
-For more information about token verification, see [Identity Protocols Supported by Auth0](/authenticate/protocols).
+For more information about token verification, see [Identity Protocols Supported by Auth0](/docs/authenticate/protocols).
 
-Update `auth0-variables.js` with your secret key, which can be found on the Settings tab of your Application in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>:
+Update `auth0-variables.js` with your secret key, which can be found on the Settings tab of your Application in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>:
 
 ```javascript lines
 var env={};
@@ -174,7 +174,7 @@ In this tutorial, you have:
 
 * Created an API using AWS API Gateway that includes methods using AWS Lamdba functions;
 * Secured access to your API using IAM roles;
-* Integrated a <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> with IAM to tie access to the API to your user base;
+* Integrated a <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> with IAM to tie access to the API to your user base;
 * Provided different levels of access based on whether a user authenticated from the Database or Social Connection;
 * Used an Auth0 rule to enforce role assignment;
 * Used a JWT to provide further authorization context and pass identity information into the appropriate Lambda function.

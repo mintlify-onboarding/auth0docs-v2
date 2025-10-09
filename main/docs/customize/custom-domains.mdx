@@ -23,7 +23,7 @@ Key Concepts
 
 </Card>
 
-You can use your own domain name (also known as a CNAME or vanity URL) on authentication pages. A <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip> lets you unify the login experience with your own brand and products. Your users see a URL that displays your brand such as `login.YOUR_DOMAIN.com` instead of `YOUR_DOMAIN.auth0.com.` The custom domain in Auth0 is like a "mask" for your tenant domain URL.
+You can use your own domain name (also known as a CNAME or vanity URL) on authentication pages. A <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip> lets you unify the login experience with your own brand and products. Your users see a URL that displays your brand such as `login.YOUR_DOMAIN.com` instead of `YOUR_DOMAIN.auth0.com.` The custom domain in Auth0 is like a "mask" for your tenant domain URL.
 
 You can configure your custom domain when you create your tenant or you can add a custom domain to an existing implementation with minor code and configuration changes.
 
@@ -38,7 +38,7 @@ Containing your authentication services in one place makes your application arch
 
 ## How it works
 
-You configure a custom domain on the [Auth0 Dashboard > Branding > Custom Domains](https://manage.auth0.com/#/custom_domains) tab in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Add your custom domain, choose your certification type and follow the instructions. You will complete a verification process for your domain that varies depending on whether you use an Auth0-managed or a self-managed certificate. When you create a CNAME, you must declare it to Auth0 so that Auth0 can verify it and use the custom domain. After you configure and verify the custom domain, you must [configure the Auth0 features](/customize/custom-domains/configure-features-to-use-custom-domains) to use the new custom domain.
+You configure a custom domain on the [Auth0 Dashboard > Branding > Custom Domains](https://manage.auth0.com/#/custom_domains) tab in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Add your custom domain, choose your certification type and follow the instructions. You will complete a verification process for your domain that varies depending on whether you use an Auth0-managed or a self-managed certificate. When you create a CNAME, you must declare it to Auth0 so that Auth0 can verify it and use the custom domain. After you configure and verify the custom domain, you must [configure the Auth0 features](/docs/customize/custom-domains/configure-features-to-use-custom-domains) to use the new custom domain.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -50,7 +50,7 @@ Auth0 recommends that you create your custom domain during the development phase
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Auth0 does not provide a static list of IP addresses because they are subject to change. We recommend that you add your custom domain to the [Allow List](/secure/security-guidance/data-security/allowlist) instead.
+Auth0 does not provide a static list of IP addresses because they are subject to change. We recommend that you add your custom domain to the [Allow List](/docs/secure/security-guidance/data-security/allowlist) instead.
 
 </Callout>
 
@@ -94,15 +94,15 @@ The following Auth0 authentication features support the use of custom domains.
 <td>Database, social, Google Workspace, Azure AD, ADFS, AD/LDAP</td>
 </tr>
 <tr>
-<td><Tooltip tip="Auth0's UI widget for authenticating users." cta="View Glossary" href="/glossary?term=Lock">Lock</Tooltip></td>
+<td><Tooltip tip="Auth0's UI widget for authenticating users." cta="View Glossary" href="/docs/glossary?term=Lock">Lock</Tooltip></td>
 <td>Version 11 with cross-origin authentication</td>
 </tr>
 <tr>
-<td><Tooltip tip="Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip></td>
+<td><Tooltip tip="Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip></td>
 <td>With Universal Login (The email link sent using the custom domain if the option is enabled in <strong>Dashboard &gt; Tenant Settings &gt; Custom Domains</strong>.)</td>
 </tr>
 <tr>
-<td><Tooltip tip="Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip></td>
+<td><Tooltip tip="Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip></td>
 <td>Connections and applications</td>
 </tr>
 <tr>
@@ -118,7 +118,7 @@ The following Auth0 authentication features support the use of custom domains.
 
 ### Custom domains and URIs
 
-Auth0 uses certain metadata endpoints for interoperability and configuration of third-party <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> and applications. When the metadata contains URIs that point back to Auth0, the URL can be either the Auth0 subdomain or your custom domain depending on the hostname you used to request the metadata. For example:
+Auth0 uses certain metadata endpoints for interoperability and configuration of third-party <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> and applications. When the metadata contains URIs that point back to Auth0, the URL can be either the Auth0 subdomain or your custom domain depending on the hostname you used to request the metadata. For example:
 
 <table class="table"><thead>
 <tr>
@@ -142,13 +142,13 @@ Auth0 uses certain metadata endpoints for interoperability and configuration of 
 </tbody>
 </table>
 
-To learn more, review [Redirect Users After Login](/authenticate/login/redirect-users-after-login).
+To learn more, review [Redirect Users After Login](/docs/authenticate/login/redirect-users-after-login).
 
 This flexibility applies to the following authentication scenarios:
 
-* [Configure Applications with OpenID Connect Discovery](/get-started/applications/configure-applications-with-oidc-discovery)
-* [Configure Auth0 as SAML Service Provider](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider)
-* [Configure Auth0 as SAML Identity Provider](/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider)
+* [Configure Applications with OpenID Connect Discovery](/docs/get-started/applications/configure-applications-with-oidc-discovery)
+* [Configure Auth0 as SAML Service Provider](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider)
+* [Configure Auth0 as SAML Identity Provider](/docs/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider)
 
 ### Custom domains and token requests
 
@@ -172,29 +172,29 @@ Auth0 issues tokens with the `iss` claim for the domain you used with the token 
 </tbody>
 </table>
 
-If you obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> for the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> using an <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=authorization+flow">authorization flow</Tooltip> with your custom domain, you must call the Management API using the custom domain or your token will be considered invalid. The token's `iss` claim is independent of the <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>. Audience values remain the same for tokens obtained using a custom domain. To learn more about tokens, review [Management API Access Tokens](/secure/tokens/access-tokens/management-api-access-tokens).
+If you obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> for the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> using an <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip> with your custom domain, you must call the Management API using the custom domain or your token will be considered invalid. The token's `iss` claim is independent of the <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>. Audience values remain the same for tokens obtained using a custom domain. To learn more about tokens, review [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens).
 
 ## Certificate management options
 
 ### Auth0-managed certificates
 
-Auth0 can manage the certificates for your custom domain and manage the SSL handshake directly. You add a CNAME record on the domain, Auth0 validates the record and generates the certificate on Auth0 servers. The certificate renews automatically every three months. Once verified, [configure your Auth0 features](/customize/custom-domains/configure-features-to-use-custom-domains) to start using your custom domain. To learn more, review [Configure Custom Domains with Auth0-Managed Certificates](/customize/custom-domains/auth0-managed-certificates).
+Auth0 can manage the certificates for your custom domain and manage the SSL handshake directly. You add a CNAME record on the domain, Auth0 validates the record and generates the certificate on Auth0 servers. The certificate renews automatically every three months. Once verified, [configure your Auth0 features](/docs/customize/custom-domains/configure-features-to-use-custom-domains) to start using your custom domain. To learn more, review [Configure Custom Domains with Auth0-Managed Certificates](/docs/customize/custom-domains/auth0-managed-certificates).
 
 ### Self-managed certificates
 
-You can obtain and [manage your own certificates](/customize/custom-domains/self-managed-certificates) in Custom Domains. In this case, you are responsible for handling SSL certificates and setting up and managing a reverse proxy to send content to Auth0. Auth0 negotiates SSL with the proxy not directly with the end-user client. The proxy, in turn, negotiates SSL with the end-user. To prevent someone from trying to use your Auth0 account from a domain you don't own, Auth0 needs to validate that the domain belongs to you: You need to provide Auth0 with a header (`cname-api-key`) to validate. You must be an Auth0 Enterprise subscriber to use this option.
+You can obtain and [manage your own certificates](/docs/customize/custom-domains/self-managed-certificates) in Custom Domains. In this case, you are responsible for handling SSL certificates and setting up and managing a reverse proxy to send content to Auth0. Auth0 negotiates SSL with the proxy not directly with the end-user client. The proxy, in turn, negotiates SSL with the end-user. To prevent someone from trying to use your Auth0 account from a domain you don't own, Auth0 needs to validate that the domain belongs to you: You need to provide Auth0 with a header (`cname-api-key`) to validate. You must be an Auth0 Enterprise subscriber to use this option.
 
 Auth0 provides instructions to configure a reverse proxy for the following providers:
 
-* [Google Cloud Platform with Load Balancing](/customize/custom-domains/self-managed-certificates/configure-gcp-as-reverse-proxy)
-* [Cloudflare](/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy)
-* [AWS CloudFront](/customize/custom-domains/self-managed-certificates/configure-aws-cloudfront-for-use-as-reverse-proxy)
-* [Azure CDN](/customize/custom-domains/self-managed-certificates/configure-azure-cdn-for-use-as-reverse-proxy)
+* [Google Cloud Platform with Load Balancing](/docs/customize/custom-domains/self-managed-certificates/configure-gcp-as-reverse-proxy)
+* [Cloudflare](/docs/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy)
+* [AWS CloudFront](/docs/customize/custom-domains/self-managed-certificates/configure-aws-cloudfront-for-use-as-reverse-proxy)
+* [Azure CDN](/docs/customize/custom-domains/self-managed-certificates/configure-azure-cdn-for-use-as-reverse-proxy)
 
 ## Learn more
 
-* [Configure Features to Use Custom Domains](/customize/custom-domains/configure-features-to-use-custom-domains)
-* [Configure Custom Domains with Auth0-Managed Certificates](/customize/custom-domains/auth0-managed-certificates)
-* [Configure Custom Domains with Self-Managed Certificates](/customize/custom-domains/self-managed-certificates)
-* [Troubleshoot Custom Domains](/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
-* [Migrate Private Cloud Custom Domains](/migrate-private-cloud-custom-domains)
+* [Configure Features to Use Custom Domains](/docs/customize/custom-domains/configure-features-to-use-custom-domains)
+* [Configure Custom Domains with Auth0-Managed Certificates](/docs/customize/custom-domains/auth0-managed-certificates)
+* [Configure Custom Domains with Self-Managed Certificates](/docs/customize/custom-domains/self-managed-certificates)
+* [Troubleshoot Custom Domains](/docs/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
+* [Migrate Private Cloud Custom Domains](/docs/migrate-private-cloud-custom-domains)

@@ -9,9 +9,9 @@ permalink: "get-refresh-tokens"
 'twitter:description': "認可エンドポイントを使用して要求を開始する際に、リフレッシュトークンを取得する方法について説明します。"
 ---
 
-リフレッシュトークンを取得するには、`/authorize`エンドポイントを通じて認証要求を開始する際に、`offline_access`[スコープ](/ja-jp/get-started/apis/scopes)を含める必要があります。必ずAPIでオフラインアクセスを開始してください。詳細については、「[API設定](/ja-jp/get-started/apis/api-settings)」をお読みください。
+リフレッシュトークンを取得するには、`/authorize`エンドポイントを通じて認証要求を開始する際に、`offline_access`[スコープ](/docs/ja-jp/get-started/apis/scopes)を含める必要があります。必ずAPIでオフラインアクセスを開始してください。詳細については、「[API設定](/docs/ja-jp/get-started/apis/api-settings)」をお読みください。
 
-たとえば、[認可コードフロー](/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)を使用している場合、認証要求は以下のようになります。
+たとえば、[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)を使用している場合、認証要求は以下のようになります。
 
 ``` lines
 https://{yourDomain}/authorize?
@@ -245,11 +245,11 @@ dataTask.resume()
 
 リフレッシュトークンは、ユーザーが実質的に永久に認証された状態でいることを可能にするため、アプリケーションが安全に保管しなければなりません。
 
-認可コードフローを使用してこれを実装する方法の詳細については、「[認可コードフローを使用してAPIを呼び出す](/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow)」のチュートリアルを参照してください。その他の付与については、「[認証フローと認可フロー](/ja-jp/get-started/authentication-and-authorization-flow)」を参照してください。
+認可コードフローを使用してこれを実装する方法の詳細については、「[認可コードフローを使用してAPIを呼び出す](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow)」のチュートリアルを参照してください。その他の付与については、「[認証フローと認可フロー](/docs/ja-jp/get-started/authentication-and-authorization-flow)」を参照してください。
 
 ## もっと詳しく
 
-* [リフレッシュトークンの使用](/ja-jp/secure/tokens/refresh-tokens/use-refresh-tokens)
-* [リフレッシュトークンの取り消し](/ja-jp/secure/tokens/refresh-tokens/revoke-refresh-tokens)
-* [リフレッシュトークンのローテーション](/ja-jp/secure/tokens/refresh-tokens/refresh-token-rotation)
-* [リフレッシュトークンの有効期限を構成する](/ja-jp/secure/tokens/refresh-tokens/configure-refresh-token-expiration)
+* [リフレッシュトークンの使用](/docs/ja-jp/secure/tokens/refresh-tokens/use-refresh-tokens)
+* [リフレッシュトークンの取り消し](/docs/ja-jp/secure/tokens/refresh-tokens/revoke-refresh-tokens)
+* [リフレッシュトークンのローテーション](/docs/ja-jp/secure/tokens/refresh-tokens/refresh-token-rotation)
+* [リフレッシュトークンの有効期限を構成する](/docs/ja-jp/secure/tokens/refresh-tokens/configure-refresh-token-expiration)

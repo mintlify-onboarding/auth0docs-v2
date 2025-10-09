@@ -9,13 +9,13 @@ title: Enable Role-Based Access Control for APIs
   API using the Auth0 Dashboard or the Management API.
 'twitter:title': Enable Role-Based Access Control for APIs
 ---
-You can enable [role-based access control (RBAC)](/manage-users/access-control/rbac) using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. This enables the API Authorization Core feature set.
+You can enable [role-based access control (RBAC)](/docs/manage-users/access-control/rbac) using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. This enables the API Authorization Core feature set.
 
-When RBAC is enabled, the `scope` claim of the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> includes an intersection of the requested permissions and the permissions assigned to the user, regardless of whether permissions are also included in the access token. When RBAC is disabled, an application can request any permission defined for the API, and the `scope` claim includes all requested permissions.
+When RBAC is enabled, the `scope` claim of the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> includes an intersection of the requested permissions and the permissions assigned to the user, regardless of whether permissions are also included in the access token. When RBAC is disabled, an application can request any permission defined for the API, and the `scope` claim includes all requested permissions.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you configure any [Actions](/customize/actions) that modify access token scopes, they will override the scopes set by RBAC.
+If you configure any [Actions](/docs/customize/actions) that modify access token scopes, they will override the scopes set by RBAC.
 
 </Callout>
 
@@ -23,12 +23,12 @@ If you configure any [Actions](/customize/actions) that modify access token scop
 
 1. Go to [Dashboard > Applications > APIs](https://manage.auth0.com/#/apis) and click the name of the API to view.
 
-   <Frame>![Dashboard Applications APIs List](/images/cdy7uua7fh8z/3rhmhghYZDSi6YWHRA5yMQ/c71340259481b0b6787d5f3887cfda0f/dashboard-apis-list.png)</Frame>
+   <Frame>![Dashboard Applications APIs List](/docs/images/cdy7uua7fh8z/3rhmhghYZDSi6YWHRA5yMQ/c71340259481b0b6787d5f3887cfda0f/dashboard-apis-list.png)</Frame>
 2. Scroll to **RBAC Settings** and enable the **Enable RBAC** toggle.
 
-   <Frame>![Auth0 Dashboard API Settings RBAC toggle](/images/cdy7uua7fh8z/65tKb6aj0ktc2qXLUVlV3e/641adef615d6af9e5a3b588ff397af87/dashboard-apis-edit_view-settings_rbac-settings.png)</Frame>
+   <Frame>![Auth0 Dashboard API Settings RBAC toggle](/docs/images/cdy7uua7fh8z/65tKb6aj0ktc2qXLUVlV3e/641adef615d6af9e5a3b588ff397af87/dashboard-apis-edit_view-settings_rbac-settings.png)</Frame>
 3. To include all permissions assigned to the user in the `permissions` claim of the access token, enable the **Add Permissions in the Access Token** toggle, and click **Save**. Including permissions in the access token allows you to make minimal calls to retrieve permissions, but increases token size.
-   Once you’ve enabled the **Add Permissions in the Access Token** toggle, Auth0 also updates your token dialect based on the [access token profile](/secure/tokens/access-tokens/access-token-profiles) you’ve set for the API:
+   Once you’ve enabled the **Add Permissions in the Access Token** toggle, Auth0 also updates your token dialect based on the [access token profile](/docs/secure/tokens/access-tokens/access-token-profiles) you’ve set for the API:
 
    * If your token dialect is `access_token`, Auth0 updates it to `access_token_authz`, which is equivalent to the `access_token` profile with the `permissions` claim included.
    * If your token dialect is `rfc9068_profile`, Auth0 updates it to `rfc9068_profile_authz`, which is equivalent to the `rfc9068_profile` with the `permissions` claim included.
@@ -294,7 +294,7 @@ Auth0 supports the following token dialects:
 <tbody>
 <tr>
 <td><code>access_token</code></td>
-<td>The Auth0 default token profile generates an access token formatted as a <a href="/secure/tokens/json-web-tokens">JSON Web Token (JWT)</a>. In the <code>scope</code> claim of the access token, includes an intersection of the requested permissions and the permissions assigned to the user. No <code>permissions</code> claim is passed. To learn more, read <a href="/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
+<td>The Auth0 default token profile generates an access token formatted as a <a href="/docs/secure/tokens/json-web-tokens">JSON Web Token (JWT)</a>. In the <code>scope</code> claim of the access token, includes an intersection of the requested permissions and the permissions assigned to the user. No <code>permissions</code> claim is passed. To learn more, read <a href="/docs/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
 </tr>
 <tr>
 <td><code>access_token_authz</code></td>
@@ -302,7 +302,7 @@ Auth0 supports the following token dialects:
 </tr>
 <tr>
 <td><code>rfc9068_profile</code></td>
-<td>The RFC 9068 token profile generates an access token formatted as a JWT following the <a href="https://datatracker.ietf.org/doc/html/rfc9068">IETF JWT Profile for OAuth 2.0 Access Tokens (RFC 9068)</a>. In the <code>scope</code> claim of the access token, includes an intersection of the requested permissions and the permissions assigned to the user. No <code>permissions</code> claim is passed. To learn more, read <a href="/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
+<td>The RFC 9068 token profile generates an access token formatted as a JWT following the <a href="https://datatracker.ietf.org/doc/html/rfc9068">IETF JWT Profile for OAuth 2.0 Access Tokens (RFC 9068)</a>. In the <code>scope</code> claim of the access token, includes an intersection of the requested permissions and the permissions assigned to the user. No <code>permissions</code> claim is passed. To learn more, read <a href="/docs/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
 </tr>
 <tr>
 <td><code>rfc9068_profile_authz</code></td>
@@ -313,7 +313,7 @@ Auth0 supports the following token dialects:
 
 ## Learn more
 
-* [Manage Role-Based Access Control Users](/manage-users/access-control/configure-core-rbac/rbac-users)
-* [Manage Role-Based Access Control Permissions](/manage-users/access-control/configure-core-rbac/manage-permissions)
-* [Sample Use Cases: Role-Based Access Control](/manage-users/access-control/sample-use-cases-role-based-access-control)
-* [Troubleshoot Role-Based Access Control and Authorization](/troubleshoot/authentication-issues/troubleshoot-rbac-authorization)
+* [Manage Role-Based Access Control Users](/docs/manage-users/access-control/configure-core-rbac/rbac-users)
+* [Manage Role-Based Access Control Permissions](/docs/manage-users/access-control/configure-core-rbac/manage-permissions)
+* [Sample Use Cases: Role-Based Access Control](/docs/manage-users/access-control/sample-use-cases-role-based-access-control)
+* [Troubleshoot Role-Based Access Control and Authorization](/docs/troubleshoot/authentication-issues/troubleshoot-rbac-authorization)

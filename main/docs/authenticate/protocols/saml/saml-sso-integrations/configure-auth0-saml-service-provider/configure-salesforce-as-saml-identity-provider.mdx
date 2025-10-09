@@ -10,7 +10,7 @@ title: Configure Salesforce as SAML Identity Provider
   with Auth0.
 'twitter:title': Configure Salesforce as SAML Identity Provider
 ---
-Configure Salesforce as a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> by completing the following steps:
+Configure Salesforce as a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> by completing the following steps:
 
 1. Obtain Salesforce certificate and metadata.
 2. Set up Auth0 as a service provider.
@@ -35,7 +35,7 @@ Register for a [Salesforce.com](http://salesforce.com) account. You must select 
 
 ## Set up Auth0 as a service provider
 
-Configure Auth0 as a service provider to communicate with the Salesforce identity provider for <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip>.
+Configure Auth0 as a service provider to communicate with the Salesforce identity provider for <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip>.
 
 1. Go to the [Dashboard > Authentication > Enterprise](https://manage.auth0.com/#/connections/enterprise) and click **SAML**.
 2. Click **Create Connection**.
@@ -136,7 +136,7 @@ Configure Salesforce with the metadata from Auth0 so it can receive and respond 
    1. If the SAML configuration works, your browser will be redirected back to an Auth0 page that says **"It works!!!"**. This page will display the contents of the SAML authentication assertion sent by the Salesforce IDP to Auth0.
    2. If it didn't work, double check the steps above and consult the **troubleshooting** section below.
 
-When troubleshooting SSO, it is often helpful to capture an HTTP trace of the interaction and save it in a HAR file. To learn more, read [Generate and Analyze HAR Files](/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files).
+When troubleshooting SSO, it is often helpful to capture an HTTP trace of the interaction and save it in a HAR file. To learn more, read [Generate and Analyze HAR Files](/docs/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files).
 
 <Warning>
 

@@ -10,7 +10,7 @@ title: Custom Database Action Script Environment Best Practices
   environment.
 'twitter:title': Custom Database Action Script Environment Best Practices
 ---
-Action scripts execute as a series of called JavaScript functions in an instance of a serverless Webtask container. As part of this, a specific environment is provided, together with a number of artifacts supplied by both the Webtask container and the Auth0 <Tooltip tip="Authentication Server: Server that confirms or denies a user’s identity." cta="View Glossary" href="/glossary?term=authentication+server">authentication server</Tooltip> (your Auth0 tenant) itself.
+Action scripts execute as a series of called JavaScript functions in an instance of a serverless Webtask container. As part of this, a specific environment is provided, together with a number of artifacts supplied by both the Webtask container and the Auth0 <Tooltip tip="Authentication Server: Server that confirms or denies a user’s identity." cta="View Glossary" href="/docs/glossary?term=authentication+server">authentication server</Tooltip> (your Auth0 tenant) itself.
 
 ## npm modules
 
@@ -24,13 +24,13 @@ If you require an `npm` module that is not supported out-of-the-box, then you ca
 
 Auth0 action scripts support the notion of environment variables, accessed via what is defined as the globally-available `configuration` object. The `configuration` object should be treated as read-only and should be used for storing sensitive information, such as credentials or API keys for accessing external identity stores. This mitigates having security-sensitive values hardcoded in an action script.
 
-The `configuration` object can also be used to support whatever Software Development Life Cycle (SDLC) best practice strategies you employ, such as [setting up multiple environments](/get-started/auth0-overview/create-tenants/set-up-multiple-environments), by allowing you to define variables that have tenant-specific values. This mitigates hardcoded values in an action script, which may change depending upon which tenant is executing it.
+The `configuration` object can also be used to support whatever Software Development Life Cycle (SDLC) best practice strategies you employ, such as [setting up multiple environments](/docs/get-started/auth0-overview/create-tenants/set-up-multiple-environments), by allowing you to define variables that have tenant-specific values. This mitigates hardcoded values in an action script, which may change depending upon which tenant is executing it.
 
 ## global object
 
 Auth0 serverless Webtask containers are provisioned from a pool that is associated with each Auth0 tenant. Each container instance makes available a global object, which can be accessed across all action scripts that execute within it (the container instance). The global object acts as a global variable that is unique to the container and that can be used to define information—or even functions—that can be used across all action scripts that run in it (the container instance).
 
-This means that the global object can be used to cache expensive resources, as long as those resources are not user-specific. For example, an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> for a third-party (e.g., logging) API that provides non user-specific functionality could be stored. Or it could be used to store an Access Token to your own non user-specific API defined in Auth0 and obtained via use of the Client Credentials flow.
+This means that the global object can be used to cache expensive resources, as long as those resources are not user-specific. For example, an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> for a third-party (e.g., logging) API that provides non user-specific functionality could be stored. Or it could be used to store an Access Token to your own non user-specific API defined in Auth0 and obtained via use of the Client Credentials flow.
 
 <Warning>
 
@@ -42,9 +42,9 @@ Each time a Webtask container is recycled, or for each instantiation of a new We
 
 ## Custom database connection environment checklist
 
-* Make sure that your database has the appropriate fields to store user profiles attributes, such as **id**, **nickname**, **email**, and **password**. To learn more about Auth0's user profile schema and expected fields, read [Normalized User Profiles](/manage-users/user-accounts/user-profiles/normalized-user-profiles). To learn how to update user profiles, read [Update User Profiles Using Your Database](/manage-users/user-accounts/user-profiles/update-user-profiles-using-your-database).
+* Make sure that your database has the appropriate fields to store user profiles attributes, such as **id**, **nickname**, **email**, and **password**. To learn more about Auth0's user profile schema and expected fields, read [Normalized User Profiles](/docs/manage-users/user-accounts/user-profiles/normalized-user-profiles). To learn how to update user profiles, read [Update User Profiles Using Your Database](/docs/manage-users/user-accounts/user-profiles/update-user-profiles-using-your-database).
 * You can use return errors resulting from your custom database connection for troubleshooting purposes.
-* The `id` (or alternatively `user_id`) property in the returned user profile will be used by Auth0 to identify the user. If you are using multiple custom database connections, then the **id** value **must be unique across all the custom database connections** to avoid **user ID** collisions. Our recommendation is to prefix the value of **id** with the connection name (omitting any whitespace). To learn more about user IDs, read [Identify Users](/manage-users/user-accounts/identify-users).
+* The `id` (or alternatively `user_id`) property in the returned user profile will be used by Auth0 to identify the user. If you are using multiple custom database connections, then the **id** value **must be unique across all the custom database connections** to avoid **user ID** collisions. Our recommendation is to prefix the value of **id** with the connection name (omitting any whitespace). To learn more about user IDs, read [Identify Users](/docs/manage-users/user-accounts/identify-users).
 * Latency will be greater compared to Auth0-hosted user stores.
 * The database or service must be reachable from the Auth0 servers. You will need to configure inbound connections if your store is behind a firewall.
 
@@ -65,8 +65,8 @@ Follow these steps to test a single custom database script on a specific runtime
 
 ## Learn more
 
-* [Custom Database Action Script Execution Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution)
-* [Error Handling Best Practices](/troubleshoot/error-handling-best-practices)
-* [Debugging Best Practices](/troubleshoot/debugging-best-practices)
-* [Deployment Best Practices](/deploy-monitor/deployment-best-practices)
-* [Custom Database Connection Security Best Practices](/authenticate/database-connections/custom-db/custom-database-connections-scripts/connection-security)
+* [Custom Database Action Script Execution Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/execution)
+* [Error Handling Best Practices](/docs/troubleshoot/error-handling-best-practices)
+* [Debugging Best Practices](/docs/troubleshoot/debugging-best-practices)
+* [Deployment Best Practices](/docs/deploy-monitor/deployment-best-practices)
+* [Custom Database Connection Security Best Practices](/docs/authenticate/database-connections/custom-db/custom-database-connections-scripts/connection-security)

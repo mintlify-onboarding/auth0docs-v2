@@ -10,17 +10,17 @@ title: Configure PKCE and Claim Mapping for OIDC Connections
   for OpenID Connect and Okta Workforce connections.
 'twitter:title': Configure PKCE and Claim Mapping for OIDC Connections
 ---
-Enterprise connections using [OpenID Connect](/authenticate/identity-providers/enterprise-identity-providers/oidc) or O[kta Workforce](/authenticate/identity-providers/enterprise-identity-providers/okta) as the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> can support Proof Key for Code Exchange (PKCE), as well as attribute and token mapping.
+Enterprise connections using [OpenID Connect](/docs/authenticate/identity-providers/enterprise-identity-providers/oidc) or O[kta Workforce](/docs/authenticate/identity-providers/enterprise-identity-providers/okta) as the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> can support Proof Key for Code Exchange (PKCE), as well as attribute and token mapping.
 
 ## Configure PKCE for OIDC connections
 
-<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect and Okta Workforce connections are automatically configured to support Proof Key for Code Exchange (PKCE).
+<Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect and Okta Workforce connections are automatically configured to support Proof Key for Code Exchange (PKCE).
 
 If your OIDC identity provider (IdP) supports PKCE through OIDC Discovery metadata, Auth0 will use the strongest algorithm available by default. For more information on OIDC Discovery metadata, review [OpenID’s documentation](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 
 ### View PKCE configuration for a connection
 
-You can view the PKCE configuration for a specific connection through the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>:
+You can view the PKCE configuration for a specific connection through the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>:
 
 1. Navigate to **Authentication > Enterprise** and choose your OIDC provider (either OpenID Connect or Okta Workforce).
 2. Select the **Settings** tab.
@@ -142,7 +142,7 @@ Do not set the property to `disabled` except when troubleshooting authentication
 
 **Azure AD Limitation**
 
-If you are using an OpenID Connect connection for Azure AD, you must set `pkce` to `s256` as the connection's metadata does not expose the hashing algorithm used. Currently, the [Azure AD Enterprise connection](/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2) does not support PKCE.
+If you are using an OpenID Connect connection for Azure AD, you must set `pkce` to `s256` as the connection's metadata does not expose the hashing algorithm used. Currently, the [Azure AD Enterprise connection](/docs/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2) does not support PKCE.
 
 </Callout>
 
@@ -152,7 +152,7 @@ OpenID Connect and Okta Workforce connections can automatically map claims recei
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Mapped claims are not automatically added to an Auth0 ID token. To add claims to an ID token, see [Create custom claims](/secure/tokens/json-web-tokens/create-custom-claims#create-custom-claims).
+Mapped claims are not automatically added to an Auth0 ID token. To add claims to an ID token, see [Create custom claims](/docs/secure/tokens/json-web-tokens/create-custom-claims#create-custom-claims).
 
 </Callout>
 
@@ -231,7 +231,7 @@ If you set `mapping_mode` to `use_map`, you can map the incoming restricted clai
 
 
 
-For a complete list of restricted claims, review [Create Custom Claims](/secure/tokens/json-web-tokens/create-custom-claims).
+For a complete list of restricted claims, review [Create Custom Claims](/docs/secure/tokens/json-web-tokens/create-custom-claims).
 
 ### UserInfo scope
 
@@ -328,7 +328,7 @@ The `context` object supports the following properties:
 
 #### Simple user claim mapping
 
-This example demonstrates how to map common user claims to the Auth0 user profile with data from the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip>:
+This example demonstrates how to map common user claims to the Auth0 user profile with data from the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip>:
 
 ```json lines
 "attribute_map": {

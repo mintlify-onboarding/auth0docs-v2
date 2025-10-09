@@ -20,7 +20,7 @@ Auth0’s Mobile Driver's License Verification Service allows you to initiate a 
 
 ## Verification Presentation Request
 
-To create a Verification Presentation Request, your application calls the [mDL Verification API](/secure/mdl-verification/mdl-verification-api) to initiate a verification flow. The Verification Presentation Request returns a URI with the presentation request information for the user’s digital wallet to consume. Your application presents the URI to the user in the form of a link and prompts them to share their credential with your application. The Verification Presentation Request also returns a `verificationId`. Your application uses the `verificationId` to poll the status of the request.
+To create a Verification Presentation Request, your application calls the [mDL Verification API](/docs/secure/mdl-verification/mdl-verification-api) to initiate a verification flow. The Verification Presentation Request returns a URI with the presentation request information for the user’s digital wallet to consume. Your application presents the URI to the user in the form of a link and prompts them to share their credential with your application. The Verification Presentation Request also returns a `verificationId`. Your application uses the `verificationId` to poll the status of the request.
 
 ### Update .env file
 
@@ -34,14 +34,14 @@ If you want to embed the mDL Verification API to use inside your application, yo
 
 For a Next.js application, edit the **.env.local** file and set the corresponding values:
 
-* `AUTH0_DOMAIN`: The **Domain** specified under the application’s BasicInformation in <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Defines the Application performing the Verification Request.
+* `AUTH0_DOMAIN`: The **Domain** specified under the application’s BasicInformation in <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Defines the Application performing the Verification Request.
 * `PROTOCOL`: The **protocol** determines the method used for interacting with the wallet.
 * `TEMPLATE_ID`: The **Template ID** from the template you created.
-* `VERIFICATION_BEARER_TOKEN`: The **Verification Bearer Token** that is generated based on your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>, <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+Secret">Client Secret</Tooltip>, <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=Audience">Audience</Tooltip>, and Grant Type that allows your application to call the Verification Service.
+* `VERIFICATION_BEARER_TOKEN`: The **Verification Bearer Token** that is generated based on your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>, <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+Secret">Client Secret</Tooltip>, <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=Audience">Audience</Tooltip>, and Grant Type that allows your application to call the Verification Service.
 
 ### Verification Template
 
-The Verification Template defines the fields you want to request from a user’s digital wallet, including mDL claims. The Verification Template is part of the first call to the mDL Verification API. You can create the Verification Template using the Auth0 Dashboard or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. Currently, Auth0 only supports the mDoc credential type. An mDoc is a binary data object for representing a driver’s license as defined in Annex A of the [ISO/IEC TS 18013-7:2024](https://www.iso.org/standard/82772.html) standard.
+The Verification Template defines the fields you want to request from a user’s digital wallet, including mDL claims. The Verification Template is part of the first call to the mDL Verification API. You can create the Verification Template using the Auth0 Dashboard or <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. Currently, Auth0 only supports the mDoc credential type. An mDoc is a binary data object for representing a driver’s license as defined in Annex A of the [ISO/IEC TS 18013-7:2024](https://www.iso.org/standard/82772.html) standard.
 
 <Warning>
 
@@ -51,7 +51,7 @@ You should only request verification data that is essential for your business pu
 
 #### mDL claims
 
-Claims, which are different from <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> claims, are specific to the mDL Verifiable Credential. The claims are attributes associated with the user that could be sensitive, personally identifiable information (PII).
+Claims, which are different from <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> claims, are specific to the mDL Verifiable Credential. The claims are attributes associated with the user that could be sensitive, personally identifiable information (PII).
 
 You can request the following claims:
 
@@ -306,14 +306,14 @@ Once you create a verification request, the application needs to know if the use
 
    
 
-The endpoint that checks the status of the Verification Presentation Request can return several different status codes, which indicates the request is ongoing, unsuccessful, or successful. To learn more, read [Mobile Driver’s License API](/secure/mdl-verification/mdl-verification-api).
+The endpoint that checks the status of the Verification Presentation Request can return several different status codes, which indicates the request is ongoing, unsuccessful, or successful. To learn more, read [Mobile Driver’s License API](/docs/secure/mdl-verification/mdl-verification-api).
 
 ## Verification Request data storage
 
-The claims requested will be available in the result and can be used based on your business needs. If additional storage is required, read [Understand How Metadata Works in User Profiles](/manage-users/user-accounts/metadata).
+The claims requested will be available in the result and can be used based on your business needs. If additional storage is required, read [Understand How Metadata Works in User Profiles](/docs/manage-users/user-accounts/metadata).
 
 <Warning>
 
-Auth0 metadata is not a secure data store and should not be used to store sensitive information. This includes secrets and high-risk PII like social security numbers or credit card numbers, etc. Auth0 customers are strongly encouraged to evaluate the data stored in metadata and only store that which is necessary for identity and access management purposes. To learn more, read [Auth0 General Data Protection Regulation Compliance](/secure/data-privacy-and-compliance/gdpr).
+Auth0 metadata is not a secure data store and should not be used to store sensitive information. This includes secrets and high-risk PII like social security numbers or credit card numbers, etc. Auth0 customers are strongly encouraged to evaluate the data stored in metadata and only store that which is necessary for identity and access management purposes. To learn more, read [Auth0 General Data Protection Regulation Compliance](/docs/secure/data-privacy-and-compliance/gdpr).
 
 </Warning>

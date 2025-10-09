@@ -13,7 +13,7 @@ title: SameSite Cookie Attribute Changes
 Cookies, which are used for authentication and the maintenance of sessions, can be secured by setting attributes. Auth0 uses cookies for the following:
 
 * OIDC Enterprise with `form_post`
-* <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> HTTP-POST Binding
+* <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> HTTP-POST Binding
 * Web message (aka `checkSession`)
 
 ## SameSite attributes
@@ -50,7 +50,7 @@ The goal of these changes is to improve security and help mitigate CSRF attacks.
 These changes affect the following cookies:
 
 * `auth0` (handles user sessions)
-* `auth0-mf` (handles information relevant to <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip>)
+* `auth0-mf` (handles information relevant to <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip>)
 * `did` (the identifier for a device/user agent)
 
 For these cookies, Auth0 will:
@@ -60,11 +60,11 @@ For these cookies, Auth0 will:
 
 The diagram below shows what happens during a fresh interaction. The end user requests a page not previously visited. The server changes the way it renders when the visitor returns and sets a seen cookie. The grey part of the `set-cookie` header is the actual cookie `key=value.` The red portion are the cookie attributes the browser stores in the cookie jar to decide later if it should include the cookie `key+value` pair in requests.
 
-<Frame>![sameSite Cookie Attributes Fresh Interaction Flow](/images/cdy7uua7fh8z/ItaoOzUnri9dkCkZ3V0dj/e64711c0f3ae5c361fe2321e3666b1cf/cookie-fresh-interaction.png)</Frame>
+<Frame>![sameSite Cookie Attributes Fresh Interaction Flow](/docs/images/cdy7uua7fh8z/ItaoOzUnri9dkCkZ3V0dj/e64711c0f3ae5c361fe2321e3666b1cf/cookie-fresh-interaction.png)</Frame>
 
 The following diagram shows what happens if you make the same request using the same browsing session. The request goes to the same server, and because the cookie attributes don't prohibit the seen cookie to be sent, it is automatically included as a cookie header in the request. The server will now respond differently based on the fact that it received this cookie.
 
-<Frame>![sameSite Cookie Attributes Cookie Return Interaction flow](/images/cdy7uua7fh8z/4dc2HWnmPBOV6cvdKbNM6g/50149f55e38fdf7453944932a3ef9d1c/cookie-return-interaction.png)</Frame>
+<Frame>![sameSite Cookie Attributes Cookie Return Interaction flow](/docs/images/cdy7uua7fh8z/4dc2HWnmPBOV6cvdKbNM6g/50149f55e38fdf7453944932a3ef9d1c/cookie-return-interaction.png)</Frame>
 
 ## Features affected
 
@@ -78,7 +78,7 @@ The table below shows how the `SameSite` attribute changes may affect your apps.
 | Already setting an explicit `sameSite` cookie attribute value | No |
 | Different subdomain on the same eTLD+1 (app is on the same eTLD+1 as the custom domain Auth0 tenant) | Potentially |
 
-If you are using a web app with sessions (e.g. for saving user preferences, shopping carts, etc.), and you allow users to sign in using <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> such as Google, Github, or Auth0, then you rely on cookies to achieve that functionality. There are browser cookie behavior changes that may break the user experience. Google Chrome, for example, is the first browser vendor to roll out a change that might not be compatible with your web application.
+If you are using a web app with sessions (e.g. for saving user preferences, shopping carts, etc.), and you allow users to sign in using <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> such as Google, Github, or Auth0, then you rely on cookies to achieve that functionality. There are browser cookie behavior changes that may break the user experience. Google Chrome, for example, is the first browser vendor to roll out a change that might not be compatible with your web application.
 
 You may notice that the Google Chrome and Microsoft Edge specs for setting `SameSite` to undefined has changed from `SameSite` defaulting to `none` to `lax` instead.
 
@@ -92,4 +92,4 @@ To prepare for this change, you should:
 
 * Review the list of [unsupported browsers](https://www.chromium.org/updates/same-site/incompatible-clients).
 * Set your application to use `SameSite=none` if it uses `response_mode=form_post` when interacting with Auth0 (note that Chrome makes no exceptions, even for `localhost`)
-* Set your cookie as secure if its `SameSite` attribute equals `None.` Otherwise, it will be rejected by the browser. If you use HTTP for your Callback URLs, these will break if you use such cookies for binding the authorization request state/<Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/glossary?term=nonce">nonce</Tooltip>. Therefore, you must either use HTTPS or set `SameSite=lax`
+* Set your cookie as secure if its `SameSite` attribute equals `None.` Otherwise, it will be rejected by the browser. If you use HTTP for your Callback URLs, these will break if you use such cookies for binding the authorization request state/<Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/docs/glossary?term=nonce">nonce</Tooltip>. Therefore, you must either use HTTPS or set `SameSite=lax`

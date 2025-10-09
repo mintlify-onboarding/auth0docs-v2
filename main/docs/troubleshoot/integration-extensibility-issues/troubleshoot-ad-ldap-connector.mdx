@@ -9,13 +9,13 @@ title: Troubleshoot AD/LDAP Connector
   Connector.
 'twitter:title': Troubleshoot AD/LDAP Connector
 ---
-If you are experiencing issues with your [AD/LDAP Connector](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector), read below to learn how to troubleshoot common issues.
+If you are experiencing issues with your [AD/LDAP Connector](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector), read below to learn how to troubleshoot common issues.
 
 ## Run the troubleshooting tool
 
 You can run the troubleshooting tool in the AD/LDAP Connector Admin Console, or outside the Admin Console by executing the program manually.
 
-To detect issues with certificates, set the `CONNECTIONS_API_V2_KEY` variable in the [AD/LDAP Connector configuration file](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
+To detect issues with certificates, set the `CONNECTIONS_API_V2_KEY` variable in the [AD/LDAP Connector configuration file](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
 
 ### In the Admin Console
 
@@ -23,7 +23,7 @@ You can run the troubleshooting tool in the Admin Console.
 
 1. Switch to the **Troubleshooting** view to read the logs.
 
-   <Frame>![Troubleshoot AD/LDAP Connector Admin Console Troubleshooting Screen](/images/cdy7uua7fh8z/3N6GgZVMaYUcY48GK8IKgU/92a469b9375dbcd9e3c35adaef6709d5/connector-admin-console-troubleshooter.png)</Frame>
+   <Frame>![Troubleshoot AD/LDAP Connector Admin Console Troubleshooting Screen](/docs/images/cdy7uua7fh8z/3N6GgZVMaYUcY48GK8IKgU/92a469b9375dbcd9e3c35adaef6709d5/connector-admin-console-troubleshooter.png)</Frame>
 2. Select **Run** to detect the most common problems related to the AD/LDAP Connector.
 
 ### Outside the Admin Console
@@ -39,7 +39,7 @@ On a Windows machine, run the provided command file to launch the troubleshootin
 
 For example: `C:\Program Files (x86)\Auth0\AD LDAP Connector\troubleshoot.cmd`.
 
-<Frame>![Troubleshoot AD/LDAP Connector Troubleshooting Tool Screen](/images/cdy7uua7fh8z/5LOU1ZyB69cPe8rVa9lVPd/c5c7419ae736a3992ddd2a436b26a3e0/connector-troubleshooter.png)</Frame>
+<Frame>![Troubleshoot AD/LDAP Connector Troubleshooting Tool Screen](/docs/images/cdy7uua7fh8z/5LOU1ZyB69cPe8rVa9lVPd/c5c7419ae736a3992ddd2a436b26a3e0/connector-troubleshooter.png)</Frame>
 
 #### Linux
 
@@ -70,7 +70,7 @@ By default, the Auth0 AD/LDAP Connector imports a user’s group memberships fro
 
 This behavior requires the AD/LDAP Connector to perform additional queries against Active Directory, which can significantly increase the duration of the authentication process.
 
-If you do not need groups to be returned on the user profile, Auth0 recommends that you explicitly disable the `GROUPS` variable in the [AD/LDAP Connector configuration file](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
+If you do not need groups to be returned on the user profile, Auth0 recommends that you explicitly disable the `GROUPS` variable in the [AD/LDAP Connector configuration file](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
 
 ### Host CPU utilization is high
 
@@ -86,19 +86,19 @@ If you do not require groups to be returned on the user profile, disable group i
 
 If you do require groups to be returned on the user profile, investigate the groups being returned on the Auth0 user profiles. Queries against nested and recursive groups can cause high CPU utilization. If possible, test with group import disabled to assess the impact of the group queries.
 
-To mitigate the impact, fix any recursive or otherwise problematic group assignments in your AD/LDAP server, and/or increase the value of the `GROUPS_CACHE_SECONDS` variable in the [AD/LDAP Connector configuration file](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
+To mitigate the impact, fix any recursive or otherwise problematic group assignments in your AD/LDAP server, and/or increase the value of the `GROUPS_CACHE_SECONDS` variable in the [AD/LDAP Connector configuration file](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
 
 #### Evaluate volume of active users
 
-Check if the number of active users using the AD/LDAP Connector has increased since you initially deployed it. You can evaluate this by using your own [monitoring solution](/customize/log-streams), or you can get an estimate from the [Auth0 active users report](/troubleshoot/customer-support/manage-subscriptions/monitor-subscription-usage).
+Check if the number of active users using the AD/LDAP Connector has increased since you initially deployed it. You can evaluate this by using your own [monitoring solution](/docs/customize/log-streams), or you can get an estimate from the [Auth0 active users report](/docs/troubleshoot/customer-support/manage-subscriptions/monitor-subscription-usage).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-In Microsoft Windows Server environments, Microsoft System Center Operations Manager (SCOM) can be configured to monitor and alert on the service status of the AD/LDAP Connector. For more information, see [Monitor AD/LDAP Connector with System Center Operations Manager](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-scom).
+In Microsoft Windows Server environments, Microsoft System Center Operations Manager (SCOM) can be configured to monitor and alert on the service status of the AD/LDAP Connector. For more information, see [Monitor AD/LDAP Connector with System Center Operations Manager](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-scom).
 
 </Callout>
 
-If the number of active users has increased, and all steps above have already been followed, you may need to upgrade your host machine’s hardware specifications, or configure a [High Availability environment](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability).
+If the number of active users has increased, and all steps above have already been followed, you may need to upgrade your host machine’s hardware specifications, or configure a [High Availability environment](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability).
 
 ### Clock skew
 
@@ -142,11 +142,11 @@ This error message occurs when the AD/LDAP Connector fails to start when it can'
 
 ### Connector behind a proxy
 
-If the machine hosting the connector is behind a proxy, you can set an `HTTP_PROXY` system environment variable, or you can set the `HTTP_PROXY` variable in the [AD/LDAP Connector configuration file](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema). If using an authenticated proxy, the URL must be in the format `http://USERNAME:PASSWORD@SERVER_URL:PORT`.
+If the machine hosting the connector is behind a proxy, you can set an `HTTP_PROXY` system environment variable, or you can set the `HTTP_PROXY` variable in the [AD/LDAP Connector configuration file](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema). If using an authenticated proxy, the URL must be in the format `http://USERNAME:PASSWORD@SERVER_URL:PORT`.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you set system environment variables, or modify the [AD/LDAP Connector configuration file](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema), you must restart the AD/LDAP Connector for the changes to take effect.
+If you set system environment variables, or modify the [AD/LDAP Connector configuration file](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema), you must restart the AD/LDAP Connector for the changes to take effect.
 
 </Callout>
 
@@ -175,7 +175,7 @@ To enable verbose logging of Kerberos requests:
 3. Log in.
 4. Check the logs for more information.
 
-If you have Kerberos enabled, but your users are being prompted for username/password, verify that the IP address setting is properly configured. For more information, see [Configure AD/LDAP Connector Authentication with Kerberos](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos).
+If you have Kerberos enabled, but your users are being prompted for username/password, verify that the IP address setting is properly configured. For more information, see [Configure AD/LDAP Connector Authentication with Kerberos](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos).
 
 ### Changes in user profile in AD are not immediately reflected in the app
 
@@ -194,7 +194,7 @@ The purpose of this first-level cache is to maximize availability of authenticat
 
 #### Caching in the AD/LDAP Connector
 
-The AD/LDAP Connector caches a user’s group memberships. This cache’s lifetime is determined by the `GROUPS_CACHE_SECONDS` variable in the [AD/LDAP Connector configuration file](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema), with a default value of 600 (seconds).
+The AD/LDAP Connector caches a user’s group memberships. This cache’s lifetime is determined by the `GROUPS_CACHE_SECONDS` variable in the [AD/LDAP Connector configuration file](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema), with a default value of 600 (seconds).
 
 The purpose of this second-level cache is to minimize execution time. By default, the AD/LDAP Connector retrieves all group membership of a user recursively, which can be an expensive process in some AD/LDAP installations. This cache is deleted every time you restart the AD/LDAP Connector.
 
@@ -213,11 +213,11 @@ To avoid any downtime, enable the cache:
 
 ### Receive "postUrl is required" error
 
-You may encounter this error if you have not completed additional configuration for a [custom domain](/customize/custom-domains).
+You may encounter this error if you have not completed additional configuration for a [custom domain](/docs/customize/custom-domains).
 
-In order to use AD/LDAP connections with Kerberos support, you will need to update the **Ticket** endpoint to work with the <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>:
+In order to use AD/LDAP connections with Kerberos support, you will need to update the **Ticket** endpoint to work with the <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>:
 
-1. Open the [AD/LDAP Connector configuration file](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
+1. Open the [AD/LDAP Connector configuration file](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema).
 2. Set the `PROVISIONING_TICKET` configuration variable to `https://{yourDomain}/p/ad/jUG0dN0R`.
 3. Restart the AD/LDAP Connector.
 
@@ -228,29 +228,29 @@ If you receive the `UNABLE_TO_GET_ISSUER_CERT_LOCALLY` error after configuring a
 * If your tenant is in the public cloud environment, verify that you have the [ISRG Root X1 certificate](https://letsencrypt.org/certificates/#root-certificates) in your Trusted Store on the machine with the installed AD/LDAP Connector.
 * If you are on the converged platform environment, add the [ISRG Root X2 certificate](https://letsencrypt.org/certificates/#root-certificates) to the Trusted Store on the machine with the installed AD/LDAP Connector.
 
-If you are configuring a [High Availability environment](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability) and are encountering this error on an additional machine, verify that the Trusted Root Certificate Authorities on the additional machine matches the Trusted Root Certificate Authorities on the initial machine.
+If you are configuring a [High Availability environment](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability) and are encountering this error on an additional machine, verify that the Trusted Root Certificate Authorities on the additional machine matches the Trusted Root Certificate Authorities on the initial machine.
 
 ## Contact Auth0 Support
 
-If you are unable to resolve any of these issues on your own, contact [Auth0 Support](/troubleshoot/customer-support/open-and-manage-support-tickets).
+If you are unable to resolve any of these issues on your own, contact [Auth0 Support](/docs/troubleshoot/customer-support/open-and-manage-support-tickets).
 
 To help the Support team troubleshoot your issue, include the following items in your support ticket:
 
 1. Description of the issue.
-2. An [export of your AD/LDAP configuration files](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs).
+2. An [export of your AD/LDAP configuration files](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs).
 3. A copy of the service log file(s):
 
    * Windows: `C:\Program Files (x86)\Auth0\AD LDAP Connector\logs.log`
    * Linux: `/var/log/auth0-adldap.log`
 4. The version number of your AD/LDAP Connector.
 
-   <Frame>![Troubleshoot AD/LDAP Connector Console Screen](/images/cdy7uua7fh8z/4TxfMbN76vRwaON9RKzt6F/81327d0c830082a0d78a89f005edfc87/adldap-connector-version.png)</Frame>
+   <Frame>![Troubleshoot AD/LDAP Connector Console Screen](/docs/images/cdy7uua7fh8z/4TxfMbN76vRwaON9RKzt6F/81327d0c830082a0d78a89f005edfc87/adldap-connector-version.png)</Frame>
 
 ## Learn more
 
-* [AD/LDAP Connector System Requirements](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-requirements)
-* [Import and Export AD/LDAP Connector Configurations](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs)
-* [Set Up AD/LDAP Connector Test Environment](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-test-environment)
-* [Update AD/LDAP Connectors](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/update-ad-ldap-connectors)
-* [AD/LDAP Connector Configuration File Schema](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema)
-* [Monitor AD/LDAP Connector with System Center Operations Manager](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-scom)
+* [AD/LDAP Connector System Requirements](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-requirements)
+* [Import and Export AD/LDAP Connector Configurations](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/import-export-ad-ldap-connector-configs)
+* [Set Up AD/LDAP Connector Test Environment](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-test-environment)
+* [Update AD/LDAP Connectors](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/update-ad-ldap-connectors)
+* [AD/LDAP Connector Configuration File Schema](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-config-file-schema)
+* [Monitor AD/LDAP Connector with System Center Operations Manager](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-connector-scom)

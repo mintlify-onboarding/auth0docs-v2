@@ -11,11 +11,11 @@ title: Set Up Multiple Environments
 ---
 Development, staging, and production environments are easy to set up in Auth0. Simply create a new tenant for each environment to guarantee isolation between them. You can easily switch between tenants using the tenant chooser from the top left menu on the Dashboard. You can also configure different administrators for each.
 
-Production [rate limits](/troubleshoot/customer-support/operational-policies/rate-limit-policy) only apply to tenants tagged as `Production`. Ensure your tenant's environment tag is set to `Production` before going live, and note the differences between rate limits for different tenants, environments, and fee structures.
+Production [rate limits](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy) only apply to tenants tagged as `Production`. Ensure your tenant's environment tag is set to `Production` before going live, and note the differences between rate limits for different tenants, environments, and fee structures.
 
-You can name your multiple environments any way you prefer. For production environments, we strongly recommend using [custom domains](/customize/custom-domains).
+You can name your multiple environments any way you prefer. For production environments, we strongly recommend using [custom domains](/docs/customize/custom-domains).
 
-If you have an Enterprise subscription plan, you can create child tenants by [linking multiple tenants to a single subscription](/get-started/auth0-overview/create-tenants/child-tenants); child tenants each gain access to the paid or upgraded features associated with the subscription. You can ensure your development, staging, or testing environments have access to the same features as your production environment by linking them all to the same Enterprise subscription.
+If you have an Enterprise subscription plan, you can create child tenants by [linking multiple tenants to a single subscription](/docs/get-started/auth0-overview/create-tenants/child-tenants); child tenants each gain access to the paid or upgraded features associated with the subscription. You can ensure your development, staging, or testing environments have access to the same features as your production environment by linking them all to the same Enterprise subscription.
 
 ## Tag the environment
 
@@ -25,15 +25,15 @@ If your tenant is mixed use, choose the higher environment. For example, a tenan
 
 1. To assign an Environment Tag to a tenant, go to the [Dashboard > Settings > General](https://manage.auth0.com/#/tenant/general).
 
-   <Frame>![Dashboard Tenant Settings General Settings tab](/images/cdy7uua7fh8z/4okToiwlkNQBxwr8QGE3Rs/7e96db0efab4082ebb9f78cb43ee302c/Basic_Settings_-_EN.png)</Frame>
+   <Frame>![Dashboard Tenant Settings General Settings tab](/docs/images/cdy7uua7fh8z/4okToiwlkNQBxwr8QGE3Rs/7e96db0efab4082ebb9f78cb43ee302c/Basic_Settings_-_EN.png)</Frame>
 2. Under **Assign Environment Tag**, identify your tenant's environment as **Development**, **Staging**, or **Production**.
 
-   <Frame>![undefined](/images/cdy7uua7fh8z/27OH1jFXce97CSjk7TPeD7/deafc344f675fb11ff5d3d589ffadee9/2025-02-26_14-27-31.png)</Frame>
+   <Frame>![undefined](/docs/images/cdy7uua7fh8z/27OH1jFXce97CSjk7TPeD7/deafc344f675fb11ff5d3d589ffadee9/2025-02-26_14-27-31.png)</Frame>
 3. After selecting the environment, click **Save**.
 
 ## Migration
 
-Through the [Management API v2](https://auth0.com/docs/api/management/v2), you can automate the migration of assets ([rules](/customize/rules), database [connections](/authenticate/identity-providers), and so forth) between tenants.
+Through the [Management API v2](https://auth0.com/docs/api/management/v2), you can automate the migration of assets ([rules](/docs/customize/rules), database [connections](/docs/authenticate/identity-providers), and so forth) between tenants.
 
 For easier configuration management, save your configuration values in the [Dashboard](https://manage.auth0.com/#/rules), instead of hardcoding them into your **rules** or **db connections** scripts.
 
@@ -85,6 +85,6 @@ If you have multiple AD/LDAP directories against which users will authenticate (
 
 ## Learn more
 
-* [Create Multiple Tenants](/get-started/auth0-overview/create-tenants/create-multiple-tenants)
-* [Delete or Reset Tenants](/troubleshoot/customer-support/manage-subscriptions/delete-or-reset-tenant)
-* [Link Multiple Tenants to a Single Subscription](/get-started/auth0-overview/create-tenants/child-tenants)
+* [Create Multiple Tenants](/docs/get-started/auth0-overview/create-tenants/create-multiple-tenants)
+* [Delete or Reset Tenants](/docs/troubleshoot/customer-support/manage-subscriptions/delete-or-reset-tenant)
+* [Link Multiple Tenants to a Single Subscription](/docs/get-started/auth0-overview/create-tenants/child-tenants)

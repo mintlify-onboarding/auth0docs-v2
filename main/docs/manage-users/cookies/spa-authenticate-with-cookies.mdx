@@ -20,9 +20,9 @@ Here is a description of this approach as well as a sample implementation using�
 
 ## How it works
 
-The steps below show how tokens are retrieved and used. In this approach, the [Implicit Flow with Form Post](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post) is used instead of a traditional [Authorization Code Flow with Proof Key for Code Exchange](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). This is because Form Post Response Mode is a simpler way to implement login when it’s your own resource you are requesting to access.
+The steps below show how tokens are retrieved and used. In this approach, the [Implicit Flow with Form Post](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post) is used instead of a traditional [Authorization Code Flow with Proof Key for Code Exchange](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). This is because Form Post Response Mode is a simpler way to implement login when it’s your own resource you are requesting to access.
 
-<Frame>![Authenticate Single-Page Apps Using Cookies How it Works part 1 diagram](/images/cdy7uua7fh8z/7suPpG6SuHuCOFHeFmE21T/1bf0a56fd21f65460cff7fd01b4c93f4/2023-09-22_13-21-34.png)</Frame>
+<Frame>![Authenticate Single-Page Apps Using Cookies How it Works part 1 diagram](/docs/images/cdy7uua7fh8z/7suPpG6SuHuCOFHeFmE21T/1bf0a56fd21f65460cff7fd01b4c93f4/2023-09-22_13-21-34.png)</Frame>
 
 1. The user accesses a protected route using the browser, or performs some action that requires an authentication step to be initiated (such as clicking on a Login button)
 2. The browser client redirects to a `/login` route on the backend, or to the protected route depending on what the user did
@@ -34,13 +34,13 @@ At this point, the user is authenticated and the backend has the required tokens
 
 From now on, this cookie is traded between the client and backend when API calls are made using an AJAX call. On each request, the backend verifies if the cookie is still valid and if so, allows the request to continue.
 
-<Frame>![Authenticate Single-Page Apps Using Cookies How it Works part 2 diagram](/images/cdy7uua7fh8z/6SCp9KwQkwJV7L26TOuxIO/d625575a43d00a00fcf17c7310ac2bc8/2023-09-22_13-21-50.png)</Frame>
+<Frame>![Authenticate Single-Page Apps Using Cookies How it Works part 2 diagram](/docs/images/cdy7uua7fh8z/6SCp9KwQkwJV7L26TOuxIO/d625575a43d00a00fcf17c7310ac2bc8/2023-09-22_13-21-50.png)</Frame>
 
 ### Invalid or missing cookies
 
 When implementing this approach you'll need to handle cases where the authentication cookie is invalid or missing. The API call to the backend from the client happens in the background, so the client has to deal with any response from the server indicating the user should reauthenticate.
 
-In the following sample application, this case is handled in a naive way by prompting the user to re-authenticate if the API call results in a 302 Redirect result. The 302 occurs because, upon unsuccessful validation of the cookie, the server tries to redirect to the Authorization endpoint of the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip> and sends this response to the client.
+In the following sample application, this case is handled in a naive way by prompting the user to re-authenticate if the API call results in a 302 Redirect result. The 302 occurs because, upon unsuccessful validation of the cookie, the server tries to redirect to the Authorization endpoint of the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> and sends this response to the client.
 
 ## Example
 
@@ -72,7 +72,7 @@ The development servers uses `nodemon`, which automatically restarts whenever it
 
 With the application open at [http://localhost:3000](http://localhost:3000/), click the **Call API** button. You should see a message displayed on the screen.
 
-<Frame>![SPA Authentication with Cookies Explore the Application screen](/images/cdy7uua7fh8z/7JhdgzFLig2xcDle7ziiGp/c1db6272d20d4a291ba90a6968460109/image3.png)</Frame>
+<Frame>![SPA Authentication with Cookies Explore the Application screen](/docs/images/cdy7uua7fh8z/7JhdgzFLig2xcDle7ziiGp/c1db6272d20d4a291ba90a6968460109/image3.png)</Frame>
 
 Note that you were able to make the API call without being logged in. Let's fix that by adding some middleware that requires the user to authenticate before the API call can be made.
 
@@ -115,6 +115,6 @@ APP_SESSION_SECRET=\<YOUR SECRET VALUE>
 
 ## Learn more
 
-* [Implicit Flow with Form Post](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post)
-* [Secure](/secure)
-* [SameSite Cookie Attribute Changes](/manage-users/cookies/samesite-cookie-attribute-changes)
+* [Implicit Flow with Form Post](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post)
+* [Secure](/docs/secure)
+* [SameSite Cookie Attribute Changes](/docs/manage-users/cookies/samesite-cookie-attribute-changes)

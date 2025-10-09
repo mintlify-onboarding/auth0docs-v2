@@ -134,7 +134,7 @@ Auth0 is responsible for:
 * Assisting the customer if it receives requests from the customer's end users exercising their GDPR rights. Notifying the customer if it receives requests from Supervisory Authorities related to the processing of Personal Data (unless prohibited by law)
 * Notifying the customer if it becomes aware of a confirmed data breach that compromises Customer Data
 * Notifying the customer if any of its Sub-processors notify Auth0 about a confirmed data breach that impacts Auth0’s Customer Data (unless prohibited by law)
-* Providing the means to enable customers to retrieve, review, correct, or delete customer data via the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and the Auth0 <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>
+* Providing the means to enable customers to retrieve, review, correct, or delete customer data via the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and the Auth0 <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>
 * Providing a mechanism for customers to display consent terms and a consent agreement checkbox on the Lock widget. Customers can also design custom signup and login forms if more elaborate consent schemes are needed
 
 ## Auth0 data processing
@@ -145,7 +145,7 @@ All of the data Auth0 has about an end-user is located in the Auth0 user profile
 
 ### When Auth0 data is stored
 
-The Auth0 user profile information is stored in Auth0 when you use a database connection. If a user logs in using any other type of connection (including custom database connections), Auth0 stores information provided by the external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> for future queries.
+The Auth0 user profile information is stored in Auth0 when you use a database connection. If a user logs in using any other type of connection (including custom database connections), Auth0 stores information provided by the external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> for future queries.
 
 ### How Auth0 uses the data it stores
 
@@ -167,7 +167,7 @@ According to Article 7 of GDPR, you must:
 * Be able to show that the user has consented, and
 * Provide an easy way to withdraw consent at any time
 
-You can use Auth0 to ask your users for consent upon signup (using either Lock or a custom form) and save this information at the user profile. You can later update this information using the Management API. To learn more, read [GDPR: Conditions for Consent](/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent).
+You can use Auth0 to ask your users for consent upon signup (using either Lock or a custom form) and save this information at the user profile. You can later update this information using the Management API. To learn more, read [GDPR: Conditions for Consent](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent).
 
 ### Right to access, correct, and erase data
 
@@ -177,7 +177,7 @@ According to Articles 15, 16, 17, and 19 of GDPR, users have the right to:
 * Ask for rectifications if they are inaccurate, and
 * Ask you to delete their personal data
 
-With Auth0, you can access, edit, and delete user information, either manually or using our API. To learn more, read [GDPR: Right to Access, Correct, and Erase Data](/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data).
+With Auth0, you can access, edit, and delete user information, either manually or using our API. To learn more, read [GDPR: Right to Access, Correct, and Erase Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data).
 
 ### Data minimization
 
@@ -187,13 +187,13 @@ According to Article 5 of GDPR:
 * Must be kept only as long as needed, and
 * Appropriate security must be ensured during data processing, including protection against unauthorized or unlawful processing and against accidental loss, destruction, or damage
 
-There are several Auth0 features than can help you achieve these goals, like account linking, user profile encryption, and more. To learn more, read [GDPR: Data Minimization](/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization).
+There are several Auth0 features than can help you achieve these goals, like account linking, user profile encryption, and more. To learn more, read [GDPR: Data Minimization](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization).
 
 ### Data portability
 
 According to Article 20 of GDPR, users have the right to receive the personal data concerning them in a structured, commonly used and machine-readable format.
 
-You can export user data, stored in the Auth0 user store, either manually or programmatically. Raw data from Auth0 can be exported in JSON format (which is machine-readable). To learn more, read [GDPR: Data Portability](/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability).
+You can export user data, stored in the Auth0 user store, either manually or programmatically. Raw data from Auth0 can be exported in JSON format (which is machine-readable). To learn more, read [GDPR: Data Portability](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability).
 
 ### Protect and secure user data
 
@@ -204,14 +204,14 @@ According to Article 32 of GDPR, you must implement appropriate measures to ensu
 * data integrity, and
 * availability and resilience of processing systems and services
 
-There are several Auth0 features than can help you meet this requirement, like user profile encryption, <Tooltip tip="Breached Password Detection: Form of attack protection in which Auth0 notifies your users if they use a username/password combination that has been compromised in a data leak on a third-party website or app." cta="View Glossary" href="/glossary?term=brute-force+protection">brute-force protection</Tooltip>, <Tooltip tip="Brute-force Protection: Form of attack protection that safeguards against brute-force attacks that occur from a single IP address and target a single user account." cta="View Glossary" href="/glossary?term=breached+password+detection">breached password detection</Tooltip>, step-up authentication, and more. To learn more, read [GDPR: Protect and Secure User Data](/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data).
+There are several Auth0 features than can help you meet this requirement, like user profile encryption, <Tooltip tip="Breached Password Detection: Form of attack protection in which Auth0 notifies your users if they use a username/password combination that has been compromised in a data leak on a third-party website or app." cta="View Glossary" href="/docs/glossary?term=brute-force+protection">brute-force protection</Tooltip>, <Tooltip tip="Brute-force Protection: Form of attack protection that safeguards against brute-force attacks that occur from a single IP address and target a single user account." cta="View Glossary" href="/docs/glossary?term=breached+password+detection">breached password detection</Tooltip>, step-up authentication, and more. To learn more, read [GDPR: Protect and Secure User Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data).
 
 ## Security advice
 
 Auth0 recommends the following practices to help ensure the security of your end users data and minimize the probability of a data breach:
 
-* Protect <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secrets">client secrets</Tooltip> and keys
-* Protect Management Dashboard credentials, and require <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> for access to the Dashboard
+* Protect <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secrets">client secrets</Tooltip> and keys
+* Protect Management Dashboard credentials, and require <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> for access to the Dashboard
 * Review the list of administrators for the Dashboard on a regular basis and remove outdated entries
 * Review the list of connections and applications associated with your Auth0 tenants and remove outdated entries
 * Ensure that Dashboard administrators use corporate credentials that can be easily revoked if necessary, not personal credentials such as a personal email account
@@ -223,8 +223,8 @@ Make sure that you monitor any log streaming solution you use to send log data t
 
 ## Learn more
 
-* [GDPR: Conditions for Consent](/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent)
-* [GDPR: Right to Access, Correct, and Erase Data](/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)
-* [GDPR: Data Minimization](/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization)
-* [GDPR: Data Portability](/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
-* [GDPR: Protect and Secure User Data](/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data)
+* [GDPR: Conditions for Consent](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent)
+* [GDPR: Right to Access, Correct, and Erase Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)
+* [GDPR: Data Minimization](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization)
+* [GDPR: Data Portability](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
+* [GDPR: Protect and Secure User Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data)

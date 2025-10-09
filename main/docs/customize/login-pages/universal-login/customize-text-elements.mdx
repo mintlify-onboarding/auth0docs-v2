@@ -10,11 +10,11 @@ title: Customize Universal Login Text Elements
   the Auth0 Dashboard or Management API
 'twitter:title': Customize Universal Login Text Elements
 ---
-<Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> consists of a set of pages that facilitate several account-related actions, such as logging in, enrolling <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> factors, or resetting passwords. Auth0 provides the text on these pages in several languages.
+<Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> consists of a set of pages that facilitate several account-related actions, such as logging in, enrolling <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> factors, or resetting passwords. Auth0 provides the text on these pages in several languages.
 
 In some cases, you may want to modify the text on these pages to better match your application's tone or specific needs.
 
-You can customize the text displayed on [Universal Login](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience) pages in all supported languages through either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. The following definitions, values, and variables apply to both methods.
+You can customize the text displayed on [Universal Login](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience) pages in all supported languages through either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. The following definitions, values, and variables apply to both methods.
 
 ## Configure prompts and screens
 
@@ -32,7 +32,7 @@ You can use the Dashboard to customize New Universal Login text prompts.
 
 You can use the Management API to customize New Universal Login text prompts.
 
-1. Get a [Management API access token](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the `read:prompts` and `update:prompts` scopes.
+1. Get a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the `read:prompts` and `update:prompts` scopes.
 2. Call the Management API [Get custom text for a prompt](https://auth0.com/docs/api/management/v2#!/Prompts/get_custom_text_by_language) endpoint to get the existing configuration data for the specified prompt and language.
 3. Modify the configuration data as desired, using the [supported parameters](#supported-parameters) and [prompt values](#prompt-values) for reference.
 4. Call the Management API [Set custom text for a specific prompt](https://auth0.com/docs/api/management/v2#!/Prompts/put_custom_text_by_language) endpoint with the updated configuration data.
@@ -480,7 +480,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>language</code></td>
-<td>The language that the customization applies to. For a list of available languages, read <a href="/customize/internationalization-and-localization/universal-login-internationalization">Universal Login Internationalization</a>.</td>
+<td>The language that the customization applies to. For a list of available languages, read <a href="/docs/customize/internationalization-and-localization/universal-login-internationalization">Universal Login Internationalization</a>.</td>
 </tr>
 <tr>
 <td><code>screen</code></td>
@@ -509,7 +509,7 @@ The available `prompt` values are:
 
 ## Screen: redeem-ticket
 
-<Frame>![redeem-ticket reference screenshot](/images/cdy7uua7fh8z/7H4DS8I8fnlUgtS4ttpMyK/90006ee36032cc1ee3d9674fe6bcf575/redeem-ticket.png)</Frame>
+<Frame>![redeem-ticket reference screenshot](/docs/images/cdy7uua7fh8z/7H4DS8I8fnlUgtS4ttpMyK/90006ee36032cc1ee3d9674fe6bcf575/redeem-ticket.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1577,7 +1577,7 @@ The available `prompt` values are:
 
 ## Screen: login-passwordless-email-code
 
-<Frame>![login-passwordless-email-code reference screenshot](/images/cdy7uua7fh8z/6zazshkUI5sdFDd2Fgbo6w/0193e17673250b5293d9581e34316c20/login-passwordless-email-code.png)</Frame>
+<Frame>![login-passwordless-email-code reference screenshot](/docs/images/cdy7uua7fh8z/6zazshkUI5sdFDd2Fgbo6w/0193e17673250b5293d9581e34316c20/login-passwordless-email-code.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1635,7 +1635,7 @@ The available `prompt` values are:
 
 ## Screen: login-passwordless-email-link
 
-<Frame>![login-passwordless-email-link reference screenshot](/images/cdy7uua7fh8z/7EcEUmoEPC6GVgJjNyTugr/e160cb40af3a0c748ba1f9fe2307488b/login-passwordless-email-link.png)</Frame>
+<Frame>![login-passwordless-email-link reference screenshot](/docs/images/cdy7uua7fh8z/7EcEUmoEPC6GVgJjNyTugr/e160cb40af3a0c748ba1f9fe2307488b/login-passwordless-email-link.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1669,7 +1669,7 @@ The available `prompt` values are:
 
 ## Screen: login-passwordless-sms-otp
 
-<Frame>![login-passwordless-sms-otp reference screenshot](/images/cdy7uua7fh8z/5dk4vZpc06UojLdnelUInO/f5fb02e0adeeceaa1b8ce6eef8151bc2/login-passwordless-sms-otp.png)</Frame>
+<Frame>![login-passwordless-sms-otp reference screenshot](/docs/images/cdy7uua7fh8z/5dk4vZpc06UojLdnelUInO/f5fb02e0adeeceaa1b8ce6eef8151bc2/login-passwordless-sms-otp.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1805,7 +1805,7 @@ The available `prompt` values are:
 
 ## Screen: logout
 
-<Frame>![logout reference screenshot](/images/cdy7uua7fh8z/2lXg143oKAF4OlIilbwDCK/d770603ba5203adff07cf4e23e4fcbbb/logout.png)</Frame>
+<Frame>![logout reference screenshot](/docs/images/cdy7uua7fh8z/2lXg143oKAF4OlIilbwDCK/d770603ba5203adff07cf4e23e4fcbbb/logout.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -1851,7 +1851,7 @@ The available `prompt` values are:
 
 ## Screen: mfa-detect-browser-capabilities
 
-<Frame>![mfa-detect-browser-capabilities reference screenshot](/images/cdy7uua7fh8z/2D7DbdMRJ7SdwxEzOYYsLX/595c1436aaa38ed342137c4a5227f4b0/mfa-detect-browser-capabilities.png)</Frame>
+<Frame>![mfa-detect-browser-capabilities reference screenshot](/docs/images/cdy7uua7fh8z/2D7DbdMRJ7SdwxEzOYYsLX/595c1436aaa38ed342137c4a5227f4b0/mfa-detect-browser-capabilities.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3345,7 +3345,7 @@ The available `prompt` values are:
 
 ## Screen: mfa-webauthn-platform-enrollment
 
-<Frame>![mfa-webauthn-enrollment reference screenshot](/media/articles/universal-login/text-customization/mfa-webauth-platform-enrollment.png)</Frame>
+<Frame>![mfa-webauthn-enrollment reference screenshot](/docs/media/articles/universal-login/text-customization/mfa-webauth-platform-enrollment.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3403,7 +3403,7 @@ The available `prompt` values are:
 
 ## Screen: mfa-webauthn-roaming-enrollment
 
-<Frame>![mfa-webauthn-guidance-enrollment reference screenshot](/media/articles/universal-login/text-customization/mfa-webauth-roaming-enrollment.png)</Frame>
+<Frame>![mfa-webauthn-guidance-enrollment reference screenshot](/docs/media/articles/universal-login/text-customization/mfa-webauth-roaming-enrollment.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3461,7 +3461,7 @@ The available `prompt` values are:
 
 ## Screen: mfa-webauthn-platform-challenge
 
-<Frame>![mfa-webauthn-challenge-user-initiated reference screenshot](/media/articles/universal-login/text-customization/mfa-webauth-platform-challenge.png)</Frame>
+<Frame>![mfa-webauthn-challenge-user-initiated reference screenshot](/docs/media/articles/universal-login/text-customization/mfa-webauth-platform-challenge.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3515,7 +3515,7 @@ The available `prompt` values are:
 
 ## Screen: mfa-webauthn-roaming-challenge
 
-<Frame>![mfa-webauthn-challenge-user-initiated reference screenshot](/media/articles/universal-login/text-customization/mfa-webauth-roaming-challenge.png)</Frame>
+<Frame>![mfa-webauthn-challenge-user-initiated reference screenshot](/docs/media/articles/universal-login/text-customization/mfa-webauth-roaming-challenge.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3569,7 +3569,7 @@ The available `prompt` values are:
 
 ## Screen: mfa-webauthn-change-key-nickname
 
-<Frame>![mfa-webauthn-change-key-nickname reference screenshot](/media/articles/universal-login/text-customization/mfa-webauth-change-key-nickname.png)</Frame>
+<Frame>![mfa-webauthn-change-key-nickname reference screenshot](/docs/media/articles/universal-login/text-customization/mfa-webauth-change-key-nickname.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -3651,7 +3651,7 @@ The available `prompt` values are:
 
 ## Screen: mfa-webauthn-enrollment-success
 
-<Frame>![mfa-webauthn-enrollment-success reference screenshot](/media/articles/universal-login/text-customization/mfa-webauthn-enrollment-success.png)</Frame>
+<Frame>![mfa-webauthn-enrollment-success reference screenshot](/docs/media/articles/universal-login/text-customization/mfa-webauthn-enrollment-success.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -6039,7 +6039,7 @@ The available `prompt` values are:
 
 ## Screen: status
 
-<Frame>![status reference screenshot](/images/cdy7uua7fh8z/6sVCv5Bq3QI0rhe21wzU8E/8e03d84d711293ad9dbf13f5f6569994/Screenshot_2025-07-22_at_1.49.06%C3%A2__PM.png)</Frame>
+<Frame>![status reference screenshot](/docs/images/cdy7uua7fh8z/6sVCv5Bq3QI0rhe21wzU8E/8e03d84d711293ad9dbf13f5f6569994/Screenshot_2025-07-22_at_1.49.06%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -6089,7 +6089,7 @@ The available `prompt` values are:
 
 ## Screen: brute-force-protection-unblock
 
-<Frame>![brute-force-protection-unblock reference screenshot](/images/cdy7uua7fh8z/7iOAN9mMRsGcnStYmli8iA/e4400cb427cb086119ddccd6e2c18d36/Screenshot_2025-07-22_at_1.34.29%C3%A2__PM.png)</Frame>
+<Frame>![brute-force-protection-unblock reference screenshot](/docs/images/cdy7uua7fh8z/7iOAN9mMRsGcnStYmli8iA/e4400cb427cb086119ddccd6e2c18d36/Screenshot_2025-07-22_at_1.34.29%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -6119,7 +6119,7 @@ The available `prompt` values are:
 
 ## Screen: brute-force-protection-unblock-success
 
-<Frame>![brute-force-protection-unblock-success reference screenshot](/images/cdy7uua7fh8z/49UsY6k83g62qpp4c2at8q/74e93b893cb1495f9c618d02eb62c35d/Screenshot_2025-07-22_at_1.34.45%C3%A2__PM.png)</Frame>
+<Frame>![brute-force-protection-unblock-success reference screenshot](/docs/images/cdy7uua7fh8z/49UsY6k83g62qpp4c2at8q/74e93b893cb1495f9c618d02eb62c35d/Screenshot_2025-07-22_at_1.34.45%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -6149,7 +6149,7 @@ The available `prompt` values are:
 
 ## Screen: brute-force-protection-unblock-failure
 
-<Frame>![brute-force-protection-unblock-failure reference screenshot](/images/cdy7uua7fh8z/5Oxo7dieeeH9KtVLAjQiRR/ec4cc47ff2f5123cda905fca904f8e8d/Screenshot_2025-07-22_at_1.34.58%C3%A2__PM.png)</Frame>
+<Frame>![brute-force-protection-unblock-failure reference screenshot](/docs/images/cdy7uua7fh8z/5Oxo7dieeeH9KtVLAjQiRR/ec4cc47ff2f5123cda905fca904f8e8d/Screenshot_2025-07-22_at_1.34.58%C3%A2__PM.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -6229,6 +6229,6 @@ Some screens have variables in the text that are replaced at runtime based on co
 
 ## Learn more
 
-* [Universal Login Experience](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience)
-* [Universal Login Internationalization](/customize/internationalization-and-localization/universal-login-internationalization)
-* [Customize Universal Login Page Templates](/customize/login-pages/universal-login/customize-templates)
+* [Universal Login Experience](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience)
+* [Universal Login Internationalization](/docs/customize/internationalization-and-localization/universal-login-internationalization)
+* [Customize Universal Login Page Templates](/docs/customize/login-pages/universal-login/customize-templates)

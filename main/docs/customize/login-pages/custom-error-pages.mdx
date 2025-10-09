@@ -10,13 +10,13 @@ title: Customize Error Pages
   events.
 'twitter:title': Customize Error Pages
 ---
-When an authorization error occurs, and your callback URL is valid, the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip> returns the appropriate error and state parameters to your callback URL. If your callback URL is invalid, your application will display the [default Auth0 error page](/authenticate/login/auth0-universal-login/error-pages).
+When an authorization error occurs, and your callback URL is valid, the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip> returns the appropriate error and state parameters to your callback URL. If your callback URL is invalid, your application will display the [default Auth0 error page](/docs/authenticate/login/auth0-universal-login/error-pages).
 
 Your application may also display the default Auth0 error page for reasons other than an invalid callback URL, such as:
 
 * Required parameters are missing when calling the Auth0 Authentication API [Login endpoint](https://auth0.com/docs/api/authentication#login).
 * User opens an expired password reset link (when using the Classic Login experience).
-* User navigates to a bookmarked login page and a [Default Login Route](/authenticate/login/auth0-universal-login/configure-default-login-routes) is not specified.
+* User navigates to a bookmarked login page and a [Default Login Route](/docs/authenticate/login/auth0-universal-login/configure-default-login-routes) is not specified.
 
 ## Parameters
 
@@ -76,7 +76,7 @@ Use the Dashboard to configure Auth0 to redirect users to a custom error page:
 
 ### Redirect users to a custom error page using the Management API
 
-Use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [Update Tenant Settings](https://auth0.com/docs/api/management/v2/#!/Tenants/patch_settings) endpoint. Replace the `{mgmtApiAccessToken}` placeholder value with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, and update the value of the `url` field in the JSON body to point to the location of the error page.
+Use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Update Tenant Settings](https://auth0.com/docs/api/management/v2/#!/Tenants/patch_settings) endpoint. Replace the `{mgmtApiAccessToken}` placeholder value with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, and update the value of the `url` field in the JSON body to point to the location of the error page.
 
 <CodeGroup>
 ```bash cURL lines
@@ -571,4 +571,4 @@ To prevent XSS vulnerabilities, sanitize your custom template using Liquid's [es
 
 ## Learn more
 
-* [Auth0 Universal Login](/authenticate/login/auth0-universal-login)
+* [Auth0 Universal Login](/docs/authenticate/login/auth0-universal-login)

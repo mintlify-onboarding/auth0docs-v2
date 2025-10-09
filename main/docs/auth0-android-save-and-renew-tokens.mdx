@@ -8,13 +8,13 @@ title: Auth0.Android Save and Renew Tokens
 'twitter:description': Keeping your user logged in with Auth0.Android
 'twitter:title': Auth0.Android Save and Renew Tokens
 ---
-When an authentication is performed with the `offline_access` scope included, it returns a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+token">refresh token</Tooltip> that can be used to request a new user token, without forcing the user to perform authentication again.
+When an authentication is performed with the `offline_access` scope included, it returns a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip> that can be used to request a new user token, without forcing the user to perform authentication again.
 
 ## Credentials Manager
 
 [Auth0.Android](https://github.com/auth0/Auth0.Android) provides a utility class to streamline the process of storing and renewing credentials. You can access the `accessToken` or `idToken` properties from the [Credentials](https://github.com/auth0/Auth0.Android/blob/master/auth0/src/main/java/com/auth0/android/result/Credentials.java) instance. This is the preferred method to manage user credentials.
 
-Credential Managers are included as part of the Auth0.Android SDK. If this is not yet part of your dependencies, follow the instructions in [Auth0.Android](/libraries/auth0-android).
+Credential Managers are included as part of the Auth0.Android SDK. If this is not yet part of your dependencies, follow the instructions in [Auth0.Android](/docs/libraries/auth0-android).
 
 There are two classes you can use to manage credentials:
 

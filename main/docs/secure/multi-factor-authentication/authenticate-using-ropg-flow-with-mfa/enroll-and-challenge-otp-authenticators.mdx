@@ -10,22 +10,22 @@ title: Enroll and Challenge OTP Authenticators
   (OTP) as an authentication factor.
 'twitter:title': Enroll and Challenge OTP Authenticators
 ---
-Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
+Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/docs/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
 
 ## Prerequisites
 
 Before you can use the MFA APIs, you'll need to enable the MFA grant type for your application. Go to [Auth0 Dashboard > Applications > Advanced Settings > Grant Types](https://manage.auth0.com/#/applications) and select **MFA**.
 
-* [Configure OTP](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa) as a factor in the Dashboard or using the [Management API](https://auth0.com/docs/api/management/v2#!/Guardian/put_factors_by_name).
+* [Configure OTP](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa) as a factor in the Dashboard or using the [Management API](https://auth0.com/docs/api/management/v2#!/Guardian/put_factors_by_name).
 
 ## Enroll with OTP
 
 ### Get MFA token
 
-Depending on when you are triggering enrollment, you can obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> for using the MFA API in different ways:
+Depending on when you are triggering enrollment, you can obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> for using the MFA API in different ways:
 
-* If you are enrolling during authentication, see [Authenticate With Resource Owner Password Grant and MFA](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
-* If you want to let the user enroll a factor at any moment, see [Manage MFA Factor Enrollments](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api).
+* If you are enrolling during authentication, see [Authenticate With Resource Owner Password Grant and MFA](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
+* If you want to let the user enroll a factor at any moment, see [Manage MFA Factor Enrollments](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api).
 
 ### Enroll authenticator
 
@@ -259,7 +259,7 @@ If this is the first time the user is associating an authenticator, you'll notic
 
 To confirm the enrollment, the end user will need to enter the secret obtained in the previous step in an OTP generator application like Google Authenticator. They can enter the secret by scanning a QR code with the `barcode_uri` or by typing the secret code manually in that OTP application. You should provide users a way to get the secret as text in case they cannot scan the QR code (for example, if they are enrolling from a mobile device, or using a desktop OTP application).
 
-After the user enters the secret, the OTP application will display a 6-digit code, that the user should enter in your application. The application should then make a `POST` request to the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/glossary?term=Token+endpoint">Token endpoint</Tooltip>, including that `otp` value.
+After the user enters the secret, the OTP application will display a 6-digit code, that the user should enter in your application. The application should then make a `POST` request to the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/docs/glossary?term=Token+endpoint">Token endpoint</Tooltip>, including that `otp` value.
 
 <CodeGroup>
 ```bash cURL lines
@@ -490,7 +490,7 @@ You can check at any point to verify whether an authenticator has been confirmed
 
 ### Get MFA token
 
-Get an MFA token following the steps described in [Authenticate With Resource Owner Password Grant and MFA](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
+Get an MFA token following the steps described in [Authenticate With Resource Owner Password Grant and MFA](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
 
 ### Retrieve enrolled authenticators
 
@@ -927,9 +927,9 @@ If the call was successful, you'll receive a response in the format below, conta
 
 ## Learn more
 
-* [Manage Authentication Factors with Authentication API](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
-* [Configure OTP Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
-* [Challenge with Recovery Codes](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/challenge-with-recovery-codes)
-* [Enroll and Challenge SMS and Voice Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
-* [Enroll and Challenge Email Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
-* [Enroll and Challenge Push Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)
+* [Manage Authentication Factors with Authentication API](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
+* [Configure OTP Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
+* [Challenge with Recovery Codes](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/challenge-with-recovery-codes)
+* [Enroll and Challenge SMS and Voice Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
+* [Enroll and Challenge Email Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
+* [Enroll and Challenge Push Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-push-authenticators)

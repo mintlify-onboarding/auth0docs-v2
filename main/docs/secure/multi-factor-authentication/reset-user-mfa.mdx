@@ -10,7 +10,7 @@ title: Reset User Multi-Factor Authentication and Recovery Codes
   device and do not have a recovery code.
 'twitter:title': Reset User Multi-Factor Authentication and Recovery Codes
 ---
-If a user has lost their mobile device, they can use their recovery code to log in. If they do not have a recovery code, they will need their tenant administrator to reset their <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA). This action is equivalent to removing or deleting the user's MFA registration. The MFA settings associated with the user will be removed, which allows them to set up MFA as if they were a new user on their next login attempt. To reset an admin's MFA as opposed to an end user's MFA, please contact [Auth0 Support](/troubleshoot/customer-support).
+If a user has lost their mobile device, they can use their recovery code to log in. If they do not have a recovery code, they will need their tenant administrator to reset their <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA). This action is equivalent to removing or deleting the user's MFA registration. The MFA settings associated with the user will be removed, which allows them to set up MFA as if they were a new user on their next login attempt. To reset an admin's MFA as opposed to an end user's MFA, please contact [Auth0 Support](/docs/troubleshoot/customer-support).
 
 ## Use the Dashboard
 
@@ -24,7 +24,7 @@ The next time the user logs in, they will need to set up their MFA just like a n
 
 ## Use the Management API
 
-As an admin, you can also use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to delete a user's MFA enrollment using `DELETE` `/api/v2/users/{id}/authentication-methods`. If the user has more than one enrollment, you will need to repeat the process for each enrollment.
+As an admin, you can also use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to delete a user's MFA enrollment using `DELETE` `/api/v2/users/{id}/authentication-methods`. If the user has more than one enrollment, you will need to repeat the process for each enrollment.
 
 ## Recovery codes
 
@@ -34,5 +34,5 @@ If a user uninstalls then later re-installs Guardian, they may be prompted to en
 
 ## Learn more
 
-* [Reset Account Passwords](/troubleshoot/customer-support/reset-account-passwords)
-* [Troubleshoot Multi-Factor Authentication Issues](/troubleshoot/authentication-issues/troubleshoot-mfa-issues)
+* [Reset Account Passwords](/docs/troubleshoot/customer-support/reset-account-passwords)
+* [Troubleshoot Multi-Factor Authentication Issues](/docs/troubleshoot/authentication-issues/troubleshoot-mfa-issues)

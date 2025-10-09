@@ -10,7 +10,7 @@ title: Configure SSOCircle as SAML Identity Provider
   Single Sign-on (SSO), authenticating users against SSOCircle.
 'twitter:title': Configure SSOCircle as SAML Identity Provider
 ---
-Configure SSOCircle as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> by completing the following steps:
+Configure SSOCircle as an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> by completing the following steps:
 
 1. Obtain SSOCircle metadata.
 2. Configure enterprise connection in Auth0.
@@ -79,7 +79,7 @@ You must have a [SSOCircle](https://idp.ssocircle.com/) account.
    1. If you are a domain administrator, click **Continue** for additional instructions on SAML identity provider configuration.
    2. If you are not, you can give your domain administrator the provided URL so that they can finish the configuration.
 
-You can access the metadata for an Auth0 <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> connection using a URL with the following format:
+You can access the metadata for an Auth0 <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> connection using a URL with the following format:
 `https://{yourDomain}/samlp/metadata?connection={yourConnectionName}`.
 
 You will need to provide this metadata to SSOCircle in the next step.
@@ -128,13 +128,13 @@ You will need to provide this metadata to SSOCircle in the next step.
 
 ### Test enterprise connection
 
-1. To test your connection, follow the steps in [Test Enterprise Connections](/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
+1. To test your connection, follow the steps in [Test Enterprise Connections](/docs/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
 2. During this process you will be asked to log in and consent.
 3. Additionally, if you see a message that says, "Your session has timed out," click the **Return to Login page** link below the message.
 
 If logging in to your application doesn't work the first time, clear your browser's history and cookies before testing again. The browser may not be picking up the latest version of your HTML.
 
-When troubleshooting <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip>, it is often helpful to capture an HTTP trace of the interaction. There are many tools that will capture the HTTP traffic from your browser for analysis (search for "HTTP Trace" to find one appropriate for your needs). Once you have an HTTP tracer, capture the login sequence from start to finish and analyze the trace to see the sequence of `GET` requests to see where the error occurs. You should see:
+When troubleshooting <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip>, it is often helpful to capture an HTTP trace of the interaction. There are many tools that will capture the HTTP traffic from your browser for analysis (search for "HTTP Trace" to find one appropriate for your needs). Once you have an HTTP tracer, capture the login sequence from start to finish and analyze the trace to see the sequence of `GET` requests to see where the error occurs. You should see:
 
 * A redirect from your original site to the IDP
 * A post of credentials (if you were asked to log in)

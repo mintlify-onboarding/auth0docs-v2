@@ -60,7 +60,7 @@ Next, we need to set our dependencies. We will use the following modules:
 
 * **express**: This module adds the [Express web application framework](https://expressjs.com/).
 * **cors**: This module adds support for enabling [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) which is required since the API will be called from a Single-Page Application running on a different domain inside a web browser.
-* **jwks-rsa**: This library retrieves RSA signing keys from a JWKS (JSON Web Key Set) endpoint. Using `expressJwtSecret` we can generate a secret provider that will provide the right signing key to `express-jwt` based on the `kid` in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> header. For more information refer to the [node-jwks-rsa GitHub repository](https://github.com/auth0/node-jwks-rsa).
+* **jwks-rsa**: This library retrieves RSA signing keys from a JWKS (JSON Web Key Set) endpoint. Using `expressJwtSecret` we can generate a secret provider that will provide the right signing key to `express-jwt` based on the `kid` in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> header. For more information refer to the [node-jwks-rsa GitHub repository](https://github.com/auth0/node-jwks-rsa).
 * **express-jwt**: This module lets you authenticate HTTP requests using JWT tokens in your Node.js applications. It provides several functions that make working with JWTs easier. For more information refer to the [express-jwt GitHub repository](https://github.com/auth0/express-jwt).
 * **body-parser**: This is a Node.js body parsing middleware. It extracts the entire body portion of an incoming request stream and exposes it on `req.body` as something easier to interface with.For more information and several alternatives refer to the body-parser GitHub repository.
 
@@ -130,7 +130,7 @@ In order to validate our token we will use the `jwt` function, provided by the
 
 The steps we will follow in our code are:
 
-* Create the middleware function to validate the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>.
+* Create the middleware function to validate the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>.
 * Enable the use of the middleware in our routes.
 
 You can also write some code to actually save the timesheet to a database. This is our sample implementation (some code is omitted for brevity):
@@ -179,7 +179,7 @@ If we launch our server now and do an HTTP POST to `localhost:8080/timesheets`�
 
 In order to test the working scenario as well we need to:
 
-* Get an Access Token. For details on how to do so refer to: [Get an Access Token](/get-started/architecture-scenarios/server-application-api#get-an-access-token).
+* Get an Access Token. For details on how to do so refer to: [Get an Access Token](/docs/get-started/architecture-scenarios/server-application-api#get-an-access-token).
 * Invoke the API while adding an `Authorization` header to our request with the value `Bearer ACCESS_TOKEN` (where `ACCESS_TOKEN` is the value of the token we retrieved in the first step).
 
 ## Step 3. Check the application permissions
@@ -199,7 +199,7 @@ npm install express-jwt-authz --save
 
 Now it is as simple as adding a call to `jwtAuthz(...)` to your middleware to ensure that the JWT contain a particular scope in order to execute a particular endpoint.
 
-We will add an additional dependency. The **express-jwt-authz** library, which is used in conjunction with express-jwt, validates the [JWT](/secure/tokens/json-web-tokens) and ensures it bears the correct permissions to call the desired endpoint. For more information refer to the [express-jwt-authz GitHub repository](https://github.com/auth0/express-jwt-authz).
+We will add an additional dependency. The **express-jwt-authz** library, which is used in conjunction with express-jwt, validates the [JWT](/docs/secure/tokens/json-web-tokens) and ensures it bears the correct permissions to call the desired endpoint. For more information refer to the [express-jwt-authz GitHub repository](https://github.com/auth0/express-jwt-authz).
 
 This is our sample implementation (some code is omitted for brevity):
 
@@ -256,7 +256,7 @@ function (user, context, callback) {
 
 
 
-The `namespace` is used to ensure the claim has a unique name and does not clash with the names of any of the standard OIDC claims. However, Auth0 supports namespaced and non-namespaced custom claims. For more info on custom claims, see [Create Custom Claims](/secure/tokens/json-web-tokens/create-custom-claims).
+The `namespace` is used to ensure the claim has a unique name and does not clash with the names of any of the standard OIDC claims. However, Auth0 supports namespaced and non-namespaced custom claims. For more info on custom claims, see [Create Custom Claims](/docs/secure/tokens/json-web-tokens/create-custom-claims).
 
 Next, inside your API, you can retrieve the value of the claim from `req.auth`, and use that as the unique user identity which you can associate with timesheet entries.
 

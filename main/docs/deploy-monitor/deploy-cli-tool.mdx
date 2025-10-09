@@ -35,7 +35,7 @@ This guide will help you to a working implementation of the Deploy CLI tool used
 
 <Warning>
 
-This tool can be destructive to your Auth0 tenant. It is recommended to be familiar with the [AUTH0_ALLOW_DELETE configuration](/deploy-monitor/deploy-cli-tool/configure-the-deploy-cli#auth0_allow_delete) and to test on development tenants prior to using in production.
+This tool can be destructive to your Auth0 tenant. It is recommended to be familiar with the [AUTH0_ALLOW_DELETE configuration](/docs/deploy-monitor/deploy-cli-tool/configure-the-deploy-cli#auth0_allow_delete) and to test on development tenants prior to using in production.
 
 </Warning>
 
@@ -47,7 +47,7 @@ To run as a standalone command-line tool:
 
 ### Create a dedicated Auth0 application
 
-In order for the Deploy CLI to call the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>, a dedicated Auth0 application must be created to make calls on behalf of the tool:
+In order for the Deploy CLI to call the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>, a dedicated Auth0 application must be created to make calls on behalf of the tool:
 
 1. Go to **Auth0 Dashboard > Applications > Applications**.
 2. Select **+ Create Application**.
@@ -63,7 +63,7 @@ In order for the Deploy CLI to call the <Tooltip tip="Management API: A product 
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The Deploy CLI's own client is not configurable by itself to [prevent potentially destructive changes](/deploy-monitor/deploy-cli-tool/resource-specific-documentation#client-grants).
+The Deploy CLI's own client is not configurable by itself to [prevent potentially destructive changes](/docs/deploy-monitor/deploy-cli-tool/resource-specific-documentation#client-grants).
 
 </Callout>
 
@@ -80,7 +80,7 @@ You can configure the Deploy CLI in two ways:
 1. Use the configuration file (`config.json`).
 2. Set environment variables.
 
-The decision to choose one or both would depend on your specific use case and preferences. To learn more, read [Configure the Deploy CLI](/deploy-monitor/deploy-cli-tool/configure-the-deploy-cli).
+The decision to choose one or both would depend on your specific use case and preferences. To learn more, read [Configure the Deploy CLI](/docs/deploy-monitor/deploy-cli-tool/configure-the-deploy-cli).
 
 For this example, set the following environment variables:
 
@@ -100,4 +100,4 @@ Once the process completes, observe the resource configuration files generated i
 
 `a0deploy import --config_file=config.json --input_file local/tenant.yaml`
 
-For a comprehensive list of flags and options, please read [Use as CLI](/deploy-monitor/deploy-cli-tool/use-as-a-cli).
+For a comprehensive list of flags and options, please read [Use as CLI](/docs/deploy-monitor/deploy-cli-tool/use-as-a-cli).

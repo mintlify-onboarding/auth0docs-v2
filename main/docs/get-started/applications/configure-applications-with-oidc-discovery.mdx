@@ -10,12 +10,12 @@ title: Configure Applications with OIDC Discovery
   applications with Auth0 using SDKs.
 'twitter:title': Configure Applications with OIDC Discovery
 ---
-[OpenID Connect (OIDC) Discovery](https://openid.net/specs/openid-connect-discovery-1_0-final.html#RFC5785) documents contain metadata about the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> (IdP). Adding discovery to your SDK to point your application to the `./wellknown` endpoint to consume information about your IdP could help configure your integration with the IdP.
+[OpenID Connect (OIDC) Discovery](https://openid.net/specs/openid-connect-discovery-1_0-final.html#RFC5785) documents contain metadata about the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP). Adding discovery to your SDK to point your application to the `./wellknown` endpoint to consume information about your IdP could help configure your integration with the IdP.
 
 Integrating OIDC discovery into your SDK provides:
 
 * Exposed endpoints of the IdP
-* Standard [OIDC supported claims and scope](/get-started/apis/scopes/openid-connect-scopes) (this excludes [custom claims](/secure/tokens/json-web-tokens/create-custom-claims) and scopes defined in your tenant)
+* Standard [OIDC supported claims and scope](/docs/get-started/apis/scopes/openid-connect-scopes) (this excludes [custom claims](/docs/secure/tokens/json-web-tokens/create-custom-claims) and scopes defined in your tenant)
 * Features supported by the IdP
 
 You can configure applications with the [OpenID Connect (OIDC)](https://openid.net/specs/openid-connect-discovery-1_0.html) discovery documents found at: `https://{yourDomain}/.well-known/openid-configuration`.
@@ -159,7 +159,7 @@ For example, this is how to configure OIDC middleware for Katana v3 (OWIN):
 
 ## RSA algorithm for JWTs
 
-The OIDC middleware does not support <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWTs">JWTs</Tooltip> signed with symmetric keys. Make sure you configure your app to use the RSA algorithm using public/private keys.
+The OIDC middleware does not support <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWTs">JWTs</Tooltip> signed with symmetric keys. Make sure you configure your app to use the RSA algorithm using public/private keys.
 
 1. Go to [Dashboard > Settings](https://manage.auth0.com/#/applications/{YOUR_AUTH0_CLIENT_ID}/settings).
 2. Scroll down to **Advanced Settings**.
@@ -169,9 +169,9 @@ With this setting, Auth0 will issue JWTs signed with your private signing key. Y
 
 ## Configure applications with OAuth 2.0 Authorization Server Metadata
 
-If your application or SDK references the [OAuth RFC-8414](https://www.rfc-editor.org/rfc/rfc8414) <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip> Metadata specification, you can use the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> alias to fetch metadata about the IdP: `/.well-known/oauth-authorization-server`. For example, the [Auth0 Model Context Protocol Server](/get-started/auth0-mcp-server) recommends all OAuth applications reference the OAuth Authorization Server Metadata specification.
+If your application or SDK references the [OAuth RFC-8414](https://www.rfc-editor.org/rfc/rfc8414) <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip> Metadata specification, you can use the <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> alias to fetch metadata about the IdP: `/.well-known/oauth-authorization-server`. For example, the [Auth0 Model Context Protocol Server](/docs/get-started/auth0-mcp-server) recommends all OAuth applications reference the OAuth Authorization Server Metadata specification.
 
 ## Learn more
 
-* [JSON Web Tokens](/secure/tokens/json-web-tokens)
-* [Create Custom Claims](/secure/tokens/json-web-tokens/create-custom-claims)
+* [JSON Web Tokens](/docs/secure/tokens/json-web-tokens)
+* [Create Custom Claims](/docs/secure/tokens/json-web-tokens/create-custom-claims)

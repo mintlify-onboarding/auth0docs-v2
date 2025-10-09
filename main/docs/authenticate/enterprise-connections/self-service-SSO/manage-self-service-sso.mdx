@@ -9,9 +9,9 @@ title: Manage Self-Service SSO
 'twitter:description': Use Self-Service SSO to delegate SSO setup to your B2B customers.
 'twitter:title': Manage Self-Service SSO
 ---
-Self-Service <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-On">Single Sign-On</Tooltip> (SSO) provides business-to-business (B2B) customers with the tools needed to delegate SSO setup to their enterprise customers.
+Self-Service <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-On">Single Sign-On</Tooltip> (SSO) provides business-to-business (B2B) customers with the tools needed to delegate SSO setup to their enterprise customers.
 
-Self-Service SSO requires minimal configuration in your Auth0 tenant and provides your customers with a self-service assistant that guides them through the enablement process. After a customer completes their setup, the SSO integration is automatically added to your tenant as an [Enterprise connection](/authenticate/enterprise-connections).
+Self-Service SSO requires minimal configuration in your Auth0 tenant and provides your customers with a self-service assistant that guides them through the enablement process. After a customer completes their setup, the SSO integration is automatically added to your tenant as an [Enterprise connection](/docs/authenticate/enterprise-connections).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -24,10 +24,10 @@ Users with the following Dashboard roles can engage with this feature:
 
 </Callout>
 
-To facilitate Self-Service SSO, you will configure the following components using either the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>:
+To facilitate Self-Service SSO, you will configure the following components using either the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>:
 
-* **Self-service profile**: Defines key elements of customer SSO implementations, including the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> (IdPs) they can use and which user attributes they must capture, such as email. You can create up to 20 profiles in your tenant for different customers or segments.
-* **Self-service access ticket**: Grants customer admins access to the [**self-service assistant**](/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience) and sets specific details for their resulting Enterprise connection. Access tickets allow customer admins to either create new or modify existing connections.
+* **Self-service profile**: Defines key elements of customer SSO implementations, including the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> (IdPs) they can use and which user attributes they must capture, such as email. You can create up to 20 profiles in your tenant for different customers or segments.
+* **Self-service access ticket**: Grants customer admins access to the [**self-service assistant**](/docs/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience) and sets specific details for their resulting Enterprise connection. Access tickets allow customer admins to either create new or modify existing connections.
 
 The sections below provide expanded steps for configuring self-service profiles and generating self-service access tickets to share with customer admins.
 
@@ -56,7 +56,7 @@ To create a self-service profile on the Auth0 Dashboard: 
       1. Select an existing UAP or create a new one. For a new UAP:<br></br>
          a. Add a name.<br></br>
          b. Review mappings to ensure the profile attributes are mapping to your preferred Auth0 attributes.
-            <Frame>![UAP mapping Authentication > Enterprise > Self-Service](/images/cdy7uua7fh8z/Authenticate>Enterprise>Self-Service>UAP.png)</Frame>
+            <Frame>![UAP mapping Authentication > Enterprise > Self-Service](/docs/images/cdy7uua7fh8z/Authenticate>Enterprise>Self-Service>UAP.png)</Frame>
 3. On the **Settings** tab, complete the sections below. Then, select **Save**.
    * **Identity Providers**: Enable one or more identity providers. In the self-service assistant, customer admins can select their preferred option from the list of enabled providers.
    * **Branding**: Provide a logo and primary color for the self-service assistant.
@@ -143,7 +143,7 @@ To create a self-service profile, first call the Self-Service Profiles endpoint 
 No.
 </td>
 <td>
-ID of the [User Attribute Profile](/docs/authenticate/enterprise-connections/user-attribute-profile) to associate with self-service accounts.
+ID of the [User Attribute Profile](/docs/docs/authenticate/enterprise-connections/user-attribute-profile) to associate with self-service accounts.
 </td>
 </tr>
 </tbody>
@@ -243,7 +243,7 @@ Self-service access tickets serve two primary purposes:
 * Granting customer admins access to the self-service assistant where they can configure a new SSO connection or modify an existing connection.
 * Predefining key details and behaviors of new SSO connections your customer admins will configure, such as which applications or organizations will be enabled for the new connection.
 
-When generating access tickets, you can also enable certain features such as <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> IdP-initated SSO, home realm discovery, and domain verification.
+When generating access tickets, you can also enable certain features such as <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> IdP-initated SSO, home realm discovery, and domain verification.
 
 #### SAML IdP-initiated SSO
 
@@ -251,7 +251,7 @@ SAML IdP-initiated SSO is a style of implementation that allows identity provide
 
 When enabling this option for Self-Service SSO, you must provide your default application and response protocol. You can also provide an optional query string to further customize the connection's behavior.
 
-To learn more about these options, review [Configure SAML Identity Provider-Initiated Single Sign-On](/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
+To learn more about these options, review [Configure SAML Identity Provider-Initiated Single Sign-On](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
 
 #### Domain verification and home realm discovery
 
@@ -261,7 +261,7 @@ While home realm discovery remains an available option, you can now use domain v
 
 ##### Home realm discovery
 
-[Home realm discovery](/get-started/architecture-scenarios/business-to-business/authentication#home-realm-discovery) allows you to enter a list of known email domains for your customer. Domains specified in this list are automatically considered verified, and the customer admin does not need to complete manual verification.
+[Home realm discovery](/docs/get-started/architecture-scenarios/business-to-business/authentication#home-realm-discovery) allows you to enter a list of known email domains for your customer. Domains specified in this list are automatically considered verified, and the customer admin does not need to complete manual verification.
 
 You can provide a list of domains when [generating self-service access tickets](#generate-access-tickets-for-new-connections) for your customer admins through either the Auth0 Dashboard or the Management API.
 
@@ -316,8 +316,8 @@ To generate an access ticket for a new connection through the Auth0 Dashboard:
    * **Display connection a as button**: Displays the connection as an authentication option on the login screen.
    * **Display connection as a button for organizations**: Displays the connection as an authentication option on the login screen for the specified organizations.
    * **Assign membership on login for organizations**: Automatically grant organization membership to users who authenticate with the connection.
-   * **Enable as a domain level connection**: Allow 3rd-party applications to use the connection; requires [Dynamic Client Registration](/docs/get-started/applications/dynamic-client-registration).
-   * **Accept SAML IdP-initiated SSO**: Enables [SAML Identity Provider-initiated SSO](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
+   * **Enable as a domain level connection**: Allow 3rd-party applications to use the connection; requires [Dynamic Client Registration](/docs/docs/get-started/applications/dynamic-client-registration).
+   * **Accept SAML IdP-initiated SSO**: Enables [SAML Identity Provider-initiated SSO](/docs/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
 5. Under **Home Realm Discovery**, optionally provide a comma-separated list of IdP domains to compare to users’ email domains. For more information, review [Home Realm Discovery](#home-realm-discovery).
 6. Under **Domain Verification Requirement**, choose your desired level of verification:
    * **Off**: Customer admins are not prompted to verify their domain when setting up SSO. **Off** is the default setting for new access tickets.
@@ -342,7 +342,7 @@ To generate an access ticket for a new connection through the Auth0 Dashboard:
 
 A Ticket Information popup containing the access ticket URL then displays. Copy and save this URL somewhere safe, as you cannot retrieve this URL again after closing the popup.
 
-You can share the access ticket URL with your customer admin through email, chat, or another communication channel to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
+You can share the access ticket URL with your customer admin through email, chat, or another communication channel to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/docs/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
 
 </Tab><Tab title="Management API">
 
@@ -376,7 +376,7 @@ In the request body, specify the parameters described in the table below.
 </tr>
 <tr>
 <td><code>connection_config.is_domain_connection</code></td>
-<td><strong>Optional</strong>. Boolean.<br/><br/>Set to <code>true</code> if the connection is at the domain level; requires <a href="/get-started/applications/dynamic-client-registration">Dynamic Client Registration</a>.</td>
+<td><strong>Optional</strong>. Boolean.<br/><br/>Set to <code>true</code> if the connection is at the domain level; requires <a href="/docs/get-started/applications/dynamic-client-registration">Dynamic Client Registration</a>.</td>
 </tr>
 <tr>
 <td><code>connection_config.show_as_button</code></td>
@@ -396,11 +396,11 @@ In the request body, specify the parameters described in the table below.
 </tr>
 <tr>
 <td><code>connection_config.options.domain_aliases</code></td>
-<td><strong>Optional</strong>. String[].<br/><br/>Domains to use for home realm discovery.<br/><br/>Domains entered into <code>domain_aliases</code> are automatically marked as verified. To have a customer admin verify a domain themselves, do not specify this attribute and instead use <code>domain_aliases_config</code> (described further on in this table). This option allows you to prompt the customer admin to verify their domain through the self-service assistant.<br/><br/>For more information, review <a href="/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#domain-verification-and-home-realm-discovery">Domain Verification and Home Realm Discovery</a>.</td>
+<td><strong>Optional</strong>. String[].<br/><br/>Domains to use for home realm discovery.<br/><br/>Domains entered into <code>domain_aliases</code> are automatically marked as verified. To have a customer admin verify a domain themselves, do not specify this attribute and instead use <code>domain_aliases_config</code> (described further on in this table). This option allows you to prompt the customer admin to verify their domain through the self-service assistant.<br/><br/>For more information, review <a href="/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#domain-verification-and-home-realm-discovery">Domain Verification and Home Realm Discovery</a>.</td>
 </tr>
 <tr>
 <td><code>connection_config.options.idpinitiated</code></td>
-<td><strong>Optional</strong>. Object.<br/><br/>Allows <a href="/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#saml-idp-initiated-sso">SAML IdP-initiated SSO</a> and includes the following attributes:<br/><br/><ul><li><code>enabled</code></li><li><code>client_id</code></li><li><code>client_protocol</code></li><li><code>client_authorizequery</code></li></ul><br/>For full details, review the <a href="https://auth0.com/docs/api/management/v2/self-service-profiles/post-sso-ticket">SSO Access Ticket</a> endpoint in the Management API Explorer.</td>
+<td><strong>Optional</strong>. Object.<br/><br/>Allows <a href="/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#saml-idp-initiated-sso">SAML IdP-initiated SSO</a> and includes the following attributes:<br/><br/><ul><li><code>enabled</code></li><li><code>client_id</code></li><li><code>client_protocol</code></li><li><code>client_authorizequery</code></li></ul><br/>For full details, review the <a href="https://auth0.com/docs/api/management/v2/self-service-profiles/post-sso-ticket">SSO Access Ticket</a> endpoint in the Management API Explorer.</td>
 </tr>
 <tr>
 <td><code>enabled_clients</code></td>
@@ -428,7 +428,7 @@ In the request body, specify the parameters described in the table below.
 </tr>
 <tr>
 <td><code>domain_aliases_config</code></td>
-<td><strong>Optional</strong>. Object.<br/><br/>Contains domain_verification which is used to determine whether domain verification is required, optional, or disabled.<br/><br/>Options for domain_verification include:<br/><br/><ul><li><code>none</code>: Disables domain verification. You can also disable domain verification by leaving the <code>domain_aliases_config</code> object out of your request.</li><li><code>optional</code>: Allows customer admins to skip domain verification during setup.</li><li><code>required</code>: Requires customer admins to verify their domain during setup.</li></ul><br/>To learn more, review <a href="/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#domain-verification-and-home-realm-discovery">Domain Verification and Home Realm Discovery</a>.</td>
+<td><strong>Optional</strong>. Object.<br/><br/>Contains domain_verification which is used to determine whether domain verification is required, optional, or disabled.<br/><br/>Options for domain_verification include:<br/><br/><ul><li><code>none</code>: Disables domain verification. You can also disable domain verification by leaving the <code>domain_aliases_config</code> object out of your request.</li><li><code>optional</code>: Allows customer admins to skip domain verification during setup.</li><li><code>required</code>: Requires customer admins to verify their domain during setup.</li></ul><br/>To learn more, review <a href="/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#domain-verification-and-home-realm-discovery">Domain Verification and Home Realm Discovery</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -495,7 +495,7 @@ In response, you receive a URL to the self-service access ticket:
 
 
 
-After you receive the ticket URL, share the link with your customer admin to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
+After you receive the ticket URL, share the link with your customer admin to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/docs/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
 
 You can wrap access ticket generation in your own self-service portal or send ticket URLs directly to customer admins through email, chat, or other communication channels.
 
@@ -554,7 +554,7 @@ To edit an access ticket through the Auth0 Dashboard:
 
 A Ticket Information popup containing the access ticket URL then displays. Copy and save this URL somewhere safe as you cannot retrieve this URL again after closing the popup.
 
-You can share the access ticket URL with your customer admin through email, chat, or another communication channel to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
+You can share the access ticket URL with your customer admin through email, chat, or another communication channel to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/docs/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
 
 </Tab><Tab title="Management API">
 
@@ -594,7 +594,7 @@ You cannot update `connection_config` details for an existing connection through
 </tr>
 <tr>
 <td><code>domain_aliases_config</code></td>
-<td><strong>Optional</strong>. Object.<br/><br/>Contains domain_verification which is used to determine whether domain verification is required, optional, or disabled.<br/><br/>Options for domain_verification include:<br/><br/><ul><li><code>none</code>: Disables domain verification. You can also disable domain verification by leaving the <code>domain_aliases_config</code> object out of your request.</li><li><code>optional</code>: Allows customer admins to skip domain verification during setup.</li><li><code>required</code>: Requires customer admins to verify their domain during setup.</li></ul><br/>To learn more, review <a href="/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#domain-verification-and-home-realm-discovery">Domain Verification and Home Realm Discovery</a>.</td>
+<td><strong>Optional</strong>. Object.<br/><br/>Contains domain_verification which is used to determine whether domain verification is required, optional, or disabled.<br/><br/>Options for domain_verification include:<br/><br/><ul><li><code>none</code>: Disables domain verification. You can also disable domain verification by leaving the <code>domain_aliases_config</code> object out of your request.</li><li><code>optional</code>: Allows customer admins to skip domain verification during setup.</li><li><code>required</code>: Requires customer admins to verify their domain during setup.</li></ul><br/>To learn more, review <a href="/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#domain-verification-and-home-realm-discovery">Domain Verification and Home Realm Discovery</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -629,7 +629,7 @@ In response, you receive a URL to the self-service access ticket:
 
 
 
-After you receive the ticket URL, share the link with your customer admin to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
+After you receive the ticket URL, share the link with your customer admin to grant them access to the self-service assistant. The assistant will then guide them through configuring the SSO connection. To learn more about that experience, review [Self-service assistant experience](/docs/authenticate/enterprise-connections/self-service-SSO#self-service-assistant-experience).
 
 You can wrap access ticket generation in your own self-service portal or send ticket URLs directly to customer admins through email, chat, or other communication channels.
 
@@ -639,7 +639,7 @@ You can wrap access ticket generation in your own self-service portal or send ti
 
 By default, an access ticket URL remains valid for five days. Upon accessing the URL, a customer admin has five hours to complete their setup.
 
-If needed, you can revoke an access ticket prior to its expiration. For example, if an access ticket is shared with the wrong <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>, you can revoke the ticket to prevent unauthorized access to the self-service assistant.
+If needed, you can revoke an access ticket prior to its expiration. For example, if an access ticket is shared with the wrong <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>, you can revoke the ticket to prevent unauthorized access to the self-service assistant.
 
 When you revoke an access ticket, its URL immediately becomes invalid, and any associated sessions are terminated. Customer admins with the URL will no longer be able to access the self-service assistant. You can then generate and share new access tickets as needed.
 
@@ -684,12 +684,12 @@ When using Self-Service SSO, the following rate limits apply:
 <tr>
 <td>Manage SSO profiles</td>
 <td><code>/api/v2/self-service-profiles</code></td>
-<td>Review the <a href="/troubleshoot/customer-support/operational-policies/rate-limit-policy/rate-limit-configurations">Management API rate limits</a> for your subscription type.</td>
+<td>Review the <a href="/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/rate-limit-configurations">Management API rate limits</a> for your subscription type.</td>
 </tr>
 <tr>
 <td>Create an access ticket</td>
 <td><code>/api/v2/self-service-profiles/{id}/sso-ticket</code></td>
-<td>Review the <a href="/troubleshoot/customer-support/operational-policies/rate-limit-policy/rate-limit-configurations">Management API rate limits</a> for your subscription type.</td>
+<td>Review the <a href="/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy/rate-limit-configurations">Management API rate limits</a> for your subscription type.</td>
 </tr>
 <tr>
 <td>Consume an access ticket</td>

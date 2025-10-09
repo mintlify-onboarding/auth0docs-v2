@@ -9,7 +9,7 @@ title: Remove Members From Organizations
   the Auth0 Dashboard or Management API.
 'twitter:title': Remove Members From Organizations
 ---
-You can remove members from [organizations](/manage-users/organizations/organizations-overview) using either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. Removing a user from an organization will remove only that user’s membership in the given organization; it will not remove the user from the connection or the Auth0 tenant. The removal process takes approximately 5 - 10 seconds.
+You can remove members from [organizations](/docs/manage-users/organizations/organizations-overview) using either the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. Removing a user from an organization will remove only that user’s membership in the given organization; it will not remove the user from the connection or the Auth0 tenant. The removal process takes approximately 5 - 10 seconds.
 
 ## Auth0 Dashboard
 
@@ -22,7 +22,7 @@ To remove a member via the Auth0 Dashboard:
 ## Management API
 
 To remove members via the Management API:
-Make a `DELETE` call to the `Delete Organization Members` endpoint. Be sure to replace the `ORG_ID`, `MGMT_API_ACCESS_TOKEN`, and `USER_ID` placeholder values with your organization ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, and user ID, respectively.
+Make a `DELETE` call to the `Delete Organization Members` endpoint. Be sure to replace the `ORG_ID`, `MGMT_API_ACCESS_TOKEN`, and `USER_ID` placeholder values with your organization ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, and user ID, respectively.
 
 <CodeGroup>
 
@@ -243,7 +243,7 @@ If you are using custom domains, this should be your custom domain name.
 | Value | Description |
 | --- | --- |
 | `ORG_ID` | ID of the organization for which you want to remove membership. |
-| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/secure/tokens/access-tokens/management-api-access-tokens) with the scope `delete:organization_members`. |
+| `MGMT_API_ACCESS_TOKEN` | [Access Token for the Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the scope `delete:organization_members`. |
 | `USER_ID` | ID of the user(s) you want to remove from the specified organization. |
 
 ### Response status codes

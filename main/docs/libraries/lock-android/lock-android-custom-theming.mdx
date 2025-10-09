@@ -38,7 +38,7 @@ First, create a new `Theme` that extends from `Lock.Theme`, and override the att
 </resources>
 ```
 
-To start using the new theme, set up the Activity in the `AndroidManifest.xml` file with the `android:theme` attribute. Depending on if you are using Classic Lock or <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> Lock, the activity declaration to update will differ. Because the Lock library declares these activities internally, you need to re-declare them with the special tools`:replace` attribute that will override the library's declaration only for the theme attribute.
+To start using the new theme, set up the Activity in the `AndroidManifest.xml` file with the `android:theme` attribute. Depending on if you are using Classic Lock or <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> Lock, the activity declaration to update will differ. Because the Lock library declares these activities internally, you need to re-declare them with the special tools`:replace` attribute that will override the library's declaration only for the theme attribute.
 
 ```xml lines
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -71,7 +71,7 @@ Please note that if you define your own Theme in a style resource file and forge
 
 ## Custom OAuth Connection Buttons
 
-To customize the style of a third-party <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> connection, you must create a new connection by using the `Custom Social Connections` [extension](https://manage.auth0.com/#/extensions), filling in every required field before saving the changes.
+To customize the style of a third-party <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> connection, you must create a new connection by using the `Custom Social Connections` [extension](https://manage.auth0.com/#/extensions), filling in every required field before saving the changes.
 
 To customize the style of a third-party identity provider connection in Lock, call the builder and pass both the `connectionName` and the `style` to use.
 

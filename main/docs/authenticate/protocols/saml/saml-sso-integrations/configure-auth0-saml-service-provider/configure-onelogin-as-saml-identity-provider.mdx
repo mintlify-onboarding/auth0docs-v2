@@ -10,7 +10,7 @@ title: Configure OneLogin as SAML Identity Provider
   for use with Auth0.
 'twitter:title': Configure OneLogin as SAML Identity Provider
 ---
-Configure OneLogin as a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> by completing the following steps:
+Configure OneLogin as a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> by completing the following steps:
 
 1. Configure OneLogin SAML integration
 2. Configure SAML connection in Auth0.
@@ -67,7 +67,7 @@ You must have OneLogin developer account.
 To finish configuration of the SAML application, the admin will need the following information regarding Auth0:
 
 * **SAML Consumer URL**: `https://{yourDomain}/login/callback`
-* **SAML <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=Audience">Audience</Tooltip>**: `urn:auth0:{yourTenant}:yourConnectionName`
+* **SAML <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=Audience">Audience</Tooltip>**: `urn:auth0:{yourTenant}:yourConnectionName`
 
 Also copy the values of the **post-back URL** and the **Entity ID** before heading back to the Configuration tab of your [OneLogin](https://www.onelogin.com/) app:
 
@@ -106,11 +106,11 @@ Next to your **SAML** connection, click the **Try** button. If all goes well, yo
 
 OneLogin offers an Application Portal/Launcher to its users. If you want to take advantage of this functionality, you will have to change the **SAML Consumer URL** in OneLogin dashboard to include the `connection` parameter (e.g., `https://{yourDomain}/login/callback?connection=onelogin-customer`). Be sure to replace `onelogin-customer` with the name of your Auth0 connection.
 
-Finally, be sure to enable IdP-initiated login for the connection and pick the application to which your user is redirected after the SAML assertion is consumed. To learn more, read [Configure Identity-Provider-Initiated Single Sign-On](/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
+Finally, be sure to enable IdP-initiated login for the connection and pick the application to which your user is redirected after the SAML assertion is consumed. To learn more, read [Configure Identity-Provider-Initiated Single Sign-On](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
 
 ## Edit connection mappings
 
-If you use OneLogin and Auth0 out of the box, users logging in using OneLogin and created in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> will be missing some profile information you might like to have.
+If you use OneLogin and Auth0 out of the box, users logging in using OneLogin and created in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> will be missing some profile information you might like to have.
 
 To collect additional user information, edit the appropriate parameters in the OneLogin dashboard, include the parameters in the SAML assertion, and create the mappings in the Auth0 connection.
 

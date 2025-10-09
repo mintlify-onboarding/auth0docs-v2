@@ -11,11 +11,11 @@ title: Get Management API Access Tokens for Single-Page Applications
 ---
 In certain cases, you may want to use Auth0's [Management API](https://auth0.com/docs/api/management/v2#!) to manage your applications and APIs rather than the Auth0 Management Dashboard.
 
-To call any <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> endpoints, you must authenticate using a specialized [Access Token](/secure/tokens/access-tokens) called the Management API Token. Management API Tokens are [JSON Web Tokens (JWTs)](/secure/tokens/json-web-tokens) that contain specific granted permissions (also known as scopes) for the Management API endpoints you want to call.
+To call any <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> endpoints, you must authenticate using a specialized [Access Token](/docs/secure/tokens/access-tokens) called the Management API Token. Management API Tokens are [JSON Web Tokens (JWTs)](/docs/secure/tokens/json-web-tokens) that contain specific granted permissions (also known as scopes) for the Management API endpoints you want to call.
 
 ## Limitations
 
-Since single-page applications (SPAs) are <Tooltip tip="Public Client: Client (application) that cannot hold credentials securely. Examples include a native desktop or mobile application and a JavaScript-based client-side web application (such as a single-page app (SPA))." cta="View Glossary" href="/glossary?term=public+clients">public clients</Tooltip> and cannot securely store sensitive information (such as a **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=Client+Secret">Client Secret</Tooltip>**), they must retrieve Management API Tokens from the frontend, unlike other [application types](/get-started/applications). This means that Management API Tokens for SPAs have certain limitations. Specifically, they are issued in the context of the user who is currently signed in to Auth0 which limits updates to only the logged-in user's data. Although this restricts use of the Management API, it can still be used to perform actions related to updating the logged-in user's user profile.
+Since single-page applications (SPAs) are <Tooltip tip="Public Client: Client (application) that cannot hold credentials securely. Examples include a native desktop or mobile application and a JavaScript-based client-side web application (such as a single-page app (SPA))." cta="View Glossary" href="/docs/glossary?term=public+clients">public clients</Tooltip> and cannot securely store sensitive information (such as a **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=Client+Secret">Client Secret</Tooltip>**), they must retrieve Management API Tokens from the frontend, unlike other [application types](/docs/get-started/applications). This means that Management API Tokens for SPAs have certain limitations. Specifically, they are issued in the context of the user who is currently signed in to Auth0 which limits updates to only the logged-in user's data. Although this restricts use of the Management API, it can still be used to perform actions related to updating the logged-in user's user profile.
 
 <Warning>
 
@@ -69,18 +69,18 @@ Password changes through the [PATCH /api/v2/users/{id}](https://auth0.com/docs/a
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The above scopes and endpoints are subject to [rate limits](/troubleshoot/customer-support/operational-policies/rate-limit-policy).
+The above scopes and endpoints are subject to [rate limits](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy).
 
 </Callout>
 
 ## Use Management API token to call Management API from a SPA
 
-You can retrieve a Management API Token from a SPA (using the Management API’s <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> to generate it) and use the token to call the Management API to retrieve the full user profile of the currently logged-in user.
+You can retrieve a Management API Token from a SPA (using the Management API’s <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> to generate it) and use the token to call the Management API to retrieve the full user profile of the currently logged-in user.
 
-1. [Retrieve a Management API token](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
+1. [Retrieve a Management API token](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production).
 
    1. Authenticate the user by redirecting them to the Authorization endpoint, which is where users are directed upon login or sign-up.
-   2. When you receive the Management API Token, it will be in [JSON Web Token format](/secure/tokens/json-web-tokens/json-web-token-structure).
+   2. When you receive the Management API Token, it will be in [JSON Web Token format](/docs/secure/tokens/json-web-tokens/json-web-token-structure).
    3. Decode it and review its contents.
 2. Call the Management API to retrieve the logged-in user's user profile from the [Get User by ID](https://auth0.com/docs/api/management/v2#!/Users/get_users_by_id) endpoint.
 
@@ -89,5 +89,5 @@ You can retrieve a Management API Token from a SPA (using the Management API’s
 
 ## Learn more
 
-* [Get Management API Access Tokens for Testing](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-testing)
-* [Get Management API Access Tokens for Production](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production)
+* [Get Management API Access Tokens for Testing](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-testing)
+* [Get Management API Access Tokens for Production](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production)

@@ -12,9 +12,9 @@ title: Rules Security Best Practices
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
@@ -60,7 +60,7 @@ function (user, context, callback) {
 
 
 
-However, if you want to execute different code depending on the company the user belongs to, you should not rely on the email domain, but instead, on data that can link the user to the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> that they authenticated with (the connection or identity-provider-specific fields such as Azure’s `tenant id`).
+However, if you want to execute different code depending on the company the user belongs to, you should not rely on the email domain, but instead, on data that can link the user to the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> that they authenticated with (the connection or identity-provider-specific fields such as Azure’s `tenant id`).
 
 ### Check for exact string matches
 
@@ -82,7 +82,7 @@ To learn more, [see the **Check if user email domain matches configured domain r
 
 ### Contextual bypass for Multi-Factor Authentication
 
-<Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=Multi-Factor+Authentication">Multi-Factor Authentication</Tooltip> (MFA) provides an additional layer of security in order to guard against unauthorized access. From a user experience perspective, this typically requires additional user interaction to provide a second authentication factor—i.e., typically presenting some additional credential(s) or authorizing some form of access request.
+<Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=Multi-Factor+Authentication">Multi-Factor Authentication</Tooltip> (MFA) provides an additional layer of security in order to guard against unauthorized access. From a user experience perspective, this typically requires additional user interaction to provide a second authentication factor—i.e., typically presenting some additional credential(s) or authorizing some form of access request.
 
 There are situations, though, when it may be desirable to bypass MFA for a user who has been designated as requiring multi-factor authentication. For instance, it maybe desirable to bypass MFA if a user has already presented both primary and secondary factors as part of authentication in the current browser context. Contextual checking in this way can help improve the user experience. However, if not done properly, it can open up serious security loop-holes which could lead to subsequent security breaches due to MFA being skipped. We therefore recommend that you observe the following guidance when considering whether to employ contextual bypass of MFA or not.
 
@@ -98,8 +98,8 @@ In a similar fashion to that already discussed, we recommend following guidance 
 
 ## Learn more
 
-* [Rules Anatomy Best Practices](/rules-best-practices/rules-anatomy-best-practices)
-* [Rules Environment Best Practices](/rules-best-practices/rules-environment-best-practices)
-* [Rules Execution Best Practices](/rules-best-practices/rules-execution-best-practices)
-* [Rules Testing Best Practices](/rules-best-practices/rules-testing-best-practices)
-* [Secure](/secure)
+* [Rules Anatomy Best Practices](/docs/rules-best-practices/rules-anatomy-best-practices)
+* [Rules Environment Best Practices](/docs/rules-best-practices/rules-environment-best-practices)
+* [Rules Execution Best Practices](/docs/rules-best-practices/rules-execution-best-practices)
+* [Rules Testing Best Practices](/docs/rules-best-practices/rules-testing-best-practices)
+* [Secure](/docs/secure)

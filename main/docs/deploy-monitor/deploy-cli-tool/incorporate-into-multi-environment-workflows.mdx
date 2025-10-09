@@ -50,7 +50,7 @@ It is recommended to have a separate Auth0 tenant/account for each environment y
 
 ## Resource configuration repository
 
-When exported, your Auth0 tenant state will be represented as a set of resource configuration files, either in a [YAML or directory format](/deploy-monitor/deploy-cli-tool/available-resource-configuration-formats). In a multi-environment context it is expected to have a single repository of resource configurations that is applied to all environments. In practice, this may exist as a directory in your project’s codebase or in a separate codebase altogether.
+When exported, your Auth0 tenant state will be represented as a set of resource configuration files, either in a [YAML or directory format](/docs/deploy-monitor/deploy-cli-tool/available-resource-configuration-formats). In a multi-environment context it is expected to have a single repository of resource configurations that is applied to all environments. In practice, this may exist as a directory in your project’s codebase or in a separate codebase altogether.
 
 You should have at least one branch for each tenant in your repository, which allows you to make changes without deploying them. This way, changes will only deploy when you merge the working branch into the primary branch (such as `main` or `master`). With this setup, you can have a continuous integration task for each environment that automatically deploys changes to the targeted environment whenever the primary branch receives updates.
 
@@ -65,11 +65,11 @@ As a precaution, you may want to set your production environment to deploy only 
 
 ## Unidirectional flow
 
-The multi-environment workflow works best when changes are propagated “up” in a single direction. Changes to the resource configuration files should first be applied to the lowest level environment (such as development) and then incrementally applied up through all other environments until applied to production. This unidirectional practice ensures sufficient testing and approval for changes to your tenant. Once set, it is recommended to not apply configurations directly to production through other means such as the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> unless those changes are captured by a subsequent Deploy CLI export. Otherwise, those changes are subject to overwrite.
+The multi-environment workflow works best when changes are propagated “up” in a single direction. Changes to the resource configuration files should first be applied to the lowest level environment (such as development) and then incrementally applied up through all other environments until applied to production. This unidirectional practice ensures sufficient testing and approval for changes to your tenant. Once set, it is recommended to not apply configurations directly to production through other means such as the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> unless those changes are captured by a subsequent Deploy CLI export. Otherwise, those changes are subject to overwrite.
 
 ## Environment-specific values
 
-While it is expected that all environments will share the same set of resource configuration files, environment-specific values can be expressed through separate tool configuration files and dynamic [Keyword Replacement](/deploy-monitor/deploy-cli-tool/keyword-replacement).
+While it is expected that all environments will share the same set of resource configuration files, environment-specific values can be expressed through separate tool configuration files and dynamic [Keyword Replacement](/docs/deploy-monitor/deploy-cli-tool/keyword-replacement).
 
 ## Separate configuration files
 
@@ -97,7 +97,7 @@ project-root
 
 ## Dynamic values with keyword replacement
 
-Once separate configuration files are adopted for each environment, keyword replacement through the `AUTH0_KEYWORD_REPLACE_MAPPINGS` configuration property can be used to express the dynamic replacement values depending on the environment. For example, you may find it necessary to have a separate set of allowed origins for your clients. To learn more, read [Keyword Replacement](/deploy-monitor/deploy-cli-tool/keyword-replacement).
+Once separate configuration files are adopted for each environment, keyword replacement through the `AUTH0_KEYWORD_REPLACE_MAPPINGS` configuration property can be used to express the dynamic replacement values depending on the environment. For example, you may find it necessary to have a separate set of allowed origins for your clients. To learn more, read [Keyword Replacement](/docs/deploy-monitor/deploy-cli-tool/keyword-replacement).
 
 ### Example config-dev.json
 

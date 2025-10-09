@@ -10,11 +10,11 @@ title: Promote Connections to Domain Level
   Auth0 Management API.
 'twitter:title': Promote Connections to Domain Level
 ---
-If your tenant has [Dynamic Client Registration](/get-started/applications/dynamic-client-registration) enabled, you can let [third party applications](/get-started/applications/confidential-and-public-applications/enable-third-party-applications) use a connection by promoting it to a domain level connection. Domain level connections are enabled or disabled for all applications in a tenant.
+If your tenant has [Dynamic Client Registration](/docs/get-started/applications/dynamic-client-registration) enabled, you can let [third party applications](/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications) use a connection by promoting it to a domain level connection. Domain level connections are enabled or disabled for all applications in a tenant.
 
-You can promote a connection to domain level using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can promote a connection to domain level using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
-Make a `PATCH` call to the [Update a Connection endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Be sure to replace `CONNECTION_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your connection ID and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
+Make a `PATCH` call to the [Update a Connection endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Be sure to replace `CONNECTION_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your connection ID and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -243,7 +243,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>MGMT_API_ACCESS_TOKEN</code></td>
-<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Token for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/glossary?term=scope">scope</Tooltip> <code>update:connections</code>.</td>
+<td><a href="https://auth0.com/docs/api/management/v2/tokens">Access Token for the Management API</a> with the <Tooltip tip="Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/docs/glossary?term=scope">scope</Tooltip> <code>update:connections</code>.</td>
 </tr>
 </tbody>
 </table>

@@ -11,24 +11,24 @@ title: Authenticate with Private Key JWT
 ---
 <Card title="Before you start">
 
-You need to create a new application in Auth0 Dashboard or convert an existing application before you continue. To learn more, read [Configure Private Key JWT Authentication](/get-started/applications/configure-private-key-jwt).
+You need to create a new application in Auth0 Dashboard or convert an existing application before you continue. To learn more, read [Configure Private Key JWT Authentication](/docs/get-started/applications/configure-private-key-jwt).
 
 </Card>
 
 You need to complete two steps when authenticating with `private_key_jwt:`
 
-1. Build the client assertion. This assertion is a JWT signed by the private key when you generated the key pair. To learn how to generate a key pair, read [Configure Private Key JWT Authentication](/get-started/applications/configure-private-key-jwt).
+1. Build the client assertion. This assertion is a JWT signed by the private key when you generated the key pair. To learn how to generate a key pair, read [Configure Private Key JWT Authentication](/docs/get-started/applications/configure-private-key-jwt).
 2. Use the assertion to authenticate against Auth0.
 
 ## Build the assertion
 
 You can use one of Auth0’s SDKs to build an assertion automatically for you. If you don’t use our SDKs, you will need to construct the assertion yourself.
 
-The assertion is a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip> (JWT) that should contain the following properties and claims:
+The assertion is a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip> (JWT) that should contain the following properties and claims:
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-All claims are required unless otherwise stated. To learn more about JWT claims, read [JSON Web Token Claims](/secure/tokens/json-web-tokens/json-web-token-claims).
+All claims are required unless otherwise stated. To learn more about JWT claims, read [JSON Web Token Claims](/docs/secure/tokens/json-web-tokens/json-web-token-claims).
 
 </Callout>
 
@@ -100,7 +100,7 @@ main();
 
 Example client assertion signed with a private key:
 
-<Frame>![private key example](/images/cdy7uua7fh8z/4O8zb1gZnEmUQ6FrRkfmlc/a30b73e09d51ca0b4bf929b91571a80a/2023-03-13_16-53-54.png)</Frame>
+<Frame>![private key example](/docs/images/cdy7uua7fh8z/4O8zb1gZnEmUQ6FrRkfmlc/a30b73e09d51ca0b4bf929b91571a80a/2023-03-13_16-53-54.png)</Frame>
 
 Corresponds to:
 
@@ -130,14 +130,14 @@ After you generate the JWT with the required information, you are ready to authe
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-The following example uses the [Client Credential Flow](/get-started/authentication-and-authorization-flow/client-credentials-flow). Private Key JWT authentication can be used for other grant types that also allow replacing `client_secret` with `client_assertion`.
+The following example uses the [Client Credential Flow](/docs/get-started/authentication-and-authorization-flow/client-credentials-flow). Private Key JWT authentication can be used for other grant types that also allow replacing `client_secret` with `client_assertion`.
 
 </Callout>
 
-To exchange the JWT assertion for an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>, call the Authentication API [token endpoint](https://auth0.com/docs/api/authentication#authenticate-user) with the following parameters:
+To exchange the JWT assertion for an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, call the Authentication API [token endpoint](https://auth0.com/docs/api/authentication#authenticate-user) with the following parameters:
 
 * `$client_assertion`: JWT assertion
-* `$resource_server_identifier`: <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+server">resource server</Tooltip> identifier. To learn more, read [Register APIs](/get-started/auth0-overview/set-up-apis).
+* `$resource_server_identifier`: <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+server">resource server</Tooltip> identifier. To learn more, read [Register APIs](/docs/get-started/auth0-overview/set-up-apis).
 
 ```bash lines
 curl --location --request POST 'https://$tenant/oauth/token' \

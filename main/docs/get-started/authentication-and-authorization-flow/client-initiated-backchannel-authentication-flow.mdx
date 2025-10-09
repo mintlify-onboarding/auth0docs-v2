@@ -10,7 +10,7 @@ title: Client-Initiated Backchannel Authentication Flow
   works.
 'twitter:title': Client-Initiated Backchannel Authentication Flow
 ---
-The Client-Initiated Backchannel Authentication (CIBA) Flow is an <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Foundation standard for a decoupled authentication flow. It enables solution developers to build authentication flows where the user logging in does not do so directly on the device that receives the ID or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip>, or the consumption device, but instead on a separate authentication device.
+The Client-Initiated Backchannel Authentication (CIBA) Flow is an <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Foundation standard for a decoupled authentication flow. It enables solution developers to build authentication flows where the user logging in does not do so directly on the device that receives the ID or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>, or the consumption device, but instead on a separate authentication device.
 
 ## Use cases
 
@@ -24,13 +24,13 @@ Use the CIBA Flow for the following use cases:
 
 The CIBA Flow does not rely on a client application redirecting the user via the browser to perform the login/authentication process. Instead, the client application directly calls the OpenID Provider via a backchannel request to initiate the authentication flow.
 
-The CIBA Flow does not create or update a grant. As a result, if the client application requests a given scope via the CIBA Flow, it won’t be stored as a grant if the user consents. This means that if configured, a different authentication flow (grant type) requesting the same scope(s) must prompt the user again for <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> consent.
+The CIBA Flow does not create or update a grant. As a result, if the client application requests a given scope via the CIBA Flow, it won’t be stored as a grant if the user consents. This means that if configured, a different authentication flow (grant type) requesting the same scope(s) must prompt the user again for <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> consent.
 
 Because the CIBA Flow does not have sessions i.e. browser cookies, the user does not have to be authenticated before a CIBA challenge. If they were already authenticated before a CIBA challenge, their existing session is not affected.
 
 The following diagram describes the CIBA Flow:
 
-<Frame>![](/images/cdy7uua7fh8z/4MAnVR9sNU2OtlGQ12taaV/cbf4f1686177fb0c9ddee8ff058bd796/Screenshot_2025-01-13_at_4.15.04_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/4MAnVR9sNU2OtlGQ12taaV/cbf4f1686177fb0c9ddee8ff058bd796/Screenshot_2025-01-13_at_4.15.04_PM.png)</Frame>
 
 1. The client application or consumption device requests user authentication.
 2. The client application’s backend submits a POST request to the `/bc-authorize` endpoint.
@@ -47,15 +47,15 @@ The following diagram describes the CIBA Flow:
 </thead>
 <tbody>
 <tr>
-<td><a href="/get-started/applications/configure-client-initiated-backchannel-authentication">Configure Client-Initiated Backchannel Authentication</a></td>
+<td><a href="/docs/get-started/applications/configure-client-initiated-backchannel-authentication">Configure Client-Initiated Backchannel Authentication</a></td>
 <td>How to configure the CIBA grant type for your application.</td>
 </tr>
 <tr>
-<td><a href="/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authentication-with-ciba">User Authentication with CIBA</a></td>
+<td><a href="/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authentication-with-ciba">User Authentication with CIBA</a></td>
 <td>How to authenticate users using the CIBA Flow, step by step.</td>
 </tr>
 <tr>
-<td><a href="/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authorization-with-ciba">User Authorization with CIBA</a></td>
+<td><a href="/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authorization-with-ciba">User Authorization with CIBA</a></td>
 <td>How to authorize users using the CIBA Flow, step by step.</td>
 </tr>
 </tbody>

@@ -10,11 +10,11 @@ title: Lock for Web
   for your web apps.
 'twitter:title': Lock for Web
 ---
-Lock is an embeddable login form that can be [configured to your needs](/libraries/lock/lock-configuration). Lock enables you to easily add social <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip>, so that your users can log in seamlessly using any desired provider.
+Lock is an embeddable login form that can be [configured to your needs](/docs/libraries/lock/lock-configuration). Lock enables you to easily add social <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip>, so that your users can log in seamlessly using any desired provider.
 
 <Warning>
 
-Embedded login for web applications uses [cross-origin authentication](/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
+Embedded login for web applications uses [cross-origin authentication](/docs/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/docs/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
 
 </Warning>
 
@@ -52,17 +52,17 @@ If you are using browserify or webpack to build your project and bundle its depe
 
 <Warning>
 
-Embedded login for web applications uses [cross-origin authentication](/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
+Embedded login for web applications uses [cross-origin authentication](/docs/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/docs/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
 
 </Warning>
 
-Embedding Lock within your application requires [cross-origin authentication](/authenticate/login/cross-origin-authentication) to be properly configured. Specifically, you need to set the **Allowed Web Origins** property to the domain making the request. You can find this field in the [Application Settings](https://manage.auth0.com/#/applications/{yourClientId}/settings).
+Embedding Lock within your application requires [cross-origin authentication](/docs/authenticate/login/cross-origin-authentication) to be properly configured. Specifically, you need to set the **Allowed Web Origins** property to the domain making the request. You can find this field in the [Application Settings](https://manage.auth0.com/#/applications/{yourClientId}/settings).
 
 ## Usage
 
 ### Step 1. Initializing Lock
 
-First, you'll need to initialize a new `Auth0Lock` object, and provide it with your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip> (the unique client ID for each Auth0 application, which you can get from the [management dashboard](https://manage.auth0.com/#)) and your Auth0 domain (for example `yourname.auth0.com`).
+First, you'll need to initialize a new `Auth0Lock` object, and provide it with your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip> (the unique client ID for each Auth0 application, which you can get from the [management dashboard](https://manage.auth0.com/#)) and your Auth0 domain (for example `yourname.auth0.com`).
 
 
 ```js lines
@@ -145,7 +145,7 @@ document.getElementById('btn-login').addEventListener('click', function() {
 
 ## Passwordless
 
-Lock's <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> Mode is only available in Lock v11.2.0 and later. Please use the [latest release of Lock](https://github.com/auth0/lock/releases) for this feature!
+Lock's <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> Mode is only available in Lock v11.2.0 and later. Please use the [latest release of Lock](https://github.com/auth0/lock/releases) for this feature!
 
 You can use Lock's Passwordless Mode to allow users to authenticate using just an email or mobile number. They will receive the code and then return to input it, or click the link, and they can be authenticated without remembering a password.
 
@@ -207,12 +207,12 @@ var lockPasswordless = new Auth0LockPasswordless(
 
 ### Single Sign-On with embedded authentication
 
-Apps with embedded login must meet two criteria in order to have <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO).
+Apps with embedded login must meet two criteria in order to have <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO).
 
 1. Both of the applications attempting SSO must be first-party applications. SSO with third-party applications will not work.
 2. They need to make use of custom domains and have both the applications which intend to have SSO as well as the Auth0 tenant on the same domain. Traditionally, Auth0 domains are in the format `foo.auth0.com`, but custom domains allow you to use the same domain for each of the applications in question as well as your Auth0 tenant, preventing the risk of CSRF attacks.
 
-Our recommendation is to use <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> instead of setting up SSO in embedded login scenarios. Universal Login is the most reliable and stable way to perform SSO, and is the only way to do so if you must use multiple domains for your applications, or use [third-party applications](/get-started/applications/confidential-and-public-applications/enable-third-party-applications).
+Our recommendation is to use <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> instead of setting up SSO in embedded login scenarios. Universal Login is the most reliable and stable way to perform SSO, and is the only way to do so if you must use multiple domains for your applications, or use [third-party applications](/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications).
 
 ## Error Codes and Descriptions
 
@@ -239,5 +239,5 @@ Browser compatibility is ensured for **Chrome**, **Safari**, **Firefox** and **I
 
 ## Learn more
 
-* [Lock API Reference](/libraries/lock/lock-api-reference)
-* [Lock Configuration Options](/libraries/lock/lock-configuration)
+* [Lock API Reference](/docs/libraries/lock/lock-api-reference)
+* [Lock Configuration Options](/docs/libraries/lock/lock-configuration)

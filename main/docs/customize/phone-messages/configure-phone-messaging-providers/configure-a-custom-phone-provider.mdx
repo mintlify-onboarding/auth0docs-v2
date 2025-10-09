@@ -9,14 +9,14 @@ title: Configure a Custom Phone Provider
 'twitter:description': Learn how to configure a custom phone provider using Actions
 'twitter:title': Configure a Custom Phone Provider
 ---
-You can configure a custom phone provider for SMS messages using a [phone number as a user identifier](/authenticate/database-connections/activate-and-configure-attributes-for-flexible-identifiers). A custom phone provider uses [Actions](/customize/actions/actions-overview) to route the SMS messages to a phone provider of your choice when verifying phone numbers and resetting passwords.
+You can configure a custom phone provider for SMS messages using a [phone number as a user identifier](/docs/authenticate/database-connections/activate-and-configure-attributes-for-flexible-identifiers). A custom phone provider uses [Actions](/docs/customize/actions/actions-overview) to route the SMS messages to a phone provider of your choice when verifying phone numbers and resetting passwords.
 
 You may want to configure a custom phone provider for the following use cases:
 
 * Use different phone providers based on application context, which may include different geographic regions where phone provider message prices can vary significantly.
 * Use different phone providers based on organization context, where some B2B customers may require specific providers.
 
-You can configure a custom phone provider with the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can configure a custom phone provider with the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Configure a custom phone provider with the Auth0 Dashboard or Management API
 
@@ -96,14 +96,14 @@ You can also edit a custom phone provider using the Management API.
 
 </Tab></Tabs>
 
-An example of a custom phone provider you can configure is [Twilio Verify](https://www.twilio.com/docs/verify). To learn more, read [Configure custom phone provider with Twilio Verify](/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider/configure-a-custom-phone-provider-with-twilio-verify).
+An example of a custom phone provider you can configure is [Twilio Verify](https://www.twilio.com/docs/verify). To learn more, read [Configure custom phone provider with Twilio Verify](/docs/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider/configure-a-custom-phone-provider-with-twilio-verify).
 
 ## Example custom-phone-provider Action
 
 The `custom-phone-provider` trigger is different from the `send-phone-message` trigger, which should not be used for configuring a custom phone provider. To learn more, read the following:
 
-* [Action Triggers: custom-phone-provider API Object](/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider/action-triggers-custom-phone-provider-api-object)
-* [Action Triggers: custom-phone-provider Event Object](/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider/actions-triggers-custom-phone-provider-event-object)
+* [Action Triggers: custom-phone-provider API Object](/docs/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider/action-triggers-custom-phone-provider-api-object)
+* [Action Triggers: custom-phone-provider Event Object](/docs/customize/phone-messages/configure-phone-messaging-providers/configure-a-custom-phone-provider/actions-triggers-custom-phone-provider-event-object)
 
 The following code sample is a `custom-phone-provider` Action that has the functionality of a `send-phone-message` Action:
 

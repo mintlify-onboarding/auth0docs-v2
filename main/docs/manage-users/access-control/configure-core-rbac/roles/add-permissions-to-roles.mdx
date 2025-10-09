@@ -9,14 +9,14 @@ title: Add Permissions to Roles
   or the Management API.
 'twitter:title': Add Permissions to Roles
 ---
-You can add permissions to [roles](/manage-users/access-control/rbac) using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. The roles and their permissions can be used with the API Authorization Core feature set.
+You can add permissions to [roles](/docs/manage-users/access-control/rbac) using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. The roles and their permissions can be used with the API Authorization Core feature set.
 
 ## Prerequisites
 
-* For role-based access control (RBAC) to work properly, you must enable it for your API using either the Dashboard or the Management API. The Authorization Core functionality is different from the Authorization Extension. For a comparison, read [Authorization Core vs. Authorization Extension](/manage-users/access-control/authorization-core-vs-authorization-extension).
-* Roles are selected from pre-defined values. If your list of roles is blank, you need to [create a role](/manage-users/access-control/configure-core-rbac/roles/create-roles).
-* [Set up an API](/get-started/auth0-overview/set-up-apis) in the Auth0 Dashboard.
-* Permissions are selected from predefined values. If your list of permissions is blank, you need to [add permissions](/get-started/apis/add-api-permissions) to your API.
+* For role-based access control (RBAC) to work properly, you must enable it for your API using either the Dashboard or the Management API. The Authorization Core functionality is different from the Authorization Extension. For a comparison, read [Authorization Core vs. Authorization Extension](/docs/manage-users/access-control/authorization-core-vs-authorization-extension).
+* Roles are selected from pre-defined values. If your list of roles is blank, you need to [create a role](/docs/manage-users/access-control/configure-core-rbac/roles/create-roles).
+* [Set up an API](/docs/get-started/auth0-overview/set-up-apis) in the Auth0 Dashboard.
+* Permissions are selected from predefined values. If your list of permissions is blank, you need to [add permissions](/docs/get-started/apis/add-api-permissions) to your API.
 
 ## Dashboard
 
@@ -26,7 +26,7 @@ You can add permissions to [roles](/manage-users/access-control/rbac) using the 
 
 ## Management API
 
-Make a `POST` call to the [Add Role Permissions endpoint](https://auth0.com/docs/api/management/v2#!/Roles/post_role_permission_assignment). Be sure to replace `ROLE_ID`, `MGMT_API_ACCESS_TOKEN`, `API_IDENTIFIER`, and `PERMISSION_NAME` placeholder values with your role ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>, API identifier (<Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>), and permission name(s), respectively.
+Make a `POST` call to the [Add Role Permissions endpoint](https://auth0.com/docs/api/management/v2#!/Roles/post_role_permission_assignment). Be sure to replace `ROLE_ID`, `MGMT_API_ACCESS_TOKEN`, `API_IDENTIFIER`, and `PERMISSION_NAME` placeholder values with your role ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, API identifier (<Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>), and permission name(s), respectively.
 
 <CodeGroup>
 
@@ -278,5 +278,5 @@ dataTask.resume()
 
 ## Learn more
 
-* [Assign Roles to Users](/manage-users/access-control/configure-core-rbac/rbac-users/assign-roles-to-users)
-* [Remove Permissions from Roles](/manage-users/access-control/configure-core-rbac/roles/remove-permissions-from-roles)
+* [Assign Roles to Users](/docs/manage-users/access-control/configure-core-rbac/rbac-users/assign-roles-to-users)
+* [Remove Permissions from Roles](/docs/manage-users/access-control/configure-core-rbac/roles/remove-permissions-from-roles)

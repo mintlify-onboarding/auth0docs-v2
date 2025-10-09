@@ -10,10 +10,10 @@ title: Migrate Users from Amazon Web Services
 ---
 As of April 2023, bulk migration of users from Amazon Web Services (AWS) to Auth0 is not feasible. Auth0 recommends using **Automatic Migration**, also known as **lazy loading**, by following the steps below.
 
-1. [Configure a Custom Database](/authenticate/database-connections/custom-db/create-db-connection) in Auth0 and point it to your AWS Cognito user pool.
+1. [Configure a Custom Database](/docs/authenticate/database-connections/custom-db/create-db-connection) in Auth0 and point it to your AWS Cognito user pool.
 2. Set Import Users to Auth0 to True.
 3. Define two scripts: one to get a user and another to login a user.
-4. With the Auth0 [get-user](/authenticate/database-connections/custom-db/templates/get-user) and [login](/authenticate/database-connections/custom-db/templates/login) scripts, use the [amazon-cognito-identity-js npm package APK](https://www.npmjs.com/package/amazon-cognito-identity-js) to automatically migrate your users.
+4. With the Auth0 [get-user](/docs/authenticate/database-connections/custom-db/templates/get-user) and [login](/docs/authenticate/database-connections/custom-db/templates/login) scripts, use the [amazon-cognito-identity-js npm package APK](https://www.npmjs.com/package/amazon-cognito-identity-js) to automatically migrate your users.
 
 Below is example JavaScript code.
 

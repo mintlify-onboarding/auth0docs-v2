@@ -10,7 +10,7 @@ title: Log Streams
   streaming.
 'twitter:title': Log Streams
 ---
-Auth0's log streaming service allows you to export tenant logs to a log analysis service. You can choose the content type and form and preview the payload using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Log streaming allows you to react to log events like password changes or new registrations with your own business logic. Using the Auth0 Dashboard and API, you can pause a stream, view and update settings, and check the health of the stream.
+Auth0's log streaming service allows you to export tenant logs to a log analysis service. You can choose the content type and form and preview the payload using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Log streaming allows you to react to log events like password changes or new registrations with your own business logic. Using the Auth0 Dashboard and API, you can pause a stream, view and update settings, and check the health of the stream.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -20,7 +20,7 @@ By enabling Log Streams, Customer becomes the Controller of such information and
 
 You can create a new log stream in the Auth0 Dashboard using one of the services we support or you can configure a stream to a service you already use with a custom webhook.
 
-<Frame>![Dashboard Monitoring Streams](/images/cdy7uua7fh8z/5ZY6sT68DabXNL9Dr4bhss/ff0f7306fcf9d64247a61a48b12a39a9/log_stream.png)</Frame>
+<Frame>![Dashboard Monitoring Streams](/docs/images/cdy7uua7fh8z/5ZY6sT68DabXNL9Dr4bhss/ff0f7306fcf9d64247a61a48b12a39a9/log_stream.png)</Frame>
 
 ## Supported log streaming services
 
@@ -41,13 +41,13 @@ We support a variety of [log streaming services](https://marketplace.auth0.com/f
 * [Verosint](https://marketplace.auth0.com/integrations/verosint-log-stream)
 * [Datadog](https://marketplace.auth0.com/integrations/datadog-log-streaming)
 
-  + Auth0 provides Datadog dashboard templates. To learn more, read [Use Auth0 Dashboard Templates with Datadog](/customize/log-streams/datadog-dashboard-templates).
+  + Auth0 provides Datadog dashboard templates. To learn more, read [Use Auth0 Dashboard Templates with Datadog](/docs/customize/log-streams/datadog-dashboard-templates).
 * [Splunk](https://marketplace.auth0.com/integrations/splunk-log-streaming)
 
-  + Auth0 also provides a dashboard to visualize the data from your Auth0 tenant. You can use the app to view recommended aggregations from Auth0 or to use them as a starting point to create your own custom visualizations. To learn more, read [Use Auth0 App for Splunk](/customize/log-streams/splunk-dashboard).
+  + Auth0 also provides a dashboard to visualize the data from your Auth0 tenant. You can use the app to view recommended aggregations from Auth0 or to use them as a starting point to create your own custom visualizations. To learn more, read [Use Auth0 App for Splunk](/docs/customize/log-streams/splunk-dashboard).
 * [Sumo Logic](https://marketplace.auth0.com/integrations/sumo-logic-log-streaming)
 
-  + Auth0 provides a Sumo Logic app and dashboard to visualize and monitor the health of login traffic from your Auth0 tenant. You can also use to view recommended aggregations from Auth0 or to use them as a starting point to create your own custom visualizations. To learn more, read [Use Auth0 App for Sumo Logic](/customize/log-streams/sumo-logic-dashboard).
+  + Auth0 provides a Sumo Logic app and dashboard to visualize and monitor the health of login traffic from your Auth0 tenant. You can also use to view recommended aggregations from Auth0 or to use them as a starting point to create your own custom visualizations. To learn more, read [Use Auth0 App for Sumo Logic](/docs/customize/log-streams/sumo-logic-dashboard).
 
 ## Delivery attempts
 
@@ -63,13 +63,13 @@ If we fail to reach your server for 7 consecutive days, we'll automatically paus
 
 ## Log retention
 
-Your Auth0 log retention period depends on your [subscription level](/deploy-monitor/logs/log-data-retention).
+Your Auth0 log retention period depends on your [subscription level](/docs/deploy-monitor/logs/log-data-retention).
 
 If there is an issue where your server does not receive logs sent from Auth0, you can delete the stream and then recreate it with the Starting Cursor field set to a specific day and time within the retention period.
 
 ## Filtering and PII obfuscation
 
-Customers can choose which [filter categories](/deploy-monitor/logs/log-event-filters) of their logs to stream and which to exclude to ensure the external destination receives only the relevant data. Customers can also choose to mask or hash Personal Identifiable Information (PII) in the streamed logs.
+Customers can choose which [filter categories](/docs/deploy-monitor/logs/log-event-filters) of their logs to stream and which to exclude to ensure the external destination receives only the relevant data. Customers can also choose to mask or hash Personal Identifiable Information (PII) in the streamed logs.
 
 ### PII obfuscation
 
@@ -116,6 +116,6 @@ The customer can obfuscate the following log data and field names when streaming
 
 ## Learn more
 
-* [Create Custom Log Streams Using Webhooks](/customize/log-streams/custom-log-streams)
-* [Check Log Stream Health](/customize/log-streams/check-log-stream-health)
-* [Log Stream Filters](/customize/log-streams/event-filters)
+* [Create Custom Log Streams Using Webhooks](/docs/customize/log-streams/custom-log-streams)
+* [Check Log Stream Health](/docs/customize/log-streams/check-log-stream-health)
+* [Log Stream Filters](/docs/customize/log-streams/event-filters)

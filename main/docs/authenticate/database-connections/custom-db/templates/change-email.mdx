@@ -12,9 +12,9 @@ title: Change Email Script Template
 ---
 The Change Email script implements the defined function when a user's email address or their email address verification status changes. We recommend naming this function `changeEmail`.
 
-The script is only used in a [legacy authentication scenario](/authenticate/database-connections/custom-db/overview-custom-db-connections), and is required if you want to update a user's email address (and/or email address verification status) in Auth0 and your external database in the same operation.
+The script is only used in a [legacy authentication scenario](/docs/authenticate/database-connections/custom-db/overview-custom-db-connections), and is required if you want to update a user's email address (and/or email address verification status) in Auth0 and your external database in the same operation.
 
-The Change Email script is not configurable through the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. To manage this script, you must use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [Create a connection](https://auth0.com/docs/api/management/v2#!/Connections/post_connections) or [Update a connection](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id) endpoint, or the [Auth0 Deploy CLI](/deploy-monitor/deploy-cli-tool).
+The Change Email script is not configurable through the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. To manage this script, you must use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Create a connection](https://auth0.com/docs/api/management/v2#!/Connections/post_connections) or [Update a connection](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id) endpoint, or the [Auth0 Deploy CLI](/docs/deploy-monitor/deploy-cli-tool).
 
 <Warning>
 
@@ -195,9 +195,9 @@ return callback(new Error("My custom error message."));
 
 ## Learn more
 
-* [Change Password Script Templates](/authenticate/database-connections/custom-db/templates/change-password)
-* [Create Script Templates](/authenticate/database-connections/custom-db/templates/create)
-* [Delete Script Templates](/authenticate/database-connections/custom-db/templates/delete)
-* [Get User Script Templates](/authenticate/database-connections/custom-db/templates/get-user)
-* [Login Script Templates](/authenticate/database-connections/custom-db/templates/login)
-* [Verify Script Templates](/authenticate/database-connections/custom-db/templates/verify)
+* [Change Password Script Templates](/docs/authenticate/database-connections/custom-db/templates/change-password)
+* [Create Script Templates](/docs/authenticate/database-connections/custom-db/templates/create)
+* [Delete Script Templates](/docs/authenticate/database-connections/custom-db/templates/delete)
+* [Get User Script Templates](/docs/authenticate/database-connections/custom-db/templates/get-user)
+* [Login Script Templates](/docs/authenticate/database-connections/custom-db/templates/login)
+* [Verify Script Templates](/docs/authenticate/database-connections/custom-db/templates/verify)

@@ -16,11 +16,11 @@ Private Key JWT is available for customers on the Enterprise plan. To upgrade, c
 
 </Callout>
 
-Private Key <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> Authentication supports [OIDC Connect Core Client Authentication 1.0](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) client authentication using JWT assertions signed with asymmetric key pairs. You can create a new application to use `private_key_jwt` or enable existing applications to use private key pairs for authentication.
+Private Key <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> Authentication supports [OIDC Connect Core Client Authentication 1.0](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) client authentication using JWT assertions signed with asymmetric key pairs. You can create a new application to use `private_key_jwt` or enable existing applications to use private key pairs for authentication.
 
 ## Prerequisites
 
-Before configuring an application that authenticates using Private Key JWT, you must [generate an RSA key pair](/secure/application-credentials/generate-rsa-key-pair).
+Before configuring an application that authenticates using Private Key JWT, you must [generate an RSA key pair](/docs/secure/application-credentials/generate-rsa-key-pair).
 
 ## Configure Private Key JWT
 
@@ -38,7 +38,7 @@ We recommend you securely store the current `client_secret` parameter before you
 4. Under the application settings, select the **Credentials** tab.
 5. Under **Authentication Methods**, select **Private Key JWT**.
 
-   <Frame>![Configure Private Key JWT Authentication - Auth0 Dashboard instructions](/images/cdy7uua7fh8z/33kfi48tkbMIOQJ8PBxj76/5b79ffda11ad58b27128068057e6e05c/Default_App_-_Creds_-_English.png)</Frame>
+   <Frame>![Configure Private Key JWT Authentication - Auth0 Dashboard instructions](/docs/images/cdy7uua7fh8z/33kfi48tkbMIOQJ8PBxj76/5b79ffda11ad58b27128068057e6e05c/Default_App_-_Creds_-_English.png)</Frame>
 6. Configure credential details:
 
    1. Enter a name for the credential.
@@ -82,7 +82,7 @@ You can update an existing credential with an expiration date with Auth0 Dashboa
 2. Select the **Credentials** tab.
 3. Choose the credential you want to update and select **Edit Credential**.
 
-   <Frame>![Dashboard - Applications - Application Settings - Credentials - update expiry date](/images/cdy7uua7fh8z/6858PTDkNCRZiIqtBVmciZ/ec25a602cfae5a0a5cf38049d050ceaa/Demo_Key2_-_English.png)</Frame>
+   <Frame>![Dashboard - Applications - Application Settings - Credentials - update expiry date](/docs/images/cdy7uua7fh8z/6858PTDkNCRZiIqtBVmciZ/ec25a602cfae5a0a5cf38049d050ceaa/Demo_Key2_-_English.png)</Frame>
 4. Select **Set an explicit expiry date for this Credential** and set a future date.
 5. Select **Update Credential**.
 
@@ -148,7 +148,7 @@ curl --location --request POST 'https://{domain}/api/v2/clients' \
 </tr>
 <tr>
 <td><code>managementApiAccessToken</code></td>
-<td><a href="/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scope <code>create:credentials</code>.</td>
+<td><a href="/docs/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scope <code>create:credentials</code>.</td>
 </tr>
 <tr>
 <td><code>pem</code></td>
@@ -242,7 +242,7 @@ curl --location --request POST 'https://{domain}/api/v2/clients/{clientId}/crede
 </tr>
 <tr>
 <td><code>managementApiAccessToken</code></td>
-<td><a href="/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scope <code>create:credentials</code>.</td>
+<td><a href="/docs/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scope <code>create:credentials</code>.</td>
 </tr>
 <tr>
 <td><code>pem</code></td>
@@ -322,7 +322,7 @@ curl --location --request PATCH 'https://{domain}/api/v2/clients/{clientId} \
 </tr>
 <tr>
 <td><code>managementApiAccessToken</code></td>
-<td><a href="/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scope <code>update:client</code> and <code>update:credentials</code>.</td>
+<td><a href="/docs/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scope <code>update:client</code> and <code>update:credentials</code>.</td>
 </tr>
 <tr>
 <td><code>credentialId</code></td>
@@ -337,7 +337,7 @@ curl --location --request PATCH 'https://{domain}/api/v2/clients/{clientId} \
 
 <Warning>
 
-Auth0 does not support use of HS256 as the applications’s JWT signing algorithm. You must have the `jwt_configuration.alg` field set to the RS256 algorithm. To learn how to change the signing algorithm, read [Change Application Signing Algorithms](/get-started/applications/change-application-signing-algorithms).
+Auth0 does not support use of HS256 as the applications’s JWT signing algorithm. You must have the `jwt_configuration.alg` field set to the RS256 algorithm. To learn how to change the signing algorithm, read [Change Application Signing Algorithms](/docs/get-started/applications/change-application-signing-algorithms).
 
 </Warning>
 
@@ -381,7 +381,7 @@ curl --location --request PATCH 'https://{domain}/api/v2/clients/{clientId} \
 </tr>
 <tr>
 <td><code>managementApiAccessToken</code></td>
-<td><a href="/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scopes <code>update:client</code> and <code>update:credentials</code>.</td>
+<td><a href="/docs/secure/tokens/access-tokens/management-api-access-tokens">Access token for the Management API</a> with the scopes <code>update:client</code> and <code>update:credentials</code>.</td>
 </tr>
 <tr>
 <td><code>tokenEndpointAuthMethod</code></td>
@@ -440,10 +440,10 @@ Auth0 enforces a minimum RSA key size of 2048 bits and a maximum key size of 409
 
 ## Rotate credentials
 
-To prevent leaked keys, Auth0 recommends you periodically rotate the key pair. To learn how, read [Rotate Credentials](/get-started/applications/rotate-credentials).
+To prevent leaked keys, Auth0 recommends you periodically rotate the key pair. To learn how, read [Rotate Credentials](/docs/get-started/applications/rotate-credentials).
 
 ## Learn more
 
-* [Application Credentials](/secure/application-credentials)
-* [Credential Settings](/get-started/applications/credentials)
-* [Authenticate with Private Key JWT](/get-started/authentication-and-authorization-flow/authenticate-with-private-key-jwt)
+* [Application Credentials](/docs/secure/application-credentials)
+* [Credential Settings](/docs/get-started/applications/credentials)
+* [Authenticate with Private Key JWT](/docs/get-started/authentication-and-authorization-flow/authenticate-with-private-key-jwt)

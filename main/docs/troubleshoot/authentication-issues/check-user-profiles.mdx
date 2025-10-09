@@ -9,7 +9,7 @@ title: Check User Profiles
 'twitter:title': Check User Profiles
 ---
 1. Is user profile information correct at the source (authorization server)?
-2. Generate and check the [HAR file](/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files), look for an `id_token`.
+2. Generate and check the [HAR file](/docs/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files), look for an `id_token`.
 
    <Warning>
 
@@ -30,16 +30,16 @@ title: Check User Profiles
 4. Check any custom database scripts or rule logic.
 5. Check if you called `/tokeninfo` endpoint and have a custom domain configured within Auth0. If so, you need to use `/userinfo` endpoint instead
 6. Check if you called `/userinfo` endpoint properly. You should pass an access token. You should call this endpoint with the default Auth0 domain even if the tenant has a custom domain enabled.
-7. Check if you specified the correct [scope](/get-started/apis/scopes) to get an Access Token.
+7. Check if you specified the correct [scope](/docs/get-started/apis/scopes) to get an Access Token.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-See [the Monitoring page](/deploy-monitor/monitor) for more details on each of the log events that can help you troubleshoot issues.
+See [the Monitoring page](/docs/deploy-monitor/monitor) for more details on each of the log events that can help you troubleshoot issues.
 
 </Callout>
 
 ## Learn more
 
-* [User Profiles](/manage-users/user-accounts/user-profiles)
-* [Normalized User Profiles](/manage-users/user-accounts/user-profiles/normalized-user-profiles)
-* [User Profile Structure](/manage-users/user-accounts/user-profiles/user-profile-structure)
+* [User Profiles](/docs/manage-users/user-accounts/user-profiles)
+* [Normalized User Profiles](/docs/manage-users/user-accounts/user-profiles/normalized-user-profiles)
+* [User Profile Structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure)

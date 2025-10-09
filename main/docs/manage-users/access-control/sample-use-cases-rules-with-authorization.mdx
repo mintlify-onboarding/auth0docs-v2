@@ -14,19 +14,19 @@ title: 'Sample Use Cases: Rules with Authorization'
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
 
-We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/customize/actions/actions-overview).
+We highly recommend that you use Actions to extend Auth0. With Actions, you have access to rich type information, inline documentation, and public `npm` packages, and can connect external integrations that enhance your overall extensibility experience. To learn more about what Actions offer, read [Understand How Auth0 Actions Work](/docs/customize/actions/actions-overview).
 
-To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
+To help with your migration, we offer guides that will help you [migrate from Rules to Actions](/docs/customize/actions/migrate/migrate-from-rules-to-actions) and [migrate from Hooks to Actions](/docs/customize/actions/migrate/migrate-from-hooks-to-actions). We also have a dedicated [Move to Actions](https://auth0.com/extensibility/movetoactions) page that highlights feature comparisons, [an Actions demo](https://www.youtube.com/watch?v=UesFSY1klrI), and other resources to help you on your migration journey.
 
 To read more about the Rules and Hooks deprecation, read our blog post: [Preparing for Rules and Hooks End of Life](https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/).
 
 </Warning>
 
-With [rules](/customize/rules), you can modify or complement the outcome of the decision made by the pre-configured [authorization policy](/manage-users/access-control/authorization-policies) to handle more complicated cases than is possible with [role-based access control (RBAC)](/manage-users/access-control/rbac) alone. Based on the order in which they run, rules can change the outcome of the authorization decision prior to the permissions being added to the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>. They can also allow you to customize the content of your tokens.
+With [rules](/docs/customize/rules), you can modify or complement the outcome of the decision made by the pre-configured [authorization policy](/docs/manage-users/access-control/authorization-policies) to handle more complicated cases than is possible with [role-based access control (RBAC)](/docs/manage-users/access-control/rbac) alone. Based on the order in which they run, rules can change the outcome of the authorization decision prior to the permissions being added to the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>. They can also allow you to customize the content of your tokens.
 
 ## Allow access only on weekdays for a specific application
 
-Let's say you have an application that you want to make sure is only accessible during weekdays. To do this, you would [create the following rule](/customize/rules/create-rules):
+Let's say you have an application that you want to make sure is only accessible during weekdays. To do this, you would [create the following rule](/docs/customize/rules/create-rules):
 
 ```js lines
 function (user, context, callback) {
@@ -67,7 +67,7 @@ If the user is outside the corporate network, they will be denied access even if
 
 ## Deny access to anyone calling an API
 
-Let's say you want to deny access to all users who are calling an API. This means that you need to deny access depending on the `audience` value for your API, which you can find in the **API <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=Audience">Audience</Tooltip>** field of your API in [Dashboard > Applications > APIs](https://manage.auth0.com/#/apis). To do this, you would create the following rule:
+Let's say you want to deny access to all users who are calling an API. This means that you need to deny access depending on the `audience` value for your API, which you can find in the **API <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=Audience">Audience</Tooltip>** field of your API in [Dashboard > Applications > APIs](https://manage.auth0.com/#/apis). To do this, you would create the following rule:
 
 ```js lines
 function (user, context, callback) {
@@ -89,7 +89,7 @@ In this case, the `audience` value for the API is `http:://todoapi2.api`, so thi
 
 ## Add user roles to tokens
 
-If you [enable RBAC for APIs](/get-started/apis/enable-role-based-access-control-for-apis) along with "Add Permissions in the Access Token" (or enable RBAC via the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> and set the **Token Dialect** to `access_token_authz`), you will receive user permissions in your Access Tokens. To add user roles to tokens, you would use the `context.authorization` object when you create the following rule:
+If you [enable RBAC for APIs](/docs/get-started/apis/enable-role-based-access-control-for-apis) along with "Add Permissions in the Access Token" (or enable RBAC via the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> and set the **Token Dialect** to `access_token_authz`), you will receive user permissions in your Access Tokens. To add user roles to tokens, you would use the `context.authorization` object when you create the following rule:
 
 ```js lines
 function (user, context, callback) {
@@ -111,11 +111,11 @@ function (user, context, callback) {
 
 ## Manage Delegated Administration Extension roles using the Authorization Core feature set
 
-Although the [Delegated Administration Extension (DAE)](/customize/extensions/delegated-administration-extension) and the Authorization Core feature set are completely separate features, you can use the Authorization Core feature set to create and manage roles for the DAE if you use a rule.
+Although the [Delegated Administration Extension (DAE)](/docs/customize/extensions/delegated-administration-extension) and the Authorization Core feature set are completely separate features, you can use the Authorization Core feature set to create and manage roles for the DAE if you use a rule.
 
-1. [Create DAE roles](/manage-users/access-control/configure-core-rbac/roles/create-roles) using the Authorization Core feature set. The names of the roles you create must match the names of the [pre-defined DAE roles](/customize/extensions/delegated-administration-extension#assign-roles-to-users).
-2. [Assign the DAE roles you created to the appropriate users](/manage-users/access-control/configure-core-rbac/rbac-users/assign-roles-to-users) using the Authorization core feature set.
-3. Add user roles to the DAE namespace in the ID Token. To do so, [create the following rule](/customize/rules/create-rules), remembering to replace the `CLIENT_ID` placeholder value with your application's Client ID:
+1. [Create DAE roles](/docs/manage-users/access-control/configure-core-rbac/roles/create-roles) using the Authorization Core feature set. The names of the roles you create must match the names of the [pre-defined DAE roles](/docs/customize/extensions/delegated-administration-extension#assign-roles-to-users).
+2. [Assign the DAE roles you created to the appropriate users](/docs/manage-users/access-control/configure-core-rbac/rbac-users/assign-roles-to-users) using the Authorization core feature set.
+3. Add user roles to the DAE namespace in the ID Token. To do so, [create the following rule](/docs/customize/rules/create-rules), remembering to replace the `CLIENT_ID` placeholder value with your application's Client ID:
 
 ```js lines
 function (user, context, callback) {
@@ -131,6 +131,6 @@ function (user, context, callback) {
 
 <Warning>
 
-Auth0 returns profile information in a structured claim format as defined by the [OpenID Connect (OIDC) specification](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims). This means that custom claims added to ID tokens or access tokens must [conform to guidelines and restrictions](/secure/tokens/json-web-tokens/create-custom-claims) to avoid possible collisions.
+Auth0 returns profile information in a structured claim format as defined by the [OpenID Connect (OIDC) specification](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims). This means that custom claims added to ID tokens or access tokens must [conform to guidelines and restrictions](/docs/secure/tokens/json-web-tokens/create-custom-claims) to avoid possible collisions.
 
 </Warning>

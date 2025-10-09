@@ -13,22 +13,22 @@ title: SAML Configuration
 ---
 ## SAML service providers
 
-Applications, especially custom ones, can authenticate users against an external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=IdP">IdP</Tooltip> using protocols such as <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) or <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip>. However, you might want to leverage an enterprise <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> provider for authentication, even if you wrote your application to use either protocol.
+Applications, especially custom ones, can authenticate users against an external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=IdP">IdP</Tooltip> using protocols such as <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) or <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip>. However, you might want to leverage an enterprise <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> provider for authentication, even if you wrote your application to use either protocol.
 
-<Frame>![Protocols SAML SPs Diagram](/images/cdy7uua7fh8z/F29Tn5sjo1hqHSxslyHhR/52e6ef8ca4e1c9b68be4290011b21afa/saml-case1.png)</Frame>
+<Frame>![Protocols SAML SPs Diagram](/docs/images/cdy7uua7fh8z/F29Tn5sjo1hqHSxslyHhR/52e6ef8ca4e1c9b68be4290011b21afa/saml-case1.png)</Frame>
 
 ## SAML identity providers
 
 Some applications (such as Salesforce, Box, and Workday) allow users to authenticate against an external IdP using the SAML protocol. You can then integrate the application with Auth0, which serves as the application's SAML IdP. Application users will be redirected to Auth0 to log in, and Auth0 can authenticate them using any backend authentication connection, such as an LDAP directory, a database, or another SAML IdP or Social Provider. Once the user is authenticated, Auth0 returns a SAML assertion to the application that indicates such.
 
-<Frame>![Protocols SAML IdP Diagram](/images/cdy7uua7fh8z/2fREft2nQOfBNh1cZfgsZH/7dcb4e85d171601025423d71a1d8fe19/saml-case2.png)</Frame>
+<Frame>![Protocols SAML IdP Diagram](/docs/images/cdy7uua7fh8z/2fREft2nQOfBNh1cZfgsZH/7dcb4e85d171601025423d71a1d8fe19/saml-case2.png)</Frame>
 
 Here is a list of IdP services known to support the SAML protocol. There may be additional services beyond what is shown below. The following providers have participated in a Kantara interoperability test and are therefore likely to conform well to the SAML spec.
 
 * adAS
 * ADFS
 * Dot Net Workflow
-* Elastic <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> Team & Enterprise
+* Elastic <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> Team & Enterprise
 * Entrust GetAccess & IdentityGuard (check protocol supported)
 * EIC (check protocol supported)
 * Ilex Sign&go
@@ -49,17 +49,17 @@ Here is a list of IdP services known to support the SAML protocol. There may be 
 
 Auth0 provides specific instructions to configure the following SAML identity providers with Auth0:
 
-* [ADFS](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-adfs-saml-connections)
-* [Okta](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-okta-as-saml-identity-provider)
-* [OneLogin](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-onelogin-as-saml-identity-provider)
-* [PingFederate 7](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-pingfederate-as-saml-identity-provider)
-* [Salesforce](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-salesforce-as-saml-identity-provider)
-* [SiteMinder](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-siteminder-as-saml-identity-provider)
-* [SSOCircle](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-ssocircle-as-saml-identity-provider)
+* [ADFS](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-adfs-saml-connections)
+* [Okta](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-okta-as-saml-identity-provider)
+* [OneLogin](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-onelogin-as-saml-identity-provider)
+* [PingFederate 7](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-pingfederate-as-saml-identity-provider)
+* [Salesforce](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-salesforce-as-saml-identity-provider)
+* [SiteMinder](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-siteminder-as-saml-identity-provider)
+* [SSOCircle](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider/configure-ssocircle-as-saml-identity-provider)
 
 ## Auth0 as service provider
 
-If Auth0 serves as the service provider in a SAML federation, Auth0 can route authentication requests to an identity provider without already having an account pre-created for a specific user. Using the assertion returned by the identity provider, Auth0 can capture information needed to create a user profile for the user (this process is sometimes called just-in-time provisioning). To learn more, read [Select from Multiple Connection Options](/libraries/lock/selecting-from-multiple-connection-options).
+If Auth0 serves as the service provider in a SAML federation, Auth0 can route authentication requests to an identity provider without already having an account pre-created for a specific user. Using the assertion returned by the identity provider, Auth0 can capture information needed to create a user profile for the user (this process is sometimes called just-in-time provisioning). To learn more, read [Select from Multiple Connection Options](/docs/libraries/lock/selecting-from-multiple-connection-options).
 
 Even though Auth0 doesn't require pre-created user accounts prior to the authentication process, the application integrated with Auth0 might. If this is the case, you have several options when it comes to handling this:
 
@@ -74,8 +74,8 @@ You can specify email domains as part of the Auth0 SAMLP Connection configuratio
 If Auth0 serves as the identity provider in a SAML federation, user accounts may be created multiple ways:
 
 * Using a back-end authentication system, such as an LDAP directory, a database, or another SAML identity provider.
-* Using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
-* Calling the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+* Using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+* Calling the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 * Implementing self-service user signup.
 
 If your application is written to retrieve user profile information from a local store, you'll need to create the local profile after the accounts have been created in Auth0. Some of the ways you might do this include:
@@ -88,13 +88,13 @@ If your application is written to retrieve user profile information from a local
 
 You can use Auth0 as both the SAML service provider and the SAML identity provider for testing purposes.
 
-<Frame>![Protocols Auth0 as SAML SP and IdP Diagram](/images/cdy7uua7fh8z/7Ds9dLC3HaxGBLsG3ry7B9/0c08d51b6d6bb57ef6eff3796ca4cd21/saml-case3.png)</Frame>
+<Frame>![Protocols Auth0 as SAML SP and IdP Diagram](/docs/images/cdy7uua7fh8z/7Ds9dLC3HaxGBLsG3ry7B9/0c08d51b6d6bb57ef6eff3796ca4cd21/saml-case3.png)</Frame>
 
 ## Learn more
 
-* [SAML Single Sign-On Integrations](/authenticate/protocols/saml/saml-sso-integrations)
-* [Configure Auth0 as SAML Service Provider](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider)
-* [Configure Auth0 as SAML Identity Provider](/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider)
-* [Test SAML SSO with Auth0 as Service Provider and Identity Provider](/authenticate/protocols/saml/saml-configuration/configure-auth0-as-service-and-identity-provider)
-* [SAML Identity Provider Configuration Settings](/authenticate/protocols/saml/saml-identity-provider-configuration-settings)
-* [Customize SAML Assertions](/authenticate/protocols/saml/saml-configuration/customize-saml-assertions)
+* [SAML Single Sign-On Integrations](/docs/authenticate/protocols/saml/saml-sso-integrations)
+* [Configure Auth0 as SAML Service Provider](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider)
+* [Configure Auth0 as SAML Identity Provider](/docs/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider)
+* [Test SAML SSO with Auth0 as Service Provider and Identity Provider](/docs/authenticate/protocols/saml/saml-configuration/configure-auth0-as-service-and-identity-provider)
+* [SAML Identity Provider Configuration Settings](/docs/authenticate/protocols/saml/saml-identity-provider-configuration-settings)
+* [Customize SAML Assertions](/docs/authenticate/protocols/saml/saml-configuration/customize-saml-assertions)

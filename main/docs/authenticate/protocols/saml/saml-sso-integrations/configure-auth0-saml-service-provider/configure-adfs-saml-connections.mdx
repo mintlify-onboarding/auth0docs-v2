@@ -8,7 +8,7 @@ title: Configure ADFS as SAML Identity Provider
 'twitter:description': Learn how to configure a SAML connection against ADFS in Auth0.
 'twitter:title': Configure ADFS as SAML Identity Provider
 ---
-Create a custom <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> connection to Microsoft's Active Directory Federation Services (ADFS) to get more flexibility when configuring your mappings. To create the custom connection, you will need to:
+Create a custom <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> connection to Microsoft's Active Directory Federation Services (ADFS) to get more flexibility when configuring your mappings. To create the custom connection, you will need to:
 
 1. Configure ADFS.
 2. Create a SAML connection where Auth0 acts as the service provider.
@@ -19,7 +19,7 @@ Create a custom <Tooltip tip="Security Assertion Markup Language (SAML): Standar
 
 ### Add Relying Party Trust
 
-To learn how to add a <Tooltip tip="Relying Party: Entity (such as a service or application) that depends on a third-party identity provider to authenticate a user." cta="View Glossary" href="/glossary?term=relying+party">relying party</Tooltip> trust, read [Create a relying party trust](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/create-a-relying-party-trust) at https://docs.microsoft.com.
+To learn how to add a <Tooltip tip="Relying Party: Entity (such as a service or application) that depends on a third-party identity provider to authenticate a user." cta="View Glossary" href="/docs/glossary?term=relying+party">relying party</Tooltip> trust, read [Create a relying party trust](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/create-a-relying-party-trust) at https://docs.microsoft.com.
 
 #### Create using federation metadata
 
@@ -33,7 +33,7 @@ AU: `https://{yourTenantName}.au.auth0.com/samlp/metadata?connection={connection
 
 JP: `https://{yourTenantName}.jp.auth0.com/samlp/metadata?connection=CONNECTION_NAME`
 
-<Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=Custom+domain">Custom domain</Tooltip>: `https://{yourTenantName}/samlp/metadata?connection={connectionName}`
+<Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=Custom+domain">Custom domain</Tooltip>: `https://{yourTenantName}/samlp/metadata?connection={connectionName}`
 
 Once you've finished creating the relying party trust, [continue to the next section](#edit-claim-issuance-policy).
 
@@ -106,7 +106,7 @@ Finally, you'll need to export the signing certificate from the ADFS console to 
 
 ## Create SAML connection with Auth0 as service provider
 
-1. Follow the tutorial on creating a SAML connection where [Auth0 acts as the service provider](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider). Where prompted, upload the signing certificate you exported from ADFS.
+1. Follow the tutorial on creating a SAML connection where [Auth0 acts as the service provider](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider). Where prompted, upload the signing certificate you exported from ADFS.
 
    The sign in and sign out URLs are usually in the form of `https://your.adfs.server/adfs/ls`.
 2. Click **Save**. A page with instructions for creating a new Relying Party Trust in ADFS appears displaying the exact values required for your Auth0 account/connection. Make a note of these values. Here is an example:
@@ -154,7 +154,7 @@ Optionally, you can sign your SAML requests to the ADFS server.
 
 Before you test your integration, make sure that you've completed the following steps:
 
-* Create a user on the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> that you can use to test your new connection.
+* Create a user on the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> that you can use to test your new connection.
 * Enable your Connection for at least one application.
 
 1. Go to [Authentication > Enterprise > SAML](https://manage.auth0.com/#/connections/enterprise/samlp).
@@ -162,4 +162,4 @@ Before you test your integration, make sure that you've completed the following 
 
 ## Learn more
 
-* [Troubleshoot SAML Configurations](/troubleshoot/authentication-issues/troubleshoot-saml-configurations)
+* [Troubleshoot SAML Configurations](/docs/troubleshoot/authentication-issues/troubleshoot-saml-configurations)

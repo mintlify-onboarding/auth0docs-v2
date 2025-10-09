@@ -10,7 +10,7 @@ title: Enable Multi-Factor Authentication
   Auth0 Dashboard.
 'twitter:title': Enable Multi-Factor Authentication
 ---
-You can enable <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) for your tenant in the <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+You can enable <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) for your tenant in the <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 When you enable MFA, select the factors (such as push notifications or phone messages) you intend to make available to users and define a policy to determine when you require them to authenticate.
 
@@ -24,11 +24,11 @@ You must enable and configure at least one independent factor to require MFA for
 
 Available independent factors are:
 
-* [WebAuthn with FIDO Security Keys](/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-security-keys-for-mfa)
-* [One-time Password (OTP)](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
-* [Push Notification using Auth0 Guardian](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
-* [Phone Message](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa)
-* [Cisco Duo Security](/secure/multi-factor-authentication/configure-cisco-duo-for-mfa)
+* [WebAuthn with FIDO Security Keys](/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-security-keys-for-mfa)
+* [One-time Password (OTP)](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
+* [Push Notification using Auth0 Guardian](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
+* [Phone Message](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa)
+* [Cisco Duo Security](/docs/secure/multi-factor-authentication/configure-cisco-duo-for-mfa)
 
 ### Dependent factors
 
@@ -36,9 +36,9 @@ You may enable one or more dependent factors once you’ve already enabled and c
 
 Available dependent factors are:
 
-* [WebAuthn with FIDO Biometrics](/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa)
-* [Email](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa)
-* [Recovery Code](/secure/multi-factor-authentication/configure-recovery-codes-for-mfa)
+* [WebAuthn with FIDO Biometrics](/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa)
+* [Email](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa)
+* [Recovery Code](/docs/secure/multi-factor-authentication/configure-recovery-codes-for-mfa)
 
 ## Enable MFA in the Auth0 Dashboard
 
@@ -47,28 +47,28 @@ Available dependent factors are:
 3. In the **Define policies** section, select a policy to determine when users will be prompted for MFA.
 
    * **Never**: MFA is not required for any logins.
-   * **Use Adaptive MFA**: MFA is required based on Auth0 risk determination. To learn more, read [Enable Adaptive MFA](/secure/multi-factor-authentication/adaptive-mfa).
+   * **Use Adaptive MFA**: MFA is required based on Auth0 risk determination. To learn more, read [Enable Adaptive MFA](/docs/secure/multi-factor-authentication/adaptive-mfa).
    * **Always**: MFA is required for all logins.
 4. If you choose the **Never** or **Always** policy, the **MFA Risk Assessors** section appears. By default, the **Enable Adaptive MFA Risk Assessment** setting is disabled. Enable the toggle to assess and record risk for all login transactions in your tenant logs.
 5. In the **Additional Settings** section, configure the following options as needed:
 
    * **Show Multi-factor Authentication options:** Enable this toggle to allow users to select authentication factors upon enrollment. When disabled, Auth0 automatically presents the most secure authentication factors to users upon enrollment.
 
-     <Frame>![Show Multi-factor Authentication options end user view](/images/cdy7uua7fh8z/3Mo3EXUk3ZFK4hZKck0yOO/37268f33f70d1e09032f0db317ac11d3/MFA_Options_-_English.png)</Frame>
-   * **Customize MFA Factors using Actions**: Enable this toggle to customize your MFA flows using `post-login` [Actions](/customize/actions). This allows you to challenge users with a specific factor or sequence of factors, as well as use contextual information to create more individualized experiences. To learn more, review [Customize MFA Selection for Universal Login](/secure/multi-factor-authentication/customize-mfa/customize-mfa-selection-universal-login).
+     <Frame>![Show Multi-factor Authentication options end user view](/docs/images/cdy7uua7fh8z/3Mo3EXUk3ZFK4hZKck0yOO/37268f33f70d1e09032f0db317ac11d3/MFA_Options_-_English.png)</Frame>
+   * **Customize MFA Factors using Actions**: Enable this toggle to customize your MFA flows using `post-login` [Actions](/docs/customize/actions). This allows you to challenge users with a specific factor or sequence of factors, as well as use contextual information to create more individualized experiences. To learn more, review [Customize MFA Selection for Universal Login](/docs/secure/multi-factor-authentication/customize-mfa/customize-mfa-selection-universal-login).
 6. Click **Save**.
 
 ## Customize MFA flow
 
 You can use Auth0 Actions to customize the MFA flow for users on your tenant. For example, you can create an Action to require MFA in specific circumstances or to force a particular factor to be used.
 
-To learn more, read [Customize Adaptive MFA](/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa).
+To learn more, read [Customize Adaptive MFA](/docs/secure/multi-factor-authentication/adaptive-mfa/customize-adaptive-mfa).
 
 ## Learn more
 
-* [Configure Push Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
-* [Configure OTP Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
-* [Configure SMS and Voice Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa)
-* [Configure Email Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa)
-* [Configure Cisco Duo Security for MFA](/secure/multi-factor-authentication/configure-cisco-duo-for-mfa)
-* [Customize Multi-Factor Authentication Pages](/secure/multi-factor-authentication/customize-mfa)
+* [Configure Push Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
+* [Configure OTP Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-otp-notifications-for-mfa)
+* [Configure SMS and Voice Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa)
+* [Configure Email Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa)
+* [Configure Cisco Duo Security for MFA](/docs/secure/multi-factor-authentication/configure-cisco-duo-for-mfa)
+* [Customize Multi-Factor Authentication Pages](/docs/secure/multi-factor-authentication/customize-mfa)

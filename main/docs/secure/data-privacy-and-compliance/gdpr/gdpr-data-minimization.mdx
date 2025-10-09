@@ -45,7 +45,7 @@ To better understand this, consider the following scenario. Your application off
 
 If a user signs up with Google, this will create a user profile in Auth0. If the same user, upon return, does not remember what they signed up with, and chooses to login with Facebook, Auth0 will create another user profile for the user. So now you have two profiles for the same user.
 
-You can fix this with account linking. You can link multiple accounts under a single user profile, regardless of the connection's type (for example, user/password, social, or <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>).
+You can fix this with account linking. You can link multiple accounts under a single user profile, regardless of the connection's type (for example, user/password, social, or <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>).
 
 There are two ways to implement this:
 
@@ -58,7 +58,7 @@ You can export Auth0 logs and either store them yourself or automatically push t
 
 ### Export logs with the API
 
-You can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to export logs and store them yourself. There are the two available endpoints, each providing slightly different information.
+You can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to export logs and store them yourself. There are the two available endpoints, each providing slightly different information.
 
 #### Search all logs
 
@@ -87,12 +87,12 @@ You should minimize any sensitive information contained in URLs that might be ca
 You also need to ensure that you do the following:
 
 * Analyze what you are collecting in sign up and through social media and whether that is necessary for the purpose of your service.
-* Configure enterprise <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> to control what data is returned to Auth0.
+* Configure enterprise <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> to control what data is returned to Auth0.
 * Specify what data you want to collect from the social provider and negotiate any particular terms around social login with the social provider around use of the data they will get around your users’ login.
 
 ## Learn more
 
-* [GDPR: Conditions for Consent](/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent)
-* [GDPR: Data Portability](/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
-* [GDPR: Protect and Secure User Data](/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data)
-* [GDPR: Right to Access, Correct, and Erase Data](/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)
+* [GDPR: Conditions for Consent](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent)
+* [GDPR: Data Portability](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
+* [GDPR: Protect and Secure User Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-protect-and-secure-user-data)
+* [GDPR: Right to Access, Correct, and Erase Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)

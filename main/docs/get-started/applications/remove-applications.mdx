@@ -10,18 +10,18 @@ title: Remove Applications
   Auth0 Dashboard or the Management API.
 'twitter:title': Remove Applications
 ---
-You can remove an application using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. Once confirmed, this operation cannot be undone.
+You can remove an application using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. Once confirmed, this operation cannot be undone.
 
 ## Use the Dashboard
 
 1. Go to [Dashboard > Applications > Applications](https://manage.auth0.com/#/applications), and select the name of an application to view.
 
-   <Frame>![Dashboard Applications List](/images/cdy7uua7fh8z/1ecNwGgFQZxdP57p0tp3jT/cd608fcfae22e195b604e2707e5a848d/App_List_-_EN.png)</Frame>
+   <Frame>![Dashboard Applications List](/docs/images/cdy7uua7fh8z/1ecNwGgFQZxdP57p0tp3jT/cd608fcfae22e195b604e2707e5a848d/App_List_-_EN.png)</Frame>
 2. Scroll to the bottom of the **Settings** page, locate the **Danger Zone**, select **Delete**, and confirm.
 
 ## Use the Management API
 
-Make a `DELETE` call to the [`/Clients/delete_clients_by_id`](https://auth0.com/docs/api/management/v2#!/Clients/delete_clients_by_id) endpoints. Be sure to replace `YOUR_CLIENT_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip> and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>, respectively.
+Make a `DELETE` call to the [`/Clients/delete_clients_by_id`](https://auth0.com/docs/api/management/v2#!/Clients/delete_clients_by_id) endpoints. Be sure to replace `YOUR_CLIENT_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip> and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -212,7 +212,7 @@ dataTask.resume()
 
 ## Learn more
 
-* [Register Regular Web Applications](/get-started/auth0-overview/create-applications/regular-web-apps)
-* [Register Single-Page Web Applications](/get-started/auth0-overview/create-applications/single-page-web-apps)
-* [Register Native Applications](/get-started/auth0-overview/create-applications/native-apps)
-* [Register Machine-to-Machine Applications](/get-started/auth0-overview/create-applications/machine-to-machine-apps)
+* [Register Regular Web Applications](/docs/get-started/auth0-overview/create-applications/regular-web-apps)
+* [Register Single-Page Web Applications](/docs/get-started/auth0-overview/create-applications/single-page-web-apps)
+* [Register Native Applications](/docs/get-started/auth0-overview/create-applications/native-apps)
+* [Register Machine-to-Machine Applications](/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps)

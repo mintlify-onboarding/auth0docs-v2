@@ -16,14 +16,14 @@ Your Auth0 plan or custom agreement affects whether this feature is available. T
 
 </Card>
 
-Most identity (ID) tokens and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> returned by Auth0 are <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=JSON+Web+Tokens">JSON Web Tokens</Tooltip> (JWTs) containing a variety of claims, which are pieces of information asserted about a subject. For example, an [ID token](/secure/tokens/id-tokens) (which is always a JWT) can contain a claim called `name` that asserts that the name of the user authenticating is "John Doe".
+Most identity (ID) tokens and <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> returned by Auth0 are <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Tokens">JSON Web Tokens</Tooltip> (JWTs) containing a variety of claims, which are pieces of information asserted about a subject. For example, an [ID token](/docs/secure/tokens/id-tokens) (which is always a JWT) can contain a claim called `name` that asserts that the name of the user authenticating is "John Doe".
 
 There are two types of JWT claims:
 
-* **Registered**: Claims defined by the [JWT specification](https://tools.ietf.org/html/rfc7519) to ensure interoperability with third-party, or external, applications. [OpenID Connect (OIDC)](/authenticate/protocols/openid-connect-protocol) standard claims are reserved claims.
-* **Custom**: Claims that you define yourself. These claims can be non-registered, collision-resistant public claims or non-registered, non-public private claims subject to collision. Name these claims carefully, such as through [namespacing](/secure/tokens/json-web-tokens/create-custom-claims), to avoid collision with reserved claims or other custom claims. It can be challenging to deal with two claims of the same name that contain differing information.
+* **Registered**: Claims defined by the [JWT specification](https://tools.ietf.org/html/rfc7519) to ensure interoperability with third-party, or external, applications. [OpenID Connect (OIDC)](/docs/authenticate/protocols/openid-connect-protocol) standard claims are reserved claims.
+* **Custom**: Claims that you define yourself. These claims can be non-registered, collision-resistant public claims or non-registered, non-public private claims subject to collision. Name these claims carefully, such as through [namespacing](/docs/secure/tokens/json-web-tokens/create-custom-claims), to avoid collision with reserved claims or other custom claims. It can be challenging to deal with two claims of the same name that contain differing information.
 
-To learn more about claims, read [JSON Web Token Claims](/secure/tokens/json-web-tokens/json-web-token-claims).
+To learn more about claims, read [JSON Web Token Claims](/docs/secure/tokens/json-web-tokens/json-web-token-claims).
 
 ## Authenticate users through an organization
 
@@ -31,7 +31,7 @@ To authenticate a user through an organization, an `organization` parameter is a
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-By default, ID and access tokens only include organization IDs. However, you can configure your tenant to allow the use of organization names in the Authentication API. When configured, ID and access tokens contain both the `org_id` and `org_name` claims. To learn more, review [Use Organization Names in Authentication API](/manage-users/organizations/configure-organizations/use-org-name-authentication-api).
+By default, ID and access tokens only include organization IDs. However, you can configure your tenant to allow the use of organization names in the Authentication API. When configured, ID and access tokens contain both the `org_id` and `org_name` claims. To learn more, review [Use Organization Names in Authentication API](/docs/manage-users/organizations/configure-organizations/use-org-name-authentication-api).
 
 </Callout>
 
@@ -85,7 +85,7 @@ In machine-to-machine use cases, an `organization` parameter is added to the Cli
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-By default, ID and access tokens only include organization IDs. However, you can configure your tenant to allow the use of organization names in the Authentication API. When configured, ID and access tokens contain both the `org_id` and `org_name` claims. To learn more, read [Use Organization Names in the Authentication API](/manage-users/organizations/configure-organizations/use-org-name-authentication-api).
+By default, ID and access tokens only include organization IDs. However, you can configure your tenant to allow the use of organization names in the Authentication API. When configured, ID and access tokens contain both the `org_id` and `org_name` claims. To learn more, read [Use Organization Names in the Authentication API](/docs/manage-users/organizations/configure-organizations/use-org-name-authentication-api).
 
 </Callout>
 
@@ -114,13 +114,13 @@ When the `organization` parameter is added to a call to the `/authorize` endpoin
 
 If you have configured your tenant to allow the use of organization names in the Authentication API, ID and access tokens contain both the `org_id` and `org_name` claims. If present, validate the `org_name` claim in addition to `org_id` to ensure the received values correspond to a trusted entity.
 
-In general, using organization IDs is the preferred method for validating tokens. However, organization names can be used if they are more appropriate for your use case. To understand the potential implications of using organization names to validate tokens, review [Use Organization Names in Authentication API](/manage-users/organizations/configure-organizations/use-org-name-authentication-api).
+In general, using organization IDs is the preferred method for validating tokens. However, organization names can be used if they are more appropriate for your use case. To understand the potential implications of using organization names to validate tokens, review [Use Organization Names in Authentication API](/docs/manage-users/organizations/configure-organizations/use-org-name-authentication-api).
 
 </Callout>
 
 **For web applications:**
 
-If no `organization` parameter was passed to the `/authorize` endpoint, but an `org_id` claim is present in the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip>, then your application should validate the claim to ensure that the value received is expected or known and that it corresponds to an entity your application trusts, such as a paying customer. If the claim cannot be validated, then the application should deem the token invalid.
+If no `organization` parameter was passed to the `/authorize` endpoint, but an `org_id` claim is present in the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip>, then your application should validate the claim to ensure that the value received is expected or known and that it corresponds to an entity your application trusts, such as a paying customer. If the claim cannot be validated, then the application should deem the token invalid.
 
 **For APIs:**
 
@@ -137,7 +137,7 @@ It is also very important that your API servers segment access to data and resou
 
 ## Learn more
 
-* [Understand How Auth0 Organizations Work](/manage-users/organizations/organizations-overview)
-* [Create Your First Organization](/manage-users/organizations/create-first-organization)
-* [Custom Development with Organizations](/manage-users/organizations/custom-development)
-* [Configure Organizations](/manage-users/organizations/configure-organizations)
+* [Understand How Auth0 Organizations Work](/docs/manage-users/organizations/organizations-overview)
+* [Create Your First Organization](/docs/manage-users/organizations/create-first-organization)
+* [Custom Development with Organizations](/docs/manage-users/organizations/custom-development)
+* [Configure Organizations](/docs/manage-users/organizations/configure-organizations)

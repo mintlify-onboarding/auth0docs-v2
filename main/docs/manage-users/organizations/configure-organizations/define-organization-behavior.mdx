@@ -10,16 +10,16 @@ title: Define Organization Behavior
   Auth0's Organizations feature.
 'twitter:title': Define Organization Behavior
 ---
-When representing your application in Auth0, you can specify what types of users the application should support. Some applications support individuals logging in with personal accounts, while others are intended for use by members of [organizations](/manage-users/organizations/organizations-overview). Some should support both. This is known as organization behavior and can be set for each application that you connect to Auth0.
+When representing your application in Auth0, you can specify what types of users the application should support. Some applications support individuals logging in with personal accounts, while others are intended for use by members of [organizations](/docs/manage-users/organizations/organizations-overview). Some should support both. This is known as organization behavior and can be set for each application that you connect to Auth0.
 
 For example, your application could have:
 
 * A generic marketing landing page that has a **Log in** button that takes your users to the Auth0 login flow without an Organization.
-* A separate URL for each of your B2B customers (e.g., Acme users go to `acme.yourcompany.com`) that redirects users to Auth0 with an Organization, so that your users see Acme’s <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> Login button.
+* A separate URL for each of your B2B customers (e.g., Acme users go to `acme.yourcompany.com`) that redirects users to Auth0 with an Organization, so that your users see Acme’s <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> Login button.
 
 You can define Organization behavior to allow either of these scenarios. Additionally, you can configure Organization behavior such that if your application requires that an Organization be provided but your user accidentally is sent to Auth0 without an organization, they would see a prompt that would allow them to enter the name of their organization.
 
-You can define organization behavior using either the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can define organization behavior using either the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Auth0 Dashboard
 
@@ -98,7 +98,7 @@ To define organization behavior via the Auth0 Dashboard:
 
 ## Management API
 
-Make a `PATCH` call to the [Update a Client endpoint](https://auth0.com/docs/api/management/v2#!/Clients/patch_clients_by_id). Be sure to replace `client_id`, `mgmt_api_access_token`, `organization_usage`, and `organization_require_behavior` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip>, Management API <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, organization use option, and organization behavior option, respectively.
+Make a `PATCH` call to the [Update a Client endpoint](https://auth0.com/docs/api/management/v2#!/Clients/patch_clients_by_id). Be sure to replace `client_id`, `mgmt_api_access_token`, `organization_usage`, and `organization_require_behavior` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip>, Management API <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, organization use option, and organization behavior option, respectively.
 
 <CodeGroup>
 
@@ -343,7 +343,7 @@ dataTask.resume()
     <tr>
       <td><code>MGMT_API_ACCESS_TOKEN</code></td>
       <td>
-        <a href="/secure/tokens/access-tokens/management-api-access-tokens">Access Tokens for the Management API</a> with the scope <code>update:clients</code>.
+        <a href="/docs/secure/tokens/access-tokens/management-api-access-tokens">Access Tokens for the Management API</a> with the scope <code>update:clients</code>.
       </td>
     </tr>
     <tr>

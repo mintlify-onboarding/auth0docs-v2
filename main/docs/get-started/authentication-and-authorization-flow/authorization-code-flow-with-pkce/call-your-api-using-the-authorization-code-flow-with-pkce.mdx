@@ -12,26 +12,26 @@ title: Call Your API Using the Authorization Code Flow with PKCE
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-This tutorial helps you call your own API from a native, mobile, or single-page app using the Authorization Code Flow with PKCE. To learn how the flow works and why you should use it, read [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). To learn to add login to your native, mobile, or single-page app, read [Add Login Using Authorization Code Flow with PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/add-login-using-the-authorization-code-flow-with-pkce).
+This tutorial helps you call your own API from a native, mobile, or single-page app using the Authorization Code Flow with PKCE. To learn how the flow works and why you should use it, read [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). To learn to add login to your native, mobile, or single-page app, read [Add Login Using Authorization Code Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/add-login-using-the-authorization-code-flow-with-pkce).
 
 </Callout>
 
 Auth0 makes it easy for your app to implement the Authorization Code Flow with Proof Key for Code Exchange (PKCE) using:
 
-* [Auth0 Mobile SDKs](/libraries) and [Auth0 Single-Page App SDK](/libraries/auth0-single-page-app-sdk): The easiest way to implement the flow, which will do most of the heavy-lifting for you. Our [Mobile Quickstarts](/quickstart/native) and [Single-Page App Quickstarts](/quickstart/spa) will walk you through the process.
+* [Auth0 Mobile SDKs](/docs/libraries) and [Auth0 Single-Page App SDK](/docs/libraries/auth0-single-page-app-sdk): The easiest way to implement the flow, which will do most of the heavy-lifting for you. Our [Mobile Quickstarts](/docs/quickstart/native) and [Single-Page App Quickstarts](/docs/quickstart/spa) will walk you through the process.
 * [Authentication API](https://auth0.com/docs/api/authentication): If you prefer to build your own solution, keep reading to learn how to call our API directly.
 
 ## Prerequisites
 
 **Before beginning this tutorial:**
 
-* [Register the Application with Auth0](/get-started/auth0-overview/create-applications/native-apps).
+* [Register the Application with Auth0](/docs/get-started/auth0-overview/create-applications/native-apps).
 
   + Select an **Application Type** of **Native** or **Single-Page App**, depending on your application type.
-  + Add an **Allowed Callback URL** of `{yourCallbackUrl}`. Your callback URL format will vary depending on your application type and platform. For details about the format for your application type and platform, see our [Native/Mobile Quickstarts](/quickstart/native) and [Single-Page App Quickstarts](/quickstart/spa).
-  + Make sure the Application's **Grant Types** include **Authorization Code**. To learn how, read [Update Grant Types](/get-started/applications/update-grant-types).
-  + If you want your Application to be able to use Refresh Tokens, make sure the Application's **Grant Types** include **Refresh Token**. To learn how, read [Update Grant Types](/get-started/applications/update-grant-types). To learn more about Refresh Tokens, read [Refresh Tokens](/secure/tokens/refresh-tokens).
-* [Register your API with Auth0](/get-started/architecture-scenarios/mobile-api/part-2#create-the-api)
+  + Add an **Allowed Callback URL** of `{yourCallbackUrl}`. Your callback URL format will vary depending on your application type and platform. For details about the format for your application type and platform, see our [Native/Mobile Quickstarts](/docs/quickstart/native) and [Single-Page App Quickstarts](/docs/quickstart/spa).
+  + Make sure the Application's **Grant Types** include **Authorization Code**. To learn how, read [Update Grant Types](/docs/get-started/applications/update-grant-types).
+  + If you want your Application to be able to use Refresh Tokens, make sure the Application's **Grant Types** include **Refresh Token**. To learn how, read [Update Grant Types](/docs/get-started/applications/update-grant-types). To learn more about Refresh Tokens, read [Refresh Tokens](/docs/secure/tokens/refresh-tokens).
+* [Register your API with Auth0](/docs/get-started/architecture-scenarios/mobile-api/part-2#create-the-api)
 
   + If you want your API to receive Refresh Tokens to allow it to obtain new tokens when the previous ones expire, enable **Allow Offline Access**.
 
@@ -228,11 +228,11 @@ NSString *challenge = [[[[hash base64EncodedStringWithOptions:0]
 
 ### Authorize user
 
-Once you've created the `code_verifier` and the `code_challenge`, you must get the user's authorization. This is technically the beginning of the <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/glossary?term=authorization+flow">authorization flow</Tooltip>, and this step may include one or more of the following processes:
+Once you've created the `code_verifier` and the `code_challenge`, you must get the user's authorization. This is technically the beginning of the <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip>, and this step may include one or more of the following processes:
 
 \* Authenticating the user;
-\* Redirecting the user to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip> to handle authentication;
-\* Checking for active [Single Sign-on (SSO)](/authenticate/single-sign-on) sessions;
+\* Redirecting the user to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> to handle authentication;
+\* Checking for active [Single Sign-on (SSO)](/docs/authenticate/single-sign-on) sessions;
 \* Obtaining user consent for the requested permission level, unless consent has been previously given.
 
 To authorize the user, your app must send the user to the [authorization URL](https://auth0.com/docs/api/authentication#authorization-code-grant-pkce-), including the `code_challenge` you generated in the previous step and the method you used to generate the `code_challenge`.
@@ -260,7 +260,7 @@ https://{yourDomain}/authorize?
 
 Note that for authorizing a user when calling a custom API, you:
 
-- must include an <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> parameter
+- must include an <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> parameter
 - can include additional scopes supported by the target API
 
 <table class="table"><thead>
@@ -292,7 +292,7 @@ Note that for authorizing a user when calling a custom API, you:
 </tr>
 <tr>
 <td><code>scope</code></td>
-<td>The <a href="/get-started/apis/scopes">scopes</a> for which you want to request authorization. These must be separated by a space. You can request any of the <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard OpenID Connect (OIDC) scopes</a> about users, such as <code>profile</code> and <code>email</code>, <a href="/secure/tokens/json-web-tokens/json-web-token-claims#custom-claims">custom claims</a> conforming to a <a href="/secure/tokens/json-web-tokens/create-custom-claims">namespaced format</a>, or any scopes supported by the target API (e.g., <code>read:contacts</code>). Include <code>offline_access</code> to get a <Tooltip tip="Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip> (make sure that the <strong>Allow Offline Access</strong> field is enabled in the <a href="https://manage.auth0.com/#/apis">Application Settings</a>).</td>
+<td>The <a href="/docs/get-started/apis/scopes">scopes</a> for which you want to request authorization. These must be separated by a space. You can request any of the <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">standard OpenID Connect (OIDC) scopes</a> about users, such as <code>profile</code> and <code>email</code>, <a href="/docs/secure/tokens/json-web-tokens/json-web-token-claims#custom-claims">custom claims</a> conforming to a <a href="/docs/secure/tokens/json-web-tokens/create-custom-claims">namespaced format</a>, or any scopes supported by the target API (e.g., <code>read:contacts</code>). Include <code>offline_access</code> to get a <Tooltip tip="Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip> (make sure that the <strong>Allow Offline Access</strong> field is enabled in the <a href="https://manage.auth0.com/#/apis">Application Settings</a>).</td>
 </tr>
 <tr>
 <td><code>audience</code></td>
@@ -300,7 +300,7 @@ Note that for authorizing a user when calling a custom API, you:
 </tr>
 <tr>
 <td><code>state</code></td>
-<td>(recommended) An opaque arbitrary alphanumeric string your app adds to the initial request that Auth0 includes when redirecting back to your application. To see how to use this value to prevent cross-site request forgery (CSRF) attacks, see <a href="/secure/attack-protection/state-parameters">Mitigate CSRF Attacks With State Parameters</a>.</td>
+<td>(recommended) An opaque arbitrary alphanumeric string your app adds to the initial request that Auth0 includes when redirecting back to your application. To see how to use this value to prevent cross-site request forgery (CSRF) attacks, see <a href="/docs/secure/attack-protection/state-parameters">Mitigate CSRF Attacks With State Parameters</a>.</td>
 </tr>
 <tr>
 <td><code>organization</code></td>
@@ -308,7 +308,7 @@ Note that for authorizing a user when calling a custom API, you:
 </tr>
 <tr>
 <td><code>invitation</code></td>
-<td>(optional) Ticket ID of the organization invitation. When <a href="/manage-users/organizations/configure-organizations/invite-members">inviting a member to an Organization</a>, your application should handle invitation acceptance by forwarding the <code>invitation</code> and <code>organization</code> key-value pairs when the user accepts the invitation.</td>
+<td>(optional) Ticket ID of the organization invitation. When <a href="/docs/manage-users/organizations/configure-organizations/invite-members">inviting a member to an Organization</a>, your application should handle invitation acceptance by forwarding the <code>invitation</code> and <code>organization</code> key-value pairs when the user accepts the invitation.</td>
 </tr>
 </tbody>
 </table>
@@ -611,15 +611,15 @@ If all goes well, you'll receive an HTTP 200 response with a payload containing 
 
 <Warning>
 
-Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens).
+Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/docs/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
 </Warning>
 
-[ID tokens](/secure/tokens/id-tokens) contain user information that must be decoded and extracted.
+[ID tokens](/docs/secure/tokens/id-tokens) contain user information that must be decoded and extracted.
 
-[Access tokens](/secure/tokens/access-tokens) are used to call the [Auth0 Authentication API's /userinfo endpoint](https://auth0.com/docs/api/authentication#get-user-info) or another API. If you are calling your own API, the first thing your API will need to do is [verify the Access token](/secure/tokens/access-tokens/validate-access-tokens).
+[Access tokens](/docs/secure/tokens/access-tokens) are used to call the [Auth0 Authentication API's /userinfo endpoint](https://auth0.com/docs/api/authentication#get-user-info) or another API. If you are calling your own API, the first thing your API will need to do is [verify the Access token](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
-[Refresh tokens](/secure/tokens/refresh-tokens) are used to obtain a new <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> after the previous one has expired. The `refresh_token` will only be present in the response if you included the `offline_access` scope and enabled **Allow Offline Access** for your API in the Dashboard.
+[Refresh tokens](/docs/secure/tokens/refresh-tokens) are used to obtain a new <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> after the previous one has expired. The `refresh_token` will only be present in the response if you included the `offline_access` scope and enabled **Allow Offline Access** for your API in the Dashboard.
 
 <Warning>
 
@@ -815,12 +815,12 @@ dataTask.resume()
 
 ### Refresh tokens
 
-You have already received a [refresh token](/secure/tokens/refresh-tokens) if you've been following this tutorial and completed the following:
+You have already received a [refresh token](/docs/secure/tokens/refresh-tokens) if you've been following this tutorial and completed the following:
 
 * configured your API to allow offline access
 * included the `offline_access` scope when you initiated the authentication request through the [authorize endpoint](https://auth0.com/docs/api/authentication/reference#authorize-application).
 
-You can use the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip> to get a new access token. Usually, a user will need a new access token only after the previous one expires or when gaining access to a new resource for the first time. It's bad practice to call the endpoint to get a new access token every time you call an API, and Auth0 maintains rate limits that will throttle the amount of requests to the endpoint that can be executed using the same token from the same IP.
+You can use the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip> to get a new access token. Usually, a user will need a new access token only after the previous one expires or when gaining access to a new resource for the first time. It's bad practice to call the endpoint to get a new access token every time you call an API, and Auth0 maintains rate limits that will throttle the amount of requests to the endpoint that can be executed using the same token from the same IP.
 
 To refresh your token, make a `POST` request to the `/oauth/token` endpoint in the Authentication API, using `grant_type=refresh_token`.
 
@@ -1071,7 +1071,7 @@ If all goes well, you'll receive an `HTTP 200` response with a payload containin
 
 <Warning>
 
-Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens).
+Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/docs/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
 </Warning>
 
@@ -1079,7 +1079,7 @@ Validate your tokens before saving them. To learn how, read [Validate ID Tokens]
 
 #### Customize tokens
 
-You can use Actions to change the returned scopes of Access Tokens and/or add claims to Access and ID Tokens. (To learn more about Actions, read [Auth0 Actions](/customize/actions). ) To do so, add the following Action, which will run after the user authenticates:
+You can use Actions to change the returned scopes of Access Tokens and/or add claims to Access and ID Tokens. (To learn more about Actions, read [Auth0 Actions](/docs/customize/actions). ) To do so, add the following Action, which will run after the user authenticates:
 
 ```js lines
 exports.onExecutePostLogin = async (event, api) => {
@@ -1102,16 +1102,16 @@ Scopes will be available in the token after the Action has run.
 
 <Warning>
 
-Auth0 returns profile information in a structured claim format as defined by the [OpenID Connect (OIDC) specification](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims). This means that custom claims added to ID tokens or access tokens must [conform to guidelines and restrictions](/secure/tokens/json-web-tokens/create-custom-claims) to avoid possible collisions.
+Auth0 returns profile information in a structured claim format as defined by the [OpenID Connect (OIDC) specification](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims). This means that custom claims added to ID tokens or access tokens must [conform to guidelines and restrictions](/docs/secure/tokens/json-web-tokens/create-custom-claims) to avoid possible collisions.
 
 </Warning>
 
 #### View Sample Application: Mobile App + API
 
-For a sample implementation, see the [Mobile + API](/get-started/architecture-scenarios/mobile-api) architecture scenario. This series of tutorials is accompanied by a [code sample that you can access in GitHub](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets).
+For a sample implementation, see the [Mobile + API](/docs/get-started/architecture-scenarios/mobile-api) architecture scenario. This series of tutorials is accompanied by a [code sample that you can access in GitHub](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets).
 
 ## Learn more
 
-* [OAuth 2.0 Authorization Framework](/authenticate/protocols/oauth)
-* [OpenID Connect Protocol](/authenticate/protocols/openid-connect-protocol)
-* [Tokens](/secure/tokens)
+* [OAuth 2.0 Authorization Framework](/docs/authenticate/protocols/oauth)
+* [OpenID Connect Protocol](/docs/authenticate/protocols/openid-connect-protocol)
+* [Tokens](/docs/secure/tokens)

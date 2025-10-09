@@ -8,7 +8,7 @@ title: Authentication (B2B)
 'twitter:description': How authentication works in your B2B IAM implementation.
 'twitter:title': Authentication (B2B)
 ---
-In order to provide services to your users, you must be able to identify who those users are. This process is called User Authentication. There are a number of ways to perform authentication of a user - via social media accounts, username and password, <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=passwordless">passwordless</Tooltip> - and it's often recommended that you go beyond a first factor for authenticating the user by enabling <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA).
+In order to provide services to your users, you must be able to identify who those users are. This process is called User Authentication. There are a number of ways to perform authentication of a user - via social media accounts, username and password, <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> - and it's often recommended that you go beyond a first factor for authenticating the user by enabling <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA).
 
 <Info>
 ### Best Practice
@@ -29,37 +29,37 @@ There are a number of things you will want to consider when looking at functiona
 * What should you consider when integrating applications with Auth0?
 * Do you need to provide multi-factor authentication?
 * What do you do if you have a service that doesn't have a way for the user to log in ahead of time?
-* Can you pass the same user <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> from one API to another?
+* Can you pass the same user <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> from one API to another?
 * What do you do if you need to isolate users by organization?
 * How will you handle identifying which organization users belong to?
 * What’s the benefit of providing enterprise connections for your organizations?
 
-Auth0 [Universal Login](#universal-login) provides users with a safe and secure experience - no matter whether you choose to provide for user ID/password credentials sign in, or allow the so-called Bring Your Own Identity scenarios provided via [Social Login](https://auth0.com/learn/social-login/). There are also brand recognition benefits to centralizing the login experience with <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip>, even if you feel you will also have product-specific [branding](/get-started/architecture-scenarios/business-to-consumer/branding) requirements. The Auth0 UI widgets typically used with Universal Login also provide out-of-the-box support with regards to [internationalization](/customize/internationalization-and-localization/universal-login-internationalization) for users with different language requirements, and out-of-the-box support for Auth0 features such as [MFA](#multi-factor-authentication-mfa-) and [attack protection](#anomaly-detection) allow you to put barriers in place in order to prevent hackers attempting to access users' accounts.
+Auth0 [Universal Login](#universal-login) provides users with a safe and secure experience - no matter whether you choose to provide for user ID/password credentials sign in, or allow the so-called Bring Your Own Identity scenarios provided via [Social Login](https://auth0.com/learn/social-login/). There are also brand recognition benefits to centralizing the login experience with <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip>, even if you feel you will also have product-specific [branding](/docs/get-started/architecture-scenarios/business-to-consumer/branding) requirements. The Auth0 UI widgets typically used with Universal Login also provide out-of-the-box support with regards to [internationalization](/docs/customize/internationalization-and-localization/universal-login-internationalization) for users with different language requirements, and out-of-the-box support for Auth0 features such as [MFA](#multi-factor-authentication-mfa-) and [attack protection](#anomaly-detection) allow you to put barriers in place in order to prevent hackers attempting to access users' accounts.
 
-Allowing users to sign in via user ID/password credentials means that you're not reliant on the status of third-party <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> for your users to access your system. You also have the means to require the credentials used to align with your corporate policies. Auth0 assists with this by providing you with multiple options in support of user ID/password logins, and the [guidance provided](#username-and-password-authentication) will help you understand you can leverage these options. Adding [social](#social-authentication) support at some stage, as an additional primary authentication factor, gives you added flexibility and can help you better understand your users without the need to question them further by leveraging the information already stored by the various social login [providers](/authenticate/identity-providers/social-identity-providers).
+Allowing users to sign in via user ID/password credentials means that you're not reliant on the status of third-party <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> for your users to access your system. You also have the means to require the credentials used to align with your corporate policies. Auth0 assists with this by providing you with multiple options in support of user ID/password logins, and the [guidance provided](#username-and-password-authentication) will help you understand you can leverage these options. Adding [social](#social-authentication) support at some stage, as an additional primary authentication factor, gives you added flexibility and can help you better understand your users without the need to question them further by leveraging the information already stored by the various social login [providers](/docs/authenticate/identity-providers/social-identity-providers).
 
-If you have an existing legacy identity store, you’ll also want to see [User Migration](/get-started/architecture-scenarios/business-to-consumer/provisioning). This section discusses the advantages of migrating to Auth0’s managed identity storage in terms of safety and security.
+If you have an existing legacy identity store, you’ll also want to see [User Migration](/docs/get-started/architecture-scenarios/business-to-consumer/provisioning). This section discusses the advantages of migrating to Auth0’s managed identity storage in terms of safety and security.
 
-For customer facing applications, <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect ([OIDC](/authenticate/protocols/openid-connect-protocol)) is the most frequently used industry standard protocol, and OIDC has first-class citizen support in Auth0. Auth0 provides support for various different approaches for integrating various different applications, so you'll want to see the section on [application integration](#application-integration) for the information you'll need to make an informed choice.
+For customer facing applications, <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect ([OIDC](/docs/authenticate/protocols/openid-connect-protocol)) is the most frequently used industry standard protocol, and OIDC has first-class citizen support in Auth0. Auth0 provides support for various different approaches for integrating various different applications, so you'll want to see the section on [application integration](#application-integration) for the information you'll need to make an informed choice.
 
-When calling one API from another API, or from any situation where there is no authenticated user context - such as one or more cron jobs, report generators, or continuous integration/delivery systems - you will need a way to authorize the application instead of a user. This is a one step process where the application is authenticated (using a <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip> and secret) and then authorized in one call. You can learn more about this in our authorization work stream under [machine-to-machine (m2m) authorization](/get-started/architecture-scenarios/business-to-business/authorization).
+When calling one API from another API, or from any situation where there is no authenticated user context - such as one or more cron jobs, report generators, or continuous integration/delivery systems - you will need a way to authorize the application instead of a user. This is a one step process where the application is authenticated (using a <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip> and secret) and then authorized in one call. You can learn more about this in our authorization work stream under [machine-to-machine (m2m) authorization](/docs/get-started/architecture-scenarios/business-to-business/authorization).
 
 Often companies need to segregate their users by organization and sometimes users can have access to more than one organization. Knowing which of these scenarios is relevant to your company will help define how to determine in which connection a user exists: whether you need to do it, when you need to do it, and how to accomplish it. See [Home Realm Discovery](#home-realm-discovery) to determine if this is something relevant to your company.
 
 ## Universal Login
 
-Do you have, or will you have, more than one application in your system? If the answer to this question is yes, then you will want a centralized sign in experience. To achieve a seamless <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) experience between multiple applications, it is critical to have a centralized location to redirect your users for authentication. This allows you a way to provide your users with a consistent experience if you add social authentication in the future, add third party applications to your system, or add multi-factor authentication as an option (or requirement) for your users - and also allow you to take advantage of new features for improving your users’ experience with little, if any, added development effort.
+Do you have, or will you have, more than one application in your system? If the answer to this question is yes, then you will want a centralized sign in experience. To achieve a seamless <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) experience between multiple applications, it is critical to have a centralized location to redirect your users for authentication. This allows you a way to provide your users with a consistent experience if you add social authentication in the future, add third party applications to your system, or add multi-factor authentication as an option (or requirement) for your users - and also allow you to take advantage of new features for improving your users’ experience with little, if any, added development effort.
 
 <Info>
 ### Best Practice
 
-If you have more than one application, the best practice is to redirect to a [centralized location](/authenticate/login/auth0-universal-login) to authenticate the user. With Auth0, this means taking advantage of [Universal Login](/authenticate/login/auth0-universal-login), which provides many security and user experience benefits out-of-the-box, including [SSO](/authenticate/single-sign-on).
+If you have more than one application, the best practice is to redirect to a [centralized location](/docs/authenticate/login/auth0-universal-login) to authenticate the user. With Auth0, this means taking advantage of [Universal Login](/docs/authenticate/login/auth0-universal-login), which provides many security and user experience benefits out-of-the-box, including [SSO](/docs/authenticate/single-sign-on).
 </Info>
 
 Auth0 Universal Login makes authenticating users a short, easy process which can be accomplished in three easy steps (all of our Quickstarts demonstrate this and our SDKs hide the complexity for you too):
 
 1. Determine how and when you want to [redirect from your application](#application-integration).
-2. Set up the appropriate [branding](/get-started/architecture-scenarios/business-to-consumer/branding) and/or customized HTML in your Auth0 configuration.
+2. Set up the appropriate [branding](/docs/get-started/architecture-scenarios/business-to-consumer/branding) and/or customized HTML in your Auth0 configuration.
 3. Set up your application to [receive and handle the response](#application-integration) from the Authorization Server.
 
 ## Home realm discovery
@@ -101,7 +101,7 @@ There are three main approaches to Home Realm Discovery:
 * Discover the realm by looking up a user identifier in some sort of map of an identifier to realm map.
 * Allow the user to choose or enter their realm (or organization).
 
-In both of the first two approaches, you may consider doing “Identifier First Login”. This means that you present only the ability to enter an identifier first. After which, you collect the user’s identifier, and then, based on the identifier, you either automatically redirect the user or present a way for the user to enter their password if redirection is unnecessary. Auth0 provides implementation out of the box to take care of all of this, via the use of [Universal Login](/authenticate/login/auth0-universal-login/identifier-first).
+In both of the first two approaches, you may consider doing “Identifier First Login”. This means that you present only the ability to enter an identifier first. After which, you collect the user’s identifier, and then, based on the identifier, you either automatically redirect the user or present a way for the user to enter their password if redirection is unnecessary. Auth0 provides implementation out of the box to take care of all of this, via the use of [Universal Login](/docs/authenticate/login/auth0-universal-login/identifier-first).
 
 <Warning>
 
@@ -113,9 +113,9 @@ Though it is possible to implement Identifier First Login or allow a user to sel
 
 The simplest way to implement home realm discovery on the universal login page is to utilize the email subdomain of the user’s identifier to map that to their Identity Provider. This, of course, only works in situations where the email subdomain will be a 1:1 mapping to an organization or at least to an Identity Provider.
 
-Auth0’s [Lock](/libraries/lock) widget or [Universal Login](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience) can do this for you if you are using the domain map in an enterprise connection; however, if you want to build this yourself, you can, but it requires you to build a mapping of email subdomain to connection.
+Auth0’s [Lock](/docs/libraries/lock) widget or [Universal Login](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience) can do this for you if you are using the domain map in an enterprise connection; however, if you want to build this yourself, you can, but it requires you to build a mapping of email subdomain to connection.
 
-Additionally, when using the Universal Login experience, the [Organizations Feature](/manage-users/organizations/organizations-overview) will help you in two ways:
+Additionally, when using the Universal Login experience, the [Organizations Feature](/docs/manage-users/organizations/organizations-overview) will help you in two ways:
 
 1. If you have not passed an org_id to `/authorize` when you initiated the login request, Auth0 will present the user with a prompt to enter the organization they belong to.
 2. If the Organization has more than one IdP associated with it, Auth0 will present the user with buttons to choose the organization or a form to enter a username and password.
@@ -138,7 +138,7 @@ The other option is to allow your users to choose from a list, if you don’t mi
 
 Nearly every B2C application provides the ability for its customers to create a new set of credentials. This is a common form of authentication that all users are familiar with.
 
-Username password authentication comes in multiple flavors at Auth0. If your application is a green-field application with no existing user base, then a simple Auth0 out-of-the-box [Database Connection](/authenticate/database-connections) will give you everything you need to start authenticating your users. However, if you have a legacy user store (such as your own database of users or an existing LDAP system) you have a couple of different options for migrating your users as discussed in our guidance on [User migration](/get-started/architecture-scenarios/business-to-business/provisioning).
+Username password authentication comes in multiple flavors at Auth0. If your application is a green-field application with no existing user base, then a simple Auth0 out-of-the-box [Database Connection](/docs/authenticate/database-connections) will give you everything you need to start authenticating your users. However, if you have a legacy user store (such as your own database of users or an existing LDAP system) you have a couple of different options for migrating your users as discussed in our guidance on [User migration](/docs/get-started/architecture-scenarios/business-to-business/provisioning).
 
 However you end up provisioning the users for your database connection, the authentication of those users is quite similar. It requires you to present users with a form to enter their username and password. As mentioned in the guidance concerning [Universal Login](#universal-login), the simplest and safest way to authenticate users with a username and password is to redirect them to a centralized login page and collect their username and password there. This allows Auth0 to determine whether they have already authenticated and skip the login form entirely when it's not needed.
 
@@ -154,13 +154,13 @@ Once you've figured out how you want to authenticate your users, the next step i
 
 <Warning>
 
-Native mobile applications (and desktop applications) should use the system browser for authentication, or they open themselves up to additional security risks. See [Native vs. Browser Login on Mobile](/get-started/authentication-and-authorization-flow/device-authorization-flow/mobile-device-login-flow-best-practices) for more information.
+Native mobile applications (and desktop applications) should use the system browser for authentication, or they open themselves up to additional security risks. See [Native vs. Browser Login on Mobile](/docs/get-started/authentication-and-authorization-flow/device-authorization-flow/mobile-device-login-flow-best-practices) for more information.
 
 </Warning>
 
-As discussed, we've found that most of our customers use [OpenID Connect (OIDC)](/authenticate/protocols/openid-connect-protocol) as the industry-standard protocol when it comes to their customer-facing applications. Figuring out which OIDC flow to use is your first task, and you will want to start by reviewing the our [grant mapping](/get-started/applications/application-grant-types) guidance in the first instance.
+As discussed, we've found that most of our customers use [OpenID Connect (OIDC)](/docs/authenticate/protocols/openid-connect-protocol) as the industry-standard protocol when it comes to their customer-facing applications. Figuring out which OIDC flow to use is your first task, and you will want to start by reviewing the our [grant mapping](/docs/get-started/applications/application-grant-types) guidance in the first instance.
 
-If you want to allow anonymous users access to any part of our application then you need to determine if you will be redirecting right away or prompting your users to redirect only when required (or perhaps some combination of both; see [Redirect Users After Login](/authenticate/login/redirect-users-after-login) for further discussion). If users can [deep link](#deep-linking-to-protected-endpoints) to a protected version (or area) of your site then you will need to determine the links to your application that will result in an automatic redirect to Auth0.
+If you want to allow anonymous users access to any part of our application then you need to determine if you will be redirecting right away or prompting your users to redirect only when required (or perhaps some combination of both; see [Redirect Users After Login](/docs/authenticate/login/redirect-users-after-login) for further discussion). If users can [deep link](#deep-linking-to-protected-endpoints) to a protected version (or area) of your site then you will need to determine the links to your application that will result in an automatic redirect to Auth0.
 
 ### Anonymous access
 
@@ -172,71 +172,71 @@ It is important to consider the user experience when someone first comes to your
   + Have they already accessed a different application that uses the same Auth0 tenant,
   + Have they ever (or perhaps not in a long time) authenticated on this device or browser.
 
-When an anonymous user accesses your application, it can often be desirable for the application to discover if the user has already logged into a different application in the same family, or to remember this user even if the application is a [SPA](/quickstart/spa) with no state. For example, if you can determine that the user is already logged in, you might decide to have the UI header in the application skip displaying a login button and instead have an account or profile menu for the user. To accomplish this you will want to utilize "[silent authentication](/authenticate/login/configure-silent-authentication)". Silent authentication will allow you to check to see if the user is logged in without prompting them to log in if they are not. Then the application can present a login button if necessary. If the user is logged in already, however, then you will receive tokens and will not have to present the user with a login button again.
+When an anonymous user accesses your application, it can often be desirable for the application to discover if the user has already logged into a different application in the same family, or to remember this user even if the application is a [SPA](/docs/quickstart/spa) with no state. For example, if you can determine that the user is already logged in, you might decide to have the UI header in the application skip displaying a login button and instead have an account or profile menu for the user. To accomplish this you will want to utilize "[silent authentication](/docs/authenticate/login/configure-silent-authentication)". Silent authentication will allow you to check to see if the user is logged in without prompting them to log in if they are not. Then the application can present a login button if necessary. If the user is logged in already, however, then you will receive tokens and will not have to present the user with a login button again.
 
 <Warning>
 
 Checking for a login session by redirecting to Auth0 can be helpful for your application, but if this will result in a lot of requests, you should employ a throttling mechanism to avoid latency and/or rate limiting.
 
-Calls to the Management API are subject to [Auth0 Rate Limiting policy](/troubleshoot/customer-support/operational-policies/rate-limit-policy). You must take this into consideration, and to assist, Auth0 generally recommends use of the appropriate [Auth0 SDK](/libraries) for your development environment rather than calling our APIs directly.
+Calls to the Management API are subject to [Auth0 Rate Limiting policy](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy). You must take this into consideration, and to assist, Auth0 generally recommends use of the appropriate [Auth0 SDK](/docs/libraries) for your development environment rather than calling our APIs directly.
 
 </Warning>
 
 ### Deep linking to protected endpoints
 
-There are a variety of reasons why someone might link directly to a particular page within your application that is only accessible by authenticated users. If this is possible for your application you should automatically redirect your user to Auth0 if they are not authenticated. Once they authenticate and the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip> returns them to your application, you can [redirect them](/authenticate/login/redirect-users-after-login) to where they intended to go in the first place.
+There are a variety of reasons why someone might link directly to a particular page within your application that is only accessible by authenticated users. If this is possible for your application you should automatically redirect your user to Auth0 if they are not authenticated. Once they authenticate and the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> returns them to your application, you can [redirect them](/docs/authenticate/login/redirect-users-after-login) to where they intended to go in the first place.
 
 ### Best Practice
 
 Most modern authentication frameworks support middleware for redirecting to an authorization server such as Auth0. When selecting one, here are some key considerations:
 
 * Support for confidential clients, non-confidential clients, or both
-* Support for configuration via [discovery endpoint](/get-started/applications/configure-applications-with-oidc-discovery "Configure Applications with OIDC Discovery") or explicitly inline
+* Support for configuration via [discovery endpoint](/docs/get-started/applications/configure-applications-with-oidc-discovery "Configure Applications with OIDC Discovery") or explicitly inline
 * Support for token validation including expirations, signatures, claims and scopes
-* Support for <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip> if needed
+* Support for <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Tokens">Refresh Tokens</Tooltip> if needed
 
 ### Authenticating the user
 
-Authentication is the process of determining user identity. The result of authentication in an OIDC context is an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip>. This token contains information about the user and should only be able to be obtained if the user authenticates using one or more factors as defined by the authorization server (the most common form being [user ID and password](#username-and-password-authentication)). There are a few things you may also need to consider in addition to obtaining an ID Token:
+Authentication is the process of determining user identity. The result of authentication in an OIDC context is an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip>. This token contains information about the user and should only be able to be obtained if the user authenticates using one or more factors as defined by the authorization server (the most common form being [user ID and password](#username-and-password-authentication)). There are a few things you may also need to consider in addition to obtaining an ID Token:
 
-* Do we also need an [Access Token](/secure/tokens/access-tokens) in order to call a shared API?
-* Is your application a single-page application and only requires an [ID Token](/secure/tokens/id-tokens)? See [Authorization Code Grant with PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce) for more information.
-* Is your application a native application (mobile or desktop) and/or do you need a [Refresh Token](/secure/tokens/refresh-tokens)? See [Authorization Code Grant with PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce) for more information.
+* Do we also need an [Access Token](/docs/secure/tokens/access-tokens) in order to call a shared API?
+* Is your application a single-page application and only requires an [ID Token](/docs/secure/tokens/id-tokens)? See [Authorization Code Grant with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce) for more information.
+* Is your application a native application (mobile or desktop) and/or do you need a [Refresh Token](/docs/secure/tokens/refresh-tokens)? See [Authorization Code Grant with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce) for more information.
 
 <Warning>
 
-Before you go live, you should ensure that **only** the grants that you are using for each application are enabled in your [configuration for your Application](/get-started/applications/update-grant-types).
+Before you go live, you should ensure that **only** the grants that you are using for each application are enabled in your [configuration for your Application](/docs/get-started/applications/update-grant-types).
 
 </Warning>
 
 ### Authorization code grant (with or without PKCE)
 
-If your SDK only supports the Authorization Code grant, or you need an Access Token or <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip>, then Authorization Code grant (with or without [PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce)) can also be used to retrieve an ID Token. The Authorization Code grant includes an additional API call to exchange the code for a token which can result in additional unnecessary latency if all you need is the ID Token. In many cases the [hybrid flow](/get-started/authentication-and-authorization-flow/hybrid-flow) is implemented to provide optimum access to the ID Token while still leveraging Authorization Code grant workflow for the secure and safe retrieval of Access and Refresh Tokens.
+If your SDK only supports the Authorization Code grant, or you need an Access Token or <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip>, then Authorization Code grant (with or without [PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce)) can also be used to retrieve an ID Token. The Authorization Code grant includes an additional API call to exchange the code for a token which can result in additional unnecessary latency if all you need is the ID Token. In many cases the [hybrid flow](/docs/get-started/authentication-and-authorization-flow/hybrid-flow) is implemented to provide optimum access to the ID Token while still leveraging Authorization Code grant workflow for the secure and safe retrieval of Access and Refresh Tokens.
 
 <Warning>
 
-While Auth0 supports the use of implicit grant for browser-based applications requiring only an ID Token, it is recommended to use authorization code grant with [PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). For detailed information, see [OAuth2 Implicit Grant and SPA](https://auth0.com/blog/oauth2-implicit-grant-and-spa/) on the Auth0 Blog.
+While Auth0 supports the use of implicit grant for browser-based applications requiring only an ID Token, it is recommended to use authorization code grant with [PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). For detailed information, see [OAuth2 Implicit Grant and SPA](https://auth0.com/blog/oauth2-implicit-grant-and-spa/) on the Auth0 Blog.
 
-If you need a [Refresh Token](/secure/tokens/refresh-tokens) so that you can obtain a new Access Token or ID Token without having to re-authenticate the user, then you must use the [authorization code grant](/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow).
+If you need a [Refresh Token](/docs/secure/tokens/refresh-tokens) so that you can obtain a new Access Token or ID Token without having to re-authenticate the user, then you must use the [authorization code grant](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow).
 
 </Warning>
 
 ## Attack protection
 
-The reason that authentication systems are important is to prevent <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/glossary?term=bad+actors">bad actors</Tooltip> from accessing applications and user data that they should not. We want to place as many barriers as possible between those bad actors and access to our systems. One of the easiest ways to do this is to ensure that your [attack protection](/secure/attack-protection) with Auth0 is configured correctly, so take a moment to read the guidance on this subject and ensure that it's working correctly for you.
+The reason that authentication systems are important is to prevent <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/docs/glossary?term=bad+actors">bad actors</Tooltip> from accessing applications and user data that they should not. We want to place as many barriers as possible between those bad actors and access to our systems. One of the easiest ways to do this is to ensure that your [attack protection](/docs/secure/attack-protection) with Auth0 is configured correctly, so take a moment to read the guidance on this subject and ensure that it's working correctly for you.
 
 <Info>
 ### Best Practice
 
-Anomaly detection is handled behind the scenes by Auth0 and provides a great security feature for your product. If you're going to utilize it, ensure that you have set up your [Email Provider](/get-started/architecture-scenarios/business-to-business/operations#email-provider-setup) and configured your [Email Templates](/get-started/architecture-scenarios/business-to-business/branding#email-template-customization) before turning on email delivery to your users.
+Anomaly detection is handled behind the scenes by Auth0 and provides a great security feature for your product. If you're going to utilize it, ensure that you have set up your [Email Provider](/docs/get-started/architecture-scenarios/business-to-business/operations#email-provider-setup) and configured your [Email Templates](/docs/get-started/architecture-scenarios/business-to-business/branding#email-template-customization) before turning on email delivery to your users.
 </Info>
 
 ## SSO with legacy systems
 
-In a large scale re-structure it's not always possible—or practical—to update all your applications at once. In fact, our recommended best practice is to plan for an iterative-style approach when it comes to integrating with Auth0. If your applications already participate in Single Sign-on (SSO), and your legacy identity system supports protocols such as OIDC or <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>, then you have a couple of options available if you want to continue to provide SSO as you integrate with Auth0:
+In a large scale re-structure it's not always possible—or practical—to update all your applications at once. In fact, our recommended best practice is to plan for an iterative-style approach when it comes to integrating with Auth0. If your applications already participate in Single Sign-on (SSO), and your legacy identity system supports protocols such as OIDC or <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>, then you have a couple of options available if you want to continue to provide SSO as you integrate with Auth0:
 
-* Update your existing identity provider in your legacy SSO system to redirect to Auth0 for login (e.g., using [SAML](/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider)), or
-* Have Auth0 redirect to your legacy SSO system to login. This requires configuring your legacy system as an IdP in Auth0 (i.e., either using [SAML](/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider) or [OIDC](/authenticate/identity-providers/social-identity-providers)).
+* Update your existing identity provider in your legacy SSO system to redirect to Auth0 for login (e.g., using [SAML](/docs/authenticate/single-sign-on/outbound-single-sign-on/configure-auth0-saml-identity-provider)), or
+* Have Auth0 redirect to your legacy SSO system to login. This requires configuring your legacy system as an IdP in Auth0 (i.e., either using [SAML](/docs/authenticate/protocols/saml/saml-sso-integrations/configure-auth0-saml-service-provider) or [OIDC](/docs/authenticate/identity-providers/social-identity-providers)).
 
 <Info>
 ### Best Practice
@@ -248,7 +248,7 @@ This is a complex topic that will likely need some additional investigation depe
 
 ## Enterprise Login
 
-The “bring your own identity” scenario has become a must-have for almost all B2B applications. Most enterprise companies expect to be able to integrate their IdP into your application so their employees don't need to store another set of credentials. This is a valuable way of simplifying the user authentication experience without compromising security, and using [Universal Login](#universal-login) makes it easy to start adding support for [Enterprise Connections](/authenticate/identity-providers/enterprise-identity-providers) with minimal disruption.
+The “bring your own identity” scenario has become a must-have for almost all B2B applications. Most enterprise companies expect to be able to integrate their IdP into your application so their employees don't need to store another set of credentials. This is a valuable way of simplifying the user authentication experience without compromising security, and using [Universal Login](#universal-login) makes it easy to start adding support for [Enterprise Connections](/docs/authenticate/identity-providers/enterprise-identity-providers) with minimal disruption.
 
 <Info>
 ### Best Practice
@@ -256,17 +256,17 @@ The “bring your own identity” scenario has become a must-have for almost all
 Once you start supporting enterprise connections for users, you must do some form of [Home Realm Discovery](#home-realm-discovery) so that you can determine which connection to send the user to for authentication.
 </Info>
 
-With enterprise connection support, user identities and credentials are managed by the identity provider of your customers' organization, as well as certain identity claims - which Auth0 will use to populate the user [profile](/get-started/architecture-scenarios/business-to-business/profile-management).
+With enterprise connection support, user identities and credentials are managed by the identity provider of your customers' organization, as well as certain identity claims - which Auth0 will use to populate the user [profile](/docs/get-started/architecture-scenarios/business-to-business/profile-management).
 
 <Info>
 ### Best Practice
 
-"Bring your own identity" is a great feature to provide, but if you don't support this from day one, and sometimes even if you do, you may have an organization that wants to switch to their own IdP after already having used the application for a while. You will need a way to [link user accounts](/manage-users/user-accounts/user-account-linking) to provide an effective way of associating the new identity with the old database identity.
+"Bring your own identity" is a great feature to provide, but if you don't support this from day one, and sometimes even if you do, you may have an organization that wants to switch to their own IdP after already having used the application for a while. You will need a way to [link user accounts](/docs/manage-users/user-accounts/user-account-linking) to provide an effective way of associating the new identity with the old database identity.
 </Info>
 
 ## Multi-factor authentication (MFA)
 
-In an era where misuse of user credentials is at an all-time high, protecting your systems when it’s so common for hackers to steal users identity information in general is a challenge. One of the most effective ways though is to provide users with the ability to configure a second factor for protecting their account. More commonly referred to as [Multi-Factor Authentication](/secure/multi-factor-authentication). This will ensure that only a valid user can access their account, even if they use a username and password that may have been compromised from a different application.
+In an era where misuse of user credentials is at an all-time high, protecting your systems when it’s so common for hackers to steal users identity information in general is a challenge. One of the most effective ways though is to provide users with the ability to configure a second factor for protecting their account. More commonly referred to as [Multi-Factor Authentication](/docs/secure/multi-factor-authentication). This will ensure that only a valid user can access their account, even if they use a username and password that may have been compromised from a different application.
 
 <Info>
 ### Best Practice
@@ -295,4 +295,4 @@ We provide planning guidance in PDF format that you can download and refer to fo
 
 Many B2B platforms implement some form of isolation and/or branding for their customers' organization, and this can add complexity to any Identity and Access Management (IAM) system. If this applies to you, then we recommend you take some time to read through our guidance and best practice advice for this type of environment.
 
-[Multiple Organization Architecture](/get-started/architecture-scenarios/multiple-organization-architecture)
+[Multiple Organization Architecture](/docs/get-started/architecture-scenarios/multiple-organization-architecture)

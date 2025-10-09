@@ -9,7 +9,7 @@ title: Migrate from Auth0.js to the Auth0 Single Page App SDK
   Single Page App SDK
 'twitter:title': Migrate from Auth0.js to the Auth0 Single Page App SDK
 ---
-In this article, you’ll see how to migrate your single page app (SPA) from [auth0.js](/libraries/auth0js) to [auth0-spa-js](/libraries/auth0-single-page-app-sdk). Listed below are scenarios using auth0.js and the equivalent auth0-spa-js code.
+In this article, you’ll see how to migrate your single page app (SPA) from [auth0.js](/docs/libraries/auth0js) to [auth0-spa-js](/docs/libraries/auth0-single-page-app-sdk). Listed below are scenarios using auth0.js and the equivalent auth0-spa-js code.
 
 ## Functionality that cannot be migrated
 
@@ -29,7 +29,7 @@ Not all auth0.js functionality can be directly migrated to auth0-spa-js. Scenari
 
 Auth0.js converts custom parameters you set from `camelCase` to `snake_case` internally. For example, if you set `deviceType: 'offline'`, auth0.js actually sends `device_type: 'offline'` to the server.
 
-When using auth0-spa-js, custom parameters **are not converted** from `camelCase` to `snake_case`. It will relay whatever parameter you send to the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip>.
+When using auth0-spa-js, custom parameters **are not converted** from `camelCase` to `snake_case`. It will relay whatever parameter you send to the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip>.
 
 ## Create the client
 
@@ -184,7 +184,7 @@ document.getElementById('login').addEventListener('click', () => {
 
 ### auth0-spa-js
 
-The Auth0 SPA SDK handles <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> refresh for you. Every time you call `getTokenSilently`, you'll either get a valid Access Token or an error if there's no session at Auth0.
+The Auth0 SPA SDK handles <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> refresh for you. Every time you call `getTokenSilently`, you'll either get a valid Access Token or an error if there's no session at Auth0.
 
 * [Auth0Client.getTokenSilently()](https://auth0.github.io/auth0-spa-js/classes/Auth0Client.html#getTokenSilently)
 

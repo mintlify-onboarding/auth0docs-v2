@@ -10,13 +10,13 @@ title: Configure IdP-Initiated SAML Sign-on to OIDC Apps
   Identity Provider-initiated sign-on to a SAML Identity Provider for OIDC applications.
 'twitter:title': Configure IdP-Initiated SAML Sign-on to OIDC Apps
 ---
-Auth0 provides a method to translate an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip>-initiated (IdP) <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> response into an <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) response for an application.
+Auth0 provides a method to translate an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip>-initiated (IdP) <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> response into an <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) response for an application.
 
-The OIDC protocol does not support IdP-initiated authentication flows, but this method allows you to simulate an IdP-initiated authentication flow using the [Implicit Flow with Form Post](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post).
+The OIDC protocol does not support IdP-initiated authentication flows, but this method allows you to simulate an IdP-initiated authentication flow using the [Implicit Flow with Form Post](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post).
 
 <Warning>
 
-We strongly recommend you start the login flow at the OIDC application rather than at the IdP. To learn more, read [Configure SAML Identity Provider-Initiated Single Sign-On](/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
+We strongly recommend you start the login flow at the OIDC application rather than at the IdP. To learn more, read [Configure SAML Identity Provider-Initiated Single Sign-On](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
 
 </Warning>
 
@@ -30,7 +30,7 @@ If you’d like to implement this method, you must:
 
 ## How it works
 
-<Frame>![Identity Provider-initiated SAML sign-in to OIDC applications flow diagram](/images/cdy7uua7fh8z/5vinAB4pSSwaKDgliTkAhh/0c5822149426b986bbcc851d07666187/idp-provider-init-saml-sign-in0.png)</Frame>
+<Frame>![Identity Provider-initiated SAML sign-in to OIDC applications flow diagram](/docs/images/cdy7uua7fh8z/5vinAB4pSSwaKDgliTkAhh/0c5822149426b986bbcc851d07666187/idp-provider-init-saml-sign-in0.png)</Frame>
 
 1. User navigates to the SAML IdP’s login endpoint.
 2. SAML IdP returns the login page.
@@ -57,13 +57,13 @@ We recommend that you associate the custom login route handler with a different 
 
 <Warning>
 
-If you are not using an Auth0 SDK to handle authentication, you must ensure that your application’s login method passes a `state` parameter value to the `/authorize` endpoint and validates the `state` parameter in the response from the Identity Provider to protect against CSRF attacks. To learn more, read [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameters](/secure/attack-protection/state-parameters).
+If you are not using an Auth0 SDK to handle authentication, you must ensure that your application’s login method passes a `state` parameter value to the `/authorize` endpoint and validates the `state` parameter in the response from the Identity Provider to protect against CSRF attacks. To learn more, read [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameters](/docs/secure/attack-protection/state-parameters).
 
 </Warning>
 
 ### Example
 
-If you are using the [Auth0 Single Page App SDK](/libraries/auth0-single-page-app-sdk), you can add a custom login route handler and update the login method to support the connection parameter like so:
+If you are using the [Auth0 Single Page App SDK](/docs/libraries/auth0-single-page-app-sdk), you can add a custom login route handler and update the login method to support the connection parameter like so:
 
 ```javascript lines expandable
 const router = {
@@ -142,7 +142,7 @@ If your application endpoint is `https://exampleco.com/startlogin` and your SAML
 
 ## Learn more
 
-* [Connect Your App to SAML Identity Providers](/authenticate/identity-providers/enterprise-identity-providers/saml)
-* [Configure SAML Identity Provider-Initiated Single Sign-On](/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on)
-* [Log Users Out of SAML Identity Providers](/authenticate/login/logout/log-users-out-of-saml-idps)
-* [Troubleshoot SAML Configurations](/troubleshoot/authentication-issues/troubleshoot-saml-configurations)
+* [Connect Your App to SAML Identity Providers](/docs/authenticate/identity-providers/enterprise-identity-providers/saml)
+* [Configure SAML Identity Provider-Initiated Single Sign-On](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on)
+* [Log Users Out of SAML Identity Providers](/docs/authenticate/login/logout/log-users-out-of-saml-idps)
+* [Troubleshoot SAML Configurations](/docs/troubleshoot/authentication-issues/troubleshoot-saml-configurations)

@@ -16,11 +16,11 @@ To use Highly Regulated Identity features, you must have an Enterprise Plan with
 
 </Callout>
 
-Using [Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-rar), clients can request and obtain <Tooltip tip="Fine-grained Authorization (FGA): Auth0 product allowing individual users access to specific objects or resources." cta="View Glossary" href="/glossary?term=fine-grained+authorization">fine-grained authorization</Tooltip> data from <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/glossary?term=resource+owners">resource owners</Tooltip>, such as end users, during the [Authorization Code Flow](/get-started/authentication-and-authorization-flow/authorization-code-flow) and [Client-Initiated Backchannel Authentication Flow](/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow).
+Using [Rich Authorization Requests (RAR)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-rar), clients can request and obtain <Tooltip tip="Fine-grained Authorization (FGA): Auth0 product allowing individual users access to specific objects or resources." cta="View Glossary" href="/docs/glossary?term=fine-grained+authorization">fine-grained authorization</Tooltip> data from <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/docs/glossary?term=resource+owners">resource owners</Tooltip>, such as end users, during the [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow) and [Client-Initiated Backchannel Authentication Flow](/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow).
 
-In a Rich Authorization Request, the `authorization_details` parameter is a JSON array of objects. You can render the `authorization_details`, containing transaction details, in a consent prompt to the user in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=Multi-factor+Authentication">Multi-factor Authentication</Tooltip> challenges.
+In a Rich Authorization Request, the `authorization_details` parameter is a JSON array of objects. You can render the `authorization_details`, containing transaction details, in a consent prompt to the user in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=Multi-factor+Authentication">Multi-factor Authentication</Tooltip> challenges.
 
-To configure Rich Authorization Requests for a <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+server">resource server</Tooltip>, you must:
+To configure Rich Authorization Requests for a <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+server">resource server</Tooltip>, you must:
 
 1. Configure the consent policy for the resource server.
 2. Register `authorization_details` types for the resource server.
@@ -72,7 +72,7 @@ Set the consent policy in your API settings using the Auth0 Dashboard.
 3. Under **Access Settings**, choose the **Standard** consent policy.
 4. Save your changes.
 
-<Frame>![Dashboard > Applications > APIs > Settings > Access Settings](/images/cdy7uua7fh8z/3gr8Sf98gh8CUkjnlodNk/cf33985b1e5b62082d46e4f5c8bbed6f/Screenshot_2025-03-31_at_8.22.45_PM.png)</Frame>
+<Frame>![Dashboard > Applications > APIs > Settings > Access Settings](/docs/images/cdy7uua7fh8z/3gr8Sf98gh8CUkjnlodNk/cf33985b1e5b62082d46e4f5c8bbed6f/Screenshot_2025-03-31_at_8.22.45_PM.png)</Frame>
 
 </Tab><Tab title="Management API">
 
@@ -118,7 +118,7 @@ You can add `authorization_details` in the Auth0 Dashboard.
 
 You can see the `authorization_details` types for your resource server under **List of Authorization Details Types**:
 
-<Frame>![](/images/cdy7uua7fh8z/6qRpmbZiqaU8pSFDuWzUAy/951c827a307791de8df9cecd8f817351/Screenshot_2025-04-07_at_3.45.36_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/6qRpmbZiqaU8pSFDuWzUAy/951c827a307791de8df9cecd8f817351/Screenshot_2025-04-07_at_3.45.36_PM.png)</Frame>
 
 </Tab><Tab title="Management API">
 

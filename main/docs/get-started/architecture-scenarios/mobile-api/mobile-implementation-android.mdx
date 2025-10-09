@@ -17,7 +17,7 @@ This document is part of the Mobile + API Architecture Scenario and it explain
 
 Download a sample project specific to this tutorial to get started.
 
-[Download](/package/v2/timesheets-mobile_android.zip)
+[Download](/docs/package/v2/timesheets-mobile_android.zip)
 [Fork on Github](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-mobile/android)
 
 System Requirements
@@ -34,7 +34,7 @@ For this implementation, we will use the following dependencies within the app�
 
 * [Auth0.Android](https://github.com/auth0/Auth0.Android): this package enables integration with Auth0 to authenticate users.
 * [OkHttp](http://square.github.io/okhttp/): this package provides an HTTP application to make requests to the Node.JS API.
-* [JWTDecode.Android](https://github.com/auth0/JWTDecode.Android): this package will assist with decoding <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWTs">JWTs</Tooltip>.
+* [JWTDecode.Android](https://github.com/auth0/JWTDecode.Android): this package will assist with decoding <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWTs">JWTs</Tooltip>.
 * AppCompat: this package lets us use the toolbar widget for navigation in our activities.
 
 ```groovy lines
@@ -85,7 +85,7 @@ We’ll also update the application details to utilize the Toolbar widget:
 
 ### Set Configuration Values
 
-Set your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>, Auth0 Domain, and API’s url in the `strings.xml` resource located in `/res/values/strings.xml`:
+Set your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>, Auth0 Domain, and API’s url in the `strings.xml` resource located in `/res/values/strings.xml`:
 
 ```xml lines
 <resources>
@@ -145,12 +145,12 @@ Open the app's `AndroidManifest.xml` and add the `LoginActivity`:
 
 ### Create the Login Activity
 
-The `LoginActivity` will handle user authorization and be the initial screen users see. We'll create a `login()` method to initialize a `WebAuthProvider` and start authentication. Ensure you provide the correct scheme, <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>, and scope to the `WebAuthProvider`. For this implementation we will use:
+The `LoginActivity` will handle user authorization and be the initial screen users see. We'll create a `login()` method to initialize a `WebAuthProvider` and start authentication. Ensure you provide the correct scheme, <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>, and scope to the `WebAuthProvider`. For this implementation we will use:
 
 * **scheme**: `demo`
 * **audience**: `https://api.exampleco.com/timesheet`s (the Node.JS API)
 * **response_type**: `code`
-* **scope**: `create:timesheets read:timesheets openid profile email offline_access`. These scopes will enable us to `POST` and `GET` to the Node.JS API, as well as retrieve the user profile and a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip>.
+* **scope**: `create:timesheets read:timesheets openid profile email offline_access`. These scopes will enable us to `POST` and `GET` to the Node.JS API, as well as retrieve the user profile and a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip>.
 
 ```java lines
 private void login() {
@@ -277,7 +277,7 @@ public class LoginActivity extends Activity {
 
 To store the credentials received after login, we’ll use the `CredentialsManager` from the Auth0.Android library and [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences.html) for storage.
 
-Before initializing the `WebAuthProvider` in the `login()` method, we can create the `CredentialsManager`. Passing an `AuthenticationAPIClient` to the `CredentialsManager` enables it to refresh the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Tokens">Access Tokens</Tooltip> if they are expired.
+Before initializing the `WebAuthProvider` in the `login()` method, we can create the `CredentialsManager`. Passing an `AuthenticationAPIClient` to the `CredentialsManager` enables it to refresh the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Tokens">Access Tokens</Tooltip> if they are expired.
 
 ```java lines
 private void login() {
@@ -421,7 +421,7 @@ public class UserProfileManager {
 
 
 
-Next, update the `login()` method in the `LoginActivity` to retrieve the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> and get the user profile from the token with the JWTDecode.Android library. Then store the user profile with the `UserProfileManager`.
+Next, update the `login()` method in the `LoginActivity` to retrieve the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> and get the user profile from the token with the JWTDecode.Android library. Then store the user profile with the `UserProfileManager`.
 
 ```java lines
 // ...
@@ -1528,7 +1528,7 @@ public class FormActivity extends AppCompatActivity {
 
 ## Test the App
 
-Before continuing, ensure you have [implemented the Node.JS API](/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs).
+Before continuing, ensure you have [implemented the Node.JS API](/docs/get-started/architecture-scenarios/mobile-api/api-implementation-nodejs).
 
 1. Start the API by navigating to the API's directory in your terminal and entering the `node server` command.
 2. Open the mobile app in Android Studio and press the **Run** button.

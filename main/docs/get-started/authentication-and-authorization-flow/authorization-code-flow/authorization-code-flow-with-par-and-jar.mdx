@@ -8,11 +8,11 @@ title: Authorization Code Flow with PAR and JAR
 'twitter:description': Learn how to use PAR and JAR with the Authorization Code Flow.
 'twitter:title': Authorization Code Flow with PAR and JAR
 ---
-Use Push Authorization Requests (PAR) and <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip>-Secured Authorization Requests (JAR) together to provide a higher security level in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=authorization+flow">authorization flow</Tooltip>. Whereas PAR provides clients with confidentiality and integrity protection for authorization requests, JAR provides non-repudiation protection.
+Use Push Authorization Requests (PAR) and <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip>-Secured Authorization Requests (JAR) together to provide a higher security level in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip>. Whereas PAR provides clients with confidentiality and integrity protection for authorization requests, JAR provides non-repudiation protection.
 
 ### How to use PAR and JAR together
 
-To use PAR and JAR together, [generate the JAR request](/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar) and, instead of calling the `/authorize` endpoint, post the request to the PAR endpoint. Then, the PAR endpoint returns a `request_uri` that you can use to call the `/authorize` endpoint as in a [regular PAR flow](/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-par).
+To use PAR and JAR together, [generate the JAR request](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar) and, instead of calling the `/authorize` endpoint, post the request to the PAR endpoint. Then, the PAR endpoint returns a `request_uri` that you can use to call the `/authorize` endpoint as in a [regular PAR flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-par).
 
 The following cURL request uses PAR and JAR together:
 
@@ -31,5 +31,5 @@ curl --location 'https://your_tenant.auth0.com/oauth/par' \
 
 ## Learn more
 
-* [Configure Pushed Authorization Requests (PAR)](/get-started/applications/configure-par)
-* [Authorization Code Flow with JWT-Secured Authorization Requests (JAR)](/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar)
+* [Configure Pushed Authorization Requests (PAR)](/docs/get-started/applications/configure-par)
+* [Authorization Code Flow with JWT-Secured Authorization Requests (JAR)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-jar)

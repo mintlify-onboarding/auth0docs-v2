@@ -10,11 +10,11 @@ title: User Authentication with CIBA
   Authentication Flow.
 'twitter:title': User Authentication with CIBA
 ---
-Client-Initiated Backchannel Authentication (CIBA) does not rely on a client application redirecting the user via the browser to perform the login/authentication process. Instead, the client application directly calls the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Provider via a backchannel request to initiate the authentication flow.
+Client-Initiated Backchannel Authentication (CIBA) does not rely on a client application redirecting the user via the browser to perform the login/authentication process. Instead, the client application directly calls the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Provider via a backchannel request to initiate the authentication flow.
 
 The following sequence diagram illustrates an implementation of the CIBA Flow:
 
-<Frame>![](/images/cdy7uua7fh8z/2Q0CVn6C9pjoxx9pG10Kqi/9333a725fafbb4b5a5d27b0e73451ab3/Screenshot_2025-01-16_at_10.11.19_AM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/2Q0CVn6C9pjoxx9pG10Kqi/9333a725fafbb4b5a5d27b0e73451ab3/Screenshot_2025-01-16_at_10.11.19_AM.png)</Frame>
 
 The sequence diagram defines two actors: an authorizing user and an initiating user. The authorizing and initiating user can be two different entities, such as an AI agent performing a task on a user's behalf. In other use cases, they can be the same entity, such as a user authenticating to a retail kiosk or another connected device.
 
@@ -35,20 +35,20 @@ The following sections dive step-by-step into how user authentication works with
 
 To initiate a CIBA push request using Auth0, you must complete the following prerequisites:
 
-* Integrate your custom mobile application with the [Guardian SDK](/secure/multi-factor-authentication/auth0-guardian#enroll-in-push-notifications). To learn more, read [Configure Client-Initiated Backchannel Authentication](/get-started/applications/configure-client-initiated-backchannel-authentication).
-* [Enroll the authorizing user in MFA using push notifications via the Guardian SDK](/secure/multi-factor-authentication/auth0-guardian#enroll-in-push-notifications). To verify in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, navigate to **User Management > Users** and click on the user:
+* Integrate your custom mobile application with the [Guardian SDK](/docs/secure/multi-factor-authentication/auth0-guardian#enroll-in-push-notifications). To learn more, read [Configure Client-Initiated Backchannel Authentication](/docs/get-started/applications/configure-client-initiated-backchannel-authentication).
+* [Enroll the authorizing user in MFA using push notifications via the Guardian SDK](/docs/secure/multi-factor-authentication/auth0-guardian#enroll-in-push-notifications). To verify in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, navigate to **User Management > Users** and click on the user:
 
-<Frame>![](/images/cdy7uua7fh8z/21qtk4F1cOQHMpbXxXYu75/51ba9c5fd1457ffee3f73893acf3c97f/Screenshot_2025-01-13_at_4.13.44_PM.png)</Frame>
+<Frame>![](/docs/images/cdy7uua7fh8z/21qtk4F1cOQHMpbXxXYu75/51ba9c5fd1457ffee3f73893acf3c97f/Screenshot_2025-01-13_at_4.13.44_PM.png)</Frame>
 
-If you have set <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=Multi-factor+Authentication">Multi-factor Authentication</Tooltip> as always required for your tenant, users are prompted to enroll for MFA at their next login. You can also use [Actions](https://auth0.com/blog/using-actions-to-customize-your-mfa-factors/) to prompt for MFA enrollment.
+If you have set <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=Multi-factor+Authentication">Multi-factor Authentication</Tooltip> as always required for your tenant, users are prompted to enroll for MFA at their next login. You can also use [Actions](https://auth0.com/blog/using-actions-to-customize-your-mfa-factors/) to prompt for MFA enrollment.
 
-* [Configure Client-Initiated Backchannel Authentication](/get-started/applications/configure-client-initiated-backchannel-authentication) for your tenant and application.
+* [Configure Client-Initiated Backchannel Authentication](/docs/get-started/applications/configure-client-initiated-backchannel-authentication) for your tenant and application.
 
 ## Step 1: Client application initiates a CIBA request
 
-Use the [User Search APIs](/manage-users/user-search) to find the authorizing user for whom you’d like to initiate a CIBA request and obtain their user ID.
+Use the [User Search APIs](/docs/manage-users/user-search) to find the authorizing user for whom you’d like to initiate a CIBA request and obtain their user ID.
 
-Once you have a user ID for the authorizing user, use the Authentication API or our [SDKs](/libraries) to send a CIBA request to the `/bc-authorize` endpoint:
+Once you have a user ID for the authorizing user, use the Authentication API or our [SDKs](/docs/libraries) to send a CIBA request to the `/bc-authorize` endpoint:
 
 <Tabs><Tab title="cURL">
 
@@ -202,7 +202,7 @@ The `auth_req_id` value is passed to the `/token` endpoint to poll for the compl
 
 ## Step 3: Client application polls for a response
 
-Use the Authentication API or our [SDKs](/libraries) to call the `/token` endpoint using the `urn:openid:params:grant-type:ciba` grant type and the `auth_req_id` you received from the `/bc-authorize` endpoint:
+Use the Authentication API or our [SDKs](/docs/libraries) to call the `/token` endpoint using the `urn:openid:params:grant-type:ciba` grant type and the `auth_req_id` you received from the `/bc-authorize` endpoint:
 
 <Tabs><Tab title="cURL">
 
@@ -304,7 +304,7 @@ To resolve the error, wait until the next interval (in seconds) to poll the `/to
 
 ## Step 4: Mobile application receives the push notification
 
-Auth0 sends a push notification to the user's registered mobile app or device. The [Guardian SDK](/secure/multi-factor-authentication/auth0-guardian) provides methods to parse the data received from the push notification and return a ready-to-use `Notification` instance. The `Notification` instance includes a transaction linking ID, or `txlinkid`, that the mobile application uses to retrieve the consent details from Auth0.
+Auth0 sends a push notification to the user's registered mobile app or device. The [Guardian SDK](/docs/secure/multi-factor-authentication/auth0-guardian) provides methods to parse the data received from the push notification and return a ready-to-use `Notification` instance. The `Notification` instance includes a transaction linking ID, or `txlinkid`, that the mobile application uses to retrieve the consent details from Auth0.
 
 The following code samples are example iOS and Android mobile push notification implementations using the Guardian SDK:
 
@@ -408,7 +408,7 @@ if (notification.getTransactionLinkingId() != null) {
 
 ## Step 6: Mobile application presents the consent details to the user
 
-The Auth0 Consent API responds to the mobile application with the consent details, including the `binding_message`, `scope`, and `audience`. The scopes returned to the mobile application are filtered according to your RBAC policy. To learn more, read [Role-Based Access Control](/manage-users/access-control/rbac).
+The Auth0 Consent API responds to the mobile application with the consent details, including the `binding_message`, `scope`, and `audience`. The scopes returned to the mobile application are filtered according to your RBAC policy. To learn more, read [Role-Based Access Control](/docs/manage-users/access-control/rbac).
 
 The mobile application presents the authentication request and/or the consent details to the user.
 
@@ -538,7 +538,7 @@ The client application completes the polling upon receiving a response from the 
 
 
 
-If the user approves the push request, Auth0 returns an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> like the following to the client application:
+If the user approves the push request, Auth0 returns an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> like the following to the client application:
 
 ```json lines
 {
@@ -559,5 +559,5 @@ If the user approves the push request, Auth0 returns an <Tooltip tip="Access Tok
 
 ## Learn more
 
-* [Client-Initiated Backchannel Authentication Flow](/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow)
-* [Configure Client-Initiated Backchannel Authentication](/get-started/applications/configure-client-initiated-backchannel-authentication)
+* [Client-Initiated Backchannel Authentication Flow](/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow)
+* [Configure Client-Initiated Backchannel Authentication](/docs/get-started/applications/configure-client-initiated-backchannel-authentication)

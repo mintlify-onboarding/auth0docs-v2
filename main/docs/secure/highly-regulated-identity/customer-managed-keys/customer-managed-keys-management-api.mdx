@@ -14,7 +14,7 @@ Auth0 secures your tenant secrets and data using an Auth0 Environment Root Key, 
 
 ## Bring Your Own Key
 
-Using Bring Your Own Key, users with the [Key Management Editor role](/get-started/manage-dashboard-access/add-dashboard-users) can use the [Auth0 Management API](https://auth0.com/docs/api/management/v2) to replace the default Auth0 Environment Root Key with their own Customer provided Root Key. Customers can securely upload their own Root Key which contains their own cryptographic material to:
+Using Bring Your Own Key, users with the [Key Management Editor role](/docs/get-started/manage-dashboard-access/add-dashboard-users) can use the [Auth0 Management API](https://auth0.com/docs/api/management/v2) to replace the default Auth0 Environment Root Key with their own Customer provided Root Key. Customers can securely upload their own Root Key which contains their own cryptographic material to:
 
 * Meet custom key generation and provenance requirements for the Environment Root Key
 * Meet specific key installation or lifespan requirements for the Environment Root Key
@@ -26,7 +26,7 @@ By importing your own Customer Provided Root Key with Bring Your Own Key, you ar
 
 </Warning>
 
-You can create and manage your Customer Provided Root Key using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>, following these steps:
+You can create and manage your Customer Provided Root Key using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>, following these steps:
 
 1. Call the [Create the new encryption key](https://auth0.com/docs/api/management/v2/keys/post-encryption) endpoint to initiate the Bring Your Own Key process and obtain the `kid` (key identifier) of the pre-activated Customer Provided Root Key without cryptographic material.
 

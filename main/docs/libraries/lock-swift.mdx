@@ -10,7 +10,7 @@ title: Lock.swift
   for your native iOS apps.
 'twitter:title': Lock.swift
 ---
-This reference guide will show you how to implement the Lock user interface, and give you the details on configuring and customizing Lock in order to use it as the UI for your authentication needs. However, if you'd like to learn how to do more with Auth0 and Swift, such as how to save, call and refresh <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Tokens">Access Tokens</Tooltip>, get user profile info, and more, check out the [Auth0.swift SDK](/libraries/auth0-swift). Or, take a look at the [Swift Quickstart](/quickstart/native/ios-swift) to walk through complete examples and see options, both for using Lock as the interface, and for using a custom interface.
+This reference guide will show you how to implement the Lock user interface, and give you the details on configuring and customizing Lock in order to use it as the UI for your authentication needs. However, if you'd like to learn how to do more with Auth0 and Swift, such as how to save, call and refresh <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Tokens">Access Tokens</Tooltip>, get user profile info, and more, check out the [Auth0.swift SDK](/docs/libraries/auth0-swift). Or, take a look at the [Swift Quickstart](/docs/quickstart/native/ios-swift) to walk through complete examples and see options, both for using Lock as the interface, and for using a custom interface.
 
 Check out the [Lock.swift repository](https://github.com/auth0/Lock.swift) on GitHub.
 
@@ -77,7 +77,7 @@ Import **Lock** wherever you'll need it
 
 ### Auth0 Credentials
 
-In order to use Lock you need to provide your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+Id">Client Id</Tooltip> and Domain, which can be found in your [Auth0 Dashboard](https://manage.auth0.com/#), under your Application's settings.
+In order to use Lock you need to provide your Auth0 <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+Id">Client Id</Tooltip> and Domain, which can be found in your [Auth0 Dashboard](https://manage.auth0.com/#), under your Application's settings.
 
 In your application bundle you can add a `plist` file named `Auth0.plist` that will include your credentials with the following format.
 
@@ -142,7 +142,7 @@ Auth0
    }
 ```
 
-Check out the [Auth0.Swift Library Documentation](/libraries/auth0-swift) for more information about its uses.
+Check out the [Auth0.Swift Library Documentation](/docs/libraries/auth0-swift) for more information about its uses.
 
 ## Specify Connections
 
@@ -179,7 +179,7 @@ Lock provides many styling options to help you apply your own brand identity to 
 }
 ```
 
-You can see the complete set of styling options to alter the appearance of Lock for your app in the [Customization Guide](/lock-swift-customization).
+You can see the complete set of styling options to alter the appearance of Lock for your app in the [Customization Guide](/docs/lock-swift-customization).
 
 ## Configuration Options
 
@@ -195,7 +195,7 @@ Lock
   }
 ```
 
-You can see the complete set of behavior configuration options to alter the way Lock works for your app in the [Configuration Guide](/libraries/lock-swift/lock-swift-configuration-options).
+You can see the complete set of behavior configuration options to alter the way Lock works for your app in the [Configuration Guide](/docs/libraries/lock-swift/lock-swift-configuration-options).
 
 ## Password Manager Support
 
@@ -227,8 +227,8 @@ You will need to add the following to your app's `info.plist`:
 
 ## Learn more
 
-* [Lock.swift: Style Customization Options](/lock-swift-customization)
-* [Lock.swift: Configuration Options](/libraries/lock-swift/lock-swift-configuration-options)
-* [Lock.swift: Custom Fields at Signup](/libraries/lock-swift/lock-swift-custom-fields-at-signup)
-* [Lock.swift Internationalization](/customize/internationalization-and-localization/lock-swift-internationalization)
-* [Logout](/authenticate/login/logout)
+* [Lock.swift: Style Customization Options](/docs/lock-swift-customization)
+* [Lock.swift: Configuration Options](/docs/libraries/lock-swift/lock-swift-configuration-options)
+* [Lock.swift: Custom Fields at Signup](/docs/libraries/lock-swift/lock-swift-custom-fields-at-signup)
+* [Lock.swift Internationalization](/docs/customize/internationalization-and-localization/lock-swift-internationalization)
+* [Logout](/docs/authenticate/login/logout)

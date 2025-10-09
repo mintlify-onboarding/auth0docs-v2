@@ -19,7 +19,7 @@ Key Concepts
 
 </Card>
 
-Auth0 uses <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JSON+Web+Token+%28JWT%29">JSON Web Token (JWT)</Tooltip> for secure data transmission, authentication, and authorization. Tokens should be parsed and validated in regular web, native, and single-page applications to make sure the token isn’t compromised and the signature is authentic. Tokens should be verified to decrease security risks if the token has been, for example, tampered with, misused, or has expired. <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> validation checks the structure, claims, and signature to assure the least amount of risk.
+Auth0 uses <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Token+%28JWT%29">JSON Web Token (JWT)</Tooltip> for secure data transmission, authentication, and authorization. Tokens should be parsed and validated in regular web, native, and single-page applications to make sure the token isn’t compromised and the signature is authentic. Tokens should be verified to decrease security risks if the token has been, for example, tampered with, misused, or has expired. <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> validation checks the structure, claims, and signature to assure the least amount of risk.
 
 ﻿
 
@@ -29,9 +29,9 @@ To visually inspect a JWT, visit [JWT.io](https://jwt.io/) or use the [JWT Debug
 
 </Callout>
 
-The JWT token signature is generated using a <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/glossary?term=Signing+Algorithm">Signing Algorithm</Tooltip>. While tokens can use multiple <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/glossary?term=signing+algorithms">signing algorithms</Tooltip>, Auth0 supports RS256, RSA encryption with SHA-256 hash function or HS256, HMAC message authentication code (MAC) with SHA-256. To learn more about Auth0’s recommended algorithm, read [Signing Algorithms](/get-started/applications/signing-algorithms).
+The JWT token signature is generated using a <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/docs/glossary?term=Signing+Algorithm">Signing Algorithm</Tooltip>. While tokens can use multiple <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/docs/glossary?term=signing+algorithms">signing algorithms</Tooltip>, Auth0 supports RS256, RSA encryption with SHA-256 hash function or HS256, HMAC message authentication code (MAC) with SHA-256. To learn more about Auth0’s recommended algorithm, read [Signing Algorithms](/docs/get-started/applications/signing-algorithms).
 
-When validating a JWT, generally, the current hash value and the original hash value are parsed, or decoded, then compared to verify the token signature is authentic. All of our [backend API quickstarts](/quickstart/backend) use SDKs that perform JWT validation and parsing for you.
+When validating a JWT, generally, the current hash value and the original hash value are parsed, or decoded, then compared to verify the token signature is authentic. All of our [backend API quickstarts](/docs/quickstart/backend) use SDKs that perform JWT validation and parsing for you.
 
 ## Parse and validate
 
@@ -45,7 +45,7 @@ We strongly recommend that you use middleware or one of the existing open source
 
 ## Middleware
 
-Many web frameworks, such as [ASP.NET Core](/quickstart/backend/aspnet-core-webapi), include JWT middleware that handles JWT validation. Typically, this is the best route to take because the middleware integrates well with the framework's overall authentication mechanisms.
+Many web frameworks, such as [ASP.NET Core](/docs/quickstart/backend/aspnet-core-webapi), include JWT middleware that handles JWT validation. Typically, this is the best route to take because the middleware integrates well with the framework's overall authentication mechanisms.
 
 ## Third-party libraries
 
@@ -55,7 +55,7 @@ Most third-party libraries implement one method to verify a JWT and build in var
 
 General recommendations for using third-party libraries:
 
-* For obtaining claims from JWT, use the `verify()` method to validate the claims and the signature. Avoid using the `decode()` method to validate a token, especially if it's coming from a <Tooltip tip="Public Client: Client (application) that cannot hold credentials securely. Examples include a native desktop or mobile application and a JavaScript-based client-side web application (such as a single-page app (SPA))." cta="View Glossary" href="/glossary?term=public+client">public client</Tooltip>.
+* For obtaining claims from JWT, use the `verify()` method to validate the claims and the signature. Avoid using the `decode()` method to validate a token, especially if it's coming from a <Tooltip tip="Public Client: Client (application) that cannot hold credentials securely. Examples include a native desktop or mobile application and a JavaScript-based client-side web application (such as a single-page app (SPA))." cta="View Glossary" href="/docs/glossary?term=public+client">public client</Tooltip>.
 * Carefully follow all instructions on how to use the chosen library. The library could rely on default values or settings that could create security risks.
 
 ## Manually implement checks
@@ -81,7 +81,7 @@ We recommend that you get the Public Key from your tenant's JWKS here:
 
 ## Learn more
 
-* [JSON Web Token Claims](/secure/tokens/json-web-tokens/json-web-token-claims)
-* [Validate ID Tokens](/secure/tokens/id-tokens/validate-id-tokens)
-* [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens)
-* [Token Best Practices](/secure/tokens/token-best-practices)
+* [JSON Web Token Claims](/docs/secure/tokens/json-web-tokens/json-web-token-claims)
+* [Validate ID Tokens](/docs/secure/tokens/id-tokens/validate-id-tokens)
+* [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens)
+* [Token Best Practices](/docs/secure/tokens/token-best-practices)

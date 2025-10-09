@@ -10,7 +10,7 @@ title: Auth0 React SDK for Single Page Apps
 ---
 The Auth0 React SDK (auth0-react.js) is a JavaScript library for implementing authentication and authorization in React apps with Auth0. It provides a custom React hook and other Higher Order Components so you can secure React apps using best practices while writing less code.
 
-The Auth0 React SDK handles grant and protocol details, token expiration and renewal, as well as token storage and caching. Under the hood, it implements [Universal Login](/authenticate/login/auth0-universal-login) and the [Authorization Code Grant Flow with PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
+The Auth0 React SDK handles grant and protocol details, token expiration and renewal, as well as token storage and caching. Under the hood, it implements [Universal Login](/docs/authenticate/login/auth0-universal-login) and the [Authorization Code Grant Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
 
 The library is [hosted on GitHub](https://github.com/auth0/auth0-react) where you can [read more about the API](https://auth0.github.io/auth0-react/).
 
@@ -94,7 +94,7 @@ export default LoginButton;
 
 ## Logout
 
-Use `logout` to log your users out. Make sure `returnTo` is specified in "Allowed Logout URLs" in your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+Use `logout` to log your users out. Make sure `returnTo` is specified in "Allowed Logout URLs" in your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 ```js lines
 import React from 'react';
@@ -175,7 +175,7 @@ export default withAuthenticationRequired(PrivateRoute, {
 
 ## Call an API
 
-To call a protected API with an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, be sure to specify the `audience` and `scope` of your [access token](/secure/tokens/access-tokens/get-access-tokens), either in `Auth0Provider` or `getAccessTokenSilently`. Then use it to call a protected API by passing it in the `Authorization` header of your request.
+To call a protected API with an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, be sure to specify the `audience` and `scope` of your [access token](/docs/secure/tokens/access-tokens/get-access-tokens), either in `Auth0Provider` or `getAccessTokenSilently`. Then use it to call a protected API by passing it in the `Authorization` header of your request.
 
 ```jsx lines expandable
 import React, { useEffect, useState } from 'react';

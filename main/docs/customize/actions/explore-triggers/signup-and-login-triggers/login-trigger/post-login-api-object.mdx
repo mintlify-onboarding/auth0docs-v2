@@ -492,13 +492,13 @@ Store or update a string value in the cache at the specified key.
 
 Values stored in this cache are scoped to the Trigger in which they are set.
 They are subject to the
-[Actions Cache Limits](/customize/actions/limitations).
+[Actions Cache Limits](/docs/customize/actions/limitations).
 
 Values stored in this way will have lifetimes of up to the specified
 `ttl` or `expires_at` values. If no lifetime is
 specified, a default lifetime of 15 minutes will be used. Lifetimes may
 not exceed the maximum duration listed at
-[Actions Cache Limits](/customize/actions/limitations).
+[Actions Cache Limits](/docs/customize/actions/limitations).
 
 Returns `CacheWriteSuccess` if the values are stored successfully. Otherwise, you will receive `CacheWriteError`.
 
@@ -652,7 +652,7 @@ Returns a reference to the `api` object.
 <td><code>options.allowRememberBrowser</code></td>
 <td>
 <p>
-<em>Optional boolean</em>. When provider is set to <code>google-authenticator</code> or <code>duo</code>, the user is prompted for MFA once every 30 days. When provider is set to <code>guardian</code>, the MFA prompt displays the enrollment checkbox for users to choose whether or not to enroll. Defaults to <code>false</code>. To learn more, read <a href="/secure/multi-factor-authentication/customize-mfa ">Customize Multi-Factor Authentication Pages </a>
+<em>Optional boolean</em>. When provider is set to <code>google-authenticator</code> or <code>duo</code>, the user is prompted for MFA once every 30 days. When provider is set to <code>guardian</code>, the MFA prompt displays the enrollment checkbox for users to choose whether or not to enroll. Defaults to <code>false</code>. To learn more, read <a href="/docs/secure/multi-factor-authentication/customize-mfa ">Customize Multi-Factor Authentication Pages </a>
 </p>
 </td>
 </tr>
@@ -1576,7 +1576,7 @@ refresh tokens. This will prevent the user from completing the flow and no
 further Actions are executed.
 
 **Note** This method initiates a session-revoked
-[OIDC Back-Channel Logout Initiator](/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators)
+[OIDC Back-Channel Logout Initiator](/docs/authenticate/login/logout/back-channel-logout/oidc-back-channel-logout-initiators)
 to logout users from all applications bound to the current session. Deletion
 of session associated refresh tokens is an asynchronous operation.
 
@@ -1706,7 +1706,7 @@ Returns a reference to the `api` object.
 Store or update shared data across custom Actions for the duration of a transaction.  
 Transaction metadata allows you to share data between multiple Actions within the same authentication flow. Data stored using this method is available in the `event.transaction.metadata` object in the current and subsequent Actions and persists throughout the entire transaction lifecycle.  
   
-They are subject to Transaction Metadata Limits. To learn more, read [Actions Limitations](/customize/actions/limitations) .   
+They are subject to Transaction Metadata Limits. To learn more, read [Actions Limitations](/docs/customize/actions/limitations) .   
   
 **NOTE:** Transaction metadata is only available during the current authentication transaction and is not persisted beyond the completion of the authentication flow. This feature is only currently available on `post-login` Actions.
 

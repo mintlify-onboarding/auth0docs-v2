@@ -18,11 +18,11 @@ title: Configure Okta as SAML Identity Provider
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you want to integrate your Auth0 tenant with Okta Workforce Identity, try using the [Okta Workforce Enterprise connection](/authenticate/identity-providers/enterprise-identity-providers/okta) first.
+If you want to integrate your Auth0 tenant with Okta Workforce Identity, try using the [Okta Workforce Enterprise connection](/docs/authenticate/identity-providers/enterprise-identity-providers/okta) first.
 
 </Callout>
 
-You can configure Okta as a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> (IdP) in Auth0 by configuring a SAML Enterprise connection.
+You can configure Okta as a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP) in Auth0 by configuring a SAML Enterprise connection.
 
 ## Configure Okta SAML app integration
 
@@ -73,7 +73,7 @@ The login flow is now directed to the **Sign On** page for the newly-created app
 
 ## Configure SAML connection in Auth0
 
-You can create a SAML Enterprise connection in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+You can create a SAML Enterprise connection in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 1. Log in to the [Auth0 Dashboard](https://manage.auth0.com/#).
 2. Go to [Authentication > Enterprise](https://manage.auth0.com/#/connections/enterprise/samlp).
@@ -145,7 +145,7 @@ You can test your connection in the Auth0 Dashboard.
 
 The **Try** button works only for users logged in to the Auth0 Dashboard. You can't send this to an anonymous user, such as a customer.
 
-If you don't have an Okta user, you need to create one or [**configure IdP-initiated SSO**](/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
+If you don't have an Okta user, you need to create one or [**configure IdP-initiated SSO**](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
 
 </Warning>
 
@@ -157,8 +157,8 @@ The user might see the Okta dashboard after authenticating through a Service Pro
 
 ## Configure Global Token Revocation
 
-This connection type supports a Global Token Revocation endpoint, which allows a compliant identity provider to revoke Auth0 user sessions, revoke <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip>, and trigger back-channel logout for applications using a secure back-channel.
+This connection type supports a Global Token Revocation endpoint, which allows a compliant identity provider to revoke Auth0 user sessions, revoke <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip>, and trigger back-channel logout for applications using a secure back-channel.
 
 This feature can be used with Universal Logout in Okta Workforce Identity.
 
-For more information and configuration instructions, see [Universal Logout](/authenticate/login/logout/universal-logout).
+For more information and configuration instructions, see [Universal Logout](/docs/authenticate/login/logout/universal-logout).

@@ -12,13 +12,13 @@ Here are some recommended best practices for general Auth0 usage and operation.
 
 ## Capture log files
 
-Auth0 keeps tenant logs for a limited amount of time. (To learn more, read [Logs](/deploy-monitor/logs).) To get log data and store it elsewhere, you can use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>'s [Search log events endpoint](https://auth0.com/docs/api/management/v2#!/Logs/get_logs), [stream the logs](/customize/log-streams) to an external service, or [export log events using one of the available extensions](https://marketplace.auth0.com/features/log-streaming) for services such as Loggly or Splunk.
+Auth0 keeps tenant logs for a limited amount of time. (To learn more, read [Logs](/docs/deploy-monitor/logs).) To get log data and store it elsewhere, you can use the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>'s [Search log events endpoint](https://auth0.com/docs/api/management/v2#!/Logs/get_logs), [stream the logs](/docs/customize/log-streams) to an external service, or [export log events using one of the available extensions](https://marketplace.auth0.com/features/log-streaming) for services such as Loggly or Splunk.
 
 ## Set up your own email provider and customize email templates
 
-Auth0 provides a test email provider, so you can test default welcome and email verification messages during tenant configuration. To learn more, read [Email](/customize/email). The test provider can only send a limited amount of emails, so you should [configure your own mail server](/customize/email/smtp-email-providers/configure-custom-external-smtp-email-provider). Additionally, we recommend a unique email provider account per tenant. Sharing an email account between tenants can be a potential source of problems or outages for one tenant when making changes to the service intended for another.
+Auth0 provides a test email provider, so you can test default welcome and email verification messages during tenant configuration. To learn more, read [Email](/docs/customize/email). The test provider can only send a limited amount of emails, so you should [configure your own mail server](/docs/customize/email/smtp-email-providers/configure-custom-external-smtp-email-provider). Additionally, we recommend a unique email provider account per tenant. Sharing an email account between tenants can be a potential source of problems or outages for one tenant when making changes to the service intended for another.
 
-Also, make sure to [configure and customize the templates](/customize/email/email-templates) for emails sent from Auth0. These include email verification messages, welcome messages, password reset messages, et cetera. For custom templates, provide a "from" address, a clear subject, your custom content, and a link timeout for emails with a link (such as a password reset link).
+Also, make sure to [configure and customize the templates](/docs/customize/email/email-templates) for emails sent from Auth0. These include email verification messages, welcome messages, password reset messages, et cetera. For custom templates, provide a "from" address, a clear subject, your custom content, and a link timeout for emails with a link (such as a password reset link).
 
 ## Avoid pinning or fingerprinting TLS certificates for Auth0 endpoints
 
@@ -32,13 +32,13 @@ Certificates presented on Auth0 endpoints are issued for varying expiry timefram
 
 ## Store custom code in a source code repository
 
-If you have a full continuous integration/continuous deployment pipeline, use the Auth0 Deploy CLI tool for greater flexibility. To learn more, read [Deploy CLI Tool](/deploy-monitor/deploy-cli-tool).
+If you have a full continuous integration/continuous deployment pipeline, use the Auth0 Deploy CLI tool for greater flexibility. To learn more, read [Deploy CLI Tool](/docs/deploy-monitor/deploy-cli-tool).
 
 Please note that the [auth0-deploy-cli](https://github.com/auth0/auth0-deploy-cli) tool is updated regularly to provide feature enhancements, security improvements, and bug fixes. Before you upgrade to a newer version, review the [release notes](https://github.com/auth0/auth0-deploy-cli/releases) and update your configuration files accordingly.
 
 ## Store configuration values in Dashboard
 
-If your Actions, Rules, Hooks, custom database scripts, or Webtasks require configuration values (such as credentials or API keys), you should store them in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Storing configuration values in the Dashboard makes migrating configuration between tenants easier. To learn more, read [Set Up Multiple Environments](/get-started/auth0-overview/create-tenants/set-up-multiple-environments).
+If your Actions, Rules, Hooks, custom database scripts, or Webtasks require configuration values (such as credentials or API keys), you should store them in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Storing configuration values in the Dashboard makes migrating configuration between tenants easier. To learn more, read [Set Up Multiple Environments](/docs/get-started/auth0-overview/create-tenants/set-up-multiple-environments).
 
 ## Add Auth0 public IP addresses to AllowList
 

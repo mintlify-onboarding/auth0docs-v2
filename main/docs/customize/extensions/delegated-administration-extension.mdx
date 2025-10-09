@@ -14,7 +14,7 @@ title: Delegated Administration Extension v3
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Auth0 recommends that you use the Tenant Members settings to designate tenant usage capabilities to other users and admins in your organization. To learn more, read [Dashboard Access](/get-started/manage-dashboard-access).
+Auth0 recommends that you use the Tenant Members settings to designate tenant usage capabilities to other users and admins in your organization. To learn more, read [Dashboard Access](/docs/get-started/manage-dashboard-access).
 
 </Callout>
 
@@ -34,13 +34,13 @@ To configure the DAE, you must:
 
 ### Register the application with Auth0
 
-Create the Application that the Delegated Administration Extension will expose to those who should have administrative privileges for the Users page. To do this, [create a delegated admin application](/customize/extensions/delegated-administration-extension/create-delegated-admin-applications) in Auth0.
+Create the Application that the Delegated Administration Extension will expose to those who should have administrative privileges for the Users page. To do this, [create a delegated admin application](/docs/customize/extensions/delegated-administration-extension/create-delegated-admin-applications) in Auth0.
 
-When finished, note the application's **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>**.
+When finished, note the application's **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>**.
 
 ### Create a database connection
 
-In this example, a database connection will serve as the source of your users who are allowed access to the Users area. To configure this, [create a database connection](/get-started/applications/set-up-database-connections).
+In this example, a database connection will serve as the source of your users who are allowed access to the Users area. To configure this, [create a database connection](/docs/get-started/applications/set-up-database-connections).
 
 While setting up your connection:
 
@@ -51,23 +51,23 @@ While setting up your connection:
 
 By default, Auth0 enables all connections associated with your tenant when you create a new Application. For this example, disable all connections other than your newly-created database connection. This helps keep the application secure because no one can add themselves using one of your existing connections.
 
-To configure this, [update application connections](/get-started/applications/update-application-connections).
+To configure this, [update application connections](/docs/get-started/applications/update-application-connections).
 
 ### Create users for the database connection
 
-To continue, you must [create at least one user](/manage-users/user-accounts/create-users) and attach it to your connection.
+To continue, you must [create at least one user](/docs/manage-users/user-accounts/create-users) and attach it to your connection.
 
 ### Assign roles to users
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-Although the [Delegated Administration Extension (DAE)](/customize/extensions/delegated-administration-extension) and the [Authorization Core](/manage-users/access-control/rbac) feature set are completely separate features, you can use the Authorization Core feature set to create and manage roles for the DAE using Actions. To learn how, see [Sample Use Cases: Actions with Authorization](/manage-users/access-control/sample-use-cases-actions-with-authorization).
+Although the [Delegated Administration Extension (DAE)](/docs/customize/extensions/delegated-administration-extension) and the [Authorization Core](/docs/manage-users/access-control/rbac) feature set are completely separate features, you can use the Authorization Core feature set to create and manage roles for the DAE using Actions. To learn how, see [Sample Use Cases: Actions with Authorization](/docs/manage-users/access-control/sample-use-cases-actions-with-authorization).
 
 </Callout>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-When logging in as a user using Organizations with Delegated Administration Extension (DAE), your user roles will not be available. Only your Organization member roles will be available within `event.authorization.roles.` To add roles to Organization members, read [Add Roles to Organization Members](/manage-users/organizations/configure-organizations/add-member-roles).
+When logging in as a user using Organizations with Delegated Administration Extension (DAE), your user roles will not be available. Only your Organization member roles will be available within `event.authorization.roles.` To add roles to Organization members, read [Add Roles to Organization Members](/docs/manage-users/organizations/configure-organizations/add-member-roles).
 
 </Callout>
 
@@ -99,11 +99,11 @@ Auth0 grants access to the Delegated Administration Extension (DAE) for the user
 </tbody>
 </table>
 
-When working with roles, we recommend that you use the [Authorization Core](/manage-users/access-control/rbac) feature set:
+When working with roles, we recommend that you use the [Authorization Core](/docs/manage-users/access-control/rbac) feature set:
 
-1. [Create DAE roles](/manage-users/access-control/configure-core-rbac/roles/create-roles). The names of the roles you create must match the names of the pre-defined DAE roles above.
-2. [Assign DAE roles to a user manually](/manage-users/access-control/configure-core-rbac/rbac-users/assign-roles-to-users).
-3. Add user roles to the DAE namespace in the ID Token using [Actions](/customize/actions)**:**
+1. [Create DAE roles](/docs/manage-users/access-control/configure-core-rbac/roles/create-roles). The names of the roles you create must match the names of the pre-defined DAE roles above.
+2. [Assign DAE roles to a user manually](/docs/manage-users/access-control/configure-core-rbac/rbac-users/assign-roles-to-users).
+3. Add user roles to the DAE namespace in the ID Token using [Actions](/docs/customize/actions)**:**
 
    ```text lines
    exports.onExecutePostLogin = async (event, api) => {
@@ -121,11 +121,11 @@ When working with roles, we recommend that you use the [Authorization Core](/man
 
 Remember to replace the `CLIENT_ID` placeholder with your delegated admin application's **Client ID** andreplace `{yourTenant}` with your tenant name. For example, if your tenant's name is "tenant_name_example", the namespace would be: `https://tenant_name_example/auth0-delegated-admin`
 
-To learn more about creating Actions, read [Write Your First Action](/customize/actions/write-your-first-action)
+To learn more about creating Actions, read [Write Your First Action](/docs/customize/actions/write-your-first-action)
 
 <Warning>
 
-Auth0 returns profile information in a structured claim format as defined by the [OpenID Connect (OIDC) specification](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims). This means that custom claims added to ID tokens or access tokens must [conform to guidelines and restrictions](/secure/tokens/json-web-tokens/create-custom-claims) to avoid possible collisions.
+Auth0 returns profile information in a structured claim format as defined by the [OpenID Connect (OIDC) specification](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims). This means that custom claims added to ID tokens or access tokens must [conform to guidelines and restrictions](/docs/secure/tokens/json-web-tokens/create-custom-claims) to avoid possible collisions.
 
 </Warning>
 
@@ -142,7 +142,7 @@ If you choose not to use Authorization Core, you should define DAE roles in one 
 
 ## Install and configure the extension
 
-Now that we've created and configured an application, a connection, and our user, we can [install and configure the Delegated Admin Extension](/customize/extensions/delegated-administration-extension/install-delegated-admin-extension) itself.
+Now that we've created and configured an application, a connection, and our user, we can [install and configure the Delegated Admin Extension](/docs/customize/extensions/delegated-administration-extension/install-delegated-admin-extension) itself.
 
 ## Use the extension
 
@@ -209,5 +209,5 @@ By default, token expiration time is 10 hours. However, for security reasons, wh
 
 ## Learn more
 
-* [Delegated Administration: Extension Hooks](/customize/extensions/delegated-administration-extension/delegated-administration-hooks)
-* [Delegated Administration: Manage Users](/customize/extensions/delegated-administration-extension/delegated-administration-manage-users)
+* [Delegated Administration: Extension Hooks](/docs/customize/extensions/delegated-administration-extension/delegated-administration-hooks)
+* [Delegated Administration: Manage Users](/docs/customize/extensions/delegated-administration-extension/delegated-administration-manage-users)

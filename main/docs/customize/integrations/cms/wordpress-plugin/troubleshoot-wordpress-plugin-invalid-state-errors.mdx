@@ -10,7 +10,7 @@ title: Troubleshoot WordPress Plugin Invalid State Errors
   WordPress plugin
 'twitter:title': Troubleshoot WordPress Plugin Invalid State Errors
 ---
-We added state validation to WordPress plugin version 3.6.0, which you can find in the [wp-auth0 GitHub repository](https://github.com/auth0/wp-auth0/releases/tag/3.6.0). This security measure helps mitigate CSRF attacks by ensuring that the response belongs to a request initiated by the same user To learn more, read [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameter](/secure/attack-protection/state-parameters).
+We added state validation to WordPress plugin version 3.6.0, which you can find in the [wp-auth0 GitHub repository](https://github.com/auth0/wp-auth0/releases/tag/3.6.0). This security measure helps mitigate CSRF attacks by ensuring that the response belongs to a request initiated by the same user To learn more, read [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameter](/docs/secure/attack-protection/state-parameters).
 
 ## How state validation works
 
@@ -56,11 +56,11 @@ If you refresh the page after seeing a different error message (email verificati
 
 ### Cookie names requirement
 
-Some hosts, like Pantheon, require specific cookie names to be used. You can alter the cookie name using the `auth0_state_cookie_name` filter in your theme or a custom plugin. To learn more about the `auth0_state_cookie_name` filter, read [Extend Login by Auth0 WordPress Plugin](/customize/integrations/cms/wordpress-plugin/extend-login-by-auth0). For additional information, [see the related GitHub issue](https://github.com/auth0/wp-auth0/issues/494) and [explore its fix](https://github.com/auth0/wp-auth0/pull/495).
+Some hosts, like Pantheon, require specific cookie names to be used. You can alter the cookie name using the `auth0_state_cookie_name` filter in your theme or a custom plugin. To learn more about the `auth0_state_cookie_name` filter, read [Extend Login by Auth0 WordPress Plugin](/docs/customize/integrations/cms/wordpress-plugin/extend-login-by-auth0). For additional information, [see the related GitHub issue](https://github.com/auth0/wp-auth0/issues/494) and [explore its fix](https://github.com/auth0/wp-auth0/pull/495).
 
 ### Universal Login Page and link building
 
-If your site is using the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> Page and you're building the link yourself in a theme or plugin, you need to:
+If your site is using the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> Page and you're building the link yourself in a theme or plugin, you need to:
 
 * Set a cookie called `auth0_state` with a randomly-generated value
 * Send that value in a `state` URL parameter.
@@ -121,7 +121,7 @@ If none of the steps above resolve the issue, please collect the results of the 
 * WordPress version
 * Auth0 plugin version
 * Browser and OS used to test
-* A HAR file recording the entire process from loading the page with the login form all the way through the "Invalid state" message. To learn more about HAR files, read [Generate and Analyze HAR Files](/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files).
+* A HAR file recording the entire process from loading the page with the login form all the way through the "Invalid state" message. To learn more about HAR files, read [Generate and Analyze HAR Files](/docs/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files).
 
   <Warning>
 

@@ -28,7 +28,7 @@ WebAuthProvider.login(account)
 
 ## withScope
 
-Using scopes can lets you return specific claims for specific fields in your request. Adding parameters to `withScope` lets you add more scopes. See [Scopes](/get-started/apis/scopes) for details.
+Using scopes can lets you return specific claims for specific fields in your request. Adding parameters to `withScope` lets you add more scopes. See [Scopes](/docs/get-started/apis/scopes) for details.
 
 ```kotlin lines
 WebAuthProvider.login(account)
@@ -40,7 +40,7 @@ The default scope is `openid profile email`.
 
 ## withConnectionScope
 
-There may be times when you need to authenticate with particular connection scopes, or permissions, from the authentication provider in question. See [Adding Scopes for an External IDP](/authenticate/identity-providers/adding-scopes-for-an-external-idp). However, if you need specific access for a particular situation in your app, you can do pass parameters to `withConnectionScope`. You can find a full list of the available parameters in that connection's settings on the [Dashboard](https://manage.auth0.com/#), or from the authentication providers's documentation. The scope requested here is added on top of the ones specified in the connection's settings in the Dashboard.
+There may be times when you need to authenticate with particular connection scopes, or permissions, from the authentication provider in question. See [Adding Scopes for an External IDP](/docs/authenticate/identity-providers/adding-scopes-for-an-external-idp). However, if you need specific access for a particular situation in your app, you can do pass parameters to `withConnectionScope`. You can find a full list of the available parameters in that connection's settings on the [Dashboard](https://manage.auth0.com/#), or from the authentication providers's documentation. The scope requested here is added on top of the ones specified in the connection's settings in the Dashboard.
 
 ```kotlin lines
 WebAuthProvider.login(account)
@@ -90,7 +90,7 @@ The scheme must be lowercase and not contain underscore characters.
 
 ## withAudience
 
-To provide an <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip>, use `withAudience`.
+To provide an <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip>, use `withAudience`.
 
 ```kotlin lines
 WebAuthProvider.login(account)

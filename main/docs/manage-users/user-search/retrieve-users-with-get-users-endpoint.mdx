@@ -18,7 +18,7 @@ This endpoint is **eventually consistent**, and as such, we recommend that you u
 
 ## Request example
 
-To search for users, make a `GET` request to the [`/api/v2/users` endpoint](https://auth0.com/docs/api/management/v2#!/Users/get_users). The request must include a [Management API access token](/secure/tokens/access-tokens/management-api-access-tokens). Pass your search query to the `q` parameter and set the `search_engine` parameter to `v3`.
+To search for users, make a `GET` request to the [`/api/v2/users` endpoint](https://auth0.com/docs/api/management/v2#!/Users/get_users). The request must include a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens). Pass your search query to the `q` parameter and set the `search_engine` parameter to `v3`.
 
 For example, to search for a user whose email is exactly `jane@exampleco.com`, use `q=email:"jane@exampleco.com"`:
 
@@ -238,7 +238,7 @@ If successful, you'll receive a response like this:
 
 ## Query examples
 
-Below are some examples of the kinds of queries you can make with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+Below are some examples of the kinds of queries you can make with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <table class="table"><thead>
 <tr>
@@ -318,26 +318,26 @@ Below are some examples of the kinds of queries you can make with the <Tooltip t
 
 * The endpoint returns a maximum of 50 users, even if more users match your query.
 * If you need to return more than 50 users, use the `page` parameter to show more pages of results. Each page contains 50 users. For example, you can specify `&page=2` to show results 51-100, specify `&page=3` to show results 101-150, and so on. However, this endpoint never returns a total of more than 1000 users with the same search criteria, even with paging.
-* There is a 1 MB per-user limit on user data that can be indexed, queried, and returned by the [user search endpoint](https://auth0.com/docs/api/management/v2/users/get-users). For more information on how this affects custom metadata larger than 1MB, see [Metadata Field Names and Data Types](/manage-users/user-accounts/metadata/metadata-fields-data#size-limits-and-storage). The [get user endpoint](https://auth0.com/docs/api/management/v2/users/get-users-by-id) must be used to retrieve all user attributes for oversized user profiles.
+* There is a 1 MB per-user limit on user data that can be indexed, queried, and returned by the [user search endpoint](https://auth0.com/docs/api/management/v2/users/get-users). For more information on how this affects custom metadata larger than 1MB, see [Metadata Field Names and Data Types](/docs/manage-users/user-accounts/metadata/metadata-fields-data#size-limits-and-storage). The [get user endpoint](https://auth0.com/docs/api/management/v2/users/get-users-by-id) must be used to retrieve all user attributes for oversized user profiles.
 * By default, the `GET /api/v2/users` endpoint returns results in a deterministic order so the same query yields the same logically ordered results each time. This behavior is controlled by the `primary_order` query parameter:
 
   + `primary_order=true` (default): results across identical queries are consistently ordered.
   + `primary_order=false`: results are returned in a non-deterministic order, which can enhance performance for complex queries.
 * If your application does not require consistent ordering of search results and your queries are short enough not to rely on pagination, set `primary_order=false` to improve query performance.
-* If you need a complete export of all of your users, use the [export job](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_exports) or the [User Import / Export](/customize/extensions/user-import-export-extension) extension.
+* If you need a complete export of all of your users, use the [export job](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_exports) or the [User Import / Export](/docs/customize/extensions/user-import-export-extension) extension.
 * If you get the error `414 Request-URI Too Large` this means that your query string is larger than the supported length. In this case, refine your search.
 
 We do **not** recommend that you use this endpoint for:
 
-* Operations that require immediate consistency. Instead, use the [Get Users by Email endpoint](/manage-users/user-search/retrieve-users-with-get-users-by-email-endpoint) or the [Get Users by ID endpoint](/manage-users/user-search/retrieve-users-with-get-users-by-id-endpoint).
-* User exports. Instead, use the [User Export endpoint](/manage-users/user-migration/bulk-user-exports).
+* Operations that require immediate consistency. Instead, use the [Get Users by Email endpoint](/docs/manage-users/user-search/retrieve-users-with-get-users-by-email-endpoint) or the [Get Users by ID endpoint](/docs/manage-users/user-search/retrieve-users-with-get-users-by-id-endpoint).
+* User exports. Instead, use the [User Export endpoint](/docs/manage-users/user-migration/bulk-user-exports).
 * Operations that require user search as part of authentication processes. Instead, use the Get Users by Email endpoint or the Get Users by ID endpoint.
-* Searching for Users for [Account Linking](/manage-users/user-accounts/user-account-linking) by Email. Instead, use the Get Users by Email endpoint.
+* Searching for Users for [Account Linking](/docs/manage-users/user-accounts/user-account-linking) by Email. Instead, use the Get Users by Email endpoint.
 
 ## Learn more
 
-* [User Search Query Syntax](/manage-users/user-search/user-search-query-syntax)
-* [Sort Search Results](/manage-users/user-search/sort-search-results)
-* [View Search Results by Page](/manage-users/user-search/view-search-results-by-page)
-* [Bulk User Exports](/manage-users/user-migration/bulk-user-exports)
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
+* [User Search Query Syntax](/docs/manage-users/user-search/user-search-query-syntax)
+* [Sort Search Results](/docs/manage-users/user-search/sort-search-results)
+* [View Search Results by Page](/docs/manage-users/user-search/view-search-results-by-page)
+* [Bulk User Exports](/docs/manage-users/user-migration/bulk-user-exports)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)

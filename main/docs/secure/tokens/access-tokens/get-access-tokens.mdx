@@ -12,18 +12,18 @@ title: Get Access Tokens
   by the app and granted by the user.
 'twitter:title': Get Access Tokens
 ---
-To access your API, you must request an [access token](/secure/tokens/access-tokens) when authenticating a user.
+To access your API, you must request an [access token](/docs/secure/tokens/access-tokens) when authenticating a user.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 These Auth0 tools help you modify your application to authenticate users:
 
-* [Quickstarts](/quickstarts) are the easiest way to implement authentication. They show you how to use [Universal Login](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login) and Auth0's language- and framework-specific SDKs.
-* The [Auth0 Authentication API](https://auth0.com/docs/api/authentication) is a reference for those who prefer to write code independently. First, identify [which flow to use](/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use). Then follow the instructions to implement that flow.
+* [Quickstarts](/docs/quickstarts) are the easiest way to implement authentication. They show you how to use [Universal Login](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login) and Auth0's language- and framework-specific SDKs.
+* The [Auth0 Authentication API](https://auth0.com/docs/api/authentication) is a reference for those who prefer to write code independently. First, identify [which flow to use](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use). Then follow the instructions to implement that flow.
 
 </Callout>
 
-To request an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>, make a POST call to the [token URL](https://auth0.com/docs/api/authentication#client-credentials-flow).
+To request an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, make a POST call to the [token URL](https://auth0.com/docs/api/authentication#client-credentials-flow).
 
 #### Example POST to token URL
 
@@ -246,7 +246,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>client_secret</code></td>
-<td>Your application's Client Secret. You can find this value on the <a href="https://manage.auth0.com/#/applications">application's settings tab</a>.  To learn more about available application authentication methods, read <a href="/secure/application-credentials">Application Credentials</a>.</td>
+<td>Your application's Client Secret. You can find this value on the <a href="https://manage.auth0.com/#/applications">application's settings tab</a>.  To learn more about available application authentication methods, read <a href="/docs/secure/application-credentials">Application Credentials</a>.</td>
 </tr>
 <tr>
 <td><code>audience</code></td>
@@ -254,7 +254,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td><code>organization</code></td>
-<td>Optional. The organization name or identifier you want the request to be associated with. To learn more, read <a href="/manage-users/organizations/organizations-for-m2m-applications">Machine-to-Machine Access for Organizations</a>.</td>
+<td>Optional. The organization name or identifier you want the request to be associated with. To learn more, read <a href="/docs/manage-users/organizations/organizations-for-m2m-applications">Machine-to-Machine Access for Organizations</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -278,13 +278,13 @@ You receive an `HTTP 200` response with a payload containing `access_token`, `to
 
 <Warning>
 
-Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens).
+Validate your tokens before saving them. To learn how, read [Validate ID Tokens](/docs/secure/tokens/id-tokens/validate-id-tokens) and [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens).
 
 </Warning>
 
 ## Control access token audience
 
-When a user authenticates, you request an access token and include the target <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> and scope of access in your request. The application uses the `/authorize` endpoint to request access. This access is both requested by the application and granted by the user during authentication
+When a user authenticates, you request an access token and include the target <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> and scope of access in your request. The application uses the `/authorize` endpoint to request access. This access is both requested by the application and granted by the user during authentication
 
 You can configure your tenant to always include a default audience.
 
@@ -318,7 +318,7 @@ You can configure your tenant to always include a default audience.
 </tbody>
 </table>
 
-In only one specific instance, access tokens can have multiple target audiences. This requires that your custom API's <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/glossary?term=signing+algorithm">signing algorithm</Tooltip> is set to **RS256**. To learn more, read [Token Best Practices](/secure/tokens/token-best-practices).
+In only one specific instance, access tokens can have multiple target audiences. This requires that your custom API's <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/docs/glossary?term=signing+algorithm">signing algorithm</Tooltip> is set to **RS256**. To learn more, read [Token Best Practices](/docs/secure/tokens/token-best-practices).
 
 ### Multiple audiences
 
@@ -326,23 +326,23 @@ If you specify an audience of your custom API identifier and a scope of `openid`
 
 ### Custom domains and the Auth0 Management API
 
-Auth0 issues tokens with an issuer (`iss)` claim of whichever domain you used when requesting the token. [Custom domain](/customize/custom-domains) users can use either their <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip> or their Auth0 domain.
+Auth0 issues tokens with an issuer (`iss)` claim of whichever domain you used when requesting the token. [Custom domain](/docs/customize/custom-domains) users can use either their <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip> or their Auth0 domain.
 
 For example, suppose you have a custom domain, `https://login.northwind.com`. If you request an access token from `https://login.northwind.com/authorize`, your token's `iss` claim will be `https://login.northwind.com/`. However, if you request an access token from `https://northwind.auth0.com/authorize`, your token's `iss` claim will be `https://northwind.auth0.com/`.
 
-If you request an access token from your custom domain with the target audience of the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>, then you **must** call the Auth0 Management API from your custom domain. Otherwise your access token is considered invalid.
+If you request an access token from your custom domain with the target audience of the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>, then you **must** call the Auth0 Management API from your custom domain. Otherwise your access token is considered invalid.
 
 ## Renew access tokens
 
-By default, an access token for a custom API is valid for 86400 seconds (24 hours). You can [shorten the time period before the token expires](/secure/tokens/access-tokens/update-access-token-lifetime).
+By default, an access token for a custom API is valid for 86400 seconds (24 hours). You can [shorten the time period before the token expires](/docs/secure/tokens/access-tokens/update-access-token-lifetime).
 
-After an access token has expired, you can renew your access token. To do so either re-authenticate the user using Auth0 or use a [refresh token](/secure/tokens/refresh-tokens).
+After an access token has expired, you can renew your access token. To do so either re-authenticate the user using Auth0 or use a [refresh token](/docs/secure/tokens/refresh-tokens).
 
 ## Learn more
 
-* [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens)
-* [Use Access Tokens](/secure/tokens/access-tokens/use-access-tokens)
-* [JSON Web Tokens](/secure/tokens/json-web-tokens)
-* [Refresh Tokens](/secure/tokens/refresh-tokens)
-* [Identity Provider Access Tokens](/secure/tokens/access-tokens/identity-provider-access-tokens)
-* [Management API Access Tokens](/secure/tokens/access-tokens/management-api-access-tokens)
+* [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens)
+* [Use Access Tokens](/docs/secure/tokens/access-tokens/use-access-tokens)
+* [JSON Web Tokens](/docs/secure/tokens/json-web-tokens)
+* [Refresh Tokens](/docs/secure/tokens/refresh-tokens)
+* [Identity Provider Access Tokens](/docs/secure/tokens/access-tokens/identity-provider-access-tokens)
+* [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens)

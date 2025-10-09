@@ -10,7 +10,7 @@ title: Configure Custom Domains with Auth0-Managed Certificates
   TLS (SSL) certificates.
 'twitter:title': Configure Custom Domains with Auth0-Managed Certificates
 ---
-If you want Auth0 to manage the certificates for your <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/glossary?term=custom+domain">custom domain</Tooltip>, you only need to add a CNAME record on the domain. Auth0 validates the record and then generates the certificate on Auth0 servers. These certificates are renewed automatically every three months. You can configure this easily, and you won't have to maintain the certificates yourself.
+If you want Auth0 to manage the certificates for your <Tooltip tip="Custom Domain: Third-party domain with a specialized, or vanity, name." cta="View Glossary" href="/docs/glossary?term=custom+domain">custom domain</Tooltip>, you only need to add a CNAME record on the domain. Auth0 validates the record and then generates the certificate on Auth0 servers. These certificates are renewed automatically every three months. You can configure this easily, and you won't have to maintain the certificates yourself.
 
 To set up your custom domain using Auth0-managed certificates, you must provide your domain name to Auth0 and verify that you own that domain. Once verified, you will need to configure your Auth0 features to start using your custom domain.
 
@@ -25,7 +25,7 @@ Before you can use the domain with Auth0, you'll need to verify that you own it.
 
 1. Go to [Dashboard > Branding > Custom Domains](https://manage.auth0.com/#/branding/custom_domains) and add the CNAME verification record listed in the Dashboard to your domain's DNS record.
 
-   <Frame>![Auth0 Branding Custom Domains Auth0-Managed Certificate Verify Domain](/images/cdy7uua7fh8z/3dz8ii70nm0a5amS0PNJ5K/c7b58043042293f5502ec012901f5dac/Custom_Domain_-_Pending_Verification_-_English.png)</Frame>
+   <Frame>![Auth0 Branding Custom Domains Auth0-Managed Certificate Verify Domain](/docs/images/cdy7uua7fh8z/3dz8ii70nm0a5amS0PNJ5K/c7b58043042293f5502ec012901f5dac/Custom_Domain_-_Pending_Verification_-_English.png)</Frame>
 2. Click **Verify** to proceed.
    It may take a few minutes before Auth0 is able to verify your CNAME record, depending on your DNS settings. If Auth0 was able to verify your domain name, you'll see a confirmation window. This means the verification process is complete. Within 1 to 2 minutes, your custom domain should be ready to use.
 
@@ -81,15 +81,15 @@ If your DNS provider enables a proxy on the CNAME record by default, it will lea
 
 </Callout>
 
-If you are unable to complete the verification process, wait at least 4 hours before repeating these steps. To avoid any interruptions to your service, do not recreate the custom domain when reverifying. For troubleshooting guidelines, see [Troubleshoot Custom Domains](/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains ).
+If you are unable to complete the verification process, wait at least 4 hours before repeating these steps. To avoid any interruptions to your service, do not recreate the custom domain when reverifying. For troubleshooting guidelines, see [Troubleshoot Custom Domains](/docs/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains ).
 
 ## Additional steps for specific Auth0 features
 
-There are additional configuration steps you must complete depending on which Auth0 features you are using. To learn more, see [Configure Features to Use Custom Domains](/customize/custom-domains/configure-features-to-use-custom-domains).
+There are additional configuration steps you must complete depending on which Auth0 features you are using. To learn more, see [Configure Features to Use Custom Domains](/docs/customize/custom-domains/configure-features-to-use-custom-domains).
 
 ## Learn more
 
-* [Configure Features to Use Custom Domains](/customize/custom-domains/configure-features-to-use-custom-domains)
-* [TLS (SSL) Versions and Ciphers](/customize/custom-domains/self-managed-certificates/tls-ssl)
-* [Troubleshoot Custom Domains](/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
-* [Configure Custom Domains with Self-Managed Certificates](/customize/custom-domains/self-managed-certificates)
+* [Configure Features to Use Custom Domains](/docs/customize/custom-domains/configure-features-to-use-custom-domains)
+* [TLS (SSL) Versions and Ciphers](/docs/customize/custom-domains/self-managed-certificates/tls-ssl)
+* [Troubleshoot Custom Domains](/docs/troubleshoot/integration-extensibility-issues/troubleshoot-custom-domains)
+* [Configure Custom Domains with Self-Managed Certificates](/docs/customize/custom-domains/self-managed-certificates)

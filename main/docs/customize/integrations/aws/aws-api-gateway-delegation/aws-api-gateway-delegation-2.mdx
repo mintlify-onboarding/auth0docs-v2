@@ -20,9 +20,9 @@ Now that you have your API running, you need to add security. In this step, you 
 
 * Secure the update API to limit access to authenticated users with a specific AWS IAM role;
 * Configure Auth0 delegation to use AWS IAM federation capabilities;
-* Obtain an AWS <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> that uses the AWS IAM role.
+* Obtain an AWS <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> that uses the AWS IAM role.
 
-Once your API is secure, you'll build a serverless, single-page application (SPA). The SPA will rely on federating identity to determine which users are allowed access. By combining AWS IAM Integration for AWS Gateway API, AWS IAM Identity Federation for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>, and Auth0 Delegation for AWS, you can enable users from many different sources, including Social Providers or enterprise connections, to access your APIs. The following diagram illustrates a sample flow using a SAML-based <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip> and Auth0 SAML Federation and Delegation for AWS.
+Once your API is secure, you'll build a serverless, single-page application (SPA). The SPA will rely on federating identity to determine which users are allowed access. By combining AWS IAM Integration for AWS Gateway API, AWS IAM Identity Federation for <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>, and Auth0 Delegation for AWS, you can enable users from many different sources, including Social Providers or enterprise connections, to access your APIs. The following diagram illustrates a sample flow using a SAML-based <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> and Auth0 SAML Federation and Delegation for AWS.
 
 You will see two ways of implementing this flow:
 
@@ -37,14 +37,14 @@ AWS API Gateway provides several different methods to secure your APIs:
 
 1. API keys;
 2. IAM;
-3. [Amazon Cognito](/customize/integrations/aws/aws-api-gateway-cognito).
+3. [Amazon Cognito](/docs/customize/integrations/aws/aws-api-gateway-cognito).
 
 Using API keys is typically appropriate for a service-to-service interaction, as illustrated below. However, there are several downsides to this approach:
 
 * Placing a secret with a long lifetime on the application is risky (applications are easier to compromise);
 * Creating a framework to issue and manage API keys requires a secure implementation that can be challenging to develop.
 
-This section of the tutorial will utilize IAM roles and policies to secure your API in API Gateway, but you can also choose to do so using user pools in Amazon Cognito. To review detailed instructions on securing your AWS API, read [Secure AWS API Gateway Using Cognito](/customize/integrations/aws/aws-api-gateway-cognito). For more information on using IAM roles and policies, read the Amazon article, [Control access to an API with IAM permissions](http://docs.aws.amazon.com/apigateway/latest/developerguide/permissions.html). To read more about user pools in Cognito, visit [Amazon Cognit user pool](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+This section of the tutorial will utilize IAM roles and policies to secure your API in API Gateway, but you can also choose to do so using user pools in Amazon Cognito. To review detailed instructions on securing your AWS API, read [Secure AWS API Gateway Using Cognito](/docs/customize/integrations/aws/aws-api-gateway-cognito). For more information on using IAM roles and policies, read the Amazon article, [Control access to an API with IAM permissions](http://docs.aws.amazon.com/apigateway/latest/developerguide/permissions.html). To read more about user pools in Cognito, visit [Amazon Cognit user pool](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
 
 ### Step 1. Configure IAM and Auth0 for SAML Integration with the API Gateway
 
@@ -62,7 +62,7 @@ Navigate to the Addons tab for your newly-created Application. Using the appropr
 
 #### Configure AWS
 
-Follow the [How to Set Up AWS for Delegated Authentication](/customize/integrations/aws/how-to-set-up-aws-for-delegated-authentication) tutorial to configure AWS for delegated access, which uses SAML. Some caveats:
+Follow the [How to Set Up AWS for Delegated Authentication](/docs/customize/integrations/aws/how-to-set-up-aws-for-delegated-authentication) tutorial to configure AWS for delegated access, which uses SAML. Some caveats:
 
 * Follow the [instructions below](#setting-the-permissions-policy-on-your-iws-iam-role) for attaching the permissions policy to your role instead of the one for the linked tutorial;
 * Name the SAML provider you create `auth0`;

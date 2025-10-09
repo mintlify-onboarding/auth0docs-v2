@@ -14,7 +14,7 @@ Here are things to check to help you narrow down when issues occur during login 
 
 ### Is the user prompted for login credentials?
 
-* Does the HAR file show a call to the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip> (`/authorize` endpoint)?
+* Does the HAR file show a call to the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> (`/authorize` endpoint)?
 
   <Warning>
 
@@ -33,7 +33,7 @@ Here are things to check to help you narrow down when issues occur during login 
   </Warning>
 * Is the connection enabled for the application?
 * Is the remote authorization service available?
-* If using the [Auth0 Universal Login Page](/authenticate/login/auth0-universal-login), try turning off customization and see if authentication works. If login works without your customizations, review your <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> Page customization code.
+* If using the [Auth0 Universal Login Page](/docs/authenticate/login/auth0-universal-login), try turning off customization and see if authentication works. If login works without your customizations, review your <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> Page customization code.
 
 ### Is an error message shown after entering credentials?
 
@@ -98,7 +98,7 @@ Here are things to check to help you narrow down when issues occur during login 
 
 ### Does the HAR file show a token or assertion returned to application?
 
-* Look in the [HAR file](/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) for the call to your application callback URL.
+* Look in the [HAR file](/docs/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) for the call to your application callback URL.
 
   <Warning>
 
@@ -115,12 +115,12 @@ Here are things to check to help you narrow down when issues occur during login 
   + [How to Manually Redact Sensitive Information](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
   + [HAR File is Too Large to Upload to the Support Case](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
   </Warning>
-* Find the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> (`id_token`) and check if it has the information needed by the application.
+* Find the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> (`id_token`) and check if it has the information needed by the application.
 
 ### If you decode the token or assertion does it have information you expect?
 
-* View <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWTs">JWTs</Tooltip> with [JWT.io](http://jwt.io).
-* View <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip> assertions with [SAMLTool.io](http://samltool.io).
+* View <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWTs">JWTs</Tooltip> with [JWT.io](http://jwt.io).
+* View <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> assertions with [SAMLTool.io](http://samltool.io).
 
 ### If the logged in user cannot access another application with Single Sign-on
 
@@ -129,7 +129,7 @@ Here are things to check to help you narrow down when issues occur during login 
 3. Check the value passed as the `prompt` parameter in `/authorize` call.
 4. Is the connection used to log in to the first application enabled for the second application?
 5. Did the second application receive all the necessary user profile information?
-6. If using a mobile device, you'll need to use a browser-based flow. For more information, see [Best Practices](/authenticate/login/native-login).
+6. If using a mobile device, you'll need to use a browser-based flow. For more information, see [Best Practices](/docs/authenticate/login/native-login).
 
 ### Check application logs
 

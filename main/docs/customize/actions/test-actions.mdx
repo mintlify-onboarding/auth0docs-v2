@@ -10,7 +10,7 @@ title: Test Actions
 ---
 Depending on where you are in your implementation, you have several different options available to test and debug Auth0 Actions.
 
-We recommend that you test individual actions from the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> as you implement them. Once you are ready, you should verify that the end-to-end flow works as expected using tenant logs through the Auth0 Dashboard.
+We recommend that you test individual actions from the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> as you implement them. Once you are ready, you should verify that the end-to-end flow works as expected using tenant logs through the Auth0 Dashboard.
 
 ## Test individual Actions
 
@@ -22,7 +22,7 @@ You can test individual Actions using the Actions Code Editor. The editor's test
 
 The test results show the steps that the Action took, console output, any errors that occurred, and useful statistics about the execution of the Action.
 
-<Frame>![Screenshot of the testing module inside of the Action Code Editor](/images/cdy7uua7fh8z/7I4CRM8SmRFiibjuk55L86/794042f525cddd55a8005cc646b3c9c2/test-action-code-editor.png)</Frame>
+<Frame>![Screenshot of the testing module inside of the Action Code Editor](/docs/images/cdy7uua7fh8z/7I4CRM8SmRFiibjuk55L86/794042f525cddd55a8005cc646b3c9c2/test-action-code-editor.png)</Frame>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -32,7 +32,7 @@ You can also test an Action using the Management API's [**Test an Action** endpo
 
 ## Debug deployed Actions
 
-Now that you have tested your Action, it’s time to deploy it and observe its execution. Assuming you have deployed your Action and added it to a flow (to learn how to attach Actions to Flows, read the "Attach the Action to a flow" section in [Write Your First Action](/customize/actions/write-your-first-action)), you can debug your live Action in a few steps.
+Now that you have tested your Action, it’s time to deploy it and observe its execution. Assuming you have deployed your Action and added it to a flow (to learn how to attach Actions to Flows, read the "Attach the Action to a flow" section in [Write Your First Action](/docs/customize/actions/write-your-first-action)), you can debug your live Action in a few steps.
 
 ### Verify end-to-end Login Flow
 
@@ -45,11 +45,11 @@ Once complete, you will be redirected to a page that either lists the user profi
 
 ### Analyze tenant logs
 
-Whenever a trigger executes that has an associated Action bound to its flow, your [tenant logs](/deploy-monitor/logs/view-log-events) will include Action execution details.
+Whenever a trigger executes that has an associated Action bound to its flow, your [tenant logs](/docs/deploy-monitor/logs/view-log-events) will include Action execution details.
 
 In the tenant logs list, you can see logs associated with Actions and choose to view them. In the example below, the log type of `Success Login` is associated with an Action on the `post-login` trigger of this tenant.
 
-<Frame>![Screenshot of Tenant Log List in the Auth0 Dashboard, showing logs that are associated with Action execution.](/images/cdy7uua7fh8z/4hIo2YJ8fr2tfMEWhaLyn4/7935eec2f5a59c0191cbf24eaccf044d/2025-01-31_14-30-57.png)</Frame>
+<Frame>![Screenshot of Tenant Log List in the Auth0 Dashboard, showing logs that are associated with Action execution.](/docs/images/cdy7uua7fh8z/4hIo2YJ8fr2tfMEWhaLyn4/7935eec2f5a59c0191cbf24eaccf044d/2025-01-31_14-30-57.png)</Frame>
 
 Some examples of log types associated with Actions include:
 
@@ -62,54 +62,54 @@ Some examples of log types associated with Actions include:
 <tbody>
 <tr>
 <td>Success Login</td>
-<td><a href="/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
 </tr>
 <tr>
 <td>Failed Login</td>
-<td><a href="/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
 </tr>
 <tr>
 <td>Success Exchange</td>
-<td><a href="/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
 </tr>
 <tr>
 <td>Failed Exchange</td>
-<td><a href="/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger">post-login</a></td>
 </tr>
 <tr>
 <td>Success Change Password</td>
-<td><a href="/customize/actions/explore-triggers/password-reset-triggers/post-change-password-trigger">post-change-password</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/password-reset-triggers/post-change-password-trigger">post-change-password</a></td>
 </tr>
 <tr>
 <td>Failed Change Password</td>
-<td><a href="/customize/actions/explore-triggers/password-reset-triggers/post-change-password-trigger">post-change-password</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/password-reset-triggers/post-change-password-trigger">post-change-password</a></td>
 </tr>
 <tr>
 <td>Successful Signup</td>
-<td><a href="/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger">pre-user-registration</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger">pre-user-registration</a></td>
 </tr>
 <tr>
 <td>Failed Signup</td>
-<td><a href="/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger">pre-user-registration</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/signup-and-login-triggers/pre-user-registration-trigger">pre-user-registration</a></td>
 </tr>
 <tr>
 <td>Success Exchange</td>
-<td><a href="/customize/actions/explore-triggers/machine-to-machine-trigger">credentials-exchange</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/machine-to-machine-trigger">credentials-exchange</a></td>
 </tr>
 <tr>
 <td>Failed Exchange</td>
-<td><a href="/customize/actions/explore-triggers/machine-to-machine-trigger">credentials-exchange</a></td>
+<td><a href="/docs/customize/actions/explore-triggers/machine-to-machine-trigger">credentials-exchange</a></td>
 </tr>
 </tbody>
 </table>
 
 To view detailed Action execution information, select the log that is associated with an Action execution, then select the **Action Details** view. In Action Details, you can see execution statistics, console output, and any errors that may have occurred.
 
-<Frame>![Screenshot of individual log associated with Actions testing.](/images/cdy7uua7fh8z/1WrsQvjZxI2WRMrtltandy/0bc92038a5bc7b6344a95ef271eff299/actions-log-detail.png)</Frame>
+<Frame>![Screenshot of individual log associated with Actions testing.](/docs/images/cdy7uua7fh8z/1WrsQvjZxI2WRMrtltandy/0bc92038a5bc7b6344a95ef271eff299/actions-log-detail.png)</Frame>
 
 ## Unit test Actions
 
-​You can unit test your Auth0 Actions by mocking the event and api passed into your Action function. Your Actions can live in version control or local directory, and you can use a tool like Jest to automatically test your Actions. In the following example, we use the [Login / Post Login](/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger) trigger and [Jest](https://jestjs.io/) to mock and test.
+​You can unit test your Auth0 Actions by mocking the event and api passed into your Action function. Your Actions can live in version control or local directory, and you can use a tool like Jest to automatically test your Actions. In the following example, we use the [Login / Post Login](/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger) trigger and [Jest](https://jestjs.io/) to mock and test.
 
 **Action code:**
 
@@ -156,10 +156,10 @@ test("sets favorite_color ID token claim to pink", async () => {
 
 ## Best practices
 
-When building Actions on Auth0, [we recommend that you create a dedicated Auth0 tenant per environment](/get-started/auth0-overview/create-tenants/set-up-multiple-environments). Doing so allows you to isolate your production user base from your other environments, as well as configure different administrators per environment (for example, engineers might not have access to production configuration).
+When building Actions on Auth0, [we recommend that you create a dedicated Auth0 tenant per environment](/docs/get-started/auth0-overview/create-tenants/set-up-multiple-environments). Doing so allows you to isolate your production user base from your other environments, as well as configure different administrators per environment (for example, engineers might not have access to production configuration).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you wish to entirely manage, test, and deploy your Actions via a CLI or CI/CD pipeline, you can use the [Deploy CLI Tool](/deploy-monitor/deploy-cli-tool).
+If you wish to entirely manage, test, and deploy your Actions via a CLI or CI/CD pipeline, you can use the [Deploy CLI Tool](/docs/deploy-monitor/deploy-cli-tool).
 
 </Callout>

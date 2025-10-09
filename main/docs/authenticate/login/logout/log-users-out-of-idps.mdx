@@ -9,7 +9,7 @@ title: Log Users Out of Identity Providers
   provider.
 'twitter:title': Log Users Out of Identity Providers
 ---
-Some providers allow you to force a user to log out of their <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>. Auth0 often accomplishes this by adding the `federated` query string parameter to the redirect at the `/oidc/logout` endpoint.
+Some providers allow you to force a user to log out of their <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>. Auth0 often accomplishes this by adding the `federated` query string parameter to the redirect at the `/oidc/logout` endpoint.
 
 To do this, add a `federated` query string parameter to the logout URL:
 
@@ -52,12 +52,12 @@ To add federated logout to the [alternative logout endpoint](https://auth0.com/d
 
 * No validation is performed on any URL provided as a value to the `returnTo` parameter, nor any query string or hash information provided as part of the URL.
 * The behavior of federated logouts with social providers is inconsistent. Each provider will handle the returnTo parameter differently and for some, it will not work. Please check your social provider's settings to determine how it will behave.
-* If you are working with social identity providers such as Google or Facebook, you must set your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip> and Secret for these providers in the Dashboard for the logout to function properly.
-* If you are an Auth0 Enterprise user, you will typically have <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip> enabled for multiple applications, for example, SharePoint, a few .NET applications, a few Java applications, Zendesk, etc. In this case, it's very common that when users sign out, this needs to happen for all of their applications.
+* If you are working with social identity providers such as Google or Facebook, you must set your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip> and Secret for these providers in the Dashboard for the logout to function properly.
+* If you are an Auth0 Enterprise user, you will typically have <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip> enabled for multiple applications, for example, SharePoint, a few .NET applications, a few Java applications, Zendesk, etc. In this case, it's very common that when users sign out, this needs to happen for all of their applications.
 
 ## Learn more
 
-* [Log Users Out of Applications](/authenticate/login/logout/log-users-out-of-applications)
-* [Log Users Out of Auth0 with OIDC Endpoint](/authenticate/login/logout/log-users-out-of-auth0)
-* [Log Users Out of SAML Identity Providers](/authenticate/login/logout/log-users-out-of-saml-idps)
-* [Redirect Users with Alternative Logout](/authenticate/login/logout/redirect-users-after-logout)
+* [Log Users Out of Applications](/docs/authenticate/login/logout/log-users-out-of-applications)
+* [Log Users Out of Auth0 with OIDC Endpoint](/docs/authenticate/login/logout/log-users-out-of-auth0)
+* [Log Users Out of SAML Identity Providers](/docs/authenticate/login/logout/log-users-out-of-saml-idps)
+* [Redirect Users with Alternative Logout](/docs/authenticate/login/logout/redirect-users-after-logout)

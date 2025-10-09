@@ -15,10 +15,10 @@ Le terme « implicite » ne doit pas vous induire en erreur! Bien que OAuth d�
 
 </Warning>
 
-Vous pouvez utiliser <Tooltip href="/docs/fr-ca/glossary?term=openid" tip="OpenID
+Vous pouvez utiliser <Tooltip href="/docs/docs/fr-ca/glossary?term=openid" tip="OpenID
 Norme ouverte d’authentification qui permet aux applications de vérifier l’identité des utilisateurs sans avoir à collecter leurs informations de connexion." cta="Voir le glossaire">OpenID</Tooltip> Connect (OIDC) avec de nombreux flux différents pour réaliser une connexion web pour une application web traditionnelle. Dans un flux classique, vous obtenez un jeton d’ID à l’aide d’un flux de code d'autorisation exécuté par le programme dorsal de l’application. Cette méthode est efficace et robuste, mais elle exige que votre application web obtienne et gère un secret. Vous pouvez éviter cette charge si tout ce que vous voulez faire est implémenter l’ouverture de session et que vous n’avez pas besoin d’obtenir des jetons d’accès pour invoquer les API.
 
-Le Flux implicite avec Form Post utilise OIDC pour implémenter l’ouverture de session sur le web, qui est très similaire au fonctionnement de <Tooltip href="/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
+Le Flux implicite avec Form Post utilise OIDC pour implémenter l’ouverture de session sur le web, qui est très similaire au fonctionnement de <Tooltip href="/docs/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
 Protocole normalisé permettant à deux parties d’échanger des informations d’authentification sans mot de passe." cta="Voir le glossaire">SAML</Tooltip> et de WS-Federation. L’application web demande et obtient des jetons par l’intermédiaire du canal frontal, sans avoir besoin de secrets ou d’appels supplémentaires au système dorsal. Avec cette méthode, vous n’avez pas besoin d’obtenir, de maintenir, d’utiliser et de protéger un secret dans votre application.
 
 ## Fonctionnement

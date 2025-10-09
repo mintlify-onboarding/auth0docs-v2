@@ -8,13 +8,13 @@ title: Bulk User Exports
 'twitter:description': Learn how to export lists of users and user metadata.
 'twitter:title': Bulk User Exports
 ---
-You can use the `POST /api/v2/jobs/users-exports` endpoint to create a job that exports all users associated with a [connection](/authenticate/identity-providers), or all users in the tenant.
+You can use the `POST /api/v2/jobs/users-exports` endpoint to create a job that exports all users associated with a [connection](/docs/authenticate/identity-providers), or all users in the tenant.
 
-For a list of user profile fields that can be exported, read [User Profile Structure](/manage-users/user-accounts/user-profiles/user-profile-structure).
+For a list of user profile fields that can be exported, read [User Profile Structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure).
 
 When you create your job, you'll need to provide:
 
-* [ID for the connection](/authenticate/identity-providers/locate-the-connection-id) from which you want to export users (optional)
+* [ID for the connection](/docs/authenticate/identity-providers/locate-the-connection-id) from which you want to export users (optional)
 * Format of the export file (CSV or JSON-compatible)
 * Maximum number of user records to be exported (optional, will export all records if omitted)
 * User-related fields (such as user ID or name) that you want included in the export
@@ -23,7 +23,7 @@ You'll also need a valid [Management API Access Token](https://auth0.com/docs/ap
 
 ## Create a request body
 
-Optionally, find the `connection_id` and your Auth0 tenant domain name in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Create a new text file with the request body below:
+Optionally, find the `connection_id` and your Auth0 tenant domain name in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Create a new text file with the request body below:
 
 ```json lines
 {

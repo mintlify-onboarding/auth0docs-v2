@@ -19,9 +19,9 @@ Key Concepts
 
 The [OAuth 2.0](https://tools.ietf.org/html/rfc6749) authorization framework is a protocol that allows a user to grant a third-party web site or application access to the user's protected resources, without necessarily revealing their long-term credentials or even their identity.
 
-<Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth">OAuth</Tooltip> introduces an authorization layer and separates the role of the client from that of the <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/glossary?term=resource+owner">resource owner</Tooltip>. In OAuth, the client requests access to resources controlled by the resource owner and hosted by the <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+server">resource server</Tooltip> and is issued a different set of credentials than those of the resource owner. Instead of using the resource owner's credentials to access protected resources, the client obtains an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> - a string denoting a specific scope, lifetime, and other access attributes. Access tokens are issued to third-party clients by an <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip> with the approval of the resource owner. Then the client uses the access token to access the protected resources hosted by the resource server.
+<Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> introduces an authorization layer and separates the role of the client from that of the <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/docs/glossary?term=resource+owner">resource owner</Tooltip>. In OAuth, the client requests access to resources controlled by the resource owner and hosted by the <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+server">resource server</Tooltip> and is issued a different set of credentials than those of the resource owner. Instead of using the resource owner's credentials to access protected resources, the client obtains an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> - a string denoting a specific scope, lifetime, and other access attributes. Access tokens are issued to third-party clients by an <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> with the approval of the resource owner. Then the client uses the access token to access the protected resources hosted by the resource server.
 
-Auth0 generates access tokens for API authorization scenarios, in [JSON web token (JWT) format](/secure/tokens/json-web-tokens/json-web-token-structure). The permissions represented by the access token, in OAuth terms, are known as [scopes](/get-started/apis/scopes). When an application authenticates with Auth0, it specifies the scopes it wants. If those scopes are authorized by the user, then the access token will represent these authorized scopes.
+Auth0 generates access tokens for API authorization scenarios, in [JSON web token (JWT) format](/docs/secure/tokens/json-web-tokens/json-web-token-structure). The permissions represented by the access token, in OAuth terms, are known as [scopes](/docs/get-started/apis/scopes). When an application authenticates with Auth0, it specifies the scopes it wants. If those scopes are authorized by the user, then the access token will represent these authorized scopes.
 
 ## Roles
 
@@ -34,14 +34,14 @@ An OAuth 2.0 flow has the following roles:
 
 ## Grant types
 
-OAuth 2.0 defines four flows to get an access token. These flows are called grant types. [Deciding which one is suited for your case](/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use) depends mostly on your application type.
+OAuth 2.0 defines four flows to get an access token. These flows are called grant types. [Deciding which one is suited for your case](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use) depends mostly on your application type.
 
-* [Authorization Code Flow](/get-started/authentication-and-authorization-flow/authorization-code-flow): used by Web Apps executing on a server. This is also used by mobile apps, using the [Proof Key for Code Exchange (PKCE) technique](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
-* [Implicit Flow with Form Post](/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post): used by JavaScript-centric apps (Single-Page Applications) executing on the user's browser.
-* [Resource Owner Password Flow](/get-started/authentication-and-authorization-flow/resource-owner-password-flow): used by highly-trusted apps.
-* [Client Credentials Flow](/get-started/authentication-and-authorization-flow/client-credentials-flow): used for machine-to-machine communication.
+* [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow): used by Web Apps executing on a server. This is also used by mobile apps, using the [Proof Key for Code Exchange (PKCE) technique](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
+* [Implicit Flow with Form Post](/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post): used by JavaScript-centric apps (Single-Page Applications) executing on the user's browser.
+* [Resource Owner Password Flow](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow): used by highly-trusted apps.
+* [Client Credentials Flow](/docs/get-started/authentication-and-authorization-flow/client-credentials-flow): used for machine-to-machine communication.
 
-The specification also provides an extensibility mechanism for defining additional grant types. To learn more about how each grant type works and when it should be used, see [Authentication and Authorization Flows](/get-started/authentication-and-authorization-flow).
+The specification also provides an extensibility mechanism for defining additional grant types. To learn more about how each grant type works and when it should be used, see [Authentication and Authorization Flows](/docs/get-started/authentication-and-authorization-flow).
 
 ## Endpoints
 
@@ -91,23 +91,23 @@ The request parameters of the `/authorize` endpoint are:
 </tbody>
 </table>
 
-You can configure custom query parameters when your application makes the initial call to the `/authorize` endpoint to authenticate a user. You can use custom query parameters to provide additional context to the page template for the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> experience.
+You can configure custom query parameters when your application makes the initial call to the `/authorize` endpoint to authenticate a user. You can use custom query parameters to provide additional context to the page template for the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> experience.
 
-You must enable ID First to use the `connection` parameter. For more information on the `connection` parameter and the Universal Login experience, review [Passwordless for Universal Login](/authenticate/passwordless/passwordless-with-universal-login).
+You must enable ID First to use the `connection` parameter. For more information on the `connection` parameter and the Universal Login experience, review [Passwordless for Universal Login](/docs/authenticate/passwordless/passwordless-with-universal-login).
 
-Query parameters prefixed with `ext-` automatically appear in the [page template context](/customize/login-pages/universal-login/customize-templates#custom-query-parameters).
+Query parameters prefixed with `ext-` automatically appear in the [page template context](/docs/customize/login-pages/universal-login/customize-templates#custom-query-parameters).
 
 This endpoint is used by the Authorization Code and the Implicit grant types. The authorization server needs to know which grant type the application wants to use since it affects the kind of credential it will issue:
 
 * For the Authorization Code grant, it will issue an authorization code (which can later be exchanged for an access token at the `/oauth/token` endpoint).
-* For the Implicit grant, it will issue an access token, which is an opaque string (or a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> in an Auth0 implementation) that denotes who has authorized which permissions (scopes) to which application.
+* For the Implicit grant, it will issue an access token, which is an opaque string (or a <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> in an Auth0 implementation) that denotes who has authorized which permissions (scopes) to which application.
 
 To inform the authorization server which grant type to use, the `response_type` request parameter is used as follows:
 
 * For the Authorization Code grant, use `response_type=code` to include the authorization code.
-* For the Implicit grant, use `response_type=token` to include an access token. An alternative is to use `response_type=id_token token` to include both an access token and an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip>.
+* For the Implicit grant, use `response_type=token` to include an access token. An alternative is to use `response_type=id_token token` to include both an access token and an <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip>.
 
-An ID token is a JWT that contains information about the logged in user. It was introduced by <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC).
+An ID token is a JWT that contains information about the logged in user. It was introduced by <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC).
 
 The [OAuth 2.0 Multiple Response Type Encoding Practices specification](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html) added a parameter that specifies how the result of the authorization request is formatted. This parameter is called `response_mode`. It is optional and can take the following values:
 
@@ -139,16 +139,16 @@ The [OAuth 2.0 Multiple Response Type Encoding Practices specification](https://
 
 ### Token endpoint
 
-The `/oauth/token` endpoint is used by the application in order to get an access token or a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+token">refresh token</Tooltip>. It is used by all flows except for the Implicit Flow because in that case an access token is issued directly.
+The `/oauth/token` endpoint is used by the application in order to get an access token or a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip>. It is used by all flows except for the Implicit Flow because in that case an access token is issued directly.
 
 * In the Authorization Code Flow, the application exchanges the authorization code it got from the authorization endpoint for an access token.
 * In the Client Credentials Flow and Resource Owner Password Credentials Grant Exchange, the application authenticates using a set of credentials and then gets an access token.
 
 ## State parameters
 
-Authorization protocols provide a `state` parameter that allows you to restore the previous state of your application. The `state` parameter preserves some state object set by the client in the Authorization request and makes it available to the client in the response. The primary reason for using the state parameter is to mitigate CSRF attacks. See [Use OAuth 2.0 State Parameters](/secure/attack-protection/state-parameters) for details.
+Authorization protocols provide a `state` parameter that allows you to restore the previous state of your application. The `state` parameter preserves some state object set by the client in the Authorization request and makes it available to the client in the response. The primary reason for using the state parameter is to mitigate CSRF attacks. See [Use OAuth 2.0 State Parameters](/docs/secure/attack-protection/state-parameters) for details.
 
 ## Learn more
 
-* [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameters](/secure/attack-protection/state-parameters)
-* [Which OAuth 2.0 Flow Should I Use?](/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
+* [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameters](/docs/secure/attack-protection/state-parameters)
+* [Which OAuth 2.0 Flow Should I Use?](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)

@@ -14,11 +14,11 @@ This feature is offered as Early Access to Public Cloud Enterprise tenants and a
 
 </Callout>
 
-Security policies allow [team owners](/get-started/auth0-teams/team-member-management) to configure and implement authentication rules that adhere to your organization's IT security policies for access to infrastructure systems or applications.
+Security policies allow [team owners](/docs/get-started/auth0-teams/team-member-management) to configure and implement authentication rules that adhere to your organization's IT security policies for access to infrastructure systems or applications.
 
 ## Available Enterprise IdP Connections
 
-Auth0 Teams allows you to connect to your <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> (IdP) to provide single-sign on (<Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip>) for team members.
+Auth0 Teams allows you to connect to your <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP) to provide single-sign on (<Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip>) for team members.
 
 ### Add SSO connection (Beta)
 
@@ -53,7 +53,7 @@ JIT provisioning enables Auth0 to automatically create an account for team membe
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-You must enable [Tenant Member Management](/get-started/auth0-teams/tenant-member-management) to configure JIT provisioning.
+You must enable [Tenant Member Management](/docs/get-started/auth0-teams/tenant-member-management) to configure JIT provisioning.
 
 </Callout>
 
@@ -69,7 +69,7 @@ Auth0 Teams allows you to require team members to log in through one of your **A
 
 To enforce SSO, you must be logged in through an SSO connection and have the **Team Owner** role.
 
-If you are not logged in through an SSO connection, but you have one configured, you can [invite yourself to your Auth0 Team](/get-started/auth0-teams/team-member-management) on that connection.
+If you are not logged in through an SSO connection, but you have one configured, you can [invite yourself to your Auth0 Team](/docs/get-started/auth0-teams/team-member-management) on that connection.
 
 </Callout>
 
@@ -77,23 +77,23 @@ If you are not logged in through an SSO connection, but you have one configured,
 
 This method allows team members to log in to the SSO connection immediately after it's enabled, and instructs Auth0 to automatically create an account for them after the first time they log in successfully.
 
-1. Enable [Tenant Member Management](/get-started/auth0-teams/tenant-member-management).
+1. Enable [Tenant Member Management](/docs/get-started/auth0-teams/tenant-member-management).
 2. Enable the **JIT Membership** toggle for the SSO connection.
 3. Go to the Teams Dashboard’s Settings page and note your team's permalink value.
 4. Instruct all team members to log out of the Auth0 Teams Dashboard and log in via the SSO connection. The URL structure for the team members to follow is `https://accounts.auth0.com/teams/{team-permalink}`.
 5. Auth0 automatically creates a new account (on the SSO connection) for each team member.
-6. Assign each team member's new account the same [team role](/get-started/auth0-teams/team-member-management) as their old account.
+6. Assign each team member's new account the same [team role](/docs/get-started/auth0-teams/team-member-management) as their old account.
 7. (Optional) Delete each team member's old account.
 
 ### Manage team and tenant membership manually
 
 This method allows you to manage team members separately from tenant members.
 
-For team members, [send a new invitation from the Teams Dashboard](/get-started/auth0-teams/team-member-management) and instruct them to accept the invitation using the SSO connection.
+For team members, [send a new invitation from the Teams Dashboard](/docs/get-started/auth0-teams/team-member-management) and instruct them to accept the invitation using the SSO connection.
 
-For tenant members, [send a new invitation from the Auth0 Dashboard](/get-started/manage-dashboard-access/add-dashboard-users) from each tenant they're a member of and instruct them to accept the invitation using the SSO connection.
+For tenant members, [send a new invitation from the Auth0 Dashboard](/docs/get-started/manage-dashboard-access/add-dashboard-users) from each tenant they're a member of and instruct them to accept the invitation using the SSO connection.
 
-After accepting the invitation, Private Cloud Enterprise customers that enforce SSO and/or use Tenant Member Management can click the **Continue with Auth0 Teams** login button in their Private Cloud <Tooltip tip="" cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+After accepting the invitation, Private Cloud Enterprise customers that enforce SSO and/or use Tenant Member Management can click the **Continue with Auth0 Teams** login button in their Private Cloud <Tooltip tip="" cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 ### Configure home-realm discovery (HRD)
 

@@ -8,13 +8,13 @@ title: Auth0.js v9 Reference
 'twitter:description': How to install, initialize and use auth0.js v9
 'twitter:title': Auth0.js v9 Reference
 ---
-Auth0.js is a client-side JavaScript library for Auth0. It supports both [hosted login and embedded login](/authenticate/login/universal-vs-embedded-login) use cases.
+Auth0.js is a client-side JavaScript library for Auth0. It supports both [hosted login and embedded login](/docs/authenticate/login/universal-vs-embedded-login) use cases.
 
 The full API documentation for the library is [here](https://auth0.github.io/auth0.js/index.html).
 
 <Warning>
 
-Embedded login for web applications uses [cross-origin authentication](/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
+Embedded login for web applications uses [cross-origin authentication](/docs/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/docs/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
 
 </Warning>
 
@@ -82,7 +82,7 @@ There are two required parameters that must be passed in the `options` object wh
 | `domain` | required | (String) Your Auth0 account domain (ex. myaccount.auth0.com) |
 | `clientID` | required | (String) Your Auth0 client ID |
 | `redirectUri` | optional\* | (String) The default `redirectUri` used. Defaults to an empty string (none). **If you do not provide a global `redirectUri` value here, you will need to provide a redirectUri value for *each* method you use.** |
-| `scope` | optional | (String) The default <Tooltip tip="Scope: Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/glossary?term=scope%28s%29">scope(s)</Tooltip> used by the application. Using scopes can allow you to return specific claims for specific fields in your request. You should read our [documentation on scopes](/get-started/apis/scopes) for further details. |
+| `scope` | optional | (String) The default <Tooltip tip="Scope: Mechanism that determines actions applications can perform on a user's behalf with information previously created in an online resource." cta="View Glossary" href="/docs/glossary?term=scope%28s%29">scope(s)</Tooltip> used by the application. Using scopes can allow you to return specific claims for specific fields in your request. You should read our [documentation on scopes](/docs/get-started/apis/scopes) for further details. |
 | `audience` | optional | (String) The default audience to be used for requesting API access. |
 | `responseType` | optional\* | (String) The default `responseType` used. It can be any space separated list of the values `code`, `token`, `id_token`. It defaults to `'token'`, unless a `redirectUri` is provided, then it defaults to `'code'`. **If you do not provide a global `responseType` value, you will need to provide a `responseType` value for *each* method you use.** |
 | `responseMode` | optional | (String) This option is omitted by default. Can be set to `'form_post'` in order to send the token or code to the `'redirectUri'` via POST. Supported values are `query`, `fragment` and `form_post`. |
@@ -101,7 +101,7 @@ If you don't specify at least the above scope when initializing auth0.js, and yo
 
 `Consent required. When using getSSOData, the user has to be authenticated with the following scope: openid profile email`
 
-That will not happen when you run your application in production or if you specify the `openid profile email` scope. You can read more about this in the [User consent and third-party applications](/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications) document.
+That will not happen when you run your application in production or if you specify the `openid profile email` scope. You can read more about this in the [User consent and third-party applications](/docs/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications) document.
 
 </Card>
 
@@ -111,18 +111,18 @@ You can choose a method for login based on the type of authentication you need i
 
 ### webAuth.authorize()
 
-The `authorize()` method can be used for logging in users through <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> or social connections as shown in the examples below. This method invokes the `/authorize` endpoint of the Authentication API, and can take a variety of parameters through the `options` object.
+The `authorize()` method can be used for logging in users through <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> or social connections as shown in the examples below. This method invokes the `/authorize` endpoint of the Authentication API, and can take a variety of parameters through the `options` object.
 
 | **Parameter** | **Required** | **Description** |
 | --- | --- | --- |
 | `audience` | optional | (String) The default audience to be used for requesting API access. |
 | `connection` | optional | (String) Specifies the connection to use rather than presenting all connections available to the application. |
-| `scope` | optional | (String) The scopes which you want to request authorization for. These must be separated by a space. You can request any of the standard OIDC scopes about users, such as `profile` and `email`, custom claims that must [conform to a namespaced format](/secure/tokens/json-web-tokens/create-custom-claims), or any scopes supported by the target API (for example, `read:contacts`). Include `offline_access` to get a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip>. |
+| `scope` | optional | (String) The scopes which you want to request authorization for. These must be separated by a space. You can request any of the standard OIDC scopes about users, such as `profile` and `email`, custom claims that must [conform to a namespaced format](/docs/secure/tokens/json-web-tokens/create-custom-claims), or any scopes supported by the target API (for example, `read:contacts`). Include `offline_access` to get a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip>. |
 | `responseType` | optional | (String) It can be any space separated list of the values `code`, `token`, `id_token`. It defaults to `'token'`, unless a `redirectUri` is provided, then it defaults to `'code'`. |
 | `clientID` | optional | (String) Your Auth0 client ID. |
 | `redirectUri` | optional | (String) The URL to which Auth0 will redirect the browser after authorization has been granted for the user. |
-| `state` | optional | (String) An arbitrary value that should be maintained across redirects. It is useful to mitigate CSRF attacks and for any contextual information (for example, a return URL) that you might need after the authentication process is finished. For more information, see [State Parameter](/secure/attack-protection/state-parameters). auth0.js, when used in single-page applications, handles the state generation and validation automatically if not specified. |
-| `prompt` | optional | (String) A value of `login` will force the login page to show regardless of current session. A value of `none` will attempt to bypass the login prompts if a session already exists (see the [silent authentication](/authenticate/single-sign-on#silent-authentication) documentation for more details). |
+| `state` | optional | (String) An arbitrary value that should be maintained across redirects. It is useful to mitigate CSRF attacks and for any contextual information (for example, a return URL) that you might need after the authentication process is finished. For more information, see [State Parameter](/docs/secure/attack-protection/state-parameters). auth0.js, when used in single-page applications, handles the state generation and validation automatically if not specified. |
+| `prompt` | optional | (String) A value of `login` will force the login page to show regardless of current session. A value of `none` will attempt to bypass the login prompts if a session already exists (see the [silent authentication](/docs/authenticate/single-sign-on#silent-authentication) documentation for more details). |
 
 For hosted login, one must call the `/authorize()` method.
 
@@ -188,11 +188,11 @@ You will need to add the `redirectUri` to the application's **Allowed Callback U
 
 <Warning>
 
-Embedded login for web applications uses [cross-origin authentication](/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
+Embedded login for web applications uses [cross-origin authentication](/docs/authenticate/login/cross-origin-authentication) unless you [configure a custom domain](/docs/customize/custom-domains) for your tenant. Cross-origin authentication uses third-party cookies to allow for secure authentication transactions across different origins.
 
 </Warning>
 
-The `login` method can be used for embedded login through [cross-origin authentication](/authenticate/login/cross-origin-authentication) for database connections, using `/co/authenticate`.
+The `login` method can be used for embedded login through [cross-origin authentication](/docs/authenticate/login/cross-origin-authentication) for database connections, using `/co/authenticate`.
 
 | **Parameter** | **Required** | **Description** |
 | --- | --- | --- |
@@ -211,7 +211,7 @@ webAuth.login({
 
 ### webAuth.crossOriginVerification()
 
-The `crossOriginVerification()` method can be used to help provide cross-origin authentication to customers who have third-party cookies disabled in their browsers. Further details about its usage can be read in the [cross-origin authentication](/authenticate/login/cross-origin-authentication) document.
+The `crossOriginVerification()` method can be used to help provide cross-origin authentication to customers who have third-party cookies disabled in their browsers. Further details about its usage can be read in the [cross-origin authentication](/docs/authenticate/login/cross-origin-authentication) document.
 
 ### buildAuthorizeUrl(options)
 
@@ -232,20 +232,20 @@ var url = webAuth.client.buildAuthorizeUrl({
 // ...
 ```
 
-The `state` parameter is an opaque value that Auth0 will send back to you. This method helps prevent CSRF attacks, and it needs to be specified if you redirect to the URL yourself instead of calling `webAuth.authorize()`. For more information, see [State Parameter](/secure/attack-protection/state-parameters).
+The `state` parameter is an opaque value that Auth0 will send back to you. This method helps prevent CSRF attacks, and it needs to be specified if you redirect to the URL yourself instead of calling `webAuth.authorize()`. For more information, see [State Parameter](/docs/secure/attack-protection/state-parameters).
 
 ### Single Sign-On with embedded authentication
 
-Apps with embedded login must meet two criteria in order to have <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO).
+Apps with embedded login must meet two criteria in order to have <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO).
 
 1. Both of the applications attempting SSO must be first-party applications. SSO with third-party applications will not work.
 2. They need to make use of custom domains and have both the applications which intend to have SSO as well as the Auth0 tenant on the same domain. Traditionally, Auth0 domains are in the format `foo.auth0.com`, but custom domains allow you to use the same domain for each of the applications in question as well as your Auth0 tenant, preventing the risk of CSRF attacks.
 
-Our recommendation is to use Universal Login instead of setting up SSO in embedded login scenarios. Universal Login is the most reliable and stable way to perform SSO, and is the only way to do so if you must use multiple domains for your applications, or use [third-party applications](/get-started/applications/confidential-and-public-applications/enable-third-party-applications).
+Our recommendation is to use Universal Login instead of setting up SSO in embedded login scenarios. Universal Login is the most reliable and stable way to perform SSO, and is the only way to do so if you must use multiple domains for your applications, or use [third-party applications](/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications).
 
 ## Passwordless login
 
-<Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> authentication allows users to log in by receiving a one-time password through email or text message. The process will require you to start the passwordless process, generating and dispatching a code to the user (or a code within a link), followed by accepting their credentials through the verification method. That could happen in the form of a login screen which asks for their (email or phone number) and the code you just sent them. It could also be implemented in the form of a passwordless link instead of a code sent to the user. They would simply click the link in their email or text and it would hit your endpoint and verify this data automatically using the same verification method (just without manual entry of a code by the user).
+<Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> authentication allows users to log in by receiving a one-time password through email or text message. The process will require you to start the passwordless process, generating and dispatching a code to the user (or a code within a link), followed by accepting their credentials through the verification method. That could happen in the form of a login screen which asks for their (email or phone number) and the code you just sent them. It could also be implemented in the form of a passwordless link instead of a code sent to the user. They would simply click the link in their email or text and it would hit your endpoint and verify this data automatically using the same verification method (just without manual entry of a code by the user).
 
 In order to use Passwordless, you will want to initialize auth0.js with a `redirectUri` and to set the `responseType: 'token'`.
 
@@ -318,14 +318,14 @@ The `parseHash` method takes an `options` object that contains the following par
 | **Parameter** | **Required** | **Description** |
 | --- | --- | --- |
 | `state` | optional | (String) An opaque value the application adds to the initial request that Auth0 includes when redirecting back to the application. This value is used by auth0.js to prevent CSRF attacks. |
-| <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/glossary?term=nonce">nonce</Tooltip> | optional | (String) Used to verify the ID Token |
+| <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/docs/glossary?term=nonce">nonce</Tooltip> | optional | (String) Used to verify the ID Token |
 | `hash` | optional | (String) The URL hash (if not provided, `window.location.hash` will be used by default) |
 
 The contents of the authResult object returned by `parseHash` depend upon which authentication parameters were used. It can include:
 
 | **Item** | **Description** |
 | --- | --- |
-| `accessToken` | An <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> for the API, specified by the `audience` |
+| `accessToken` | An <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> for the API, specified by the `audience` |
 | `expiresIn` | A string containing the expiration time (in seconds) of the `accessToken` |
 | `idToken` | An ID Token JWT containing user profile information |
 
@@ -355,13 +355,13 @@ As shown above, the `client.userInfo` method can be called passing the returned 
 }
 ```
 
-You can now do something else with this information as your application needs, such as acquire the user's entire set of profile information with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>, as described below.
+You can now do something else with this information as your application needs, such as acquire the user's entire set of profile information with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>, as described below.
 
 ## Using nonces
 
 By default (and if `responseType` contains `id_token`), `auth0.js` will generate a random `nonce` when you call `webAuth.authorize`, store it in local storage, and pull it out in `webAuth.parseHash`. The default behavior should work in most cases, but some use cases may require a developer to control the `nonce`.
 If you want to use a developer generated `nonce`, then you must provide it as an option to both `webAuth.authorize` and `webAuth.parseHash`.
-`webAuth.authorize({<Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/glossary?term=nonce">nonce</Tooltip>: '1234', responseType: 'token id_token'});
+`webAuth.authorize({<Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/docs/glossary?term=nonce">nonce</Tooltip>: '1234', responseType: 'token id_token'});
 webAuth.parseHash({nonce: '1234'}, callback);`
 
 If you're calling `webAuth.checkSession` instead of `webAuth.authorize`, then you only have to specify your custom `nonce` as an option to `checkSession`:
@@ -374,7 +374,7 @@ webAuth.checkSession({
 });
 ```
 
-The `webAuth.checkSession` method will automatically verify that the returned <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip>'s `nonce` claim is the same as the option.
+The `webAuth.checkSession` method will automatically verify that the returned <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip>'s `nonce` claim is the same as the option.
 
 ## Error codes and descriptions
 
@@ -425,7 +425,7 @@ To sign up a user, use the `signup` method. This method accepts an options objec
 | `password` | required | (String) User's desired password |
 | `username` | required\* | (String) User's desired username.  \*Required if you use a database connection and you have enabled **Requires Username** |
 | `connection` | required | (String) The database connection name on your application upon which to attempt user account creation |
-| `user_metadata` | optional | (JSON object) Additional attributes used for user information. Will be stored in [user\_metadata](/manage-users/user-accounts/metadata) |
+| `user_metadata` | optional | (JSON object) Additional attributes used for user information. Will be stored in [user\_metadata](/docs/manage-users/user-accounts/metadata) |
 
 Signups should be for database connections. Here is an example of the `signup` method and some sample code for a form.
 
@@ -454,7 +454,7 @@ Signups should be for database connections. Here is an example of the `signup` m
 
 The `checkSession` method allows you to acquire a new token from Auth0 for a user who is already authenticated against Auth0 for your domain. The method accepts any valid OAuth2 parameters that would normally be sent to `authorize`. If you omit them, it will use the ones provided when initializing Auth0.
 
-The call to `checkSession` can be used to get a new token for the API that was specified as the <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> when `webAuth` was initialized:
+The call to `checkSession` can be used to get a new token for the API that was specified as the <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> when `webAuth` was initialized:
 
 ```js lines
 webAuth.checkSession({}, function (err, authResult) {
@@ -478,11 +478,11 @@ webAuth.checkSession(
 });
 ```
 
-Note that `checkSession()` triggers any [rules](/customize/rules) you may have set up, so you should check on your rules in the [Dashboard](https://manage.auth0.com/#/rules) prior to using it.
+Note that `checkSession()` triggers any [rules](/docs/customize/rules) you may have set up, so you should check on your rules in the [Dashboard](https://manage.auth0.com/#/rules) prior to using it.
 
 The actual redirect to `/authorize` happens inside an iframe, so it will not reload your application or redirect away from it.
 
-However, the browser **must** have third-party cookies enabled. Otherwise, **checkSession()** is unable to access the current user's session (making it impossible to obtain a new token without displaying anything to the user). The same will happen if users have [Safari's ITP enabled](/troubleshoot/authentication-issues/renew-tokens-when-using-safari).
+However, the browser **must** have third-party cookies enabled. Otherwise, **checkSession()** is unable to access the current user's session (making it impossible to obtain a new token without displaying anything to the user). The same will happen if users have [Safari's ITP enabled](/docs/troubleshoot/authentication-issues/renew-tokens-when-using-safari).
 
 Remember to add the URL where the authorization request originates from, to the **Allowed Web Origins** list of your Auth0 application in the [Dashboard](https://manage.auth0.com/#) under your application's **Settings**.
 
@@ -521,11 +521,11 @@ The user will then receive an email which will contain a link that they can foll
 
 ## User management
 
-The Management API provides functionality that allows you to link and unlink separate user accounts from different providers and update user metadata. For more information, read [User Account Linking](/manage-users/user-accounts/user-account-linking).
+The Management API provides functionality that allows you to link and unlink separate user accounts from different providers and update user metadata. For more information, read [User Account Linking](/docs/manage-users/user-accounts/user-account-linking).
 
-To get started, you first need to obtain a an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> that can be used to call the Management API. You can do it by specifying the `https://{yourDomain}/api/v2/` audience when initializing auth0.js, in which case you will get the access token as part of the authentication flow.
+To get started, you first need to obtain a an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> that can be used to call the Management API. You can do it by specifying the `https://{yourDomain}/api/v2/` audience when initializing auth0.js, in which case you will get the access token as part of the authentication flow.
 
-If you use [custom domains](/customize/custom-domains), you will need to instantiate a new copy of `webAuth` using your Auth0 domain rather than your custom one, for use with the Management API calls, as it only works with Auth0 domains.
+If you use [custom domains](/docs/customize/custom-domains), you will need to instantiate a new copy of `webAuth` using your Auth0 domain rather than your custom one, for use with the Management API calls, as it only works with Auth0 domains.
 
 ```js lines
 var webAuth = new auth0.WebAuth({
@@ -577,14 +577,14 @@ In order to get the user profile data, use the `getUser()` method, with the `use
 
 ### Updating the user profile
 
-When updating user metadata, you will need to first create a `userMetadata` object, and then call the `patchUserMetadata` method, passing it the user id and the `userMetadata` object you created. The values in this object will overwrite existing values with the same key, or add new ones for those that don't yet exist in the user metadata. For more information, read [Metadata](/manage-users/user-accounts/metadata).
+When updating user metadata, you will need to first create a `userMetadata` object, and then call the `patchUserMetadata` method, passing it the user id and the `userMetadata` object you created. The values in this object will overwrite existing values with the same key, or add new ones for those that don't yet exist in the user metadata. For more information, read [Metadata](/docs/manage-users/user-accounts/metadata).
 `auth0Manage.patchUserMetadata(userId, userMetadata, cb);`
 
 ### Linking users
 
 Linking user accounts will allow a user to authenticate from any of their accounts and no matter which one they use, still pull up the same profile upon login. Auth0 treats all of these accounts as separate profiles by default, so if you wish a user's accounts to be linked, this is the way to go.
 
-The `linkUser` method accepts two parameters, the primary `userId` and the secondary user's ID Token (the token obtained after login with this identity). The user ID in question is the unique identifier for the primary user account. The ID should be passed with the provider prefix, e.g., `auth0|1234567890` or `facebook|1234567890`, when using this method. See [User Account Linking](/manage-users/user-accounts/user-account-linking) for details.
+The `linkUser` method accepts two parameters, the primary `userId` and the secondary user's ID Token (the token obtained after login with this identity). The user ID in question is the unique identifier for the primary user account. The ID should be passed with the provider prefix, e.g., `auth0|1234567890` or `facebook|1234567890`, when using this method. See [User Account Linking](/docs/manage-users/user-accounts/user-account-linking) for details.
 `auth0Manage.linkUser(userId, secondaryUserToken, cb);`
 
 After linking the accounts, the second account will no longer exist as a separate entry in the user database, and will only be accessible as part of the primary one.

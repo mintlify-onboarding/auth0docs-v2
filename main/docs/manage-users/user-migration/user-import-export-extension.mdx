@@ -13,7 +13,7 @@ title: User Import / Export Extension
 ---
 <Warning>
 
-The **User Import/Export Extension** will be deprecated in September 2025. You can access the same features now available [directly in the Auth0 Management Dashboard](/manage-users/user-migration/bulk-user-import-export).
+The **User Import/Export Extension** will be deprecated in September 2025. You can access the same features now available [directly in the Auth0 Management Dashboard](/docs/manage-users/user-migration/bulk-user-import-export).
 
 </Warning>
 
@@ -22,7 +22,7 @@ The **User Import / Export Extension** allows you to:
 * Bulk import your existing database users into Auth0
 * Search for and export some (or all) of your Auth0 database users
 
-For a list of user profile fields that can be imported and exported, see [User Profile Attributes](/manage-users/user-accounts/user-profiles/user-profile-structure).
+For a list of user profile fields that can be imported and exported, see [User Profile Attributes](/docs/manage-users/user-accounts/user-profiles/user-profile-structure).
 
 You must be a Dashboard Admin to use this extension.
 
@@ -38,7 +38,7 @@ After you've installed your extension, you'll see it listed in your list of inst
 
 You'll be asked to grant permission for the extension to access your Auth0 account for the listed activities the first time you launch the extension.
 
-<Frame>![Dashboard Extensions Authorize the Users Import/Export Extension](/images/cdy7uua7fh8z/5CCKmxUv1HN5nDj9jL8qel/d7f02ccf3f4be166b00bbf217e14144f/Screen_Shot_2021-05-18_at_9.11.01_PM.png)</Frame>
+<Frame>![Dashboard Extensions Authorize the Users Import/Export Extension](/docs/images/cdy7uua7fh8z/5CCKmxUv1HN5nDj9jL8qel/d7f02ccf3f4be166b00bbf217e14144f/Screen_Shot_2021-05-18_at_9.11.01_PM.png)</Frame>
 
 Click the **check mark** to proceed.
 
@@ -53,11 +53,11 @@ Both use cases are explained in further detail below.
 
 By default, any time you open the extension, you'll see the **User Import** screen (if you're on the export screen, you can return to this screen by click **Import** in the left-hand navigation bar).
 
-To import your users, drag and drop a valid JSON file ([schema and examples here](/manage-users/user-migration/bulk-user-import-database-schema-and-examples)) onto the area that says **Drop your file here, or click to select**. Alternatively, you can click on this area to browse your files and select the appropriate JSON file. The JSON file should contain the list of users that you are planning to import.
+To import your users, drag and drop a valid JSON file ([schema and examples here](/docs/manage-users/user-migration/bulk-user-import-database-schema-and-examples)) onto the area that says **Drop your file here, or click to select**. Alternatively, you can click on this area to browse your files and select the appropriate JSON file. The JSON file should contain the list of users that you are planning to import.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you are using an export file from an Auth0 tenant, you must convert the exported file from `ndjson` to [JSON](/manage-users/user-migration/bulk-user-exports#json-compatible-format). To keep the same user IDs, you must remove the `auth0| prefix` from all imported user IDs.
+If you are using an export file from an Auth0 tenant, you must convert the exported file from `ndjson` to [JSON](/docs/manage-users/user-migration/bulk-user-exports#json-compatible-format). To keep the same user IDs, you must remove the `auth0| prefix` from all imported user IDs.
 
 The import process automatically adds the `auth0| prefix` to the imported user IDs. If you do not remove the `auth0|` prefix before importing, the user IDs return as `auth0|auth0|...`
 
@@ -69,7 +69,7 @@ Click **Start Importing Users** to begin the import process.
 
 When done, you'll see the following **Completed** message.
 
-<Frame>![Dashboard Extensions Users Import Export Import Complete](/images/cdy7uua7fh8z/7hyE3DWBJuFuAulAAnZlfN/23303644d4c706f4c0937bd363bf6699/import-complete.png)</Frame>
+<Frame>![Dashboard Extensions Users Import Export Import Complete](/docs/images/cdy7uua7fh8z/7hyE3DWBJuFuAulAAnZlfN/23303644d4c706f4c0937bd363bf6699/import-complete.png)</Frame>
 
 Once you've imported your users, you can manage them individually using [Auth0 Dashboard > User Management > Users](https://manage.auth0.com/#/users).
 
@@ -83,7 +83,7 @@ Auth0 uses the ndjson format due to the large size of export files. Before you c
 
 To export your existing Auth0 users associated with database connections, select **Export**.
 
-<Frame>![Dashboard Extensions Users Import Export Export Users page](/images/cdy7uua7fh8z/5wUhbGMjVQKIE9vx2SBIA3/a952aee6cc6027234631334c7174c4a8/export-users.png)</Frame>
+<Frame>![Dashboard Extensions Users Import Export Export Users page](/docs/images/cdy7uua7fh8z/5wUhbGMjVQKIE9vx2SBIA3/a952aee6cc6027234631334c7174c4a8/export-users.png)</Frame>
 
 Under **User Fields**, you can decide which user attributes or expressions should be included in the export. The user attribute can be a static value like `user.user_metadata.name`, or it can be a JavaScript expression like `user.user_metadata.name || user.name`. Expressions will be evaluated during the export runtime. The **column name** value is how the value will be represented in the export.
 
@@ -96,7 +96,7 @@ Under **Settings**, you can:
 * Configure how your exported users are listed by providing a **User Attribute** by which users should be sorted (as well as whether the users should be sorted in ascending or descending order)
 * Choose your **Export Format**; you can choose between JSON and CSV files
 
-  <Frame>![Dashboard Extensions Users Import Export Settings Export Format](/images/cdy7uua7fh8z/1HVpo1IevSRJbFvwrEKkzf/761fa914f6c33cdee147e07b2c43f7c7/settings.png)</Frame>
+  <Frame>![Dashboard Extensions Users Import Export Settings Export Format](/docs/images/cdy7uua7fh8z/1HVpo1IevSRJbFvwrEKkzf/761fa914f6c33cdee147e07b2c43f7c7/settings.png)</Frame>
 
 When you're ready, click **Export X Users** (where `X` is the number of users you're exporting).
 
@@ -104,7 +104,7 @@ You can download the file containing your users when the export is complete; you
 
 ## Update Users
 
-The Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> allows bulk user profile updates to `user_metadata` and `app_metadata` with the User Import/Export Extension.
+The Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> allows bulk user profile updates to `user_metadata` and `app_metadata` with the User Import/Export Extension.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -114,7 +114,7 @@ Auth0 does not currently support bulk import for Passwordless. Use [Auth0 Manage
 
 ### Export users
 
-Using the [export process above](/customize/extensions/user-import-export-extension#export-users), create a complete export file including all your user attributes.
+Using the [export process above](/docs/customize/extensions/user-import-export-extension#export-users), create a complete export file including all your user attributes.
 
 Choose the JSON format for your export.
 

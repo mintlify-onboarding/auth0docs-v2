@@ -10,10 +10,10 @@ title: User Search Best Practices
 ---
 Here are some best practices for user search:
 
-* You need a token to make requests to the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>. To learn more, read [Management API Access Tokens](/secure/tokens/access-tokens/management-api-access-tokens).
+* You need a token to make requests to the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. To learn more, read [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens).
 * To perform user search requests, the `read:users` scope is required.
 * Leverage non-deterministic search: if your application does not require consistent ordering of search results and your queries are short enough not to rely on pagination, set `primary_order=false` to improve query performance.
-* To get the latest search results, use an **immediately consistent** endpoint during authentication processes, such as [Get Users by ID](/manage-users/user-search/retrieve-users-with-get-users-by-id-endpoint) and [Get Users by Email](/manage-users/user-search/retrieve-users-with-get-users-by-email-endpoint). Searches using these endpoints reflect the results of all successful write operations including those that occurred shortly prior to your request.
+* To get the latest search results, use an **immediately consistent** endpoint during authentication processes, such as [Get Users by ID](/docs/manage-users/user-search/retrieve-users-with-get-users-by-id-endpoint) and [Get Users by Email](/docs/manage-users/user-search/retrieve-users-with-get-users-by-email-endpoint). Searches using these endpoints reflect the results of all successful write operations including those that occurred shortly prior to your request.
 * Use a well-known schema for metadata:
 
   + Use consistent data types for properties.

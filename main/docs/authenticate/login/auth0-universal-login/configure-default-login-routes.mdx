@@ -12,7 +12,7 @@ title: Configure Default Login Routes
 ---
 In certain cases (described below), Auth0 may need to redirect back to the application's Login Initiation endpoint, using OIDC third-party initiated login. To learn more, read [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) at the [OpenID Foundation](https://openid.net).
 
-You can configure these URIs with the Dashboard in [Application Settings](https://manage.auth0.com/#/applications/settings) or [Tenant Advanced Settings](https://manage.auth0.com/#/tenant/advanced) or with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can configure these URIs with the Dashboard in [Application Settings](https://manage.auth0.com/#/applications/settings) or [Tenant Advanced Settings](https://manage.auth0.com/#/tenant/advanced) or with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Tabs><Tab title="Application level">
 
@@ -472,7 +472,7 @@ Sometimes users bookmark the login page, and when they navigate to the bookmarke
 
 After completing the password reset flow and the default URI for the application or tenant is configured, users will see a button that will let them navigate back to the login page.
 
-This behavior only happens when you enable the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> experience. With Classic Login, you need to configure the redirect URL in the Change Password template. To learn more, read [Customize Email Templates](/customize/email/email-templates).
+This behavior only happens when you enable the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> experience. With Classic Login, you need to configure the redirect URL in the Change Password template. To learn more, read [Customize Email Templates](/docs/customize/email/email-templates).
 
 For tenants using Universal Login, the [`/post-password-change`](https://auth0.com/docs/api/management/v2/#!/Tickets/post_password_change) endpoint supports redirecting users back to a specific application. When `client_id` is specified and the application's login URI is set, users will see a button sending them back to the application after completing a password reset.
 
@@ -692,7 +692,7 @@ This behavior only happens when the Universal Login experience is enabled. With 
 
 ### Invite organization members
 
-When users are invited to join an [Organization](/manage-users/organizations/organizations-overview), they receive an invitation link by email. If they select the link, they are redirected to the configured default login route with invitation-specific parameters appended.
+When users are invited to join an [Organization](/docs/manage-users/organizations/organizations-overview), they receive an invitation link by email. If they select the link, they are redirected to the configured default login route with invitation-specific parameters appended.
 
 For example, if you have an organization-enabled application with an **Application Login URI** set to `https://myapp.com/login`, then the link sent in the email invitation that an end-user receives will be: `https://myapp.com/login?invitation={invitation_ticket_id}&organization={organization_id}&organization_name={organization_name}`.
 
@@ -706,7 +706,7 @@ Sending the user back to the login page can potentially cause a redirect loop. T
 
 ## Learn more
 
-* [Customize Email Templates](/customize/email/email-templates)
-* [Check API Calls](/troubleshoot/authentication-issues/check-api-calls)
-* [Check Error Messages](/troubleshoot/basic-issues/check-error-messages)
-* [Manage Authentication Factors with Authentication API](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
+* [Customize Email Templates](/docs/customize/email/email-templates)
+* [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls)
+* [Check Error Messages](/docs/troubleshoot/basic-issues/check-error-messages)
+* [Manage Authentication Factors with Authentication API](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)

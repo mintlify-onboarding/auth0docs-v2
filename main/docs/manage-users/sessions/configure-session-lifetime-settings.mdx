@@ -10,14 +10,14 @@ title: Configure Session Lifetime Settings
   tenant using the Auth0 Dashboard or the Management API.
 'twitter:title': Configure Session Lifetime Settings
 ---
-The **Absolute Expiration** of a session is defined upon session creation. You can adjust the Absolute Expiration by configuring session settings using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+The **Absolute Expiration** of a session is defined upon session creation. You can adjust the Absolute Expiration by configuring session settings using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Dashboard
 
 1. Go to [Dashboard > Tenant Settings](https://manage.auth0.com/#/tenant) and select the **Advanced** view.
 2. Scroll to the **Session Expiration** section, locate **Idle Session Lifetime** and **Maximum Session Lifetime**, enter the desired settings, and select **Save**.
 
-   <Frame>![Dashboard Tenant Settings Advanced Login Session Management](/images/cdy7uua7fh8z/q2fGPzoUqCcXj7OxcHhjy/de15afcd26e8ea80937733034ffbd387/Screenshot_2024-11-06_at_11.02.16.png)</Frame>
+   <Frame>![Dashboard Tenant Settings Advanced Login Session Management](/docs/images/cdy7uua7fh8z/q2fGPzoUqCcXj7OxcHhjy/de15afcd26e8ea80937733034ffbd387/Screenshot_2024-11-06_at_11.02.16.png)</Frame>
 
 <table class="table"><thead>
 <tr>
@@ -39,7 +39,7 @@ The **Absolute Expiration** of a session is defined upon session creation. You c
 
 ## Management API
 
-Make a `PATCH` call to the [Tenant Settings endpoint](https://auth0.com/docs/api/management/v2#!/tenants/patch_settings). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `SESSION_LIFETIME`, and `IDLE_SESSION_LIFETIME` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>, session lifetime value, and idle session lifetime value, respectively.
+Make a `PATCH` call to the [Tenant Settings endpoint](https://auth0.com/docs/api/management/v2#!/tenants/patch_settings). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `SESSION_LIFETIME`, and `IDLE_SESSION_LIFETIME` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, session lifetime value, and idle session lifetime value, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -275,9 +275,9 @@ dataTask.resume()
 </tbody>
 </table>
 
-For troubleshooting help, review [Check API Calls](/troubleshoot/authentication-issues/check-api-calls).
+For troubleshooting help, review [Check API Calls](/docs/troubleshoot/authentication-issues/check-api-calls).
 
 ## Learn more
 
-* [Session Layers](/manage-users/sessions/session-layers)
-* [Non-Persistent Sessions](/manage-users/sessions/non-persistent-sessions)
+* [Session Layers](/docs/manage-users/sessions/session-layers)
+* [Non-Persistent Sessions](/docs/manage-users/sessions/non-persistent-sessions)

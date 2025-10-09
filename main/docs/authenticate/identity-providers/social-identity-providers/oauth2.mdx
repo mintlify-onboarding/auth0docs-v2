@@ -9,7 +9,7 @@ title: Connect Apps to Generic OAuth2 Authorization Servers
   Connections.
 'twitter:title': Connect Apps to Generic OAuth2 Authorization Servers
 ---
-The most common [identity providers (IdP)](/authenticate/identity-providers) are available in [Auth0 Dashboard](https://manage.auth0.com/#) and in the [Auth0 Marketplace](https://marketplace.auth0.com/features/social-connections). You can, however, add any <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> provider as a **Custom Social Connection** in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+The most common [identity providers (IdP)](/docs/authenticate/identity-providers) are available in [Auth0 Dashboard](https://manage.auth0.com/#) and in the [Auth0 Marketplace](https://marketplace.auth0.com/features/social-connections). You can, however, add any <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth+2.0">OAuth 2.0</Tooltip> provider as a **Custom Social Connection** in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 1. In the Dashboard, go to [Authentication > Social](https://manage.auth0.com/#/connections/social).
 2. Select **Create Connection**, go to the bottom of the list, and then select **Create Custom**.
@@ -24,11 +24,11 @@ The form that appears contains several fields that you must use to configure the
   Do not attempt to set the OAuth2 `response_mode` parameter in the authorization URL. This connection only supports the default `response_mode` (`query`).
 
   </Callout>
-* **Token URL**: URL used to exchange the received authorization code for <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> and, if requested, <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+tokens">ID tokens</Tooltip>.
+* **Token URL**: URL used to exchange the received authorization code for <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> and, if requested, <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip>.
 * **Scope**: `scope` parameters to send with the authorization request. Separate multiple scopes with spaces.
-* **Separate scopes using a space**: Toggle that determines how scopes are delimited if the `connection_scope` parameter is included when [calling the IdP's API](/authenticate/identity-providers/calling-an-external-idp-api). By default, scopes are delimited by a comma. If the toggle is enabled, scopes are delimited by a space. To learn more, read [Add Scopes/Permissions to Call Identity Provider APIs](/authenticate/identity-providers/adding-scopes-for-an-external-idp).
-* **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=Client+ID">Client ID</Tooltip>**: Client ID for Auth0 as an application used to request authorization and exchange the authorization code. To get a Client ID, you will need to register with the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip>.
-* **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=Client+Secret">Client Secret</Tooltip>**: Client Secret for Auth0 as an application used to exchange the authorization code. To get a Client Secret, you will need to register with the identity provider.
+* **Separate scopes using a space**: Toggle that determines how scopes are delimited if the `connection_scope` parameter is included when [calling the IdP's API](/docs/authenticate/identity-providers/calling-an-external-idp-api). By default, scopes are delimited by a comma. If the toggle is enabled, scopes are delimited by a space. To learn more, read [Add Scopes/Permissions to Call Identity Provider APIs](/docs/authenticate/identity-providers/adding-scopes-for-an-external-idp).
+* **<Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Client+ID">Client ID</Tooltip>**: Client ID for Auth0 as an application used to request authorization and exchange the authorization code. To get a Client ID, you will need to register with the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>.
+* **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=Client+Secret">Client Secret</Tooltip>**: Client Secret for Auth0 as an application used to exchange the authorization code. To get a Client Secret, you will need to register with the identity provider.
 * **Fetch User Profile Script**: Node.js script used to call a userinfo URL with the provided access token. To learn more about this script, see [Fetch User Profile Script](#fetch-user-profile-script).
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -37,11 +37,11 @@ When configuring the custom identity provider, use the callback URL `https://{yo
 
 </Callout>
 
-Once you create the custom connection, you will see the **Applications** view and your connection will be subject to Auth0's [Rate Limit Policy](/troubleshoot/customer-support/operational-policies/rate-limit-policy). Here, you can enable and disable applications for which you would like the connection to appear.
+Once you create the custom connection, you will see the **Applications** view and your connection will be subject to Auth0's [Rate Limit Policy](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy). Here, you can enable and disable applications for which you would like the connection to appear.
 
 ## Update authentication flow
 
-When you create a connection, the default OAuth 2.0 grant type assigned to the connection is Authorization Code Flow. If you have a public application unable to store a Client Secret, such single-page or native applications, you can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to update the connection to use [Authorization Code Flow + PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). To learn more about <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/glossary?term=authorization+flows">authorization flows</Tooltip>, read [Which OAuth 2.0 Flow Should I Use?](/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
+When you create a connection, the default OAuth 2.0 grant type assigned to the connection is Authorization Code Flow. If you have a public application unable to store a Client Secret, such single-page or native applications, you can use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to update the connection to use [Authorization Code Flow + PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). To learn more about <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=authorization+flows">authorization flows</Tooltip>, read [Which OAuth 2.0 Flow Should I Use?](/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
 
 1. Make a `GET` request to the [`/get-connections-by-id`](https://auth0.com/docs/api/management/v2/connections/get-connections-by-id) endpoint. The response will be similar to:
 
@@ -122,9 +122,9 @@ function fetchUserProfile(accessToken, context, callback) {
 
 
 
-The `user_id` property in the returned profile is required, and the `email` property is optional but highly recommended. To learn more about what attributes can be returned, see [User Profile Root Attributes](/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users).
+The `user_id` property in the returned profile is required, and the `email` property is optional but highly recommended. To learn more about what attributes can be returned, see [User Profile Root Attributes](/docs/manage-users/user-accounts/user-profiles/root-attributes/update-root-attributes-for-users).
 
-You can filter, add, or remove anything from the profile returned from the provider. However, it is recommended that you keep this script as simple as possible. More sophisticated manipulation of user information can be achieved through the use of [Rules](/customize/rules). One advantage of using Rules is that they apply to any connection.
+You can filter, add, or remove anything from the profile returned from the provider. However, it is recommended that you keep this script as simple as possible. More sophisticated manipulation of user information can be achieved through the use of [Rules](/docs/customize/rules). One advantage of using Rules is that they apply to any connection.
 
 ## Log in using the custom connection
 
@@ -151,7 +151,7 @@ To add an icon to the identity provider's login button or change the text used o
 <Warning>
 
 * If `display_name` is not included in your request, the field is overwritten with the Connection `name` value.
-* `display_name` and `icon_url` only affect how the Connection displays in the [Universal Login experience](/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience).
+* `display_name` and `icon_url` only affect how the Connection displays in the [Universal Login experience](/docs/authenticate/login/auth0-universal-login/universal-login-vs-classic-login/universal-experience).
 
 </Warning>
 
@@ -783,7 +783,7 @@ Now when calling the `/authorize` endpoint, you can pass the access type in the 
 
 ## Pass extra headers
 
-In some instances, you will need to pass extra headers to the <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/glossary?term=Token+endpoint">Token endpoint</Tooltip> of an OAuth 2.0 provider. To configure extra headers, open the Settings for the Connection, and in the **Custom Headers** field, specify a JSON object with the custom headers as key-value pairs:
+In some instances, you will need to pass extra headers to the <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/docs/glossary?term=Token+endpoint">Token endpoint</Tooltip> of an OAuth 2.0 provider. To configure extra headers, open the Settings for the Connection, and in the **Custom Headers** field, specify a JSON object with the custom headers as key-value pairs:
 
 ```json lines
 {
@@ -814,6 +814,6 @@ Where `[your credentials]` are the actual credentials to send to the Identity Pr
 
 ## Learn more
 
-* [Social Identity Providers](/authenticate/identity-providers/social-identity-providers)
-* [Identity Providers](/authenticate/identity-providers)
-* [Protocols](/authenticate/protocols)
+* [Social Identity Providers](/docs/authenticate/identity-providers/social-identity-providers)
+* [Identity Providers](/docs/authenticate/identity-providers)
+* [Protocols](/docs/authenticate/protocols)

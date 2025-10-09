@@ -12,23 +12,23 @@ title: Auth0 ACUL JS SDK Quickstart
 
 You need:
 
-* An Auth0 development tenant configured with [Universal Login](/authenticate/login/auth0-universal-login) and [custom domain](/customize/custom-domains).
-* Enable [Identifier First Authentication](/authenticate/login/auth0-universal-login/identifier-first) on your tenant to render the ACUL Login ID screen.
-* A development application or an [Auth0 SDK sample application](/quickstart/spa/react/interactive) on `localhost` for Auth0 authentication.
-* A [database connection](/authenticate/database-connections) to authenticate users.
+* An Auth0 development tenant configured with [Universal Login](/docs/authenticate/login/auth0-universal-login) and [custom domain](/docs/customize/custom-domains).
+* Enable [Identifier First Authentication](/docs/authenticate/login/auth0-universal-login/identifier-first) on your tenant to render the ACUL Login ID screen.
+* A development application or an [Auth0 SDK sample application](/docs/quickstart/spa/react/interactive) on `localhost` for Auth0 authentication.
+* A [database connection](/docs/authenticate/database-connections) to authenticate users.
 * An [Auth0 ACUL sample application](https://github.com/auth0-samples/auth0-acul-samples) to render the ACUL screens.
 
 </Card>
 
 <Warning>
 
-Advanced Customization for Universal Login is currently in Early Access. To learn more about Auth0 release stages, read [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages).
+Advanced Customization for Universal Login is currently in Early Access. To learn more about Auth0 release stages, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
 
 </Warning>
 
-The [Auth0 ACUL JS SDK](https://github.com/auth0/universal-login/tree/master/packages/auth0-acul-js) allows you to implement Advanced Customization for <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> (ACUL). It simplifies integrating authentication screens such as Login, Signup, <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip>, Passkey enrollment, among others screens, into your web applications.
+The [Auth0 ACUL JS SDK](https://github.com/auth0/universal-login/tree/master/packages/auth0-acul-js) allows you to implement Advanced Customization for <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> (ACUL). It simplifies integrating authentication screens such as Login, Signup, <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip>, Passkey enrollment, among others screens, into your web applications.
 
-This quickstart creates a preview of a customized [Login ID](/customize/login-pages/advanced-customizations/reference/login-screen-classes#login-id-screen-class) screen using the Auth0 ACUL sample application. To learn more, visit the [Auth0 ACUL sample application repo](https://github.com/auth0-samples/auth0-acul-samples).
+This quickstart creates a preview of a customized [Login ID](/docs/customize/login-pages/advanced-customizations/reference/login-screen-classes#login-id-screen-class) screen using the Auth0 ACUL sample application. To learn more, visit the [Auth0 ACUL sample application repo](https://github.com/auth0-samples/auth0-acul-samples).
 
 ## Step 1. Install the Auth0 ACUL sample application
 
@@ -87,7 +87,7 @@ For example:
 
 ## Step 3. Enable ACUL in your Auth0 development tenant
 
-Enable ACUL for the Login ID screen using a test [Auth0 Management API Explorer Token](/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-testing), the [Custom Domain](/customize/custom-domains) address, and the local assets as HTML head tags.
+Enable ACUL for the Login ID screen using a test [Auth0 Management API Explorer Token](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-testing), the [Custom Domain](/docs/customize/custom-domains) address, and the local assets as HTML head tags.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -156,13 +156,13 @@ curl --location --request PATCH 'https://{<CUSTOM-DOMAIN>/api/v2/prompts/login-i
 
 
 
-To learn more about enabling ACUL, read [Deploy and Host Advanced Customizations](/customize/login-pages/advanced-customizations/getting-started/deploy-and-host-advanced-customizations).
+To learn more about enabling ACUL, read [Deploy and Host Advanced Customizations](/docs/customize/login-pages/advanced-customizations/getting-started/deploy-and-host-advanced-customizations).
 
 ## Step 4. Render the ACUL Login ID screen
 
-Start your development application or the [Auth0 SDK sample application](/quickstart/spa/react/interactive) on your `localhost` to render the ACUL Login ID screen.
+Start your development application or the [Auth0 SDK sample application](/docs/quickstart/spa/react/interactive) on your `localhost` to render the ACUL Login ID screen.
 
-To learn more about the available screens, review [ACUL Screens](/customize/login-pages/advanced-customizations/reference).
+To learn more about the available screens, review [ACUL Screens](/docs/customize/login-pages/advanced-customizations/reference).
 
 ## SDK Reference
 

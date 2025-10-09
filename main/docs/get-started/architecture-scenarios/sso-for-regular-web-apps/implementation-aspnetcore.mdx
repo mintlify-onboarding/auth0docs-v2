@@ -88,9 +88,9 @@ As you can see in the code above, we have configured two different types of auth
 
 The first is the cookie middleware which was registered with the call to `UseCookieAuthentication`. The second is the OIDC middleware which is done with the call to `UseOpenIdConnectAuthentication`.
 
-Once the user has signed in to Auth0 using the OIDC middleware, their information will automatically be stored inside a <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/glossary?term=session+cookie">session cookie</Tooltip>. All you need to do is to configure the middleware as above and it will take care of managing the user session.
+Once the user has signed in to Auth0 using the OIDC middleware, their information will automatically be stored inside a <Tooltip tip="Session Cookie: Entity that, when present, allows the user to be considered authenticated." cta="View Glossary" href="/docs/glossary?term=session+cookie">session cookie</Tooltip>. All you need to do is to configure the middleware as above and it will take care of managing the user session.
 
-The <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) middleware will also extract all the claims from the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip>, which is sent from Auth0 once the user has authenticated, and add them as claims on the `ClaimsIdentity`.
+The <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) middleware will also extract all the claims from the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip>, which is sent from Auth0 once the user has authenticated, and add them as claims on the `ClaimsIdentity`.
 
 ## Implement the Logout
 
@@ -142,7 +142,7 @@ app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions("Auth0")
 
 
 
-You will also need to ensure that you add your application's URL to the **Allowed Logout URLs** for your application inside the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+dashboard">Auth0 dashboard</Tooltip>. For more information refer to [Logout](/authenticate/login/logout).
+You will also need to ensure that you add your application's URL to the **Allowed Logout URLs** for your application inside the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+dashboard">Auth0 dashboard</Tooltip>. For more information refer to [Logout](/docs/authenticate/login/logout).
 
 ## Implement Admin permissions
 
@@ -161,7 +161,7 @@ for each of the groups a user is assigned to.
 
 Once the claims has been added we can easily ensure that a specific action is available only to `Admin` users by decorating the claim with the `[Authorize(Roles = "Admin")]` attribute. You can also check whether a user is in a specific role from code by making a call to `User.IsInRole("Admin")` from inside your controller.
 
-The ASP.NET OIDC middleware will automatically add all claims returned in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> as claims to the `ClaimsIdentity`. We would therefore need to extract the information from the `authorization` claim, deserialize the JSON body of the claim, and for each of the groups add a `http://schemas.microsoft.com/ws/2008/06/identity/claims/role` claim to the `ClaimsIdentity`.
+The ASP.NET OIDC middleware will automatically add all claims returned in the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> as claims to the `ClaimsIdentity`. We would therefore need to extract the information from the `authorization` claim, deserialize the JSON body of the claim, and for each of the groups add a `http://schemas.microsoft.com/ws/2008/06/identity/claims/role` claim to the `ClaimsIdentity`.
 
 ```csharp lines expandable
 app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions("Auth0")

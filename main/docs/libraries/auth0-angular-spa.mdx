@@ -10,7 +10,7 @@ title: Auth0 Angular SDK for Single Page Apps
 ---
 The Auth0 Angular SDK is a JavaScript library for implementing authentication and authorization in Angular apps with Auth0. It provides a service, authentication guard, and an HTTP interceptor to enable you to perform common authentication tasks within your Angular apps.
 
-The Auth0 Angular SDK handles grant and protocol details, token expiration and renewal, as well as token storage and caching. Under the hood, it implements [Universal Login](/authenticate/login/auth0-universal-login) and the [Authorization Code Grant Flow with PKCE](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
+The Auth0 Angular SDK handles grant and protocol details, token expiration and renewal, as well as token storage and caching. Under the hood, it implements [Universal Login](/docs/authenticate/login/auth0-universal-login) and the [Authorization Code Grant Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
 
 The library is [hosted on GitHub](https://github.com/auth0/auth0-angular) where you can [read more about the API](https://auth0.github.io/auth0-angular/).
 
@@ -88,7 +88,7 @@ export class LoginComponent {
 
 ## Logout
 
-Use `logout` to log your users out. Make sure `returnTo` is specified in **Allowed Logout URLs** in your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
+Use `logout` to log your users out. Make sure `returnTo` is specified in **Allowed Logout URLs** in your <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>.
 
 ```jsx lines
 import { Component } from '@angular/core';
@@ -180,7 +180,7 @@ The authentication guard also supports the `canLoad` hook for preventing lazy-lo
 
 ## Call an API
 
-The SDK contains a built-in `HttpInterceptor` that automatically attaches <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> by injecting an `Authorization` header when requests are made using Angular's `HttpClient` service.
+The SDK contains a built-in `HttpInterceptor` that automatically attaches <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> by injecting an `Authorization` header when requests are made using Angular's `HttpClient` service.
 
 You must configure the SDK to specify which routes to the API should have this header automatically added, to prevent access token leakage to recipients that you did not expect.
 

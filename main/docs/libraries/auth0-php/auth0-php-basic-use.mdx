@@ -12,18 +12,18 @@ title: 'PHP: Logging in, out, and returning user profiles with Auth0-PHP'
 ---
 The Auth0-PHP SDK bundles three core classes: `Auth0\SDK\Auth0`, `Auth0\SDK\API\Authentication` and `Auth0\SDK\API\Management`, each offering interfaces for different functionality across Auth0's APIs. If you're building a stateful web application that needs to keep track of users' sessions, the base `Auth0` class is what you'll be working with the most. It provides methods for handling common authentication and session handling tasks such as logging in and out, retrieving user credentials, checking of an available session, and callback handling. These tasks are explained below.
 
-For additional information on these capabilities and more, please see the [documentation page for the Authentication API](/libraries/auth0-php/using-the-authentication-api-with-auth0-php).
+For additional information on these capabilities and more, please see the [documentation page for the Authentication API](/docs/libraries/auth0-php/using-the-authentication-api-with-auth0-php).
 
 ## Prerequisites
 
-The documentation below assumes that you followed the steps in the [Auth0-PHP](/libraries/auth0-php), and continue off from the code provided there.
+The documentation below assumes that you followed the steps in the [Auth0-PHP](/docs/libraries/auth0-php), and continue off from the code provided there.
 
 ### Logging In
 
-The default login process in the PHP SDK uses an [Authentication Code grant](/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow) combined with Auth0's <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> Page. In short, that process is:
+The default login process in the PHP SDK uses an [Authentication Code grant](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow) combined with Auth0's <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> Page. In short, that process is:
 
 1. A user requesting access is redirected to the Universal Login Page.
-2. The user authenticates using one of [many possible connections](/authenticate/identity-providers): social (Google, X, Facebook), database (email and password), passwordless (email, SMS), or enterprise (ActiveDirectory, ADFS, Office 365).
+2. The user authenticates using one of [many possible connections](/docs/authenticate/identity-providers): social (Google, X, Facebook), database (email and password), passwordless (email, SMS), or enterprise (ActiveDirectory, ADFS, Office 365).
 3. The user is redirected or posted back to your application's callback URL with `code` and `state` values if successful or an `error` and `error_description` if not.
 4. If the authentication was successful, the `state` value is validated.
 5. If the `state` is valid, the `code` value is exchanged with Auth0 for an ID Token and/or an Access Token.
@@ -78,7 +78,7 @@ printf(
     <p><Frame><img width="100" src="/%s"></Frame></p>
     <p><strong>Last update:</strong> %s</p>
     <p><strong>Contact:</strong> %s %s</p>
-    <p><a href="/logout.php">Logout</a></p>',
+    <p><a href="/docs/logout.php">Logout</a></p>',
     isset($session->user['nickname']) ? strip_tags($session->user['nickname']) : '[unknown]',
     isset($session->user['picture']) ? filter_var($session->user['picture'], FILTER_SANITIZE_URL) : 'https://gravatar.com/avatar/',
     isset($session->user['updated_at']) ? date('j/m/Y', strtotime($session->user['updated_at'])) : '[unknown]',
@@ -96,12 +96,12 @@ In addition to logging in, we also want users to be able to log out. When users 
 header("Location: $auth0->logout());
 ```
 
-If you're using <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) and also want to end their Auth0 session, see the [SSO Logout section here](/libraries/auth0-php/using-the-authentication-api-with-auth0-php). More information about logging out, in general, can be found [here](/authenticate/login/logout).
+If you're using <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) and also want to end their Auth0 session, see the [SSO Logout section here](/docs/libraries/auth0-php/using-the-authentication-api-with-auth0-php). More information about logging out, in general, can be found [here](/docs/authenticate/login/logout).
 
 ## Learn more
 
-* [PHP: Getting Started using Auth0-PHP](/libraries/auth0-php)
-* [PHP: Using the Authentication API with Auth0-PHP](/libraries/auth0-php/using-the-authentication-api-with-auth0-php)
-* [PHP: Using the Management API with Auth0-PHP](/libraries/auth0-php/using-the-management-api-with-auth0-php)
-* [PHP: Validating JWTs (JSON Web Tokens) with Auth0-PHP](/libraries/auth0-php/validating-jwts-with-auth0-php)
-* [PHP: Troubleshooting your Auth0-PHP integration](/libraries/auth0-php/troubleshoot-auth0-php-library)
+* [PHP: Getting Started using Auth0-PHP](/docs/libraries/auth0-php)
+* [PHP: Using the Authentication API with Auth0-PHP](/docs/libraries/auth0-php/using-the-authentication-api-with-auth0-php)
+* [PHP: Using the Management API with Auth0-PHP](/docs/libraries/auth0-php/using-the-management-api-with-auth0-php)
+* [PHP: Validating JWTs (JSON Web Tokens) with Auth0-PHP](/docs/libraries/auth0-php/validating-jwts-with-auth0-php)
+* [PHP: Troubleshooting your Auth0-PHP integration](/docs/libraries/auth0-php/troubleshoot-auth0-php-library)

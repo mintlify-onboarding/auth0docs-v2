@@ -10,21 +10,21 @@ title: Update Grant Types
   Auth0 Dashboard or the Management API.
 'twitter:title': Update Grant Types
 ---
-You can change your application's grant types using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip>.
+You can change your application's grant types using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Use the Dashboard
 
 1. Go to [Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) and select the name of the application to view.
 
-   <Frame>![Dashboard Applications List](/images/cdy7uua7fh8z/1ecNwGgFQZxdP57p0tp3jT/cd608fcfae22e195b604e2707e5a848d/App_List_-_EN.png)</Frame>
+   <Frame>![Dashboard Applications List](/docs/images/cdy7uua7fh8z/1ecNwGgFQZxdP57p0tp3jT/cd608fcfae22e195b604e2707e5a848d/App_List_-_EN.png)</Frame>
 2. Scroll to the bottom of the page, and select **Show Advanced Settings**.
 3. Select **Grant Types**, and enable or disable the appropriate grants for the application. When finished, select **Save Changes**. The device code grant type is only available for native apps.
 
-   <Frame>![Dashboard Applications Application Settings Tab Advanced Settings Grant Types tab](/images/cdy7uua7fh8z/4ZMq4VfeGsKsKfZVFwSqe8/a0057749551915ac8d24b151bc27e875/Grant_Types_-_English.png)</Frame>
+   <Frame>![Dashboard Applications Application Settings Tab Advanced Settings Grant Types tab](/docs/images/cdy7uua7fh8z/4ZMq4VfeGsKsKfZVFwSqe8/a0057749551915ac8d24b151bc27e875/Grant_Types_-_English.png)</Frame>
 
 ## Use the Management API
 
-Make a `PATCH` call to the [`/Clients/patch_clients_by_id`](https://auth0.com/docs/api/management/v2#!/Clients/patch_clients_by_id) endpoint. Be sure to replace `{yourClientId}`, `{yourManagementApiAccessToken}`, and `{grantType}` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip>, Management API <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip>, and desired grant type, respectively.
+Make a `PATCH` call to the [`/Clients/patch_clients_by_id`](https://auth0.com/docs/api/management/v2#!/Clients/patch_clients_by_id) endpoint. Be sure to replace `{yourClientId}`, `{yourManagementApiAccessToken}`, and `{grantType}` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip>, Management API <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, and desired grant type, respectively.
 
 <CodeGroup>
 ```bash cURL lines
@@ -269,4 +269,4 @@ Attempting to use a flow with an application lacking the appropriate `grant_type
 
 ## Learn more
 
-* [Application Grant Types](/get-started/applications/application-grant-types)
+* [Application Grant Types](/docs/get-started/applications/application-grant-types)

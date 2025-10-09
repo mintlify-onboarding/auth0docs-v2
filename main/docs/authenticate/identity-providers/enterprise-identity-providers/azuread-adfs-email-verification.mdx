@@ -10,7 +10,7 @@ title: Email Verification for Azure AD and ADFS
   set for Azure AD and ADFS.
 'twitter:title': Email Verification for Azure AD and ADFS
 ---
-Auth0 user's profile has an `email_verified` field, which can be set in different ways depending on the connection type. For database connections, users must go through an email validation flow to get the email verified. For federated connections, <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip> can return the `email_verified` field based on their own criteria.
+Auth0 user's profile has an `email_verified` field, which can be set in different ways depending on the connection type. For database connections, users must go through an email validation flow to get the email verified. For federated connections, <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip> can return the `email_verified` field based on their own criteria.
 
 Azure AD and ADFS cannot guarantee that the emails they return have been verified:
 
@@ -26,7 +26,7 @@ To accommodate both needs, Azure AD and ADFS connections have an **Email Verific
 
 The Azure AD connection also has a **Use Common Endpoint** property. When it's enabled, the user can authenticate with any Azure AD tenant. Given it's not possible to trust that any Azure AD tenant will return verified emails, the **Email Verification** property will need to be set to **Always set** `email_verified` **to** `false`.
 
-When the property is set to **Always set** `email_verified` **to** `false`, users will get `email_verified` set to `false` the next time they log in, unless [syncing user profile attributes at each login](/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0) is disabled.
+When the property is set to **Always set** `email_verified` **to** `false`, users will get `email_verified` set to `false` the next time they log in, unless [syncing user profile attributes at each login](/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0) is disabled.
 
 ## Azure AD/ADFS Email Verification Migration setting
 
@@ -43,7 +43,7 @@ This setting is only available if:
 
 </Callout>
 
-<Frame>![Dashboard - Advanced Tenant Settings - Migrations](/images/cdy7uua7fh8z/4K1rQIv6p96KPCYOrhjXz4/be0f7b104d743fd0d3d42d18df97e144/dashboard-tenant-edit_view-advanced_migrations_azure-adfs.png)</Frame>
+<Frame>![Dashboard - Advanced Tenant Settings - Migrations](/docs/images/cdy7uua7fh8z/4K1rQIv6p96KPCYOrhjXz4/be0f7b104d743fd0d3d42d18df97e144/dashboard-tenant-edit_view-advanced_migrations_azure-adfs.png)</Frame>
 
 When this setting is disabled, `email_verified` will always be `true` for Azure AD/ADFS connections. When enabled, it will use the `Email Verification` setting at the connection level.
 
@@ -53,13 +53,13 @@ If your application requires that the emails from an Azure AD/ADFS connection's 
 
 After the user authenticates for the first time with a non-verified email, Auth0 will ask the user to verify their email by entering a one-time-use code that will be sent to their email account:
 
-<Frame>![Auth0 - Email Verification Prompt - One-Time Code](/images/cdy7uua7fh8z/i92GJgntVuU5QK37adugH/b767d4db92de5bafd23113042eca2600/Verify_Email_-_English.png)</Frame>
+<Frame>![Auth0 - Email Verification Prompt - One-Time Code](/docs/images/cdy7uua7fh8z/i92GJgntVuU5QK37adugH/b767d4db92de5bafd23113042eca2600/Verify_Email_-_English.png)</Frame>
 
 If the user completes this step, the `email_verified` field will be set to `true`, and users will not be prompted again for email verification, unless Azure AD or ADFS return a different email for the user.
 
-This new screen is rendered using the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> experience, even if you are using Classic Login. To learn how to customize it, read [Customize Universal Login Pages](/customize/login-pages/universal-login/customize-templates).
+This new screen is rendered using the <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> experience, even if you are using Classic Login. To learn how to customize it, read [Customize Universal Login Pages](/docs/customize/login-pages/universal-login/customize-templates).
 
-To learn how to customize the email that is sent to users, read [Verify Emails using Auth0](/manage-users/user-accounts/verify-emails).
+To learn how to customize the email that is sent to users, read [Verify Emails using Auth0](/docs/manage-users/user-accounts/verify-emails).
 
 <Warning>
 

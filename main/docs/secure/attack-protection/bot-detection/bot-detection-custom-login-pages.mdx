@@ -10,7 +10,7 @@ title: Add Bot Detection to Custom Login Pages
   custom login pages built with the auth0.js library.
 'twitter:title': Add Bot Detection to Custom Login Pages
 ---
-If you build a custom login page using the auth0.js library, you can enable <Tooltip tip="Bot Detection: Form of attack protection in which Auth0 blocks suspected bot traffic by enabling a CAPTCHA during the login process." cta="View Glossary" href="/glossary?term=Bot+Detection">Bot Detection</Tooltip> to render a CAPTCHA step in scenarios when a request is determined to be high risk by Auth0.
+If you build a custom login page using the auth0.js library, you can enable <Tooltip tip="Bot Detection: Form of attack protection in which Auth0 blocks suspected bot traffic by enabling a CAPTCHA during the login process." cta="View Glossary" href="/docs/glossary?term=Bot+Detection">Bot Detection</Tooltip> to render a CAPTCHA step in scenarios when a request is determined to be high risk by Auth0.
 
 Your custom login form code must handle scenarios where the user is asked to pass a CAPTCHA step. If you don't account for this scenario, your application may cause an error.
 
@@ -28,12 +28,12 @@ Auth0 provides a template for you to use with code to handle high-risk logins.
 2. Click the **Login** tab and enable the **Customize Login Page** switch if it is not already enabled.
 3. Locate the **Default Templates** drop-down menu and select **Custom Login Form**.
 
-   <Frame>![Dashboard Branding Universal Login Classic Login Tab Custom Login Form](/images/cdy7uua7fh8z/4m3WA0sKMoR0C1KVnVmZ1G/b311bdbc6c48b4910eac49cc8f1b9ba8/2025-02-26_15-17-18.png)</Frame>
+   <Frame>![Dashboard Branding Universal Login Classic Login Tab Custom Login Form](/docs/images/cdy7uua7fh8z/4m3WA0sKMoR0C1KVnVmZ1G/b311bdbc6c48b4910eac49cc8f1b9ba8/2025-02-26_15-17-18.png)</Frame>
 4. Use the provided template to begin customizing your login page.
 
    <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-   We recommend using version control software to manage the source code of your Custom Login Pages. To learn more, read [Classic Login Page Version Control](/customize/login-pages/classic-login/version-control).
+   We recommend using version control software to manage the source code of your Custom Login Pages. To learn more, read [Classic Login Page Version Control](/docs/customize/login-pages/classic-login/version-control).
 
    </Callout>
 5. If you are not using version control software, you can replace the template with your source code directly in the Dashboard.
@@ -137,7 +137,7 @@ If you'd like to support Bot Detection, you must use version `9.28` or higher of
 
 ### Configure CAPTCHA templates
 
-When you call the `renderCaptcha` and `renderSignupCaptcha` methods, you can configure the template for each [supported CAPTCHA provider](/secure/attack-protection/bot-detection/configure-captcha) through the `options` parameter.
+When you call the `renderCaptcha` and `renderSignupCaptcha` methods, you can configure the template for each [supported CAPTCHA provider](/docs/secure/attack-protection/bot-detection/configure-captcha) through the `options` parameter.
 
 The `templates` property in the `options` parameter supports the following properties:
 
@@ -187,7 +187,7 @@ To learn more about the default template functions for each provider, read [auth
 
 ## Support passwordless flows
 
-If you'd like to support Bot Detection for <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=passwordless">passwordless</Tooltip> flows, you must use version `9.24` or higher of the auth0.js library.
+If you'd like to support Bot Detection for <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> flows, you must use version `9.24` or higher of the auth0.js library.
 
 `<script src="https://cdn.auth0.com/js/auth0/9.24/auth0.min.js"></script>`
 
@@ -229,4 +229,4 @@ If you'd like to support Bot Detection for <Tooltip tip="Passwordless: Form of a
 
 ## Learn more
 
-* [Add Bot Detection to Native Applications](/secure/attack-protection/bot-detection/bot-detection-native-apps)
+* [Add Bot Detection to Native Applications](/docs/secure/attack-protection/bot-detection/bot-detection-native-apps)

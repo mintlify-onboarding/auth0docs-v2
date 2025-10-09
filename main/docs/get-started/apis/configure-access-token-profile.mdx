@@ -8,13 +8,13 @@ title: Configure Access Token Profile
 'twitter:description': Learn how to configure an access token profile for your API.
 'twitter:title': Configure Access Token Profile
 ---
-You can choose which <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> profile to use for your APIs: the Auth0 token profile or the RFC 9068 token profile. The access token profile you configure determines the format of the access tokens issued for the API.
+You can choose which <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> profile to use for your APIs: the Auth0 token profile or the RFC 9068 token profile. The access token profile you configure determines the format of the access tokens issued for the API.
 
-By default, Auth0 issues access tokens using the Auth0 token profile. The Auth0 token profile issues access tokens that are formatted as [JSON Web Tokens (JWTs)](/secure/tokens/json-web-tokens), which contain information about an entity in the form of claims.
+By default, Auth0 issues access tokens using the Auth0 token profile. The Auth0 token profile issues access tokens that are formatted as [JSON Web Tokens (JWTs)](/docs/secure/tokens/json-web-tokens), which contain information about an entity in the form of claims.
 
-Auth0 also supports the RFC 9068 token profile. The RFC 9068 token profile issues access tokens formatted as <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWTs">JWTs</Tooltip> following the [IETF JWT Profile for OAuth 2.0 Access Tokens (RFC 9068)](https://datatracker.ietf.org/doc/html/rfc9068). To learn more about the differences between these token profiles, read [Access Token Profiles](/secure/tokens/access-tokens/access-token-profiles).
+Auth0 also supports the RFC 9068 token profile. The RFC 9068 token profile issues access tokens formatted as <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWTs">JWTs</Tooltip> following the [IETF JWT Profile for OAuth 2.0 Access Tokens (RFC 9068)](https://datatracker.ietf.org/doc/html/rfc9068). To learn more about the differences between these token profiles, read [Access Token Profiles](/docs/secure/tokens/access-tokens/access-token-profiles).
 
-When you [register an API](/get-started/auth0-overview/set-up-apis), you can select the access token profile in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. After you’ve registered the API, you can configure the access token profile anytime using the [Management API](https://auth0.com/docs/api/management/v2) and the [Auth0 Dashboard](https://manage.auth0.com/).
+When you [register an API](/docs/get-started/auth0-overview/set-up-apis), you can select the access token profile in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. After you’ve registered the API, you can configure the access token profile anytime using the [Management API](https://auth0.com/docs/api/management/v2) and the [Auth0 Dashboard](https://manage.auth0.com/).
 
 ## Configure access token profile for an API
 
@@ -22,7 +22,7 @@ When you [register an API](/get-started/auth0-overview/set-up-apis), you can sel
 
 1. Go to [Dashboard > Applications > APIs](https://manage.auth0.com/#/apis) and click the name of the API to view.
 
-2. Scroll to **Access Token Settings** and select the access token profile under **JSON Web Token (JWT) Profile**. The selected profile determines the format and claims of access tokens issued for the API. The supported values are `Auth0` and `RFC 9068`. To read more about the difference between the two profiles, read [Access Token Profiles](/secure/tokens/access-tokens/access-token-profiles).
+2. Scroll to **Access Token Settings** and select the access token profile under **JSON Web Token (JWT) Profile**. The selected profile determines the format and claims of access tokens issued for the API. The supported values are `Auth0` and `RFC 9068`. To read more about the difference between the two profiles, read [Access Token Profiles](/docs/secure/tokens/access-tokens/access-token-profiles).
 
 3. Click **Save**.
 
@@ -82,19 +82,19 @@ Auth0 supports the following token dialects:
 <tbody>
 <tr>
 <td><code>access_token</code></td>
-<td>The default Auth0 token profile generates an access token formatted as a JSON Web Token (JWT). To learn more, read <a href="/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
+<td>The default Auth0 token profile generates an access token formatted as a JSON Web Token (JWT). To learn more, read <a href="/docs/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
 </tr>
 <tr>
 <td><code>access_token_authz</code></td>
-<td>The default Auth0 token profile (<code>access_token</code>) with the <code>permissions</code> claim. To learn more about RBAC permissions, read <a href="/get-started/apis/enable-role-based-access-control-for-apis">Enable Role-Based Access Control for APIs</a>.</td>
+<td>The default Auth0 token profile (<code>access_token</code>) with the <code>permissions</code> claim. To learn more about RBAC permissions, read <a href="/docs/get-started/apis/enable-role-based-access-control-for-apis">Enable Role-Based Access Control for APIs</a>.</td>
 </tr>
 <tr>
 <td><code>rfc9068_profile</code></td>
-<td>The RFC 9068 token profile generates an access token formatted as a JWT following the <a href="https://datatracker.ietf.org/doc/html/rfc9068">IETF JWT Profile for OAuth 2.0 Access Tokens (RFC 9068)</a>. To learn more, read <a href="/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
+<td>The RFC 9068 token profile generates an access token formatted as a JWT following the <a href="https://datatracker.ietf.org/doc/html/rfc9068">IETF JWT Profile for OAuth 2.0 Access Tokens (RFC 9068)</a>. To learn more, read <a href="/docs/secure/tokens/access-tokens/access-token-profiles">Access Token Profiles</a>.</td>
 </tr>
 <tr>
 <td><code>rfc9068_profile_authz</code></td>
-<td>The RFC 9068 profile (<code>rfc9068_profile</code>) with the <code>permissions</code> claim. To learn more about RBAC permissions, read <a href="/get-started/apis/enable-role-based-access-control-for-apis">Enable Role-Based Access Control for APIs</a>.</td>
+<td>The RFC 9068 profile (<code>rfc9068_profile</code>) with the <code>permissions</code> claim. To learn more about RBAC permissions, read <a href="/docs/get-started/apis/enable-role-based-access-control-for-apis">Enable Role-Based Access Control for APIs</a>.</td>
 </tr>
 </tbody>
 </table>

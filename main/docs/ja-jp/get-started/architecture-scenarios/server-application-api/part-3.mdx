@@ -9,7 +9,7 @@ permalink: "part-3"
 'twitter:description': "サーバーアプリ + APIアーキテクチャシナリオのアプリケーション実装"
 ---
 
-このシュートリアルのセクションでは、APIとそれに関連するマシンツーマシンアプリケーションについて掘り下げてみたいと思います。最初から始めたい方は、「[APIを使用したサーバーアプリケーション](/ja-jp/get-started/architecture-scenarios/server-application-api)」をお読みください。
+このシュートリアルのセクションでは、APIとそれに関連するマシンツーマシンアプリケーションについて掘り下げてみたいと思います。最初から始めたい方は、「[APIを使用したサーバーアプリケーション](/docs/ja-jp/get-started/architecture-scenarios/server-application-api)」をお読みください。
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -60,7 +60,7 @@ APIは要求を正しく処理すると、`HTTP 201 Created`ステータスコ�
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-[Node.js](/ja-jp/get-started/architecture-scenarios/server-application-api/api-implementation-nodejs#1-define-the-api-endpoint)での実装を参照してください。
+[Node.js](/docs/ja-jp/get-started/architecture-scenarios/server-application-api/api-implementation-nodejs#1-define-the-api-endpoint)での実装を参照してください。
 
 </Callout>
 
@@ -70,7 +70,7 @@ APIエンドポイントを保護するには、APIアプリケーション内�
 
 すべての条件が満たされると、APIアプリケーションは前に述べたメッセージで応答します。提供されたアクセストークンに問題がある（またはまったく提供されていない）場合は、APIアプリケーションが`HTTP 401 Unauthorized`ステータスコードを送信します。
 
-[**Node.js** ](/ja-jp/get-started/architecture-scenarios/server-application-api/api-implementation-nodejs#2-secure-the-api-endpoint)**での実装を参照してください。**
+[**Node.js** ](/docs/ja-jp/get-started/architecture-scenarios/server-application-api/api-implementation-nodejs#2-secure-the-api-endpoint)**での実装を参照してください。**
 
 #### アクセストークン取得する
 
@@ -91,11 +91,11 @@ codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
 アクセストークンでAPIのエンドポイントはセキュリティ保護されましたが、APIを呼び出すプロセスに新しいタイムシートのエントリをPOSTする権限があるかは未確認のままです。
 
-前述のように、それぞれのアクセストークンには、アプリケーションに付与されたアクセス権限のリストが含まれます。これらの権限は、`scope`要求パラメーターを使って定義されます。これを構成する方法については、「[スコープを構成する](/ja-jp/get-started/architecture-scenarios/server-application-api/part-3#configure-the-scopes)」記述のある段落をお読みください。
+前述のように、それぞれのアクセストークンには、アプリケーションに付与されたアクセス権限のリストが含まれます。これらの権限は、`scope`要求パラメーターを使って定義されます。これを構成する方法については、「[スコープを構成する](/docs/ja-jp/get-started/architecture-scenarios/server-application-api/part-3#configure-the-scopes)」記述のある段落をお読みください。
 
 エンドポイントには、`batch:upload`スコープが必要です。
 
-[**Node.js** ](/ja-jp/get-started/architecture-scenarios/server-application-api/api-implementation-nodejs#3-check-the-client-permissions)**での実装を参照してください。**
+[**Node.js** ](/docs/ja-jp/get-started/architecture-scenarios/server-application-api/api-implementation-nodejs#3-check-the-client-permissions)**での実装を参照してください。**
 
 ### マシンツーマシンアプリケーションを実装する
 
@@ -108,9 +108,9 @@ codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 このためには、[アプリケーションの設定](https://manage.auth0.com/#/applications)にある以下の構成値が必要です。
 
 * **Domain（ドメイン）** ：Auth0ドメイン（テナント識別子でもある）です。この値は、APIのURL「`https://{yourTenant}/oauth/token`」の一部になります。
-* **<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/ja-jp/glossary?term=audience" tip="オーディエンス: 発行されたトークンに対するオーディエンスを表す一意の識別子。トークンでaudという名前が付けられ、その値にはIDトークンの場合はアプリケーション（Client ID）、アクセストークンの場合はAPI（API Identifier）のいずれかのIDが含まれます。" cta="用語集の表示">Audience</Tooltip>（オーディエンス）** ：API識別子です。
-* **<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-4" href="/ja-jp/glossary?term=client-id" tip="クライアントID: Auth0から登録されたリソースに与えられる識別値。" cta="用語集の表示">Client ID</Tooltip>（クライアントID）** ：Auth0アプリケーションのクライアントIDです。
-* **<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/ja-jp/glossary?term=client-secret" tip="クライアントシークレット: クライアント（アプリケーション）が認可サーバーで認証するために使用するシークレット。これはクライアントと認可サーバーだけが知っているものであり、推測できないように十分にランダムである必要があります。" cta="用語集の表示">Client Secret</Tooltip>（クライアントシークレット）** ：Auth0アプリケーションのクライアントシークレットです。
+* **<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=audience" tip="オーディエンス: 発行されたトークンに対するオーディエンスを表す一意の識別子。トークンでaudという名前が付けられ、その値にはIDトークンの場合はアプリケーション（Client ID）、アクセストークンの場合はAPI（API Identifier）のいずれかのIDが含まれます。" cta="用語集の表示">Audience</Tooltip>（オーディエンス）** ：API識別子です。
+* **<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-4" href="/docs/ja-jp/glossary?term=client-id" tip="クライアントID: Auth0から登録されたリソースに与えられる識別値。" cta="用語集の表示">Client ID</Tooltip>（クライアントID）** ：Auth0アプリケーションのクライアントIDです。
+* **<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=client-secret" tip="クライアントシークレット: クライアント（アプリケーション）が認可サーバーで認証するために使用するシークレット。これはクライアントと認可サーバーだけが知っているものであり、推測できないように十分にランダムである必要があります。" cta="用語集の表示">Client Secret</Tooltip>（クライアントシークレット）** ：Auth0アプリケーションのクライアントシークレットです。
 
 実装では、以下ような形式のペイロードを使って、`POST`操作を`https://{yourDomain}/oauth/token`エンドポイントに対して行います。
 
@@ -124,9 +124,9 @@ codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 }
 ```
 
-詳細については、「[クライアントの資格情報フローを使用してAPIを呼び出す](/ja-jp/get-started/authentication-and-authorization-flow/client-credentials-flow/call-your-api-using-the-client-credentials-flow)」を参照してください。
+詳細については、「[クライアントの資格情報フローを使用してAPIを呼び出す](/docs/ja-jp/get-started/authentication-and-authorization-flow/client-credentials-flow/call-your-api-using-the-client-credentials-flow)」を参照してください。
 
-[**Python** ](/ja-jp/get-started/architecture-scenarios/server-application-api/cron-implementation-python#get-an-access-token)の実装を参照してください。
+[**Python** ](/docs/ja-jp/get-started/architecture-scenarios/server-application-api/cron-implementation-python#get-an-access-token)の実装を参照してください。
 
 ## APIを呼び出す
 
@@ -139,4 +139,4 @@ codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 * HTTP `POST`要求を行う
 * 応答を解析し、ターミナルに出力する（任意）
 
-[**Python** ](/ja-jp/get-started/architecture-scenarios/server-application-api/cron-implementation-python#invoke-the-api)の実装を参照してください。
+[**Python** ](/docs/ja-jp/get-started/architecture-scenarios/server-application-api/cron-implementation-python#invoke-the-api)の実装を参照してください。

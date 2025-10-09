@@ -11,13 +11,13 @@ title: Configure Step-up Authentication for APIs
 ---
 With step-up authentication, applications that allow access to different types of resources can require users to authenticate with a stronger mechanism to access sensitive information or perform certain transactions.
 
-For example, a user of a banking app may be allowed to transfer money between accounts only after they have confirmed their identity using <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA).
+For example, a user of a banking app may be allowed to transfer money between accounts only after they have confirmed their identity using <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA).
 
-When your <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> is an API, you can implement step-up authentication with Auth0 using scopes, <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip>, and [Actions](/customize/actions). When an application wants to access an API's protected resources, it must provide an access token. The resources that it will have access to depend on the permissions that are included in the access token. These permissions are defined as [scopes](/get-started/apis/scopes/api-scopes).
+When your <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> is an API, you can implement step-up authentication with Auth0 using scopes, <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>, and [Actions](/docs/customize/actions). When an application wants to access an API's protected resources, it must provide an access token. The resources that it will have access to depend on the permissions that are included in the access token. These permissions are defined as [scopes](/docs/get-started/apis/scopes/api-scopes).
 
 ## Validate access tokens for MFA
 
-In addition to checking the scope, the API must [validate the access token](/secure/tokens/access-tokens/validate-access-tokens) to:
+In addition to checking the scope, the API must [validate the access token](/docs/secure/tokens/access-tokens/validate-access-tokens) to:
 
 * Verify the token's signature, used to verify that the sender of the token is who it says it is and to ensure that the message wasn't changed along the way.
 * Validate the standard claims:
@@ -65,10 +65,10 @@ The banking API can accept two different levels of authorization: view account b
 
 For this scenario, you must configure the following items in the Dashboard:
 
-* [Register a Single-Page Web App](/get-started/auth0-overview/create-applications/single-page-web-apps).
+* [Register a Single-Page Web App](/docs/get-started/auth0-overview/create-applications/single-page-web-apps).
 * [Create a database connection](https://manage.auth0.com/#/connections/database).
-* [Register the API](/get-started/auth0-overview/set-up-apis). Create two scopes: `view:balance` and `transfer:funds`.
-* [Enable MFA](/secure/multi-factor-authentication/enable-mfa) to use push notifications.
+* [Register the API](/docs/get-started/auth0-overview/set-up-apis). Create two scopes: `view:balance` and `transfer:funds`.
+* [Enable MFA](/docs/secure/multi-factor-authentication/enable-mfa) to use push notifications.
 
 ### Create an Action
 
@@ -92,8 +92,8 @@ exports.onExecutePostLogin = async (event, api) => {
 
 
 
-* The `CLIENTS_WITH_MFA` variable contains the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+IDs">client IDs</Tooltip> of the applications you want this Action to apply to. You can remove this (and the `if` conditional that follows) if you don't need it.
-* The `event.transaction.requested_scopes` property contains all the scopes for which the authentication request asked. If it includes the value `transfer:funds`, then we ask for MFA by setting the `context.multifactor` property to the appropriate value. In this case, we are asking for MFA using [push](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa).
+* The `CLIENTS_WITH_MFA` variable contains the <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+IDs">client IDs</Tooltip> of the applications you want this Action to apply to. You can remove this (and the `if` conditional that follows) if you don't need it.
+* The `event.transaction.requested_scopes` property contains all the scopes for which the authentication request asked. If it includes the value `transfer:funds`, then we ask for MFA by setting the `context.multifactor` property to the appropriate value. In this case, we are asking for MFA using [push](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa).
 
 ### Configure app
 
@@ -159,7 +159,7 @@ Configure the app to send the appropriate authentication request to the API, dep
 </tr>
 <tr>
 <td><code>nonce</code></td>
-<td>Set to a secure string value which will be included in the response from Auth0. This is <a href="/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post/mitigate-replay-attacks-when-using-the-implicit-flow">used to prevent token replay attacks</a> and is required for <code>response_type=id_token token</code>.</td>
+<td>Set to a secure string value which will be included in the response from Auth0. This is <a href="/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post/mitigate-replay-attacks-when-using-the-implicit-flow">used to prevent token replay attacks</a> and is required for <code>response_type=id_token token</code>.</td>
 </tr>
 <tr>
 <td><code>state</code></td>
@@ -241,8 +241,8 @@ Configure the API to validate the incoming token and check the authorized permis
 
 ## Learn more
 
-* [Access Tokens](/secure/tokens/access-tokens)
-* [Validate Access Tokens](/secure/tokens/access-tokens/validate-access-tokens)
-* [Action Use Cases](/customize/actions/use-cases)
-* [API Scopes](/get-started/apis/scopes/api-scopes)
-* [Configure Step-up Authentication for Web Apps](/secure/multi-factor-authentication/step-up-authentication/configure-step-up-authentication-for-web-apps)
+* [Access Tokens](/docs/secure/tokens/access-tokens)
+* [Validate Access Tokens](/docs/secure/tokens/access-tokens/validate-access-tokens)
+* [Action Use Cases](/docs/customize/actions/use-cases)
+* [API Scopes](/docs/get-started/apis/scopes/api-scopes)
+* [Configure Step-up Authentication for Web Apps](/docs/secure/multi-factor-authentication/step-up-authentication/configure-step-up-authentication-for-web-apps)

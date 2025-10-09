@@ -12,7 +12,7 @@ title: Redirect with Actions
 ---
 You can use post-login Actions to redirect users before an authentication transaction is complete. This lets you implement custom authentication flows that require additional user interaction beyond the standard login form.
 
-Redirects are commonly used to do custom [Multi-factor Authentication (MFA)](/secure/multi-factor-authentication) in Auth0, but they can also be used to:
+Redirects are commonly used to do custom [Multi-factor Authentication (MFA)](/docs/secure/multi-factor-authentication) in Auth0, but they can also be used to:
 
 * Allow for custom privacy policy acceptance, terms of service, and data disclosure forms.
 * Perform a one-time collection of additional required profile data securely.
@@ -61,7 +61,7 @@ After the Action has finished executing, Auth0 redirects the user to the URL spe
 
 `https://my-app.exampleco.com/?state=abc123`
 
-Your redirect URL will need to extract the `state` parameter and send it back to Auth0 to resume the authentication transaction. State is an opaque value used to prevent [Cross-Site Request Forgery (CSRF) attacks](/secure/security-guidance/prevent-threats).
+Your redirect URL will need to extract the `state` parameter and send it back to Auth0 to resume the authentication transaction. State is an opaque value used to prevent [Cross-Site Request Forgery (CSRF) attacks](/docs/secure/security-guidance/prevent-threats).
 
 ## Resume the authentication flow
 
@@ -102,7 +102,7 @@ exports.onContinuePostLogin = async (event, api) => {
 
 ## Pass data to the external site
 
-To pass data to the external site, we recommend encoding that data in a signed [JWT](/secure/tokens/json-web-tokens) so that your application can be certain it was not tampered with during transit. With Actions, this can be done with the `api.redirect.encodeToken` and `api.redirect.sendUserTo` functions:
+To pass data to the external site, we recommend encoding that data in a signed [JWT](/docs/secure/tokens/json-web-tokens) so that your application can be certain it was not tampered with during transit. With Actions, this can be done with the `api.redirect.encodeToken` and `api.redirect.sendUserTo` functions:
 
 ```javascript lines expandable
 /**
@@ -184,7 +184,7 @@ The external system should verify that this token has not been tampered with dur
 
 ## Pass data back to Auth0
 
-After the user completes the custom flow in the external site, they should be redirected to the `/continue` endpoint. In some situations, you may want to pass data back to Auth0 to impact the authentication or <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/glossary?term=authorization+flow">authorization flow</Tooltip> for that user (for example, if you are implementing CAPTCHA checks or custom <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip>).
+After the user completes the custom flow in the external site, they should be redirected to the `/continue` endpoint. In some situations, you may want to pass data back to Auth0 to impact the authentication or <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip> for that user (for example, if you are implementing CAPTCHA checks or custom <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip>).
 
 ### Use app metadata where possible
 
@@ -198,7 +198,7 @@ If your application requires access to substantive user data, the recommended ap
 
 ## Send data on the front channel
 
-Passing information back and forth in the front channel opens up surface area for <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/glossary?term=bad+actors">bad actors</Tooltip> to attack. If information must be sent on the front channel, then consider the following guidance:
+Passing information back and forth in the front channel opens up surface area for <Tooltip tip="Bad Actors: Entity (a person or group) that poses a threat to the business or environment with the intention to cause harm." cta="View Glossary" href="/docs/glossary?term=bad+actors">bad actors</Tooltip> to attack. If information must be sent on the front channel, then consider the following guidance:
 
 ### Pass information back to the Action
 
@@ -379,12 +379,12 @@ The `api.authentication.recordMethod()` API is only available in the `exports.on
 Redirect Actions won't work with:
 
 * [Resource Owner endpoint](https://auth0.com/docs/api/authentication/reference#resource-owner)
-* [Password exchange](/get-started/authentication-and-authorization-flow/resource-owner-password-flow)
-* [Refresh Token exchange](/secure/tokens/refresh-tokens)
+* [Password exchange](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow)
+* [Refresh Token exchange](/docs/secure/tokens/refresh-tokens)
 
 ### Resource Owner endpoint
 
-It is impossible to use redirect Actions when you are calling the Authentication API [Get Token](https://auth0.com/docs/api/authentication#resource-owner-password) endpoint for the <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/glossary?term=Resource+Owner">Resource Owner</Tooltip> Password flow. Since the user is not in a redirect flow to begin with, you can not redirect the user in an Action.
+It is impossible to use redirect Actions when you are calling the Authentication API [Get Token](https://auth0.com/docs/api/authentication#resource-owner-password) endpoint for the <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/docs/glossary?term=Resource+Owner">Resource Owner</Tooltip> Password flow. Since the user is not in a redirect flow to begin with, you can not redirect the user in an Action.
 
 ### Flows where prompt=none
 
@@ -396,7 +396,7 @@ You cannot create a redirect flow that blocks token access and bypasses the redi
 
 ### Refresh tokens
 
-Due to the fact that using a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+token">refresh token</Tooltip> requires a back-channel call to the Authentication API [Get Token](https://auth0.com/docs/api/authentication#refresh-token) endpoint, this will also fail if attempting to redirect.
+Due to the fact that using a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip> requires a back-channel call to the Authentication API [Get Token](https://auth0.com/docs/api/authentication#refresh-token) endpoint, this will also fail if attempting to redirect.
 
 It is difficult to securely verify that any restrictions on login were carried out. There is not a consistent session ID in the context that could be used to collect information associated with the session such as this user passed MFA challenges. Therefore, you cannot use `prompt=none` at all.
 
@@ -406,4 +406,4 @@ In this specific case, we recommend that you use refresh tokens exclusively, bec
 
 ## Learn more
 
-* [Manage User Metadata with the post-login Action Trigger](/manage-users/user-accounts/metadata/manage-user-metadata)
+* [Manage User Metadata with the post-login Action Trigger](/docs/manage-users/user-accounts/metadata/manage-user-metadata)

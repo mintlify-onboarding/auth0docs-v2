@@ -99,11 +99,11 @@ String. The secret of the designated Auth0 application used to make API requests
 
 ### AUTH0_ACCESS_TOKEN
 
-String. Short-lived <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> for <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> from designated Auth0 application. Can be used in replacement to <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+ID">client ID</Tooltip> and <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip> combination.
+String. Short-lived <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> for <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> from designated Auth0 application. Can be used in replacement to <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip> and <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip> combination.
 
 ### AUTH0_CLIENT_SIGNING_KEY_PATH
 
-String. The path to the private key used by the client when facilitating Private Key <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JWT">JWT</Tooltip> authentication. Path relative to the working directory. Also note `AUTH0_CLIENT_SIGNING_ALGORITHM` for specifying <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/glossary?term=signing+algorithm">signing algorithm</Tooltip>.
+String. The path to the private key used by the client when facilitating Private Key <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JWT">JWT</Tooltip> authentication. Path relative to the working directory. Also note `AUTH0_CLIENT_SIGNING_ALGORITHM` for specifying <Tooltip tip="Signing Algorithm: Algorithm used to digitally sign tokens to ensure the token has not been tampered with." cta="View Glossary" href="/docs/glossary?term=signing+algorithm">signing algorithm</Tooltip>.
 
 ### AUTH0_CLIENT_SIGNING_ALGORITHM
 
@@ -117,7 +117,7 @@ Boolean. When enabled, will allow the tool to delete resources. Default: `false`
 
 ### AUTH0_EXCLUDED
 
-Array of strings. Excludes entire resource types from being managed, bi-directionally. To learn more, read [Exclude Resources from Management](/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
+Array of strings. Excludes entire resource types from being managed, bi-directionally. To learn more, read [Exclude Resources from Management](/docs/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
 
 Cannot be used simultaneously with [AUTH0_INCLUDED_ONLY](#auth0_included_only).
 
@@ -138,7 +138,7 @@ Possible values: `actions`, `attackProtection`, `branding`, `clientGrants`, `cli
 
 ### AUTH0_INCLUDED_ONLY
 
-Array of strings. Specifies which resource types to manage bi-directionally. To learn more, read [Exclude Resources from Management](/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
+Array of strings. Specifies which resource types to manage bi-directionally. To learn more, read [Exclude Resources from Management](/docs/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
 
 Cannot be used simultaneously with [AUTH0_EXCLUDED](#auth0_excluded).
 
@@ -159,7 +159,7 @@ Possible values: `actions`, `attackProtection`, `branding`, `clientGrants`, `cli
 
 ### AUTH0_KEYWORD_REPLACE_MAPPINGS
 
-Mapping of specific keywords to facilities dynamic replacement. To learn more, read [Keyword Replacement](/deploy-monitor/deploy-cli-tool/keyword-replacement).
+Mapping of specific keywords to facilities dynamic replacement. To learn more, read [Keyword Replacement](/docs/deploy-monitor/deploy-cli-tool/keyword-replacement).
 
 #### Example
 
@@ -181,7 +181,7 @@ Boolean. When enabled, will attempt to preserve keyword replacement markers in l
 
 This configuration requires the presence of local configuration files and defined keyword replace mappings via the `AUTH0_KEYWORD_REPLACE_MAPPINGS` configuration property.
 
-See also: [Preserve Keywords on Export](/deploy-monitor/deploy-cli-tool/keyword-replacement#preserve-keywords-on-export).
+See also: [Preserve Keywords on Export](/docs/deploy-monitor/deploy-cli-tool/keyword-replacement#preserve-keywords-on-export).
 
 ### AUTH0_EXPORT_IDENTIFIERS
 
@@ -206,24 +206,24 @@ Provides ability to exclude any unwanted properties from management.
 
 ### AUTH0_AUDIENCE
 
-String. Separate value from <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/glossary?term=audience">audience</Tooltip> value while retrieving an access token for the Management API. Useful when default Management API endpoints are not publicly exposed.
+String. Separate value from <Tooltip tip="Audience: Unique identifier of the audience for an issued token. Named aud in a token, its value contains the ID of either an application (Client ID) for an ID Token or an API (API Identifier) for an Access Token." cta="View Glossary" href="/docs/glossary?term=audience">audience</Tooltip> value while retrieving an access token for the Management API. Useful when default Management API endpoints are not publicly exposed.
 
 ### AUTH0_EXCLUDED_RULES
 
-Array of strings. Excludes the management of specific rules by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
+Array of strings. Excludes the management of specific rules by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/docs/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
 
 ### AUTH0_EXCLUDED_CLIENTS
 
-Array of strings. Excludes the management of specific clients by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
+Array of strings. Excludes the management of specific clients by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/docs/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
 
 ### AUTH0_EXCLUDED_DATABASES
 
-Array of strings. Excludes the management of specific databases by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
+Array of strings. Excludes the management of specific databases by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/docs/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
 
 ### AUTH0_EXCLUDED_CONNECTIONS
 
-Array of strings. Excludes the management of specific connections by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
+Array of strings. Excludes the management of specific connections by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/docs/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
 
 ### AUTH0_EXCLUDED_RESOURCE_SERVERS
 
-Array of strings. Excludes the management of specific <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/glossary?term=resource+servers">resource servers</Tooltip> by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).
+Array of strings. Excludes the management of specific <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+servers">resource servers</Tooltip> by ID. Note: This configuration may be subject to deprecation in the future. To learn more, read [Exclude Resources from Management](/docs/deploy-monitor/deploy-cli-tool/exclude-resources-from-management).

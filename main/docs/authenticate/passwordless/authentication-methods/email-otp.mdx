@@ -10,9 +10,9 @@ title: Passwordless Authentication with Email
   authentication factor.
 'twitter:title': Passwordless Authentication with Email
 ---
-You can configure a <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> connection to send a one-time password (OTP) to a user through email to complete authentication.
+You can configure a <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> connection to send a one-time password (OTP) to a user through email to complete authentication.
 
-To learn more, read [Configure Email or SMS for Passwordless Authentication](/authenticate/login/auth0-universal-login/passwordless-login/email-or-sms).
+To learn more, read [Configure Email or SMS for Passwordless Authentication](/docs/authenticate/login/auth0-universal-login/passwordless-login/email-or-sms).
 
 ## How it works
 
@@ -22,11 +22,11 @@ If the email address that the OTP was sent to matches an existing user, Auth0 au
 
 ### Embedded Login
 
-<Frame>![Passwordless email workflow diagram with embedded login](/images/cdy7uua7fh8z/3HMLxPTq9eCsq1eR21s0bL/ad401ee9fbe0716250d49ea04993a056/SMS_Email_Flow_Updated.png)</Frame>
+<Frame>![Passwordless email workflow diagram with embedded login](/docs/images/cdy7uua7fh8z/3HMLxPTq9eCsq1eR21s0bL/ad401ee9fbe0716250d49ea04993a056/SMS_Email_Flow_Updated.png)</Frame>
 
 ### Universal Login
 
-<Frame>![Passwordless email workflow diagram with universal login](/images/cdy7uua7fh8z/5p3cKrJwmc7MxpQ7pbXsjC/285f3b54caba8a05075b6a0036990aaa/Screenshot_2024-10-29_at_11.54.03.png)</Frame>
+<Frame>![Passwordless email workflow diagram with universal login](/docs/images/cdy7uua7fh8z/5p3cKrJwmc7MxpQ7pbXsjC/285f3b54caba8a05075b6a0036990aaa/Screenshot_2024-10-29_at_11.54.03.png)</Frame>
 
 ## Configure the connection
 
@@ -44,7 +44,7 @@ If the email address that the OTP was sent to matches an existing user, Auth0 au
    * Only three failed attempts to input the OTP are allowed. After this, a new code will need to be requested.
    * The OTP issued will be valid (by default) for three minutes before it expires.
    * If you choose to extend the amount of time it takes for your OTP to expire, you should also extend the length of the OTP. Otherwise, an attacker has a larger window of time to attempt to guess a short code.
-4. Decide if you want to **Disable Sign Ups**. If you enable this setting, you can allow passwordless access for only existing users, but may expose your application to the threat of user enumeration attacks. To learn more, read [Passwordless Connections Best Practices](/authenticate/passwordless/best-practices).
+4. Decide if you want to **Disable Sign Ups**. If you enable this setting, you can allow passwordless access for only existing users, but may expose your application to the threat of user enumeration attacks. To learn more, read [Passwordless Connections Best Practices](/docs/authenticate/passwordless/best-practices).
 5. Select **Save**.
 
 ### Multi-language support
@@ -105,7 +105,7 @@ The following parameters are available when defining the message template:
 </tbody>
 </table>
 
-If the user is logged in through an [Organization](/manage-users/organizations/organizations-overview), the following parameters are also available:
+If the user is logged in through an [Organization](/docs/manage-users/organizations/organizations-overview), the following parameters are also available:
 
 * `organization.id`
 * `organization.display_name`
@@ -115,7 +115,7 @@ If the user is logged in through an [Organization](/manage-users/organizations/o
 * `organization.branding.colors.primary`
 * `organization.branding.colors.page_background`
 
-For more information on these parameters and their values, read the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> [Get organization](https://auth0.com/docs/api/management/v2#!/Organizations/get_organizations_by_id) endpoint.
+For more information on these parameters and their values, read the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Get organization](https://auth0.com/docs/api/management/v2#!/Organizations/get_organizations_by_id) endpoint.
 
 ## Enable applications
 
@@ -125,14 +125,14 @@ Switch to the **Applications** view, and enable the applications for which you w
 
 Auth0 sends emails from its own SMTP provider by default. Auth0's built-in email provider is designed solely for testing purposes and does not support customization of email templates.
 
-[Configure your own SMTP email provider](/customize/email/smtp-email-providers) to manage, monitor, and troubleshoot your email communications, and customize email templates.
+[Configure your own SMTP email provider](/docs/customize/email/smtp-email-providers) to manage, monitor, and troubleshoot your email communications, and customize email templates.
 
 Auth0 supports the following email providers:
 
-* [Mandrill](/customize/email/smtp-email-providers/configure-mandrill-as-external-smtp-email-provider)
-* [Amazon SES](/customize/email/smtp-email-providers/configure-amazon-ses-as-external-smtp-email-provider)
-* [Azure Communication Services](/customize/email/smtp-email-providers/configure-azure-comm-service-as-smtp-email-provider)
-* [SendGrid](/customize/email/smtp-email-providers/configure-sendgrid-as-external-smtp-email-provider)
-* [SparkPost](/customize/email/smtp-email-providers/configure-sparkpost-as-external-smtp-email-provider)
-* [Mailgun](/customize/email/smtp-email-providers/configure-mailgun-as-external-smtp-email-provider)
-* [Custom SMTP external email provider](/customize/email/smtp-email-providers/configure-custom-external-smtp-email-provider)
+* [Mandrill](/docs/customize/email/smtp-email-providers/configure-mandrill-as-external-smtp-email-provider)
+* [Amazon SES](/docs/customize/email/smtp-email-providers/configure-amazon-ses-as-external-smtp-email-provider)
+* [Azure Communication Services](/docs/customize/email/smtp-email-providers/configure-azure-comm-service-as-smtp-email-provider)
+* [SendGrid](/docs/customize/email/smtp-email-providers/configure-sendgrid-as-external-smtp-email-provider)
+* [SparkPost](/docs/customize/email/smtp-email-providers/configure-sparkpost-as-external-smtp-email-provider)
+* [Mailgun](/docs/customize/email/smtp-email-providers/configure-mailgun-as-external-smtp-email-provider)
+* [Custom SMTP external email provider](/docs/customize/email/smtp-email-providers/configure-custom-external-smtp-email-provider)

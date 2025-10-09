@@ -16,7 +16,7 @@ title: Auth0 Security Bulletin for Rules
 
 This security bulletin covers several scenarios that customers should avoid in custom rule code, as they may create vulnerabilities in the authentication flow. A description of each issue and, where possible, an alternative way to write the same rule, is provided below.
 
-* Custom rule code containing conditional logic to enforce <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) may introduce the ability to bypass MFA altogether, especially when using silent authentication.
+* Custom rule code containing conditional logic to enforce <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA) may introduce the ability to bypass MFA altogether, especially when using silent authentication.
 * Custom rule code implementing authorization controls based on a specific substring without appropriate logic may result in elevated privileges.
 * Custom rule code sending diagnostic information to third-party services, rather than using Auth0's built-in debugging features, may result in sensitive information disclosure.
 * Custom rule code triggering paid services may introduce the ability for an adversary to incur unwanted billing charges.
@@ -27,7 +27,7 @@ This security bulletin covers several scenarios that customers should avoid in c
 
 ### Silent authentication
 
-Within a single-page application (SPA), silent authentication enables new <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+tokens">access tokens</Tooltip> to be issued without user interaction as long as the current session is valid against the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip>.
+Within a single-page application (SPA), silent authentication enables new <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> to be issued without user interaction as long as the current session is valid against the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip>.
 
 Auth0 offers silent authentication through a special parameter which is added to the authorization endpoint as follows:
 `/authorize?prompt=none`
@@ -184,7 +184,7 @@ Utilize logic such as:
 
 `const emailSplit = user.email.split('@'); const userEmailDomain = emailSplit[emailSplit.length - 1].toLowerCase();`
 
-Please refer to the [Check Domains Against Connection Aliases rule template](https://github.com/auth0/rules/blob/master/src/rules/check-domains-against-connection-aliases.js) for more information. Alternatively, in the **Rules** section of the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, view the rule template named **Check if user email domain matches configured domain**.
+Please refer to the [Check Domains Against Connection Aliases rule template](https://github.com/auth0/rules/blob/master/src/rules/check-domains-against-connection-aliases.js) for more information. Alternatively, in the **Rules** section of the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>, view the rule template named **Check if user email domain matches configured domain**.
 
 ### Will this update impact my users?
 

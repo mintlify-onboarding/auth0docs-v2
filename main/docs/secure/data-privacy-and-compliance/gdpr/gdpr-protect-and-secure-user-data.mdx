@@ -16,7 +16,7 @@ As per article 32 of GDPR, you must implement appropriate security measures in o
 * Τhe ability to ensure the ongoing confidentiality, integrity, availability, and resilience of processing systems and services
 * Τhe ability to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident
 
-There are several Auth0 features that can help you achieve that, like user profile encryption, <Tooltip tip="Brute-force Protection: Form of attack protection that safeguards against brute-force attacks that occur from a single IP address and target a single user account." cta="View Glossary" href="/glossary?term=brute-force+protection">brute-force protection</Tooltip>, <Tooltip tip="Breached Password Detection: Form of attack protection in which Auth0 notifies your users if they use a username/password combination that has been compromised in a data leak on a third-party website or app." cta="View Glossary" href="/glossary?term=breached+password+detection">breached password detection</Tooltip>, step-up authentication, and more.
+There are several Auth0 features that can help you achieve that, like user profile encryption, <Tooltip tip="Brute-force Protection: Form of attack protection that safeguards against brute-force attacks that occur from a single IP address and target a single user account." cta="View Glossary" href="/docs/glossary?term=brute-force+protection">brute-force protection</Tooltip>, <Tooltip tip="Breached Password Detection: Form of attack protection in which Auth0 notifies your users if they use a username/password combination that has been compromised in a data leak on a third-party website or app." cta="View Glossary" href="/docs/glossary?term=breached+password+detection">breached password detection</Tooltip>, step-up authentication, and more.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -65,7 +65,7 @@ You can enable breached password detection and configure which actions you want 
 
 ## Harden your security with multi-factor authentication
 
-With <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA), you can add an additional layer of security to your applications. It is a method of verifying a user's identity by asking them to present more than one piece of identifying information.
+With <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=multi-factor+authentication">multi-factor authentication</Tooltip> (MFA), you can add an additional layer of security to your applications. It is a method of verifying a user's identity by asking them to present more than one piece of identifying information.
 
 We support MFA using push notifications, SMS, one-time password authentication services, and custom providers. You can enable MFA for specific users or specific actions (for example, access screens with sensitive data). You can also define the conditions that will trigger additional authentication challenges, such as changes in geographic location or logins from unrecognized devices.
 
@@ -79,7 +79,7 @@ You can also forbid the use of previous passwords using our Password History fea
 
 With step-up authentication, applications can ask users to authenticate with a stronger authentication mechanism to access sensitive resources. For example, you may have a banking application that does not require Multi-factor Authentication (MFA) to view the account's basic information, but when users try to transfer money between accounts then they must authenticate with one more factor (for example, a code sent via SMS).
 
-You can check if a user has logged in with MFA by reviewing the contents of their <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip>. You can then configure your application to deny access to sensitive resources if the token indicates that the user did not log in with MFA.
+You can check if a user has logged in with MFA by reviewing the contents of their <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>. You can then configure your application to deny access to sensitive resources if the token indicates that the user did not log in with MFA.
 
 ## Availability and resilience
 
@@ -89,7 +89,7 @@ To learn more information on Auth0 architecture, read [Availability & Trust](htt
 
 ## Learn more
 
-* [GDPR: Conditions for Consent](/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent)
-* [GDPR: Data Minimization](/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization)
-* [GDPR: Data Portability](/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
-* [GDPR: Right to Access, Correct, and Erase Data](/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)
+* [GDPR: Conditions for Consent](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-conditions-for-consent)
+* [GDPR: Data Minimization](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-minimization)
+* [GDPR: Data Portability](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-data-portability)
+* [GDPR: Right to Access, Correct, and Erase Data](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data)

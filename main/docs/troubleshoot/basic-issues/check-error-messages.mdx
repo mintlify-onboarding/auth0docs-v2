@@ -12,12 +12,12 @@ Check for error messages displayed in any of the following locations:
 
 * Browsers and HTML page responses
 * Developer tools network and console tabs
-* <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=Authorization+Server">Authorization Server</Tooltip> responses
+* <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip> responses
 * Deprecation errors
 
 ## Check browser errors
 
-A HAR file is a JSON formatted log of a web browser's interactions with a web server. If authentication isn't working as expected, you can [generate and analyze HAR files](/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) to find issues.
+A HAR file is a JSON formatted log of a web browser's interactions with a web server. If authentication isn't working as expected, you can [generate and analyze HAR files](/docs/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) to find issues.
 
 <Warning>
 
@@ -42,19 +42,19 @@ The Lock login widget shows error messages for certain types of issues, such as 
 
 ## Check logs
 
-Auth0 stores [log data](/deploy-monitor/logs) including Dashboard administrator actions, successful and failed user authentications, and password change requests. You can view the logs in the [Dashboard](https://manage.auth0.com/#/logs).
+Auth0 stores [log data](/docs/deploy-monitor/logs) including Dashboard administrator actions, successful and failed user authentications, and password change requests. You can view the logs in the [Dashboard](https://manage.auth0.com/#/logs).
 
-Some types of errors do not appear in the logs. For example, if an error occurs at a remote <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip>, where authentication doesn’t complete and the user is never returned to Auth0, there will not be any entry in logs.
+Some types of errors do not appear in the logs. For example, if an error occurs at a remote <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip>, where authentication doesn’t complete and the user is never returned to Auth0, there will not be any entry in logs.
 
 You can export Auth0 logs and either store them yourself or automatically push them to external log services. This functionality can help you with data retention requirements, as well as log analysis requirements. You can install and configure an Auth0 Extension to export logs automatically to another provider like Sumo Logic or Loggly. To learn more, navigate to our [log streaming solutions](https://marketplace.auth0.com/features/log-streaming) in Auth0 Marketplace.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-See [the Monitoring page](/deploy-monitor/monitor) for more details on each of the log events that can help you troubleshoot issues.
+See [the Monitoring page](/docs/deploy-monitor/monitor) for more details on each of the log events that can help you troubleshoot issues.
 
 </Callout>
 
-You can also use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> to export logs and store them. There are the two available endpoints, each providing slightly different information.
+You can also use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to export logs and store them. There are the two available endpoints, each providing slightly different information.
 
 ### Search all logs /get_logs endpoint
 
@@ -76,11 +76,11 @@ This sample request retrieves a single log entry with the ID `900201801291708508
 
 ## Check logs for deprecation errors
 
-When Auth0 features are deprecated, there may be errors or notices in the tenant logs that show up to indicate that your applications are using the deprecated features. You can [search the logs for specific deprecation entries](/troubleshoot/basic-issues/check-deprecation-errors) that may indicate that a feature has been deprecated.
+When Auth0 features are deprecated, there may be errors or notices in the tenant logs that show up to indicate that your applications are using the deprecated features. You can [search the logs for specific deprecation entries](/docs/troubleshoot/basic-issues/check-deprecation-errors) that may indicate that a feature has been deprecated.
 
 ## Rate limits and other errors
 
-Auth0 provides a unique error code for errors reported when the [rate limit is exceeded](/troubleshoot/customer-support/operational-policies/rate-limit-policy). You should set up automatic scanning of logs to check for rate limit errors so you can proactively address activity that hits rate limits before it causes too much trouble for your users. Auth0 also publishes error codes for other types of errors, and you will find it helpful to scan logs for authentication errors as well as errors from Auth0 Management API calls (Management API error codes are shown below each call in the [Management API Explorer](https://auth0.com/docs/api/management/v2)).
+Auth0 provides a unique error code for errors reported when the [rate limit is exceeded](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy). You should set up automatic scanning of logs to check for rate limit errors so you can proactively address activity that hits rate limits before it causes too much trouble for your users. Auth0 also publishes error codes for other types of errors, and you will find it helpful to scan logs for authentication errors as well as errors from Auth0 Management API calls (Management API error codes are shown below each call in the [Management API Explorer](https://auth0.com/docs/api/management/v2)).
 
 Also note that calling the Management API to retrieve user profile information from within a Rule is a common cause of rate limit errors because such API calls can execute for every login as well as periodic session checks.
 
@@ -90,8 +90,8 @@ You can put `console.log()` statements into Rules, Hooks, custom database script
 
 ## Learn more
 
-* [Verify Platform](/troubleshoot/basic-issues/verify-platform)
-* [Verify Connections](/troubleshoot/basic-issues/verify-connections)
-* [Verify Domain](/troubleshoot/basic-issues/verify-domain)
-* [Verify Rules](/troubleshoot/basic-issues/verify-rules)
-* [Deprecation Errors](/troubleshoot/basic-issues/check-deprecation-errors)
+* [Verify Platform](/docs/troubleshoot/basic-issues/verify-platform)
+* [Verify Connections](/docs/troubleshoot/basic-issues/verify-connections)
+* [Verify Domain](/docs/troubleshoot/basic-issues/verify-domain)
+* [Verify Rules](/docs/troubleshoot/basic-issues/verify-rules)
+* [Deprecation Errors](/docs/troubleshoot/basic-issues/check-deprecation-errors)

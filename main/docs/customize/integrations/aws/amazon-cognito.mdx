@@ -24,7 +24,7 @@ First, you'll need to get some information about your application in Auth0:
 
 ### Create new OpenID Connect (OIDC) provider
 
-In AWS, create a new <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+provider">identity provider</Tooltip> (IdP):
+In AWS, create a new <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP):
 
 1. Open the [IAM Console](https://console.aws.amazon.com), select **Identity Providers** in the left sidebar, and then select **Add Provider**.
 2. Select **OpenID Connect** as the **Provider Type**.
@@ -55,7 +55,7 @@ Create an Identity Pool in AWS to allow Cognito to use the Auth0 OIDC identity p
 
 ## Configure Auth0
 
-Cognito uses the public signing key from the [OpenID Provider Metadata](https://subscription.auth0.com/.well-known/jwks.json) to validate the signature of the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip> (JWT).
+Cognito uses the public signing key from the [OpenID Provider Metadata](https://subscription.auth0.com/.well-known/jwks.json) to validate the signature of the <Tooltip tip="JSON Web Token (JWT): Standard ID Token format (and often Access Token format) used to represent claims securely between two parties." cta="View Glossary" href="/docs/glossary?term=JSON+Web+Token">JSON Web Token</Tooltip> (JWT).
 
 Confirm that your Auth0 application is configured to use the RS256 signature algorithm:
 
@@ -66,11 +66,11 @@ Confirm that your Auth0 application is configured to use the RS256 signature alg
 
 ## Implementation
 
-You can use the [Auth0 Lock SDK](/libraries#lock) to integrate Auth0 within your application.
+You can use the [Auth0 Lock SDK](/docs/libraries#lock) to integrate Auth0 within your application.
 
 Once the user logs in with Auth0, the next step is to send their credentials to Cognito. To learn more, read [Open ID Connect providers (identity pools) on AWS Docs](http://docs.aws.amazon.com/cognito/latest/developerguide/open-id.html).
 
-Cognito takes the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip> a user receives from Auth0, and uses it to generate unique Cognito IDs. When the user logs in to Cognito through Auth0, you can store information in Cognito that only they can access.
+Cognito takes the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> a user receives from Auth0, and uses it to generate unique Cognito IDs. When the user logs in to Cognito through Auth0, you can store information in Cognito that only they can access.
 
 ## Troubleshooting
 

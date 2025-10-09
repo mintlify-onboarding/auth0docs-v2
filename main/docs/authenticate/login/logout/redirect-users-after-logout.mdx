@@ -18,15 +18,15 @@ You can redirect users to a specific URL after they logout. You will need to reg
 
      To add a list of URLs that the user may be redirected to after logging out at the tenant level, go to the [Tenant Settings > Advanced](https://manage.auth0.com/#/tenant/advanced) of the Auth0 Dashboard.
 
-     <Frame>![Auth0 Dashboard Settings Advanced Tab Login and Logout](/images/cdy7uua7fh8z/77s6AWMuzH78ABObR3lg0o/e71244706641f43e292d719056f3e651/2025-02-27_11-14-31.png)</Frame>
+     <Frame>![Auth0 Dashboard Settings Advanced Tab Login and Logout](/docs/images/cdy7uua7fh8z/77s6AWMuzH78ABObR3lg0o/e71244706641f43e292d719056f3e651/2025-02-27_11-14-31.png)</Frame>
    * **Auth0 Application Settings**: For logout requests that include the `client_id` parameter, you must add the `returnTo` URL to the **Allowed Logout URLs** list in the **Settings** tab of the associated Auth0 application(s).
 
-     <Frame>![Dashboard Applications Application Settings Application URIs](/images/cdy7uua7fh8z/1QhW2i4fTCCp8owey2tMPI/a19f7fc3f84118920d0e5cb2357144da/Application_URIs.png)</Frame>
+     <Frame>![Dashboard Applications Application Settings Application URIs](/docs/images/cdy7uua7fh8z/1QhW2i4fTCCp8owey2tMPI/a19f7fc3f84118920d0e5cb2357144da/Application_URIs.png)</Frame>
 
 When providing the URL list, you can:
 
 1. Specify multiple, valid, comma-separated URLs.
-2. Use `*` as a [wildcard for subdomains](/get-started/applications/wildcards-for-subdomains) (such as `http://*.example.com`).
+2. Use `*` as a [wildcard for subdomains](/docs/get-started/applications/wildcards-for-subdomains) (such as `http://*.example.com`).
 
 If the `client_id` parameter is included and the `returnTo` URL is not set, the server returns the user to the first Allowed Logout URLs set in the Dashboard.
 
@@ -34,13 +34,13 @@ In order to avoid validation errors, make sure that you include the protocol par
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-To redirect using Auth0's `oidc/logout` endpoint, read [Use OIDC Endpoint to Log Users Out of Auth0](/authenticate/login/logout/log-users-out-of-auth0).
+To redirect using Auth0's `oidc/logout` endpoint, read [Use OIDC Endpoint to Log Users Out of Auth0](/docs/authenticate/login/logout/log-users-out-of-auth0).
 
 </Callout>
 
 ## Federated logouts
 
-[Several providers](/authenticate/login/logout/log-users-out-of-idps#federated-logout-support) support federated logout.
+[Several providers](/docs/authenticate/login/logout/log-users-out-of-idps#federated-logout-support) support federated logout.
 
 To redirect users from applications using federated logout, initiate federated logout with the following endpoint:
 
@@ -48,7 +48,7 @@ To redirect users from applications using federated logout, initiate federated l
 
 You are responsible for ensuring your application terminates the user session before redirecting.
 
-When the user reaches the `/logout` endpoint, Auth0 terminates the Auth0 session, redirects the user to the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Providers">Identity Providers</Tooltip> logout endpoint, and terminates the session with the Identity Provider.
+When the user reaches the `/logout` endpoint, Auth0 terminates the Auth0 session, redirects the user to the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Providers">Identity Providers</Tooltip> logout endpoint, and terminates the session with the Identity Provider.
 
 ## Limitations
 
@@ -79,8 +79,8 @@ https://{yourDomain}/v2/logout?federated&
 
 ## Learn more
 
-* [Log Users Out of Applications](/authenticate/login/logout/log-users-out-of-applications)
-* [Log Users Out of Auth0 with OIDC Endpoint](/authenticate/login/logout/log-users-out-of-auth0)
-* [Log Users Out of Identity Providers](/authenticate/login/logout/log-users-out-of-idps)
-* [Log Users Out of SAML Identity Providers](/authenticate/login/logout/log-users-out-of-saml-idps)
-* [Check Login and Logout Issues](/troubleshoot/authentication-issues/check-login-and-logout-issues)
+* [Log Users Out of Applications](/docs/authenticate/login/logout/log-users-out-of-applications)
+* [Log Users Out of Auth0 with OIDC Endpoint](/docs/authenticate/login/logout/log-users-out-of-auth0)
+* [Log Users Out of Identity Providers](/docs/authenticate/login/logout/log-users-out-of-idps)
+* [Log Users Out of SAML Identity Providers](/docs/authenticate/login/logout/log-users-out-of-saml-idps)
+* [Check Login and Logout Issues](/docs/troubleshoot/authentication-issues/check-login-and-logout-issues)

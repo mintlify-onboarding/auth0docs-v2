@@ -10,12 +10,12 @@ title: Using Passwordless APIs
   Auth0 APIs.
 'twitter:title': Using Passwordless APIs
 ---
-<Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/glossary?term=Passwordless">Passwordless</Tooltip> APIs can be used in two scenarios:
+<Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> APIs can be used in two scenarios:
 
-* When implementing <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> and you want to customize the login page using auth0.js to interact with Auth0.
+* When implementing <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> and you want to customize the login page using auth0.js to interact with Auth0.
 * When you want to embed the login flow in your application.
 
-To learn more about how to implement Passwordless for Universal Login and Embedded login for different scenarios, read [Passwordless Authentication with Universal Login](/authenticate/passwordless/implement-login/universal-login) or [Passwordless Authentication with Embedded Login](/authenticate/passwordless/implement-login/embedded-login).
+To learn more about how to implement Passwordless for Universal Login and Embedded login for different scenarios, read [Passwordless Authentication with Universal Login](/docs/authenticate/passwordless/implement-login/universal-login) or [Passwordless Authentication with Embedded Login](/docs/authenticate/passwordless/implement-login/embedded-login).
 
 ## Passwordless endpoints
 
@@ -105,31 +105,31 @@ Content-Type: application/json
 
 
 
-You can then decode the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+Token">ID Token</Tooltip> to get information about the user, or use the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> to call your API as normal.
+You can then decode the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip> to get information about the user, or use the <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> to call your API as normal.
 
 ## Using Auth0.js
 
-When implementing Passwordless Authentication in Single Page Applications or in a customized Universal Login page, you should [use Auth0.js and the included passwordlessLogin method](/libraries/auth0js). The implementation is complex, so we recommend that you use the library instead of calling the APIs directly.
+When implementing Passwordless Authentication in Single Page Applications or in a customized Universal Login page, you should [use Auth0.js and the included passwordlessLogin method](/docs/libraries/auth0js). The implementation is complex, so we recommend that you use the library instead of calling the APIs directly.
 
 ## Rate limiting in passwordless endpoints
 
-Auth0 rate limits and <Tooltip tip="Attack Protection: Features that Auth0 provides to detect and mitigate attacks, including brute-force protection, suspicious IP throttling, breached password detection, bot detection, and adaptive multi-factor authentication." cta="View Glossary" href="/glossary?term=attack+protection">attack protection</Tooltip> features only consider the IP from the machine that is making the API call. When the API call is made from a backend server, you usually want Auth0 to consider the IP from the end user, not the one from the server.
+Auth0 rate limits and <Tooltip tip="Attack Protection: Features that Auth0 provides to detect and mitigate attacks, including brute-force protection, suspicious IP throttling, breached password detection, bot detection, and adaptive multi-factor authentication." cta="View Glossary" href="/docs/glossary?term=attack+protection">attack protection</Tooltip> features only consider the IP from the machine that is making the API call. When the API call is made from a backend server, you usually want Auth0 to consider the IP from the end user, not the one from the server.
 
 Auth0 supports specifying an `auth0-forwarded-for` header in API calls, but it is only considered when:
 
 * the API call is made for a confidential application.
-* the API call includes the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip>.
-* the **Trust <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/glossary?term=Token+Endpoint">Token Endpoint</Tooltip> IP Header** toggle is on.
+* the API call includes the <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip>.
+* the **Trust <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/docs/glossary?term=Token+Endpoint">Token Endpoint</Tooltip> IP Header** toggle is on.
 
-For a complete explanation, read [Avoid Common Issues with Resource Owner Password Flow and Attack Protection](/get-started/authentication-and-authorization-flow/resource-owner-password-flow/avoid-common-issues-with-resource-owner-password-flow-and-attack-protection).
+For a complete explanation, read [Avoid Common Issues with Resource Owner Password Flow and Attack Protection](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow/avoid-common-issues-with-resource-owner-password-flow-and-attack-protection).
 
 ## Customize MFA
 
 <Warning>
-Customizable MFA with the Resource Owner Password Grant, Embedded, or Refresh Token flows is in Early Access. To learn more, read [Product Release Stages](/troubleshoot/product-lifecycle/product-release-stages). To participate in the early access, contact [Auth0 Support](https://support.auth0.com/).
+Customizable MFA with the Resource Owner Password Grant, Embedded, or Refresh Token flows is in Early Access. To learn more, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages). To participate in the early access, contact [Auth0 Support](https://support.auth0.com/).
 </Warning>
 
-Customize <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> with the Passwordless API. When your application calls `/oauth/token` endpoint to request an access token, the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip> returns an `mfa_required` error which provides:
+Customize <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> with the Passwordless API. When your application calls `/oauth/token` endpoint to request an access token, the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> returns an `mfa_required` error which provides:
 
 - The `mfa_token` you need to call the MFA API for enrollment and challenges.
 
@@ -172,4 +172,4 @@ Use the `mfa_token` to call the [`mfa/authenticator`](https://auth0.com/docs/api
 
 Enforce the MFA challenge by calling the [`request/mfa/challenge`](https://auth0.com/docs/api/authentication/muti-factor-authentication/request-mfa-challenge) endpoint.
 
-Further customize your MFA flow with Auth0 Actions. To learn more, read [Actions Triggers: post-challenge - API Object](/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).
+Further customize your MFA flow with Auth0 Actions. To learn more, read [Actions Triggers: post-challenge - API Object](/docs/customize/actions/explore-triggers/password-reset-triggers/post-challenge-trigger/post-challenge-api-object).

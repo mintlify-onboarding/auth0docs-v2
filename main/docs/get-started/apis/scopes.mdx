@@ -17,13 +17,13 @@ Often, new applications will want to make use of the information that has alread
 
 ## Ways to use scopes
 
-When an app requests permission to access a resource through an <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/glossary?term=authorization+server">authorization server</Tooltip>, it uses the `scope` parameter to specify what access it needs, and the authorization server uses the `scope` parameter to respond with the access that was actually granted (if the granted access was different from what was requested).
+When an app requests permission to access a resource through an <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip>, it uses the `scope` parameter to specify what access it needs, and the authorization server uses the `scope` parameter to respond with the access that was actually granted (if the granted access was different from what was requested).
 
 Generally, you use scopes in three ways:
 
-* From an application, to verify the identity of a user and get basic profile information about the user, such as their email or picture. In this scenario, the scopes available to you include those implemented by the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) protocol. To learn more, read [OpenID Connect Scopes](/get-started/apis/scopes/openid-connect-scopes).
-* In an [API](/api), to implement access control. In this case, you need to define custom scopes for your API and then identify these scopes so that calling applications can use them. To learn more, read [API Scopes](/get-started/apis/scopes/api-scopes).
-* From an application, to call an API that has implemented its own custom scopes. In this case, you need to know which custom scopes are defined for the API you are calling. To see examples of calling a custom API from an application, read [Sample Use Cases: Scopes and Claims](/get-started/apis/scopes/sample-use-cases-scopes-and-claims)
+* From an application, to verify the identity of a user and get basic profile information about the user, such as their email or picture. In this scenario, the scopes available to you include those implemented by the <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect (OIDC) protocol. To learn more, read [OpenID Connect Scopes](/docs/get-started/apis/scopes/openid-connect-scopes).
+* In an [API](/docs/api), to implement access control. In this case, you need to define custom scopes for your API and then identify these scopes so that calling applications can use them. To learn more, read [API Scopes](/docs/get-started/apis/scopes/api-scopes).
+* From an application, to call an API that has implemented its own custom scopes. In this case, you need to know which custom scopes are defined for the API you are calling. To see examples of calling a custom API from an application, read [Sample Use Cases: Scopes and Claims](/docs/get-started/apis/scopes/sample-use-cases-scopes-and-claims)
 
 ## Best practices
 
@@ -37,13 +37,13 @@ Similarly, when creating custom scopes for an API, consider what levels of granu
 
 In certain cases, users get to consent to the access being requested. While usually, the scopes returned will be identical to those requested, users can edit granted scopes (both during initial consent and sometimes after, depending on the resource), thereby granting an app less access than it requested.
 
-As an application developer, you should be aware of this possibility and handle these cases in your app. For example, your app could warn the user that they will see reduced functionality. It could also send the user back through the <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/glossary?term=authorization+flow">authorization flow</Tooltip> to ask for additional permissions. But again, remember that when asked for consent, users can always say no.
+As an application developer, you should be aware of this possibility and handle these cases in your app. For example, your app could warn the user that they will see reduced functionality. It could also send the user back through the <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip> to ask for additional permissions. But again, remember that when asked for consent, users can always say no.
 
 By default, Auth0 skips user consent for first-party applications, which are applications that are registered under the same Auth0 domain as the API they are calling; however, you can configure your API in Auth0 to require user consent from first-party applications. Third-party applications, which are external applications, require user consent.
 
 ## Learn more
 
-* [OpenID Connect Scopes](/get-started/apis/scopes/openid-connect-scopes)
-* [API Scopes](/get-started/apis/scopes/api-scopes)
-* [Sample Use Cases: Scopes and Claims](/get-started/apis/scopes/sample-use-cases-scopes-and-claims)
-* [Enable Role-Based Access Control for APIs](/get-started/apis/enable-role-based-access-control-for-apis)
+* [OpenID Connect Scopes](/docs/get-started/apis/scopes/openid-connect-scopes)
+* [API Scopes](/docs/get-started/apis/scopes/api-scopes)
+* [Sample Use Cases: Scopes and Claims](/docs/get-started/apis/scopes/sample-use-cases-scopes-and-claims)
+* [Enable Role-Based Access Control for APIs](/docs/get-started/apis/enable-role-based-access-control-for-apis)

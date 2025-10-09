@@ -16,15 +16,15 @@ Your Auth0 plan or custom agreement must include Enterprise Connections to use t
 
 </Card>
 
-[SCIM](/authenticate/protocols/scim) is a [protocol](https://tools.ietf.org/html/rfc7644) and [schema](https://tools.ietf.org/html/rfc7643) standard used by enterprise organizations to provision, de-provision, and manage user identity-related information.
+[SCIM](/docs/authenticate/protocols/scim) is a [protocol](https://tools.ietf.org/html/rfc7644) and [schema](https://tools.ietf.org/html/rfc7643) standard used by enterprise organizations to provision, de-provision, and manage user identity-related information.
 
-Auth0's Inbound SCIM feature supports B2B SaaS developer integrations with Enterprise <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=identity+providers">identity providers</Tooltip>. The following Auth0 connection types are currently supported: [SAML](/authenticate/identity-providers/enterprise-identity-providers/saml), [OpenID Connect](/authenticate/identity-providers/enterprise-identity-providers/oidc), [Okta Workforce Identity](/authenticate/identity-providers/enterprise-identity-providers/okta), and [Microsoft Azure AD / Entra ID](/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2).
+Auth0's Inbound SCIM feature supports B2B SaaS developer integrations with Enterprise <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+providers">identity providers</Tooltip>. The following Auth0 connection types are currently supported: [SAML](/docs/authenticate/identity-providers/enterprise-identity-providers/saml), [OpenID Connect](/docs/authenticate/identity-providers/enterprise-identity-providers/oidc), [Okta Workforce Identity](/docs/authenticate/identity-providers/enterprise-identity-providers/okta), and [Microsoft Azure AD / Entra ID](/docs/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2).
 
 ## Enable Inbound SCIM for an Enterprise Connection
 
 1. Launch the [Auth0 Dashboard](https://manage.auth0.com/#/), then choose the tenant you want to configure.
 2. Navigate to [**Authentication > Enterprise**](https://manage.auth0.com/#/connections/enterprise/)**,** then select from **SAML, OpenID Connect, Okta Workforce,** or **Microsoft Azure AD.**
-3. Choose an existing connection or create a new one using [Create Connection](/authenticate/database-connections/custom-db/create-db-connection).
+3. Choose an existing connection or create a new one using [Create Connection](/docs/authenticate/database-connections/custom-db/create-db-connection).
 4. Under the **Provisioning** tab for your connection, toggle **Sync user profile attributes at each login** to **Off,** then switch **Sync user profiles using SCIM** to **On.**
 5. Select the **Setup** tab under **Sync user profiles using SCIM** to get the SCIM endpoint URL and SCIM tokens needed for testing with Postman.
 
@@ -42,7 +42,7 @@ You can download the Postman collection below to test your SCIM configuration:
 6. Choose **Save.**
 7. Run the tests in the order shown, starting with the `POST` command and finishing with `DELETE`. The result of each user operation is in your Auth0 Dashboard under [**User Management > Users**](https://manage.auth0.com/#/users)and in the tenant logs under [**Monitoring > Logs**](https://manage.auth0.com/#/logs).
 
-To test with specific identity providers, see [Configure Inbound SCIM for Identity Providers using SAML or OpenID](/authenticate/protocols/scim/configure-inbound-scim-for-identity-providers-using-saml-or-openid).
+To test with specific identity providers, see [Configure Inbound SCIM for Identity Providers using SAML or OpenID](/docs/authenticate/protocols/scim/configure-inbound-scim-for-identity-providers-using-saml-or-openid).
 
 ## Supported SCIM Operations
 
@@ -96,15 +96,15 @@ Auth0 uses the SCIM 2.0 [core schema for user resources](https://tools.ietf.org/
 
 Each enterprise customer gets a connection-specific SCIM endpoint and token that allows them to provision, de-provision, and manage their user accounts stored in the Auth0 tenant.
 
-The endpoints and tokens are visible and configurable in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> at **Authentication > Enterprise > [connecton-type] > [your-connection] > Provisioning >  Sync user profiles using SCIM >  Setup**.
+The endpoints and tokens are visible and configurable in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> at **Authentication > Enterprise > [connecton-type] > [your-connection] > Provisioning >  Sync user profiles using SCIM >  Setup**.
 
-<Frame>![Dashboard screenshot of SCIM setup](/images/cdy7uua7fh8z/4jsLx8sZiy9WRhqaV5uCqt/09e0bc4d690742b16b8535f07c3a64a9/setup.png)</Frame>
+<Frame>![Dashboard screenshot of SCIM setup](/docs/images/cdy7uua7fh8z/4jsLx8sZiy9WRhqaV5uCqt/09e0bc4d690742b16b8535f07c3a64a9/setup.png)</Frame>
 
 The **SCIM Endpoint URL** allows SCIM clients to manage user accounts stored in Auth0 for a given identity provider.
 
 The **Generate New Token** option generates up to two active tokens for this SCIM endpoint, allowing the token used by the SCIM client to be updated without downtime. Tokens may also be revoked on this screen by choosing **Delete**.
 
-<Frame>![Dashboard screen for the SCIM token settings](/images/cdy7uua7fh8z/5TUDyHPvAKFffK76gxUHY4/5ab3e28268afa11abb31c679e2e64bcc/Tokens.jpg)</Frame>
+<Frame>![Dashboard screen for the SCIM token settings](/docs/images/cdy7uua7fh8z/5TUDyHPvAKFffK76gxUHY4/5ab3e28268afa11abb31c679e2e64bcc/Tokens.jpg)</Frame>
 
 The following token generation settings are available:
 
@@ -150,7 +150,7 @@ Core SCIM user attributes defined [RFC 7643 sections 3.1, 4.1,  and 4.3](https:
 </tbody>
 </table>
 
-These SCIM attributes can be mapped to Auth0 [root](/manage-users/user-accounts/user-profiles/root-attributes) and [metadata](/manage-users/user-accounts/metadata/metadata-fields-data) attributes on the user profile.
+These SCIM attributes can be mapped to Auth0 [root](/docs/manage-users/user-accounts/user-profiles/root-attributes) and [metadata](/docs/manage-users/user-accounts/metadata/metadata-fields-data) attributes on the user profile.
 
 <table class="table"><thead>
 <tr>
@@ -165,7 +165,7 @@ These SCIM attributes can be mapped to Auth0 [root](/manage-users/user-accounts/
 </tr>
 <tr>
 <td>Root attribute mapping</td>
-<td>When mapping to <a href="/manage-users/user-accounts/user-profiles/root-attributes">root</a> attributes, note that only the root attributes listed in <a href="/manage-users/user-accounts/user-profiles/user-profile-structure#user-profile-attributes">User profile attributes</a> can be searched using a SCIM query. If you need an attribute to be searchable that is not in this list, place it in app_metadata.</td>
+<td>When mapping to <a href="/docs/manage-users/user-accounts/user-profiles/root-attributes">root</a> attributes, note that only the root attributes listed in <a href="/docs/manage-users/user-accounts/user-profiles/user-profile-structure#user-profile-attributes">User profile attributes</a> can be searched using a SCIM query. If you need an attribute to be searchable that is not in this list, place it in app_metadata.</td>
 </tr>
 <tr>
 <td>Metadata attribute mapping</td>
@@ -182,17 +182,17 @@ Auth0 also allows you to provision attributes using SCIM in parallel with attrib
 
 ### Logs and outbound notifications
 
-You can view the full details of all the SCIM requests that Auth0 receives in the [**Monitoring > Logs**](https://manage.auth0.com/#/logs) section of the Auth0 Dashboard. In addition, you can integrate with [Custom Log Streams](/customize/log-streams) to be notified when a user is created, updated, or deleted using SCIM and the SCIM log stream [filter category](/customize/log-streams/event-filters#scim-events).
+You can view the full details of all the SCIM requests that Auth0 receives in the [**Monitoring > Logs**](https://manage.auth0.com/#/logs) section of the Auth0 Dashboard. In addition, you can integrate with [Custom Log Streams](/docs/customize/log-streams) to be notified when a user is created, updated, or deleted using SCIM and the SCIM log stream [filter category](/docs/customize/log-streams/event-filters#scim-events).
 
 ### Session revocation and backchannel logout
 
-When Auth0 receives a SCIM message to deactivate and block a user, it terminates all Auth0 sessions for the user, revokes <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=refresh+tokens">refresh tokens</Tooltip>, and (if configured) triggers [OpenID Connect backchannel logout](/authenticate/login/logout/back-channel-logout/configure-back-channel-logout) for your applications.
+When Auth0 receives a SCIM message to deactivate and block a user, it terminates all Auth0 sessions for the user, revokes <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip>, and (if configured) triggers [OpenID Connect backchannel logout](/docs/authenticate/login/logout/back-channel-logout/configure-back-channel-logout) for your applications.
 
 ## Deployment guidelines
 
 #### Leverage integration galleries for streamlined setup
 
-To give your customers a tailored experience for setting up both SCIM and <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=SSO">SSO</Tooltip>, consider listing your application in the [Okta Integration Network](https://www.okta.com/integrations/) and other workforce identity provider integration galleries that you plan to integrate with.
+To give your customers a tailored experience for setting up both SCIM and <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=SSO">SSO</Tooltip>, consider listing your application in the [Okta Integration Network](https://www.okta.com/integrations/) and other workforce identity provider integration galleries that you plan to integrate with.
 
 #### Test SCIM in lower-level environments first
 
@@ -200,7 +200,7 @@ Do not enable SCIM in a production Auth0 tenant before thoroughly testing your i
 
 #### Send SCIM tokens securely
 
-Never send SCIM tokens in plaintext, over email, or via insecure channels. Use a secure communication service like [SendSafely](https://www.sendsafely.com/ ) or integrate your app's self-service console with the [Auth0 Management API](/authenticate/protocols/scim/manage-an-inbound-scim-deployment-with-the-management-api) to issue SCIM tokens directly to your customers.
+Never send SCIM tokens in plaintext, over email, or via insecure channels. Use a secure communication service like [SendSafely](https://www.sendsafely.com/ ) or integrate your app's self-service console with the [Auth0 Management API](/docs/authenticate/protocols/scim/manage-an-inbound-scim-deployment-with-the-management-api) to issue SCIM tokens directly to your customers.
 
 #### Information exchange
 
@@ -212,17 +212,17 @@ When providing an Auth0 SCIM endpoint to your customer, they will require the fo
 These are also recommended:
 
 * The list of SCIM attributes supported for the Auth0 connection, as configured in your SCIM attribute map
-* Any additional instructions required to configure their SCIM client to work with your SCIM configuration. For Okta Workforce and Microsoft Entra ID setup guidance, see [Configure Inbound SCIM for Identity Providers using SAML or OpenID](/authenticate/protocols/scim/configure-inbound-scim-for-identity-providers-using-saml-or-openid)
+* Any additional instructions required to configure their SCIM client to work with your SCIM configuration. For Okta Workforce and Microsoft Entra ID setup guidance, see [Configure Inbound SCIM for Identity Providers using SAML or OpenID](/docs/authenticate/protocols/scim/configure-inbound-scim-for-identity-providers-using-saml-or-openid)
 
 ## Advanced topics
 
 #### Sync additional attributes at login
 
-If you are integrating with an identity provider that does not support the same set of user attributes across <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/glossary?term=SAML">SAML</Tooltip>/OIDC, and SCIM, you can access the additional attributes by enabling **Sync user profile attributes at login** in parallel with SCIM provisioning.
+If you are integrating with an identity provider that does not support the same set of user attributes across <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip>/OIDC, and SCIM, you can access the additional attributes by enabling **Sync user profile attributes at login** in parallel with SCIM provisioning.
 
-When **Sync user profile attributes at login** is enabled, all [root](/manage-users/user-accounts/user-profiles/root-attributes) attributes on the user profile are overwritten each time a user logs in. To avoid potential conflicts between SCIM and login sync, follow these guidelines:
+When **Sync user profile attributes at login** is enabled, all [root](/docs/manage-users/user-accounts/user-profiles/root-attributes) attributes on the user profile are overwritten each time a user logs in. To avoid potential conflicts between SCIM and login sync, follow these guidelines:
 
-* Ensure common Auth0 root attributes like `email` and `username` are mapped in your [SAML](/authenticate/protocols/saml/saml-configuration) or [OpenID Connect](/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc) attribute map if they are also present in your SCIM attribute map.
+* Ensure common Auth0 root attributes like `email` and `username` are mapped in your [SAML](/docs/authenticate/protocols/saml/saml-configuration) or [OpenID Connect](/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc) attribute map if they are also present in your SCIM attribute map.
 * In your SCIM attribute map, map all of the other SCIM attributes (except the `active` attribute) to values inside the Auth0 `app_metadata` attribute.
 
 #### Sync roles
@@ -233,21 +233,21 @@ To learn how to sync application-specific roles from Okta Workforce Identity, re
 
 #### Sync groups
 
-Auth0 does not support a `/groups` endpoint for provisioning full group objects and group memberships as defined in [RFC7644 Section 3.2](https://datatracker.ietf.org/doc/html/rfc7644#section-3.2). However, if an identity provider supports sending a list of groups over SAML or <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect, read the previous section for guidelines on how to sync attributes at login.
+Auth0 does not support a `/groups` endpoint for provisioning full group objects and group memberships as defined in [RFC7644 Section 3.2](https://datatracker.ietf.org/doc/html/rfc7644#section-3.2). However, if an identity provider supports sending a list of groups over SAML or <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect, read the previous section for guidelines on how to sync attributes at login.
 
 #### Organizations
 
-For SCIM-provisioned users to become members of an Organization, the connection must be configured to **Enable Auto-Membership** as described in [Grant Just-In-Time Membership to an Organization Connection](/manage-users/organizations/configure-organizations/grant-just-in-time-membership).
+For SCIM-provisioned users to become members of an Organization, the connection must be configured to **Enable Auto-Membership** as described in [Grant Just-In-Time Membership to an Organization Connection](/docs/manage-users/organizations/configure-organizations/grant-just-in-time-membership).
 
 #### Account linking
 
-When using [user account linking](/manage-users/user-accounts/user-account-linking), the SCIM-provisioned user account must be set as the primary user account. Setting as a secondary account will change the SCIM `id` attribute which goes against the [SCIM 2.0 core schema specification](https://datatracker.ietf.org/doc/html/rfc7643#section-3.1). Account linking Enterprise user accounts to social and personal user accounts is not recommended.
+When using [user account linking](/docs/manage-users/user-accounts/user-account-linking), the SCIM-provisioned user account must be set as the primary user account. Setting as a secondary account will change the SCIM `id` attribute which goes against the [SCIM 2.0 core schema specification](https://datatracker.ietf.org/doc/html/rfc7643#section-3.1). Account linking Enterprise user accounts to social and personal user accounts is not recommended.
 
 ## Learn more
 
-* [Configure Inbound SCIM for Identity Providers using SAML or OpenID](/authenticate/protocols/scim/configure-inbound-scim-for-identity-providers-using-saml-or-openid)
-* [Inbound SCIM for Okta Workforce Connections](/authenticate/protocols/scim/inbound-scim-for-okta-workforce-connections)
-* [Inbound SCIM for Okta Workforce SAML Connections](/authenticate/protocols/scim/inbound-scim-for-okta-workforce-saml-connections)
-* [Inbound SCIM for Azure AD SAML Connections](/authenticate/protocols/scim/inbound-scim-for-azure-ad-saml-connections)
-* [Inbound SCIM for New Azure AD Connections](/authenticate/protocols/scim/inbound-scim-for-new-azure-ad-connections)
-* [Inbound SCIM for Older Azure AD Connections](/authenticate/protocols/scim/inbound-scim-for-older-azure-ad-connections)
+* [Configure Inbound SCIM for Identity Providers using SAML or OpenID](/docs/authenticate/protocols/scim/configure-inbound-scim-for-identity-providers-using-saml-or-openid)
+* [Inbound SCIM for Okta Workforce Connections](/docs/authenticate/protocols/scim/inbound-scim-for-okta-workforce-connections)
+* [Inbound SCIM for Okta Workforce SAML Connections](/docs/authenticate/protocols/scim/inbound-scim-for-okta-workforce-saml-connections)
+* [Inbound SCIM for Azure AD SAML Connections](/docs/authenticate/protocols/scim/inbound-scim-for-azure-ad-saml-connections)
+* [Inbound SCIM for New Azure AD Connections](/docs/authenticate/protocols/scim/inbound-scim-for-new-azure-ad-connections)
+* [Inbound SCIM for Older Azure AD Connections](/docs/authenticate/protocols/scim/inbound-scim-for-older-azure-ad-connections)

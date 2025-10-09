@@ -10,17 +10,17 @@ title: Call an Identity Provider API
 ---
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-If you have [Token Vault](/secure/tokens/token-vault) enabled for your connection, access and refresh tokens will no longer be stored in the user’s `identities` array. Instead, they will be stored in a secure tokenset within the Token Vault. To enable Token Vault, read [Configure Token Vault](/secure/tokens/token-vault/configure-token-vault).
+If you have [Token Vault](/docs/secure/tokens/token-vault) enabled for your connection, access and refresh tokens will no longer be stored in the user’s `identities` array. Instead, they will be stored in a secure tokenset within the Token Vault. To enable Token Vault, read [Configure Token Vault](/docs/secure/tokens/token-vault/configure-token-vault).
 
 </Callout>
 
-Once you successfully authenticate a user with an external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP), such as Facebook or GitHub, the IdP often includes an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> in the user profile it returns to Auth0.
+Once you successfully authenticate a user with an external <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP), such as Facebook or GitHub, the IdP often includes an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> in the user profile it returns to Auth0.
 
 You can retrieve and use this token to call the IdP's API.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-This article assumes that you have already configured the connection with the IdP of your choice. If not, go to [Identity Providers Supported by Auth0](/authenticate/identity-providers/social-identity-providers), select the IdP you want, and follow the configuration steps.
+This article assumes that you have already configured the connection with the IdP of your choice. If not, go to [Identity Providers Supported by Auth0](/docs/authenticate/identity-providers/social-identity-providers), select the IdP you want, and follow the configuration steps.
 
 </Callout>
 
@@ -33,7 +33,7 @@ The process you will follow differs depending on whether your code runs in the b
 
 Once you authenticate a user, the IdP often includes an Access Token in the user profile it returns to Auth0.
 
-For security and compliance reasons, Auth0 does not send this token to your app as part of the user profile. To get it, you must access the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> and retrieve the full user's profile:
+For security and compliance reasons, Auth0 does not send this token to your app as part of the user profile. To get it, you must access the Auth0 <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> and retrieve the full user's profile:
 
 1. Get an Access Token that allows you to call the [Auth0 Management API](https://auth0.com/docs/api/management/v2).
 2. Call the Auth0 Management API's [Get Users by ID endpoint](https://auth0.com/docs/api/management/v2#!/Users/get_users_by_id) using the Access Token obtained in step one. This endpoint returns the full user's profile, which contains the IdP Access Token.
@@ -72,7 +72,7 @@ For security reasons, we recommend that you assign only the required scopes to t
 
 To grant or remove scopes from the [registered Auth0 Management API](https://manage.auth0.com/#/apis/management/authorized-clients), select the [**Machine to Machine Applications** view](https://manage.auth0.com/#/apis/management/authorized-clients):
 
-<Frame>![Edit the scopes granted to the Application](/images/cdy7uua7fh8z/6nuMjQMrTWhoVqtRwJBQz7/28a0f7c89c696426e273f43bd849b5e5/2025-02-25_11-11-36.png)</Frame>
+<Frame>![Edit the scopes granted to the Application](/docs/images/cdy7uua7fh8z/6nuMjQMrTWhoVqtRwJBQz7/28a0f7c89c696426e273f43bd849b5e5/2025-02-25_11-11-36.png)</Frame>
 
 #### Get the Management API Token
 
@@ -85,7 +85,7 @@ You are now done with configuration and are ready to get your Management API tok
 
 <Card title="What are the snippets doing?">
 
-The snippets make a `POST` operation to the [/oauth/token endpoint of the Auth0 Authentication API](https://auth0.com/docs/api/authentication#client-credentials), using the **OAuth 2.0 Client Credentials grant**. This is the grant that machine-to-machine processes use to access an API. To learn more about the flow, read [Client Credentials Flow](/get-started/authentication-and-authorization-flow/client-credentials-flow).
+The snippets make a `POST` operation to the [/oauth/token endpoint of the Auth0 Authentication API](https://auth0.com/docs/api/authentication#client-credentials), using the **OAuth 2.0 Client Credentials grant**. This is the grant that machine-to-machine processes use to access an API. To learn more about the flow, read [Client Credentials Flow](/docs/get-started/authentication-and-authorization-flow/client-credentials-flow).
 
 </Card>
 
@@ -286,7 +286,7 @@ Replace these values:
 
 * For testing purposes, you can find a user ID at [Auth0 Dashboard > User Management > Users](https://manage.auth0.com/#/users). Locate a user, and copy the value of the **user_id** field.
 
-* For your implementation, you can either extract the user ID from the `sub` claim in the [ID Token](/secure/tokens/id-tokens), or call the [/userinfo endpoint](https://auth0.com/docs/api/authentication#get-user-info) of the Authentication API and extract it from the `user_id` response property.
+* For your implementation, you can either extract the user ID from the `sub` claim in the [ID Token](/docs/secure/tokens/id-tokens), or call the [/userinfo endpoint](https://auth0.com/docs/api/authentication#get-user-info) of the Authentication API and extract it from the `user_id` response property.
 
 </Card>
 
@@ -296,11 +296,11 @@ You can find the Access Token used to call the IdP's API within the user's `iden
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-For certain Identity Providers, Auth0 will also store a Refresh Token, which you can use to obtain a new Access Token for the IdP. This works for: BitBucket, Google (OAuth 2.0), OAuth 2.0, SharePoint, and Azure AD. To learn more, read [Identity Provider Access Tokens](/secure/tokens/access-tokens/identity-provider-access-tokens).
+For certain Identity Providers, Auth0 will also store a Refresh Token, which you can use to obtain a new Access Token for the IdP. This works for: BitBucket, Google (OAuth 2.0), OAuth 2.0, SharePoint, and Azure AD. To learn more, read [Identity Provider Access Tokens](/docs/secure/tokens/access-tokens/identity-provider-access-tokens).
 
 </Callout>
 
-In most cases, the user will only have one identity, but if the user has signed in multiple times through different connections and you have used [account linking](/manage-users/user-accounts/user-account-linking/link-user-accounts), there may be more.
+In most cases, the user will only have one identity, but if the user has signed in multiple times through different connections and you have used [account linking](/docs/manage-users/user-accounts/user-account-linking/link-user-accounts), there may be more.
 
 In this sample response, we see that our user has only one identity: `google-oauth2`.
 
@@ -349,7 +349,7 @@ Don't expose IdP tokens to your client-side application! If your application is 
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-To learn more about how to request specific scopes for an Identity Provider Access Token, read [Add scopes/permissions to call Identity Provider's APIs](/authenticate/identity-providers/adding-scopes-for-an-external-idp).
+To learn more about how to request specific scopes for an Identity Provider Access Token, read [Add scopes/permissions to call Identity Provider's APIs](/docs/authenticate/identity-providers/adding-scopes-for-an-external-idp).
 
 </Callout>
 
@@ -359,7 +359,7 @@ If you are working with a public application (SPA, native desktop, or mobile app
 
 When working with a frontend app, the process for calling IdP APIs differs from the backend process because frontend apps are public applications that **cannot hold credentials securely**. Because SPA code can be viewed and altered, and native/mobile apps can be decompiled and inspected, they cannot be trusted to hold sensitive information like secret keys or passwords.
 
-Specifically, they cannot securely hold the **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=Client+Secret">Client Secret</Tooltip>** for the Machine to Machine Application, which you use to call `/oauth/token` during the first step of the backend process.
+Specifically, they cannot securely hold the **<Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=Client+Secret">Client Secret</Tooltip>** for the Machine to Machine Application, which you use to call `/oauth/token` during the first step of the backend process.
 
 Instead, you must build a proxy for your backend and expose it to your application as an API.
 
@@ -369,12 +369,12 @@ First, you will build a process in your backend that will implement the steps in
 
 You will call the IdP's API from the same backend process, so the Access Token is never exposed to your public application.
 
-Then, you will call your proxy API from your public application using the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
+Then, you will call your proxy API from your public application using the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
 
 <Card title="Show me how">
 
-If you haven't implemented this before, you might find our [Single-page Applications (SPA) with API](/get-started/architecture-scenarios/spa-api) architecture scenario useful. It covers a different scenario, but it explains how to configure Auth0, how to call an API from a SPA, and how to implement API validations. It comes with a sample that uses [Angular 2](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-spa/angular) and [Node.js](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-api/node).
+If you haven't implemented this before, you might find our [Single-page Applications (SPA) with API](/docs/get-started/architecture-scenarios/spa-api) architecture scenario useful. It covers a different scenario, but it explains how to configure Auth0, how to call an API from a SPA, and how to implement API validations. It comes with a sample that uses [Angular 2](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-spa/angular) and [Node.js](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-api/node).
 
-We also offer a [Mobile Applications with API](/get-started/architecture-scenarios/mobile-api) variation (the sample uses [Android](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-mobile/android) and [Node.js](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-api/node)).
+We also offer a [Mobile Applications with API](/docs/get-started/architecture-scenarios/mobile-api) variation (the sample uses [Android](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-mobile/android) and [Node.js](https://github.com/auth0-samples/auth0-pnp-exampleco-timesheets/tree/master/timesheets-api/node)).
 
 </Card>

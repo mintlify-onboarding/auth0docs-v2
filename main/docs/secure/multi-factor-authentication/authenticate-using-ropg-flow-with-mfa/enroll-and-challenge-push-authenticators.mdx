@@ -10,7 +10,7 @@ title: Enroll and Challenge Push Authenticators
   authentication factor.
 'twitter:title': Enroll and Challenge Push Authenticators
 ---
-Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
+Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/docs/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
 
 You can enroll and challenge users using push notifications with the Guardian application or SDK using the MFA API.
 
@@ -18,16 +18,16 @@ You can enroll and challenge users using push notifications with the Guardian ap
 
 Before you can use the MFA APIs, you'll need to enable the MFA grant type for your application. Go to [Auth0 Dashboard > Applications > Advanced Settings > Grant Types](https://manage.auth0.com/#/applications) and select **MFA**.
 
-* [Configure Push](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa) as a factor in the Dashboard or using the [Management API](https://auth0.com/docs/api/management/v2#!/Guardian/put_factors_by_name).
+* [Configure Push](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa) as a factor in the Dashboard or using the [Management API](https://auth0.com/docs/api/management/v2#!/Guardian/put_factors_by_name).
 
 ## Enroll with push
 
 ### Get MFA token
 
-Depending on when you are triggering enrollment, you can obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=access+token">access token</Tooltip> for using the MFA API in different ways:
+Depending on when you are triggering enrollment, you can obtain an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> for using the MFA API in different ways:
 
-* If you are enrolling during authentication, see [Authenticate With Resource Owner Password Grant and MFA](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
-* If you want to let the user enroll a factor at any moment, see [Manage MFA Factor Enrollments](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api).
+* If you are enrolling during authentication, see [Authenticate With Resource Owner Password Grant and MFA](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
+* If you want to let the user enroll a factor at any moment, see [Manage MFA Factor Enrollments](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api).
 
 ### Enroll authenticator
 
@@ -267,7 +267,7 @@ If this is the first time the user is associating an authenticator, you'll notic
 
 To confirm the enrollment, the end user will need to scan a QR code with the `barcode_uri` in the Guardian application, within the next 5 minutes.
 
-Once that is done, the Guardian application will notify Auth0 that the user enrolled successfully. To know if that happened, poll the Auth0 <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/glossary?term=Token+endpoint">Token endpoint</Tooltip> with the `oob_code` returned by the MFA Associate endpoint call.
+Once that is done, the Guardian application will notify Auth0 that the user enrolled successfully. To know if that happened, poll the Auth0 <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/docs/glossary?term=Token+endpoint">Token endpoint</Tooltip> with the `oob_code` returned by the MFA Associate endpoint call.
 
 <CodeGroup>
 ```bash cURL lines
@@ -528,7 +528,7 @@ You can check at any point to verify whether an authenticator has been confirmed
 
 ### Get MFA token
 
-Get an MFA token following the steps described in [Authenticate With Resource Owner Password Grant and MFA](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
+Get an MFA token following the steps described in [Authenticate With Resource Owner Password Grant and MFA](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa).
 
 ### Retrieve enrolled authenticators
 
@@ -745,7 +745,7 @@ You will get a list of authenticators with the following format:
 
 
 
-When users enroll with push, they also get enrolled in OTP, as Guardian supports [challenging with OTP](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators) for scenarios where the user does not have connectivity.
+When users enroll with push, they also get enrolled in OTP, as Guardian supports [challenging with OTP](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators) for scenarios where the user does not have connectivity.
 
 ### Challenge user with push
 
@@ -1189,9 +1189,9 @@ The call can return one of the following results:
 
 ## Learn more
 
-* [Manage Authentication Factors with Authentication API](/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
-* [Configure Push Notifications for MFA](/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
-* [Challenge with Recovery Codes](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/challenge-with-recovery-codes)
-* [Enroll and Challenge Email Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
-* [Enroll and Challenge OTP Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
-* [Enroll and Challenge SMS and Voice Authenticators](/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)
+* [Manage Authentication Factors with Authentication API](/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authenticator-factors-mfa-api)
+* [Configure Push Notifications for MFA](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa)
+* [Challenge with Recovery Codes](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/challenge-with-recovery-codes)
+* [Enroll and Challenge Email Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-email-authenticators)
+* [Enroll and Challenge OTP Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-and-challenge-otp-authenticators)
+* [Enroll and Challenge SMS and Voice Authenticators](/docs/secure/multi-factor-authentication/authenticate-using-ropg-flow-with-mfa/enroll-challenge-sms-voice-authenticators)

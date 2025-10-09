@@ -49,7 +49,7 @@ The Connector must be installed on a server with access to the LDAP server on po
 
 You do not need inbound connectivity enabled to the Connector unless Kerberos or certificate authentication is enabled. In these cases, the server(s) on which the Connector is installed must be reachable from your users' browsers on port 443. If more than one instance of the connector is installed, you should use a load balancer to direct traffic to one connector or the another.
 
-To learn more, read [Configure AD/LDAP Connector Authentication with Kerberos](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos) or [Configure AD/LDAP Connector Authentication with Client Certificates](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates).
+To learn more, read [Configure AD/LDAP Connector Authentication with Kerberos](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos) or [Configure AD/LDAP Connector Authentication with Client Certificates](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates).
 
 ## Service account
 
@@ -57,7 +57,7 @@ The Connector will be run using a service account that must be a domain user tha
 
 ## One Connector per Auth0 tenant
 
-If you establish multiple Auth0 tenants, for example to isolate development and production environments, you will need to set up an AD/LDAP connection on the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and with an AD/LDAP Connector for each Auth0 tenant that needs this form of authentication. A Connector is tied to a specific connection within an Auth0 tenant.
+If you establish multiple Auth0 tenants, for example to isolate development and production environments, you will need to set up an AD/LDAP connection on the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> and with an AD/LDAP Connector for each Auth0 tenant that needs this form of authentication. A Connector is tied to a specific connection within an Auth0 tenant.
 
 It is possible to have multiple Connectors within one Auth0 tenant if you have multiple AD/LDAP directories against which users will authenticate. For example, to support different departments or customers each with their own directory. In addition, multiple Connectors can point to the same AD or LDAP directory but a Connector can only be used by one Auth0 Connection within one Auth0 tenant.
 
@@ -65,11 +65,11 @@ It is possible to have multiple Connectors within one Auth0 tenant if you have m
 
 The Connector can be installed on multiple host servers for high-availability and redundancy (most organizations provision two) in case one server becomes unavailable. Each server will have the same requirements listed above. No load balancer is required as that is performed by the Auth0 server itself, unless you enable Kerberos or clientcertificate based authentication.
 
-To learn more, read [Deploy AD/LDAP Connectors for High Availability Environments.](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability)
+To learn more, read [Deploy AD/LDAP Connectors for High Availability Environments.](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability)
 
 ## Learn more
 
-* [Install and Configure AD/LDAP Connector](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
-* [Deploy AD/LDAP Connectors for High Availability Environments](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability)
-* [Configure AD/LDAP Connector Authentication with Client Certificates](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates)
-* [Configure AD/LDAP Connector Authentication with Kerberos](/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos)
+* [Install and Configure AD/LDAP Connector](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
+* [Deploy AD/LDAP Connectors for High Availability Environments](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability)
+* [Configure AD/LDAP Connector Authentication with Client Certificates](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-client-certificates)
+* [Configure AD/LDAP Connector Authentication with Kerberos](/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/configure-ad-ldap-connector-with-kerberos)

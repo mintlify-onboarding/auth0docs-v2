@@ -45,7 +45,7 @@ This filter should always return an array of data that will be passed to the cor
 
 This filter is called after the plugin finds the related user to login (based on the auth0 `user_id`) and is used to override the default behavior with custom matching rules (for example, always match by email). You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_get_wp_user.php).
 
-If the filter returns null, it will look up by email. To learn more, read [Integrate with WordPress](/customize/integrations/cms/wordpress-plugin/integrate-with-wordpress).
+If the filter returns null, it will look up by email. To learn more, read [Integrate with WordPress](/docs/customize/integrations/cms/wordpress-plugin/integrate-with-wordpress).
 
 ### auth0_verify_email_page
 
@@ -81,15 +81,15 @@ This filter is used to modify an existing form field or to add a new one. This s
 
 ### auth0_auth_scope
 
-This filter allows developers to add or change the scope requested during login. This can be used to add [custom claims](/secure/tokens/json-web-tokens/create-custom-claims) or request a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/glossary?term=Refresh+Token">Refresh Token</Tooltip>. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_auth_scope.php).
+This filter allows developers to add or change the scope requested during login. This can be used to add [custom claims](/docs/secure/tokens/json-web-tokens/create-custom-claims) or request a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+Token">Refresh Token</Tooltip>. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_auth_scope.php).
 
 ### auth0_nonce_cookie_name
 
-Use this filter to modify the cookie name used for <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/glossary?term=nonce">nonce</Tooltip> validation. See the `auth0_state_cookie_name` filter below for an example. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_nonce_cookie_name.php).
+Use this filter to modify the cookie name used for <Tooltip tip="Nonce: Arbitrary number issued once in an authentication protocol to detect and prevent replay attacks." cta="View Glossary" href="/docs/glossary?term=nonce">nonce</Tooltip> validation. See the `auth0_state_cookie_name` filter below for an example. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_nonce_cookie_name.php).
 
 ### auth0_state_cookie_name
 
-Use this filter to modify the cookie name used for the state parameter value. This can add a prefix or suffix or replace the string entirely. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_state_cookie_name.php). To learn more about the state parameter, read [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameters](/secure/attack-protection/state-parameters).
+Use this filter to modify the cookie name used for the state parameter value. This can add a prefix or suffix or replace the string entirely. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_state_cookie_name.php). To learn more about the state parameter, read [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameters](/docs/secure/attack-protection/state-parameters).
 Make sure to use valid characters in any modifications made:
 
 `A <cookie-name> can be any US-ASCII characters except control characters (CTLs), spaces, or tabs. It also must not contain a separator character like the following: ( ) < > @ , ; : \ " / ? = { }.`
@@ -122,15 +122,15 @@ This filter lets you override the default `returnTo` URL when logging out of Aut
 
 ### auth0_logout_url
 
-This filter lets you override the Auth0 logout URL. To learn more about how this is used, read [Logout](/authenticate/login/logout). You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_logout_url.php).
+This filter lets you override the Auth0 logout URL. To learn more about how this is used, read [Logout](/docs/authenticate/login/logout). You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_logout_url.php).
 
 ### auth0_use_management_api_for_userinfo
 
-This filter determines whether or not user profile data retrieved from the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/glossary?term=Management+API">Management API</Tooltip> should when you're not using the Implicit Login Flow. Return a boolean `true` (default) to use the API, `false` to use the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/glossary?term=ID+token">ID token</Tooltip>. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_use_management_api_for_userinfo.php).
+This filter determines whether or not user profile data retrieved from the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> should when you're not using the Implicit Login Flow. Return a boolean `true` (default) to use the API, `false` to use the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip>. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_use_management_api_for_userinfo.php).
 
 ### auth0_lock_options
 
-This filter can be used to modify the options for the embedded Lock login form used in shortcodes, widgets, and on the wp-login.php page when **Features > <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/glossary?term=Universal+Login">Universal Login</Tooltip> Page** is turned off. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_lock_options.php).
+This filter can be used to modify the options for the embedded Lock login form used in shortcodes, widgets, and on the wp-login.php page when **Features > <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> Page** is turned off. You can [see an example in the GitHub repository](https://github.com/auth0/wp-auth0/blob/master/examples/auth0_lock_options.php).
 
 ### auth0_jwt_leeway
 
@@ -150,7 +150,7 @@ You can [see an example of using actions with filters in the GitHub repository](
 
 ## Learn more
 
-* [Integrate with WordPress](/customize/integrations/cms/wordpress-plugin/integrate-with-wordpress)
-* [Install Login by Auth0](/customize/integrations/cms/wordpress-plugin/install-login-by-auth0)
-* [Configure Login by Auth0](/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0)
-* [Troubleshoot WordPress Plugin Invalid State Errors](/customize/integrations/cms/wordpress-plugin/troubleshoot-wordpress-plugin-invalid-state-errors)
+* [Integrate with WordPress](/docs/customize/integrations/cms/wordpress-plugin/integrate-with-wordpress)
+* [Install Login by Auth0](/docs/customize/integrations/cms/wordpress-plugin/install-login-by-auth0)
+* [Configure Login by Auth0](/docs/customize/integrations/cms/wordpress-plugin/configure-login-by-auth0)
+* [Troubleshoot WordPress Plugin Invalid State Errors](/docs/customize/integrations/cms/wordpress-plugin/troubleshoot-wordpress-plugin-invalid-state-errors)

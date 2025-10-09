@@ -13,19 +13,19 @@ title: Connect Your Native App to Microsoft Azure Active Directory Using Resourc
 'twitter:title': Connect Your Native App to Microsoft Azure Active Directory Using
   Resource Owner Flow
 ---
-In addition to the WS-Federation and <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/glossary?term=OpenID">OpenID</Tooltip> Connect flows, it's also possible to use the [Resource Owner](/get-started/authentication-and-authorization-flow/resource-owner-password-flow) flow with Azure AD. This flow allows you to capture and validate a user's credentials (email and password) instead of showing the Azure AD login page. For security and <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) reasons, this is not the recommended approach; still, the <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/glossary?term=Resource+Owner">Resource Owner</Tooltip> flow can be useful in Native mobile scenarios or to batch-process authentication with Azure AD.
+In addition to the WS-Federation and <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Connect flows, it's also possible to use the [Resource Owner](/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow) flow with Azure AD. This flow allows you to capture and validate a user's credentials (email and password) instead of showing the Azure AD login page. For security and <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) reasons, this is not the recommended approach; still, the <Tooltip tip="Resource Owner: Entity (such as a user or application) capable of granting access to a protected resource." cta="View Glossary" href="/docs/glossary?term=Resource+Owner">Resource Owner</Tooltip> flow can be useful in Native mobile scenarios or to batch-process authentication with Azure AD.
 
 This configuration requires two applications: a Web Application and/or Web API, and a Native Application. From Azure AD's point of view, users will be authenticated using the Native Application to gain access to the Web Application and/or Web API.
 
-<Frame>![Overview Diagram of Azure AD Apps using Resource Owner flow](/images/cdy7uua7fh8z/6Uy9Q35rn0d9rankvlJuBT/6a5fa5175db76fd1cab35b79f0a213ea/azure-ad-native-app.png)</Frame>
+<Frame>![Overview Diagram of Azure AD Apps using Resource Owner flow](/docs/images/cdy7uua7fh8z/6Uy9Q35rn0d9rankvlJuBT/6a5fa5175db76fd1cab35b79f0a213ea/azure-ad-native-app.png)</Frame>
 
 ## Prerequisites
 
-[Register your Application with Auth0](/get-started/auth0-overview/create-applications):
+[Register your Application with Auth0](/docs/get-started/auth0-overview/create-applications):
 
 1. Select **Native** for the **Application Type**.
-2. Add an **Allowed Callback URL**. Your callback URL format will vary depending on your platform. For details about the format for your platform, see our [Native Quickstarts](/quickstart/native).
-3. Ensure your Application's [Grant Types](/get-started/applications/update-grant-types) include the appropriate flows.
+2. Add an **Allowed Callback URL**. Your callback URL format will vary depending on your platform. For details about the format for your platform, see our [Native Quickstarts](/docs/quickstart/native).
+3. Ensure your Application's [Grant Types](/docs/get-started/applications/update-grant-types) include the appropriate flows.
 
 ## Steps
 
@@ -74,13 +74,13 @@ While setting up your application, make sure you use the following settings:
 
 <Card title="Find your Auth0 domain name for redirects">
 
-If your Auth0 domain name is not shown above and you are not using our [custom domains](/customize/custom-domains) feature, your domain name is a concatenation of your tenant name, your regional subdomain, and `auth0.com`, separated by the dot (`.`) symbol.
+If your Auth0 domain name is not shown above and you are not using our [custom domains](/docs/customize/custom-domains) feature, your domain name is a concatenation of your tenant name, your regional subdomain, and `auth0.com`, separated by the dot (`.`) symbol.
 
 For example, if your tenant name is `exampleco-enterprises`, and your tenant is in the US region, your Auth0 domain name would be `exampleco-enterprises.us.auth0.com` and your **Redirect URI** would be `https://exampleco-enterprises.us.auth0.com/login/callback`.
 
 However, if your tenant is in the US region and was created before June 2020, then your Auth0 domain name would be `exampleco-enterprises.auth0.com` and your **Redirect URI** would be `https://exampleco-enterprises.auth0.com/login/callback`.
 
-If you are using [custom domains](/customize/custom-domains), your **Redirect URI** would be `https://<YOUR CUSTOM DOMAIN>/login/callback`.
+If you are using [custom domains](/docs/customize/custom-domains), your **Redirect URI** would be `https://<YOUR CUSTOM DOMAIN>/login/callback`.
 
 </Card>
 
@@ -109,13 +109,13 @@ If you have more than one Azure AD directory, make sure you are in the correct d
 While setting up your app, make sure you use the following settings:
 
 * If you want to allow users from external organizations (like other Azure AD directories), select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** when setting **Supported account types**.
-* When asked to set a **Redirect URI**, select `Public client/native (mobile & desktop)` and enter your callback URL. Your callback URL format will vary depending on your platform. For details about the format for your platform, read [Native Quickstarts](/quickstart/native).
+* When asked to set a **Redirect URI**, select `Public client/native (mobile & desktop)` and enter your callback URL. Your callback URL format will vary depending on your platform. For details about the format for your platform, read [Native Quickstarts](/docs/quickstart/native).
 
 During this process, record the **Application (client) ID** that Microsoft generates for your application (you can find this on the application's **Overview** screen) as you will need it later in the tutorial.
 
 ### Create a client secret for your native application
 
-To learn how to create a <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/glossary?term=client+secret">client secret</Tooltip>, read [Quickstart: Configure a client application to access web APIs - Add Credentials to your web application on Microsoft Docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-credentials-to-your-web-application).
+To learn how to create a <Tooltip tip="Client Secret: Secret used by a client (application) to authenticate with the Authorization Server; it should be known to only the client and the Authorization Server and must be sufficiently random to not be guessable." cta="View Glossary" href="/docs/glossary?term=client+secret">client secret</Tooltip>, read [Quickstart: Configure a client application to access web APIs - Add Credentials to your web application on Microsoft Docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-credentials-to-your-web-application).
 
 Generate a **Client secret** and record its value. You will need it later in the tutorial.
 
@@ -150,7 +150,7 @@ After creating both applications in Azure AD, you can configure the Auth0 connec
 
 1. Navigate to [Auth0 Dashboard > Authentication > Enterprise](https://manage.auth0.com/#/connections/enterprise), locate **Microsoft Azure AD**, and select the add (**+**) button.
 
-   <Frame>![Dashboard - Connections - Enterprise](/images/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/b3454e60a4463e99353603fd11a71983/Enterprise_Connections_-_EN.png)</Frame>
+   <Frame>![Dashboard - Connections - Enterprise](/docs/images/cdy7uua7fh8z/1fSTcrZpkgkPR64NnI1lr8/b3454e60a4463e99353603fd11a71983/Enterprise_Connections_-_EN.png)</Frame>
 2. Enter details for your connection, and select **Create**:
 
 <table class="table"><thead>
@@ -202,24 +202,24 @@ After creating both applications in Azure AD, you can configure the Auth0 connec
 </tr>
 <tr>
 <td><strong>Email Verification</strong></td>
-<td>Choose how Auth0 sets the <code>email_verified</code> field in the user profile. To learn more, see <a href="/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification">Email Verification for Azure AD and ADFS</a>.</td>
+<td>Choose how Auth0 sets the <code>email_verified</code> field in the user profile. To learn more, see <a href="/docs/authenticate/identity-providers/enterprise-identity-providers/azuread-adfs-email-verification">Email Verification for Azure AD and ADFS</a>.</td>
 </tr>
 </tbody>
 </table>
 
-   <Frame>![Create new Azure AD connection](/images/cdy7uua7fh8z/1r6WTgLJUlbiV9jligIwER/55904e9d3c1eec62c2e8421b71cff94b/Enterprise_Connection_-_MSFT_-_English.png)</Frame>
+   <Frame>![Create new Azure AD connection](/docs/images/cdy7uua7fh8z/1r6WTgLJUlbiV9jligIwER/55904e9d3c1eec62c2e8421b71cff94b/Enterprise_Connection_-_MSFT_-_English.png)</Frame>
 
 ## Enable the enterprise connection for your Auth0 application
 
-To use your new Azure AD enterprise connection, you must [enable the connection](/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) for your Auth0 Applications.
+To use your new Azure AD enterprise connection, you must [enable the connection](/docs/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) for your Auth0 Applications.
 
 ## Test the connection
 
-Now you're ready to [test your connection](/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
+Now you're ready to [test your connection](/docs/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
 
 ## Group Memberships and Advanced Profile Information
 
-In this native flow, Auth0 will receive an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/glossary?term=Access+Token">Access Token</Tooltip> from Azure AD which has been issued for your Azure AD Web application. As a result, features like loading group memberships and advanced profile information will no longer work because the Access Token received by Azure AD can no longer be used to query the Azure AD Graph API for this additional information.
+In this native flow, Auth0 will receive an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> from Azure AD which has been issued for your Azure AD Web application. As a result, features like loading group memberships and advanced profile information will no longer work because the Access Token received by Azure AD can no longer be used to query the Azure AD Graph API for this additional information.
 
 However, if you depend on group memberships and advanced profile information, you can change your configuration to accommodate your needs:
 
@@ -242,8 +242,8 @@ However, if you depend on group memberships and advanced profile information, yo
 
 ## Next Steps
 
-* [Integrate with Auth0 using one of our libraries](/libraries)
+* [Integrate with Auth0 using one of our libraries](/docs/libraries)
 * [Integrate with Auth0 using our Authentication API](https://auth0.com/docs/api/authentication)
-* [Read more about the authentication flow](/get-started/authentication-and-authorization-flow)
-* [Pass additional parameters to the Identity Provider](/authenticate/identity-providers/pass-parameters-to-idps)
-* [Re-prompt users for permissions](/authenticate/identity-providers/social-identity-providers/reprompt-permissions)
+* [Read more about the authentication flow](/docs/get-started/authentication-and-authorization-flow)
+* [Pass additional parameters to the Identity Provider](/docs/authenticate/identity-providers/pass-parameters-to-idps)
+* [Re-prompt users for permissions](/docs/authenticate/identity-providers/social-identity-providers/reprompt-permissions)
