@@ -333,7 +333,7 @@ Lorsque vous créez une interface de ligne de commande, vous pouvez ignorer cett
 </Callout>
 
 ### Demander des jetons
-
+](/docs/images/
 Pendant que vous attendez que l’utilisateur active l’appareil, commencez à interroger l’URL de jeton pour demander un jeton d’accès. En utilisant l’intervalle d’interrogation (`interval`) extrait de l’étape précédente, vous devrez `POST` sur [l’URL de jeton](/docs/fr-ca/api/authentication#device-auth) en l’envoyant avec le `device_code`.
 
 Pour éviter des erreurs dues à la latence du réseau, vous devez commencer à compter chaque intervalle après la réception de la réponse de la dernière demande d’interrogation.
@@ -639,7 +639,7 @@ Une fois l’authentification et le consentement obtenus, la demande de confirma
 
 ### Recevoir les jetons
 
-Pendant que l’utilisateur authentifiait et autorisait l’appareil, l’application de l’appareil a continué à interroger l’URL de jeton pour demander un jeton d’accès.
+Pendant que l’utilisateur authentifiait et autorisait l’appareil, l’application de l’appareil a continué à inte](/docs/images/RL de jeton pour demander un jeton d’accès.
 
 Une fois que l’utilisateur a autorisé l’appareil avec succès, vous recevrez une réponse `HTTP 200` avec une charge utile contenant les valeurs suivantes `access_token`, `refresh_token` (en option), `id_token` (en option), `token_type`, et `expires_in` :
 

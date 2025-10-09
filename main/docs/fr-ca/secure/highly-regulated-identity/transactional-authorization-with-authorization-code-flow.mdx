@@ -44,7 +44,7 @@ Le diagramme suivant montre le flux de bout en bout de l’autorisation transact
 3. Mettre au défi l’utilisateur avec un deuxième facteur d’authentification et afficher les détails de la transaction pour que l’utilisateur l’approuve explicitement. Cette étape dépend du facteur d’authentification que vous avez choisi d’appliquer à l’aide des Actions.
 4. Obtenez le jeton d’accès et procédez à l’opération sensible. Votre API valide les détails de la transaction approuvée associés au jeton d’accès.
 
-<Frame>![null](/images/fr-ca/cdy7uua7fh8z/6VYcY5YJRT9Ngaomj5f9yi/c32c9320e654d5add2116174ad45ca7b/HRI_diagrams_-_transactional_authorization_sca_end_to_end_flow_digram.png)</Frame>
+<Frame>![null](/docs/images/fr-ca/cdy7uua7fh8z/6VYcY5YJRT9Ngaomj5f9yi/c32c9320e654d5add2116174ad45ca7b/HRI_diagrams_-_transactional_authorization_sca_end_to_end_flow_digram.png)</Frame>
 
 Nous examinerons chaque phase en détail dans les sections suivantes.
 
@@ -135,7 +135,7 @@ Les sections suivantes expliquent les différents facteurs d’authentification 
 Envoyez une notification poussée à l’appareil mobile enrôlé d’un utilisateur pendant qu’Auth0 invite l’utilisateur à afficher l’écran d’attente de l’authentification multifacteur (<Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip>) sur l’appareil utilisé (par exemple, l’ordinateur portable d’où provient la transaction).
 
-<Frame>![null](/images/fr-ca/cdy7uua7fh8z/4mEJTT4VsAAAb6I0HhJI6r/4b3ed736999cd455cacd452914bd1365/Mobile_Push_-_French.png)</Frame>
+<Frame>![null](/docs/images/fr-ca/cdy7uua7fh8z/4mEJTT4VsAAAb6I0HhJI6r/4b3ed736999cd455cacd452914bd1365/Mobile_Push_-_French.png)</Frame>
 
 Pour les notifications poussées, l’application mobile est chargée de montrer les détails de la transaction à l’utilisateur pour approbation explicite. Pour ce faire, à l’aide d’Actions, stockez les détails de la transaction que vous souhaitez montrer à l’utilisateur avec le `linking_id` sur un serveur ou un point de terminaison externe et mettez-les à disposition pendant quelques minutes seulement. Ensuite, invitez l’utilisateur à envoyer une notification poussée, comme illustré dans l’exemple de code suivant. N’oubliez pas d’interdire la possibilité de revenir à la saisie manuelle d’un mot de passe à usage unique (OTP) en ajoutant l’option `otpFallback: false`.
 
@@ -185,7 +185,7 @@ Vous pouvez également configurer le téléphone, le courriel ou WebAuthn comme 
 
 Pour le facteur d’authentification par téléphone, Auth0 envoie un code de vérification à l’utilisateur par SMS ou vocalement. La capture d’écran suivante montre l’écran d’attente de la MFA après qu’Auth0 a envoyé le code par SMS :
 
-<Frame>![null](/images/fr-ca/cdy7uua7fh8z/kYn2A0p2jTY5CUn1FsjVf/20602f70df44f09c161e97124b1ef1ed/Phone_Challenge_-_French.png)</Frame>
+<Frame>![null](/docs/images/fr-ca/cdy7uua7fh8z/kYn2A0p2jTY5CUn1FsjVf/20602f70df44f09c161e97124b1ef1ed/Phone_Challenge_-_French.png)</Frame>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
