@@ -299,16 +299,16 @@ const {
   } = require("auth0");
 
 const auth0 = new AuthenticationClient({
-    domain: '{{YOUR_DOMAIN}}',
-    clientId: '{{YOUR_CLIENT_ID}}',
-    clientSecret: '{{YOUR_SECRET}}'
+    domain: '{{yourDomain}}',
+    clientId: '{{yourClientId}}',
+    clientSecret: '{{yourSecret}}'
 });
 
 async function getAccessToken() {
     try {
         //get the token
         const response = await auth0.oauth.clientCredentialsGrant({
-            audience: '{{YOU_AUDIENCE}}'
+            audience: '{{yourAudience}}'
         });
 
         // Surface M2M token quota information to your application to monitor 
@@ -377,9 +377,9 @@ const {
   } = require("auth0");
 
 const auth0 = new AuthenticationClient({
-    domain: '{{YOUR_DOMAIN}}',
-    clientId: '{{YOUR_CLIENT_ID}}',
-    clientSecret: '{{YOUR_SECRET}}'
+    domain: '{{yourDomain}}',
+    clientId: '{{yourClientId}}',
+    clientSecret: '{{yourSecret}}'
 });
 
 const MAX_RETRY_AFTER = 60;
@@ -392,7 +392,7 @@ async function getAccessToken(retry = true) {
     try {
         //get the token
         const response = await auth0.oauth.clientCredentialsGrant({
-            audience: '{{YOU_AUDIENCE}}'
+            audience: '{{yourAudience}}'
         });
 
         return response.data.access_token;

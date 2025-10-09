@@ -1,0 +1,12 @@
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
+export const codeExample = `https://{yourDomain}/authorize
+  ?response_type=id_token
+  &client_id={yourClientId}
+  &redirect_uri={https://yourApp/callback}
+  &scope=openid%20profile
+  &connection=google-oauth2
+  &connection_scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fanalytics%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcontacts.readonly
+  &nonce=abc`
+
+<AuthCodeBlock children={codeExample} language="shellscript" />

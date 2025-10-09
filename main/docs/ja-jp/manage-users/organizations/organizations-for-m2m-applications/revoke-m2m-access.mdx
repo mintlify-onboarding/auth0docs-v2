@@ -34,7 +34,7 @@ M2Mアクセスを無効にしても、組織へのアクセスが許可され�
 アプリケーションクライアントの許可と組織の関連付けは、[組織からクライアント許可の関連付けを解除する](/docs/ja-jp/api/management/v2/organizations/delete-client-grants-by-grant-id)エンドポイントを介して削除できます。
 
 ```json lines
-curl -X DELETE --location "https://{YOUR_DOMAIN}/api/v2/organizations/{ORG_id}/client-grants/{GRANT_ID}" \
+curl -X DELETE --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants/{GRANT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
 ```
 

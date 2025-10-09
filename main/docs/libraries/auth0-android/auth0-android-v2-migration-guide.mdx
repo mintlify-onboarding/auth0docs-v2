@@ -85,7 +85,7 @@ v2 improves the ability to customize the way this library makes HTTP requests. A
 
 ```kotlin lines
 // Before
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
+val account = Auth0("{yourClientId}", "{yourDomain}")
 
 account.connectTimeoutInSeconds = 30
 account.readTimeoutInSeconds = 30
@@ -98,7 +98,7 @@ val netClient = DefaultClient(
     readTimeout = 30
 )
 
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
+val account = Auth0("{yourClientId}", "{yourDomain}")
 account.networkingClient = netClient
 ```
 
@@ -106,7 +106,7 @@ account.networkingClient = netClient
 
 ```kotlin lines
 // Before
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
+val account = Auth0("{yourClientId}", "{yourDomain}")
 account.isLoggingEnabled = true
 
 val authAPI = AuthenticationAPIClent(account)
@@ -116,7 +116,7 @@ val netClient = DefaultClient(
     enableLogging = true
 )
 
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
+val account = Auth0("{yourClientId}", "{yourDomain}")
 account.networkingClient = netClient
 ```
 

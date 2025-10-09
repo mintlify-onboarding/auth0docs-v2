@@ -32,14 +32,14 @@ Pour consulter les autorisations d’accès à l’application client qui ont é
 Les autorisations des clients associées à une organisation peuvent être récupérées via le point de terminaison [Autorisations client pour l’organisation](/docs/fr-ca/api/management/v2/organizations/get-organization-client-grants) de l’API :
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/organizations/{ORG_id}/client-grants/" \
+curl -X GET --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants/" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 
 Sinon, si vous souhaitez obtenir des informations sur les applications qui peuvent accéder à au moins une des API d’une organisation, vous pouvez utiliser le paramètre de requête `q` du point de terminaison [Obtenir les clients](/docs/fr-ca/api/management/v2/clients/get-clients) de l’API avec le terme de recherche `client_grant.organization_id:{organization_id}`. Utilisez la syntaxe Lucene, qui est similaire à la [Syntaxe de requête de recherche d’utilisateur](/docs/fr-ca/manage-users/user-search/user-search-query-syntax).
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/clients?q=client_grant.organization_id%3Aorganization_id" \
+curl -X GET --location "https://{yourDomain}/api/v2/clients?q=client_grant.organization_id%3Aorganization_id" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 
@@ -62,14 +62,14 @@ Utilisez l’[Auth0 Dashboard](https://manage.auth0.com/) et la [Management API]
 Les autorisations des clients avec le paramètre `allow_any_organization` peuvent être récupérées via le point de terminaison [Obtenir les autorisations client](https://auth0.com/docs/api/management/v2/client-grants/get-client-grants) de l’API :
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/client-grants?allow_any_organization=true" \
+curl -X GET --location "https://{yourDomain}/api/v2/client-grants?allow_any_organization=true" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 
 Sinon, si vous souhaitez obtenir des informations sur les applications qui peuvent accéder à au moins une des API de n’importe quelle organisation, vous pouvez utiliser le paramètre de requête `q` du point de terminaison [Obtenir les autorisations client](https://auth0.com/docs/api/management/v2/client-grants/get-client-grants) de l’API avec le terme de recherche `client_grant.allow_any_organization:true`. Utilisez la syntaxe Lucene, qui est similaire à la [Syntaxe de requête de recherche d’utilisateur](https://auth0.com/docs/manage-users/user-search/user-search-query-syntax).
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/clients?q=client_grant.allow_any_organization%3Atrue" \
+curl -X GET --location "https://{yourDomain}/api/v2/clients?q=client_grant.allow_any_organization%3Atrue" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 

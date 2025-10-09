@@ -29,14 +29,14 @@ To view the application client grants that have been authorized for a specific o
 Client grants associated with an organization can be retrieved via the [Organization Client Grants](https://auth0.com/docs/api/management/v2/organizations/get-organization-client-grants) API endpoint:
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/organizations/{ORG_id}/client-grants/" \
+curl -X GET --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants/" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 
 Alternatively, if you want to retrieve information on applications that can access at least one of the API for an organization, you can use the `q` query parameter on the [Get Clients API endpoint](https://auth0.com/docs/api/management/v2/clients/get-clients) with the search term `client_grant.organization_id:{organization_id}`. Use the Lucene syntax, which is similar to the [User Search Query Syntax](/docs/manage-users/user-search/user-search-query-syntax).
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/clients?q=client_grant.organization_id%3Aorganization_id" \
+curl -X GET --location "https://{yourDomain}/api/v2/clients?q=client_grant.organization_id%3Aorganization_id" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 
@@ -59,14 +59,14 @@ Use the [Auth0 Dashboard](https://manage.auth0.com/) and [Management API](https:
 Client grants with the `allow_any_organization` parameter can be retrieved via the [Get Client Grants](https://auth0.com/docs/api/management/v2/client-grants/get-client-grants) API endpoint:
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/client-grants?allow_any_organization=true" \
+curl -X GET --location "https://{yourDomain}/api/v2/client-grants?allow_any_organization=true" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 
 Alternatively, if you want to retrieve information on applications that can access at least one of the APIs for any organization, you can use the `q` query parameter on the [Get Client Grants](https://auth0.com/docs/api/management/v2/client-grants/get-client-grants) API endpoint with the search term `client_grant.allow_any_organization:true`. Use the Lucene syntax, which is similar to the [User Search Query Syntax](/docs/manage-users/user-search/user-search-query-syntax).
 
 ```bash lines
-curl -X GET --location "https://{YOUR_DOMAIN}/api/v2/clients?q=client_grant.allow_any_organization%3Atrue" \
+curl -X GET --location "https://{yourDomain}/api/v2/clients?q=client_grant.allow_any_organization%3Atrue" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
 

@@ -103,7 +103,7 @@ The following code sample creates a `client_grant` object with M2M access:
 
 ```bash lines
 curl --request POST \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants' \
+  --url 'https://{yourDomain}/api/v2/client-grants' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -122,7 +122,7 @@ The following code sample updates a `client_grant` object with M2M access:
 
 ```bash lines
 curl --request PATCH \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants/CLIENT_GRANT_ID' \
+  --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -196,7 +196,7 @@ You can configure the default organization for an application via the [Create a 
 The following code sample updates a client with a default organization:
 
 ```bash lines
-curl -X PATCH --location "https://{YOUR_DOMAIN}/api/v2/clients/{CLIENT_ID}" \
+curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{

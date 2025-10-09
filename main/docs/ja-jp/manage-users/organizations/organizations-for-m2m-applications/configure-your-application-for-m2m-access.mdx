@@ -61,7 +61,7 @@ Management APIを使用して、アプリケーションに対するOrganization
 
 ```json lines
 curl --request POST \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants' \
+  --url 'https://{yourDomain}/api/v2/client-grants' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -80,7 +80,7 @@ curl --request POST \
 
 ```json lines
 curl --request PATCH \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants/CLIENT_GRANT_ID' \
+  --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -131,7 +131,7 @@ Auth0 Dashboardからアプリケーションのデフォルトの組織を有�
 次のコードサンプルは、デフォルトの組織を持つクライアントを更新します。
 
 ```json lines
-curl -X PATCH --location "https://{YOUR_DOMAIN}/api/v2/clients/{CLIENT_ID}" \
+curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{

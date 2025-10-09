@@ -76,7 +76,7 @@ L’exemple de code suivant crée un objet `client_grant` avec un accès M2M :
 
 ```json lines
 curl --request POST \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants' \
+  --url 'https://{yourDomain}/api/v2/client-grants' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -95,7 +95,7 @@ L’exemple de code suivant met à jour un objet `client_grant` avec un accès M
 
 ```json lines
 curl --request PATCH \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants/CLIENT_GRANT_ID' \
+  --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -158,7 +158,7 @@ Vous pouvez configurer l’organization par défaut pour une application via les
 L’exemple de code suivant met à jour un client avec une organization par défaut :
 
 ```json lines
-curl -X PATCH --location "https://{YOUR_DOMAIN}/api/v2/clients/{CLIENT_ID}" \
+curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{

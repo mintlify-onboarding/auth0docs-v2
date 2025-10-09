@@ -31,7 +31,7 @@ Pour associer l’autorisation client d’une application à une organisation vi
 Les autorisations de client d’application peuvent être associées à une organization via le point de terminaison [Associate client grant to organization (Associer une autorisation client à une organisation)](/docs/docs/fr-ca/api/management/v2/organizations/create-organization-client-grants) :
 
 ```json lines
-curl -X POST --location "https://{YOUR_DOMAIN}/api/v2/organizations/{ORG_id}/client-grants" \
+curl -X POST --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{

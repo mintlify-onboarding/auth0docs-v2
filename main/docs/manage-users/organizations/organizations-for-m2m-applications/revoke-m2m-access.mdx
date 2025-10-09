@@ -31,7 +31,7 @@ To remove the association between an application’s client grant and an organiz
 Associations between application client grants and organizations can be deleted via the [Disassociate client grants from organizations](https://auth0.com/docs/api/management/v2/organizations/delete-client-grants-by-grant-id) endpoint:
 
 ```bash lines
-curl -X DELETE --location "https://{YOUR_DOMAIN}/api/v2/organizations/{ORG_id}/client-grants/{GRANT_ID}" \
+curl -X DELETE --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants/{GRANT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
 ```
 

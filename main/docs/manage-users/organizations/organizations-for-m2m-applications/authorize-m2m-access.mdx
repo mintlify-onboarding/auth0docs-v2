@@ -30,7 +30,7 @@ To associate an application’s client grant to an organization via the Auth0 Da
 Application client grants can be associated with an organization via the [Associate client grant to organization](https://auth0.com/docs/api/management/v2/organizations/create-organization-client-grants) endpoint:
 
 ```bash lines
-curl -X POST --location "https://{YOUR_DOMAIN}/api/v2/organizations/{ORG_id}/client-grants" \
+curl -X POST --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
