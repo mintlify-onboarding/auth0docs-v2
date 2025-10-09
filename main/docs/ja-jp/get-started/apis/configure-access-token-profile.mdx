@@ -8,6 +8,8 @@ permalink: "configure-access-token-profile"
 'twitter:title': "アクセストークンプロファイルを構成する"
 'twitter:description': "APIに対するアクセストークンプロファイルを構成する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 どのアクセストークンプロファイル（Auth0トークンプロファイル、またはRFC 9068トークンプロファイル）をAPIに使用するか選択できます。構成するアクセストークンプロファイルは、APIに発行されたアクセストークンの形式を決定します。
 
@@ -33,13 +35,13 @@ Management APIを使用する際、アクセストークンプロファイルを
 
 次のコードサンプルは、[リソースサーバーエンドポイントの更新](https://auth0.com/docs/api/management/v2/resource-servers/patch-resource-servers-by-id)にPATCH要求を行います。
 
-```bash lines
-curl --request PATCH \
+export const codeExample = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/resource-servers/API_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"token_dialect": "TOKEN_DIALECT" }'
-```
+  --data '{"token_dialect": "TOKEN_DIALECT" }'`;
+
+<AuthCodeBlock children={codeExample} language="bash" />
 
 次のテーブルで説明されている通り、`API_ID`、`MGMT_API_ACCESS_TOKEN`、`TOKEN_DIALECT`をそれぞれの値に置き換えます。
 

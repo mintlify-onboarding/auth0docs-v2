@@ -11,6 +11,8 @@ title: Link User Accounts
   your app.
 'twitter:title': Link User Accounts
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 <Card title="Availability varies by Auth0 plan">
 
 Both your specific login implementation and your Auth0 plan or custom agreement affect whether this feature is available. To learn more, read [Pricing](https://auth0.com/pricing).
@@ -397,25 +399,18 @@ For user-initiated client-side account linking, you need an access token that co
 
 An access token that contains the `update:current_user_identities` scope can only be used to update the information of the currently logged-in user. Therefore, this method is suitable for scenarios where the user initiates the linking process.
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
   --header 'authorization: Bearer MANAGEMENT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
+  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MANAGEMENT_API_ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -443,18 +438,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer MANAGEMENT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -470,10 +460,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MANAGEMENT_API_ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -498,11 +486,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
@@ -528,10 +513,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -547,11 +530,8 @@ conn.request("POST", "/{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identit
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -567,10 +547,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "authorization": "Bearer MANAGEMENT_API_ACCESS_TOKEN",
@@ -597,8 +575,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 ### Server-side account linking
@@ -612,25 +601,18 @@ For server-side account linking, you need an access token that contains the foll
 
 Access tokens that contain the `update:users` scope can be used to update the information of any user. Therefore, this method is intended for use in server-side code only.
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample11 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
   --header 'authorization: Bearer MANAGEMENT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"provider":"SECONDARY_ACCOUNT_PROVIDER", "user_id": "SECONDARY_ACCOUNT_USER_ID"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
+  --data '{"provider":"SECONDARY_ACCOUNT_PROVIDER", "user_id": "SECONDARY_ACCOUNT_USER_ID"}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MANAGEMENT_API_ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"provider\":\"SECONDARY_ACCOUNT_PROVIDER\", \"user_id\": \"SECONDARY_ACCOUNT_USER_ID\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -658,18 +640,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer MANAGEMENT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"provider\":\"SECONDARY_ACCOUNT_PROVIDER\", \"user_id\": \"SECONDARY_ACCOUNT_USER_ID\"}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -685,10 +662,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MANAGEMENT_API_ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -714,11 +689,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
@@ -744,10 +716,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -763,11 +733,8 @@ conn.request("POST", "/{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identit
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -783,10 +750,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"provider\":\"SECONDARY_ACCOUNT_PROVIDER\", \"user_id\": \"SECONDARY_ACCOUNT_USER_ID\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = [
   "authorization": "Bearer MANAGEMENT_API_ACCESS_TOKEN",
@@ -816,8 +781,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 The secondary user account's `user_id` and `provider` can be deduced by its unique identifier. For example, for the identifier `google-oauth2|108091299999329986433`:
@@ -827,25 +803,18 @@ The secondary user account's `user_id` and `provider` can be deduced by its uniq
 
 Alternatively, you can you can send the secondary account's ID token instead of the `provider` and `user_id`:
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample21 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
   --header 'authorization: Bearer MANAGEMENT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
+  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MANAGEMENT_API_ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -873,18 +842,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer MANAGEMENT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -900,10 +864,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MANAGEMENT_API_ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -928,11 +890,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
@@ -958,10 +917,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -977,11 +934,8 @@ conn.request("POST", "/{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identit
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -997,10 +951,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = [
   "authorization": "Bearer MANAGEMENT_API_ACCESS_TOKEN",
@@ -1027,8 +979,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 ## Auth0.js library

@@ -8,6 +8,8 @@ permalink: "lock-configuration"
 'twitter:title': "Options de configuration de Lock"
 'twitter:description': "Lock propose de nombreuses options configurables qui vous permettent de modifier le comportement, l’apparence et la connectivité du gadget logiciel Lock. Cette ressource fournit pour vous les détails de ces options."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lock peut être configuré par le paramètre `options` envoyé au constructeur. Ces options peuvent modifier le comportement du gadget logiciel Lock, la façon dont il gère les connexions, les champs d’inscription supplémentaires dont vous avez besoin pour votre projet, les valeurs de langue et de texte, les couleurs et les images du gadget logiciel, et bien plus encore. Consultez l’index ci-dessous si vous savez ce que vous recherchez, ou parcourez les options pour plus de détails.
 
@@ -609,13 +611,13 @@ var options = {
 
 L’option `audience` indique l’API qui consommera le jeton d’accès reçu après l’authentification.
 
-```javascript lines
-var options = {
+export const codeExample = `var options = {
   auth: {
     audience: 'https://{yourDomain}/userinfo',
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 ### autoParseHash {Boolean}
 

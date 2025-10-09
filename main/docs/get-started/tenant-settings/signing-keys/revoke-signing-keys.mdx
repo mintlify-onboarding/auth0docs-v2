@@ -10,6 +10,8 @@ title: Revoke Signing Keys
   the Auth0 Dashboard or Management API.
 'twitter:title': Revoke Signing Keys
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can revoke your tenant's application or API signing key using the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. The signing key is used to sign <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip>, <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>, <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> assertions, and <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=WS-Fed">WS-Fed</Tooltip> assertions sent to your application or API. To learn more, read [Signing Keys](/docs/get-started/tenant-settings/signing-keys).
 
 ## Prerequisites
@@ -50,174 +52,171 @@ You can only revoke the previously used signing key.
 1. To get a list of the signing keys, make a `GET` call to the [Get all Application Signing Keys](https://auth0.com/docs/api/management/v2#!/Keys/get_signing_keys) endpoint.
 2. Make a `PUT` call to the [Revoke an Application Signing Key by its Key ID](https://auth0.com/docs/api/management/v2#!/Keys/put_signing_keys) endpoint. Be sure to replace the `{yourKeyId}` and `{yourMgmtApiAccessToken}` placeholder values with your signing key's ID and Management API access token, respectively.
 
-   <CodeGroup>
-   ```bash cURL lines
-   curl --request PUT \
-      --url 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke' \
-      --header 'authorization: Bearer {yourMgmtApiAccessToken}'
-   ```
-   ```csharp C# lines
-   var client = new RestClient("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke");
-   var request = new RestRequest(Method.PUT);
-   request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
-   IRestResponse response = client.Execute(request);
-   ```
+export const codeExample1 = `   curl --request PUT \
+--url 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke' \
+--header 'authorization: Bearer {yourMgmtApiAccessToken}'
+`;
+export const codeExample2 = `   var client = new RestClient("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke");
+var request = new RestRequest(Method.PUT);
+request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
+IRestResponse response = client.Execute(request);
+`;
+export const codeExample3 = `   package main
 
-   ```go Go lines
-   package main
+import (
+   "fmt"
+   "net/http"
+   "io/ioutil"
+)
 
-   import (
-      "fmt"
-      "net/http"
-      "io/ioutil"
-   )
+func main() {
 
-   func main() {
+   url := "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"
 
-      url := "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"
+   req, _ := http.NewRequest("PUT", url, nil)
 
-      req, _ := http.NewRequest("PUT", url, nil)
+   req.Header.Add("authorization", "Bearer {yourMgmtApiAccessToken}")
 
-      req.Header.Add("authorization", "Bearer {yourMgmtApiAccessToken}")
+   res, _ := http.DefaultClient.Do(req)
 
-      res, _ := http.DefaultClient.Do(req)
+   defer res.Body.Close()
+   body, _ := ioutil.ReadAll(res.Body)
 
-      defer res.Body.Close()
-      body, _ := ioutil.ReadAll(res.Body)
+   fmt.Println(res)
+   fmt.Println(string(body))
 
-      fmt.Println(res)
-      fmt.Println(string(body))
+}
+`;
+export const codeExample4 = `   HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
+   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
+   .asString();
+`;
+export const codeExample5 = `   var axios = require("axios").default;
 
-   }
-   ```
-   ```java Java lines
-   HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
-      .header("authorization", "Bearer {yourMgmtApiAccessToken}")
-      .asString();
-   ```
+var options = {
+method: 'PUT',
+url: 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke',
+headers: {authorization: 'Bearer {yourMgmtApiAccessToken}'}
+};
 
-   ```javascript Node.JS lines
-   var axios = require("axios").default;
+axios.request(options).then(function (response) {
+console.log(response.data);
+}).catch(function (error) {
+console.error(error);
+});
+`;
+export const codeExample6 = `   #import <Foundation/Foundation.h>
 
-   var options = {
-   method: 'PUT',
-   url: 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke',
-   headers: {authorization: 'Bearer {yourMgmtApiAccessToken}'}
-   };
+NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtApiAccessToken}" };
 
-   axios.request(options).then(function (response) {
-   console.log(response.data);
-   }).catch(function (error) {
-   console.error(error);
-   });
-   ```
-   ```obj-c Obj-C lines
-   #import <Foundation/Foundation.h>
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"]
+                                                      cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"PUT"];
+[request setAllHTTPHeaderFields:headers];
 
-   NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtApiAccessToken}" };
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                          completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                   NSLog(@"%@", error);
+                                                } else {
+                                                   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                   NSLog(@"%@", httpResponse);
+                                                }
+                                          }];
+[dataTask resume];
+`;
+export const codeExample7 = `   $curl = curl_init();
 
-   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"]
-                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                      timeoutInterval:10.0];
-   [request setHTTPMethod:@"PUT"];
-   [request setAllHTTPHeaderFields:headers];
+curl_setopt_array($curl, [
+CURLOPT_URL => "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke",
+CURLOPT_RETURNTRANSFER => true,
+CURLOPT_ENCODING => "",
+CURLOPT_MAXREDIRS => 10,
+CURLOPT_TIMEOUT => 30,
+CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+CURLOPT_CUSTOMREQUEST => "PUT",
+CURLOPT_HTTPHEADER => [
+   "authorization: Bearer {yourMgmtApiAccessToken}"
+],
+]);
 
-   NSURLSession *session = [NSURLSession sharedSession];
-   NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                   if (error) {
-                                                      NSLog(@"%@", error);
-                                                   } else {
-                                                      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                      NSLog(@"%@", httpResponse);
-                                                   }
-                                             }];
-   [dataTask resume];
-   ```
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-   ```php PHP lines
-   $curl = curl_init();
+curl_close($curl);
 
-   curl_setopt_array($curl, [
-   CURLOPT_URL => "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke",
-   CURLOPT_RETURNTRANSFER => true,
-   CURLOPT_ENCODING => "",
-   CURLOPT_MAXREDIRS => 10,
-   CURLOPT_TIMEOUT => 30,
-   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-   CURLOPT_CUSTOMREQUEST => "PUT",
-   CURLOPT_HTTPHEADER => [
-      "authorization: Bearer {yourMgmtApiAccessToken}"
-   ],
-   ]);
+if ($err) {
+echo "cURL Error #:" . $err;
+} else {
+echo $response;
+}
+`;
+export const codeExample8 = `   import http.client
 
-   $response = curl_exec($curl);
-   $err = curl_error($curl);
+conn = http.client.HTTPSConnection("")
 
-   curl_close($curl);
+headers = { 'authorization': "Bearer {yourMgmtApiAccessToken}" }
 
-   if ($err) {
-   echo "cURL Error #:" . $err;
-   } else {
-   echo $response;
-   }
-   ```
-   ```python Python lines
-   import http.client
+conn.request("PUT", "/{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke", headers=headers)
 
-   conn = http.client.HTTPSConnection("")
+res = conn.getresponse()
+data = res.read()
 
-   headers = { 'authorization': "Bearer {yourMgmtApiAccessToken}" }
+print(data.decode("utf-8"))
+`;
+export const codeExample9 = `   require 'uri'
+require 'net/http'
+require 'openssl'
 
-   conn.request("PUT", "/{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke", headers=headers)
+url = URI("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
 
-   res = conn.getresponse()
-   data = res.read()
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-   print(data.decode("utf-8"))
-   ```
+request = Net::HTTP::Put.new(url)
+request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 
-   ```ruby Ruby lines
-   require 'uri'
-   require 'net/http'
-   require 'openssl'
+response = http.request(request)
+puts response.read_body
+`;
+export const codeExample10 = `   import Foundation
 
-   url = URI("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
+let headers = ["authorization": "Bearer {yourMgmtApiAccessToken}"]
 
-   http = Net::HTTP.new(url.host, url.port)
-   http.use_ssl = true
-   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")! as URL,
+                                       cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "PUT"
+request.allHTTPHeaderFields = headers
 
-   request = Net::HTTP::Put.new(url)
-   request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+if (error != nil) {
+   print(error)
+} else {
+   let httpResponse = response as? HTTPURLResponse
+   print(httpResponse)
+}
+})
 
-   response = http.request(request)
-   puts response.read_body
-   ```
-   ```swift Swift lines
-   import Foundation
+dataTask.resume()
+`;
 
-   let headers = ["authorization": "Bearer {yourMgmtApiAccessToken}"]
-
-   let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                       timeoutInterval: 10.0)
-   request.httpMethod = "PUT"
-   request.allHTTPHeaderFields = headers
-
-   let session = URLSession.shared
-   let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-   if (error != nil) {
-      print(error)
-   } else {
-      let httpResponse = response as? HTTPURLResponse
-      print(httpResponse)
-   }
-   })
-
-   dataTask.resume()
-   ```
-   </CodeGroup>
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
+</CodeGroup>
 
 <table class="table"><thead>
 <tr>

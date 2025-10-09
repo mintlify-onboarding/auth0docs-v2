@@ -8,6 +8,8 @@ permalink: "configure-rules"
 'twitter:title': "Configure Rules"
 'twitter:description': "Learn how to configure Tenant Access Control List (ACL) rules with the Auth0 Management API."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 You can configure Tenant Access Control List (ACL) rules with the Auth0 <Tooltip href="/docs/docs/fr-ca/glossary?term=management-api" tip="Management API
 Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip>.
@@ -126,8 +128,7 @@ To create a Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-```go lines
-package main
+export const codeExample1 = `package main
 
 import (
 	"context"
@@ -163,8 +164,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Network ACL has been created")
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="go" />
 
 </Tab><Tab title="Node SDK">
 
@@ -264,8 +266,7 @@ To enable monitoring mode for a Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-```go lines
-package main
+export const codeExample2 = `package main
 
 import (
 	"context"
@@ -295,8 +296,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Network ACL has been updated to enable monitoring mode")
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="go" />
 
 </Tab><Tab title="Node SDK">
 

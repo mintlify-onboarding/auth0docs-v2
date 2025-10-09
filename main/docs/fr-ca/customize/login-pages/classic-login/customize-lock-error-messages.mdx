@@ -8,13 +8,14 @@ permalink: "customize-lock-error-messages"
 'twitter:title': "Personnaliser les messages d’erreur de verrouillage"
 'twitter:description': "Personnalisation des messages d’erreur avec Lock"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez personnaliser les messages d’erreur qui seront affichés dans certaines situations en fournissant une option `languageDictionary`. Une liste complète des champs `languageDictionary` disponibles qui peuvent être personnalisés se trouve dans le repertoire GitHub [Dictionnaire anglais pour Lock](https://github.com/auth0/lock/blob/master/src/i18n/en.js). Voici un exemple de messages d’erreur personnalisés :
 
 
 
-```javascript lines
-// Examples of customized error messages in the languageDictionary option
+export const codeExample = `// Examples of customized error messages in the languageDictionary option
 var options = {
   languageDictionary: {
     error: {
@@ -37,8 +38,9 @@ var lock = new Auth0Lock(
   '{yourClientId}',
   '{yourDomain}',
   options
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 ## Erreurs personnalisées dans les Règles
 

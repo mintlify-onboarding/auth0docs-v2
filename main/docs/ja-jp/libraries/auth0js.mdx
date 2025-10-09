@@ -8,6 +8,8 @@ permalink: "auth0js"
 'twitter:title': "Auth0.js v9の参考情報"
 'twitter:description': "auth0.js v9をインストール・初期化・使用する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0.jsは、Auth0クライアント側ライブラリーです。[ユニバーサルログイン](/docs/ja-jp/universal-login)と一緒に使用することをお勧めします（ユニバーサルログインは、可能な限り使用してください）。SPAでauth0.jsを使用すると、Auth0での認証・認可が簡単になります。
 
@@ -65,14 +67,14 @@ import auth0 from 'auth0-js';
 
 Auth0アプリケーションの新しいインスタンスを次のように初期化します。
 
-```html lines
-<script type="text/javascript">
+export const codeExample1 = `<script type="text/javascript">
   var webAuth = new auth0.WebAuth({
     domain:       '{yourDomain}',
     clientID:     '{yourClientId}'
   });
-</script>
-```
+</script>`;
+
+<AuthCodeBlock children={codeExample1} language="html" />
 
 #### 使用可能なパラメーター
 
@@ -328,8 +330,7 @@ webAuth.login({
 `buildAuthorizeUrl`メソッドを使用して`/authorize` URLを構築し、新しいトランザクションを初期化することができます。ブラウザーベースの（パッシブ）認証を実装したいときは、このメソッドを使用します。
 
 
-```javascript lines
-// Calculate URL to redirect to
+export const codeExample2 = `// Calculate URL to redirect to
 var url = webAuth.client.buildAuthorizeUrl({
   clientID: '{yourClientId}', // string
   responseType: 'token id_token', // code
@@ -339,8 +340,9 @@ var url = webAuth.client.buildAuthorizeUrl({
 });
 
 // Redirect to url
-// ...
-```
+// ...`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 `state`パラメーターは、Auth0が返す不透明な値です。このメソッドは、CSRF攻撃を防ぐのに有効なため、`webAuth.authorize()`を呼び出す代わりに自分でURLにリダイレクトを行う場合には指定する必要があります。詳細については、「[Stateパラメーター](/docs/ja-jp/secure/attack-protection/state-parameters)」を参照してください。
 
@@ -360,14 +362,14 @@ var url = webAuth.client.buildAuthorizeUrl({
 パスワードレスを使用するには、auth0.jsを`redirectUri`で初期化し、`responseType: 'token'`をに設定します。
 
 
-```javascript lines
-var webAuth = new auth0.WebAuth({
+export const codeExample3 = `var webAuth = new auth0.WebAuth({
   clientID: '{yourClientId}',
   domain: '{yourDomain}',
   redirectUri: 'http://example.com',
   responseType: 'token id_token'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 ### パスワードレス認証を開始する
 
@@ -797,29 +799,29 @@ Management APIの機能を使うと、異なるプロバイダーからの個別
 
 [カスタムドメイン](/docs/ja-jp/customize/custom-domains)を使用している場合、Management API呼び出しで使用するために、`webAuth`の新しいインスタンスを作成する必要があります。この場合、カスタムドメインではなく、Auth0のドメインを使用する必要があります。これはManagement API呼び出しがAuth0のドメインでのみ動作するためです。
 
-```javascript lines
-var webAuth = new auth0.WebAuth({
+export const codeExample4 = `var webAuth = new auth0.WebAuth({
   clientID: '{yourClientId}',
   domain: '{yourDomain}',
   redirectUri: 'http://example.com',
-  audience: `https://{yourDomain}/api/v2/`,
+  audience: \`https://{yourDomain}/api/v2/\`,
   scope: 'read:current_user',
   responseType: 'token id_token'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
 また、`checkSession()`を使用してこれを行うこともできます。
 
-```javascript lines
-webAuth.checkSession(
+export const codeExample5 = `webAuth.checkSession(
   {
-    audience: `https://{yourDomain}/api/v2/`,
+    audience: \`https://{yourDomain}/api/v2/\`,
     scope: 'read:current_user'
   }, function(err, result) {
      // use result.accessToken
   }
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample5} language="javascript" />
 
 必要なスコープを指定しなければなりません。以下のスコープを要求することができます。
 
@@ -833,12 +835,12 @@ webAuth.checkSession(
 
 アクセストークンを取得したら、そのアカウントのAuth0ドメインとアクセストークンを渡して新しい`auth0.Management`インスタンスを作成することができます。
 
-```javascript lines
-var auth0Manage = new auth0.Management({
+export const codeExample6 = `var auth0Manage = new auth0.Management({
   domain: '{yourDomain}',
   token: 'ACCESS_TOKEN'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample6} language="javascript" />
 
 ### ユーザープロファイルの取得
 

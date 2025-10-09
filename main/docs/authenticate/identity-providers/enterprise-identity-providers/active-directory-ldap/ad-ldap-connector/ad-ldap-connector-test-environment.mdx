@@ -9,6 +9,8 @@ title: Set Up AD/LDAP Connector Test Environment
   Controller.
 'twitter:title': Set Up AD/LDAP Connector Test Environment
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can set up a test environment by creating a minimal AD Domain Controller installation on a cloud-deployed virtual machine (VM). You can run your VM on any cloud platform. This example shows how to set one up on Microsoft Azure.
 
 1. Create a virtual machine on the [Azure Management](https://azure.microsoft.com/en-us/features/azure-portal/) console.
@@ -62,9 +64,10 @@ To ensure that everything is working using your Auth0 account, we're going to co
 5. Under **Enterprise**, enable the `auth0-test-ad` **Active Directory / LDAP** connection.
 6. Test the authentication flow by opening the following link in your browser:
 
-   ```http wrap lines
-   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection=auth0-test-ad
-   ```
+   export const codeExample = `   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection=auth0-test-ad
+   `;
+
+<AuthCodeBlock children={codeExample} language="http" />
 
 
    

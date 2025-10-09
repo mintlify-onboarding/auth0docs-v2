@@ -10,6 +10,8 @@ title: Connect to OpenID Connect Identity Provider
   using an enterprise connection.
 'twitter:title': Connect to OpenID Connect Identity Provider
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 ## Prerequisites
 
 * [Register your Application with Auth0](/docs/get-started/auth0-overview/create-applications).
@@ -210,23 +212,16 @@ These examples will show you the variety of ways you can create the connection u
 
 #### Use front-channel with discovery endpoint
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections");
+  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"front_channel\", \"discovery_url\": \"https://IDP_DOMAIN/.well-known/openid-configuration\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -253,17 +248,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"front_channel\", \"discovery_url\": \"https://IDP_DOMAIN/.well-known/openid-configuration\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -285,10 +275,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN" };
 NSDictionary *parameters = @{ @"strategy": @"oidc",
@@ -314,11 +302,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections",
@@ -343,10 +328,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -359,11 +342,8 @@ conn.request("POST", "/{yourDomain}/api/v2/connections", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -378,10 +358,8 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 request.body = "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"front_channel\", \"discovery_url\": \"https://IDP_DOMAIN/.well-known/openid-configuration\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = ["authorization": "Bearer MGMT_API_ACCESS_TOKEN"]
 let parameters = [
@@ -414,29 +392,33 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 #### Use back-channel with discovery endpoint
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample11 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID", "client_secret" : "IDP_CLIENT_SECRET", "scopes": "openid profile" } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections");
+  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID", "client_secret" : "IDP_CLIENT_SECRET", "scopes": "openid profile" } }'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"back_channel\", \"discovery_url\": \"https://IDP_DOMAIN/.well-known/openid-configuration\", \"client_id\" : \"IDP_CLIENT_ID\", \"client_secret\" : \"IDP_CLIENT_SECRET\", \"scopes\": \"openid profile\" } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -463,17 +445,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"back_channel\", \"discovery_url\": \"https://IDP_DOMAIN/.well-known/openid-configuration\", \"client_id\" : \"IDP_CLIENT_ID\", \"client_secret\" : \"IDP_CLIENT_SECRET\", \"scopes\": \"openid profile\" } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -496,10 +473,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN" };
 NSDictionary *parameters = @{ @"strategy": @"oidc",
@@ -525,11 +500,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections",
@@ -554,10 +526,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -570,11 +540,8 @@ conn.request("POST", "/{yourDomain}/api/v2/connections", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -589,10 +556,8 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 request.body = "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"back_channel\", \"discovery_url\": \"https://IDP_DOMAIN/.well-known/openid-configuration\", \"client_id\" : \"IDP_CLIENT_ID\", \"client_secret\" : \"IDP_CLIENT_SECRET\", \"scopes\": \"openid profile\" } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = ["authorization": "Bearer MGMT_API_ACCESS_TOKEN"]
 let parameters = [
@@ -626,29 +591,33 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 #### Use back-channel specifying issuer settings
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample21 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "client_secret" : "IDP_CLIENT_SECRET", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections");
+  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "client_secret" : "IDP_CLIENT_SECRET", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"back_channel\", \"issuer\": \"https://IDP_DOMAIN\", \"authorization_endpoint\": \"https://IDP_DOMAIN/authorize\", \"client_secret\" : \"IDP_CLIENT_SECRET\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -675,17 +644,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"back_channel\", \"issuer\": \"https://IDP_DOMAIN\", \"authorization_endpoint\": \"https://IDP_DOMAIN/authorize\", \"client_secret\" : \"IDP_CLIENT_SECRET\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -709,10 +673,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN" };
 NSDictionary *parameters = @{ @"strategy": @"oidc",
@@ -738,11 +700,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections",
@@ -767,10 +726,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -783,11 +740,8 @@ conn.request("POST", "/{yourDomain}/api/v2/connections", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -802,10 +756,8 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 request.body = "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"back_channel\", \"issuer\": \"https://IDP_DOMAIN\", \"authorization_endpoint\": \"https://IDP_DOMAIN/authorize\", \"client_secret\" : \"IDP_CLIENT_SECRET\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-imimport Foundation
+puts response.read_body`;
+export const codeExample30 = `imimport Foundation
 
 let headers = ["authorization": "Bearer MGMT_API_ACCESS_TOKEN"]
 let parameters = [
@@ -840,29 +792,33 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 #### Use front-channel specifying issuer settings
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample31 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "token_endpoint": "https://IDP_DOMAIN/oauth/token", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections");
+  --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "token_endpoint": "https://IDP_DOMAIN/oauth/token", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'`;
+export const codeExample32 = `var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"front_channel\", \"issuer\": \"https://IDP_DOMAIN\", \"authorization_endpoint\": \"https://IDP_DOMAIN/authorize\", \"token_endpoint\": \"https://IDP_DOMAIN/oauth/token\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample33 = `package main
 
 import (
 	"fmt"
@@ -889,17 +845,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
+}`;
+export const codeExample34 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"front_channel\", \"issuer\": \"https://IDP_DOMAIN\", \"authorization_endpoint\": \"https://IDP_DOMAIN/authorize\", \"token_endpoint\": \"https://IDP_DOMAIN/oauth/token\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample35 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -923,10 +874,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample36 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN" };
 NSDictionary *parameters = @{ @"strategy": @"oidc",
@@ -952,11 +901,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample37 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections",
@@ -981,10 +927,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample38 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -997,11 +941,8 @@ conn.request("POST", "/{yourDomain}/api/v2/connections", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample39 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -1016,10 +957,8 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 request.body = "{ \"strategy\": \"oidc\", \"name\": \"CONNECTION_NAME\", \"options\": { \"type\": \"front_channel\", \"issuer\": \"https://IDP_DOMAIN\", \"authorization_endpoint\": \"https://IDP_DOMAIN/authorize\", \"token_endpoint\": \"https://IDP_DOMAIN/oauth/token\", \"client_id\" : \"IDP_CLIENT_ID\",  \"scopes\": \"openid profile\" } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample40 = `import Foundation
 
 let headers = ["authorization": "Bearer MGMT_API_ACCESS_TOKEN"]
 let parameters = [
@@ -1054,8 +993,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample31} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample32} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample33} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample34} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample35} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample36} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample37} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample38} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample39} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample40} language="swift" filename="Swift" />
 </CodeGroup>
 
 ## Configure PKCE and claims mapping

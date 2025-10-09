@@ -8,6 +8,8 @@ permalink: "configure-amazon-web-services-for-sso"
 'twitter:title': "Configurer les Services Web Amazon pour l’authentification unique (SSO)"
 'twitter:description': "Apprenez comment configurer l’authentification unique (SSO) pour Auth0 avec les Services Web Amazon (AWS)."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 En intégrant Auth0 à AWS, vous permettrez à vos utilisateurs de se connecter à AWS en utilisant le fournisseur d’identité.
 
@@ -175,8 +177,7 @@ Pour prolonger le délai autorisé avant l’expiration de la session AWS (3 6
 
 
 
-```javascript lines
-function (user, context, callback) {
+export const codeExample = `function (user, context, callback) {
     if(context.clientID !== '{yourClientId}'){
       return callback(null, user, context);
     }
@@ -191,8 +192,9 @@ function (user, context, callback) {
     'https://aws.amazon.com/SAML/Attributes/SessionDuration': 'time'   };
 
   callback(null, user, context);
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 ## Tester la configuration
 

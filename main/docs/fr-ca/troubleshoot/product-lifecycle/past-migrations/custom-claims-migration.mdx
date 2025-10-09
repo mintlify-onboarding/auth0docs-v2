@@ -8,6 +8,8 @@ permalink: "custom-claims-migration"
 'twitter:title': "Migration des demandes personnalisées"
 'twitter:description': "Décrit comment migrer des demandes personnalisées héritées avec espace de noms vers les demandes personnalisées."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 À partir du 28 juillet 2022, Auth0 permettra d’ajouter des demandes personnalisées privées, sans espace de nommage, aux jetons d’accès et d’ID. Ces mêmes demandes ont également été ajoutées à la réponse du [point de terminaison `/userinfo`](https://auth0.com/docs/api/authentication#get-user-info). Pour en savoir plus sur les types de demandes <Tooltip href="/docs/docs/fr-ca/glossary?term=json-web-token" tip="Jeton Web JSON (JWT)
 Format standard de jeton d’ID (et souvent de jeton d’accès) utilisé pour représenter en toute sécurité des demandes entre deux parties." cta="Voir le glossaire">JWT</Tooltip>, consultez [Demandes de jetons Web JSON](/docs/fr-ca/secure/tokens/json-web-tokens/json-web-token-claims).
@@ -250,8 +252,7 @@ audience:https://{yourApi}.com -- Note the audience, that is a custom API
 scope:openid profile
 ```
 
-```json lines
-// The Access token returned by Auth0
+export const codeExample = `// The Access token returned by Auth0
 {
   "iss": "https://{yourTenant}.auth0.com/",
   "sub": ***,
@@ -268,8 +269,9 @@ scope:openid profile
   // The custom claims were added, because the Audience is not an Auth0 audience
   "myATclaim": "this is a claim",
   "https://{yourDomain}.com/{myATclaim}": "this is a claim"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="json" />
 
 L’exemple ci-dessous vous montre la réponse renvoyée avec des demandes personnalisées qui n’ont pas été ajoutées avec une audience de l’API Auth0 :
 

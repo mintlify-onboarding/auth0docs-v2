@@ -8,6 +8,8 @@ permalink: "revoke-refresh-tokens"
 'twitter:title': "Révoquer les jetons d'actualisation"
 'twitter:description': "Comment révoquer un jeton d’actualisation compromis à l’aide d’Authentication API, de Management API ou d’Auth0 Dashboard."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez révoquer les jetons d’actualisation si ceux-ci sont compromis. Auth0 s’occupe de révoquer les jetons comme s’ils avaient été potentiellement compromis par des entités malveillantes.
 
@@ -54,23 +56,16 @@ Pour révoquer un jeton d’actualisation, envoyez une demande `POST` à `https:
 
 Le point de terminaison `/oauth/revoke` révoque toute l’autorisation, pas seulement un jeton en particulier. Utilisez le point de terminaison `/api/v2/device-credentials` pour révoquer les jetons d’actualisation. L’API valide d’abord les identifiants de l’application, puis vérifie si le jeton a été fourni à l’application qui fait la demande de révocation. Si cette validation échoue, la demande est refusée et l’application est informée de l’erreur. Ensuite, l’API invalide le jeton. L’invalidation a lieu immédiatement et le jeton ne peut plus être utilisé après la révocation. Chaque demande de révocation invalide tous les jetons qui ont été émis pour la même autorisation.
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/revoke' \
   --header 'content-type: application/json' \
-  --data '{ "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "token": "{yourRefreshToken}" }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/revoke");
+  --data '{ "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "token": "{yourRefreshToken}" }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/oauth/revoke");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"token\": \"{yourRefreshToken}\" }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -97,17 +92,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/revoke")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/revoke")
   .header("content-type", "application/json")
   .body("{ \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"token\": \"{yourRefreshToken}\" }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -124,10 +114,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"client_id": @"{yourClientId}",
@@ -153,11 +141,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/revoke",
@@ -182,10 +167,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -198,11 +181,8 @@ conn.request("POST", "/{yourDomain}/oauth/revoke", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -217,10 +197,8 @@ request["content-type"] = 'application/json'
 request.body = "{ \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"token\": \"{yourRefreshToken}\" }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = [
@@ -248,8 +226,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 Où :
@@ -319,16 +308,16 @@ Réponses possibles :
 
 Pour révoquer un jeton d’actualisation à l’aide d’Auth0 Management API, vous avez besoin de l’`id` du jeton d’actualisation que vous souhaitez révoquer. Pour obtenir la liste des jetons d’actualisation existants, appelez [le point de terminaison](/docs/fr-ca/api/management/v2#!/Device_Credentials/get_device_credentials)`/api/v2/device-credentials`, en indiquant `type=refresh_token` et `user_id` avec un jeton d’accès contenant la permission `read:device_credentials`. Pour limiter les résultats, vous pouvez également indiquer le `client_id` associé au jeton (s’il est connu).
 
-```json lines
-GET https://{yourDomain}/api/v2/device-credentials?
+export const codeExample11 = `GET https://{yourDomain}/api/v2/device-credentials?
       type=refresh_token
       &client_id=
       &user_id=
     
     {
       "Authorization":   "Bearer {your_access_token}"
-    }
-```
+    }`;
+
+<AuthCodeBlock children={codeExample11} language="json" />
 
 Le corps de la réponse:
 
@@ -343,13 +332,13 @@ Le corps de la réponse:
 
 Pour révoquer un jeton d’actualisation, appelez le point de terminaison `/api/v2/device-credentials` avec un jeton d’accès contenant la permission `delete:device_credentials` et la valeur de l’ID obtenu plus haut :
 
-```javascript lines
-DELETE https://{yourDomain}/api/v2/device-credentials/{id}
+export const codeExample12 = `DELETE https://{yourDomain}/api/v2/device-credentials/{id}
     
     {
       "Authorization":   "Bearer {your_access_token}"
-    }
-```
+    }`;
+
+<AuthCodeBlock children={codeExample12} language="javascript" />
 
 La réponse sera `HTTP 204: The credential no longer exists`.
 

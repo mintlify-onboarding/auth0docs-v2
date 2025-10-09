@@ -2,6 +2,8 @@
 title: ".NET Android and iOS"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Frederik Prijck
 
@@ -120,15 +122,15 @@ Alternatively, if you are using Visual Studio for Mac, please perform the follow
 
 To integrate Auth0 login into your application, instantiate an instance of the `Auth0Client` class, configuring the Auth0 Domain and Client ID:
 
-```cs lines
-using Auth0.OidcClient;
+export const codeExample1 = `using Auth0.OidcClient;
 
 var client = new Auth0Client(new Auth0ClientOptions
 {
     Domain = "{yourDomain}",
     ClientId = "{yourClientId}"
-}, this);
-```
+}, this);`;
+
+<AuthCodeBlock children={codeExample1} language="cs" />
 
 
 
@@ -154,8 +156,7 @@ After a user has logged in, they will be redirected back to your application at 
 
 Register an intent which will handle this callback URL. An easy way to do this is to register the intent on the same activity from which you called the `LoginAsync` method to initiate the authentication flow.
 
-```cs lines
-[Activity(Label = "AndroidSample", MainLauncher = true, Icon = "@drawable/icon",
+export const codeExample2 = `[Activity(Label = "AndroidSample", MainLauncher = true, Icon = "@drawable/icon",
     LaunchMode = LaunchMode.SingleTask)]
 [IntentFilter(
     new[] { Intent.ActionView },
@@ -166,8 +167,9 @@ Register an intent which will handle this callback URL. An easy way to do this i
 public class MainActivity : Activity
 {
     // Code omitted
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="cs" />
 
 
 

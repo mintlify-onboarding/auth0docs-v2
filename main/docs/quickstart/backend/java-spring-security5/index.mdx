@@ -2,6 +2,8 @@
 title: "Spring Boot API: Authorization"
 permalink: "01-authorization"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Jim Anderson
 
@@ -50,14 +52,14 @@ This example uses the `read:messages` scope.
 
 The sample project uses a `/src/main/resources/application.yml` file, which configures it to use the correct Auth0 **Domain** and **API Identifier** for your API. If you download the code from this page it will be automatically configured. If you clone the example from GitHub, you will need to fill it in yourself.
 
-```yml lines
-okta:
+export const codeExample = `okta:
   oauth2:
     # Replace with the domain of your Auth0 tenant.
     issuer: https://{yourDomain}/
     # Replace with the API Identifier for your Auth0 API.
-    audience: {yourApiIdentifier}
-```
+    audience: {yourApiIdentifier}`;
+
+<AuthCodeBlock children={codeExample} language="yml" />
 
 <table class="table"><thead>
 <tr>

@@ -8,6 +8,8 @@ permalink: "install-configure-ad-ldap-connector"
 'twitter:title': "Installer et configurer le connecteur AD/LDAP"
 'twitter:description': "Décrit comment installer et configurer le connecteur AD/LDAP."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 import { InlineImage } from "/snippets/InlineImage.mdx";
 
@@ -134,12 +136,13 @@ Assurez-vous que tous les tests sont verts.
    `node server.js`Lorsque vous êtes invité à saisir le numéro de ticket, saisissez l’URL complète du ticket URL dans l’onglet **Paramètres** de l’écran **Configuration du connecteur AD/LDAP** dans l'Auth0 Management Dashboard.
 4. Vous serez invité à modifier le fichier de configuration `config.json` avec vos détails de connexion et d’authentification LDAP :
 
-   ``` lines
-   "LDAP_URL": "ldap://{yourLdapServerFqdn}",
+   export const codeExample = `   "LDAP_URL": "ldap://{yourLdapServerFqdn}",
        "LDAP_BASE": "dc={yourDomain},dc=com",
        "LDAP_BIND_USER":"{yourLdapUser}",
        "LDAP_BIND_PASSWORD":"{yourLdapUserPassword}" //cleartextpassword
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    
 

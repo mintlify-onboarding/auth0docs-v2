@@ -2,6 +2,8 @@
 title: "UWP"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Damien Guard
 
@@ -70,8 +72,7 @@ Install-Package Auth0.OidcClient.UWP
 
 To integrate Auth0 login into your application, simply instantiate an instance of the `Auth0Client` class, configuring the Auth0 Domain and Client ID:
 
-```cs lines
-// MainPage.xaml.cs
+export const codeExample = `// MainPage.xaml.cs
 
 using Auth0.OidcClient;
 
@@ -79,8 +80,9 @@ var client = new Auth0Client(new Auth0ClientOptions
 {
     Domain = "{yourDomain}",
     ClientId = "{yourClientId}"
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample} language="cs" />
 
 
 

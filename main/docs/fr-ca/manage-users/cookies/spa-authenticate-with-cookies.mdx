@@ -8,6 +8,8 @@ permalink: "spa-authenticate-with-cookies"
 'twitter:title': "Authentifier les applications à page unique avec des témoins"
 'twitter:description': "Décrit comment utiliser votre système dorsal pour authentifier une application à page unique (SPA) avec des témoins."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Assurer la sécurité d’une application à page unique (SPA) peut être difficile. Toutefois, si votre SPA répond aux critères suivants, vous pouvez simplifier votre mise en œuvre en utilisant des témoins pour l’authentification.
 
@@ -101,12 +103,13 @@ APP_SESSION_SECRET=<YOUR SECRET VALUE>
 7. Sur l’écran **Settings (Paramètres)**, notez les paramètres du domaine et de l’ID client dans la partie supérieure.
 8. Deux valeurs doivent être définies dans l’application. Recherchez le fichier `env` et attribuez les valeurs ci-dessous :
 
-   ``` lines
-   ISSUER_BASE_URL={yourDomain}
+   export const codeExample = `   ISSUER_BASE_URL={yourDomain}
    CLIENT_ID={yourClientId}
    BASE_URL=http://localhost:3000
    APP_SESSION_SECRET=<YOUR SECRET VALUE>
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    
 

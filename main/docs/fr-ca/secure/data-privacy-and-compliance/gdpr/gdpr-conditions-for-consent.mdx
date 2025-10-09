@@ -8,6 +8,8 @@ permalink: "gdpr-conditions-for-consent"
 'twitter:title': "RGPD : Conditions de consentement"
 'twitter:description': "Décrit les fonctionnalités d’Auth0 qui peuvent vous aider à vous conformer aux conditions de consentement des exigences du RGPD."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Conformément à l’article 7 du RGPD, vous devez demander aux utilisateurs de consentir au traitement de leurs données personnelles sous une forme claire et facilement accessible. Vous devez également montrer que l’utilisateur a consenti et lui fournir un moyen facile de retirer son consentement à tout moment.
 
@@ -79,21 +81,14 @@ Définissez le paramètre de requête **fields** sur `user_metadata` afin de lim
 
 Exemple de demande :
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample1 = `curl --request GET \
   --url 'https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata' \
-  --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata");
+  --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -117,16 +112,11 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -139,10 +129,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer YOUR_MGMT_API_ACCESS_TOKEN" };
 
@@ -162,11 +150,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata",
@@ -190,10 +175,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -204,11 +187,8 @@ conn.request("GET", "/{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRES
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -222,10 +202,8 @@ request = Net::HTTP::Get.new(url)
 request["authorization"] = 'Bearer YOUR_MGMT_API_ACCESS_TOKEN'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = ["authorization": "Bearer YOUR_MGMT_API_ACCESS_TOKEN"]
 
@@ -245,8 +223,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 Exemple de réponse :
@@ -274,21 +263,14 @@ Définissez le paramètre de requête **fields** sur `user_metadata` afin de lim
 
 Exemple de demande :
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample11 = `curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata' \
-  --header 'authorization: Bearer {yourMgmtApiAccessToken}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata");
+  --header 'authorization: Bearer {yourMgmtApiAccessToken}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -312,16 +294,11 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata")
+}`;
+export const codeExample14 = `HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -334,10 +311,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtApiAccessToken}" };
 
@@ -357,11 +332,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata",
@@ -385,10 +357,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -399,11 +369,8 @@ conn.request("GET", "/{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_met
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -417,10 +384,8 @@ request = Net::HTTP::Get.new(url)
 request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = ["authorization": "Bearer {yourMgmtApiAccessToken}"]
 
@@ -440,8 +405,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 Exemple de réponse :
@@ -488,25 +464,18 @@ Si vos métadonnées sont stockées en tant que propriétés internes :
 
 Les mises à jour des propriétés de niveau racine sont fusionnées, il vous suffit donc d’envoyer la valeur du champ que vous souhaitez mettre à jour. Par exemple, supposons que nous voulions ajouter une date de consentement et la définir sur `2018-01-23`.
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample21 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
   --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"user_metadata":{"consentDate":"01/24/2018"}}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
+  --data '{"user_metadata":{"consentDate":"01/24/2018"}}'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"user_metadata\":{\"consentDate\":\"01/24/2018\"}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -534,18 +503,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
+}`;
+export const codeExample24 = `HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"user_metadata\":{\"consentDate\":\"01/24/2018\"}}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -561,10 +525,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer YOUR_MGMT_API_ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -589,11 +551,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/USER_ID",
@@ -619,10 +578,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -638,11 +595,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/users/USER_ID", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -658,10 +612,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"user_metadata\":{\"consentDate\":\"01/24/2018\"}}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = [
   "authorization": "Bearer YOUR_MGMT_API_ACCESS_TOKEN",
@@ -688,8 +640,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 Ceci ajoutera une nouvelle propriété au profil utilisateur, **user_metadata.consentDate**, qui contiendra la date à laquelle le client a donné son consentement. La réponse sera le profil utilisateur complet. Les métadonnées mises à jour se présenteront comme suit :
@@ -708,25 +671,18 @@ Pour mettre à jour une propriété interne, vous devez envoyer l’ensemble de 
 
 Ajoutons une propriété interne pour la date de consentement et fixons-la à `2018-01-23`.
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample31 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
   --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"user_metadata":{"consent": {"given":true, "date":"01/23/2018", "text_details":"some-url"}}}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
+  --data '{"user_metadata":{"consent": {"given":true, "date":"01/23/2018", "text_details":"some-url"}}}'`;
+export const codeExample32 = `var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"user_metadata\":{\"consent\": {\"given\":true, \"date\":\"01/23/2018\", \"text_details\":\"some-url\"}}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample33 = `package main
 
 import (
 	"fmt"
@@ -754,18 +710,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
+}`;
+export const codeExample34 = `HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"user_metadata\":{\"consent\": {\"given\":true, \"date\":\"01/23/2018\", \"text_details\":\"some-url\"}}}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample35 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -783,10 +734,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample36 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer YOUR_MGMT_API_ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -811,11 +760,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample37 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/USER_ID",
@@ -841,10 +787,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample38 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -860,11 +804,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/users/USER_ID", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample39 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -880,10 +821,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"user_metadata\":{\"consent\": {\"given\":true, \"date\":\"01/23/2018\", \"text_details\":\"some-url\"}}}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample40 = `import Foundation
 
 let headers = [
   "authorization": "Bearer YOUR_MGMT_API_ACCESS_TOKEN",
@@ -914,8 +853,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample31} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample32} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample33} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample34} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample35} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample36} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample37} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample38} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample39} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample40} language="swift" filename="Swift" />
 </CodeGroup>
 
 Ceci ajoutera une nouvelle propriété au profil utilisateur, **user_metadata.consent.date,**, qui contiendra la date à laquelle le client a donné son consentement. La réponse sera le profil utilisateur complet. Les métadonnées mises à jour se présenteront comme suit :
@@ -945,21 +895,14 @@ Tout d’abord, vous devez décider comment vous allez gérer le retrait du cons
 
 Pour supprimer un utilisateur, utilisez le [point de terminaison **Supprimer un utilisateur**](/docs/fr-ca/api/management/v2#!/Users/delete_users_by_id).
 
-<CodeGroup>
-```bash cURL lines
-curl --request DELETE \
+export const codeExample41 = `curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
-  --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
+  --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN'`;
+export const codeExample42 = `var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample43 = `package main
 
 import (
 	"fmt"
@@ -983,16 +926,11 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.delete("https://{yourDomain}/api/v2/users/USER_ID")
+}`;
+export const codeExample44 = `HttpResponse response = Unirest.delete("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample45 = `var axios = require("axios").default;
 
 var options = {
   method: 'DELETE',
@@ -1004,10 +942,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample46 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer YOUR_MGMT_API_ACCESS_TOKEN" };
 
@@ -1027,11 +963,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample47 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/USER_ID",
@@ -1055,10 +988,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample48 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -1069,11 +1000,8 @@ conn.request("DELETE", "/{yourDomain}/api/v2/users/USER_ID", headers=headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample49 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -1087,10 +1015,8 @@ request = Net::HTTP::Delete.new(url)
 request["authorization"] = 'Bearer YOUR_MGMT_API_ACCESS_TOKEN'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample50 = `import Foundation
 
 let headers = ["authorization": "Bearer YOUR_MGMT_API_ACCESS_TOKEN"]
 
@@ -1110,8 +1036,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample41} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample42} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample43} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample44} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample45} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample46} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample47} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample48} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample49} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample50} language="swift" filename="Swift" />
 </CodeGroup>
 
 Le corps de la réponse de ce point de terminaison est vide. Ainsi, si vous souhaitez confirmer que l’utilisateur a été supprimé, essayez de récupérer l’utilisateur à l’aide de son adresse courriel. Si le point de terminaison renvoie une erreur, votre appel de suppression de l’utilisateur a réussi.
@@ -1128,25 +1065,18 @@ Pour marquer un utilisateur comme supprimé, utilisez app_metadata. Dans l’exe
 
 Pour mettre à jour les métadonnées d’un utilisateur, utilisez le [point de terminaison **Mettre à jour un utilisateur**](/docs/fr-ca/api/management/v2#!/Users/patch_users_by_id).
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample51 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
   --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"app_metadata":{"deleted":true}}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
+  --data '{"app_metadata":{"deleted":true}}'`;
+export const codeExample52 = `var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"app_metadata\":{\"deleted\":true}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample53 = `package main
 
 import (
 	"fmt"
@@ -1174,18 +1104,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
+}`;
+export const codeExample54 = `HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"app_metadata\":{\"deleted\":true}}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample55 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -1201,10 +1126,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample56 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer YOUR_MGMT_API_ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -1229,11 +1152,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample57 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/USER_ID",
@@ -1259,10 +1179,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample58 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -1278,11 +1196,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/users/USER_ID", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample59 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -1298,10 +1213,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"app_metadata\":{\"deleted\":true}}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample60 = `import Foundation
 
 let headers = [
   "authorization": "Bearer YOUR_MGMT_API_ACCESS_TOKEN",
@@ -1328,8 +1241,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample51} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample52} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample53} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample54} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample55} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample56} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample57} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample58} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample59} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample60} language="swift" filename="Swift" />
 </CodeGroup>
 
 #### Désactiver la connexion pour les utilisateurs marqués

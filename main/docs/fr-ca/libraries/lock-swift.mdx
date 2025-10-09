@@ -8,6 +8,8 @@ permalink: "lock-swift"
 'twitter:title': "Lock.swift"
 'twitter:description': "Un gadget logiciel offrant une expérience de connexion et d’inscription fluide pour vos applications iOS natives."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Ce guide de référence explique comment implémenter l’interface utilisateur de Lock et fournit des détails sur la configuration et la personnalisation de Lock de manière à l’utiliser comme interface utilisateur pour vos besoins d’authentification. Toutefois, si vous souhaitez en faire plus avec Auth0 et Swift, par exemple enregistrer, appeler et actualiser des jetons d’accès, obtenir des informations sur le profil utilisateur, etc., consultez [Trousse SDK pour Auth0.swift](/docs/docs/fr-ca/libraries/auth0-swift). Vous pouvez aussi consulter le [Guide rapide Swift](/docs/docs/fr-ca/quickstart/native/ios-swift), qui donne des exemples complets et des options pour utiliser Lock comme interface ou utiliser une interface personnalisée.
 
@@ -80,8 +82,7 @@ Pour pouvoir utiliser Lock, vous devez fournir votre ID client et domaine Auth0,
 
 Dans votre bundle d’applications, vous pouvez ajouter un fichier `plist` nommé `Auth0.plist`, qui comprendra vos identifiants au format suivant.
 
-```xml lines
-<?xml version="1.0" encoding="UTF-8"?>
+export const codeExample = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -90,8 +91,9 @@ Dans votre bundle d’applications, vous pouvez ajouter un fichier `plist` nomm�
   <key>Domain</key>
   <string>{yourDomain}</string>
 </dict>
-</plist>
-```
+</plist>`;
+
+<AuthCodeBlock children={codeExample} language="xml" />
 
 ## Implémentation de Lock Classic
 

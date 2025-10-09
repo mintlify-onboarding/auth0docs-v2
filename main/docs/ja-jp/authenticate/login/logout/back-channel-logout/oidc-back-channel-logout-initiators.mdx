@@ -8,6 +8,8 @@ permalink: "oidc-back-channel-logout-initiators"
 'twitter:title': "OIDCバックチャネルログアウトイニシエータ"
 'twitter:description': "OIDCバックチャネルログアウトイニシエータの機能と、使用しているアプリケーションについて設定する方法を説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 OIDCバックチャネルログアウトイニシエータを使用すると、セッション終了イベントに基づいて、ユーザーをリモートでアプリケーションからログアウトさせることができます。OIDCバックチャネルログアウトイニシエータは、IDプロバイダー（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>）起点の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>ログアウト要求など、プロトコルを超えて動作し、サードパーティーのクッキー制限には影響されません。
 
@@ -42,20 +44,21 @@ Auth0 Management APIでOIDCバックチャネルログアウトイニシエー�
 
    
 
-   ```json JSON lines
-   PATCH /api/v2/clients/{yourClientId}
-   {
-     ...
-     "oidc_logout": {
-       "backchannel_logout_urls": ["https://example.com/cb"]
-       "backchannel_logout_initiators": {
-         "mode":"custom",
-         "selected_initiators": ["rp-logout", "idp-logout", "password-changed"]
-       }
-     }
-     ...
-   }
-   ```
+export const codeExample1 = `   PATCH /api/v2/clients/{yourClientId}
+{
+  ...
+  "oidc_logout": {
+    "backchannel_logout_urls": ["https://example.com/cb"]
+    "backchannel_logout_initiators": {
+      "mode":"custom",
+      "selected_initiators": ["rp-logout", "idp-logout", "password-changed"]
+    }
+  }
+  ...
+}
+`;
+
+<AuthCodeBlock children={codeExample1} language="json" filename="JSON" />
 
    
 
@@ -168,8 +171,7 @@ Auth0 Management APIでOIDCバックチャネルログアウトイニシエー�
 
 
 
-```json JSON lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample2 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -180,15 +182,15 @@ PATCH /api/v2/clients/{yourClientId}
     }
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" filename="JSON" />
 
 ##### アプリケーションをパスワード変更のイニシエータにのみ登録する（rp-logoutとidp-logoutが必要）
 
 
 
-```json JSON lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample3 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -200,15 +202,15 @@ PATCH /api/v2/clients/{yourClientId}
     }
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="json" filename="JSON" />
 
 ##### すべてのイニシエータを登録解除する（rp-logoutはデフォルトで登録されたままになる）
 
 
 
-```json JSON lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample4 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -216,8 +218,9 @@ PATCH /api/v2/clients/{yourClientId}
 	  "backchannel_logout_urls": ["https://example.com/cb"]
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample4} language="json" filename="JSON" />
 
 ### ダッシュボード
 

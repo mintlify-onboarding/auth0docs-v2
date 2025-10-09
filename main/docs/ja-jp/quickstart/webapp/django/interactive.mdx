@@ -10,6 +10,8 @@ permalink: "interactive"
 mode: wide
 sidebarTitle: Django
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 import { Recipe, Content, Section, SideMenu, SideMenuSectionItem, SignUpForm } from "/snippets/recipe.jsx";
 import { LoggedInForm } from "/snippets/Login.jsx";
@@ -86,11 +88,12 @@ export const sections = [
     <Section id={sections[2].id} title={sections[2].title} stepNumber="3">
       次に、プロジェクトのディレクトリに`.env`ファイルを作成します。このファイルにはクライアントキーやその他の構成情報が含まれます。
 
-      ```text lines
-      AUTH0_CLIENT_ID={yourClientId}
+      export const codeExample = `      AUTH0_CLIENT_ID={yourClientId}
       AUTH0_CLIENT_SECRET={yourClientSecret}
       AUTH0_DOMAIN={yourDomain}
-      ```
+      `;
+
+<AuthCodeBlock children={codeExample} language="text" />
 
     </Section>
 

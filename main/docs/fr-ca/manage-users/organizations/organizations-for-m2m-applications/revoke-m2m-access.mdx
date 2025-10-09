@@ -8,6 +8,8 @@ permalink: "revoke-m2m-access"
 'twitter:title': "Révoquer l’accès M2M"
 'twitter:description': "Découvrez comment révoquer l’accès M2M pour une application."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Pour révoquer l’accès M2M ou supprimer l’accès d’une organisation à votre application, vous devez supprimer l’association entre ses autorisations client et l’organisation. Une fois cette association supprimée, l’application ne sera plus autorisée à utiliser l’organisation lorsqu’elle demandera de nouveaux jetons pour l’API définie dans l’autorisation.
 
@@ -31,12 +33,11 @@ Pour supprimer l’association entre l’autorisation client d’une application
 
 </Tab><Tab title="Management API">
 
-Les associations entre les autorisations de client d’application et les organisations peuvent être supprimées via le point de terminaison [Disassociate client grants from organisations (Dissocier les autorisations client des organisations)](/docs/fr-ca/api/management/v2/organizations/delete-client-grants-by-grant-id) :
+Les associations entre les autorisations de client d’application et les organisations peuvent être supprimées via le point de terminaison [Disassociate client grants from organisations (Dissocier les autorisations client des organisations)](/docs/fr-ca/api/management/v2/organizations/delete-client-grants-by-grant-id):
 
-```json lines
-curl -X DELETE --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants/{GRANT_ID}" \
-  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-```
+export const codeExample = `curl -X DELETE --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants/{GRANT_ID}" \
+  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' `;
+
+<AuthCodeBlock children={codeExample} language="json" />
 
 </Tab></Tabs>
-

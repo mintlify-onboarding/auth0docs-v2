@@ -8,6 +8,8 @@ permalink: "set-logical-api"
 'twitter:title': "Configurer une API logique pour plusieurs API"
 'twitter:description': "Comment utiliser une API logique unique dans Auth0 pour représenter et contrôler l’accès à plusieurs API."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Si vous avez plusieurs implémentations d’API distinctes qui font toutes logiquement partie de la même API, vous pouvez simplifier votre processus d’autorisation en les représentant avec une API logique unique dans <Tooltip href="/docs/docs/fr-ca/glossary?term=auth0-dashboard" tip="Auth0 Dashboard
 Principal produit d’Auth0 pour configurer vos services." cta="Voir le glossaire">Auth0 Dashboard</Tooltip>. Cela vous permet de mettre en œuvre un seul flux d’autorisation, tout en contrôlant l’accès aux API individuelles en leur attribuant les permissions appropriées.
@@ -74,15 +76,16 @@ Pour en savoir plus sur les flux d’autorisation, consultez [Flux d’authentif
 
    
 
-   ``` lines
-   https://{yourDomain}/authorize?
+   export const codeExample = `   https://{yourDomain}/authorize?
    scope=read:contacts%20read:calendar&
    audience=organize&
    response_type=id_token%20token&
    client_id={yourClientId}&
    redirect_uri=http://localhost:3000&
    nonce={nonce}
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    
 

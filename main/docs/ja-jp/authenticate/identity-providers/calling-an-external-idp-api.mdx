@@ -8,6 +8,8 @@ permalink: "calling-an-external-idp-api"
 'twitter:title': "IDプロバイダーAPIを呼び出す"
 'twitter:description': "外部IDプロバイダーAPIを呼び出す方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 FacebookやGitHubなどの外部IDプロバイダー(<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>)でユーザーを正常に認証すると、多くの場合、IdPはAuth0に返すユーザープロファイルにアクセストークンを含めます。
 
@@ -103,21 +105,14 @@ FacebookやGitHubなどの外部IDプロバイダー(<Tooltip data-tooltip-id="r
 
 ユーザーのプロファイルを取得するには、前のセクションで抽出したアクセストークンを使用して、Management APIの[［Get a User endpoint（ユーザーエンドポイントの取得）］](/docs/ja-jp/api/management/v2#!/Users/get_users_by_id)を呼び出します。
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample1 = `curl --request GET \
 --url 'https://{yourDomain}/api/v2/users/%7BuserId%7D' \
---header 'authorization: Bearer {yourAccessToken}'
-``` lines
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/%7BuserId%7D");
+--header 'authorization: Bearer {yourAccessToken}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/users/%7BuserId%7D");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourAccessToken}");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 import (
 "fmt"
 "net/http"
@@ -132,16 +127,11 @@ defer res.Body.Close()
 body, _ := ioutil.ReadAll(res.Body)
 fmt.Println(res)
 fmt.Println(string(body))
-}
-``` lines
-```java Java lines
-HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7BuserId%7D")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7BuserId%7D")
 .header("authorization", "Bearer {yourAccessToken}")
-.asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+.asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 var options = {
 method: 'GET',
 url: 'https://{yourDomain}/api/v2/users/%7BuserId%7D',
@@ -151,10 +141,8 @@ axios.request(options).then(function (response) {
 console.log(response.data);
 }).catch(function (error) {
 console.error(error);
-});
-``` lines
-```obj-c Obj-C lines
-#import 
+});`;
+export const codeExample6 = `#import 
 NSDictionary \*headers = @{ @"authorization": @"Bearer {yourAccessToken}" };
 NSMutableURLRequest \*request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/users/%7BuserId%7D"]
 cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -171,11 +159,8 @@ NSHTTPURLResponse \*httpResponse = (NSHTTPURLResponse \*) response;
 NSLog(@"%@", httpResponse);
 }
 }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 curl_setopt_array($curl, [
 CURLOPT_URL => "https://{yourDomain}/api/v2/users/%7BuserId%7D",
 CURLOPT_RETURNTRANSFER => true,
@@ -195,20 +180,15 @@ if ($err) {
 echo "cURL Error #:" . $err;
 } else {
 echo $response;
-}
-``` lines
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 conn = http.client.HTTPSConnection("")
 headers = { 'authorization': "Bearer {yourAccessToken}" }
 conn.request("GET", "/{yourDomain}/api/v2/users/%7BuserId%7D", headers=headers)
 res = conn.getresponse()
 data = res.read()
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 url = URI("https://{yourDomain}/api/v2/users/%7BuserId%7D")
@@ -218,10 +198,8 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Get.new(url)
 request["authorization"] = 'Bearer {yourAccessToken}'
 response = http.request(request)
-puts response.read_body
-``` lines
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 let headers = ["authorization": "Bearer {yourAccessToken}"]
 let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/users/%7BuserId%7D")! as URL,
 cachePolicy: .useProtocolCachePolicy,
@@ -237,8 +215,19 @@ let httpResponse = response as? HTTPURLResponse
 print(httpResponse)
 }
 })
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" /> lines
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" /> lines
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" /> lines
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" /> lines
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" /> lines
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 次の値を置き換えます:

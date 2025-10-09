@@ -2,6 +2,8 @@
 title: "MAUI"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Frederik Prijck
 
@@ -155,8 +157,7 @@ To make sure it can properly reactivate your application after being redirected 
 To integrate Auth0 into your application, instantiate an instance of the `Auth0Client` class, passing an instance of `Auth0ClientOptions` that contains your Auth0 Domain, Client ID and the required Scopes.
 Additionally, you also need to configure the `RedirectUri` and `PostLogoutRedirectUri` to ensure Auth0 can redirect back to the application using the URL(s) configured.
 
-```cs lines
-using Auth0.OidcClient;
+export const codeExample = `using Auth0.OidcClient;
 
 var client = new Auth0Client(new Auth0ClientOptions
 {
@@ -165,8 +166,9 @@ var client = new Auth0Client(new Auth0ClientOptions
     RedirectUri = "myapp://callback",
     PostLogoutRedirectUri = "myapp://callback",
     Scope = "openid profile email"
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample} language="cs" />
 
 
 

@@ -8,6 +8,8 @@ permalink: "add-login-using-the-implicit-flow-with-form-post"
 'twitter:title': "フォームPOSTを使った暗黙フローでログインを追加する"
 'twitter:description': "フォームPOSTを使った暗黙フローでシングルページアプリケーション（SPA）へのログインを追加する方法を説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 フォームPOSTを使った暗黙フローでシングルページアプリケーション（SPA）へのログインを追加することができます。フローの仕組みやメリットについては、「[フォームPOSTを使った暗黙フロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post)」をお読みください。
 
@@ -41,16 +43,16 @@ permalink: "add-login-using-the-implicit-flow-with-form-post"
 
 ### 認可URLの例
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     response_type=YOUR_RESPONSE_TYPE&
     response_mode=form_post&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope=SCOPE&
     state=STATE&
-    nonce=NONCE
-```
+    nonce=NONCE`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
 ### パラメーター
 
@@ -106,8 +108,7 @@ https://{yourDomain}/authorize?
 
 たとえば、アプリにログインを追加する際の認可URLのHTMLスニペットは、以下のようになります。
 
-```html lines
-<a href="https://{yourDomain}/authorize?
+export const codeExample2 = `<a href="https://{yourDomain}/authorize?
   response_type=id_token token&
   response_mode=form_post&
   client_id={yourClientId}&
@@ -116,8 +117,9 @@ https://{yourDomain}/authorize?
   state=xyzABC123&
   nonce=eq...hPmz">
   Sign In
-</a>
-```
+</a>`;
+
+<AuthCodeBlock children={codeExample2} language="html" />
 
 ### 応答
 
@@ -170,14 +172,14 @@ IDトークンには、デコードして抽出する必要があるユーザー
 
 この例では、手順1でユーザーを認可する際に行う最も基本的な要求について説明します。Auth0のログイン画面を表示して、構成されている接続でユーザーがサインインできるようにします。
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample3 = `https://{yourDomain}/authorize?
     response_type=id_token&
     response_mode=form_post&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
-    nonce=NONCE
-```
+    nonce=NONCE`;
+
+<AuthCodeBlock children={codeExample3} language="text" lines />
 
 これによってIDトークンが返され、リダイレクトURLから解析することができます。
 
@@ -187,16 +189,16 @@ https://{yourDomain}/authorize?
 
 ユーザーの名前や写真を要求するには、ユーザーを認可する際に、適切なスコープを追加する必要があります。
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample4 = `https://{yourDomain}/authorize?
     response_type=id_token token&
     response_mode=form_post&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope=openid%20name%20picture&
     state=STATE&
-    nonce=NONCE
-```
+    nonce=NONCE`;
+
+<AuthCodeBlock children={codeExample4} language="text" lines />
 
 これで、IDトークンには要求された名前と写真のクレームが含まれます。IDトークンをデコードする際には、以下のようになります。
 
@@ -218,8 +220,7 @@ https://{yourDomain}/authorize?
 
 ユーザーをGitHubログイン画面に直接送るには、ユーザーを認可する際に`connection`パラメーターを渡し、その値を接続名（この場合、`github`）に設定する必要があります。
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample5 = `https://{yourDomain}/authorize?
     response_type=id_token token&
     response_mode=form_post&
     client_id={yourClientId}&
@@ -227,8 +228,9 @@ https://{yourDomain}/authorize?
     scope=openid%20name%20picture&
     state=STATE&
     nonce=NONCE&
-    connection=github
-```
+    connection=github`;
+
+<AuthCodeBlock children={codeExample5} language="text" lines />
 
 これで、`sub`クレームがGitHubから返されたユーザーの一意のIDとともにIDトークンに表示されます。IDトークンをデコードする際には、以下のようになります。
 

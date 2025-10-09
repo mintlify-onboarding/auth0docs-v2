@@ -8,6 +8,8 @@ permalink: "google-cloud-endpoints"
 'twitter:title': "Sécuriser Google Cloud Endpoints avec Auth0"
 'twitter:description': "Comment sécuriser un API Google Cloud Endpoints avec Auth0."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 [Google Cloud Endpoints (GCE)](https://cloud.google.com/endpoints/) est un système de gestion d’API offrant des fonctionnalités pour vous aider à créer, maintenir et sécuriser vos API. GCE utilise [OpenAPI](https://www.openapis.org/) pour définir les points de terminaison, les entrées et les sorties, les erreurs et la description de la sécurité de votre API.
 
@@ -223,18 +225,18 @@ Ouvrez le fichier de configuration et ajoutez une nouvelle section `securityDefi
 </tbody>
 </table>
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```yaml lines
-securityDefinitions:
+
+export const codeExample1 = `securityDefinitions:
   auth0_jwt:
     authorizationUrl: "https://{yourDomain}/authorize"
     flow: "implicit"
     type: "oauth2"
     x-google-issuer: "https://{yourDomain}/"
     x-google-jwks_uri: "https://{yourDomain}/.well-known/jwks.json"
-    x-google-audiences: "{yourApiIdentifier}"
-```
+    x-google-audiences: "{yourApiIdentifier}"`;
+
+<AuthCodeBlock children={codeExample1} language="yaml" />
 
 ### Mettre à jour le point de terminaison
 
@@ -267,10 +269,9 @@ Dans l’exemple ci-dessus, le champ `security` indique au proxy GCE que notre c
 
 Après la mise à jour de la configuration OpenAPI, elle devrait ressembler à ceci :
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```yaml lines
----
+
+export const codeExample2 = `---
 swagger: "2.0"
 info:
   title: "Airport Codes"
@@ -306,8 +307,9 @@ securityDefinitions:
     type: "oauth2"
     x-google-issuer: "https://{yourDomain}/"
     x-google-jwks_uri: "https://{yourDomain}/.well-known/jwks.json"
-    x-google-audiences: "{yourApiIdentifier}"
-```
+    x-google-audiences: "{yourApiIdentifier}"`;
+
+<AuthCodeBlock children={codeExample2} language="yaml" />
 
 ### Redéployer l’API
 

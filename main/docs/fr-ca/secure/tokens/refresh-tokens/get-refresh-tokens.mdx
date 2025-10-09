@@ -8,46 +8,41 @@ permalink: "get-refresh-tokens"
 'twitter:title': "Obtenir des jetons d’actualisation"
 'twitter:description': "Décrit comment obtenir un jeton d’actualisation lorsque vous lancez une demande à l’aide du point de terminaison Authorize."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Pour obtenir un jeton d’actualisation, vous devez inclure [la permission](/docs/fr-ca/get-started/apis/scopes)`offline_access` lorsque vous lancez une demande d’authentification via le point de terminaison `/autorize`. Assurez-vous d’initier l’accès hors ligne dans votre API. Pour en savoir plus, veuillez consulter [Paramètres de l’API](/docs/fr-ca/get-started/apis/api-settings).
 
 Par exemple, si vous utilisez le [Flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow), la demande d’authentification ressemblerait à ce qui suit :
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     audience={API_AUDIENCE}&
     scope=offline_access&
     response_type=code&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
-    state={OPAQUE_VALUE}
-```
+    state={OPAQUE_VALUE}`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
 Le jeton d’actualisation est stocké dans la session. Ensuite, lorsque la session doit être actualisée (par exemple, après l’expiration d’un délai préconfiguré ou lorsqu’une opération sensible est tentée), l’application utilise le jeton d’actualisation du système dorsal pour obtenir un nouveau jeton d’ID, en faisant appel au point de terminaison `/oauth/token` avec `grant_type=refresh_token`.
 
 Une fois que l’utilisateur a bien été authentifié, l’application sera redirigée vers le `redirect_uri`, avec un `code` dans le cadre de l'URL : `{https://yourApp/callback}?code=BPPLN3Z4qCTvSNOy`. Vous pouvez échanger ce code avec un jeton d’accès en utilisant le point de terminaison `/oauth/token`.
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample2 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=authorization_code \
   --data 'client_id={yourClientId}' \
   --data 'client_secret={yourClientSecret}' \
   --data 'code={yourAuthorizationCode}' \
-  --data 'redirect_uri={https://yourApp/callback}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'redirect_uri={https://yourApp/callback}'`;
+export const codeExample3 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample4 = `package main
 
 import (
 	"fmt"
@@ -74,17 +69,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample5 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample6 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -103,10 +93,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample7 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -133,11 +121,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample8 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -162,10 +147,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample9 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -178,11 +161,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample10 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -197,10 +177,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample11 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -227,8 +205,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample2} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample3} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample4} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample5} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample6} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample7} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample8} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample9} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample10} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample11} language="swift" filename="Swift" />
 </CodeGroup>
 
 La réponse doit contenir un jeton d’accès et un jeton d’actualisation.

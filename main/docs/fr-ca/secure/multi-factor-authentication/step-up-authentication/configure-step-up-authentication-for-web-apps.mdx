@@ -8,6 +8,8 @@ permalink: "configure-step-up-authentication-for-web-apps"
 'twitter:title': "Configurer l’authentification renforcée pour les applications Web"
 'twitter:description': "Apprenez à vérifier si un utilisateur s’est connecté à votre application Web avec l’authentification multifacteur (MFA) en examinant son jeton d’ID."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Grâce à l’authentification renforcée, les applications qui permettent l’accès à différents types de ressources peuvent exiger des utilisateurs qu’ils s’authentifient à l’aide d’un mécanisme plus puissant pour accéder à des informations sensibles ou effectuer certaines transactions.
 
@@ -65,10 +67,9 @@ Dans les exemples ci-dessous, vous pouvez comparer les valeurs potentielles cont
 
 ### Exemple : Valeurs avec MFA
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```json lines
-{
+
+export const codeExample1 = `{
     "iss": "https://{yourDomain}/",
     "sub": "auth0|1a2b3c4d5e6f7g8h9i",
     "aud": "{yourClientId}",
@@ -78,20 +79,21 @@ codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
     "amr": [
         "mfa"
     ]
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 ### Exemple : Valeurs sans MFA
 
-```json lines
-{
+export const codeExample2 = `{
     "iss": "https://{yourDomain}/",
     "sub": "auth0|1a2b3c4d5e6f7g8h9i",
     "aud": "{yourClientId}",
     "iat": 1522838054,
     "exp": 1522874054
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 ## Scénarios : Données salariales avec notifications poussées
 
@@ -134,16 +136,16 @@ Configurer l’application pour vérifier que l’utilisateur s’est authentifi
 
 L’application Web dans ce scénario utilise le [flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow) pour l’authentification, la requête est donc la suivante :
 
-```http lines
-https://{yourDomain}/authorize?
+export const codeExample3 = `https://{yourDomain}/authorize?
         audience=https://{yourDomain}/userinfo&
         scope=openid&
         response_type=code&
         client_id={yourClientId}&
         redirect_uri={https://yourApp/callback}&
         state={yourOpaqueValue}&
-        acr_values=http://schemas.openid.net/pape/policies/2007/06/multi-factor
-```
+        acr_values=http://schemas.openid.net/pape/policies/2007/06/multi-factor`;
+
+<AuthCodeBlock children={codeExample3} language="http" />
 
 Après l’authentification de l’utilisateur par MFA, l’application Web reçoit le code d’autorisation, qu’elle doit échanger contre le nouveau jeton d’ID. Ce dernier devrait maintenant contenir la demande `amr` avec une valeur de `mfa`. Pour apprendre à échanger le code contre un jeton d’ID, consultez [Ajouter une connexion utilisant le flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
 
@@ -151,8 +153,7 @@ Après l’authentification de l’utilisateur par MFA, l’application Web re�
 
 Dans ce scénario, effectuez les validations en utilisant le [Code d’exemple de jeton Web JSON](https://github.com/auth0/node-jsonwebtoken), qui vérifie la signature du jeton (`jwt.verify`), décode le jeton, vérifie si la charge utile contient `amr`, et, si c’est le cas, enregistre les résultats dans la console.
 
-```javascript lines
-const AUTH0_CLIENT_SECRET = '{yourClientSecret}';
+export const codeExample4 = `const AUTH0_CLIENT_SECRET = '{yourClientSecret}';
 const jwt = require('jsonwebtoken');
 
 jwt.verify(id_token, AUTH0_CLIENT_SECRET, { algorithms: ['HS256'] }, function(err, decoded) {
@@ -167,8 +168,9 @@ jwt.verify(id_token, AUTH0_CLIENT_SECRET, { algorithms: ['HS256'] }, function(er
   }
 
   console.log('you are not using mfa');
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
 ## En savoir plus
 

@@ -8,6 +8,8 @@ title: Secure Google Cloud Endpoints with Auth0
 'twitter:description': How to secure a Google Cloud Endpoints API with Auth0.
 'twitter:title': Secure Google Cloud Endpoints with Auth0
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 [Google Cloud Endpoints (GCE)](https://cloud.google.com/endpoints/) is an API management system providing features to help you create, maintain, and secure your APIs. GCE uses [OpenAPI](https://www.openapis.org/) to define your API's endpoints, input and output, errors, and security description.
 
 For more information on the OpenAPI spec, see the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) repository on GitHub.
@@ -225,16 +227,16 @@ Open the configuration file and add a new `securityDefinitions` section. In this
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
 
-```yaml lines
-securityDefinitions:
+export const codeExample1 = `securityDefinitions:
   auth0_jwt:
     authorizationUrl: "https://{yourDomain}/authorize"
     flow: "implicit"
     type: "oauth2"
     x-google-issuer: "https://{yourDomain}/"
     x-google-jwks_uri: "https://{yourDomain}/.well-known/jwks.json"
-    x-google-audiences: "{yourApiIdentifier}"
-```
+    x-google-audiences: "{yourApiIdentifier}"`;
+
+<AuthCodeBlock children={codeExample1} language="yaml" />
 
 
 
@@ -280,8 +282,7 @@ After updating the OpenAPI configuration, it should look something like this:
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
 
-```yaml lines expandable
----
+export const codeExample2 = `---
 swagger: "2.0"
 info:
   title: "Airport Codes"
@@ -317,8 +318,9 @@ securityDefinitions:
     type: "oauth2"
     x-google-issuer: "https://{yourDomain}/"
     x-google-jwks_uri: "https://{yourDomain}/.well-known/jwks.json"
-    x-google-audiences: "{yourApiIdentifier}"
-```
+    x-google-audiences: "{yourApiIdentifier}"`;
+
+<AuthCodeBlock children={codeExample2} language="yaml" />
 
 
 

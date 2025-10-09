@@ -2,6 +2,8 @@
 title: "Python"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Evan Sims
 
@@ -74,14 +76,14 @@ You should now run `pip install -r requirements.txt` from your shell to make the
 
 Next, create an `.env` file in your project directory. This file will hold your client keys and other configuration details.
 
-```env lines
-# 📁 .env -----
+export const codeExample = `# 📁 .env -----
 
 AUTH0_CLIENT_ID={yourClientId}
 AUTH0_CLIENT_SECRET={yourClientSecret}
 AUTH0_DOMAIN={yourDomain}
-APP_SECRET_KEY=
-```
+APP_SECRET_KEY=`;
+
+<AuthCodeBlock children={codeExample} language="env" />
 
 
 

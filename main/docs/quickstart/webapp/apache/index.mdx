@@ -2,6 +2,8 @@
 title: "Apache"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Community maintained
 
@@ -40,8 +42,7 @@ Now you should get a new configuration file under the `/etc/apache2/mods-availab
 
 In there, you must add the following configuration for the `mod_auth_openidc` module
 
-```conf lines
-# mods-available/auth_openidc.conf
+export const codeExample = `# mods-available/auth_openidc.conf
 
 OIDCProviderMetadataURL https://{yourDomain}/.well-known/openid-configuration
 OIDCClientID {yourClientId}
@@ -55,8 +56,9 @@ OIDCCryptoPassphrase <passwordToEncryptTheSessionInformationOnTheCookie>
    AuthType openid-connect
    Require valid-user
    LogLevel debug
-</Location>
-```
+</Location>`;
+
+<AuthCodeBlock children={codeExample} language="conf" />
 
 
 

@@ -8,6 +8,8 @@ permalink: "configure-access-token-profile"
 'twitter:title': "Configurer le profil du jeton d’accès"
 'twitter:description': "Apprenez comment configurer un profil de jeton d’accès pour votre API."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez choisir le profil de jeton d’accès à utiliser pour vos API : le profil de jeton Auth0 ou le profil de jeton RFC 9068. Le profil de jeton d’accès que vous configurez détermine le format des jetons d’accès émis pour l’API.
 
@@ -35,13 +37,13 @@ Lorsque vous utilisez Management API, nous désignons les profils de jeton d’a
 
 L’exemple de code suivant envoie une demande PATCH au point de terminaison [Mettre à jour un serveur de ressources](https://auth0.com/docs/api/management/v2/resource-servers/patch-resource-servers-by-id) :
 
-```bash lines
-curl --request PATCH \
+export const codeExample = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/resource-servers/API_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"token_dialect": "TOKEN_DIALECT" }'
-```
+  --data '{"token_dialect": "TOKEN_DIALECT" }'`;
+
+<AuthCodeBlock children={codeExample} language="bash" />
 
 Remplacez les valeurs `API_ID`, `MGMT_API_ACCESS_TOKEN` et `TOKEN_DIALECT` par leurs valeurs respectives, comme indiqué dans le tableau suivant :
 

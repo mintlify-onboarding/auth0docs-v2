@@ -8,6 +8,8 @@ permalink: "authenticate-using-ropg-flow-with-mfa"
 'twitter:title': "Authentifier par un flux de mot de passe du propriétaire de ressource avec MFA"
 'twitter:description': "Découvrez comment authentifier les utilisateurs en utilisant le flux de mot de passe du propriétaire de ressource avec l’authentification multifacteur (MFA)."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez utiliser [l’API Auth0 pour l’authentification multifacteur (MFA)](/docs/fr-ca/api/authentication#multi-factor-authentication) pour compléter le flux d’authentification à l’aide du [Flux de mot de passe du propriétaire de ressource](/docs/fr-ca/get-started/authentication-and-authorization-flow/resource-owner-password-flow) (parfois appelé Autorisation de mot de passe du propriétaire des ressources ou ROPG lorsque <Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip> est activée.
@@ -20,9 +22,7 @@ Avant de pouvoir utiliser les API MFA, vous devrez activer le type d’autorisat
 
 Lorsque vous utilisez le Flux de mot de passe du propriétaire de ressource pour l’authentification, vous appelez le point de terminaison `/oauth/token` avec le nom d’utilisateur et le mot de passe de l’utilisateur.
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=password \
@@ -31,18 +31,13 @@ curl --request POST \
   --data 'client_id={yourClientId}' \
   --data 'client_secret={yourClientSecret}' \
   --data audience=https://someapi.com/api \
-  --data 'scope=openid profile read:sample'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'scope=openid profile read:sample'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=password&username=user%40example.com&password=pwd&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&audience=https%3A%2F%2Fsomeapi.com%2Fapi&scope=openid%20profile%20read%3Asample", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -69,17 +64,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=password&username=user%40example.com&password=pwd&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&audience=https%3A%2F%2Fsomeapi.com%2Fapi&scope=openid%20profile%20read%3Asample")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -100,10 +90,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -132,11 +120,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -161,10 +146,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -177,11 +160,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -196,10 +176,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=password&username=user%40example.com&password=pwd&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&audience=https%3A%2F%2Fsomeapi.com%2Fapi&scope=openid%20profile%20read%3Asample"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -228,8 +206,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 Lorsque MFA est activé, la réponse comprend une erreur `mfa_required` et un jeton `mfa_token`.

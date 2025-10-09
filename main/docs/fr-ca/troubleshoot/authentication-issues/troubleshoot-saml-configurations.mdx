@@ -8,6 +8,8 @@ permalink: "troubleshoot-saml-configurations"
 'twitter:title': "Dépanner des configurations SAML"
 'twitter:description': "Cette partie explique le dépannage des problèmes de configuration SAML."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lors du dépannage, il est important de comprendre votre configuration.
 
@@ -97,9 +99,9 @@ Cette erreur se produit lorsque l’attribut `InResponseTo` dans la réponse SAM
 
 Si votre locataire utilise un domaine personnalisé, vous pourriez avoir une incohérence si le flux de connexion commence sur le domaine personnalisé et se termine sur le domaine canonique. Par exemple, l’utilisateur commence sur le domaine personnalisé :
 
-```http wrap lines
-https://auth.{yourDomain}.com/authorize?client_id=abc123&redirect_uri=https://jwt.io&response_type=code&scope=openid&audience=https://example.com&connection=mysamlconnection
-```
+export const codeExample = `https://auth.{yourDomain}.com/authorize?client_id=abc123&redirect_uri=https://jwt.io&response_type=code&scope=openid&audience=https://example.com&connection=mysamlconnection`;
+
+<AuthCodeBlock children={codeExample} language="http" />
 
 Mais le fournisseur d’identité est configuré pour renvoyer la réponse SAML à l’URL ACS sur le domaine canonique :
 

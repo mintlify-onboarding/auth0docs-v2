@@ -8,6 +8,8 @@ title: Troubleshoot SAML Configurations
 'twitter:description': Describes troubleshooting for SAML configuration issues.
 'twitter:title': Troubleshoot SAML Configurations
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 When troubleshooting, it's important to understand your configuration.
 
 * **Is Auth0 serving as the <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> Service Provider (SP), the SAML <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP), or both?**
@@ -93,9 +95,9 @@ This error occurs when the `InResponseTo` attribute in the SAML response is not 
 
 If your tenant uses a custom domain, you could have a mismatch if the login flow begins on the custom domain and finishes on the canonical domain. For example, the user starts at the custom domain:
 
-```http wrap lines
-https://auth.{yourDomain}.com/authorize?client_id=abc123&redirect_uri=https://jwt.io&response_type=code&scope=openid&audience=https://example.com&connection=mysamlconnection
-```
+export const codeExample = `https://auth.{yourDomain}.com/authorize?client_id=abc123&redirect_uri=https://jwt.io&response_type=code&scope=openid&audience=https://example.com&connection=mysamlconnection`;
+
+<AuthCodeBlock children={codeExample} language="http" />
 
 
 

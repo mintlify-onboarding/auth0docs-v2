@@ -8,6 +8,8 @@ permalink: "spa-authenticate-with-cookies"
 'twitter:title': "Cookieを使用してシングルページアプリを認証する"
 'twitter:description': "バックエンドサーバーを使用して、Cookieを使ってシングルページアプリ（SPA）を認証する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 シングルページアプリ（SPA）のセキュリティ保護は困難な場合があります。ただし、SPAが次の基準を満たしている場合は、Cookieを使用して認証することで実装を簡素化できます。
 
@@ -101,12 +103,13 @@ APP_SESSION_SECRET=<YOUR SECRET VALUE>
 7. **［Settings（設定）］** 画面で、上部のドメインとクライアントID設定をメモします。
 8. アプリケーションの一部として構成する必要がある値が2つあります。`.env`ファイルを再度開き、次の値を設定します。
 
-   ``` lines
-   ISSUER_BASE_URL={yourDomain}
+   export const codeExample = `   ISSUER_BASE_URL={yourDomain}
    CLIENT_ID={yourClientId}
    BASE_URL=http://localhost:3000
    APP_SESSION_SECRET=<YOUR SECRET VALUE>
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    
 

@@ -8,6 +8,8 @@ permalink: "use-org-name-authentication-api"
 'twitter:title': "Authentication APIで組織名を使用する"
 'twitter:description': "Authentication APIで組織名を使用する際のセットアップ、セキュリティへの配慮、およびベストプラクティスについて説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 デフォルトで、[Authentication API](https://auth0.com/docs/api/authentication)は組織IDを使用して特定の組織を識別します。必要であれば、テナントでも組織名が識別子として使われるように構成することができます。ただし、この機能を有効にする前に、使いやすさやセキュリティへの影響を考慮する必要があります。潜在的な影響を明確に理解するために、「[考慮と推薦事項](#considerations-and-recommendations)」セクションを確認してください。
 
@@ -37,29 +39,29 @@ Authentication APIで組織名に対応するようにテナントを構成す�
 1.`/authorize`エンドポイントを呼び出して、`organization`パラメーターで組織名を渡します。
 
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     response_type=code&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope={scope}&
     state={state}&
-    organization={yourOrganizationName}
-```
+    organization={yourOrganizationName}`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
 2.認可コードを受け取ったら、`POST /oauth/token`エンドポイントを呼び出して、アクセストークンとIDトークンを取得します。
 
 
-```bash lines
-curl --request POST \
+export const codeExample2 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=authorization_code \
   --data 'client_id={yourClientId}' \
   --data 'client_secret={yourClientSecret}' \
   --data 'code=yourAuthorizationCode}' \
-  --data 'redirect_uri={https://yourApp/callback}'
-```
+  --data 'redirect_uri={https://yourApp/callback}'`;
+
+<AuthCodeBlock children={codeExample2} language="bash" />
 
 3.デーコードされたトークンが返され、`org_id`と`org_name`クレームの両方が含まれています。
 

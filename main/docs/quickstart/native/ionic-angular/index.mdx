@@ -2,6 +2,8 @@
 title: "Ionic & Capacitor (Angular)"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Steve Hobbs
 
@@ -138,15 +140,14 @@ The SDK exports `AuthModule`, a module that contains all the services required f
 * Add `AuthModule` to the application by calling `AuthModule.forRoot` and adding to your application module's `imports` array
 * Specify the configuration for the Auth0 Angular SDK
 
-```javascript lines
-// Import the types from the SDK
+export const codeExample1 = `// Import the types from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
 import config from '../../capacitor.config';
 
 // ..
 
 // Build the URL that Auth0 should redirect back to
-const redirect_uri = `${config.appId}://{yourDomain}/capacitor/${config.appId}/callback`;
+const redirect_uri = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
 
 // Register AuthModule with your AppModule
 @NgModule({
@@ -168,8 +169,9 @@ const redirect_uri = `${config.appId}://{yourDomain}/capacitor/${config.appId}/c
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
-})
-```
+})`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 
 
@@ -254,14 +256,13 @@ The `Browser.close()` method should close the browser when this event is raised.
 
 Modify your `App` component and use the `ngOnInit` method to handle the callback from Auth0.
 
-```javascript lines
-import { Component, OnInit, NgZone } from '@angular/core';
+export const codeExample2 = `import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { mergeMap } from 'rxjs/operators';
 import { Browser } from '@capacitor/browser';
 import { App } from '@capacitor/app';
 
-const callbackUri = `${config.appId}://{yourDomain}/capacitor/${config.appId}/callback`;
+const callbackUri = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
 
 @Component({
   selector: 'app-root',
@@ -273,7 +274,7 @@ export class AppComponent implements OnInit {
   constructor(public auth: AuthService, private ngZone: NgZone) {}
 
   ngOnInit(): void {
-    // Use Capacitor's App plugin to subscribe to the `appUrlOpen` event
+    // Use Capacitor's App plugin to subscribe to the \`appUrlOpen\` event
     App.addListener('appUrlOpen', ({ url }) => {
       // Must run inside an NgZone for Angular to pick up the changes
       // https://capacitorjs.com/docs/guides/angular
@@ -296,8 +297,9 @@ export class AppComponent implements OnInit {
       });
     });
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 
 
@@ -334,18 +336,17 @@ Similar to the login step, if you do not set `openUrl` when calling `logout`, th
 
 Create a new `LogoutButton` component and add the following code to the file. Then, add the `LogoutButton` component to your app.
 
-```javascript lines
-import { Component, OnInit } from '@angular/core';
+export const codeExample3 = `import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Browser } from '@capacitor/browser';
 import { tap } from 'rxjs/operators';
 
 // Build the URL to return back to your app after logout
-const returnTo = `${config.appId}://{yourDomain}/capacitor/${config.appId}/callback`;
+const returnTo = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
 
 @Component({
   selector: 'app-logout-button',
-  template: `<ion-button (click)="logout()">Log out</ion-button>`,
+  template: \`<ion-button (click)="logout()">Log out</ion-button>\`,
 })
 export class LogoutButtonComponent {
   // Import the AuthService module from the Auth0 Angular SDK
@@ -363,8 +364,9 @@ export class LogoutButtonComponent {
       })
       .subscribe();
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 
 

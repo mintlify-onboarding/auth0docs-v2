@@ -8,6 +8,8 @@ permalink: "install-configure-ad-ldap-connector"
 'twitter:title': "AD/LDAPコネクターのインストールと構成"
 'twitter:description': "AD/LDAPコネクターのインストール方法と構成方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 import {InlineImage} from "/snippets/InlineImage.mdx";
 
@@ -132,12 +134,13 @@ LDAPの設定を入力します。
 
 4. LDAP接続および認証の詳細を使用して、`config.json`構成ファイルを編集するよう求められます。
 
-   ```text lines
-   "LDAP_URL": "ldap://{yourLdapServerFqdn}",
+   export const codeExample = `   "LDAP_URL": "ldap://{yourLdapServerFqdn}",
    "LDAP_BASE": "dc={yourDomain},dc=com",
    "LDAP_BIND_USER":"{yourLdapUser}",
    "LDAP_BIND_PASSWORD":"{yourLdapUserPassword}" //cleartextpassword
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" />
 
 5. `node server.js`をもう一度実行して、コネクターを起動します。この時点で、`config.json`の`LDAP_BIND_PASSWORD`の行が`LDAP_BIND_CREDENTIALS`に変わります。
 6. コネクターが実行されると、コネクターをデーモン化する必要があります（まだツールを選んでいない場合は、[upstart](http://upstart.ubuntu.com/)や[systemd](https://www.freedesktop.org/wiki/Software/systemd/)を検討することもできます）。たとえば、Ubuntu Xenialでsystemdを使用する場合、`/lib/systemd/system/auth0-adldap.service`ファイルには以下の内容が含まれる可能性があります。

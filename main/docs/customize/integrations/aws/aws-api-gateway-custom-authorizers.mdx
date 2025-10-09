@@ -9,6 +9,8 @@ title: Secure AWS API Gateway Endpoints Using Custom Authorizers
   that accept Auth0-issued access tokens.
 'twitter:title': Secure AWS API Gateway Endpoints Using Custom Authorizers
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 Secure AWS API Gateway endpoints using custom authorizers that accept Auth0-issued <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip>. To do this, you configure your API with API Gateway, create and configure your AWS Lambda functions (including the custom authorizers) to secure your API endpoints, and implement the <Tooltip tip="Authorization Flow: Authorization grant (or workflow) specified in the OAuth 2.0 framework." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip> so that your users can retrieve the access tokens needed to gain access to your API from Auth0.
 
 To learn more, visit [AWS Lambda Overview](https://aws.amazon.com/lambda/) once you log into your [AWS API Gateway](https://aws.amazon.com/api-gateway/).
@@ -237,11 +239,12 @@ You can [download a sample custom authorizer](https://github.com/auth0-samples/j
 
    As an example, the text of your `.env` file should look something like this when complete:
 
-   ```http lines
-   JWKS_URI=https://{yourDomain}/.well-known/jwks.json
+   export const codeExample = `   JWKS_URI=https://{yourDomain}/.well-known/jwks.json
    AUDIENCE=https://your-api-gateway
    TOKEN_ISSUER=https://{yourDomain}/
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="http" />
 
 
    

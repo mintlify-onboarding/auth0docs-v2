@@ -8,6 +8,8 @@ permalink: "enroll-and-challenge-push-authenticators"
 'twitter:title': "プッシュAuthenticatorの登録とチャレンジ"
 'twitter:description': "プッシュを認証要素として独自のMFAフローを構築する方法を説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0は、[ユニバーサルログイン](/docs/ja-jp/authenticate/login/auth0-universal-login)を使用した組み込みの<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>登録と認証フローを提供します。ただし、独自のインターフェイスを作成したい場合は、[MFA API](/docs/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)を使用することもできます。
 
@@ -34,25 +36,18 @@ MFA APIを使用するには、事前にアプリケーションに対してMFA�
 
 プッシュで登録するには、`authenticator_types`パラメーターを`[oob]`、`oob_channels`パラメーターを`[auth0]`に設定します。
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
   --header 'authorization: Bearer MFA_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{ "authenticator_types": ["oob"], "oob_channels": ["auth0"] }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/mfa/associate");
+  --data '{ "authenticator_types": ["oob"], "oob_channels": ["auth0"] }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/mfa/associate");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MFA_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ \"authenticator_types\": [\"oob\"], \"oob_channels\": [\"auth0\"] }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -80,18 +75,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/associate")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/associate")
   .header("authorization", "Bearer MFA_TOKEN")
   .header("content-type", "application/json")
   .body("{ \"authenticator_types\": [\"oob\"], \"oob_channels\": [\"auth0\"] }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -104,10 +94,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MFA_TOKEN",
                            @"content-type": @"application/json" };
@@ -133,11 +121,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/mfa/associate",
@@ -163,10 +148,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -182,11 +165,8 @@ conn.request("POST", "/{yourDomain}/mfa/associate", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -202,10 +182,8 @@ request["content-type"] = 'application/json'
 request.body = "{ \"authenticator_types\": [\"oob\"], \"oob_channels\": [\"auth0\"] }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "authorization": "Bearer MFA_TOKEN",
@@ -235,8 +213,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 成功すると、次のような応答を受け取ります：
@@ -263,9 +252,7 @@ dataTask.resume()
 
 完了すると、ユーザーが正常に登録されたことをGuardianアプリケーションがAuth0に通知します。スキャンされたかを知るためには、MFA Associateエンドポイントの呼び出しで返された`oob_code`を使用して、Auth0トークンエンドポイントをポーリングします。
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample11 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'authorization: Bearer {mfaToken}' \
   --header 'content-type: application/x-www-form-urlencoded' \
@@ -273,19 +260,14 @@ curl --request POST \
   --data 'client_id={yourClientId}' \
   --data 'client_secret={yourClientSecret}' \
   --data 'mfa_token={mfaToken}' \
-  --data 'oob_code={oobCode}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'oob_code={oobCode}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer {mfaToken}");
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -313,18 +295,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("authorization", "Bearer {mfaToken}")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -346,10 +323,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {mfaToken}",
                            @"content-type": @"application/x-www-form-urlencoded" };
@@ -377,11 +352,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -407,10 +379,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -426,11 +396,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -446,10 +413,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {mfaToken}",
@@ -479,8 +444,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 ユーザーがコードをスキャンしなかった場合には、`authorization_pending`応答が返され、数秒以内に`oauth_token`をもう一度呼び出す必要があることが分かります。
@@ -518,23 +494,16 @@ MFA Authenticatorエンドポイントを呼び出すことで、Authenticator�
 
 ユーザーにチャレンジするには、チャレンジしたい要素の`authenticator_id`が必要です。登録された全Authenticatorの一覧は、MFA Authenticatorエンドポイントを使って表示できます：
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample21 = `curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
   --header 'authorization: Bearer MFA_TOKEN' \
-  --header 'content-type: application/json'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/mfa/authenticators");
+  --header 'content-type: application/json'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/mfa/authenticators");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer MFA_TOKEN");
 request.AddHeader("content-type", "application/json");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -559,17 +528,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.get("https://{yourDomain}/mfa/authenticators")
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.get("https://{yourDomain}/mfa/authenticators")
   .header("authorization", "Bearer MFA_TOKEN")
   .header("content-type", "application/json")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -581,10 +545,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MFA_TOKEN",
                            @"content-type": @"application/json" };
@@ -605,11 +567,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/mfa/authenticators",
@@ -634,10 +593,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -651,11 +608,8 @@ conn.request("GET", "/{yourDomain}/mfa/authenticators", headers=headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -670,10 +624,8 @@ request["authorization"] = 'Bearer MFA_TOKEN'
 request["content-type"] = 'application/json'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = [
   "authorization": "Bearer MFA_TOKEN",
@@ -696,8 +648,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 Authenticatorのリストは以下の形式で取得されます。
@@ -730,21 +693,14 @@ Authenticatorのリストは以下の形式で取得されます。
 
 プッシュチャレンジをトリガーするには、対応する`authenticator_id`と`mfa_token`を使ってMFAチャレンジエンドポイントに`POST`を行います。
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample31 = `curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
-  --data '{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret", "challenge_type": "oob", "authenticator_id": "push|dev_ZUla9SQ6tAIHSz6y", "mfa_token": "{mfaToken}" }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/mfa/challenge");
+  --data '{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret", "challenge_type": "oob", "authenticator_id": "push|dev_ZUla9SQ6tAIHSz6y", "mfa_token": "{mfaToken}" }'`;
+export const codeExample32 = `var client = new RestClient("https://{yourDomain}/mfa/challenge");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{ \"client_id\": \"{yourClientId}\",  \"client_secret\": \"{yourClientSecret\", \"challenge_type\": \"oob\", \"authenticator_id\": \"push|dev_ZUla9SQ6tAIHSz6y\", \"mfa_token\": \"{mfaToken}\" }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample33 = `package main
 
 import (
 	"fmt"
@@ -769,16 +725,11 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/challenge")
+}`;
+export const codeExample34 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/challenge")
   .body("{ \"client_id\": \"{yourClientId}\",  \"client_secret\": \"{yourClientSecret\", \"challenge_type\": \"oob\", \"authenticator_id\": \"push|dev_ZUla9SQ6tAIHSz6y\", \"mfa_token\": \"{mfaToken}\" }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample35 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -796,10 +747,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample36 = `#import <Foundation/Foundation.h>
 NSDictionary *parameters = @{ @"client_id": @"{yourClientId}",
                               @"client_secret": @"{yourClientSecret",
                               @"challenge_type": @"oob",
@@ -824,11 +773,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample37 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/mfa/challenge",
@@ -850,10 +796,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample38 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -864,11 +808,8 @@ conn.request("POST", "/{yourDomain}/mfa/challenge", payload)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample39 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -882,10 +823,8 @@ request = Net::HTTP::Post.new(url)
 request.body = "{ \"client_id\": \"{yourClientId}\",  \"client_secret\": \"{yourClientSecret\", \"challenge_type\": \"oob\", \"authenticator_id\": \"push|dev_ZUla9SQ6tAIHSz6y\", \"mfa_token\": \"{mfaToken}\" }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample40 = `import Foundation
 let parameters = [
   "client_id": "{yourClientId}",
   "client_secret": "{yourClientSecret",
@@ -912,8 +851,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample31} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample32} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample33} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample34} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample35} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample36} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample37} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample38} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample39} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample40} language="swift" filename="Swift" />
 </CodeGroup>
 
 ### 受信したコードを使って認証を完了します。
@@ -929,27 +879,20 @@ dataTask.resume()
 
 アプリケーションは、ユーザーがプッシュ通知を受領するまで、OAuth0トークンエンドポイントをポーリングしなければなりません。
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample41 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=http://auth0.com/oauth/grant-type/mfa-oob \
   --data 'client_id={yourClientId}' \
   --data 'client_secret={yourClientSecret}' \
   --data 'mfa_token={mfaToken}' \
-  --data 'oob_code={oobCode}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'oob_code={oobCode}'`;
+export const codeExample42 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample43 = `package main
 
 import (
 	"fmt"
@@ -976,17 +919,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample44 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample45 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -1005,10 +943,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample46 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -1035,11 +971,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample47 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -1064,10 +997,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample48 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -1080,11 +1011,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample49 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -1099,10 +1027,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample50 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -1129,8 +1055,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample41} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample42} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample43} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample44} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample45} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample46} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample47} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample48} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample49} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample50} language="swift" filename="Swift" />
 </CodeGroup>
 
 呼び出しでは、以下の結果のうち1つが返されます。

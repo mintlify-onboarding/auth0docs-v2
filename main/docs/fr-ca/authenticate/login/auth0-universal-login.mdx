@@ -8,6 +8,8 @@ permalink: "auth0-universal-login"
 'twitter:title': "Connexion universelle Auth0"
 'twitter:description': "Décrit comment la connexion universelle Auth0 vous fournit les moyens de prouver l’identité de vos utilisateurs avec notre serveur d’autorisation."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 La connexion universelle Auth0 procure la fonctionnalité essentielle d’un serveur d’autorisation : le flux de connexion. Lorsqu’un utilisateur doit prouver son identité pour accéder à votre application, vous pouvez le rediriger vers la connexion universelle et laisser Auth0 gérer le processus d’authentification.
 
@@ -93,14 +95,14 @@ Après avoir activé la Connexion universelle ou la Connexion classique dans vot
 
 Vous pouvez appeler directement le [point de terminaison de la connexion](/docs/docs/fr-ca/api/authentication#login) à partir de n’importe quel navigateur.
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample = `https://{yourDomain}/authorize?
   response_type=code|token&
   client_id={yourClientId}&
   connection={connectionName}&
   redirect_uri={https://yourApp/callback}&
-  state={state}
-```
+  state={state}`;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
 La demande doit inclure les valeurs suivantes :
 

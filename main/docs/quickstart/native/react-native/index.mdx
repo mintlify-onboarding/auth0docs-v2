@@ -2,6 +2,8 @@
 title: "React Native"
 permalink: "00-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Steve Hobbs
 
@@ -106,15 +108,15 @@ First, you must provide a way for your users to log in. We recommend using the A
 
 Open your app's `build.gradle` file (typically at `android/app/build.gradle`) and add the following manifest placeholders. The value for `auth0Domain` should contain your Auth0 application settings [as configured above](#get-your-application-keys).
 
-```gradle lines
-android {
+export const codeExample1 = `android {
     defaultConfig {
         // Add the next line
         manifestPlaceholders = [auth0Domain: "{yourDomain}", auth0Scheme: "${applicationId}.auth0"]
     }
     ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="gradle" />
 
 
 
@@ -260,15 +262,15 @@ import {useAuth0, Auth0Provider} from 'react-native-auth0';
 
 Next, wrap your application in the `Auth0Provider` component, providing your Auth0 domain and Client ID values:
 
-```javascript lines
-const App = () => {
+export const codeExample2 = `const App = () => {
   return (
     <Auth0Provider domain={"{yourDomain}"} clientId={"{yourClientId}"}>
       {/* your application */}
     </Auth0Provider>
   );
-};
-```
+};`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 
 

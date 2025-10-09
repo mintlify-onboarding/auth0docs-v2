@@ -8,6 +8,8 @@ permalink: "lock"
 'twitter:title': "Lock pour le Web"
 'twitter:description': "Un gadget logiciel offrant une expérience de connexion et d’inscription sans friction pour vos applications Web."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lock est un type de connexion intégrable qui peut être [configuré selon vos besoins](/docs/fr-ca/libraries/lock/v11/configuration) et est recommandé pour une utilisation avec des applications monopages, de préférence conjointement avec la [Connexion universelle](/docs/fr-ca/universal-login), qu’il est conseillé d’utiliser en priorité. Lock vous permet d’ajouter facilement des fournisseurs d’identité sociale, de sorte que vos utilisateurs puissent se connecter de manière transparente en utilisant n’importe quel fournisseur souhaité.
 
@@ -67,13 +69,13 @@ Vous devrez d’abord initialiser un nouvel objet `Auth0Lock` et lui donner votr
 
 
 
-```javascript lines
-// Initializing our Auth0Lock
+export const codeExample1 = `// Initializing our Auth0Lock
 var lock = new Auth0Lock(
   '{yourClientId}',
   '{yourDomain}'
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 ### 2. Authentification et obtention des informations utilisateur
 
@@ -81,8 +83,7 @@ Ensuite, écoutez en utilisant la méthode `on` pour l’événement `authentifi
 
 
 
-```javascript lines
-var Auth = (function() {
+export const codeExample2 = `var Auth = (function() {
 
   var wm = new WeakMap();
   var privateStore = {};
@@ -125,8 +126,9 @@ var Auth = (function() {
     });
   };
   return Auth;
-}());
-```
+}());`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 Vous pouvez ensuite manipuler le contenu de la page et afficher les informations de profil pour l’utilisateur (par exemple, afficher son nom dans un message de bienvenue).
 
@@ -156,12 +158,12 @@ Pour mettre en œuvre le mode sans mot de passe dans Lock, initialisez Lock d’
 
 
 
-```javascript lines
-var lockPasswordless = new Auth0LockPasswordless(
+export const codeExample3 = `var lockPasswordless = new Auth0LockPasswordless(
  '{yourClientId}',
  '{yourDomain}'
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 ### Options Sans mot de passe
 
@@ -190,8 +192,7 @@ var passwordlessOptions = {
 
 
 
-```javascript lines
-var passwordlessOptions = {
+export const codeExample4 = `var passwordlessOptions = {
   allowedConnections: ['email'],
   passwordlessMethod: 'code',
   auth: {
@@ -207,8 +208,9 @@ var lockPasswordless = new Auth0LockPasswordless(
  '{yourClientId}',
  '{yourDomain}',
  passwordlessOptions
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
 ### Authentification unique avec authentification intégrée
 

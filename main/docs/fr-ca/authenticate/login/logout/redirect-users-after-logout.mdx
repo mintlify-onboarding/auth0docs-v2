@@ -8,6 +8,8 @@ permalink: "redirect-users-after-logout"
 'twitter:title': "Rediriger les utilisateurs avec une déconnexion alternative"
 'twitter:description': "Décrit comment rediriger les utilisateurs avec le point de terminaison hérité de déconnexion."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez rediriger les utilisateurs vers une URL spécifique après leur déconnexion. Vous devrez enregistrer l’URL de redirection dans les paramètres de votre locataire ou de votre application. Auth0 redirige uniquement vers les URL présentes dans la liste d’URL autorisées après la déconnexion. Si vous avez besoin de redirections différentes pour chaque application, vous pouvez ajouter les URL à la liste d’URL autorisées dans les paramètres de votre application.
 
@@ -68,11 +70,11 @@ Tous les fournisseurs d’identité ne prennent pas en charge le paramètre `ret
 
 Pour Facebook, l’exemple de code ci-dessous utilise le paramètre `returnTo` et spécifie un site Web pour la redirection.
 
-``` lines
-https://{yourDomain}/v2/logout?federated&
+export const codeExample = `https://{yourDomain}/v2/logout?federated&
       returnTo=https://{yourDomain}/logout?returnTo=http://www.example.com
-      &access_token={facebookAccessToken}
-```
+      &access_token={facebookAccessToken}`;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
 ## En savoir plus
 

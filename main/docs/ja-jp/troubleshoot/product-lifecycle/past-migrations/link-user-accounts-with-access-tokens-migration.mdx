@@ -8,6 +8,8 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 'twitter:title': "アカウントリンクに向けてアクセストークンに移行する"
 'twitter:description': "ユーザーアカウントをリンクするに当たり、IDトークンの使用からアクセストークンの使用へ移行する方法を説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 以前は、一部のケースで、IDトークンを使ってユーザーアカウントのリンクやリンク解除ができました。この機能は、廃止されます。今後は、すべてのケースでアクセストークンを使う必要があります。
 
@@ -104,15 +106,16 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 
    
 
-   ``` lines
-   https://{yourDomain}/authorize?
+   export const codeExample1 = `   https://{yourDomain}/authorize?
          scope=openid
          &response_type=id_token
          &client_id={yourClientId}
          &redirect_uri=https://{yourApp}/callback
          &nonce=NONCE
          &state=OPAQUE_VALUE
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
    
 
@@ -122,8 +125,7 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 
    
 
-   ``` lines
-   https://{yourDomain}/authorize?
+   export const codeExample2 = `   https://{yourDomain}/authorize?
          audience=https://{yourDomain}/api/v2/
          &scope=update:current_user_identities
          &response_type=token%20id_token
@@ -131,7 +133,9 @@ permalink: "link-user-accounts-with-access-tokens-migration"
          &redirect_uri=https://{yourApp}/callback
          &nonce={nonce}
          &state={opaqueValue}
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample2} language="text" lines />
 
    
 
@@ -165,25 +169,26 @@ permalink: "link-user-accounts-with-access-tokens-migration"
    2. セカンダリアカウントのIDトークンの`aud`クレームはクライアントを識別し、要求の作成に使用されたアクセス トークンの`azp`クレームと同じ値を保持する必要があります。
 5. アクセストークンを取得したら、それを使ってユーザーアカウントをリンクします。この部分は同じで、要求のうち、`Bearer`トークンとして使用する値を除き変更はありません。応答も同じです。
 
-   ```json lines
-   {
-         "method": "POST",
-         "url": "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
-         "httpVersion": "HTTP/1.1",
-         "headers": [{
-         "name": "Authorization",
-         "value": "Bearer ACCESS_TOKEN"
-         },
-         {
-         "name": "content-type",
-         "value": "application/json"
-         }],
-         "postData" : {
-         "mimeType": "application/json",
-         "text": "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
-         }
-       }
-   ```
+export const codeExample3 = `   {
+    "method": "POST",
+    "url": "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
+    "httpVersion": "HTTP/1.1",
+    "headers": [{
+    "name": "Authorization",
+    "value": "Bearer ACCESS_TOKEN"
+    },
+    {
+    "name": "content-type",
+    "value": "application/json"
+    }],
+    "postData" : {
+    "mimeType": "application/json",
+    "text": "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
+    }
+  }
+`;
+
+<AuthCodeBlock children={codeExample3} language="json" />
 
    
 
@@ -198,8 +203,7 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 
    
 
-   ```javascript lines
-   // get an ID Token
+   export const codeExample4 = `   // get an ID Token
        var webAuth = new auth0.WebAuth({
          clientID: '{yourClientId}',
          domain: '{yourDomain}',
@@ -212,7 +216,9 @@ permalink: "link-user-accounts-with-access-tokens-migration"
          domain: '{yourDomain}',
          token: '{yourIdToken}'
        });
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
    
 
@@ -222,8 +228,7 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 
    
 
-   ```javascript lines
-   // get an Access Token
+   export const codeExample5 = `   // get an Access Token
        var webAuth = new auth0.WebAuth({
          clientID: '{yourClientId}',
          domain: '{yourDomain}',
@@ -237,7 +242,9 @@ permalink: "link-user-accounts-with-access-tokens-migration"
          domain: '{yourDomain}',
          token: '{yourMgmtApiAccessToken}'
        });
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample5} language="javascript" />
 
    
 
@@ -254,25 +261,18 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 
 ただ、ここで紹介している新しいメソッドはその代わりになります。APIでの認証には引き続き`update:users`スコープを含むアクセストークンを使用しますが、要求のペイロードでセカンダリのアカウントIDトークンを（`user_id`および`プロバイダー`の代わりに）送信できます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample6 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
   --header 'authorization: Bearer ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
+  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'`;
+export const codeExample7 = `var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample8 = `package main
 
 import (
 	"fmt"
@@ -300,18 +300,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
+}`;
+export const codeExample9 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample10 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -324,10 +319,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample11 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -352,11 +345,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample12 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
@@ -382,10 +372,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample13 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -401,11 +389,8 @@ conn.request("POST", "/{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identit
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample14 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -421,10 +406,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample15 = `import Foundation
 
 let headers = [
   "authorization": "Bearer ACCESS_TOKEN",
@@ -451,8 +434,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample6} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample7} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample8} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample9} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample10} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample11} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample12} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample13} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample14} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample15} language="swift" filename="Swift" />
 </CodeGroup>
 
 次のような条件があります。
@@ -469,15 +463,16 @@ IDトークンを使ってアカウントのリンクを解除するには、ア
 
    
 
-   ``` lines
-   https://{yourDomain}/authorize?
+   export const codeExample16 = `   https://{yourDomain}/authorize?
          scope=openid
          &response_type=id_token
          &client_id={yourClientId}
          &redirect_uri=https://{yourApp}/callback
          &nonce={nonce}
          &state={opaqueValue}
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample16} language="text" lines />
 
    
 
@@ -487,8 +482,7 @@ IDトークンを使ってアカウントのリンクを解除するには、ア
 
    
 
-   ``` lines
-   https://{yourDomain}/authorize?
+   export const codeExample17 = `   https://{yourDomain}/authorize?
          audience=https://{yourDomain}/api/v2/
          &scope=update:current_user_identities
          &response_type=token%20id_token
@@ -496,7 +490,9 @@ IDトークンを使ってアカウントのリンクを解除するには、ア
          &redirect_uri=https://{yourApp}/callback
          &nonce={nonce}
          &state={opaqueValue}
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample17} language="text" lines />
 
    
 
@@ -540,10 +536,11 @@ IDトークンを使ってアカウントのリンクを解除するには、ア
 
    新しい方法では、呼び出しは次のようになります：
 
-   ``` lines
-   DELETE https://{yourDomain}/api/v2/users/{primaryAccountUserId}/identities/{secondaryAccountProvider}/{secondaryAccountUserId}
+   export const codeExample18 = `   DELETE https://{yourDomain}/api/v2/users/{primaryAccountUserId}/identities/{secondaryAccountProvider}/{secondaryAccountUserId}
        Authorization: 'Bearer {yourMgmtApiAccessToken}'
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample18} language="text" lines />
 
    
 

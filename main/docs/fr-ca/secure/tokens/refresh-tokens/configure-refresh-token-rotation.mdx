@@ -8,6 +8,8 @@ permalink: "configure-refresh-token-rotation"
 'twitter:title': "Configurer la rotation des jetons d’actualisation"
 'twitter:description': "Décrit comment configurer la rotation des jetons d’actualisation."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Configurer la rotation du jeton d’actualisation pour chaque application à l’aide du Dashbaord ou de la [trousse SDK Auth0 pour les applications à page unique (SPA)](/docs/fr-ca/libraries/auth0-single-page-app-sdk). Lorsque la rotation des jetons d’actualisation est activée, la transition pour l’utilisateur est transparente. L’application utilise le jeton d’actualisation non rotatif précédent, non expiré, et le remplace par un jeton d’actualisation rotatif.
 
@@ -45,16 +47,17 @@ Vous pouvez utiliser la trousse SDK Auth0 pour les applications à page unique (
    `npm install @auth0/auth0-spa-js`
 2. Activez la fonctionnalité sur la trousse SDK en définissant `useRefreshTokens: true` pour commencer à envoyer la permission `offline_access`.
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ```javascript lines
-   const auth0 = await createAuth0Client({
+   export const codeExample = `   const auth0 = await createAuth0Client({
          domain: '{yourDomain}',
          client_id: '{yourClientId}',
          audience: '{yourApiIdentifier}',
          useRefreshTokens: true
        });
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
    
 

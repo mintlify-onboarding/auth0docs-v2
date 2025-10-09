@@ -10,6 +10,8 @@ title: Configure Flexible Connection Switching
   Universal Login
 'twitter:title': Configure Flexible Connection Switching
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 Flexible connection switching is an optional feature that allows users to choose their method of authentication when logging in to an application. When implemented, your application's login screen presents users with the option to authenticate with either traditional database credentials or a <Tooltip tip="" cta="View Glossary" href="/docs/glossary?term=passwordless">passwordless</Tooltip> connection. Users who select a [passwordless connection](/docs/authenticate/passwordless) receive a one-time password (OTP) through email or SMS that they can use to log in to your application.
 
 Flexible connection switching uses [custom Universal Login prompts](/docs/customize/login-pages/universal-login/customize-signup-and-login-prompts) to provide users with a more autonomous authentication experience.
@@ -68,25 +70,18 @@ In the code samples below, ensure you replace the placeholders with the appropri
 
 You can configure the `signup-password` prompt using the [Set partials for a prompt](https://auth0.com/docs/api/management/v2/prompts/put-partials) endpoint:
 
-<CodeGroup>
-```bash cURL lines
-curl --request PUT \
+export const codeExample1 = `curl --request PUT \
   --url 'https://{yourDomain}/api/v2/prompts/signup-password/partials' \
   --header 'authorization: Bearer {mgmtApiToken}' \
   --header 'content-type: application/json' \
-  --data '{"signup-password":{"form-footer-start":"   Send a secure code by email "}}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/prompts/signup-password/partials");
+  --data '{"signup-password":{"form-footer-start":"   Send a secure code by email "}}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/prompts/signup-password/partials");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("authorization", "Bearer {mgmtApiToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"signup-password\":{\"form-footer-start\":\"   Send a secure code by email \"}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -114,18 +109,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/signup-password/partials")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/signup-password/partials")
   .header("authorization", "Bearer {mgmtApiToken}")
   .header("content-type", "application/json")
   .body("{\"signup-password\":{\"form-footer-start\":\"   Send a secure code by email \"}}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PUT',
@@ -142,10 +132,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {mgmtApiToken}",
                            @"content-type": @"application/json" };
@@ -170,11 +158,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/prompts/signup-password/partials",
@@ -200,10 +185,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -219,11 +202,8 @@ conn.request("PUT", "/{yourDomain}/api/v2/prompts/signup-password/partials", pay
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -239,10 +219,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"signup-password\":{\"form-footer-start\":\"<form method=\\\"post\\\" data-form-secondary=\\\"true\\\"><input type=\\\"hidden\\\" name=\\\"state\\\" value=\\\"{{state}}\\\"> <input type=\\\"hidden\\\" name=\\\"connection\\\" value=\\\"email\\\"> <button type=\\\"submit\\\" id=\\\"switchConnectionButton\\\" style=\\\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\\\" data-action-button-secondary=\\\"true\\\"> <span>Send a secure code by email</span> </button></form>\"}}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {mgmtApiToken}",
@@ -269,8 +247,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 As a result, a **Send a secure code by email button** is added to the `signup-password` screen. When a user selects this button, it submits a form body containing the login state parameter and the name of the desired connection.
@@ -281,25 +270,18 @@ For best results, configuring the login prompt for both password and passwordles
 
 You can configure the `login-password` prompt using the [Set partials for a prompt](https://auth0.com/docs/api/management/v2/prompts/put-partials) endpoint:
 
-<CodeGroup>
-```bash cURL lines
-curl --request PUT \
+export const codeExample11 = `curl --request PUT \
   --url 'https://{yourDomain}/api/v2/prompts/login-password/partials' \
   --header 'authorization: Bearer {mgmtApiToken}' \
   --header 'content-type: application/json' \
-  --data '{"login-password":{"form-footer-start":"   Send a secure code by email "}}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/prompts/login-password/partials");
+  --data '{"login-password":{"form-footer-start":"   Send a secure code by email "}}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/prompts/login-password/partials");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("authorization", "Bearer {mgmtApiToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"login-password\":{\"form-footer-start\":\"   Send a secure code by email \"}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -328,18 +310,13 @@ func main() {
 	fmt.Println(string(body))
 
 }n(string(body))
-}
-```
-```java Java lines
-HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/login-password/partials")
+}`;
+export const codeExample14 = `HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/login-password/partials")
   .header("authorization", "Bearer {mgmtApiToken}")
   .header("content-type", "application/json")
   .body("{\"login-password\":{\"form-footer-start\":\"   Send a secure code by email \"}}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'PUT',
@@ -356,10 +333,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {mgmtApiToken}",
                            @"content-type": @"application/json" };
@@ -384,11 +359,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/prompts/login-password/partials",
@@ -414,10 +386,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -433,11 +403,8 @@ conn.request("PUT", "/{yourDomain}/api/v2/prompts/login-password/partials", payl
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -453,10 +420,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"login-password\":{\"form-footer-start\":\"<form method='post' data-form-secondary='true'><input type='hidden' name='state' value='{{state}}'> <input type='hidden' name='connection' value='email'> <button type='submit' id='switchConnectionButton' style='background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;' data-action-button-secondary='true'> <span>Send a secure code by email</span> </button></form>\"}}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {mgmtApiToken}",
@@ -483,33 +448,37 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 As a result, a **Send a secure code by email button** is added to the `login-password` screen. When a user selects this button, it submits a form body containing the login state parameter and the name of the desired connection.
 
 Similarly, you can configure the `login-passwordless` prompt using the [Set partials for a prompt](https://auth0.com/docs/api/management/v2/prompts/put-partials) endpoint:
 
-<CodeGroup>
-```bash cURL lines
-curl --request PUT \
+export const codeExample21 = `curl --request PUT \
   --url 'https://{yourDomain}/api/v2/prompts/login-passwordless/partials' \
   --header 'authorization: Bearer {mgmtApiToken}' \
   --header 'content-type: application/json' \
-  --data '{"login-passwordless-email-code":{"form-footer-start":"   Use Password Instead "}}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/prompts/login-passwordless/partials");
+  --data '{"login-passwordless-email-code":{"form-footer-start":"   Use Password Instead "}}'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/prompts/login-passwordless/partials");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("authorization", "Bearer {mgmtApiToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"login-passwordless-email-code\":{\"form-footer-start\":\"   Use Password Instead \"}}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -537,18 +506,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/login-passwordless/partials")
+}`;
+export const codeExample24 = `HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/login-passwordless/partials")
   .header("authorization", "Bearer {mgmtApiToken}")
   .header("content-type", "application/json")
   .body("{\"login-passwordless-email-code\":{\"form-footer-start\":\"   Use Password Instead \"}}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'PUT',
@@ -565,10 +529,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {mgmtApiToken}",
                            @"content-type": @"application/json" };
@@ -593,11 +555,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/prompts/login-passwordless/partials",
@@ -623,10 +582,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -642,11 +599,8 @@ conn.request("PUT", "/{yourDomain}/api/v2/prompts/login-passwordless/partials", 
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -662,10 +616,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"login-passwordless-email-code\":{\"form-footer-start\":\"<form method='post' data-form-secondary='true'><input type='hidden'  name='state' value='{{state}}'> <input type='hidden' name='connection' value='Username-Password-Authentication'> <button type='submit' id='switchConnectionButton' style='background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;' data-action-button-secondary='true'> <span>Use Password Instead</span> </button></form>\"}}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {mgmtApiToken}",
@@ -692,6 +644,17 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>

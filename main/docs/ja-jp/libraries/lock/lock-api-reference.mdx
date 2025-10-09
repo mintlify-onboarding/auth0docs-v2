@@ -8,6 +8,8 @@ permalink: "lock-api-reference"
 'twitter:title': "Lock APIのリファレンス"
 'twitter:description': "Lock v11 APIの詳細。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lockには、多くのメソッド、機能、構成可能なオプションがあります。このリファレンスでは、必要なものを紹介し、その使用方法について説明します。以下をクリックして、探しているメソッドに直接移動するか、単に参照してください。Lockによって生成されるイベントに関する情報を探している場合は、[on()](#on-)メソッドのセクションに記載されています。
 
@@ -30,8 +32,7 @@ Lockには、多くのメソッド、機能、構成可能なオプションが�
 * **オプション {Object}** :オプションのパラメーター。ロックの外観と動作を構成できます。詳細については、[構成オプションのページ](/docs/ja-jp/libraries/lock/lock-configuration)を参照してください。
 
 
-```javascript lines
-var Auth = (function() {
+export const codeExample1 = `var Auth = (function() {
 
   var privateStore = {};
 
@@ -66,8 +67,9 @@ var Auth = (function() {
     });
   };
   return Auth;
-}());
-```
+}());`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 ## getUserInfo()
 
@@ -198,8 +200,7 @@ Lockは、そのライフサイクル中にイベントを生成します。`on`
 
 `認証済み`イベントの使用例:
 
-```javascript lines
-var Auth = (function() {
+export const codeExample2 = `var Auth = (function() {
 
   var privateStore = {};
 
@@ -230,8 +231,9 @@ var Auth = (function() {
     });
   };
   return Auth;
-}());
-```
+}());`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 ## resumeAuth()
 

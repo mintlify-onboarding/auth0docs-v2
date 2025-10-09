@@ -8,6 +8,8 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 'twitter:title': "Migrate to Access Tokens for Account Linking (Migrer vers des jetons d’accès pour associer les comptes)"
 'twitter:description': "Décrit comment passer des jetons d’ID aux jetons d’accès lors de l’association de comptes d’utilisateurs."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auparavant, il était possible d’utiliser des jetons d’ID pour associer et désassocier des comptes d’utilisateurs dans certains cas d’utilisation. Auth0 supprime cette fonctionnalité. Vous devrez désormais utiliser des jetons d’accès dans tous les cas.
 
@@ -104,17 +106,18 @@ Désormais, vous devez obtenir un jeton d’accès (contenant la permission `upd
 1. Obtenez un jeton d’accès avec la permission `update:current_user_identities` comme le montre l’exemple suivant. L’exemple utilise le [flux implicite](/docs/fr-ca/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post), mais vous pouvez [obtenir des jetons d’accès](/docs/fr-ca/secure/tokens/access-tokens/get-access-tokens) pour n’importe quel type d’application.
 2. En utilisant la méthode précédente avec un jeton d’ID, votre code ressemblerait à ceci :
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ``` lines
-   https://{yourDomain}/authorize?
+   export const codeExample1 = `   https://{yourDomain}/authorize?
          scope=openid
          &response_type=id_token
          &client_id={yourClientId}
          &redirect_uri=https://{yourApp}/callback
          &nonce=NONCE
          &state=OPAQUE_VALUE
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
    
 
@@ -122,10 +125,9 @@ Désormais, vous devez obtenir un jeton d’accès (contenant la permission `upd
 
    En utilisant la nouvelle méthode avec un jeton d’accès, votre code ressemblera à ceci :
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ``` lines
-   https://{yourDomain}/authorize?
+   export const codeExample2 = `   https://{yourDomain}/authorize?
          audience=https://{yourDomain}/api/v2/
          &scope=update:current_user_identities
          &response_type=token%20id_token
@@ -133,7 +135,9 @@ Désormais, vous devez obtenir un jeton d’accès (contenant la permission `upd
          &redirect_uri=https://{yourApp}/callback
          &nonce={nonce}
          &state={opaqueValue}
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample2} language="text" lines />
 
    
 
@@ -168,25 +172,26 @@ Désormais, vous devez obtenir un jeton d’accès (contenant la permission `upd
    2. La demande `aud` dans le jeton d’ID du compte secondaire doit identifier le client et avoir la même valeur que la demande `azp` du jeton d’accès utilisé pour effectuer la demande.
 5. Une fois que vous avez le jeton d’accès, vous pouvez l’utiliser pour associer des comptes d’utilisateurs. Cette partie reste inchangée, rien d’autre ne change dans la demande, à l’exception de la valeur utilisée comme jeton `Bearer`. La réponse reste également la même.
 
-   ```json lines
-   {
-         "method": "POST",
-         "url": "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
-         "httpVersion": "HTTP/1.1",
-         "headers": [{
-         "name": "Authorization",
-         "value": "Bearer ACCESS_TOKEN"
-         },
-         {
-         "name": "content-type",
-         "value": "application/json"
-         }],
-         "postData" : {
-         "mimeType": "application/json",
-         "text": "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
-         }
-       }
-   ```
+export const codeExample3 = `   {
+      "method": "POST",
+      "url": "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
+      "httpVersion": "HTTP/1.1",
+      "headers": [{
+      "name": "Authorization",
+      "value": "Bearer ACCESS_TOKEN"
+      },
+      {
+      "name": "content-type",
+      "value": "application/json"
+      }],
+      "postData" : {
+      "mimeType": "application/json",
+      "text": "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
+      }
+    }
+`;
+
+<AuthCodeBlock children={codeExample3} language="json" />
 
    
 
@@ -199,48 +204,43 @@ Si vous utilisez la [bibliothèque auth0.js](/docs/fr-ca/libraries/auth0js) pour
 1. Obtenez un jeton d’accès avec la permission `update:current_user_identities`, puis utilisez ce jeton pour instancier `auth0.Management`. L’appel final à `linkUser`reste inchangé.
 2. En utilisant la méthode précédente avec un jeton d’ID, votre code ressemblerait à ceci :
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+export const codeExample4 = `   // get an ID Token
+    var webAuth = new auth0.WebAuth({
+      clientID: '{yourClientId}',
+      domain: '{yourDomain}',
+      redirectUri: 'https://{yourApp}/callback',
+      scope: 'openid',
+      responseType: 'id_token'
+    });
+    // create a new instance
+    var auth0Manage = new auth0.Management({
+      domain: '{yourDomain}',
+      token: '{yourIdToken}'
+    });
+`;
 
-   ```javascript lines
-   // get an ID Token
-       var webAuth = new auth0.WebAuth({
-         clientID: '{yourClientId}',
-         domain: '{yourDomain}',
-         redirectUri: 'https://{yourApp}/callback',
-         scope: 'openid',
-         responseType: 'id_token'
-       });
-       // create a new instance
-       var auth0Manage = new auth0.Management({
-         domain: '{yourDomain}',
-         token: '{yourIdToken}'
-       });
-   ```
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
-   
-
-   
 
    En utilisant la nouvelle méthode avec un jeton d’accès, votre code ressemblera à ceci :
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+export const codeExample5 = `   // get an Access Token
+    var webAuth = new auth0.WebAuth({
+      clientID: '{yourClientId}',
+      domain: '{yourDomain}',
+      redirectUri: 'https://{yourApp}/callback',
+      audience: 'https://{yourDomain}/api/v2/',
+      scope: 'update:current_user_identities',
+      responseType: 'token id_token'
+    });
+    // create a new instance
+    var auth0Manage = new auth0.Management({
+      domain: '{yourDomain}',
+      token: '{yourMgmtApiAccessToken}'
+    });
+`;
 
-   ```javascript lines
-   // get an Access Token
-       var webAuth = new auth0.WebAuth({
-         clientID: '{yourClientId}',
-         domain: '{yourDomain}',
-         redirectUri: 'https://{yourApp}/callback',
-         audience: 'https://{yourDomain}/api/v2/',
-         scope: 'update:current_user_identities',
-         responseType: 'token id_token'
-       });
-       // create a new instance
-       var auth0Manage = new auth0.Management({
-         domain: '{yourDomain}',
-         token: '{yourMgmtApiAccessToken}'
-       });
-   ```
+<AuthCodeBlock children={codeExample5} language="javascript" />
 
    
 
@@ -257,25 +257,18 @@ Si vous obtenez un jeton d’accès pour l’association de comptes qui contient
 
 Toutefois, cette nouvelle méthode offre une alternative. Vous utiliserez toujours un jeton d’accès contenant la permission `update:users` pour vous authentifier auprès de l’API, mais dans la charge utile de la demande, vous pouvez envoyer le jeton d’ID du compte secondaire (au lieu du `user_id` et du `provider`).
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample6 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
   --header 'authorization: Bearer ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
+  --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'`;
+export const codeExample7 = `var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer ACCESS_TOKEN");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample8 = `package main
 
 import (
 	"fmt"
@@ -303,18 +296,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
+}`;
+export const codeExample9 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample10 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -327,10 +315,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample11 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer ACCESS_TOKEN",
                            @"content-type": @"application/json" };
@@ -355,11 +341,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample12 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities",
@@ -385,10 +368,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample13 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -404,11 +385,8 @@ conn.request("POST", "/{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identit
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample14 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -424,10 +402,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"link_with\":\"SECONDARY_ACCOUNT_ID_TOKEN\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample15 = `import Foundation
 
 let headers = [
   "authorization": "Bearer ACCESS_TOKEN",
@@ -454,8 +430,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample6} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample7} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample8} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample9} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample10} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample11} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample12} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample13} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample14} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample15} language="swift" filename="Swift" />
 </CodeGroup>
 
 Les conditions suivantes doivent être remplies :
@@ -470,17 +457,18 @@ Si vous utilisez des jetons d’ID pour dissocier des comptes, vous devez mettre
 1. Tout d’abord, vous devez obtenir un jeton d’accès avec la permission `update:current_user_identities`.
 2. En utilisant la méthode précédente avec un jeton d’ID, votre code ressemblerait à ceci :
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ``` lines
-   https://{yourDomain}/authorize?
-         scope=openid
-         &response_type=id_token
-         &client_id={yourClientId}
-         &redirect_uri=https://{yourApp}/callback
-         &nonce={nonce}
-         &state={opaqueValue}
-   ```
+export const codeExample16 = `   https://{yourDomain}/authorize?
+      scope=openid
+      &response_type=id_token
+      &client_id={yourClientId}
+      &redirect_uri=https://{yourApp}/callback
+      &nonce={nonce}
+      &state={opaqueValue}
+`;
+
+<AuthCodeBlock children={codeExample16} language="text" lines />
 
    
 
@@ -488,18 +476,19 @@ Si vous utilisez des jetons d’ID pour dissocier des comptes, vous devez mettre
 
    En utilisant la nouvelle méthode avec un jeton d’accès, votre code ressemblera à ceci :
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ``` lines
-   https://{yourDomain}/authorize?
-         audience=https://{yourDomain}/api/v2/
-         &scope=update:current_user_identities
-         &response_type=token%20id_token
-         &client_id={yourClientId}
-         &redirect_uri=https://{yourApp}/callback
-         &nonce={nonce}
-         &state={opaqueValue}
-   ```
+export const codeExample17 = `   https://{yourDomain}/authorize?
+      audience=https://{yourDomain}/api/v2/
+      &scope=update:current_user_identities
+      &response_type=token%20id_token
+      &client_id={yourClientId}
+      &redirect_uri=https://{yourApp}/callback
+      &nonce={nonce}
+      &state={opaqueValue}
+`;
+
+<AuthCodeBlock children={codeExample17} language="text" lines />
 
    
 
@@ -511,7 +500,7 @@ Si vous utilisez des jetons d’ID pour dissocier des comptes, vous devez mettre
    3. Définissez le `response_type` à `id_token token` pour que Auth0 envoie à la fois un jeton d’ID et un jeton d’accès.
       Si nous décodons le jeton d’accès et examinons son contenu, nous constatons ce qui suit :
 
-      codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+      
 
       ```
       {
@@ -544,10 +533,11 @@ Si vous utilisez des jetons d’ID pour dissocier des comptes, vous devez mettre
 
    En utilisant la nouvelle méthode, votre requête ressemblera à ceci :
 
-   ``` lines
-   DELETE https://{yourDomain}/api/v2/users/{primaryAccountUserId}/identities/{secondaryAccountProvider}/{secondaryAccountUserId}
-       Authorization: 'Bearer {yourMgmtApiAccessToken}'
-   ```
+export const codeExample18 = `   DELETE https://{yourDomain}/api/v2/users/{primaryAccountUserId}/identities/{secondaryAccountProvider}/{secondaryAccountUserId}
+    Authorization: 'Bearer {yourMgmtApiAccessToken}'
+`;
+
+<AuthCodeBlock children={codeExample18} language="text" lines />
 
    
 

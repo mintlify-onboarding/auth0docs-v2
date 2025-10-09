@@ -8,6 +8,8 @@ title: Redirect Users with Alternative Logout
 'twitter:description': Describes how to redirect users with the legacy logout endpoint.
 'twitter:title': Redirect Users with Alternative Logout
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can redirect users to a specific URL after they logout. You will need to register the redirect URL in your tenant or application settings. Auth0 only redirects to allow list URLs after logout. If you need different redirects for each application, you can add the URLs to the allow list in your application settings.
 
 1. Add a `returnTo` query string parameter with the target URL as the value. Encode the target URL being passed in. For example, to redirect the user to `https://www.example.com` after logout, make the following request:
@@ -66,11 +68,11 @@ Not all IdPs support `returnTo`.
 
 For Facebook, the example code below uses the `returnTo` parameter and specifies a website for the redirect.
 
-```http lines
-https://{yourDomain}/v2/logout?federated&
+export const codeExample = `https://{yourDomain}/v2/logout?federated&
       returnTo=https://{yourDomain}/logout?returnTo=http://www.example.com
-      &access_token={facebookAccessToken}
-```
+      &access_token={facebookAccessToken}`;
+
+<AuthCodeBlock children={codeExample} language="http" />
 
 
 

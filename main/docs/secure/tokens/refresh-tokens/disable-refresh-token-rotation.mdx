@@ -8,6 +8,8 @@ title: Disable Refresh Token Rotation
 'twitter:description': Describes how to disable Refresh Token rotation.
 'twitter:title': Disable Refresh Token Rotation
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can disable <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip> rotation for each application using Dashboard or the <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 ## Disable with the Dashboard
@@ -23,14 +25,15 @@ You can disable <Tooltip tip="Refresh Token: Token used to obtain a renewed Acce
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
 
-   ```javascript lines
-   const auth0 = await createAuth0Client({
+   export const codeExample = `   const auth0 = await createAuth0Client({
          domain: '{yourDomain}',
          client_id: '{yourClientId}',
          audience: '{yourApiIdentifier}',
          useRefreshTokens: false
        });
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 
    

@@ -8,6 +8,8 @@ permalink: "ad-ldap-connector-test-environment"
 'twitter:title': "Configuration de l’environnement de test du connecteur AD/LDAP"
 'twitter:description': "Explique comment créer et tester un contrôleur de domaine Active Directory."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez configurer un environnement de test en créant une installation minimale de contrôleur de domaine AD sur une machine virtuelle (VM) déployée dans le nuage. Vous pouvez faire fonctionner votre VM sur n’importe quelle plateforme en nuage. Cet exemple montre comment en configurer une sur Microsoft Azure.
 
@@ -61,9 +63,10 @@ Pour s’assurer que tout fonctionne avec votre compte Auth0, nous allons config
 5. Sous **Entreprise**, activez la connexion `auth0-test-ad`**Active Directory/LDAP**.
 6. Testez le flux d’authentification en ouvrant le lien suivant dans votre navigateur :
 
-   ```html lines
-   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection=auth0-test-ad
-   ```
+   export const codeExample = `   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection=auth0-test-ad
+   `;
+
+<AuthCodeBlock children={codeExample} language="html" />
 
    
 

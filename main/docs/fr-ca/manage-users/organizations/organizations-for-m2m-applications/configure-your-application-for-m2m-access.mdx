@@ -8,6 +8,8 @@ permalink: "configure-your-application-for-m2m-access"
 'twitter:title': "Configurer votre application pour l’accès communication entre machines (machine-to-machine/M2M)"
 'twitter:description': "Découvrez comment configurer votre application pour l’accès communication entre machines (machine-to-machine/M2M) à l’aide d’Auth0 Dashboard et de Management API."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Après avoir créé l’application, configurez-la pour l’accès communication entre machines en procédant comme suit :
 
@@ -74,8 +76,7 @@ Vous pouvez également définir le comportement organisationnel d’une applicat
 
 L’exemple de code suivant crée un objet `client_grant` avec un accès M2M :
 
-```json lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/client-grants' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
@@ -88,21 +89,22 @@ curl --request POST \
     ],
     "organization_usage": "ORG_USAGE",
     "allow_any_organization": false
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 L’exemple de code suivant met à jour un objet `client_grant` avec un accès M2M :
 
-```json lines
-curl --request PATCH \
+export const codeExample2 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
     "organization_usage": "ORG_USAGE",
     "allow_any_organization": false
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 </Tab></Tabs>
 
@@ -157,15 +159,15 @@ Vous pouvez configurer l’organization par défaut pour une application via les
 
 L’exemple de code suivant met à jour un client avec une organization par défaut :
 
-```json lines
-curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
+export const codeExample3 = `curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
           "default_organization": "ORGANIZATION_ID",
 	   "flows": ["client_credentials"]
-        }'
-```
+        }'`;
+
+<AuthCodeBlock children={codeExample3} language="json" />
 
 </Tab></Tabs>
 

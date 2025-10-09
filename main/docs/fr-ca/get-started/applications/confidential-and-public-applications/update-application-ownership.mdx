@@ -8,33 +8,28 @@ permalink: "update-application-ownership"
 'twitter:title': "Mise à jour de la propriété d’une application"
 'twitter:description': "Découvrez comment mettre à jour la propriété d’une application à l’aide de l’Auth0 Management API. Cela vous permettra d’indiquer si une application est enregistrée avec Auth0 comme application première partie ou comme application tierce partie."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez utiliser l’Auth0 <Tooltip href="/docs/docs/fr-ca/glossary?term=management-api" tip="Management API
 Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip> pour mettre à jour la propriété d’une application, ce qui vous permettra de spécifier si une application est enregistrée avec Auth0 comme application première partie ou comme application tierce partie.
 
 Effectuez une requête `PATCH` au point de terminaison [Mettre à jour un client](/docs/fr-ca/api/management/v2#!/Clients/patch_clients_by_id). Assurez-vous de remplacer les valeurs des espaces réservés `{yourClientId}`, `{yourMgmtApiAccessToken}`, et `{ownershipBoolean}`  avec les valeurs de votre ID client, votre jeton d’accès à Management API, et un booléen représentant la propriété de l’application, respectivement.
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample1 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/%7ByourClientId%7D' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --header 'cache-control: no-cache' \
   --header 'content-type: application/json' \
-  --data '{ "is_first_party": "{ownershipBoolean}" }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D");
+  --data '{ "is_first_party": "{ownershipBoolean}" }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ \"is_first_party\": \"{ownershipBoolean}\" }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -63,19 +58,14 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D")
   .header("content-type", "application/json")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("cache-control", "no-cache")
   .body("{ \"is_first_party\": \"{ownershipBoolean}\" }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -92,10 +82,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer {yourMgmtApiAccessToken}",
@@ -121,11 +109,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/clients/%7ByourClientId%7D",
@@ -152,10 +137,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -172,11 +155,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/clients/%7ByourClientId%7D", payload
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -193,10 +173,8 @@ request["cache-control"] = 'no-cache'
 request.body = "{ \"is_first_party\": \"{ownershipBoolean}\" }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -224,8 +202,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 <table class="table"><thead>

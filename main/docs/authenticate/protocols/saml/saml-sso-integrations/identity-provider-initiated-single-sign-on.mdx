@@ -10,6 +10,8 @@ title: Configure SAML Identity Provider-Initiated Single Sign-On
   Single Sign-on (SSO).
 'twitter:title': Configure SAML Identity Provider-Initiated Single Sign-On
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 Many instructions for setting up a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> federation begin with <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=Single+Sign-on">Single Sign-on</Tooltip> (SSO) initiated by the service provider. The service provider redirects the user to the <Tooltip tip="Single Sign-On (SSO): Service that, after a user logs into one applicaton, automatically logs that user in to other applications." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP) for the purposes of authentication. This process is commonly used for consumer-facing scenarios.
 
 However, in enterprise scenarios, it is sometimes common to begin with the IdP initiating SSO instead of the service provider. For example, an enterprise might set up a portal to ensure that users navigate to the correct application after they sign on to the portal.
@@ -34,9 +36,9 @@ An alternative approach is to have users start the login flow at the application
 
 When using IdP-Initiated SSO, make sure to include the connection parameter in the post-back URL:
 
-```http wrap lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}
-```
+export const codeExample1 = `https://{yourDomain}/login/callback?connection={yourConnectionName}`;
+
+<AuthCodeBlock children={codeExample1} language="http" />
 
 
 
@@ -45,9 +47,9 @@ https://{yourDomain}/login/callback?connection={yourConnectionName}
 
 If you are using the [Organizations](/docs/manage-users/organizations) feature, you can optionally include an organization parameter containing the organization ID of the desired organization:
 
-```http wrap lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}
-```
+export const codeExample2 = `https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}`;
+
+<AuthCodeBlock children={codeExample2} language="http" />
 
 
 

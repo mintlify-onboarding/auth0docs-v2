@@ -8,6 +8,8 @@ permalink: "oidc-back-channel-logout-initiators"
 'twitter:title': "Initiateurs de déconnexion par canal d’appui OIDC"
 'twitter:description': "Découvrez le fonctionnement des initiateurs de déconnexion par canal d’appui OIDC et la manière de les configurer pour votre ou vos applications"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Les initiateurs de déconnexion par canal d’appui OIDC vous permettent de déconnecter à distance les utilisateurs de leurs applications en fonction des événements de fin de session. Les initiateurs de déconnexion par canal d’appui OIDC fonctionnent à travers les protocoles, par exemple, une requête de déconnexion <Tooltip href="/docs/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
 Protocole normalisé permettant à deux parties d’échanger des informations d’authentification sans mot de passe." cta="Voir le glossaire">SAML</Tooltip> initiée par le fournisseur d’identité (<Tooltip href="/docs/docs/fr-ca/glossary?term=idp" tip="Fournisseur d’identité (IdP)
@@ -44,20 +46,21 @@ Vous pouvez configurer les initiateurs de déconnexion par canal d’appui OIDC
 
    
 
-   ``` lines
-   PATCH /api/v2/clients/{yourClientId}
-   {
-     ...
-     "oidc_logout": {
-       "backchannel_logout_urls": ["https://example.com/cb"]
-       "backchannel_logout_initiators": {
-         "mode":"custom",
-         "selected_initiators": ["rp-logout", "idp-logout", "password-changed"]
-       }
-     }
-     ...
-   }
-   ```
+export const codeExample1 = `   PATCH /api/v2/clients/{yourClientId}
+{
+  ...
+  "oidc_logout": {
+    "backchannel_logout_urls": ["https://example.com/cb"]
+    "backchannel_logout_initiators": {
+      "mode":"custom",
+      "selected_initiators": ["rp-logout", "idp-logout", "password-changed"]
+    }
+  }
+  ...
+}
+`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
    
 
@@ -170,8 +173,7 @@ La propriété `selected_initiators` prend en charge les valeurs suivantes :
 
 
 
-```json lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample2 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -182,15 +184,15 @@ PATCH /api/v2/clients/{yourClientId}
     }
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 ##### Inscrire une application à un initiateur ayant changé de mot de passe uniquement (rp-logout et idp-logout sont requis)
 
 
 
-```json lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample3 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -202,15 +204,15 @@ PATCH /api/v2/clients/{yourClientId}
     }
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="json" />
 
 ##### Désinscrire de tous les initiateurs (rp-logout reste la valeur par défaut).
 
 
 
-```json lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample4 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -218,8 +220,9 @@ PATCH /api/v2/clients/{yourClientId}
 	  "backchannel_logout_urls": ["https://example.com/cb"]
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample4} language="json" />
 
 ### Dashboard
 

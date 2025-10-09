@@ -9,6 +9,8 @@ title: Configure and Implement Multi-Resource Refresh Token
   token
 'twitter:title': Configure and Implement Multi-Resource Refresh Token
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 <Warning>
 
 Multi-Resource Refresh Token is currently in Early Access. By using this feature, you agree to the applicable Free Trial terms in Okta’s [Master Subscription Agreement](https://www.okta.com/legal). To learn more about Auth0's product release cycle, read [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
@@ -49,9 +51,7 @@ The audience and scope properties must correspond to an existing application in 
 
 For existing applications, make a PATCH call to the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint. To create a new application, make a POST call to the [Create a Client](https://auth0.com/docs/api/management/v2/clients/post-clients) endpoint:
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample1 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients//{yourClientId}' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --header 'content-type: application/json' \
@@ -75,19 +75,14 @@ curl --request PATCH \
       }
     ]
   }
-}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/clients//{yourClientId}");
+}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/clients//{yourClientId}");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\n  \"refresh_token\": {\n    \"expiration_type\": \"expiring\",\n    \"rotation_type\": \"rotating\",\n    \"token_lifetime\": 31557600,\n    \"idle_token_lifetime\": 2592000,\n    \"leeway\": 0,\n    \"infinite_token_lifetime\": false,\n    \"infinite_idle_token_lifetime\": false,\n    \"policies\": [\n      {\n        \"audience\": \"https://api.example.com\",\n        \"scope\": [\"read:data\"]\n      },\n      {\n        \"audience\": \"https://billing.example.com\",\n        \"scope\": [\"read:billing\"]\n      }\n    ]\n  }\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -115,18 +110,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients//{yourClientId}")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients//{yourClientId}")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("content-type", "application/json")
   .body("{\n  \"refresh_token\": {\n    \"expiration_type\": \"expiring\",\n    \"rotation_type\": \"rotating\",\n    \"token_lifetime\": 31557600,\n    \"idle_token_lifetime\": 2592000,\n    \"leeway\": 0,\n    \"infinite_token_lifetime\": false,\n    \"infinite_idle_token_lifetime\": false,\n    \"policies\": [\n      {\n        \"audience\": \"https://api.example.com\",\n        \"scope\": [\"read:data\"]\n      },\n      {\n        \"audience\": \"https://billing.example.com\",\n        \"scope\": [\"read:billing\"]\n      }\n    ]\n  }\n}")
-  .asString();
-```
-
-```javascript Node.JS lines expandable
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -156,10 +146,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtApiAccessToken}",
                            @"content-type": @"application/json" };
@@ -184,11 +172,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/clients//{yourClientId}",
@@ -214,10 +199,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -233,11 +216,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/clients//{yourClientId}", payload, h
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -253,10 +233,8 @@ request["content-type"] = 'application/json'
 request.body = "{\n  \"refresh_token\": {\n    \"expiration_type\": \"expiring\",\n    \"rotation_type\": \"rotating\",\n    \"token_lifetime\": 31557600,\n    \"idle_token_lifetime\": 2592000,\n    \"leeway\": 0,\n    \"infinite_token_lifetime\": false,\n    \"infinite_idle_token_lifetime\": false,\n    \"policies\": [\n      {\n        \"audience\": \"https://api.example.com\",\n        \"scope\": [\"read:data\"]\n      },\n      {\n        \"audience\": \"https://billing.example.com\",\n        \"scope\": [\"read:billing\"]\n      }\n    ]\n  }\n}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {yourMgmtApiAccessToken}",
@@ -301,8 +279,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 Sample response:
@@ -355,9 +344,7 @@ If you do not receive a refresh token, confirm that:
 
 Once the refresh token is issued, you can request access tokens for any API and scopes defined in both the initial authentication and the MRRT policy. For example:
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample11 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/json' \
   --data '{
@@ -366,18 +353,13 @@ curl --request POST \
   "refresh_token": "${refreshToken}",
   "audience": "https://billing.example.com",
   "scope": "read:billing write:billing"
-}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\n  \"grant_type\": \"refresh_token\",\n  \"client_id\": \"{yourClientId}\",\n  \"refresh_token\": \"${refreshToken}\",\n  \"audience\": \"https://billing.example.com\",\n  \"scope\": \"read:billing write:billing\"\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -404,17 +386,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")
   .body("{\n  \"grant_type\": \"refresh_token\",\n  \"client_id\": \"{yourClientId}\",\n  \"refresh_token\": \"${refreshToken}\",\n  \"audience\": \"https://billing.example.com\",\n  \"scope\": \"read:billing write:billing\"\n}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -433,10 +410,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"grant_type": @"refresh_token",
@@ -464,11 +439,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -493,10 +465,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -509,11 +479,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -528,10 +495,8 @@ request["content-type"] = 'application/json'
 request.body = "{\n  \"grant_type\": \"refresh_token\",\n  \"client_id\": \"{yourClientId}\",\n  \"refresh_token\": \"${refreshToken}\",\n  \"audience\": \"https://billing.example.com\",\n  \"scope\": \"read:billing write:billing\"\n}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = [
@@ -561,8 +526,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
  To learn more, read [Use Refresh tokens](/docs/secure/tokens/refresh-tokens/use-refresh-tokens).

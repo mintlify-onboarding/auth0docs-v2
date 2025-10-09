@@ -8,6 +8,8 @@ permalink: "authenticating-and-authorizing-a-tessel-device-with-auth0"
 'twitter:title': "Auth0でTesselデバイスを認証および認可する"
 'twitter:description': "Auth0でTesselデバイスを認証および認可する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 [Tessel](https://tessel.io)は優れたボードです。強力なハードウェア仕様や高い拡張性に加えて、Javascriptでもプログラミングすることができます。Kickstarterで発表があった直後から、サポートを表明し、早く手に入れたいと首を長くして待っていました。
 
@@ -27,8 +29,7 @@ Tesselの目標は、Javascriptとの完全な互換性を実現することで�
 
 <Frame>![Tessel - TesselからAuth0へのフロー図](/docs/images/ja-jp/cdy7uua7fh8z/3iyOfO564gkbyQSsvTJE9c/ad1d1427f80475be12ce1adec9cf892c/2023-09-22_13-14-21.png)</Frame>
 
-```javascript lines expandable
-var http = require('https');
+export const codeExample = `var http = require('https');
 var tessel = require('tessel');
 
 tessel.syncClock(function () {
@@ -112,8 +113,9 @@ tessel.syncClock(function () {
     if( body ) req.write(body);
     req.end();
   }
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 コードに関する注目すべき点：
 

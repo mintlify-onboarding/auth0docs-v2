@@ -9,6 +9,8 @@ title: API and Mobile Configuration (Mobile Apps + API)
   scenario
 'twitter:title': API and Mobile Configuration (Mobile Apps + API)
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 In this section we will see how we can implement an API for our scenario.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -85,16 +87,16 @@ In this section we will see how we can implement a mobile application for our sc
 
 To authorize the user we will implement the [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce). The mobile application should first send the user to the [authorization URL](https://auth0.com/docs/api/authentication#authorization-code-grant-pkce-) along with the `code_challenge` and the method used to generate it:
 
-```http lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     audience=API_AUDIENCE&
     scope=SCOPE&
     response_type=code&
     client_id=YOUR_CLIENT_ID&
     code_challenge=CODE_CHALLENGE&
     code_challenge_method=S256&
-    redirect_uri=https://YOUR_APP/callback
-```
+    redirect_uri=https://YOUR_APP/callback`;
+
+<AuthCodeBlock children={codeExample1} language="http" />
 
 
 
@@ -147,10 +149,10 @@ The `GET` request to the authorization URL should include the following values
 
 After a successful request to the authorization URL, you should receive the following response:
 
-```http lines
-HTTP/1.1 302 Found
-Location: https://{yourDomain}/callback?code=AUTHORIZATION_CODE
-```
+export const codeExample2 = `HTTP/1.1 302 Found
+Location: https://{yourDomain}/callback?code=AUTHORIZATION_CODE`;
+
+<AuthCodeBlock children={codeExample2} language="http" />
 
 
 
@@ -159,27 +161,20 @@ Location: https://{yourDomain}/callback?code=AUTHORIZATION_CODE
 
 Next you can exchange the `authorization_code` from the response for an Access Token that can be used to call your API. Perform a `POST` request to the [Token URL](https://auth0.com/docs/api/authentication#authorization-code-pkce-) including the following data:
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample3 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=authorization_code \
   --data 'client_id={yourClientId}' \
   --data code_verified=YOUR_GENERATED_CODE_VERIFIER \
   --data code=YOUR_AUTHORIZATION_CODE \
-  --data 'redirect_uri=https://{https://yourApp/callback}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'redirect_uri=https://{https://yourApp/callback}'`;
+export const codeExample4 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=authorization_code&client_id={yourClientId}&code_verified=YOUR_GENERATED_CODE_VERIFIER&code=YOUR_AUTHORIZATION_CODE&redirect_uri=https%3A%2F%2F{https://yourApp/callback}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample5 = `package main
 
 import (
 	"fmt"
@@ -206,17 +201,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample6 = `HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=authorization_code&client_id={yourClientId}&code_verified=YOUR_GENERATED_CODE_VERIFIER&code=YOUR_AUTHORIZATION_CODE&redirect_uri=https%3A%2F%2F{https://yourApp/callback}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample7 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -235,10 +225,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample8 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -265,11 +253,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample9 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -294,10 +279,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample10 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -310,11 +293,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample11 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -329,10 +309,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=authorization_code&client_id={yourClientId}&code_verified=YOUR_GENERATED_CODE_VERIFIER&code=YOUR_AUTHORIZATION_CODE&redirect_uri=https%3A%2F%2F{https://yourApp/callback}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample12 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -359,8 +337,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample3} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample4} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample5} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample6} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample7} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample8} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample9} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample10} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample11} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample12} language="swift" filename="Swift" />
 </CodeGroup>
 
 <table class="table"><thead>
@@ -472,21 +461,14 @@ A [Refresh Token](/docs/secure/tokens/refresh-tokens) will only be present if 
 
 Your request should include:
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample13 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
-  --header 'content-type: application/x-www-form-urlencoded'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --header 'content-type: application/x-www-form-urlencoded'`;
+export const codeExample14 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample15 = `package main
 
 import (
 	"fmt"
@@ -510,16 +492,11 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample16 = `HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample17 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -531,10 +508,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample18 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -557,11 +532,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample19 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -585,10 +557,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample20 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -599,11 +569,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", headers=headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample21 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -617,10 +584,8 @@ request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/x-www-form-urlencoded'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample22 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -643,8 +608,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample13} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample14} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample15} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample16} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample17} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample18} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample19} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample20} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample21} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample22} language="swift" filename="Swift" />
 </CodeGroup>
 
 <table class="table"><thead>

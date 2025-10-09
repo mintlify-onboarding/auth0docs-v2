@@ -2,6 +2,8 @@
 title: "Java Spring Boot"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Jim Anderson
 
@@ -130,8 +132,7 @@ If you are using Maven:
 
 The Okta Spring Boot Starter makes it easy to configure your application with Auth0. The sample below uses an `application.yml` file, though you can also use properties files or any of the other [supported externalization mechanisms](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config).
 
-```yml lines
-# src/main/resources/application.yml
+export const codeExample = `# src/main/resources/application.yml
 okta:
   oauth2:
     issuer: https://{yourDomain}/
@@ -142,8 +143,9 @@ okta:
 # If you wish to use a different port, change this and be sure your callback and logout URLs are
 # configured with the correct port.
 server:
-  port: 3000
-```
+  port: 3000`;
+
+<AuthCodeBlock children={codeExample} language="yml" />
 
 
 

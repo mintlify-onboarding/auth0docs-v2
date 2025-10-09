@@ -8,6 +8,8 @@ permalink: "office-365-custom-provisioning"
 'twitter:title': "Fourniture personnalisée Office 365"
 'twitter:description': "Découvrez comment configurer la fourniture personnalisée de Microsoft Office 365."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 La configuration par défaut d’Office 365 inclut Active Directory et DirSync/Microsoft Entra ID Sync Services, qui synchronisent et provisionnent les utilisateurs AD dans votre Microsoft Entra ID pour <Tooltip href="/docs/docs/fr-ca/glossary?term=single-sign-on" tip="Authentification unique (SSO)
 Service qui, après qu’un utilisateur se soit connecté à une application, le connecte automatiquement à d’autres applications." cta="Voir le glossaire">SSO</Tooltip>. Dans cette configuration, Auth0 est le fournisseur d’identité, nous fournissons l’authentification unique (SSO) pour ces utilisateurs.
@@ -274,9 +276,9 @@ La manière la plus simple pour vos utilisateurs externes de s’authentifier es
 
 Vous devez rediriger vos utilisateurs vers l’URL suivante (par exemple, en utilisant un « lien intelligent » comme `https://office.travel0.com`) :
 
-```http wrap lines
-https://{yourDomain}/login?client=AUTH0_OFFICE365_CLIENT_ID&protocol=wsfed&state=&redirect_uri=&
-```
+export const codeExample = `https://{yourDomain}/login?client=AUTH0_OFFICE365_CLIENT_ID&protocol=wsfed&state=&redirect_uri=&`;
+
+<AuthCodeBlock children={codeExample} language="http" />
 
 Cela leur montrera la page de connexion Auth0, après quoi ils seront redirigés vers Office 365. Il sera important d’expliquer aux utilisateurs externes que c’est la seule façon de s’authentifier, car la page de connexion à Office 365 ne prend pas en charge la détection de domaine vital pour ces utilisateurs externes. Cela signifie également que, lorsqu’ils essaient d’ouvrir un lien, ils doivent d’abord visiter le lien intelligent avant de pouvoir accéder au lien qu’ils ont essayé d’ouvrir.
 

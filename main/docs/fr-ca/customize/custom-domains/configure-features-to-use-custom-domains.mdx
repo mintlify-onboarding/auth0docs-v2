@@ -8,6 +8,8 @@ permalink: "configure-features-to-use-custom-domains"
 'twitter:title': "Configurer des fonctionnalités pour utiliser des Domaines personnalisés"
 'twitter:description': "Découvrez comment configurer un domaine personnalisé pour les fonctions d’authentification Auth0."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Pour configurer les fonctionnalités Auth0 afin qu’elles utilisent votre domaine personnalisé, vous devrez peut-être suivre des étapes supplémentaires en fonction des fonctions que vous utilisez. Par exemple, vous devrez peut-être apporter des modifications avant de pouvoir utiliser votre domaine personnalisé sur votre page de connexion ou pour appeler vos API.
 
@@ -124,13 +126,13 @@ Si vous utilisez [Lock pour le Web](/docs/docs/fr-ca/libraries/lock) intégré d
 
 
 
-```javascript lines
-var lock = new Auth0Lock('{yourClientId}', '{yourCustomDomain}', {
+export const codeExample1 = `var lock = new Auth0Lock('{yourClientId}', '{yourCustomDomain}', {
   //code omitted for brevity
   configurationBaseUrl: 'https://cdn.us.auth0.com'
   //code omitted for brevity
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 L’URL CDN varie selon la région. Utilisez `https://cdn.[us|eu|au|jp].auth0.com` (`au` pour l’Australie, `ca` pour Canada, `eu` l’Europe, `jp` pour le Japon, `uk` pour Royaume-Uni, `us` pour les États-Unis).
 
@@ -146,23 +148,23 @@ Si vous utilisez la [Trousse SDK Auth0 pour les applications à page unique (SPA
 
 
 
-```javascript lines
-webAuth = new auth0.WebAuth({
+export const codeExample2 = `webAuth = new auth0.WebAuth({
   domain: '{yourCustomDomain}',
   clientID: '{yourClientId}'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 Et pour la trousse SDK Auth0 pour les applications à page unique (SPA) :
 
 
 
-```javascript lines
-const auth0 = await createAuth0Client({
+export const codeExample3 = `const auth0 = await createAuth0Client({
   domain: '{yourCustomDomain}',
   client_id: '{yourClientId}'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 Consultez la section API ci-dessous si vous utilisez un domaine personnalisé et avez également l’intention d’effectuer [des actions avec Management API via Auth0.js](/docs/docs/fr-ca/libraries/auth0js/v9#user-management).
 

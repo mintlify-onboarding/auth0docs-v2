@@ -8,6 +8,8 @@ permalink: "configure-applications-with-oidc-discovery"
 'twitter:title': "Configurer des applications avec OIDC Discovery"
 'twitter:description': "Décrit comment utiliser la découverte OpenID Connect (OIDC) pour configurer des applications avec Auth0 à l’aide des trousses SDK."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Les documents [OpenID Connect (OIDC) Discovery (Découverte OpenID Connect)](https://openid.net/specs/openid-connect-discovery-1_0-final.html#RFC5785)  contiennent des métadonnées sur le fournisseur d’identité (<Tooltip href="/docs/docs/fr-ca/glossary?term=idp" tip="Fournisseur d’identité (IdP)
 Service de stockage et de gestion des identités numériques." cta="Voir le glossaire">IdP</Tooltip>). L’ajout de la découverte à votre trousse SDK pour pointer votre application vers le point de terminaison `./wellknown` pour consommer des informations sur votre IdP pourrait aider à configurer votre intégration avec l’IdP.
@@ -23,8 +25,7 @@ Norme ouverte d’authentification qui permet aux applications de vérifier l’
 
 ### Exemple de réponse
 
-```json lines
-{
+export const codeExample1 = `{
   "issuer": "https://{yourDomain}.us.auth0.com/",
   "authorization_endpoint": "https://{yourDomain}.us.auth0.com/authorize",
   "token_endpoint": "https://{yourDomain}.us.auth0.com/oauth/token",
@@ -106,8 +107,9 @@ Norme ouverte d’authentification qui permet aux applications de vérifier l’
     "RS384",
     "PS256"
   ]
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 ### Exemple d’implémentation
 
@@ -118,34 +120,35 @@ Par exemple, voici comment configurer le logiciel médiateur OIDC pour Katana v3
 
    
 
-   ``` lines
-   app.UseCookieAuthentication(new CookieAuthenticationOptions
-   {
-       AuthenticationType = CookieAuthenticationDefaults.AuthenticationType
-   });
+export const codeExample2 = `   app.UseCookieAuthentication(new CookieAuthenticationOptions
+{
+    AuthenticationType = CookieAuthenticationDefaults.AuthenticationType
+});
 
-   app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
-   {
-       Authority = "https://{yourDomain}/",
-       ClientId = "{yourClientId}",
-       SignInAsAuthenticationType = CookieAuthenticationDefaults.AuthenticationType,
-       ResponseType = "token",
-       Notifications = new OpenIdConnectAuthenticationNotifications
-       {
-           // OPTIONAL: you can read/modify the claims that are populated based on the JWT
-           SecurityTokenValidated = context =>
-           {
-               // add Auth0 Access Token as claim
-               var accessToken = context.ProtocolMessage.AccessToken;
-               if (!string.IsNullOrEmpty(accessToken))
-               {
-                   context.AuthenticationTicket.Identity.AddClaim(new Claim("access_token", accessToken));
-               }
-               return Task.FromResult(0);
-           }
-       }
-   });
-   ```
+app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
+{
+    Authority = "https://{yourDomain}/",
+    ClientId = "{yourClientId}",
+    SignInAsAuthenticationType = CookieAuthenticationDefaults.AuthenticationType,
+    ResponseType = "token",
+    Notifications = new OpenIdConnectAuthenticationNotifications
+    {
+        // OPTIONAL: you can read/modify the claims that are populated based on the JWT
+        SecurityTokenValidated = context =>
+        {
+            // add Auth0 Access Token as claim
+            var accessToken = context.ProtocolMessage.AccessToken;
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                context.AuthenticationTicket.Identity.AddClaim(new Claim("access_token", accessToken));
+            }
+            return Task.FromResult(0);
+        }
+    }
+});
+`;
+
+<AuthCodeBlock children={codeExample2} language="text" lines />
 
    
 

@@ -8,6 +8,8 @@ permalink: "add-login-using-the-implicit-flow-with-form-post"
 'twitter:title': "Ajouter la connexion en utilisant le flux implicite avec Form Post"
 'twitter:description': "Découvrez comment ajouter une connexion à votre application Web monopage (SPA) à l’aide du flux implicite avec Form Post."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez ajouter une connexion à votre application Web monopage (SPA) à l’aide du flux implicite avec Form Post. Pour savoir comment fonctionne le flux et pourquoi vous devriez l’utiliser, consultez [Flux implicite avec Form Post](/docs/fr-ca/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post).
 
@@ -42,16 +44,16 @@ Pour autoriser l’utilisateur, votre application doit envoyer l’utilisateur �
 
 ### Exemple d’URL d’autorisation
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     response_type=YOUR_RESPONSE_TYPE&
     response_mode=form_post&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope=SCOPE&
     state=STATE&
-    nonce=NONCE
-```
+    nonce=NONCE`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
 ### Paramètres
 
@@ -107,8 +109,7 @@ https://{yourDomain}/authorize?
 
 Par exemple, votre extrait HTML pour l’URL d’autorisation lors de l’ajout d’une connexion à votre application pourrait ressembler à ceci :
 
-```html lines
-<a href="https://{yourDomain}/authorize?
+export const codeExample2 = `<a href="https://{yourDomain}/authorize?
   response_type=id_token token&
   response_mode=form_post&
   client_id={yourClientId}&
@@ -117,8 +118,9 @@ Par exemple, votre extrait HTML pour l’URL d’autorisation lors de l’ajout 
   state=xyzABC123&
   nonce=eq...hPmz">
   Sign In
-</a>
-```
+</a>`;
+
+<AuthCodeBlock children={codeExample2} language="html" />
 
 ### Réponse
 
@@ -171,14 +173,14 @@ Les jetons d’ID contiennent des informations de l’utilisateur qui doivent ê
 
 Cet exemple montre la requête la plus basique que vous pouvez faire lorsque vous autorisez l’utilisateur à l’étape 1. Il affiche l’écran de connexion Auth0 et permet à l’utilisateur de se connecter avec l’une des connexions configurées :
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample3 = `https://{yourDomain}/authorize?
     response_type=id_token&
     response_mode=form_post&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
-    nonce=NONCE
-```
+    nonce=NONCE`;
+
+<AuthCodeBlock children={codeExample3} language="text" lines />
 
 Cela renverra un jeton d’ID, que vous pourrez analyser à partir de votre URL de redirection.
 
@@ -188,16 +190,16 @@ Outre l’authentification habituelle de l’utilisateur, cet exemple montre com
 
 Pour demander le nom et la photo de l’utilisateur, vous devez ajouter les permissions appropriées lors de l’autorisation de l’utilisateur :
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample4 = `https://{yourDomain}/authorize?
     response_type=id_token token&
     response_mode=form_post&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope=openid%20name%20picture&
     state=STATE&
-    nonce=NONCE
-```
+    nonce=NONCE`;
+
+<AuthCodeBlock children={codeExample4} language="text" lines />
 
 Désormais, votre jeton d’ID contiendra le nom et la photo demandés. Lorsque vous décodez le jeton d’ID, il ressemble à ce qui suit :
 
@@ -219,8 +221,7 @@ En plus de l’authentification habituelle des utilisateurs, cet exemple montre 
 
 Pour envoyer les utilisateurs directement vers l’écran de connexion de GitHub, vous devez passer le paramètre de `connection` et régler sa valeur pour le nom de la connexion (dans ce cas, `github`) en autorisant l’utilisateur :
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample5 = `https://{yourDomain}/authorize?
     response_type=id_token token&
     response_mode=form_post&
     client_id={yourClientId}&
@@ -228,8 +229,9 @@ https://{yourDomain}/authorize?
     scope=openid%20name%20picture&
     state=STATE&
     nonce=NONCE&
-    connection=github
-```
+    connection=github`;
+
+<AuthCodeBlock children={codeExample5} language="text" lines />
 
 À présent, votre jeton d’ID contiendra une `sous-demande` avec l’ID unique de l’utilisateur retourné par GitHub. Lorsque vous décodez le jeton d’ID, il ressemble à ce qui suit :
 

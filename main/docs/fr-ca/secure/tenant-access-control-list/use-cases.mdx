@@ -8,6 +8,8 @@ permalink: "use-cases"
 'twitter:title': "Use Cases"
 'twitter:description': "Learn about the different use cases for the Tenant Access Control List feature."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Tenant Access Control List (ACL) provides the power and flexibility needed to handle a large variety of scenarios.
 
@@ -47,8 +49,7 @@ To create this Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-```go lines
-package main
+export const codeExample1 = `package main
 
 import (
 	"context"
@@ -84,8 +85,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Network ACL has been created")
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="go" />
 
 </Tab><Tab title="Node SDK">
 
@@ -195,8 +197,7 @@ To create this Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-```go lines
-package main
+export const codeExample2 = `package main
 
 import (
 	"context"
@@ -232,8 +233,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Network ACL has been created")
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="go" />
 
 </Tab><Tab title="Node SDK">
 
@@ -340,8 +342,7 @@ To create this Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-```go lines
-package main
+export const codeExample3 = `package main
 
 import (
 	"context"
@@ -378,8 +379,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Network ACL has been created")
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="go" />
 
 </Tab><Tab title="Node SDK">
 
@@ -495,8 +497,7 @@ To create this Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-```go lines
-package main
+export const codeExample4 = `package main
 
 import (
 	"context"
@@ -535,8 +536,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Network ACL has been created")
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample4} language="go" />
 
 </Tab><Tab title="Node SDK">
 

@@ -8,6 +8,8 @@ title: Bulk User Exports
 'twitter:description': Learn how to export lists of users and user metadata.
 'twitter:title': Bulk User Exports
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can use the `POST /api/v2/jobs/users-exports` endpoint to create a job that exports all users associated with a [connection](/docs/authenticate/identity-providers), or all users in the tenant.
 
 For a list of user profile fields that can be exported, read [User Profile Structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure).
@@ -55,25 +57,18 @@ Update the `connection_id` with your database connection ID, or remove it to exp
 
 Required Scopes: `read:users`
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-exports' \
   --header 'authorization: Bearer {yourMgmtAPIAccessToken}' \
   --header 'content-type: application/json' \
-  --data '{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, { "name": "identities[0].connection", "export_as": "provider" }]}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
+  --data '{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, { "name": "identities[0].connection", "export_as": "provider" }]}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer {yourMgmtAPIAccessToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"connection_id\": \"{yourConnectionId}\", \"format\": \"csv\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, { \"name\": \"identities[0].connection\", \"export_as\": \"provider\" }]}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -101,18 +96,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .header("content-type", "application/json")
   .body("{\"connection_id\": \"{yourConnectionId}\", \"format\": \"csv\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, { \"name\": \"identities[0].connection\", \"export_as\": \"provider\" }]}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -133,10 +123,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtAPIAccessToken}",
                            @"content-type": @"application/json" };
@@ -164,11 +152,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/jobs/users-exports",
@@ -194,10 +179,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -213,11 +196,8 @@ conn.request("POST", "/{yourDomain}/api/v2/jobs/users-exports", payload, headers
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -233,10 +213,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"connection_id\": \"{yourConnectionId}\", \"format\": \"csv\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, { \"name\": \"identities[0].connection\", \"export_as\": \"provider\" }]}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {yourMgmtAPIAccessToken}",
@@ -274,8 +252,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 The response should look something like this:
@@ -348,25 +337,18 @@ For example, for metadata structured like this:
 
 The export request (for all three fields) would look like this:
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample11 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-exports' \
   --header 'authorization: Bearer {yourMgmtAPIAccessToken}' \
   --header 'content-type: application/json' \
-  --data '{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent.given"}, {"name": "user_metadata.consent.date"}, {"name": "user_metadata.consent.text_details"}]}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
+  --data '{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent.given"}, {"name": "user_metadata.consent.date"}, {"name": "user_metadata.consent.text_details"}]}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer {yourMgmtAPIAccessToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"connection_id\": \"{yourConnectionId}\", \"format\": \"csv\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, {\"name\": \"user_metadata.consent.given\"}, {\"name\": \"user_metadata.consent.date\"}, {\"name\": \"user_metadata.consent.text_details\"}]}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -394,18 +376,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .header("content-type", "application/json")
   .body("{\"connection_id\": \"{yourConnectionId}\", \"format\": \"csv\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, {\"name\": \"user_metadata.consent.given\"}, {\"name\": \"user_metadata.consent.date\"}, {\"name\": \"user_metadata.consent.text_details\"}]}")
-  .asString();
-```
-
-```javascript Node.JS lines expandable
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -431,10 +408,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtAPIAccessToken}",
                            @"content-type": @"application/json" };
@@ -462,11 +437,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/jobs/users-exports",
@@ -492,10 +464,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -511,11 +481,8 @@ conn.request("POST", "/{yourDomain}/api/v2/jobs/users-exports", payload, headers
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -531,10 +498,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"connection_id\": \"{yourConnectionId}\", \"format\": \"csv\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, {\"name\": \"user_metadata.consent.given\"}, {\"name\": \"user_metadata.consent.date\"}, {\"name\": \"user_metadata.consent.text_details\"}]}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {yourMgmtAPIAccessToken}",
@@ -566,8 +531,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -592,25 +568,18 @@ Before you can import users using an export generated by Auth0, you'll need to c
 
 In this case, for the same example we used before, the request would look like this:
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample21 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-exports' \
   --header 'authorization: Bearer {yourMgmtAPIAccessToken}' \
   --header 'content-type: application/json' \
-  --data '{"connection_id": "{yourConnectionId}", "format": "json", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent"}]}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
+  --data '{"connection_id": "{yourConnectionId}", "format": "json", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent"}]}'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer {yourMgmtAPIAccessToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"connection_id\": \"{yourConnectionId}\", \"format\": \"json\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, {\"name\": \"user_metadata.consent\"}]}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -638,18 +607,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .header("content-type", "application/json")
   .body("{\"connection_id\": \"{yourConnectionId}\", \"format\": \"json\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, {\"name\": \"user_metadata.consent\"}]}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -670,10 +634,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtAPIAccessToken}",
                            @"content-type": @"application/json" };
@@ -701,11 +663,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/jobs/users-exports",
@@ -731,10 +690,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -750,11 +707,8 @@ conn.request("POST", "/{yourDomain}/api/v2/jobs/users-exports", payload, headers
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -770,10 +724,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"connection_id\": \"{yourConnectionId}\", \"format\": \"json\", \"limit\": 5, \"fields\": [{\"name\": \"email\"}, {\"name\": \"user_metadata.consent\"}]}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = [
   "authorization": "Bearer {yourMgmtAPIAccessToken}",
@@ -805,8 +757,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 ## Check export status
@@ -817,21 +780,14 @@ Provide the ID of the job (which you received in the response when creating the 
 
 Require Scopes: `create:users`, `read:users`, `create:passwords_checking_job`
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample31 = `curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D' \
-  --header 'authorization: Bearer {yourMgmtAPIAccessToken}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D");
+  --header 'authorization: Bearer {yourMgmtAPIAccessToken}'`;
+export const codeExample32 = `var client = new RestClient("https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtAPIAccessToken}");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample33 = `package main
 
 import (
 	"fmt"
@@ -855,16 +811,11 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D")
+}`;
+export const codeExample34 = `HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample35 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -876,10 +827,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample36 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtAPIAccessToken}" };
 
@@ -899,11 +848,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample37 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D",
@@ -927,10 +873,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample38 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -941,11 +885,8 @@ conn.request("GET", "/{yourDomain}/api/v2/jobs/%7ByourJobId%7D", headers=headers
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample39 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -959,10 +900,8 @@ request = Net::HTTP::Get.new(url)
 request["authorization"] = 'Bearer {yourMgmtAPIAccessToken}'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample40 = `import Foundation
 
 let headers = ["authorization": "Bearer {yourMgmtAPIAccessToken}"]
 
@@ -982,8 +921,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample31} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample32} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample33} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample34} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample35} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample36} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample37} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample38} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample39} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample40} language="swift" filename="Swift" />
 </CodeGroup>
 
 

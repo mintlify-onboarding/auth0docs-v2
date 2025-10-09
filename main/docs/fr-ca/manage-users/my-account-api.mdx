@@ -8,6 +8,8 @@ permalink: "my-account-api"
 'twitter:title': "My Account API"
 'twitter:description': "Learn how you can empower your users to manage their own account information with the My Account API."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Warning>
 
@@ -131,18 +133,12 @@ The My Account API supports the following scopes:
 
 ##### Step 1: Request authorization code
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
-  --url 'https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F");
+export const codeExample1 = `curl --request GET \
+  --url 'https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F");
 var request = new RestRequest(Method.GET);
-IRestResponse response = client.Execute(request);
-```
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -164,14 +160,10 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.get("https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F")
-  .asString();
-```
-```javascript Node.JS lines
-var axios = require("axios").default;
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.get("https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F")
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -190,10 +182,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F"]
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -210,10 +200,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F",
@@ -234,10 +222,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -246,10 +232,8 @@ conn.request("GET", "/{yourDomain}/authorize?response_type=code&client_id={yourC
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -262,10 +246,8 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Get.new(url)
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
@@ -282,28 +264,33 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 ##### Step 2: Exchange code for access token
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample11 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/json' \
-  --data '{"grant_type": "authorization_code","client_id": "{yourClientId}","client_secret": "{yourClientId}","code": "{yourAuthorizationCode}","redirect_uri": "{yourRedirectUri}","audience": "{yourAudience}","scope": "create:me:authentication_methods","offline_access": ""}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data '{"grant_type": "authorization_code","client_id": "{yourClientId}","client_secret": "{yourClientId}","code": "{yourAuthorizationCode}","redirect_uri": "{yourRedirectUri}","audience": "{yourAudience}","scope": "create:me:authentication_methods","offline_access": ""}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"grant_type\": \"authorization_code\",\"client_id\": \"{yourClientId}\",\"client_secret\": \"{yourClientId}\",\"code\": \"{yourAuthorizationCode}\",\"redirect_uri\": \"{yourRedirectUri}\",\"audience\": \"{yourAudience}\",\"scope\": \"create:me:authentication_methods\",\"offline_access\": \"\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -330,16 +317,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")
   .body("{\"grant_type\": \"authorization_code\",\"client_id\": \"{yourClientId}\",\"client_secret\": \"{yourClientId}\",\"code\": \"{yourAuthorizationCode}\",\"redirect_uri\": \"{yourRedirectUri}\",\"audience\": \"{yourAudience}\",\"scope\": \"create:me:authentication_methods\",\"offline_access\": \"\"}")
-  .asString();
-```
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -361,10 +344,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"grant_type": @"authorization_code",
@@ -395,10 +376,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -423,10 +402,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -439,10 +416,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -457,10 +432,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"grant_type\": \"authorization_code\",\"client_id\": \"{yourClientId}\",\"client_secret\": \"{yourClientId}\",\"code\": \"{yourAuthorizationCode}\",\"redirect_uri\": \"{yourRedirectUri}\",\"audience\": \"{yourAudience}\",\"scope\": \"create:me:authentication_methods\",\"offline_access\": \"\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = [
@@ -493,30 +466,35 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 #### Embedded login with native passkeys
 
 ##### Step 1: Request login challenge
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample21 = `curl --request POST \
   --url 'https://{yourDomain}/passkey/challenge' \
   --header 'content-type: application/json' \
-  --data '{"client_id": "{yourDomain}"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/passkey/challenge");
+  --data '{"client_id": "{yourDomain}"}'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/passkey/challenge");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"client_id\": \"{yourDomain}\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -543,16 +521,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/passkey/challenge")
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/passkey/challenge")
   .header("content-type", "application/json")
   .body("{\"client_id\": \"{yourDomain}\"}")
-  .asString();
-```
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -565,10 +539,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"client_id": @"{yourDomain}" };
@@ -592,10 +564,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/passkey/challenge",
@@ -620,10 +590,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -636,10 +604,8 @@ conn.request("POST", "/{yourDomain}/passkey/challenge", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -654,10 +620,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"client_id\": \"{yourDomain}\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = ["client_id": "{yourDomain}"] as [String : Any]
@@ -681,28 +645,33 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 ##### Step 2: Authenticate existing user
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample31 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/json' \
-  --data '{  "grant_type": "urn:okta:params:oauth:grant-type:webauthn",  "client_id": "{yourClientId}",  "scope": "create:me:authentication_methods offline_access",  "audience": "https://{yourDomain}/me/"  "auth_session": "{sessionIdFromTheFirstRequest}",  "authn_response": "{authenticatorResponse}"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data '{  "grant_type": "urn:okta:params:oauth:grant-type:webauthn",  "client_id": "{yourClientId}",  "scope": "create:me:authentication_methods offline_access",  "audience": "https://{yourDomain}/me/"  "auth_session": "{sessionIdFromTheFirstRequest}",  "authn_response": "{authenticatorResponse}"}'`;
+export const codeExample32 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ \"grant_type\": \"urn:okta:params:oauth:grant-type:webauthn\", \"client_id\": \"{yourClientId}\", \"scope\": \"create:me:authentication_methods offline_access\", \"audience\": \"https://{yourDomain}/me/\" \"auth_session\": \"{sessionIdFromTheFirstRequest}\", \"authn_response\": \"{authenticatorResponse}\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample33 = `package main
 
 import (
 	"fmt"
@@ -729,16 +698,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample34 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")
   .body("{  \"grant_type\": \"urn:okta:params:oauth:grant-type:webauthn\",  \"client_id\": \"{yourClientId}\",  \"scope\": \"create:me:authentication_methods offline_access\",  \"audience\": \"https://{yourDomain}/me/\"  \"auth_session\": \"{sessionIdFromTheFirstRequest}\",  \"authn_response\": \"{authenticatorResponse}\"}")
-  .asString();
-```
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample35 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -751,10 +716,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample36 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 
@@ -777,10 +740,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample37 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -805,10 +766,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample38 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -821,10 +780,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-```ruby Ruby lines
-rrequire 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample39 = `rrequire 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -839,10 +796,8 @@ request["content-type"] = 'application/json'
 request.body = "{  \"grant_type\": \"urn:okta:params:oauth:grant-type:webauthn\",  \"client_id\": \"{yourClientId}\",  \"scope\": \"create:me:authentication_methods offline_access\",  \"audience\": \"https://{yourDomain}/me/\"  \"auth_session\": \"{sessionIdFromTheFirstRequest}\",  \"authn_response\": \"{authenticatorResponse}\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample40 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 
@@ -865,8 +820,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample31} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample32} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample33} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample34} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample35} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample36} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample37} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample38} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample39} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample40} language="swift" filename="Swift" />
 </CodeGroup>
 
 ## Rate limits

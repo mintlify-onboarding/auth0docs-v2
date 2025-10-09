@@ -8,6 +8,8 @@ permalink: "user-data-storage"
 'twitter:title': "ユーザーデータの保存"
 'twitter:description': "Auth0データストアと外部データベースを使用したユーザーデータ保存の違いを説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0ではテナントのユーザー情報をホストされたクラウドデータベースに保存しますが、独自の外部カスタムデータベースにユーザーデータを保存することもできます。
 
@@ -217,25 +219,18 @@ dataTask.resume()
 
 その後、[ユーザー更新](/docs/api/management/v2#!/Users/patch_users_by_id)エンドポイントが呼び出され、`user_metadata`フィールドが更新されます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample1 = `curl --request PATCH \
 --url 'https://{yourDomain}/api/v2/users/user_id' \
 --header 'authorization: Bearer {yourAccessToken}' \
 --header 'content-type: application/json' \
---data '{"user_metadata": {"displayName": "J-vald3z"}'
-``` lines
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/users/user_id");
+--data '{"user_metadata": {"displayName": "J-vald3z"}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/users/user_id");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("authorization", "Bearer {yourAccessToken}");
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"user_metadata\": {\"displayName\": \"J-vald3z\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 import (
 "fmt"
 "strings"
@@ -253,18 +248,13 @@ defer res.Body.Close()
 body, _ := ioutil.ReadAll(res.Body)
 fmt.Println(res)
 fmt.Println(string(body))
-}
-``` lines
-```java Java lines
-HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
 .header("authorization", "Bearer {yourAccessToken}")
 .header("content-type", "application/json")
 .body("{\"user_metadata\": {\"displayName\": \"J-vald3z\"}")
-.asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+.asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 var options = {
 method: 'PATCH',
 url: 'https://{yourDomain}/api/v2/users/user_id',
@@ -275,10 +265,8 @@ axios.request(options).then(function (response) {
 console.log(response.data);
 }).catch(function (error) {
 console.error(error);
-});
-``` lines
-```obj-c Obj-C lines
-#import 
+});`;
+export const codeExample6 = `#import 
 NSDictionary \*headers = @{ @"authorization": @"Bearer {yourAccessToken}",
 @"content-type": @"application/json" };
 NSData \*postData = [[NSData alloc] initWithData:[@"{"user_metadata": {"displayName": "J-vald3z"}" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -298,11 +286,8 @@ NSHTTPURLResponse \*httpResponse = (NSHTTPURLResponse \*) response;
 NSLog(@"%@", httpResponse);
 }
 }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 curl_setopt_array($curl, [
 CURLOPT_URL => "https://{yourDomain}/api/v2/users/user_id",
 CURLOPT_RETURNTRANSFER => true,
@@ -324,10 +309,8 @@ if ($err) {
 echo "cURL Error #:" . $err;
 } else {
 echo $response;
-}
-``` lines
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 conn = http.client.HTTPSConnection("")
 payload = "{\"user_metadata\": {\"displayName\": \"J-vald3z\"}"
 headers = {
@@ -337,11 +320,8 @@ headers = {
 conn.request("PATCH", "/{yourDomain}/api/v2/users/user_id", payload, headers)
 res = conn.getresponse()
 data = res.read()
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 url = URI("https://{yourDomain}/api/v2/users/user_id")
@@ -353,10 +333,8 @@ request["authorization"] = 'Bearer {yourAccessToken}'
 request["content-type"] = 'application/json'
 request.body = "{\"user_metadata\": {\"displayName\": \"J-vald3z\"}"
 response = http.request(request)
-puts response.read_body
-``` lines
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 let headers = [
 "authorization": "Bearer {yourAccessToken}",
 "content-type": "application/json"
@@ -377,8 +355,19 @@ let httpResponse = response as? HTTPURLResponse
 print(httpResponse)
 }
 })
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" /> lines
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" /> lines
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" /> lines
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" /> lines
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" /> lines
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 `{yourAccessToken}`を[Management APIアクセストークン](/docs/api/management/v2/concepts/tokens)に置き換える必要があります。

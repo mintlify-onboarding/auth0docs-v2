@@ -8,6 +8,8 @@ permalink: "selecting-from-multiple-connection-options"
 'twitter:title': "Choisir parmi plusieurs options de connexion"
 'twitter:description': "Comment sélectionner différents types de connexion pour plusieurs options de connexion avec Lock V11."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Avec Auth0, vous pouvez proposer aux utilisateurs plusieurs méthodes d’authentification. Ceci est important avec les applications SaaS ou à plusieurs locataires, où de nombreuses organisations utilisent une seule application. Chaque organisation peut utiliser différents systèmes tels que LDAP, Entra ID, Google Workspace ou des magasins de noms d’utilisateur/mots de passe.
 
@@ -77,15 +79,15 @@ Cela permet d’adapter l’expérience en fonction d’entrées ou de contextes
 
 
 
-```javascript lines
-var lock = new Auth0Lock(
+export const codeExample = `var lock = new Auth0Lock(
   '{yourClientId}',
   '{yourDomain}',
   {
     allowedConnections: ['yourConnection'];
   }
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 Vous pouvez aussi fournir l’option `AllowedConnections` à la méthode `lock.show()` si la fournir lors de l’instanciation n’est pas idéale pour votre cas d’utilisation. Référez-vous à la [documentation de l’API](/docs/fr-ca/libraries/lock/lock-api-reference) pour obtenir plus d’informations quant à la méthode de `présentation`.
 

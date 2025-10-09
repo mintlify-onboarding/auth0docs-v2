@@ -2,6 +2,8 @@
 title: "WPF / Winforms"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Damien Guard
 
@@ -64,8 +66,7 @@ Use the NuGet Package Manager (Tools -> Library Package Manager -> Package Manag
 
 To integrate Auth0 login into your application, simply instantiate an instance of the `Auth0Client` class, passing your Auth0 Domain and Client ID in the constructor.
 
-```cs lines
-// Form1.cs
+export const codeExample = `// Form1.cs
 
 using Auth0.OidcClient;
 
@@ -75,8 +76,9 @@ Auth0ClientOptions clientOptions = new Auth0ClientOptions
     ClientId = "{yourClientId}"
 };
 client = new Auth0Client(clientOptions);
-clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;
-```
+clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;`;
+
+<AuthCodeBlock children={codeExample} language="cs" />
 
 
 
