@@ -127,15 +127,15 @@ Désormais, vous devez obtenir un jeton d’accès (contenant la permission `upd
 
    
 
-   export const codeExample2 = `   https://{yourDomain}/authorize?
-         audience=https://{yourDomain}/api/v2/
-         &scope=update:current_user_identities
-         &response_type=token%20id_token
-         &client_id={yourClientId}
-         &redirect_uri=https://{yourApp}/callback
-         &nonce={nonce}
-         &state={opaqueValue}
-   `;
+export const codeExample2 = `   https://{yourDomain}/authorize?
+      audience=https://{yourDomain}/api/v2/
+      &scope=update:current_user_identities
+      &response_type=token%20id_token
+      &client_id={yourClientId}
+      &redirect_uri=https://{yourApp}/callback
+      &nonce={nonce}
+      &state={opaqueValue}
+`;
 
 <AuthCodeBlock children={codeExample2} language="text" lines />
 

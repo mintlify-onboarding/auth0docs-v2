@@ -70,11 +70,11 @@ export const sections = [
     <Section id={sections[3].id} title={sections[3].title} stepNumber="4">
       nginx-openid-connectフォルダーにあるconfigure.shスクリプトを実行して、テンプレートの構成にAuth0アプリケーションの詳細を入力します。
 
-      export const codeExample = `      ./configure.sh --auth_jwt_key request \
-      --client_id {yourClientId} \
-      --pkce_enable \
-      https://{yourDomain}/.well-known/openid-configuration
-      `;
+export const codeExample = `      ./configure.sh --auth_jwt_key request \
+  --client_id {yourClientId} \
+  --pkce_enable \
+  https://{yourDomain}/.well-known/openid-configuration
+`;
 
 <AuthCodeBlock children={codeExample} language="sh" />
 

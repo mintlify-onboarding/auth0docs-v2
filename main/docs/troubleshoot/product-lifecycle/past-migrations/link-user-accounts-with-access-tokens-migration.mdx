@@ -123,15 +123,15 @@ Now you must get an access token (containing the `update:current_user_identities
 
    Using the new method using an access token, your code will look similar to this:
 
-   export const codeExample2 = `   https://{yourDomain}/authorize?
-         audience=https://{yourDomain}/api/v2/
-         &scope=update:current_user_identities
-         &response_type=token%20id_token
-         &client_id={yourClientId}
-         &redirect_uri=https://{yourApp}/callback
-         &nonce={nonce}
-         &state={opaqueValue}
-   `;
+export const codeExample2 = `   https://{yourDomain}/authorize?
+      audience=https://{yourDomain}/api/v2/
+      &scope=update:current_user_identities
+      &response_type=token%20id_token
+      &client_id={yourClientId}
+      &redirect_uri=https://{yourApp}/callback
+      &nonce={nonce}
+      &state={opaqueValue}
+`;
 
 <AuthCodeBlock children={codeExample2} language="http" />
 

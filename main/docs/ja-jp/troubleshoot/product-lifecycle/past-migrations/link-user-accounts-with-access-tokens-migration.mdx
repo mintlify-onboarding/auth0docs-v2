@@ -125,15 +125,15 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
    
 
-   export const codeExample2 = `   https://{yourDomain}/authorize?
-         audience=https://{yourDomain}/api/v2/
-         &scope=update:current_user_identities
-         &response_type=token%20id_token
-         &client_id={yourClientId}
-         &redirect_uri=https://{yourApp}/callback
-         &nonce={nonce}
-         &state={opaqueValue}
-   `;
+export const codeExample2 = `   https://{yourDomain}/authorize?
+      audience=https://{yourDomain}/api/v2/
+      &scope=update:current_user_identities
+      &response_type=token%20id_token
+      &client_id={yourClientId}
+      &redirect_uri=https://{yourApp}/callback
+      &nonce={nonce}
+      &state={opaqueValue}
+`;
 
 <AuthCodeBlock children={codeExample2} language="text" lines />
 
@@ -228,21 +228,21 @@ export const codeExample3 = `   {
 
    
 
-   export const codeExample5 = `   // get an Access Token
-       var webAuth = new auth0.WebAuth({
-         clientID: '{yourClientId}',
-         domain: '{yourDomain}',
-         redirectUri: 'https://{yourApp}/callback',
-         audience: 'https://{yourDomain}/api/v2/',
-         scope: 'update:current_user_identities',
-         responseType: 'token id_token'
-       });
-       // create a new instance
-       var auth0Manage = new auth0.Management({
-         domain: '{yourDomain}',
-         token: '{yourMgmtApiAccessToken}'
-       });
-   `;
+export const codeExample5 = `   // get an Access Token
+    var webAuth = new auth0.WebAuth({
+      clientID: '{yourClientId}',
+      domain: '{yourDomain}',
+      redirectUri: 'https://{yourApp}/callback',
+      audience: 'https://{yourDomain}/api/v2/',
+      scope: 'update:current_user_identities',
+      responseType: 'token id_token'
+    });
+    // create a new instance
+    var auth0Manage = new auth0.Management({
+      domain: '{yourDomain}',
+      token: '{yourMgmtApiAccessToken}'
+    });
+`;
 
 <AuthCodeBlock children={codeExample5} language="javascript" />
 
@@ -482,15 +482,15 @@ IDトークンを使ってアカウントのリンクを解除するには、ア
 
    
 
-   export const codeExample17 = `   https://{yourDomain}/authorize?
-         audience=https://{yourDomain}/api/v2/
-         &scope=update:current_user_identities
-         &response_type=token%20id_token
-         &client_id={yourClientId}
-         &redirect_uri=https://{yourApp}/callback
-         &nonce={nonce}
-         &state={opaqueValue}
-   `;
+export const codeExample17 = `   https://{yourDomain}/authorize?
+      audience=https://{yourDomain}/api/v2/
+      &scope=update:current_user_identities
+      &response_type=token%20id_token
+      &client_id={yourClientId}
+      &redirect_uri=https://{yourApp}/callback
+      &nonce={nonce}
+      &state={opaqueValue}
+`;
 
 <AuthCodeBlock children={codeExample17} language="text" lines />
 
