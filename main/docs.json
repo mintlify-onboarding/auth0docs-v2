@@ -2434,6 +2434,10 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "Events Catalog",
+            "href": "https://auth0.com/docs/events/"
           }
         ]
       },
@@ -4831,6 +4835,10 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "Events Catalog",
+            "href": "https://auth0.com/docs/events/"
           }
         ]
       },
@@ -7229,6 +7237,10 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "Events Catalog",
+            "href": "https://auth0.com/docs/events/"
           }
         ]
       }
