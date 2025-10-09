@@ -102,8 +102,8 @@ export const LanguageGrid = () => {
       href: "/quickstart/spa/angular",
     },
     {
-      img: "/images/home/apple-light.svg",
-      imgDark: "/images/home/apple-dark.svg",
+      img: "/images/home/ios-light.svg",
+      imgDark: "/images/home/ios-dark.svg",
       label: "iOS",
       href: "/quickstart/native/ios-swift",
     },
