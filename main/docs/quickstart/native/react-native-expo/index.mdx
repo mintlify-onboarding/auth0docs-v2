@@ -2,6 +2,8 @@
 title: "Expo"
 permalink: "00-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Poovamraj Thanganadar Thiagarajan
 
@@ -86,8 +88,7 @@ The Auth0 package runs custom native code that needs to be configured at build t
 
 Add the `react-native-auth0` plugin to the [Expo config](https://docs.expo.dev/workflow/configuration/) file at `app.json` or `app.config.js`.
 
-```json lines
-{ 
+export const codeExample1 = `{ 
   "expo": {
     ...
     "plugins": [
@@ -99,8 +100,9 @@ Add the `react-native-auth0` plugin to the [Expo config](https://docs.expo.dev/w
       ]
     ]
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 
 
@@ -204,15 +206,15 @@ import {useAuth0, Auth0Provider} from 'react-native-auth0';
 
 Next, wrap your application in the `Auth0Provider` component, providing your Auth0 domain and Client ID values:
 
-```javascript lines
-const App = () => {
+export const codeExample2 = `const App = () => {
   return (
     <Auth0Provider domain={"{yourDomain}"} clientId={"{yourClientId}"}>
       {/* your application */}
     </Auth0Provider>
   );
-};
-```
+};`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 
 

@@ -8,6 +8,8 @@ permalink: "auth0-android-v2-migration-guide"
 'twitter:title': "Auth0 Android v2の移行ガイド"
 'twitter:description': "Aut0 Android v1アプリをSDKのバージョン2に移行する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0 Android SDKバージョン2には、Auth0をAndroidアプリに統合するための改善が数多く含まれています。**このアップグレードには互換性のない変更が含まれています。** v2に移行する際には、このガイドを読んで、変更内容を理解してください。
 
@@ -83,9 +85,8 @@ v2では、このライブラリーのHTTP要求を行う方法がさらにカ�
 
 ### タイムアウト構成
 
-```kotlin lines
-// Before
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
+export const codeExample1 = `// Before
+val account = Auth0("{yourClientId}", "{yourDomain}")
 
 account.connectTimeoutInSeconds = 30
 account.readTimeoutInSeconds = 30
@@ -98,15 +99,15 @@ val netClient = DefaultClient(
     readTimeout = 30
 )
 
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
-account.networkingClient = netClient
-```
+val account = Auth0("{yourClientId}", "{yourDomain}")
+account.networkingClient = netClient`;
+
+<AuthCodeBlock children={codeExample1} language="kotlin" />
 
 ### ロギング構成
 
-```kotlin lines
-// Before
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
+export const codeExample2 = `// Before
+val account = Auth0("{yourClientId}", "{yourDomain}")
 account.isLoggingEnabled = true
 
 val authAPI = AuthenticationAPIClent(account)
@@ -116,9 +117,10 @@ val netClient = DefaultClient(
     enableLogging = true
 )
 
-val account = Auth0("{YOUR_CLIENT_ID}", "{YOUR_DOMAIN}")
-account.networkingClient = netClient
-```
+val account = Auth0("{yourClientId}", "{yourDomain}")
+account.networkingClient = netClient`;
+
+<AuthCodeBlock children={codeExample2} language="kotlin" />
 
 ## 変更内容の詳細
 

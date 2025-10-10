@@ -8,6 +8,8 @@ permalink: "identity-provider-initiated-single-sign-on"
 'twitter:title': "SAML IDプロバイダー起点のシングルサインオンを構成する"
 'twitter:description': "SAML IDプロバイダー起点のシングルサインオン（SSO）を設定する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>フェデレーションをセットアップする手順の多くは、サービスプロバイダーによって開始されるシングルサインオン（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=single-sign-on" tip="シングルサインオン（SSO）: ユーザーが1つのアプリケーションにログインした後、そのユーザーを他のアプリケーションに自動的にログインさせるサービス。" cta="用語集の表示">SSO</Tooltip>）から始まります。サービスプロバイダーは、認証の目的でユーザーをIDプロバイダー（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>）にリダイレクトします。このプロセスは、消費者向けのシナリオでよく使用されます。
 
@@ -33,15 +35,15 @@ OIDCアプリケーションを使用する場合、最良のオプションは�
 
 IdP起点SSOを使用する場合は、必ずポストバックURLに接続パラメーターを含めてください。
 
-```http wrap lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}
-```
+export const codeExample1 = `https://{yourDomain}/login/callback?connection={yourConnectionName}`;
+
+<AuthCodeBlock children={codeExample1} language="http" />
 
 [Organizations](https://auth0.com/docs/manage-users/organizations)機能を使用している場合は、必要に応じて、目的の組織の組織IDを含む、次の組織パラメーターを含めることもできます。
 
-```http wrap lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}
-```
+export const codeExample2 = `https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}`;
+
+<AuthCodeBlock children={codeExample2} language="http" />
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

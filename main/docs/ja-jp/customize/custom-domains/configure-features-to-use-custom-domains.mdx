@@ -8,6 +8,8 @@ permalink: "configure-features-to-use-custom-domains"
 'twitter:title': "機能にカスタムドメインの使用を構成する"
 'twitter:description': "Auth0の認証機能にカスタムドメインを構成する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0の機能にカスタムドメインの使用を構成する場合、使用している機能によっては追加の手順を完了する必要があります。たとえば、ログインページでカスタムドメインを使用したり、APIを呼び出したりするには、変更が必要になるかもしれません。
 
@@ -122,13 +124,13 @@ var webAuth = new auth0.WebAuth({
 
 
 
-```javascript lines
-var lock = new Auth0Lock('{yourClientId}', '{yourCustomDomain}', {
+export const codeExample1 = `var lock = new Auth0Lock('{yourClientId}', '{yourCustomDomain}', {
   //code omitted for brevity
   configurationBaseUrl: 'https://cdn.us.auth0.com'
   //code omitted for brevity
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 CDNのURLは地域によって異なります。`https://cdn.[us|eu|au|jp].auth0.com`（アメリカには`us`、ヨーロッパには`eu`、オーストラリアには`au`、日本には`jp`）を使用します。
 
@@ -144,23 +146,23 @@ CDNのURLは地域によって異なります。2020年6月11日より前に作�
 
 
 
-```js lines
-webAuth = new auth0.WebAuth({
+export const codeExample2 = `webAuth = new auth0.WebAuth({
   domain: '{yourCustomDomain}',
   clientID: '{yourClientId}'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample2} language="js" />
 
 Auth0 SPA SDKでは以下を設定します。
 
 
 
-```javascript lines
-const auth0 = await createAuth0Client({
+export const codeExample3 = `const auth0 = await createAuth0Client({
   domain: '{yourCustomDomain}',
   client_id: '{yourClientId}'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 カスタムドメインを使用していて、[Auth0.jsを用いたManagement APIのアクション](/docs/ja-jp/libraries/auth0js/v9#user-management)を実行する予定の場合には、以下に記載のAPIセクションを参照してください。
 

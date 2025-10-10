@@ -8,6 +8,8 @@ permalink: "unlink-user-accounts"
 'twitter:title': "ユーザーアカウントのリンクを解除する"
 'twitter:description': "Management APIのUnlink a User Account（ユーザーアカウントのリンクを解除する）エンドポイントを使用して、ターゲットのユーザーアカウントからIDのリンクを解除して、分離したユーザーアカウントに戻す方法を説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>の[Unlink a User Account](/docs/ja-jp/api/management/v2#!/Users/delete_user_identity_by_user_id)（ユーザーアカウントのリンクを解除する）エンドポイント、またはAuth0.jsライブラリーを使用して、ターゲットのユーザーアカウントからIDのリンクを解除して、分離したユーザーアカウントに戻します。
 
@@ -82,8 +84,7 @@ Auth0 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/doc
 
 アカウントのリンクを解除するには、認可用のプライマリアカウントから<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-3" href="/docs/ja-jp/glossary?term=json-web-token" tip="JSON Web Token（JWT）: 二者間のクレームを安全に表現するために使用される標準IDトークン形式（および多くの場合、アクセストークン形式）。" cta="用語集の表示">JWT</Tooltip>を使用してManagement APIの[Unlink a User Accountエンドポイント](/docs/ja-jp/api/v2#!/Users/delete_user_identity_by_user_id)を呼び出します。
 
-```javascript lines
-function unlinkAccount(secondaryProvider, secondaryUserId){
+export const codeExample1 = `function unlinkAccount(secondaryProvider, secondaryUserId){
   var primaryUserId = localStorage.getItem('user_id');
   var primaryJWT = localStorage.getItem('id_token');
   $.ajax({
@@ -99,8 +100,9 @@ function unlinkAccount(secondaryProvider, secondaryUserId){
   }).fail(function(jqXHR){
     alert('Error unlinking Accounts: ' + jqXHR.status + ' ' + jqXHR.responseText);
   });
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 ## update:usersスコープを持つアクセストークンを使用する
 
@@ -156,8 +158,7 @@ router.post('/unlink-accounts/:targetUserProvider/:targetUserId',ensureLoggedIn,
 
 1. `update:users`スコープを持つ[Management APIのアクセストークン](/docs/ja-jp/api/v2/tokens)を使用して、Management API v2の[Unlink a User Accountエンドポイント](/docs/ja-jp/api/v2#!/Users/delete_user_identity_by_user_id)を呼び出します。
 
-```javascript lines
-const request = require('request');
+export const codeExample2 = `const request = require('request');
 
 class Auth0Client {
   ...
@@ -184,8 +185,9 @@ class Auth0Client {
   }
 }
 
-module.exports = new Auth0Client();
-```
+module.exports = new Auth0Client();`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 ## もっと詳しく
 

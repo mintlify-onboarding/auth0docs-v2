@@ -8,6 +8,8 @@ permalink: "log-users-out-of-auth0"
 'twitter:title': "OIDCエンドポイントを使用してユーザーをAuth0からログアウトさせる"
 'twitter:description': "OIDCログアウトエンドポイントを使用してユーザーをログアウトさせる方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0では、エンドユーザーのログアウトに<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=openid" tip="OpenID: アプリケーションがログイン情報を収集および保存することなくにユーザーのIDを検証できるようにする認証用のオープン標準。" cta="用語集の表示">OpenID</Tooltip> Connectの[RP-Initiated Logout 1.0](https://openid.net/specs/openid-connect-rpinitiated-1_0.html)を実装しています。この仕様は、OpenID Connectによる[最終仕様](https://openid.net/developers/specs/)の一部です。
 
@@ -150,19 +152,19 @@ OIDCログアウトエンドポイントを呼び出す際には、`id_token_hin
 
 <Tabs><Tab title="HTTP">
 
-```http HTTP wrap lines
-https://{yourDomain}/oidc/logout?id_token_hint={yourIdToken}&post_logout_redirect_uri={yourCallbackUrl}
-```
+export const codeExample1 = `https://{yourDomain}/oidc/logout?id_token_hint={yourIdToken}&post_logout_redirect_uri={yourCallbackUrl}`;
+
+<AuthCodeBlock children={codeExample1} language="http" filename="HTTP" />
 
 </Tab><Tab title="cURL">
 
-```bash cURL lines
-curl --request GET \
+export const codeExample2 = `curl --request GET \
   --url 'https://{yourDomain}/oidc/logout' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data 'id_token_hint={yourIdToken}' \
-  --data 'post_logout_redirect_uri={yourCallbackUrl}'
-```
+  --data 'post_logout_redirect_uri={yourCallbackUrl}'`;
+
+<AuthCodeBlock children={codeExample2} language="bash" filename="cURL" />
 
 </Tab></Tabs>
 
@@ -182,9 +184,9 @@ curl --request GET \
 
 
 
-```http wrap lines
-https://{yourDomain}/oidc/logout?{clientId}={yourClientId}&logout_hint={sessionId}
-```
+export const codeExample3 = `https://{yourDomain}/oidc/logout?{clientId}={yourClientId}&logout_hint={sessionId}`;
+
+<AuthCodeBlock children={codeExample3} language="http" />
 
 #### post_logout_redirect_uriパラメーター
 
@@ -195,9 +197,9 @@ https://{yourDomain}/oidc/logout?{clientId}={yourClientId}&logout_hint={sessionI
 
 ##### 例
 
-```bash HTTP wrap lines
-https://{yourDomain}/oidc/logout?post_logout_redirect_uri=http%3A%2F%2Fwww.example.com
-```
+export const codeExample4 = `https://{yourDomain}/oidc/logout?post_logout_redirect_uri=http%3A%2F%2Fwww.example.com`;
+
+<AuthCodeBlock children={codeExample4} language="bash" filename="HTTP" />
 
 ##### アプリケーションのAllowed Logout URLs（許可されているログアウトURL）を更新する
 
@@ -227,18 +229,19 @@ Management APIから **［Allowed Logout URLs（許可されているログア�
 1. `update:clients`スコープを含む[Management APIのアクセストークンを取得](https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-production)します。
 2. Management APIの[クライアントの更新](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) エンドポイントを呼び出し、要求本文の`allowed_logout_urls`フィールド値にURLを含むようにしてください。
 
-   ```json lines
-   PATCH https://{yourDomain}/api/v2/clients/{clientId}
-   Authorization: Bearer {yourMgmtApiAccessToken}
-   Content-Type: application/json
+export const codeExample5 = `   PATCH https://{yourDomain}/api/v2/clients/{clientId}
+Authorization: Bearer {yourMgmtApiAccessToken}
+Content-Type: application/json
 
-   {
-     "allowed_logout_urls": [
-       "https://www.example.com",
-       "https://www.example.com/logout"
-     ]
-   }
-   ```
+{
+  "allowed_logout_urls": [
+    "https://www.example.com",
+    "https://www.example.com/logout"
+  ]
+}
+`;
+
+<AuthCodeBlock children={codeExample5} language="json" />
 
    
 
@@ -273,22 +276,20 @@ Management APIから **［Allowed Logout URLs（許可されているログア�
 1. `update:tenant_settings`スコープを含む[Management APIのアクセストークンを取得](/docs/ja-jp/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production)します。
 2. Management APIの[テナント設定の更新](/docs/ja-jp/api/management/v2/tenants/patch-settings)エンドポイントを呼び出し、要求本文の`allowed_logout_urls`フィールド値にURLを含むようにしてください。
 
-   ```json lines
-   PATCH https://{yourDomain}/api/v2/tenants/settings
-   Authorization: Bearer {yourMgmtApiAccessToken}
-   Content-Type: application/json
+export const codeExample6 = `   PATCH https://{yourDomain}/api/v2/tenants/settings
+Authorization: Bearer {yourMgmtApiAccessToken}
+Content-Type: application/json
 
-   {
-     "allowed_logout_urls": [
-       "https://www.example.com",
-       "https://www.example.com/logout"
-     ]
-   }
-   ```
+{
+  "allowed_logout_urls": [
+    "https://www.example.com",
+    "https://www.example.com/logout"
+  ]
+}
+`;
 
-   
+<AuthCodeBlock children={codeExample6} language="json" />
 
-   
 
 </Tab></Tabs>
 

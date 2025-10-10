@@ -8,6 +8,8 @@ permalink: "auth0js"
 'twitter:title': "Référence Auth0.js v9"
 'twitter:description': "Comment installer, initiatiser et utiliser auth0.js v9"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0.js est une bibliothèque du côté client d’Auth0. Il est recommandé de l’utiliser en conjonction avec la [connexion universelle](/docs/fr-ca/universal-login), qui devrait être utilisée chaque fois que possible. Utiliser auth0.js dans votre SPA rend plus facile l’authentification et l’autorisation avec Auth0.
 
@@ -65,14 +67,14 @@ Alternativemet, incluez le script via notre CDN :
 
 initialisez une nouvelle requête de l’application Auth0, tel que suit :
 
-```html lines
-<script type="text/javascript">
+export const codeExample1 = `<script type="text/javascript">
   var webAuth = new auth0.WebAuth({
     domain:       '{yourDomain}',
     clientID:     '{yourClientId}'
   });
-</script>
-```
+</script>`;
+
+<AuthCodeBlock children={codeExample1} language="html" />
 
 #### Paramètres disponibles
 
@@ -329,8 +331,7 @@ La méthode `buildAuthorizeUrl` peut être utilisée pour créer l’URL `/autho
 
 
 
-```javascript lines
-// Calculate URL to redirect to
+export const codeExample2 = `// Calculate URL to redirect to
 var url = webAuth.client.buildAuthorizeUrl({
   clientID: '{yourClientId}', // string
   responseType: 'token id_token', // code
@@ -340,8 +341,9 @@ var url = webAuth.client.buildAuthorizeUrl({
 });
 
 // Redirect to url
-// ...
-```
+// ...`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 Le paramètre `state` est une valeur opaque qu’Auth0 vous renverra. Cette méthode aide à prévenir les attaques CSRF, et elle doit être indiquée si vous redirigez vous-mêmes vers l’URL plutôt que d’appeler `webAuth.authorize()`. Pour plus d’informations, consultez la section [Paramètre state](/docs/fr-ca/secure/attack-protection/state-parameters).
 
@@ -364,14 +366,14 @@ De manière à pouvoir utiliser l’authentification sans mot de passe, vous dev
 
 
 
-```javascript lines
-var webAuth = new auth0.WebAuth({
+export const codeExample3 = `var webAuth = new auth0.WebAuth({
   clientID: '{yourClientId}',
   domain: '{yourDomain}',
   redirectUri: 'http://example.com',
   responseType: 'token id_token'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 ### Débuter l’authentification sans mot de passe
 
@@ -803,29 +805,29 @@ Pour débuter, vous avez d’abord besoin d’un Jeton d’accès à utiliser av
 
 Si vous utilisez des [domaines personnalisés](/docs/fr-ca/customize/custom-domains), vous devrez instancier une nouvelle copie de `webAuth` en utilisant votre domaine Auth0 plutôt que votre domaine personnalisé, pour l’utiliser avec les appels de Management API, car elle ne fonctionne qu’avec les domaines Auth0.
 
-```javascript lines
-var webAuth = new auth0.WebAuth({
+export const codeExample4 = `var webAuth = new auth0.WebAuth({
   clientID: '{yourClientId}',
   domain: '{yourDomain}',
   redirectUri: 'http://example.com',
-  audience: `https://{yourDomain}/api/v2/`,
+  audience: \`https://{yourDomain}/api/v2/\`,
   scope: 'read:current_user',
   responseType: 'token id_token'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
 Vous pouvez également le faire à l’aide de `checkSession()` :
 
-```javascript lines
-webAuth.checkSession(
+export const codeExample5 = `webAuth.checkSession(
   {
-    audience: `https://{yourDomain}/api/v2/`,
+    audience: \`https://{yourDomain}/api/v2/\`,
     scope: 'read:current_user'
   }, function(err, result) {
      // use result.accessToken
   }
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample5} language="javascript" />
 
 Vous devez spécifier les permissions qui vous sont nécessaires. Vous pouvez demander de suivre les permissions suivantes :
 
@@ -839,12 +841,12 @@ Vous devez spécifier les permissions qui vous sont nécessaires. Vous pouvez de
 
 Une fois que vous avez le jeton d’accès, vous pouvez créer une nouvelle instance `auth0.Management` en le passant par le domaine Auth0 du compte et le jeton d’accès.
 
-```javascript lines
-var auth0Manage = new auth0.Management({
+export const codeExample6 = `var auth0Manage = new auth0.Management({
   domain: '{yourDomain}',
   token: 'ACCESS_TOKEN'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample6} language="javascript" />
 
 ### Obtention du profil utilisateur
 

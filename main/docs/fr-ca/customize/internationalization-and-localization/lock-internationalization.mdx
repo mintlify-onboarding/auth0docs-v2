@@ -8,6 +8,8 @@ permalink: "lock-internationalization"
 'twitter:title': "Lock Internationalization"
 'twitter:description': "Lock v11 prend en charge plusieurs langues et permet d’ajouter d’autres fichiers de langues personnalisés, ainsi que de définir les valeurs d’éléments de texte particuliers qui sont affichés dans le gadget logiciel Lock."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez changer la langue de Lock en utilisant l’option de configuration de la `language`. Le fichier de langue correspondant sera extrait du directory `i18n` de Lock.
 
@@ -211,8 +213,7 @@ Définissez ensuite votre objet `options` et incluez l’option `language`. L’
 
 
 
-```javascript lines
-// Select a supported language
+export const codeExample1 = `// Select a supported language
 var options = {
   language: 'es'
 };
@@ -222,8 +223,9 @@ var lock = new Auth0Lock(
   '{yourClientId}',
   '{yourDomain}',
   options
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 Les données de traduction pour Lock proviennent de fichiers linguistiques qui contiennent des paires clé-valeur représentant diverses traductions. Pour quelques langues, certaines valeurs peuvent être manquantes, auquel cas un avertissement s’affiche : `language does not have property <missing prop>`. Nous vous encourageons à soumettre une [requête pull](https://github.com/auth0/lock/tree/master/src/i18n) pour ajouter ces valeurs manquantes. Vous pouvez également définir les valeurs manquantes dans vos `options` Lock (voir ci-dessous).
 
@@ -233,8 +235,7 @@ Vous pouvez également personnaliser vos propres éléments de dictionnaire part
 
 
 
-```javascript lines
-// Customize some languageDictionary attributes
+export const codeExample2 = `// Customize some languageDictionary attributes
 var options = {
   languageDictionary: {
     emailInputPlaceholder: "something@youremail.com",
@@ -247,8 +248,9 @@ var lock = new Auth0Lock(
   '{yourClientId}',
   '{yourDomain}',
   options
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 Pour un exemple de noms de propriétés possibles de `languageDictionary` et de la manière de structurer un fichier de `language`, voir le [Fichier dictionnaire anglais pour Lock](https://github.com/auth0/lock/blob/master/src/i18n/en.js).
 

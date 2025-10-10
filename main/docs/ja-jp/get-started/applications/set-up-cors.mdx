@@ -8,6 +8,8 @@ permalink: "set-up-cors"
 'twitter:title': "Cross-Originリソース共有を構成する"
 'twitter:description': "Auth0 Dashboardを使用して、Auth0に登録されたアプリケーションのCross-Originリソース共有（CORS）を設定する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Card title="Before you start">
 
@@ -50,22 +52,23 @@ Chrome、Opera、Safariなど、サポートされていないブラウザーで
 
 1. アプリケーション内で、[Auth0.js](/docs/ja-jp/libraries/auth0js)の`WebAuth`をインスタンス化するページを作成します。`crossOriginVerification`を直ちに呼び出します。ページの名前は自由に指定できます。
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ``` lines
-   <!-- callback-cross-auth.html -->
+export const codeExample = `   <!-- callback-cross-auth.html -->
 
-   <head>
-     <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
-     <script type="text/javascript">
-       var auth0Client = new auth0.WebAuth({
-         clientID: '{yourClientId}',
-         domain: '{yourDomain}'
-       });
-       auth0Client.crossOriginVerification();
-     </script>
-   </head>
-   ```
+<head>
+  <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+  <script type="text/javascript">
+    var auth0Client = new auth0.WebAuth({
+      clientID: '{yourClientId}',
+      domain: '{yourDomain}'
+    });
+    auth0Client.crossOriginVerification();
+  </script>
+</head>
+`;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    
 

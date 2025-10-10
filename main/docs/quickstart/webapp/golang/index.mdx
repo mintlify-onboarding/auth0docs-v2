@@ -2,6 +2,8 @@
 title: "Go"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Sergiu Ghitea
 
@@ -95,8 +97,7 @@ This example uses `gin` for routing, but you can use whichever router you want.
 Create a `.env` file within the root of your project directory to store the app configuration, and fill in the
 environment variables:
 
-```env lines
-# The URL of our Auth0 Tenant Domain.
+export const codeExample = `# The URL of our Auth0 Tenant Domain.
 # If you're using a Custom Domain, be sure to set this to that value instead.
 AUTH0_DOMAIN='{yourDomain}'
 
@@ -107,8 +108,9 @@ AUTH0_CLIENT_ID='{yourClientId}'
 AUTH0_CLIENT_SECRET='{yourClientSecret}'
 
 # The Callback URL of our application.
-AUTH0_CALLBACK_URL='http://localhost:3000/callback'
-```
+AUTH0_CALLBACK_URL='http://localhost:3000/callback'`;
+
+<AuthCodeBlock children={codeExample} language="env" />
 
 
 

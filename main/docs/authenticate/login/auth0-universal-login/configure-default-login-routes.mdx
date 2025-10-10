@@ -10,33 +10,28 @@ title: Configure Default Login Routes
   login routes.
 'twitter:title': Configure Default Login Routes
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 In certain cases (described below), Auth0 may need to redirect back to the application's Login Initiation endpoint, using OIDC third-party initiated login. To learn more, read [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) at the [OpenID Foundation](https://openid.net).
 
 You can configure these URIs with the Dashboard in [Application Settings](https://manage.auth0.com/#/applications/settings) or [Tenant Advanced Settings](https://manage.auth0.com/#/tenant/advanced) or with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Tabs><Tab title="Application level">
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample1 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/{yourClientId}' \
   --header 'authorization: Bearer API2_ACCESS_TOKEN' \
   --header 'cache-control: no-cache' \
   --header 'content-type: application/json' \
-  --data '{"initiate_login_uri": "<login_url>"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/clients/{yourClientId}");
+  --data '{"initiate_login_uri": "<login_url>"}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/clients/{yourClientId}");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer API2_ACCESS_TOKEN");
 request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{\"initiate_login_uri\": \"<login_url>\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -65,19 +60,14 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients/{yourClientId}")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients/{yourClientId}")
   .header("content-type", "application/json")
   .header("authorization", "Bearer API2_ACCESS_TOKEN")
   .header("cache-control", "no-cache")
   .body("{\"initiate_login_uri\": \"<login_url>\"}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -94,10 +84,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer API2_ACCESS_TOKEN",
@@ -123,11 +111,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/clients/{yourClientId}",
@@ -154,10 +139,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -174,11 +157,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/clients/{yourClientId}", payload, he
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -195,10 +175,8 @@ request["cache-control"] = 'no-cache'
 request.body = "{\"initiate_login_uri\": \"<login_url>\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -226,33 +204,37 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 </Tab><Tab title="Tenant level">
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample11 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
   --header 'authorization: Bearer API2_ACCESS_TOKEN' \
   --header 'cache-control: no-cache' \
   --header 'content-type: application/json' \
-  --data '{"default_redirection_uri": "<login_url>"}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
+  --data '{"default_redirection_uri": "<login_url>"}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer API2_ACCESS_TOKEN");
 request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{\"default_redirection_uri\": \"<login_url>\"}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -281,19 +263,14 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
   .header("authorization", "Bearer API2_ACCESS_TOKEN")
   .header("cache-control", "no-cache")
   .body("{\"default_redirection_uri\": \"<login_url>\"}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -310,10 +287,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer API2_ACCESS_TOKEN",
@@ -339,11 +314,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/tenants/settings",
@@ -370,10 +342,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -390,11 +360,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/tenants/settings", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -411,10 +378,8 @@ request["cache-control"] = 'no-cache'
 request.body = "{\"default_redirection_uri\": \"<login_url>\"}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -442,8 +407,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 </Tab></Tabs>
@@ -476,25 +452,18 @@ This behavior only happens when you enable the <Tooltip tip="Universal Login: Yo
 
 For tenants using Universal Login, the [`/post-password-change`](https://auth0.com/docs/api/management/v2/#!/Tickets/post_password_change) endpoint supports redirecting users back to a specific application. When `client_id` is specified and the application's login URI is set, users will see a button sending them back to the application after completing a password reset.
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample21 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/tickets/password-change' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
-  --data '{ "user_id": "A_USER_ID", "client_id": "A_CLIENT_ID" }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/tickets/password-change");
+  --data '{ "user_id": "A_USER_ID", "client_id": "A_CLIENT_ID" }'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/tickets/password-change");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("application/json", "{ \"user_id\": \"A_USER_ID\", \"client_id\": \"A_CLIENT_ID\" }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -522,18 +491,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/tickets/password-change")
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/tickets/password-change")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ \"user_id\": \"A_USER_ID\", \"client_id\": \"A_CLIENT_ID\" }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -549,10 +513,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN" };
@@ -578,11 +540,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/tickets/password-change",
@@ -608,10 +567,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -627,11 +584,8 @@ conn.request("POST", "/{yourDomain}/api/v2/tickets/password-change", payload, he
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -647,10 +601,8 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 request.body = "{ \"user_id\": \"A_USER_ID\", \"client_id\": \"A_CLIENT_ID\" }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -680,8 +632,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 ### Complete email verification flow

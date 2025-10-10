@@ -8,6 +8,8 @@ permalink: "adding-scopes-for-an-external-idp"
 'twitter:title': "Ajouter des permissions/autorisations pour appeler les API du fournisseur d’identité"
 'twitter:description': "Décrit comment ajouter des permissions à votre connexion IdP."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Une fois qu’un utilisateur est connecté, vous pouvez obtenir son profil utilisateur, puis le `accessToken` associé pour appeler les API du fournisseur d’identité (<Tooltip href="/docs/docs/fr-ca/glossary?term=idp" tip="Fournisseur d’identité (IdP)
 Service de stockage et de gestion des identités numériques." cta="Voir le glossaire">IdP</Tooltip>) comme décrit dans [Appeler une API de fournisseur d’identité](/docs/docs/fr-ca/authenticate/identity-providers/calling-an-external-idp-api).
@@ -26,16 +28,16 @@ Par exemple, si vous cliquez sur la connexion **Google/Gmail** vous pouvez confi
 
 Vous pouvez également transmettre les permissions que vous souhaitez demander sous la forme d’une liste séparée par des virgules dans le paramètre `connection_scope` lors de l’appel du [point de terminaison authorize](/docs/docs/fr-ca/api/authentication#login). Par exemple, si vous souhaitez demander les permissions `https://www.googleapis.com/auth/contacts.readonly` et `https://www.googleapis.com/auth/analytics` de Google, vous pouvez le faire avec le paramètre `connection` pour garantir que l’utilisateur se connecte avec son compte Google :
 
-``` lines
-https://{yourDomain}/authorize
+export const codeExample = `https://{yourDomain}/authorize
   ?response_type=id_token
   &client_id={yourClientId}
   &redirect_uri={https://yourApp/callback}
   &scope=openid%20profile
   &connection=google-oauth2
   &connection_scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fanalytics%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcontacts.readonly
-  &nonce=abc
-```
+  &nonce=abc`;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

@@ -8,6 +8,8 @@ permalink: "customize-text-elements"
 'twitter:title': "Personnaliser les éléments de texte de connexion universelle"
 'twitter:description': "Apprenez à personnaliser les éléments de texte de connexion universelle en utilisant Auth0 Dashboard ou Management API."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 La Connexion universelle consiste en un ensemble de pages qui facilitent plusieurs actions liées au compte, telles que la connexion, l’enrôlement des facteurs d’authentification multifacteur (<Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip>) ou la réinitialisation des mots de passe. Auth0 fournit le texte de ces pages en plusieurs langues.
@@ -51,25 +53,18 @@ Vous pouvez utiliser Management API pour personnaliser les invites pour le texte
 
 Vous pourriez configurer le composant de texte `description` de l’invite `login` (connexion) sur l’écran de `connexion` pour `se connecter au site Web d’ACME` en appelant le point de terminaison [Set custom text for a specific prompt](https://auth0.com/docs/api/management/v2#!/Prompts/put_custom_text_by_language) (Définir un texte personnalisé pour une invite donnée) de Management API de la façon suivante :
 
-<CodeGroup>
-```bash cURL lines
-curl --request PUT \
+export const codeExample1 = `curl --request PUT \
   --url 'https://{yourDomain}/api/v2/prompts/login/custom-text/en' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --header 'content-type: application/json' \
-  --data '{ "login": { "description": "Login to ACME'\''s Website" } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/prompts/login/custom-text/en");
+  --data '{ "login": { "description": "Login to ACME'\''s Website" } }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/prompts/login/custom-text/en");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddParameter("application/json", "{ \"login\": { \"description\": \"Login to ACME's Website\" } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -97,20 +92,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-
-
-```
-```java Java lines
-HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
   .header("content-type", "application/json")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{ \"login\": { \"description\": \"Login to ACME's Website\" } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PUT',
@@ -126,10 +114,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer {yourMgmtApiAccessToken}" };
@@ -154,11 +140,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/prompts/login/custom-text/en",
@@ -184,10 +167,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -203,11 +184,8 @@ conn.request("PUT", "/{yourDomain}/api/v2/prompts/login/custom-text/en", payload
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -223,10 +201,8 @@ request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 request.body = "{ \"login\": { \"description\": \"Login to ACME's Website\" } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -253,33 +229,37 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 #### Supprimer un texte personnalisé pour une invite
 
 Si vous voulez supprimer tout texte personnalisé pour une invite, appelez le point de terminaison [Set custom text for a specific prompt](https://auth0.com/docs/api/management/v2#!/Prompts/put_custom_text_by_language) (Définir un texte personnalisé pour une invite donnéée) de Management API en indiquant un objet vide (`{})` comme paramètre du `corps` :
 
-<CodeGroup>
-```bash cURL lines
-curl --request PUT \
+export const codeExample11 = `curl --request PUT \
   --url 'https://{yourDomain}/api/v2/prompts/login/custom-text/en' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --header 'content-type: application/json' \
-  --data '{}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/prompts/login/custom-text/en");
+  --data '{}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/prompts/login/custom-text/en");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddParameter("application/json", "{}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -307,18 +287,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
   .header("content-type", "application/json")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'PUT',
@@ -334,10 +309,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer {yourMgmtApiAccessToken}" };
@@ -362,11 +335,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/prompts/login/custom-text/en",
@@ -392,10 +362,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -411,11 +379,8 @@ conn.request("PUT", "/{yourDomain}/api/v2/prompts/login/custom-text/en", payload
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -431,10 +396,8 @@ request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 request.body = "{}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -461,8 +424,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 </Tab></Tabs>

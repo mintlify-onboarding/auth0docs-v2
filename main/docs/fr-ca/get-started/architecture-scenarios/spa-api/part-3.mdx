@@ -8,6 +8,8 @@ permalink: "part-3"
 'twitter:title': "Configuration de l’API et de la SPA (SPA + API)"
 'twitter:description': "Configuration de l’API et de la SPA pour le scénario d’architecture SPA + API"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Dans cette section, nous verrons comment nous pouvons mettre en œuvre une API pour notre scénario.
 
@@ -86,16 +88,16 @@ Dans cette section, nous verrons comment mettre en œuvre une SPA pour notre sc�
 
 Pour autoriser l’utilisateur, nous utiliserons la [bibliothèque auth0.js](https://auth0.com/docs/libraries/auth0js). Vous pouvez initialiser une nouvelle instance de l’application Auth0 comme suit :
 
-```javascript lines
-var auth0 = new auth0.WebAuth({
+export const codeExample = `var auth0 = new auth0.WebAuth({
   clientID: '{yourClientId}',
   domain: '{yourDomain}',
   responseType: 'token id_token',
   audience: 'YOUR_API_IDENTIFIER',
   redirectUri: '{https://yourApp/callback}',
   scope: 'openid profile read:timesheets create:timesheets'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 Vous devez transmettre les valeurs de configuration suivantes :
 

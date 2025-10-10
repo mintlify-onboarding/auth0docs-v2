@@ -8,6 +8,8 @@ permalink: "ad-ldap-connector-test-environment"
 'twitter:title': "AD/LDAPコネクターのテスト環境をセットアップする"
 'twitter:description': "Active Directory Domain Controllerを作成してテストする方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 クラウドにデプロイしたVM上にAD Domain Controllerを最小限にインストールして、テスト環境をセットアップすることができます。VMは任意のクラウドプラットフォーム上で実行することができます。この例では、Microsoft Azure上にセットアップする方法を説明します。
 
@@ -61,9 +63,10 @@ Auth0アカウントを使用してすべてが動作していることを確実
 5. **［Enterprise（エンタープライズ）］** で、「`auth0-test-ad`」という名前の **Active Directory / LDAP** 接続を有効にします。
 6. ブラウザーで以下のリンクを開いて、認証フローをテストします。
 
-   ```http wrap lines
-   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection=auth0-test-ad
-   ```
+   export const codeExample = `   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection=auth0-test-ad
+   `;
+
+<AuthCodeBlock children={codeExample} language="http" />
 
    
 

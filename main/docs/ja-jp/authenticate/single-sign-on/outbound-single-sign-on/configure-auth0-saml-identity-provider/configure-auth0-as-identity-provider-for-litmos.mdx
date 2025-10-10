@@ -8,6 +8,8 @@ permalink: "configure-auth0-as-identity-provider-for-litmos"
 'twitter:title': "Configure LitmosをSAMLサービスプロバイダーとして構成する"
 'twitter:description': "Litmos用のSAML2 Webアプリアドオンを使用して、Auth0をIDプロバイダーとして構成する方法を説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Litmosには次の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>構成を使用します。
 
@@ -19,8 +21,7 @@ Litmosには次の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1
 
 4. 以下のコードを **［Settings（設定）］** テキストボックスに貼り付け、 **［Debug（デバッグ）］** をクリックします。
 
-   ```json lines
-   {
+   export const codeExample = `   {
         "mappings": {
           "user_id":     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
           "email":       "Email",
@@ -41,7 +42,9 @@ Litmosには次の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1
           "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
         ]
        }
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="json" />
 
    
 

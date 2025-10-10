@@ -8,6 +8,8 @@ permalink: "create-mdl-api"
 'twitter:title': "Create the Mobile Driver’s License Verification API"
 'twitter:description': "Create an instance of Auth0's Mobile Driver’s License Verification API for the mDL Verification Service."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Warning>
 
@@ -40,7 +42,7 @@ Once you've been approved to join the EA, you can create the mDL Verification AP
 3. Choose the application you want to use with Verification API.
 4. Select the **APIs** tab.
 5. Enable Verification API.
-
+](/docs/images/
    <Frame>![Auth0 Dashboard > Applications > APIs
    Auth0 Dashboard > Applications > Applications](/images/fr-ca/cdy7uua7fh8z/4mzN6voEXDUXkJjGXXe50Y/e84c8be48ce78289f950c62eaa4601cc/2025-03-11_14-42-35.png)</Frame>
 
@@ -54,187 +56,184 @@ Once you've been approved to join the EA, you can create the mDL Verification AP
 
 1. Make a `POST` call to the [Create a Resource Server](https://auth0.com/docs/api/management/v2/resource-servers/post-resource-servers) endpoint.
 
-   <CodeGroup>
-   ```bash cURL lines
-   curl --request POST \
-      --url 'https://{yourDomain}/api/v2/resource-servers/post-resource-servers' \
-      --header 'content-type: application/json' \
-      --data '{"name"}'
-   ```
-   ```csharp C# lines
-   var client = new RestClient("https://{yourDomain}/api/v2/resource-servers/post-resource-servers");
-   var request = new RestRequest(Method.POST);
-   request.AddHeader("content-type", "application/json");
-   request.AddParameter("application/json", "{\"name\"}", ParameterType.RequestBody);
-   IRestResponse response = client.Execute(request);
-   ```
+export const codeExample1 = `   curl --request POST \
+   --url 'https://{yourDomain}/api/v2/resource-servers/post-resource-servers' \
+   --header 'content-type: application/json' \
+   --data '{"name"}'
+`;
+export const codeExample2 = `   var client = new RestClient("https://{yourDomain}/api/v2/resource-servers/post-resource-servers");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"name\"}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+`;
+export const codeExample3 = `   package main
 
-   ```go Go lines expandable
-   package main
+import (
+   "fmt"
+   "strings"
+   "net/http"
+   "io/ioutil"
+)
 
-   import (
-      "fmt"
-      "strings"
-      "net/http"
-      "io/ioutil"
-   )
+func main() {
 
-   func main() {
+   url := "https://{yourDomain}/api/v2/resource-servers/post-resource-servers"
 
-      url := "https://{yourDomain}/api/v2/resource-servers/post-resource-servers"
+   payload := strings.NewReader("{\"name\"}")
 
-      payload := strings.NewReader("{\"name\"}")
+   req, _ := http.NewRequest("POST", url, payload)
 
-      req, _ := http.NewRequest("POST", url, payload)
+   req.Header.Add("content-type", "application/json")
 
-      req.Header.Add("content-type", "application/json")
+   res, _ := http.DefaultClient.Do(req)
 
-      res, _ := http.DefaultClient.Do(req)
+   defer res.Body.Close()
+   body, _ := ioutil.ReadAll(res.Body)
 
-      defer res.Body.Close()
-      body, _ := ioutil.ReadAll(res.Body)
+   fmt.Println(res)
+   fmt.Println(string(body))
 
-      fmt.Println(res)
-      fmt.Println(string(body))
+}
+`;
+export const codeExample4 = `   HttpResponse response = Unirest.post("https://{yourDomain}/api/v2/resource-servers/post-resource-servers")
+   .header("content-type", "application/json")
+   .body("{\"name\"}")
+   .asString();
+`;
+export const codeExample5 = `   var axios = require("axios").default;
 
-   }
-   ```
-   ```java Java lines
-   HttpResponse response = Unirest.post("https://{yourDomain}/api/v2/resource-servers/post-resource-servers")
-      .header("content-type", "application/json")
-      .body("{\"name\"}")
-      .asString();
-   ```
+var options = {
+   method: 'POST',
+   url: 'https://{yourDomain}/api/v2/resource-servers/post-resource-servers',
+   headers: {'content-type': 'application/json'},
+   data: '{"name"}'
+};
 
-   ```javascript Node.JS lines
-   var axios = require("axios").default;
-   
-   var options = {
-      method: 'POST',
-      url: 'https://{yourDomain}/api/v2/resource-servers/post-resource-servers',
-      headers: {'content-type': 'application/json'},
-      data: '{"name"}'
-   };
+axios.request(options).then(function (response) {
+   console.log(response.data);
+}).catch(function (error) {
+   console.error(error);
+});
+`;
+export const codeExample6 = `   #import <Foundation/Foundation.h>
 
-   axios.request(options).then(function (response) {
-      console.log(response.data);
-   }).catch(function (error) {
-      console.error(error);
-   });
-   ```
-   ```obj-c Obj-C lines
-   #import <Foundation/Foundation.h>
+NSDictionary *headers = @{ @"content-type": @"application/json" };
 
-   NSDictionary *headers = @{ @"content-type": @"application/json" };
+NSData *postData = [[NSData alloc] initWithData:[@"{"name"}" dataUsingEncoding:NSUTF8StringEncoding]];
 
-   NSData *postData = [[NSData alloc] initWithData:[@"{"name"}" dataUsingEncoding:NSUTF8StringEncoding]];
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/resource-servers/post-resource-servers"]
+                                                      cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
 
-   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/resource-servers/post-resource-servers"]
-                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                      timeoutInterval:10.0];
-   [request setHTTPMethod:@"POST"];
-   [request setAllHTTPHeaderFields:headers];
-   [request setHTTPBody:postData];
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                          completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                   NSLog(@"%@", error);
+                                                } else {
+                                                   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                   NSLog(@"%@", httpResponse);
+                                                }
+                                          }];
+[dataTask resume];
+`;
+export const codeExample7 = `   $curl = curl_init();
 
-   NSURLSession *session = [NSURLSession sharedSession];
-   NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                   if (error) {
-                                                      NSLog(@"%@", error);
-                                                   } else {
-                                                      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                      NSLog(@"%@", httpResponse);
-                                                   }
-                                             }];
-   [dataTask resume];
-   ```
+curl_setopt_array($curl, [
+   CURLOPT_URL => "https://{yourDomain}/api/v2/resource-servers/post-resource-servers",
+   CURLOPT_RETURNTRANSFER => true,
+   CURLOPT_ENCODING => "",
+   CURLOPT_MAXREDIRS => 10,
+   CURLOPT_TIMEOUT => 30,
+   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+   CURLOPT_CUSTOMREQUEST => "POST",
+   CURLOPT_POSTFIELDS => "{\"name\"}",
+   CURLOPT_HTTPHEADER => [
+      "content-type: application/json"
+   ],
+]);
 
-   ```php PHP lines expandable
-   $curl = curl_init();
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-   curl_setopt_array($curl, [
-      CURLOPT_URL => "https://{yourDomain}/api/v2/resource-servers/post-resource-servers",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "{\"name\"}",
-      CURLOPT_HTTPHEADER => [
-         "content-type: application/json"
-      ],
-   ]);
+curl_close($curl);
 
-   $response = curl_exec($curl);
-   $err = curl_error($curl);
+if ($err) {
+   echo "cURL Error #:" . $err;
+} else {
+   echo $response;
+}
+`;
+export const codeExample8 = `   import http.client
 
-   curl_close($curl);
+conn = http.client.HTTPSConnection("")
 
-   if ($err) {
-      echo "cURL Error #:" . $err;
+payload = "{\"name\"}"
+
+headers = { 'content-type': "application/json" }
+
+conn.request("POST", "/{yourDomain}/api/v2/resource-servers/post-resource-servers", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+`;
+export const codeExample9 = `   import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\"name\"}"
+
+headers = { 'content-type': "application/json" }
+
+conn.request("POST", "/{yourDomain}/api/v2/resource-servers/post-resource-servers", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+`;
+export const codeExample10 = `   import Foundation
+
+let headers = ["content-type": "application/json"]
+
+let postData = NSData(data: "{"name"}".data(using: String.Encoding.utf8)!)
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/resource-servers/post-resource-servers")! as URL,
+                                       cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+   if (error != nil) {
+      print(error)
    } else {
-      echo $response;
+      let httpResponse = response as? HTTPURLResponse
+      print(httpResponse)
    }
-   ```
-   ```python Python lines
-   import http.client
+})
+`;
 
-   conn = http.client.HTTPSConnection("")
-
-   payload = "{\"name\"}"
-
-   headers = { 'content-type': "application/json" }
-
-   conn.request("POST", "/{yourDomain}/api/v2/resource-servers/post-resource-servers", payload, headers)
-
-   res = conn.getresponse()
-   data = res.read()
-
-   print(data.decode("utf-8"))
-   ```
-
-   ```ruby Ruby lines
-   import http.client
-
-   conn = http.client.HTTPSConnection("")
-
-   payload = "{\"name\"}"
-
-   headers = { 'content-type': "application/json" }
-
-   conn.request("POST", "/{yourDomain}/api/v2/resource-servers/post-resource-servers", payload, headers)
-
-   res = conn.getresponse()
-   data = res.read()
-
-   print(data.decode("utf-8"))
-   ```
-   ```swift Swift lines
-   import Foundation
-
-   let headers = ["content-type": "application/json"]
-
-   let postData = NSData(data: "{"name"}".data(using: String.Encoding.utf8)!)
-
-   let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/resource-servers/post-resource-servers")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                       timeoutInterval: 10.0)
-   request.httpMethod = "POST"
-   request.allHTTPHeaderFields = headers
-   request.httpBody = postData as Data
-
-   let session = URLSession.shared
-   let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-      if (error != nil) {
-         print(error)
-      } else {
-         let httpResponse = response as? HTTPURLResponse
-         print(httpResponse)
-      }
-   })
-   ```
-   </CodeGroup>
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
+</CodeGroup>
 
 2. Enable the permissions by following instructions for [Management API](https://auth0.com/docs/get-started/apis/add-api-permissions#use-the-management-api).
 

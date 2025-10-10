@@ -8,6 +8,8 @@ title: Connect Provider Hosted Apps to SharePoint Online
 'twitter:description': How to connect provider hosted apps to SharePoint Online.
 'twitter:title': Connect Provider Hosted Apps to SharePoint Online
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 Auth0 can help radically simplify the authentication process for SharePoint Apps. Auth0 will negotiate an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip> you can the use to call SharePoint APIs.
 
 You won't need any special libraries. You can use any of the SDKs supported by Auth0.
@@ -36,15 +38,15 @@ Since Auth0 is in between your app and the Office 365 infrastructure, you need t
 
 **App Domain**:
 
-```http lines
-{yourDomain}
-```
+export const codeExample1 = `{yourDomain}`;
+
+<AuthCodeBlock children={codeExample1} language="http" />
 
 **Redirect URI**:
 
-```http wrap lines
-https://{yourDomain}/login/callback?SP_APP_TOKEN&connection=CONNECTION&client_id={yourClientId}&redirect_uri={https://yourApp/callback}
-```
+export const codeExample2 = `https://{yourDomain}/login/callback?SP_APP_TOKEN&connection=CONNECTION&client_id={yourClientId}&redirect_uri={https://yourApp/callback}`;
+
+<AuthCodeBlock children={codeExample2} language="http" />
 
 * `connection` is just the name you will use in Auth0's connections (such as "sharepoint").
 * `client_id` identifies your app in Auth0 (created in steps 1).

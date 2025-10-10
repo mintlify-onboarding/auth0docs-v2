@@ -8,6 +8,8 @@ permalink: "aws-api-gateway-delegation-2"
 'twitter:title': "Tutoriel Passerelle API AWS - Étape 2"
 'twitter:description': "Étape 2 du tutoriel Passerelle API Amazon"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Warning>
 
@@ -122,8 +124,7 @@ Cliquez sur **Appliquer la politique**.
 
 La relation de confiance finale devrait ressembler à celle illustrée ci-dessous :
 
-```javascript lines
-{
+export const codeExample = `{
   "Version": "2012-10-17",
   "Statement": [
     {
@@ -148,8 +149,9 @@ La relation de confiance finale devrait ressembler à celle illustrée ci-dessou
       "Action": "sts:AssumeRole"
     }
   ]
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 À ce stade, vous devez définir les paramètres d’autorisation sur [API Gateway](https://console.aws.amazon.com/apigateway) (Passerelle API).
 

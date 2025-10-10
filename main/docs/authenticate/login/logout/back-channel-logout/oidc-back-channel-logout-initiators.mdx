@@ -10,6 +10,8 @@ title: OIDC Back-Channel Logout Initiators
   to configure them for your application(s).
 'twitter:title': OIDC Back-Channel Logout Initiators
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 OIDC Back-Channel Logout Initiators allow you to remotely log out users from their applications based on session termination events. OIDC Back-Channel Logout Initiators work across protocols—for example, an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip>-initiated (IdP-initiated) <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> logout request—and are unaffected by third-party cookie restrictions.
 
 This feature is an extension to the standard OIDC back-channel specification. You can configure it to initiate an OIDC Back-Channel Logout request for specific session termination events, such as a password change or session expiration, or for all session termination events.
@@ -43,25 +45,23 @@ You can configure the OIDC Back-Channel Logout Initiators for an application wit
 
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
-   ```json JSON lines
-   PATCH /api/v2/clients/{yourClientId}
-   {
-     ...
-     "oidc_logout": {
-       "backchannel_logout_urls": ["https://example.com/cb"]
-       "backchannel_logout_initiators": {
-         "mode":"custom",
-         "selected_initiators": ["rp-logout", "idp-logout", "password-changed"]
-       }
-     }
-     ...
-   }
-   ```
+export const codeExample1 = `   PATCH /api/v2/clients/{yourClientId}
+{
+  ...
+  "oidc_logout": {
+    "backchannel_logout_urls": ["https://example.com/cb"]
+    "backchannel_logout_initiators": {
+      "mode":"custom",
+      "selected_initiators": ["rp-logout", "idp-logout", "password-changed"]
+    }
+  }
+  ...
+}
+`;
+
+<AuthCodeBlock children={codeExample1} language="json" filename="JSON" />
 
 
-   
-
-   
 
 #### Properties
 
@@ -170,8 +170,7 @@ The `selected_initiators` property supports the following values:
 
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
-```json JSON lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample2 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -182,8 +181,9 @@ PATCH /api/v2/clients/{yourClientId}
     }
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" filename="JSON" />
 
 
 
@@ -194,8 +194,7 @@ PATCH /api/v2/clients/{yourClientId}
 
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
-```json JSON lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample3 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -207,8 +206,9 @@ PATCH /api/v2/clients/{yourClientId}
     }
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="json" filename="JSON" />
 
 
 
@@ -219,8 +219,7 @@ PATCH /api/v2/clients/{yourClientId}
 
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
-```json JSON lines
-PATCH /api/v2/clients/{yourClientId}
+export const codeExample4 = `PATCH /api/v2/clients/{yourClientId}
 
 {
   ...
@@ -228,8 +227,9 @@ PATCH /api/v2/clients/{yourClientId}
 	  "backchannel_logout_urls": ["https://example.com/cb"]
   }
   ...
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample4} language="json" filename="JSON" />
 
 
 

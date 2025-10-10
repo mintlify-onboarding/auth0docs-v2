@@ -8,6 +8,8 @@ title: 'Sample Use Cases: Scopes and Claims'
 'twitter:description': Learn how to use scopes and claims with applications and APIs.
 'twitter:title': 'Sample Use Cases: Scopes and Claims'
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 In these examples, we use the [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow) to authenticate a user and request the necessary permissions (scopes) and tokens. For details on the request parameters or to learn how to fully implement this flow, read our tutorial: [Add Login to Regular Web Applications](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
 
 ## Authenticate a user and request standard claims
@@ -16,14 +18,15 @@ In this example, we want to authenticate a user and get user details that will a
 
 1. Initiate the authentication flow by sending the user to the authorization URL:
 
-   ```text lines
-   https://{yourDomain}/authorize?
+   export const codeExample1 = `   https://{yourDomain}/authorize?
      response_type=code&
      client_id={yourClientId}&
      redirect_uri={https://yourApp/callback}&
      scope=openid%20profile%20email&
      state=YOUR_STATE_VALUE
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample1} language="text" />
 
 
    
@@ -42,8 +45,7 @@ In this example, we want to authenticate a user and get user details that will a
 2. After the user consents (if necessary) and Auth0 redirects back to your app, [request tokens](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
 3. Extract the ID token from the response and [decode it](/docs/secure/tokens/id-tokens). You should see the following claims:
 
-   ```json lines
-   {
+   export const codeExample2 = `   {
      "name": "John Doe",
      "nickname": "john.doe",
      "picture": "https://myawesomeavatar.com/avatar.png",
@@ -58,7 +60,9 @@ In this example, we want to authenticate a user and get user details that will a
      "nonce": "crypto-value",
      "at_hash": "IoS3ZGppJKUn3Bta_LgE2A"
    }
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 
    
@@ -75,15 +79,16 @@ Before using a custom API, you need to know what scopes are available for the AP
 
 1. Initiate the authorization flow by sending the user to the authorization URL:
 
-   ```text lines
-   https://{yourDomain}/authorize?
+   export const codeExample3 = `   https://{yourDomain}/authorize?
      response_type=code&
      client_id={yourClientId}&
      redirect_uri={https://yourApp/callback}& 
      scope=read:appointments&
      audience=YOUR_API_AUDIENCE&
      state=YOUR_STATE_VALUE
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample3} language="text" />
 
 
    
@@ -119,15 +124,16 @@ Before using a custom API, you need to know what scopes are available for the AP
 
 1. Initiate the authentication flow by sending the user to the authorization URL:
 
-   ```text lines
-   https://{yourDomain}/authorize?
+   export const codeExample4 = `   https://{yourDomain}/authorize?
      response_type=code&
      client_id={yourClientId}&
      redirect_uri={https://yourApp/callback}& 
      scope=openid%20profile%20email%20read:appointments&
      audience=YOUR_API_AUDIENCE&
      state=YOUR_STATE_VALUE
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample4} language="text" />
 
 
    

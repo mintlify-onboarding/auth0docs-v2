@@ -8,6 +8,8 @@ permalink: "redirect-users"
 'twitter:title': "ルール内でユーザーをリダイレクトする"
 'twitter:description': "ルールを使用してユーザーをリダイレクトし、認証フローをカスタマイズする方法を説明します。カスタマイズ可能な領域の例には、MFA、プライバシーポリシーへの同意、ユーザーデータの収集があります。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Warning>
 
@@ -58,9 +60,9 @@ https://example.com/foo?state=abc123
 
 例：
 
-```bash lines
-https://{yourDomain}/continue?state={originalState}
-```
+export const codeExample1 = `https://{yourDomain}/continue?state={originalState}`;
+
+<AuthCodeBlock children={codeExample1} language="bash" />
 
 カスタムドメインを使用している場合：
 
@@ -70,9 +72,9 @@ https://{yourAuth0CustomDomain}/continue?state={originalState}
 
 `THE_ORIGINAL_STATE`はAuth0が生成した値で、リダイレクトURLに送信されます。たとえば、ルールが`https://example.com/foo`にリダイレクトする場合、Auth0は`https://example.com/foo?state=abc123`に類似したリダイレクトURLを使用します。つまり、`abc123`が`THE_ORIGINAL_STATE`です。認証トランザクションを再開するには、以下にリダイレクトします。
 
-```bash lines
-https://{yourDomain}/continue?state=abc123
-```
+export const codeExample2 = `https://{yourDomain}/continue?state=abc123`;
+
+<AuthCodeBlock children={codeExample2} language="bash" />
 
 ユーザーが`/continue`エンドポイントにリダイレクトされた場合：
 

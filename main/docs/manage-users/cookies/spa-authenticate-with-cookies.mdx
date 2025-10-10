@@ -10,6 +10,8 @@ title: Authenticate Single-Page Apps With Cookies
   single-page app (SPA) with cookies.
 'twitter:title': Authenticate Single-Page Apps With Cookies
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 Securing a single-page app (SPA) can be a challenge. However, if your SPA meets the following criteria, then you can simplify your implementation by using cookies to authenticate.
 
 * Served to the client using your own backend.
@@ -98,12 +100,13 @@ APP_SESSION_SECRET=\<YOUR SECRET VALUE>
 7. On the **Settings** screen, note the domain and client ID settings at the top.
 8. There are two values that need to be configured as part of the application. Reopen the `.env` file and set these values:
 
-   ```env .env lines
-   ISSUER_BASE_URL={yourDomain}
+   export const codeExample = `   ISSUER_BASE_URL={yourDomain}
    CLIENT_ID={yourClientId}
    BASE_URL=http://localhost:3000
    APP_SESSION_SECRET=\<YOUR SECRET VALUE>
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="env" filename=".env" />
 
 ### Run the app
 

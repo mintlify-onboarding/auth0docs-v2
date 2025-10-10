@@ -8,6 +8,8 @@ permalink: "configure-cisco-duo-for-mfa"
 'twitter:title': "Configurer Cisco Duo Security pour MFA"
 'twitter:description': "Décrit comment configurer Cisco Duo Security pour MFA."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Card title="Avant de commencer">
 
@@ -62,8 +64,7 @@ Vous devez créer deux intégrations dans Duo Security : une de type **Trousse 
 
 
 
-```js lines
-exports.onExecutePostLogin = async (event, api) => {
+export const codeExample = `exports.onExecutePostLogin = async (event, api) => {
 
 	const CLIENTS_WITH_MFA = ['{yourClientId}'];
 	// run only for the specified clients
@@ -86,8 +87,9 @@ exports.onExecutePostLogin = async (event, api) => {
 	};
 	// }
 
-};
-```
+};`;
+
+<AuthCodeBlock children={codeExample} language="js" />
 
 ## Limitations actuelles
 

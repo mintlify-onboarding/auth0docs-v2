@@ -8,6 +8,8 @@ permalink: "configure-refresh-token-rotation"
 'twitter:title': "リフレッシュトークンのローテーションを構成する"
 'twitter:description': "リフレッシュトークンのローテーションを構成する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Dashboardまたは[Auth0 SPA SDK](/docs/ja-jp/libraries/auth0-single-page-app-sdk)を使用して、アプリケーションごとにリフレッシュトークンのローテーションを構成します。リフレッシュトークンのローテーションが有効な場合、ユーザーはシームレスな遷移が可能となります。アプリケーションは、前の、有効期限がなくローテーションしないリフレッシュトークンを使用し、ローテーションするリフレッシュトークンに切り替えます。
 
@@ -46,16 +48,17 @@ Auth0 SPA SDKを使用して、リフレッシュトークンのローテーシ�
    `npm install @auth0/auth0-spa-js`
 2. SDKで機能を有効にするには、`offline_access`スコープの送信を開始するように`useRefreshTokens: true`を設定します。
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ```javascript lines
-   const auth0 = await createAuth0Client({
+   export const codeExample = `   const auth0 = await createAuth0Client({
          domain: '{yourDomain}',
          client_id: '{yourClientId}',
          audience: '{yourApiIdentifier}',
          useRefreshTokens: true
        });
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
    
 

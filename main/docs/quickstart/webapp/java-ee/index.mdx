@@ -2,6 +2,8 @@
 title: "Java EE"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Jim Anderson
 
@@ -111,8 +113,7 @@ The sample that accompanies this tutorial is written using JSP and tested with t
 
 Your Java EE application needs some information in order to authenticate users with your Auth0 application. The deployment descriptor `web.xml` file can be used to store this information, though you could store them in a different secured location. The required information is:
 
-```xml lines
-<!-- `src/main/webapp/WEB-INF/web.xml`-->
+export const codeExample = `<!-- \`src/main/webapp/WEB-INF/web.xml\`-->
 
 <env-entry>
     <env-entry-name>auth0.domain</env-entry-name>
@@ -133,8 +134,9 @@ Your Java EE application needs some information in order to authenticate users w
     <env-entry-name>auth0.scope</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>openid profile email</env-entry-value>
-</env-entry>
-```
+</env-entry>`;
+
+<AuthCodeBlock children={codeExample} language="xml" />
 
 
 

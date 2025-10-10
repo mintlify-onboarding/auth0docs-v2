@@ -8,6 +8,8 @@ permalink: "implementation-aspnetcore"
 'twitter:title': "ASP.NET Coreの実装（Webアプリ + SSO）"
 'twitter:description': "通常のWebアプリアーキテクチャーシナリオでのシングルサインオン（SSO）のためのASP.NET Coreの実装"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ASP.NET Coreの実装で使用する全ソースコードは、[こちらのGitHubリポジトリ](https://github.com/auth0-samples/auth0-pnp-webapp-oidc)でご覧いただけます。
 
@@ -22,8 +24,7 @@ Install-Package Microsoft.AspNetCore.Authentication.OpenIdConnect
 
 その後、アプリケーションのミドルウェアパイプライン内でクッキーとOIDCミドルウェアを構成します。
 
-```csharp lines
-public class Startup
+export const codeExample = `public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
@@ -70,8 +71,9 @@ public class Startup
 
         // Code omitted for brevity...
     }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="csharp" />
 
 上記のコードでは、2つの異なるタイプの認証ミドルウェアを構成しました。
 

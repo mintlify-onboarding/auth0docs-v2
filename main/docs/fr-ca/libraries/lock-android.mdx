@@ -8,6 +8,8 @@ permalink: "lock-android"
 'twitter:title': "Lock.Android : Débuter"
 'twitter:description': "Découvrez Lock pour Android, un gadget logiciel qui offre une expérience de connexion et d’inscription sans friction pour vos applications Android natives."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lock pour Android peut s’intégrer à vos applications Android natives pour offrir une manière élégante de connecter vos utilisateurs et de les inscrire dans votre application. Il prend en charge les fournisseurs d’identité sociale tels que Facebook, Google ou X, ainsi que les fournisseurs d’entreprise tels qu’Active Directory.
 
@@ -92,12 +94,12 @@ android {
 
 Il est recommandé d’ajouter ces valeurs au fichier `strings.xml` en tant que ressources de chaîne qui peuvent être référencées ultérieurement à partir du code. Ce guide suivra cette pratique.
 
-```xml lines
-<resources>
+export const codeExample = `<resources>
     <string name="com_auth0_client_id">{yourClientId}</string>
     <string name="com_auth0_domain">{yourDomain}</string>
-</resources>
-```
+</resources>`;
+
+<AuthCodeBlock children={codeExample} language="xml" />
 
 ### Utilisation de la trousse SDK
 

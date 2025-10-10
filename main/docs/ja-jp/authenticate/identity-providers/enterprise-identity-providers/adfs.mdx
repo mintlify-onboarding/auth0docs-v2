@@ -8,6 +8,8 @@ permalink: "adfs"
 'twitter:title': "アプリをADFSに接続する"
 'twitter:description': "エンタープライズ接続を使って、アプリケーションをADFS（Active Directory Federation Services）に接続する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 アプリケーションをMicrosoft ADFS（Active Directory Federation Services）に接続するには、ADFS管理者に以下の情報を提供する必要があります。
 
@@ -36,9 +38,9 @@ Windows PowerShellを使って、以下の2つのコマンドを実行します�
 (new-object Net.WebClient -property @{Encoding = [Text.Encoding]::UTF8}).DownloadString("https://raw.github.com/auth0/adfs-auth0/master/adfs.ps1") | iex
 ```
 
-```powershell lines
-AddRelyingParty "urn:auth0:{yourTenant}" "https://{yourDomain}/login/callback"
-```
+export const codeExample1 = `AddRelyingParty "urn:auth0:{yourTenant}" "https://{yourDomain}/login/callback"`;
+
+<AuthCodeBlock children={codeExample1} language="powershell" />
 
 統合を自動化するために、スクリプトは[ADFS PowerShell SnapIn](http://technet.microsoft.com/en-us/library/adfs2-powershell-basics.aspx)を使って **<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=relying-party" tip="証明書利用者: ユーザーを認証するためにサードパーティーのIDプロバイダーに依存するエンティティ（サービスやアプリケーションなど）。" cta="用語集の表示">Relying Party</Tooltip>** を作成し、構成します。Relyin Partyは認証されたユーザーについて、** email**、**upn** 、**given name** 、**surname** のクレームを発行します。
 
@@ -50,13 +52,13 @@ AddRelyingParty "urn:auth0:{yourTenant}" "https://{yourDomain}/login/callback"
 
 スクリプトは以下のように、ADFSにRelying Party Trustを作成します。
 
-```powershell lines
-$realm = "urn:auth0:{yourTenant}";
+export const codeExample2 = `$realm = "urn:auth0:{yourTenant}";
 $webAppEndpoint = "https://{yourDomain}/login/callback";
 Add-PSSnapin Microsoft.Adfs.Powershell
 Add-ADFSRelyingPartyTrust -Name $realm -Identifier $realm -WSFedEndpoint $webAppEndpoint
-$rp = Get-ADFSRelyingPartyTrust -Name $realm
-```
+$rp = Get-ADFSRelyingPartyTrust -Name $realm`;
+
+<AuthCodeBlock children={codeExample2} language="powershell" />
 
 また、スクリプトは、email、UPN、given name、surnameなど、最も汎用される属性を出力するルールを作成します。
 

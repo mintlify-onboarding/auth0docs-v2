@@ -8,6 +8,8 @@ permalink: "revoke-signing-keys"
 'twitter:title': "署名鍵を取り消す"
 'twitter:description': "Auth0 DashboardまたはManagement APIを使って、テナントのアプリケーションの署名鍵を取り消す方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>や<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使って、テナントのアプリケーションの署名鍵を取り消すことができます。署名鍵は、アプリケーションやAPIに送信されたIDトークン、アクセストークン、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip>アサーション、および<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=ws-fed" tip="Webサービスフェデレーション（WS-Fed）: ドメイン全体でユーザーIDを管理するためのプロトコル。" cta="用語集の表示">WS-Fed</Tooltip>アサーションを署名するのに使用されます。詳細については、「[署名鍵](/docs/ja-jp/get-started/tenant-settings/signing-keys)」をお読みください。
 
@@ -47,174 +49,171 @@ permalink: "revoke-signing-keys"
 1. 署名鍵のリストを取得するには、[全アプリケーション署名鍵の取得](/docs/ja-jp/api/management/v2#!/Keys/get_signing_keys)エンドポイントに`GET`呼び出しを行います。
 2. [鍵のIDでアプリケーションの署名鍵取り消し](/docs/ja-jp/api/management/v2#!/Keys/put_signing_keys)エンドポイントに`PUT`呼び出しを行います。`{yourKeyId}`と`{yourMgmtApiAccessToken}`のプレースホルダーの値を、それぞれ署名鍵IDとManagement APIのアクセストークンに置き換えてください。
 
-   <CodeGroup>
-   ```bash cURL lines
-   curl --request PUT \
-      --url 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke' \
-      --header 'authorization: Bearer {yourMgmtApiAccessToken}'
-   ```
-   ```csharp C# lines
-   var client = new RestClient("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke");
-   var request = new RestRequest(Method.PUT);
-   request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
-   IRestResponse response = client.Execute(request);
-   ```
+export const codeExample1 = `   curl --request PUT \
+   --url 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke' \
+   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
+`;
+export const codeExample2 = `   var client = new RestClient("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke");
+var request = new RestRequest(Method.PUT);
+request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
+IRestResponse response = client.Execute(request);
+`;
+export const codeExample3 = `   package main
 
-   ```go Go lines
-   package main
+import (
+   "fmt"
+   "net/http"
+   "io/ioutil"
+)
 
-   import (
-      "fmt"
-      "net/http"
-      "io/ioutil"
-   )
+func main() {
 
-   func main() {
+   url := "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"
 
-      url := "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"
+   req, _ := http.NewRequest("PUT", url, nil)
 
-      req, _ := http.NewRequest("PUT", url, nil)
+   req.Header.Add("authorization", "Bearer {yourMgmtApiAccessToken}")
 
-      req.Header.Add("authorization", "Bearer {yourMgmtApiAccessToken}")
+   res, _ := http.DefaultClient.Do(req)
 
-      res, _ := http.DefaultClient.Do(req)
+   defer res.Body.Close()
+   body, _ := ioutil.ReadAll(res.Body)
 
-      defer res.Body.Close()
-      body, _ := ioutil.ReadAll(res.Body)
+   fmt.Println(res)
+   fmt.Println(string(body))
 
-      fmt.Println(res)
-      fmt.Println(string(body))
+}
+`;
+export const codeExample4 = `   HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
+   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
+   .asString();
+`;
+export const codeExample5 = `   var axios = require("axios").default;
 
-   }
-   ```
-   ```java Java lines
-   HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
-      .header("authorization", "Bearer {yourMgmtApiAccessToken}")
-      .asString();
-   ```
+var options = {
+method: 'PUT',
+url: 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke',
+headers: {authorization: 'Bearer {yourMgmtApiAccessToken}'}
+};
 
-   ```javascript Node.JS lines
-   var axios = require("axios").default;
+axios.request(options).then(function (response) {
+console.log(response.data);
+}).catch(function (error) {
+console.error(error);
+});
+`;
+export const codeExample6 = `   #import <Foundation/Foundation.h>
 
-   var options = {
-   method: 'PUT',
-   url: 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke',
-   headers: {authorization: 'Bearer {yourMgmtApiAccessToken}'}
-   };
+NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtApiAccessToken}" };
 
-   axios.request(options).then(function (response) {
-   console.log(response.data);
-   }).catch(function (error) {
-   console.error(error);
-   });
-   ```
-   ```obj-c Obj-C lines
-   #import <Foundation/Foundation.h>
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"]
+                                                      cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"PUT"];
+[request setAllHTTPHeaderFields:headers];
 
-   NSDictionary *headers = @{ @"authorization": @"Bearer {yourMgmtApiAccessToken}" };
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                          completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                   NSLog(@"%@", error);
+                                                } else {
+                                                   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                   NSLog(@"%@", httpResponse);
+                                                }
+                                          }];
+[dataTask resume];
+`;
+export const codeExample7 = `   $curl = curl_init();
 
-   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke"]
-                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                      timeoutInterval:10.0];
-   [request setHTTPMethod:@"PUT"];
-   [request setAllHTTPHeaderFields:headers];
+curl_setopt_array($curl, [
+CURLOPT_URL => "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke",
+CURLOPT_RETURNTRANSFER => true,
+CURLOPT_ENCODING => "",
+CURLOPT_MAXREDIRS => 10,
+CURLOPT_TIMEOUT => 30,
+CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+CURLOPT_CUSTOMREQUEST => "PUT",
+CURLOPT_HTTPHEADER => [
+   "authorization: Bearer {yourMgmtApiAccessToken}"
+],
+]);
 
-   NSURLSession *session = [NSURLSession sharedSession];
-   NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                   if (error) {
-                                                      NSLog(@"%@", error);
-                                                   } else {
-                                                      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                      NSLog(@"%@", httpResponse);
-                                                   }
-                                             }];
-   [dataTask resume];
-   ```
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-   ```php PHP lines
-   $curl = curl_init();
+curl_close($curl);
 
-   curl_setopt_array($curl, [
-   CURLOPT_URL => "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke",
-   CURLOPT_RETURNTRANSFER => true,
-   CURLOPT_ENCODING => "",
-   CURLOPT_MAXREDIRS => 10,
-   CURLOPT_TIMEOUT => 30,
-   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-   CURLOPT_CUSTOMREQUEST => "PUT",
-   CURLOPT_HTTPHEADER => [
-      "authorization: Bearer {yourMgmtApiAccessToken}"
-   ],
-   ]);
+if ($err) {
+echo "cURL Error #:" . $err;
+} else {
+echo $response;
+}
+`;
+export const codeExample8 = `   import http.client
 
-   $response = curl_exec($curl);
-   $err = curl_error($curl);
+conn = http.client.HTTPSConnection("")
 
-   curl_close($curl);
+headers = { 'authorization': "Bearer {yourMgmtApiAccessToken}" }
 
-   if ($err) {
-   echo "cURL Error #:" . $err;
-   } else {
-   echo $response;
-   }
-   ```
-   ```python Python lines
-   import http.client
+conn.request("PUT", "/{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke", headers=headers)
 
-   conn = http.client.HTTPSConnection("")
+res = conn.getresponse()
+data = res.read()
 
-   headers = { 'authorization': "Bearer {yourMgmtApiAccessToken}" }
+print(data.decode("utf-8"))
+`;
+export const codeExample9 = `   require 'uri'
+require 'net/http'
+require 'openssl'
 
-   conn.request("PUT", "/{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke", headers=headers)
+url = URI("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
 
-   res = conn.getresponse()
-   data = res.read()
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-   print(data.decode("utf-8"))
-   ```
+request = Net::HTTP::Put.new(url)
+request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 
-   ```ruby Ruby lines
-   require 'uri'
-   require 'net/http'
-   require 'openssl'
+response = http.request(request)
+puts response.read_body
+`;
+export const codeExample10 = `   import Foundation
 
-   url = URI("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")
+let headers = ["authorization": "Bearer {yourMgmtApiAccessToken}"]
 
-   http = Net::HTTP.new(url.host, url.port)
-   http.use_ssl = true
-   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")! as URL,
+                                       cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "PUT"
+request.allHTTPHeaderFields = headers
 
-   request = Net::HTTP::Put.new(url)
-   request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+if (error != nil) {
+   print(error)
+} else {
+   let httpResponse = response as? HTTPURLResponse
+   print(httpResponse)
+}
+})
 
-   response = http.request(request)
-   puts response.read_body
-   ```
-   ```swift Swift lines
-   import Foundation
+dataTask.resume()
+`;
 
-   let headers = ["authorization": "Bearer {yourMgmtApiAccessToken}"]
-
-   let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                       timeoutInterval: 10.0)
-   request.httpMethod = "PUT"
-   request.allHTTPHeaderFields = headers
-
-   let session = URLSession.shared
-   let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-   if (error != nil) {
-      print(error)
-   } else {
-      let httpResponse = response as? HTTPURLResponse
-      print(httpResponse)
-   }
-   })
-
-   dataTask.resume()
-   ```
-   </CodeGroup>
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
+</CodeGroup>
 
    <table class="table"><thead>
    <tr>

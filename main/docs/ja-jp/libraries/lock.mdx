@@ -8,6 +8,8 @@ permalink: "lock"
 'twitter:title': "Web用のLock"
 'twitter:description': "Webアプリにスムーズなログイン・サインアップエクスペリエンスを提供するウィジェットです。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lockは、[ユーザーのニーズに合わせて構成](/docs/ja-jp/libraries/lock/v11/configuration)できる埋め込み可能なログインフォームで、シングルページアプリでの使用が推奨されますが、[ユニバーサルログイン](/docs/ja-jp/universal-login)と併用するのが望ましく、可能なときはいつでも使用してください。Lockを使用すると、ソーシャルIDプロバイダーを手軽に追加できるため、ユーザーは任意のプロバイダーを使用してシームレスにログインすることができます。
 
@@ -65,24 +67,23 @@ Lockで埋め込みログインを実装する前に、必ずクロスオリジ�
 
 まず、新しい`Auth0Lock`オブジェクトを初期化し、そのオブジェクトにAuth0クライアントID（Auth0アプリケーションごとに一意のクライアントIDで、[管理ダッシュボード](https://manage.auth0.com/#)から入手可能）とAuth0ドメイン（`yourname.auth0.com`など）を提供する必要があります。
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```javascript lines
-// Initializing our Auth0Lock
+
+export const codeExample1 = `// Initializing our Auth0Lock
 var lock = new Auth0Lock(
   '{yourClientId}',
   '{yourDomain}'
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 ### 2. ユーザー情報の認証と取得
 
 次に、`on`メソッドを使って`authenticated`イベントをリッスンします。イベントが発生したら、`accessToken`を使用します。これは、`getUserInfo`メソッドを呼び出し、ユーザーのプロファイル情報を（必要に応じて）取得するために受け取ったものです。
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```javascript lines
-var Auth = (function() {
+
+export const codeExample2 = `var Auth = (function() {
 
   var wm = new WeakMap();
   var privateStore = {};
@@ -125,8 +126,9 @@ var Auth = (function() {
     });
   };
   return Auth;
-}());
-```
+}());`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 その後で、ページのコンテンツを操作して、ユーザーにプロファイル情報を表示（歓迎メッセージに名前を表示するなど）することができます。
 
@@ -154,14 +156,14 @@ Lockのパスワードレスモードを使うと、ユーザーがメールア�
 
 Lockでパスワードレスモードを実装するには、`Auth0Lock`でなく`Auth0LockPasswordless`を使って、Lockを若干異なる方法で初期化します。
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```javascript lines
-var lockPasswordless = new Auth0LockPasswordless(
+
+export const codeExample3 = `var lockPasswordless = new Auth0LockPasswordless(
  '{yourClientId}',
  '{yourDomain}'
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 ### パスワードレスのオプション
 
@@ -189,8 +191,7 @@ var passwordlessOptions = {
 ### パスワードレスの例
 
 
-```javascript lines
-var passwordlessOptions = {
+export const codeExample4 = `var passwordlessOptions = {
   allowedConnections: ['email'],
   passwordlessMethod: 'code',
   auth: {
@@ -206,8 +207,9 @@ var lockPasswordless = new Auth0LockPasswordless(
  '{yourClientId}',
  '{yourDomain}',
  passwordlessOptions
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
 ### シングルサインオンと埋め込み認証
 

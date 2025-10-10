@@ -10,6 +10,8 @@ title: Add Login Using the Authorization Code Flow with PKCE
   application using the Authorization Code Flow with Proof Key for Code Exchange (PKCE).
 'twitter:title': Add Login Using the Authorization Code Flow with PKCE
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can add login to your native, mobile, or single-page app using the Authorization Code Flow with PKCE. To learn how the flow works and why you should use it, read [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). To learn how to call your API from a native, mobile, or single-page app, read [Call Your API Using Authorization Code Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce).
 
 To implement the Authorization Code Flow with Proof Key for Code Exchange (PKCE), you can use the following resources:
@@ -221,16 +223,16 @@ To authorize the user, your app must send the user to the [authorization URL](ht
 
 ### Authorization URL example
 
-```http lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     response_type=code&
     code_challenge={codeChallenge}&
     code_challenge_method=S256&
     client_id={yourClientId}&
     redirect_uri={yourCallbackUrl}&
     scope={scope}&
-    state={state}
-```
+    state={state}`;
+
+<AuthCodeBlock children={codeExample1} language="http" />
 
 
 
@@ -291,8 +293,7 @@ https://{yourDomain}/authorize?
 
 As an example, your HTML snippet for your authorization URL when adding login to your app might look like:
 
-```html lines
-<a href="https://{yourDomain}/authorize?
+export const codeExample2 = `<a href="https://{yourDomain}/authorize?
   response_type=code&
   code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&
   code_challenge_method=S256&
@@ -301,8 +302,9 @@ As an example, your HTML snippet for your authorization URL when adding login to
   scope=openid%20profile&
   state=xyzABC123">
   Sign In
-</a>
-```
+</a>`;
+
+<AuthCodeBlock children={codeExample2} language="html" />
 
 
 
@@ -331,27 +333,20 @@ Now that you have an Authorization Code, you must exchange it for tokens. Using 
 
 ### POST to token URL example
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample3 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=authorization_code \
   --data 'client_id={yourClientId}' \
   --data 'code_verifier={yourGeneratedCodeVerifier}' \
   --data 'code={yourAuthorizationCode}' \
-  --data 'redirect_uri={https://yourApp/callback}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'redirect_uri={https://yourApp/callback}'`;
+export const codeExample4 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=authorization_code&client_id={yourClientId}&code_verifier=%7ByourGeneratedCodeVerifier%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample5 = `package main
 
 import (
 	"fmt"
@@ -378,17 +373,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample6 = `HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=authorization_code&client_id={yourClientId}&code_verifier=%7ByourGeneratedCodeVerifier%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample7 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -407,10 +397,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample8 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -437,11 +425,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample9 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -466,10 +451,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample10 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -482,11 +465,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample11 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -501,10 +481,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=authorization_code&client_id={yourClientId}&code_verifier=%7ByourGeneratedCodeVerifier%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample12 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -531,8 +509,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample3} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample4} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample5} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample6} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample7} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample8} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample9} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample10} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample11} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample12} language="swift" filename="Swift" />
 </CodeGroup>
 
 ### Parameters
@@ -610,15 +599,15 @@ Refresh tokens must be stored securely since they allow a user to remain authent
 
 This example shows the most basic request you can make when authorizing the user in step 1. It displays the Auth0 login screen and allows the user to sign in with any of your configured connections:
 
-```http lines
-https://{yourDomain}/authorize?
+export const codeExample13 = `https://{yourDomain}/authorize?
     response_type=code&
     code_challenge={codeChallenge}&
     code_challenge_method=S256&
     client_id={yourClientId}&
     redirect_uri={yourCallbackUrl}&
-    scope=openid
-```
+    scope=openid`;
+
+<AuthCodeBlock children={codeExample13} language="http" />
 
 
 
@@ -648,16 +637,16 @@ In addition to the usual user authentication, this example shows how to request 
 
 To request the user's name and picture, you need to add the appropriate scopes when authorizing the user:
 
-```http lines
-https://{yourDomain}/authorize?
+export const codeExample14 = `https://{yourDomain}/authorize?
     response_type=code&
     code_challenge={codeChallenge}&
     code_challenge_method=S256&
     client_id={yourClientId}&
     redirect_uri={yourCallbackUrl}&
     scope=openid%20name%20picture&
-    state={state}
-```
+    state={state}`;
+
+<AuthCodeBlock children={codeExample14} language="http" />
 
 
 
@@ -689,8 +678,7 @@ In addition to the usual user authentication, this example shows how to send use
 
 To send users directly to the GitHub login screen, you need to pass the `connection` parameter and set its value to the connection name (in this case, `github`) when authorizing the user:
 
-```http lines
-https://{yourDomain}/authorize?
+export const codeExample15 = `https://{yourDomain}/authorize?
     response_type=code&
     code_challenge={codeChallenge}&
     code_challenge_method=S256&
@@ -698,8 +686,9 @@ https://{yourDomain}/authorize?
     redirect_uri={yourCallbackUrl}&
     scope=openid%20name%20picture&
     state={state}&
-    connection=github
-```
+    connection=github`;
+
+<AuthCodeBlock children={codeExample15} language="http" />
 
 
 

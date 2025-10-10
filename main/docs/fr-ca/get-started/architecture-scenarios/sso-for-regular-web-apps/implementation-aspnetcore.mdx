@@ -8,6 +8,8 @@ permalink: "implementation-aspnetcore"
 'twitter:title': "Mise en œuvre d’ASP.NET Core (Web Apps + SSO)"
 'twitter:description': "L’implémentation d’ASP.NET Core pour le scénario d’architecture d’authentification unique (SSO) pour les applications Web classiques"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Le code source complet de l’implémentation ASP.NET Core se trouve dans [ce répertoire GitHub](https://github.com/auth0-samples/auth0-pnp-webapp-oidc).
 
@@ -22,8 +24,7 @@ Install-Package Microsoft.AspNetCore.Authentication.OpenIdConnect
 
 Configurez ensuite le logiciel médiateur OIDC et le témoin dans le pipeline du logiciel médiateur de votre application.
 
-```csharp lines
-public class Startup
+export const codeExample = `public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
@@ -70,8 +71,9 @@ public class Startup
 
         // Code omitted for brevity...
     }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="csharp" />
 
 Comme vous pouvez le voir dans le code ci-dessus, nous avons configuré deux types différents du logiciel médiateur d’authentification.
 

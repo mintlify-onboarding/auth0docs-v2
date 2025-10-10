@@ -8,6 +8,8 @@ permalink: "configure-your-application-for-m2m-access"
 'twitter:title': "M2Mアクセスにアプリケーションを構成する"
 'twitter:description': "Auth0 DashboardやManagement APIを使用して、M2Mアクセスにアプリケーションを構成する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 アプリケーションを作成したら、以下の手順に従って、マシンツーマシンアクセスにアプリケーションを構成します。
 
@@ -59,9 +61,8 @@ Management APIを使用して、アプリケーションに対するOrganization
 
 次のコードサンプルは、M2Mアクセスのある`client_grant`オブジェクトを作成します：
 
-```json lines
-curl --request POST \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants' \
+export const codeExample1 = `curl --request POST \
+  --url 'https://{yourDomain}/api/v2/client-grants' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -73,21 +74,22 @@ curl --request POST \
     ],
     "organization_usage": "ORG_USAGE",
     "allow_any_organization": false
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 次のコードサンプルは、M2Mアクセスのある`client_grant`オブジェクトを更新します：
 
-```json lines
-curl --request PATCH \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants/CLIENT_GRANT_ID' \
+export const codeExample2 = `curl --request PATCH \
+  --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
     "organization_usage": "ORG_USAGE",
     "allow_any_organization": false
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 </Tab></Tabs>
 
@@ -130,14 +132,14 @@ Auth0 Dashboardからアプリケーションのデフォルトの組織を有�
 
 次のコードサンプルは、デフォルトの組織を持つクライアントを更新します。
 
-```json lines
-curl -X PATCH --location "https://{YOUR_DOMAIN}/api/v2/clients/{CLIENT_ID}" \
+export const codeExample3 = `curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
           "default_organization": "ORGANIZATION_ID",
 	   "flows": ["client_credentials"]
-        }'
-```
+        }'`;
+
+<AuthCodeBlock children={codeExample3} language="json" />
 
 </Tab></Tabs>

@@ -74,7 +74,7 @@ La Proof Key for Code Exchange (PKCE) (défini dans [RFC 7636](https://tools.iet
 
 Avec PKCE, l’application crée, pour chaque demande d’autorisation, une clé cryptographiquement aléatoire appelée `code_verifier` et sa valeur transformée appelée `code_challenge`, qui est envoyé vers Auth0 pour obtenir le `authorization_code`. Quand l’application reçoit le `authorization_code`, elle enverra le code et le `code_verifier` au point de terminaison du jeton d’Auth0 pour les échanger contre les jetons demandés.
 
-<Frame>![Diagram - Microsite - Auth Code with PKCE](/images/fr-ca/cdy7uua7fh8z/7pd2I8RXINIihsTyuGxvMb/cdbad014a576df5a15d53f84a5d97a55/authorization-code-grant-pkce.png)</Frame>
+<Frame>![Diagram - Microsite - Auth Code with PKCE](/docs/images/fr-ca/cdy7uua7fh8z/7pd2I8RXINIihsTyuGxvMb/cdbad014a576df5a15d53f84a5d97a55/authorization-code-grant-pkce.png)</Frame>
 
 1. L’application native initie le flux et redirige l’utilisateur vers Auth0 (spécifiquement vers le point de terminaison [/authorize](/docs/fr-ca/api/authentication#authorization-code-grant-pkce-)), envoyant les paramètres `code_challenge` et `code_challenge_method` .
 2. Auth0 redirige l’utilisateur vers l’application native avec un `authorization_code` dans le lien de demande.

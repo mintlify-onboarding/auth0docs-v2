@@ -34,7 +34,7 @@
           {
             "tab": "Home",
             "pages": [
-              "index"
+              "docs/index"
             ]
           },
           {
@@ -2352,18 +2352,18 @@
               {
                 "group": "Single Page App",
                 "pages": [
-                  "docs/quickstart/spa/react",
-                  "docs/quickstart/spa/angular",
-                  "docs/quickstart/spa/vanillajs",
-                  "docs/quickstart/spa/capn-web",
-                  "docs/quickstart/spa/vuejs",
-                  "docs/quickstart/spa/flutter"
+                  "docs/quickstart/spa/react/index",
+                  "docs/quickstart/spa/angular/index",
+                  "docs/quickstart/spa/vanillajs/index",
+                  "docs/quickstart/spa/capn-web/index",
+                  "docs/quickstart/spa/vuejs/index",
+                  "docs/quickstart/spa/flutter/index"
                 ]
               },
               {
                 "group": "Regular Web App",
                 "pages": [
-                  "docs/quickstart/webapp/nextjs",
+                  "docs/quickstart/webapp/nextjs/index",
                   "docs/quickstart/webapp/express/interactive",
                   "docs/quickstart/webapp/python/interactive",
                   "docs/quickstart/webapp/django/interactive",
@@ -2384,8 +2384,8 @@
               {
                 "group": "Native/Mobile App",
                 "pages": [
-                  "docs/quickstart/native/ios-swift",
-                  "docs/quickstart/native/android",
+                  "docs/quickstart/native/ios-swift/index",
+                  "docs/quickstart/native/android/index",
                   "docs/quickstart/native/android-facebook-login/interactive",
                   "docs/quickstart/native/react-native/interactive",
                   "docs/quickstart/native/react-native-expo/interactive",
@@ -4822,7 +4822,7 @@
           {
             "tab": "API Reference",
             "pages": [
-              "api"
+              "docs/api"
             ]
           },
           {
@@ -7224,7 +7224,7 @@
           {
             "tab": "API Reference",
             "pages": [
-              "api"
+              "docs/api"
             ]
           },
           {
@@ -7264,11 +7264,11 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
+    "light": "/docs/logo/light.svg",
+    "dark": "/docs/logo/dark.svg",
     "href": "https://auth0-migration.mintlify.app/"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/docs/logo/favicon.svg",
   "footer": {
     "socials": {
       "github": "https://github.com/auth0/docs"

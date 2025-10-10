@@ -8,6 +8,8 @@ permalink: "saml-identity-provider-configuration-settings"
 'twitter:title': "SAML IDプロバイダーの構成設定"
 'twitter:description': "SAML IDプロバイダーの構成設定について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ## 共通設定
 
@@ -23,15 +25,15 @@ permalink: "saml-identity-provider-configuration-settings"
 
 IdP起点<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=single-sign-on" tip="シングルサインオン（SSO）: ユーザーが1つのアプリケーションにログインした後、そのユーザーを他のアプリケーションに自動的にログインさせるサービス。" cta="用語集の表示">SSO</Tooltip>を使用する場合は、必ずポストバックURLに接続パラメーターを含めてください。
 
-```http wrap lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}
-```
+export const codeExample1 = `https://{yourDomain}/login/callback?connection={yourConnectionName}`;
+
+<AuthCodeBlock children={codeExample1} language="http" />
 
 [Organizations](https://auth0.com/docs/manage-users/organizations)機能を使用している場合は、必要に応じて、目的の組織の組織IDを含む、次の組織パラメーターを含めることもできます。
 
-```http wrap lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}
-```
+export const codeExample2 = `https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}`;
+
+<AuthCodeBlock children={codeExample2} language="http" />
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -51,21 +53,14 @@ urn:auth0:{yourTenant}:{yourConnectionName}
 
 カスタムエンティティIDは接続取得エンドポイントを用いて取得することができます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample3 = `curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D' \
-  --header 'authorization: Bearer {yourAccessToken}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D");
+  --header 'authorization: Bearer {yourAccessToken}'`;
+export const codeExample4 = `var client = new RestClient("https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourAccessToken}");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample5 = `package main
 
 import (
 	"fmt"
@@ -89,16 +84,11 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D")
+}`;
+export const codeExample6 = `HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D")
   .header("authorization", "Bearer {yourAccessToken}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample7 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -110,10 +100,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample8 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer {yourAccessToken}" };
 
@@ -133,11 +121,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample9 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D",
@@ -161,10 +146,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample10 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -175,11 +158,8 @@ conn.request("GET", "/{yourDomain}/api/v2/connections/%7ByourConnectionID%7D", h
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample11 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -193,10 +173,8 @@ request = Net::HTTP::Get.new(url)
 request["authorization"] = 'Bearer {yourAccessToken}'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample12 = `import Foundation
 
 let headers = ["authorization": "Bearer {yourAccessToken}"]
 
@@ -216,8 +194,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample3} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample4} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample5} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample6} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample7} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample8} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample9} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample10} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample11} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample12} language="swift" filename="Swift" />
 </CodeGroup>
 
 `ACCESS_TOKEN`ヘッダー値をManagement APIv2アクセストークンと置き換えます。
@@ -266,9 +255,9 @@ SAMLアサーションとSAML応答は、個別または同時に署名するこ
 
 これは、SAML IDプロバイダーがログアウトの要求と応答を送信する場所です。
 
-```http lines
-https://{yourDomain}/logout
-```
+export const codeExample13 = `https://{yourDomain}/logout`;
+
+<AuthCodeBlock children={codeExample13} language="http" />
 
 SAMLログアウト要求は、IDプロバイダーが署名しなければなりません。
 
@@ -292,17 +281,17 @@ IdP起点のシングルサインオンについての詳細は、「[IdP起点�
 
 SAML IDプロバイダーによっては、すべての必要な情報を含めたメタデータを直接インポートできるものもあります。Auth0では、接続のメタデータは以下からアクセスできます。
 
-```http wrap lines
-https://{yourDomain}/samlp/metadata?connection={yourConnectionName}
-```
+export const codeExample14 = `https://{yourDomain}/samlp/metadata?connection={yourConnectionName}`;
+
+<AuthCodeBlock children={codeExample14} language="http" />
 
 ## Organizations
 
 フェデレーションIdPにある組織のACS URLを使用して、組織ログインフローを開始します。
 
-```http wrap lines
-https://{yourDomain}/samlp?connection={yourConnectionName}&organization=${yourOrgID}
-```
+export const codeExample15 = `https://{yourDomain}/samlp?connection={yourConnectionName}&organization=${yourOrgID}`;
+
+<AuthCodeBlock children={codeExample15} language="http" />
 
 ## もっと詳しく
 

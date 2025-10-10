@@ -8,6 +8,8 @@ permalink: "lock-android"
 'twitter:title': "Lock.Android：使用を開始する"
 'twitter:description': "Lock for Androidを始めましょう。ネイティブAndroidアプリに対して、フリクションレスなログインおよびサインアップ体験を提供するウィジェットです。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lock for Androidは、ネイティブAndroidアプリに組み込むことができ、ユーザーがアプリに便利な方法でログインしてサインアップできるようにします。Facebook、Google、またはXのようなソーシャルIDプロバイダーや、Active Directoryなどのエンタープライズプロバイダーをサポートします。
 
@@ -91,12 +93,12 @@ android {
 
 これらの値を、後でコードから参照可能な文字列リソースとして`strings.xml`ファイルに追加することをお勧めします。このガイドではそのプラクティスに従います。
 
-```xml lines
-<resources>
+export const codeExample = `<resources>
     <string name="com_auth0_client_id">{yourClientId}</string>
     <string name="com_auth0_domain">{yourDomain}</string>
-</resources>
-```
+</resources>`;
+
+<AuthCodeBlock children={codeExample} language="xml" />
 
 ### SDKの使用方法
 

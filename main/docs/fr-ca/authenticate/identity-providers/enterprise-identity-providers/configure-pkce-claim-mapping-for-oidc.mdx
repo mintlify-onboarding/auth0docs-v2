@@ -8,6 +8,8 @@ permalink: "configure-pkce-claim-mapping-for-oidc"
 'twitter:title': "Configurer la PKCE et le mappage des demandes pour les connexions OIDC"
 'twitter:description': "Configurez la preuve de Proof Key for Code Exchange (PKCE) et les modèles de mappage pour les connexions OpenID Connect et Okta Workforce."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Les connexions d’entreprise utilisant [OpenID Connect](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/oidc) ou [Okta Workforce](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/okta) comme le fournisseur d’identité peut prendre en charge la Proof Key for Code Exchange (PKCE), ainsi que le mappage des attributs et des jetons.
 
@@ -41,8 +43,7 @@ Vous pouvez gérer la configuration PKCE pour une connexion dans Auth0 Dashboard
 
 #### Utiliser le point de terminaison à des fins de découverte
 
-```bash lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
 --url 'https://{yourDomain}/api/v2/connections' \
 --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
 --data '{ 
@@ -56,15 +57,15 @@ curl --request POST \
      "scopes": "openid profile", 
      "connection_settings": { "pkce": "auto" }
                } 
-          }'
-```
+          }'`;
+
+<AuthCodeBlock children={codeExample1} language="bash" />
 
 #### Sans point de terminaison à des fins de découverte
 
 Sans `discovery_url` , chacun des champs requis de l’objet `oidc_metadata` doit être rempli manuellement.
 
-```bash lines
-curl --request POST \
+export const codeExample2 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --data '{
@@ -87,8 +88,9 @@ curl --request POST \
         "code_challenge_methods_supported": ["plain", "S256"]
       }
     }
-  }'
-```
+  }'`;
+
+<AuthCodeBlock children={codeExample2} language="bash" />
 
 </Tab></Tabs>
 

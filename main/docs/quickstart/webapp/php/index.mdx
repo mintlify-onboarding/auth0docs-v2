@@ -2,6 +2,8 @@
 title: "PHP"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 
 ##### By Evan Sims
@@ -88,8 +90,7 @@ This will create a `vendor` folder within your project and download all the depe
 
 To begin, let's create a `.env` file within the root of your project directory to store our sample application's configuration and fill in the environment variables:
 
-```env lines
-# Your Auth0 application's Client ID
+export const codeExample = `# Your Auth0 application's Client ID
 AUTH0_CLIENT_ID={yourClientId}
 
 # The URL of your Auth0 tenant domain
@@ -99,12 +100,13 @@ AUTH0_DOMAIN={yourDomain}
 AUTH0_CLIENT_SECRET={yourClientSecret}
 
 # A long, secret value used to encrypt the session cookie.
-# This can be generated using `openssl rand -hex 32` from your shell.
+# This can be generated using \`openssl rand -hex 32\` from your shell.
 AUTH0_COOKIE_SECRET=
 
 # A url your application is accessible from. Update this as appropriate.
-AUTH0_BASE_URL=http://127.0.0.1:3000
-```
+AUTH0_BASE_URL=http://127.0.0.1:3000`;
+
+<AuthCodeBlock children={codeExample} language="env" />
 
 
 

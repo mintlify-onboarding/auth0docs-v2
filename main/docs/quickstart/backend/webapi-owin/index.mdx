@@ -2,6 +2,8 @@
 title: "ASP.NET Web API (OWIN): Authorization"
 permalink: "01-authorization"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Damien Guard
 
@@ -45,14 +47,14 @@ This example demonstrates:
 
 The sample code has an `appsettings` section in `Web.config` which configures it to use the correct Auth0 **Domain** and **API Identifier** for your API. If you download the code from this page it will be automatically filled. If you use the example from Github, you will need to fill it yourself.
 
-```config lines
-// web.config
+export const codeExample = `// web.config
 
 <appSettings>
   <add key="Auth0Domain" value="{yourDomain}" />
   <add key="Auth0ApiIdentifier" value="{yourApiIdentifier}" />
-</appSettings>
-```
+</appSettings>`;
+
+<AuthCodeBlock children={codeExample} language="config" />
 
 
 

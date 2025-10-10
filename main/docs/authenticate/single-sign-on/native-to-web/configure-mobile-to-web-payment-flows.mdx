@@ -13,6 +13,8 @@ title: 'Use Case: Configure mobile-to-web payment flows using Native to Web SSO'
 'twitter:title': 'Use Case: Configure mobile-to-web payment flows using Native to
   Web SSO'
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 <Card title="Before you start">
 
 1. Create an Auth0 tenant to register and configure your native and web applications.
@@ -95,9 +97,9 @@ Native to Web SSO uses a `session_transfer_token` to establish SSO from a native
 
 Enable Native to Web SSO using Auth0 CLI:
 
-```bash wrap lines
-auth0 apps session-transfer update {yourClientId} --can-create-token=true --enforce-device-binding=asn
-```
+export const codeExample1 = `auth0 apps session-transfer update {yourClientId} --can-create-token=true --enforce-device-binding=asn`;
+
+<AuthCodeBlock children={codeExample1} language="bash" />
 
 
 
@@ -108,9 +110,9 @@ auth0 apps session-transfer update {yourClientId} --can-create-token=true --enfo
 
 Enable the web application to accept the `session_transfer_token` for authentication through a cookie or URL parameter using Auth0 CLI:
 
-```bash wrap lines
-auth0 apps session-transfer update {yourClientId}  --allowed-auth-methods=cookie,query
-```
+export const codeExample2 = `auth0 apps session-transfer update {yourClientId}  --allowed-auth-methods=cookie,query`;
+
+<AuthCodeBlock children={codeExample2} language="bash" />
 
 
 
@@ -280,8 +282,7 @@ The `ProfileView.swift` file adds a `Subscribe to Membership` button and uses an
 
 Edit the `MainView.swift` file to define the behavior of the `Subscribe to Membership` button:
 
-```swift lines expandable
-import SwiftUI
+export const codeExample3 = `import SwiftUI
 import Auth0
 import WebKit
 
@@ -382,8 +383,9 @@ struct MainView: View {
             }
         }
     }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="swift" />
 
 
 

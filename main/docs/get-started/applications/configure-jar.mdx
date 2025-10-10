@@ -10,6 +10,8 @@ title: Configure JWT-secured Authorization Requests (JAR)
   for an application.
 'twitter:title': Configure JWT-secured Authorization Requests (JAR)
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 To use Highly Regulated Identity features, you must have an Enterprise Plan with the Highly Regulated Identity add-on. Refer to [Auth0 Pricing](https://auth0.com/pricing/) for details.
@@ -105,8 +107,7 @@ When updating an existing application, you need to explicitly create a client cr
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
 
-```json lines
-POST https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}/credentials
+export const codeExample1 = `POST https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}/credentials
 Authorization: Bearer [YOUR ACCESS TOKEN]
 Content-Type: application/json
 {
@@ -114,8 +115,9 @@ Content-Type: application/json
   "credential_type": "public_key",
   "pem": "[YOUR PEM FILE CONTENT]",
   "alg": "RS256"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 
 
@@ -133,16 +135,16 @@ Then, assign the client credential to the `signed_request_object` client configu
 {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
 
-```json lines
-PATCH https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}
+export const codeExample2 = `PATCH https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}
 Authorization: Bearer [YOUR ACCESS TOKEN]
 Content-Type: application/json
 {
   "signed_request_object": {
     "credentials": [{"id": "[YOUR CREDENTIAL ID]"}]
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 
 

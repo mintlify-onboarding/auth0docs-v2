@@ -8,6 +8,8 @@ permalink: "authorize-m2m-access"
 'twitter:title': "Autoriser l’accès de communication entre machines (M2M)"
 'twitter:description': "Découvrez comment autoriser l’accès M2M pour votre application."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Pour autoriser l’accès à la communication entre machines pour une application, vous devez lui permettre d’utiliser une organisation pour une API spécifique. Pour ce faire, vous devez associer l’autorisation client de l’application à l’API correspondante avec l’organisation. Une fois associée, l’application peut utiliser l’organisation lors de la demande de jetons pour l’API et les permissions définies dans l’autorisation client. Vous devrez définir cette association pour chaque API à laquelle votre application doit accéder pour l’organisation.
 
@@ -30,14 +32,14 @@ Pour associer l’autorisation client d’une application à une organisation vi
 
 Les autorisations de client d’application peuvent être associées à une organization via le point de terminaison [Associate client grant to organization (Associer une autorisation client à une organisation)](/docs/docs/fr-ca/api/management/v2/organizations/create-organization-client-grants) :
 
-```json lines
-curl -X POST --location "https://{YOUR_DOMAIN}/api/v2/organizations/{ORG_id}/client-grants" \
+export const codeExample = `curl -X POST --location "https://{yourDomain}/api/v2/organizations/{ORG_id}/client-grants" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
           "grant_id": "GRANT_ID"
-        }'
-```
+        }'`;
+
+<AuthCodeBlock children={codeExample} language="json" />
 
 </Tab></Tabs>
 

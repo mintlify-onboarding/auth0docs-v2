@@ -9,6 +9,8 @@ title: User Consent and Third-Party Applications
   and define third-party apps that you don't control or may not trust.
 'twitter:title': User Consent and Third-Party Applications
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 The [OIDC](/docs/authenticate/protocols/openid-connect-protocol)-conformant authentication pipeline supports defining <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+servers">resource servers</Tooltip> (such as APIs) as entities separate from applications. This lets you decouple APIs from the applications that consume them, and also lets you define [third-party applications](/docs/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) that allow external parties to securely access protected resources behind your API.
 
 ## Consent dialog
@@ -53,27 +55,20 @@ If you would like to display the **Description** field instead, you can do so by
 
 To set the **use_scope_descriptions_for_consent** flag, you will need to make the appropriate call to the API:
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample1 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
   --header 'authorization: Bearer API2_ACCESS_TOKEN' \
   --header 'cache-control: no-cache' \
   --header 'content-type: application/json' \
-  --data '{ "flags": { "use_scope_descriptions_for_consent": true } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
+  --data '{ "flags": { "use_scope_descriptions_for_consent": true } }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer API2_ACCESS_TOKEN");
 request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -102,19 +97,14 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
   .header("authorization", "Bearer API2_ACCESS_TOKEN")
   .header("cache-control", "no-cache")
   .body("{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -131,10 +121,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer API2_ACCESS_TOKEN",
@@ -160,11 +148,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/tenants/settings",
@@ -191,10 +176,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -211,11 +194,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/tenants/settings", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -232,10 +212,8 @@ request["cache-control"] = 'no-cache'
 request.body = "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -263,8 +241,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 ## Handle rejected permissions

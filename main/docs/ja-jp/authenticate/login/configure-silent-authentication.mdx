@@ -8,6 +8,8 @@ permalink: "configure-silent-authentication"
 'twitter:title': "サイレント認証を設定する"
 'twitter:description': "サイレント認証を使用してユーザーがアプリケーションにログインしたままにする方法を説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 [OpenID Connectのプロトコル](/docs/ja-jp/authenticate/protocols/openid-connect-protocol)は、認証要求の`prompt=none`パラメーターをサポートしているので、アプリケーションは、認証サーバーにユーザーとのやりとり（認証や承諾、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>など）を一切表示しないよう指示できます。Auth0は要求された応答をアプリケーションに返すか、ユーザーがまだ認証されていない場合や、処理を進める前に何らかの同意やプロンプトが必要な場合はエラーを返します。
 
@@ -25,8 +27,7 @@ SPAで[暗黙フロー](/docs/ja-jp/get-started/authentication-and-authorization
 
 例：
 
-```json lines
-GET https://{yourDomain}/authorize
+export const codeExample = `GET https://{yourDomain}/authorize
     ?response_type=id_token token&
     client_id=...&
     redirect_uri=...&
@@ -35,8 +36,9 @@ GET https://{yourDomain}/authorize
     nonce=...&
     audience=...&
     response_mode=...&
-    prompt=none
-```
+    prompt=none`;
+
+<AuthCodeBlock children={codeExample} language="json" />
 
 `prompt=none`パラメーターにより、Auth0は指定された`redirect_uri`（コールバックURL）に、指定された`response_mode`を使用して、成功またはエラーの2つのうちいずれかの応答を即座に送信します。
 

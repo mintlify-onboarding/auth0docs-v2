@@ -8,46 +8,41 @@ permalink: "get-refresh-tokens"
 'twitter:title': "リフレッシュトークンの取得"
 'twitter:description': "認可エンドポイントを使用して要求を開始する際に、リフレッシュトークンを取得する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 リフレッシュトークンを取得するには、`/authorize`エンドポイントを通じて認証要求を開始する際に、`offline_access`[スコープ](/docs/ja-jp/get-started/apis/scopes)を含める必要があります。必ずAPIでオフラインアクセスを開始してください。詳細については、「[API設定](/docs/ja-jp/get-started/apis/api-settings)」をお読みください。
 
 たとえば、[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)を使用している場合、認証要求は以下のようになります。
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     audience={API_AUDIENCE}&
     scope=offline_access&
     response_type=code&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
-    state={OPAQUE_VALUE}
-```
+    state={OPAQUE_VALUE}`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
 リフレッシュトークはセッションに保存されます。その後、セッションを更新する必要があるとき（たとえば、事前設定された時間枠が過ぎた場合や、ユーザーが機密操作を試みた場合）、アプリはバックエンドでリフレッシュトークンを使用して、新しいIDトークンを取得します。この際、`/oauth/token`エンドポイントを`grant_type=refresh_token`で使用します。
 
 ユーザー認証が成功すると、アプリケーションは`redirect_uri`にリダイレクトされ、URLの一部として`code`が付加されます（`{https://yourApp/callback}?code=BPPLN3Z4qCTvSNOy`）。`/oauth/token`エンドポイントを使用して、このコードをアクセストークンと交換できます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample2 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=authorization_code \
   --data 'client_id={yourClientId}' \
   --data 'client_secret={yourClientSecret}' \
   --data 'code={yourAuthorizationCode}' \
-  --data 'redirect_uri={https://yourApp/callback}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'redirect_uri={https://yourApp/callback}'`;
+export const codeExample3 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample4 = `package main
 
 import (
 	"fmt"
@@ -74,17 +69,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample5 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample6 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -103,10 +93,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample7 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -133,11 +121,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample8 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -162,10 +147,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample9 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -178,11 +161,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample10 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -197,10 +177,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=%7ByourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample11 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -227,8 +205,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample2} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample3} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample4} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample5} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample6} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample7} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample8} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample9} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample10} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample11} language="swift" filename="Swift" />
 </CodeGroup>
 
 応答には、アクセストークンとリフレッシュトークンが含まれているはずです。

@@ -8,6 +8,8 @@ permalink: "oidc-adoption-implicit-flow"
 'twitter:title': "Flux implicite avec OIDC"
 'twitter:description': "Découvrez comment le pipeline conforme à l’OIDC affecte le flux implicite."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Traditionnellement, le [Flux implicite](/docs/docs/fr-ca/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post) était utilisé par les applications qui étaient incapables de stocker des secrets en toute sécurité. L’utilisation de ce flux n’est plus considérée comme meilleure pratique pour la demande de jetons d’accès; les nouvelles implémentations devraient utiliser le [Flux de code d’autorisation avec PKCE](/docs/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). Toutefois, lorsqu’il est utilisé avec le mode de réponse Form Post, le Flux implicite offre un flux de travail simplifié si l’application n’a besoin que d’un jeton d’ID pour effectuer l’authentification des utilisateurs; dans ces cas, il serait utilisé dans le cadre du [Flux hybride](/docs/docs/fr-ca/get-started/authentication-and-authorization-flow/hybrid-flow).
 
@@ -88,8 +90,7 @@ Location: https://app.example.com/#
 
 ### Héritage
 
-```json lines
-{
+export const codeExample1 = `{
     "sub": "auth0|alice",
     "iss": "https://{yourDomain}/",
     "aud": "123",
@@ -98,13 +99,13 @@ Location: https://app.example.com/#
     "email": "alice@example.com",
     "email_verified": true,
     "favorite_color": "blue"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 ### Conforme à OIDC
 
-```json lines
-{
+export const codeExample2 = `{
     "sub": "auth0|alice",
     "iss": "https://{yourDomain}/",
     "aud": "123",
@@ -114,8 +115,9 @@ Location: https://app.example.com/#
     "email_verified": true,
     "https://app.example.com/favorite_color": "blue",
     "nonce": "jxdlsjfi0fa"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 * La demande `favorite_color` doit être associée à un espace de noms et ajoutée au moyen d’une règle. Pour en savoir plus, consultez [Créer des demandes personnalisées à espace de noms](/docs/docs/fr-ca/secure/tokens/json-web-tokens/create-custom-claims).
 * Après avoir validé le jeton d’ID, l’application doit valider le nombre aléatoire pour atténuer les attaques par réinsertion.
@@ -132,8 +134,7 @@ Le jeton d'accès renvoyé est opaque et n'est valide que pour appeler le point 
 
 ### Conforme à OIDC
 
-```json lines
-{
+export const codeExample3 = `{
     "sub": "auth0|alice",
     "iss": "https://{yourDomain}/",
     "aud": [
@@ -144,8 +145,9 @@ Le jeton d'accès renvoyé est opaque et n'est valide que pour appeler le point 
     "exp": 1482816809,
     "iat": 1482809609,
     "scope": "openid email"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="json" />
 
 * Le jeton d’accès retourné est un <Tooltip href="/docs/docs/fr-ca/glossary?term=json-web-token" tip="Jeton Web JSON (JWT)
 Format standard de jeton d’ID (et souvent de jeton d’accès) utilisé pour représenter en toute sécurité des demandes entre deux parties." cta="Voir le glossaire">JWT</Tooltip> valide pour appeler le point de terminaison`/userinfo` (à condition que l’API indiquée par le paramètre `audience` utilise `RS256` comme [algorithme de signature](/docs/docs/fr-ca/get-started/applications/change-application-signing-algorithms)) ainsi que le serveur de ressources indiqué par le paramètre `audience`.

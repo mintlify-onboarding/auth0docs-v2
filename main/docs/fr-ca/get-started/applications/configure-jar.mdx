@@ -8,6 +8,8 @@ permalink: "configure-jar"
 'twitter:title': "Configurer les demandes d’autorisation sécurisées par JWT (JAR)"
 'twitter:description': "Découvrez comment configurer des demandes d’autorisation sécurisées par JWT (JAR) pour une application."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -42,11 +44,11 @@ Utilisez Auth0 Dashboard pour configurer votre application afin qu’elle utilis
 2. Sélectionnez l’application à utiliser avec JAR.
 3. Sélectionnez l’onglet **Application Settings (Paramètres d’application)**.
 4. Dans la section **Authorization Requests (Demandes d’autorisation)**, activez **Require JWT-Secured Authorization (Exiger l’autorisation sécurisée par JWT)**.
-5. Si aucun identifiant n’est attribué et que des identifiants sont disponibles, vous serez invité à attribuer un identifiant existant.
+5. Si aucun identifiant n’est attribué et que des identifiants sont disponib](/docs/images/serez invité à attribuer un identifiant existant.
 
    <Frame>![Dashboard > Application > Settings > Assign Existing Credentials](/images/fr-ca/cdy7uua7fh8z/HQHhFWTtdfNa5TnZ1dwx6/76bce36d82d24a38eeb0ae617f34b36e/Existing_Creds_-_French.png)</Frame>
 
-6. Vous aurez également la possibilité d’attribuer un nouvel identiifant.
+6. Vous aurez également la possibilité d’attribuer un nouvel identiifant.](/docs/images/
 
    <Frame>![Auth0 Dashboard > Applications > Settings > Assign New Credentials](/images/fr-ca/cdy7uua7fh8z/7JfsCBwytWO6Q7hUvdtSwJ/45b2bd194982fc08c87ecae761cfd340/New_Creds_-_French.png)</Frame>
 
@@ -103,8 +105,7 @@ Lors de la mise à jour d’une application existante, vous devez d’abord cré
 
 
 
-```json lines
-POST https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}/credentials
+export const codeExample1 = `POST https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}/credentials
 Authorization: Bearer [YOUR ACCESS TOKEN]
 Content-Type: application/json
 {
@@ -112,8 +113,9 @@ Content-Type: application/json
   "credential_type": "public_key",
   "pem": "[YOUR PEM FILE CONTENT]",
   "alg": "RS256"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -125,16 +127,16 @@ Attribuez ensuite les identifiants client à la configuration client `signed_req
 
 
 
-```json lines
-PATCH https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}
+export const codeExample2 = `PATCH https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}
 Authorization: Bearer [YOUR ACCESS TOKEN]
 Content-Type: application/json
 {
   "signed_request_object": {
     "credentials": [{"id": "[YOUR CREDENTIAL ID]"}]
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 </Tab></Tabs>
 

@@ -10,6 +10,8 @@ title: Configure Rules
   with the Auth0 Management API.
 'twitter:title': Configure Rules
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 <Card title="Before you start">
 
 To configure a Tenant ACL rule, you need a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the following scopes:
@@ -142,9 +144,7 @@ You can enable [monitoring mode](/docs/secure/tenant-access-control-list) for a 
 
 Add the `log` property to the `rule.action` object and set its value to `true`.
 
-<CodeGroup>
-```bash cURL lines
-curl --request PUT \
+export const codeExample1 = `curl --request PUT \
   --url 'https://{yourDomain}/api/v2/network-acls/ACL_ID' \
   --header 'authorization: Bearer MANAGEMENT_API_TOKEN' \
   --header 'content-type: application/json' \
@@ -157,19 +157,14 @@ curl --request PUT \
     "match": { "geo_country_codes": ["GEO_COUNTRY_CODE"] },
     "scope": "tenant"
   }
-}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/network-acls/ACL_ID");
+}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/network-acls/ACL_ID");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer MANAGEMENT_API_TOKEN");
 request.AddParameter("application/json", "{\n  \"description\": \"Logging mode enabled\",\n  \"active\": true,\n  “priority”: 1,\n  \"rule\": {\n    \"action\": { \"log\": true },\n    \"match\": { \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"tenant\"\n  }\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -197,18 +192,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/network-acls/ACL_ID")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/network-acls/ACL_ID")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MANAGEMENT_API_TOKEN")
   .body("{\n  \"description\": \"Logging mode enabled\",\n  \"active\": true,\n  “priority”: 1,\n  \"rule\": {\n    \"action\": { \"log\": true },\n    \"match\": { \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"tenant\"\n  }\n}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PUT',
@@ -224,10 +214,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer MANAGEMENT_API_TOKEN" };
@@ -260,11 +248,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/network-acls/ACL_ID",
@@ -290,10 +275,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -309,11 +292,8 @@ conn.request("PUT", "/{yourDomain}/api/v2/network-acls/ACL_ID", payload, headers
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -329,10 +309,8 @@ request["authorization"] = 'Bearer MANAGEMENT_API_TOKEN'
 request.body = "{\n  \"description\": \"Logging mode enabled\",\n  \"active\": true,\n  “priority”: 1,\n  \"rule\": {\n    \"action\": { \"log\": true },\n    \"match\": { \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"tenant\"\n  }\n}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -367,6 +345,17 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>

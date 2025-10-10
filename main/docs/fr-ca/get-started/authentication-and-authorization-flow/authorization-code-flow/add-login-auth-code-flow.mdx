@@ -8,6 +8,8 @@ permalink: "add-login-auth-code-flow"
 'twitter:title': "Ajout d’une connexion avec le Flux de code d’autorisation"
 'twitter:description': "Apprenez à ajouter une connexion à votre application Web classique en utilisant le Flux de code d’autorisation."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Vous pouvez ajouter une connexion à votre application Web classique à l’aide du Flux de code d’autorisation. Pour savoir comment fonctionne le flux et pourquoi vous devriez l’utiliser, lisez [Flux du code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow). Pour appeler votre API à partir d’une application Web ordinaire, lisez [Appeler votre API à l’aide du flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow).
 
@@ -40,14 +42,14 @@ Pour autoriser l’utilisateur, votre application doit envoyer l’utilisateur �
 
 ### Exemple d’URL d’autorisation
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample1 = `https://{yourDomain}/authorize?
     response_type=code&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope={scope}&
-    state={state}
-```
+    state={state}`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
 ### Paramètres
 
@@ -99,16 +101,16 @@ https://{yourDomain}/authorize?
 
 Par exemple, votre extrait HTML pour l’URL d’autorisation lors de l’ajout de l’enregistrement à votre application peut avoir l’air de ce qui suit :
 
-```html lines
-<a href="https://{yourDomain}/authorize?
+export const codeExample2 = `<a href="https://{yourDomain}/authorize?
   response_type=code&
   client_id={yourClientId}&
   redirect_uri={https://yourApp/callback}&
   scope=openid%20profile&
   state=xyzABC123">
   Sign In
-</a>
-```
+</a>`;
+
+<AuthCodeBlock children={codeExample2} language="html" />
 
 ### Réponse
 
@@ -125,27 +127,20 @@ Maintenant que vous avez un code d’authentification, vous pouvez l’échanger
 
 ### Exemple d’URL « POST to token »
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample3 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data grant_type=authorization_code \
   --data 'client_id={yourClientId}' \
   --data 'client_secret={yourClientSecret}' \
   --data 'code=yourAuthorizationCode}' \
-  --data 'redirect_uri={https://yourApp/callback}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/token");
+  --data 'redirect_uri={https://yourApp/callback}'`;
+export const codeExample4 = `var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=yourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample5 = `package main
 
 import (
 	"fmt"
@@ -172,17 +167,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
+}`;
+export const codeExample6 = `HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=yourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample7 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -201,10 +191,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample8 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
 
@@ -231,11 +219,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample9 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/token",
@@ -260,10 +245,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample10 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -276,11 +259,8 @@ conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample11 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -295,10 +275,8 @@ request["content-type"] = 'application/x-www-form-urlencoded'
 request.body = "grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=yourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample12 = `import Foundation
 
 let headers = ["content-type": "application/x-www-form-urlencoded"]
 
@@ -325,8 +303,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample3} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample4} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample5} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample6} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample7} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample8} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample9} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample10} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample11} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample12} language="swift" filename="Swift" />
 </CodeGroup>
 
 ### Paramètres
@@ -398,13 +387,13 @@ Les jetons d’actualisation doivent être stockés en toute sécurité car ils 
 
 Cet exemple montre la requête la plus basique que vous pouvez faire lorsque vous autorisez l’utilisateur à l’étape 1. L’écran de connexion Auth0 permet à l’utilisateur de se connecter avec l’une des connexions configurées.
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample13 = `https://{yourDomain}/authorize?
     response_type=code&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
-    scope=openid
-```
+    scope=openid`;
+
+<AuthCodeBlock children={codeExample13} language="text" lines />
 
 Désormais, lorsque vous demanderez des jetons, votre jeton d’ID contiendra les autorisations les plus élémentaires. Lorsque vous décodez le jeton d’ID, il ressemble à ce qui suit :
 
@@ -424,14 +413,14 @@ Outre l’authentification habituelle de l’utilisateur, cet exemple montre com
 
 Pour demander le nom et la photo de l’utilisateur, vous devez ajouter les permissions appropriées lors de l’autorisation de l’utilisateur :
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample14 = `https://{yourDomain}/authorize?
     response_type=code&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope=openid%20name%20picture&
-    state={state}
-```
+    state={state}`;
+
+<AuthCodeBlock children={codeExample14} language="text" lines />
 
 Désormais, lorsque vous demanderez des jetons, votre jeton d’ID contiendra le nom et la photo demandés. Lorsque vous décodez le jeton d’ID, il ressemble à ce qui suit :
 
@@ -453,15 +442,15 @@ En plus de l’authentification habituelle des utilisateurs, cet exemple montre 
 
 Pour envoyer les utilisateurs directement à l’écran de connexion GitHub, vous devez passer le paramètre `connection` et définir sa valeur sur le nom de la connexion (dans ce cas, `github`) lors de l’autorisation de l’utilisateur à l’étape 1 :
 
-``` lines
-https://{yourDomain}/authorize?
+export const codeExample15 = `https://{yourDomain}/authorize?
     response_type=code&
     client_id={yourClientId}&
     redirect_uri={https://yourApp/callback}&
     scope=openid%20name%20picture&
     state={state}&
-    connection=github
-```
+    connection=github`;
+
+<AuthCodeBlock children={codeExample15} language="text" lines />
 
 Désormais, lorsque vous demanderez des jetons, votre jeton d’ID contiendra une demande `sub` avec l’ID unique de l’utilisateur renvoyé par GitHub. Lorsque vous décodez le jeton d’ID, il ressemble à ce qui suit :
 

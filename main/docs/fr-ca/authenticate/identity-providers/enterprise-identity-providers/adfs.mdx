@@ -8,6 +8,8 @@ permalink: "adfs"
 'twitter:title': "Connectez votre application à ADFS"
 'twitter:description': "Apprenez à connecter votre application aux Services de fédération Active Directory (ADFS) en utilisant des connexions d’entreprise."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Pour connecter votre application aux Services de fédération Active Directory (ADFS) de Microsoft, vous devez fournir les informations suivantes à votre administrateur ADFS :
 
@@ -36,9 +38,9 @@ Vous devez exécuter ce script en tant qu’administrateur de votre système.
 (new-object Net.WebClient -property @{Encoding = [Text.Encoding]::UTF8}).DownloadString("https://raw.github.com/auth0/adfs-auth0/master/adfs.ps1") | iex
 ```
 
-```powershell lines
-AddRelyingParty "urn:auth0:{yourTenant}" "https://{yourDomain}/login/callback"
-```
+export const codeExample1 = `AddRelyingParty "urn:auth0:{yourTenant}" "https://{yourDomain}/login/callback"`;
+
+<AuthCodeBlock children={codeExample1} language="powershell" />
 
 Pour l’intégration automatisée, ce script utilise le [composant logiciel enfichable ADFS PowerShell](http://technet.microsoft.com/en-us/library/adfs2-powershell-basics.aspx) pour créer et configurer un **Partie de confiance** qui émettra, pour l’utilisateur authentifié, les revendications suivantes : **email**, **upn**, **prénom**, et **nom de famille**.
 
@@ -50,13 +52,13 @@ Si vous utilisez la fonctionnalité [domaines personnalisés](/docs/docs/fr-ca/c
 
 Le script crée l’approbation de la partie de confiance, comme suit :
 
-```powershell lines
-$realm = "urn:auth0:{yourTenant}";
+export const codeExample2 = `$realm = "urn:auth0:{yourTenant}";
 $webAppEndpoint = "https://{yourDomain}/login/callback";
 Add-PSSnapin Microsoft.Adfs.Powershell
 Add-ADFSRelyingPartyTrust -Name $realm -Identifier $realm -WSFedEndpoint $webAppEndpoint
-$rp = Get-ADFSRelyingPartyTrust -Name $realm
-```
+$rp = Get-ADFSRelyingPartyTrust -Name $realm`;
+
+<AuthCodeBlock children={codeExample2} language="powershell" />
 
 Le script crée aussi des règles pour émettre les attributs les plus courants, tels que le courriel, l’UPN, le prénom ou le nom de famille :
 

@@ -8,6 +8,8 @@ permalink: "configure-amazon-web-services-for-sso"
 'twitter:title': "シングルサインオンにAmazon Web Servicesを構成する"
 'twitter:description': "Auth0のシングルサインオン（SSO）にAmazon Web Services（AWS）を構成する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0をAWSと統合すると、サポートされているIDプロバイダーを使って、ユーザーがAWSにログインできるようになります。
 
@@ -173,8 +175,7 @@ AWSセッションが期限切れになるまでの猶予時間（3600秒）を�
 
 
 
-```javascript lines
-function (user, context, callback) {
+export const codeExample = `function (user, context, callback) {
     if(context.clientID !== '{yourClientId}'){
       return callback(null, user, context);
     }
@@ -189,8 +190,9 @@ function (user, context, callback) {
     'https://aws.amazon.com/SAML/Attributes/SessionDuration': 'time'   };
 
   callback(null, user, context);
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 ## 構成をテストする
 

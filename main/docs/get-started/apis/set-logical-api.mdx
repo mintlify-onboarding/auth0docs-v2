@@ -9,6 +9,8 @@ title: Configure Logical API for Multiple APIs
   and control access to multiple APIs.
 'twitter:title': Configure Logical API for Multiple APIs
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 If you have multiple distinct API implementations that are all logically a part of the same API, you can simplify your authorization process by representing them with a single logical API in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Doing this allows you to implement just one <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip>, while still controlling access to the individual APIs by assigning the appropriate scopes.
 
 The following sections describe how to use and represent multiple APIs as a single <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=Resource+Server">Resource Server</Tooltip> in Auth0. We will use the following sample application in the examples. The sample application uses a microservices architecture and contains:
@@ -74,15 +76,16 @@ To learn about Authorization flows, read [Authentication and Authorization Flows
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
 
-   ```text lines
-   https://{yourDomain}/authorize?
+   export const codeExample = `   https://{yourDomain}/authorize?
    scope=read:contacts%20read:calendar&
    audience=organize&
    response_type=id_token%20token&
    client_id={yourClientId}&
    redirect_uri=http://localhost:3000&
    nonce={nonce}
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" />
 
 
    

@@ -8,6 +8,8 @@ permalink: "identity-provider-initiated-single-sign-on"
 'twitter:title': "Configurer l’authentification unique initiée par le fournisseur d’identité SAML"
 'twitter:description': "Explique comment configurer l’authentification unique (SSO) initiée par le fournisseur d’identité SAML."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 De nombreuses instructions pour la mise en place d’une fédération <Tooltip href="/docs/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
 Protocole normalisé permettant à deux parties d’échanger des informations d’authentification sans mot de passe." cta="Voir le glossaire">SAML</Tooltip> commencent par l’authentification unique (<Tooltip href="/docs/docs/fr-ca/glossary?term=single-sign-on" tip="Authentification unique (SSO)
@@ -37,15 +39,15 @@ Une autre approche consiste à demander aux utilisateurs de démarrer le flux de
 
 Lorsque vous utilisez le SSO initié par le fournisseur d’identité, assurez-vous d’inclure le paramètre de connexion dans l’URL de post-back :
 
-``` lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}
-```
+export const codeExample1 = `https://{yourDomain}/login/callback?connection={yourConnectionName}`;
+
+<AuthCodeBlock children={codeExample1} language="text" lines />
 
 Si vous utilisez la fonctionnalité [Organizations](https://auth0.com/docs/manage-users/organizations), vous pouvez éventuellement inclure un paramètre d’organization contenant l’ID de l’organization souhaitée :
 
-``` lines
-https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}
-```
+export const codeExample2 = `https://{yourDomain}/login/callback?connection={yourConnectionName}&organization={yourCustomersOrganizationId}`;
+
+<AuthCodeBlock children={codeExample2} language="text" lines />
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

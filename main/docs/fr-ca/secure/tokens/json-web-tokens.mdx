@@ -21,7 +21,7 @@ Protocole normalisé permettant à deux parties d’échanger des informations d
 
 * **Plus compact** : JSON est moins détaillé que XML. De ce fait, lorsqu’il est encodé, un jeton JWT est plus petit qu’un jeton SAML. JWT est un bon choix pour être transmis dans les environnements HTML et HTTP.
 
-<Frame>![Encoded JWT Compared to SAML Token](/images/fr-ca/cdy7uua7fh8z/4S6xl4Yvi0H1CUrLB69ZtH/e3e3bf1767d2d29563a99cf71cab158d/comparing-jwt-vs-saml2.png)</Frame>
+<Frame>![Encoded JWT Compared to SAML Token](/docs/images/fr-ca/cdy7uua7fh8z/4S6xl4Yvi0H1CUrLB69ZtH/e3e3bf1767d2d29563a99cf71cab158d/comparing-jwt-vs-saml2.png)</Frame>
 
 * **Plus sécurisé** : Les JWT peuvent utiliser une paire de clés publique/privée sous la forme d’un certificat X.509 pour la signature. Un JWT peut également être signé symétriquement par un secret partagé à l’aide de l’algorithme HMAC. Bien que les jetons SAML puissent s’appuyer sur des combinaisons de clés publiques et privées, tout comme les JWT, il est extrêmement ardu de signer des documents XML avec une signature numérique XML, sans compromettre la sécurité, comparativement à la facilité de signature de JSON. En savoir plus sur les [algorithmes de signature](/docs/fr-ca/tokens/concepts/signing-algorithms) JWT.
 * **Plus commun** : Les parseurs JSON sont courants dans la plupart des langages de programmation car ils mappent directement sur des objets. XML, par contre, n’a pas de mappage document-objet naturel. Cela rend le travail avec JWT plus facile que celui avec les assertions SAML.

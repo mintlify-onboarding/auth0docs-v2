@@ -8,6 +8,8 @@ permalink: "api-implementation-nodejs"
 'twitter:title': "Mise en œuvre de l’API Node.js  (SPA + API)"
 'twitter:description': "L’implémentation Node.js de l’API pour le scénario d’architecture SPA + API"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Ce document fait partie du scénario d’architecture SPA + API et explique comment mettre en œuvre l’API dans Node.js. Veuillez vous référer au scénario pour obtenir des informations sur la solution implémentation.
 
@@ -119,8 +121,7 @@ Les étapes que nous suivrons dans notre code sont :
 
 Vous pouvez également écrire du code pour véritablement enregistrer la feuille de temps dans une base de données. Voici notre exemple d’implémentation (certains codes sont omis aux fins de concision) :
 
-```javascript lines
-// set dependencies - code omitted
+export const codeExample = `// set dependencies - code omitted
 
 // Enable CORS - code omitted
 
@@ -131,7 +132,7 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://{yourDomain}/.well-known/jwks.json`
+    jwksUri: \`https://{yourDomain}/.well-known/jwks.json\`
   }),
 
   // Validate the audience and the issuer
@@ -151,8 +152,9 @@ app.post('/timesheets', checkJwt, function(req, res){
   //send the response
   res.status(201).send(timesheet);
 });
-// launch the API Server at localhost:8080 - code omitted
-```
+// launch the API Server at localhost:8080 - code omitted`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 Si nous lançons notre serveur maintenant et effectuons un HTTP POST vers`localhost:8080/timesheets` nous obtiendrons le message d’erreur`Missing or invalid token`, ce qui est correct, car nous n’avons pas envoyé de jeton d’accès dans notre demande).
 

@@ -8,6 +8,8 @@ permalink: "lock-configuration"
 'twitter:title': "Options de configuration de Lock"
 'twitter:description': "Lock propose de nombreuses options configurables qui vous permettent de modifier le comportement, l’apparence et la connectivité du gadget logiciel Lock. Cette ressource fournit pour vous les détails de ces options."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lock peut être configuré par le paramètre `options` envoyé au constructeur. Ces options peuvent modifier le comportement du gadget logiciel Lock, la façon dont il gère les connexions, les champs d’inscription supplémentaires dont vous avez besoin pour votre projet, les valeurs de langue et de texte, les couleurs et les images du gadget logiciel, et bien plus encore. Consultez l’index ci-dessous si vous savez ce que vous recherchez, ou parcourez les options pour plus de détails.
 
@@ -311,7 +313,7 @@ Cette option détermine s’il faut ou non ajouter une case à cocher à l’int
 
 `allowShowPassword: true`
 
-Lock avec le réglage `allowShowPassword` sur `true` et basculez pour afficher le mot de passe :
+Lock avec le réglage `allowShowPassword` ](/docs/images/ et basculez pour afficher le mot de passe :
 
 <Frame>![Lock Option: Allow Show Password](/images/fr-ca/cdy7uua7fh8z/6G8LJaNjaMl5zUrwGi5UJQ/44dc951b70077b0ec6bc04d2f0413b12/lock-allowshowpassword.png)</Frame>
 
@@ -325,9 +327,9 @@ Tableau de connexions qui seront utilisées pour les actions de `signin|signup|r
 
 `allowedConnections: ['qraftlabs.com']`
 
-Exemples de `allowedConnections`:
+Exemples de `allowedConnections`:](/docs/images/
 
-<Frame>![Lock Option: Allowed Connections - Database](/images/fr-ca/cdy7uua7fh8z/1mllPDLFCCETwQ9MeGEf3W/763728971302656618ef3bd131ab83b1/lock-allowedconnections-database.png)</Frame>
+<Frame>![Lock Option: Allowed Connections - Databa](/docs/images/s/fr-ca/cdy7uua7fh8z/1mllPDLFCCETwQ9MeGEf3W/763728971302656618ef3bd131ab83b1/lock-allowedconnections-database.png)</Frame>
 
 <Frame>![Lock Option: Allowed Connections - Social](/images/fr-ca/cdy7uua7fh8z/7uYN4ebrLLM8bjx1fee8j0/1e716cca3e1bae990063e9226dfe9ac2/lock-allowedconnections-social.png)</Frame>
 
@@ -373,7 +375,7 @@ Ou, si vous ne souhaitez afficher aucun avatar, passez tout simplement la valeur
 
 `avatar: null`
 
-Comportement par défaut avec Gravatar :
+Comportement par défaut avec](/docs/images/:
 
 <Frame>![Lock Option: Avatar](/images/fr-ca/cdy7uua7fh8z/69Nz0QoQifPWpfBZwX15J0/204aad93cde406f0ed3771ce38766f56/lock-avatar.png)</Frame>
 
@@ -381,7 +383,7 @@ Comportement par défaut avec Gravatar :
 
 Détermine si le verrou peut être fermé ou non. Lorsqu’une option de `container` est fournie, sa valeur est toujours `false`, sinon elle est `true` par défaut.
 
-`closable: false`
+`closable: false`](/docs/images/
 
 <Frame>![Lock Option: Closable](/images/fr-ca/cdy7uua7fh8z/2qwXtPQev1nlpyOQauXKBO/f967e1157972ecbf5b030b3be3600f2e/lock-closable.png)</Frame>
 
@@ -405,7 +407,7 @@ Cela fait apparaître le gadget logiciel en ligne dans votre `div` plutôt que d
   // render
   lock.show();
 </script>
-```
+```](/docs/images/
 
 <Frame>![Lock Option: Container](/images/fr-ca/cdy7uua7fh8z/5L4S47Yfset2DR9pjcqVrX/1c4d1928cf75acf40129ffd01394bf33/lock-container.png)</Frame>
 
@@ -429,7 +431,7 @@ var options = {
 
 Spécifie la langue du gadget logiciel. La valeur par défaut est « en ». Consultez le [répertoire d’internationalisation](https://github.com/auth0/lock/blob/master/src/i18n/) pour une liste actuelle des langues fournies.
 
-`language: 'es'`
+`language: 'es'`](/docs/images/
 
 <Frame>![Lock Option: Language](/images/fr-ca/cdy7uua7fh8z/3u3lytCUBDbcKmXFV34OUv/5cf5d7e1af9593a3b094f32815a4da11/lock-language.png)</Frame>
 
@@ -444,7 +446,7 @@ var options = {
     title: "Log me in"
   },
 };
-```
+```](/docs/images/
 
 <Frame>![Lock Option: Language Dictionary](/images/fr-ca/cdy7uua7fh8z/5203ofwtagtIKGT4HnIPmk/8ad9cdd151a2cdb18b8a42ee47dbf679/lock-languagedictionary.png)</Frame>
 
@@ -544,7 +546,7 @@ var options = {
     labeledSubmitButton: false
   }
 };
-```
+```](/docs/images/
 
 <Frame>![Lock Option: Labeled Submit Button](/images/fr-ca/cdy7uua7fh8z/5PNCvsbYa98pKZwWHVPS9S/39cb5ac63818ec5558c451b1e37f735f/lock-theme-labeledsubmitbutton.png)</Frame>
 
@@ -560,7 +562,7 @@ var options = {
     logo: 'https://example.com/logo.png'
   }
 };
-```
+```](/docs/images/
 
 <Frame>![Lock UI customization - Logo](/images/fr-ca/cdy7uua7fh8z/FdOAKKy71rTbFjIlZEL8D/2eef96008095d85388daaa461707901d/lock-theme-logo.png)</Frame>
 
@@ -575,7 +577,7 @@ var options = {
     primaryColor: '#31324F'
   }
 };
-```
+```](/docs/images/
 
 <Frame>![Lock UI customization - primary color](/images/fr-ca/cdy7uua7fh8z/1qQjeTmXJyIziv400VPaOn/48dd3cb8a72a6e88b2634b4b8a8bed63/lock-theme-primarycolor.png)</Frame>
 
@@ -609,13 +611,13 @@ var options = {
 
 L’option `audience` indique l’API qui consommera le jeton d’accès reçu après l’authentification.
 
-```javascript lines
-var options = {
+export const codeExample = `var options = {
   auth: {
     audience: 'https://{yourDomain}/userinfo',
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 ### autoParseHash {Boolean}
 
@@ -791,7 +793,7 @@ var options = {
     storage: "root"
   }]
 };
-```
+```](/docs/images/
 
 <Frame>![Lock Option: Additional Signup Fields](/images/fr-ca/cdy7uua7fh8z/2KPDGZb3caq57caJ90w53k/e092bdb4a4d93589aa006f796ff20fca/lock-additionalsignupfields.png)</Frame>
 
@@ -878,7 +880,7 @@ Certains cas d’utilisation peuvent être en mesure d’utiliser des données `
 
 Lorsqu’il est défini sur `false`, le gadget logiciel n’affichera pas l’écran de connexion. Ceci est utile si vous souhaitez utiliser le gadget logiciel uniquement pour les inscriptions (les onglets de connexion et d’inscription dans l’écran d’inscription seront masqués) ou pour réinitialiser les mots de passe (le bouton de retour dans l’écran de mot de passe oublié sera masqué). Dans de tels cas, vous devrez peut-être également spécifier les options `initialScreen`, `AllowForgotPassword` et `AllowSignUp`. La valeur par défaut est `true`.
 
-`allowLogin: false`
+`allowLogin: false`](/docs/images/
 
 <Frame>![Lock Option: Allow Login](/images/fr-ca/cdy7uua7fh8z/6gI4aSLHXLzhcHiR9aWMET/d05c2a08a3895278b01150ecf894cb5f/lock-allowlogin.png)</Frame>
 
@@ -886,7 +888,7 @@ Lorsqu’il est défini sur `false`, le gadget logiciel n’affichera pas l’é
 
 Lorsqu’il est défini sur false, `allowForgotPassword` masque le lien « Vous ne vous souvenez pas de votre mot de passe? » dans l’écran de connexion, rendant l’écran Mot de passe oublié inaccessible. La valeur par défaut est vrai. Si vous utilisez une connexion à une base de données personnalisée qui ne dispose pas d’un script de modification du mot de passe, l’écran Mot de passe oublié ne sera pas disponible.
 
-`allowForgotPassword: false`
+`allowForgotPassword: false`](/docs/images/
 
 <Frame>![Lock Option: Allow Forgot Password](/images/fr-ca/cdy7uua7fh8z/1L6wJS3UnWK1VGKYMFhAB9/2ddcf2d462255e78a8b78958c2503809/lock-allowforgotpassword.png)</Frame>
 
@@ -896,7 +898,7 @@ Lorsqu’il est défini sur `false`, masque les onglets de connexion et d’insc
 
 Gardez également à l’esprit que cette option contrôle **uniquement** l’apparence côté client et n’arrête pas complètement les nouvelles connexions de visiteurs anonymes déterminés. Si vous souhaitez empêcher complètement la connexion de nouveaux utilisateurs, vous devez utiliser l’option **Disable Sign Ups (Désactiver les connexions)** dans le tableau de bord, dans les paramètres de connexion.
 
-`allowSignUp: false`
+`allowSignUp: false`](/docs/images/
 
 <Frame>![Lock Option: Allow Signup](/images/fr-ca/cdy7uua7fh8z/2BNlYe99EFlRmIlhoLZiEB/f280d865cb16fa5fecda952271cb18bf/lock-allowsignup.png)</Frame>
 

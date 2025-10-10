@@ -8,6 +8,8 @@ permalink: "user-consent-and-third-party-applications"
 'twitter:title': "User Consent and Third-Party Applications (Consentement de l’utilisateur et applications tierces)"
 'twitter:description': "Apprenez à découpler les API des applications qui les utilisent et à définir les applications tierces que vous ne contrôlez pas ou auxquelles vous ne faites pas confiance."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Le pipeline d’authentification conforme à l’[OIDC](/docs/fr-ca/authenticate/protocols/openid-connect-protocol) prend charge la définition des serveurs de ressources (tels que les API) en tant qu’entités distinctes des applications. Cela vous permet de découpler les API des applications qui les consomment, et vous permet également de définir des [applications tierces](/docs/fr-ca/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) permettant à des tiers d’accéder en toute sécurité à des ressources protégées derrière votre API.
 
@@ -28,7 +30,7 @@ client_id=some_third_party_client
 &state=...
 ```
 
-Le dialogue de consentement de l’utilisateur s’affiche :
+Le dialogue de consentement de l’utilisateur s’affiche :](/docs/images/
 
 <Frame>![Authorization (Autorisation) - User consent and applications (Applications et consentement utilisateur) - consent-dialog (Dialogue de consentement)](/images/fr-ca/cdy7uua7fh8z/5Cz3aZKw8RRVlMkc5Zl6x7/04e3b4f29cf44e23d39d96c1cf84e10e/2025-02-28_14-56-45.png)</Frame>
 
@@ -38,7 +40,7 @@ Une fois le consentement donné, l’utilisateur ne verra plus la boîte de dial
 
 ## Description du permission
 
-Par défaut, la page de consentement utilisera les noms des champs d’application pour demander le consentement de l’utilisateur. Comme indiqué ci-dessous, vous devez définir les permissions à l’aide du format **action:resource_name**.
+Par défaut, la page de consentement utilisera les noms des champs d’application pour demander le consentement de l’utilisateur. Comme indiqué ci-dessous, vous devez déf](/docs/images/ermissions à l’aide du format **action:resource_name**.
 
 <Frame>![Authorization (Autorisation) - User consent and applications (Applications et consentement utilisateur) - Consent scopes (Champs d’application du consentement)](/images/fr-ca/cdy7uua7fh8z/3Z4Ofbj5yF7eg5cLfcauh9/c4f4e9e7065e29d1ae94cf71b1e8bc02/2025-02-28_15-01-05.png)</Frame>
 
@@ -48,27 +50,20 @@ Si vous souhaitez afficher le champ **Description** à la place, vous pouvez le 
 
 Pour définir l’indicateur **use_scope_descriptions_for_consent** vous devrez faire la requête appropriée à l’API :
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample1 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
   --header 'authorization: Bearer API2_ACCESS_TOKEN' \
   --header 'cache-control: no-cache' \
   --header 'content-type: application/json' \
-  --data '{ "flags": { "use_scope_descriptions_for_consent": true } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
+  --data '{ "flags": { "use_scope_descriptions_for_consent": true } }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer API2_ACCESS_TOKEN");
 request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -97,19 +92,14 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
+}`;
+export const codeExample4 = `HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
   .header("authorization", "Bearer API2_ACCESS_TOKEN")
   .header("cache-control", "no-cache")
   .body("{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -126,10 +116,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer API2_ACCESS_TOKEN",
@@ -155,11 +143,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/tenants/settings",
@@ -186,10 +171,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -206,11 +189,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/tenants/settings", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -227,10 +207,8 @@ request["cache-control"] = 'no-cache'
 request.body = "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -258,8 +236,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 ## Traiter les autorisations rejetées

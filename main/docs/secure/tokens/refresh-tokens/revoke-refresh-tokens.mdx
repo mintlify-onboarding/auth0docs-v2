@@ -10,6 +10,8 @@ title: Revoke Refresh Tokens
   using the Authentication API, the Management API, or the Auth0 Dashboard.
 'twitter:title': Revoke Refresh Tokens
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can revoke <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+tokens">refresh tokens</Tooltip> in case they become compromised. Auth0 handles token revocation as though the token has been potentially exposed to malicious adversaries.
 
 You can also use [refresh token rotation](/docs/secure/tokens/refresh-tokens/refresh-token-rotation) so that every time a client exchanges a refresh token to get a new <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, a new refresh token is also returned. Therefore, you no longer have a long-lived refresh token that, if compromised, could provide illegitimate access to resources. As refresh tokens are continually exchanged and invalidated, the threat is reduced.
@@ -52,23 +54,16 @@ To revoke a refresh token, send a `POST` request to `https://{yourDomain}/oauth/
 
 The `/oauth/revoke` endpoint revokes the entire grant, not just a specific token. Use the `/api/v2/device-credentials` endpoint to revoke refresh tokens. The API first validates the application credentials and then verifies whether the token was issued to the application making the revocation request. If this validation fails, the request is refused, and the application is informed of the error. Next, the API invalidates the token. The invalidation takes place immediately, and the token cannot be used again after the revocation. Each revocation request invalidates all the tokens that have been issued for the same authorization grant.
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/oauth/revoke' \
   --header 'content-type: application/json' \
-  --data '{ "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "token": "{yourRefreshToken}" }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oauth/revoke");
+  --data '{ "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "token": "{yourRefreshToken}" }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/oauth/revoke");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"token\": \"{yourRefreshToken}\" }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -95,17 +90,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/revoke")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/revoke")
   .header("content-type", "application/json")
   .body("{ \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"token\": \"{yourRefreshToken}\" }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -122,10 +112,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"client_id": @"{yourClientId}",
@@ -151,11 +139,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oauth/revoke",
@@ -180,10 +165,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -196,11 +179,8 @@ conn.request("POST", "/{yourDomain}/oauth/revoke", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -215,10 +195,8 @@ request["content-type"] = 'application/json'
 request.body = "{ \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"token\": \"{yourRefreshToken}\" }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = [
@@ -246,8 +224,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 Where:
@@ -322,16 +311,16 @@ The possible responses are:
 
 To revoke a refresh token using the Auth0 Management API, you need the `id` of the refresh token you wish to revoke. To obtain a list of existing refresh tokens, call the `/api/v2/device-credentials` [endpoint](https://auth0.com/docs/api/management/v2#!/Device_Credentials/get_device_credentials), specifying `type=refresh_token` and `user_id` with an access token containing `read:device_credentials` scope. To narrow the results, you can also specify the `client_id` associated with the token (if known).
 
-```json lines
-GET https://{yourDomain}/api/v2/device-credentials?
+export const codeExample11 = `GET https://{yourDomain}/api/v2/device-credentials?
     type=refresh_token
     &client_id=
     &user_id=
   
   {
     "Authorization":   "Bearer {your_access_token}"
-  }
-```
+  }`;
+
+<AuthCodeBlock children={codeExample11} language="json" />
 
 
 
@@ -356,13 +345,13 @@ Response body:
 
 To revoke a refresh token, call the `/api/v2/device-credentials` endpoint with an access token containing `delete:device_credentials` scope and the value of ID obtained above:
 
-```json lines
-DELETE https://{yourDomain}/api/v2/device-credentials/{id}
+export const codeExample12 = `DELETE https://{yourDomain}/api/v2/device-credentials/{id}
 
 {
   "Authorization":   "Bearer {your_access_token}"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample12} language="json" />
 
 
 

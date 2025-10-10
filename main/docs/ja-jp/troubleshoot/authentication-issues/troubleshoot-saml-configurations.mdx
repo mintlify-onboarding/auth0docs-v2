@@ -8,6 +8,8 @@ permalink: "troubleshoot-saml-configurations"
 'twitter:title': "SAML構成のトラブルシューティング"
 'twitter:description': "SAML構成に関する問題のトラブルシューティングを説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 トラブルシューティングでは、構成を理解することが大切です。
 
@@ -94,9 +96,9 @@ SP起点のフローでこのエラーが表示される場合、次のいずれ
 
 テナントがカスタムドメインを使用している場合、ログインフローがカスタムドメインで開始し、正規ドメインで完了すると不一致が発生します。たとえば、ユーザーが次のカスタムドメインで始めたとします：
 
-``` lines
-https://auth.{yourDomain}.com/authorize?client_id=abc123&redirect_uri=https://jwt.io&response_type=code&scope=openid&audience=https://example.com&connection=mysamlconnection
-```
+export const codeExample = `https://auth.{yourDomain}.com/authorize?client_id=abc123&redirect_uri=https://jwt.io&response_type=code&scope=openid&audience=https://example.com&connection=mysamlconnection`;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
 ところが、IDプロバイダーは次の正規ドメインを使って、ACS URLにSAML応答を返すように構成されています：
 

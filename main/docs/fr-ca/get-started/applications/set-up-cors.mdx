@@ -8,6 +8,8 @@ permalink: "set-up-cors"
 'twitter:title': "Configurer le partage des ressources cross-origin"
 'twitter:description': "Décrit comment configurer le partage de ressources cross-origin (CORS) pour une application enregistrée auprès d’Auth0 à l’aide d’Auth0 Dashboard."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Card title="Avant de commencer">
 
@@ -52,24 +54,21 @@ La configuration de **Safari** est intitulée « Empêcher le suivi multidomain
 
    
 
-   ``` lines
-   <!-- callback-cross-auth.html -->
+export const codeExample = `   <!-- callback-cross-auth.html -->
 
-   <head>
-     <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
-     <script type="text/javascript">
-       var auth0Client = new auth0.WebAuth({
-         clientID: '{yourClientId}',
-         domain: '{yourDomain}'
-       });
-       auth0Client.crossOriginVerification();
-     </script>
-   </head>
-   ```
+<head>
+  <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+  <script type="text/javascript">
+    var auth0Client = new auth0.WebAuth({
+      clientID: '{yourClientId}',
+      domain: '{yourDomain}'
+    });
+    auth0Client.crossOriginVerification();
+  </script>
+</head>
+`;
 
-   
-
-   
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    Lorsque les témoins de tiers ne sont pas pris en charge, Auth0.js génère un iframe pour appeler un flux de vérification cross-origin différent.
 2. Rendez-vous à [Dashboard > Applications > Applications](https://manage.auth0.com/#/applications), et sélectionnez le nom de l’application que vous souhaitez afficher.

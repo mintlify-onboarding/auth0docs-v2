@@ -2,6 +2,8 @@
 title: "Flutter"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Steve Hobbs
 
@@ -112,8 +114,7 @@ The SDK requires manifest placeholders. Auth0 uses placeholders internally to de
 
 Modify `app/build.gradle` to include manifest placeholders for `auth0Domain` and `auth0Scheme` inside the `defaultConfig` section:
 
-```dart lines
-apply plugin: 'com.android.application'
+export const codeExample1 = `apply plugin: 'com.android.application'
 
 android {
     defaultConfig {
@@ -126,8 +127,9 @@ android {
         manifestPlaceholders += [auth0Domain: "{yourDomain}", auth0Scheme: "https"]
         // <---
     }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="dart" />
 
 
 
@@ -167,9 +169,9 @@ Open your app in Xcode by running `open ios/Runner.xcworkspace` (or `open macos/
 
 Next, add the following [entry](https://developer.apple.com/documentation/xcode/configuring-an-associated-domain#Define-a-service-and-its-associated-domain) under **Associated Domains**:
 
-```dart lines
-webcredentials:{yourDomain}
-```
+export const codeExample2 = `webcredentials:{yourDomain}`;
+
+<AuthCodeBlock children={codeExample2} language="dart" />
 
 
 
@@ -188,8 +190,7 @@ For the associated domain to work, your app must be signed with your team certif
 
 Integrate Auth0 Universal Login in your Flutter app by importing the SDK and instantiating the `Auth0` class using your Auth0 domain and Client ID values. See this example, which instantiates the class inside a widget state object:
 
-```dart lines
-import 'package:auth0_flutter/auth0_flutter.dart';
+export const codeExample3 = `import 'package:auth0_flutter/auth0_flutter.dart';
 
 class MainView extends StatefulWidget {
   const MainView({Key? key}) : super(key: key);
@@ -213,8 +214,9 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     // ...
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample3} language="dart" />
 
 
 

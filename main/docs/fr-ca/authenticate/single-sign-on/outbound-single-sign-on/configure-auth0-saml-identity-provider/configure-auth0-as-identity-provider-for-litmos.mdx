@@ -8,6 +8,8 @@ permalink: "configure-auth0-as-identity-provider-for-litmos"
 'twitter:title': "Configurer Litmos comme fournisseur de service SAML"
 'twitter:description': "Apprenez à configurer Auth0 en tant que fournisseur d’identité en utilisant l’extension SAML2 Web App pour Litmos."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Utilisez la configuration <Tooltip href="/docs/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
 Protocole normalisé permettant à deux parties d’échanger des informations d’authentification sans mot de passe." cta="Voir le glossaire">SAML</Tooltip> suivante pour Litmos.
@@ -20,8 +22,7 @@ Protocole normalisé permettant à deux parties d’échanger des informations d
 
 4. Collez le code suivant dans la zone de texte **Paramètres** et cliquez sur **Déboguer**.
 
-   ```json lines
-   {
+   export const codeExample = `   {
         "mappings": {
           "user_id":     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
           "email":       "Email",
@@ -42,7 +43,9 @@ Protocole normalisé permettant à deux parties d’échanger des informations d
           "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
         ]
        }
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="json" />
 
    
 

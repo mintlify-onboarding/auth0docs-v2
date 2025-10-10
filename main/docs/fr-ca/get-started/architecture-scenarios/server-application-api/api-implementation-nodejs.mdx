@@ -8,6 +8,8 @@ permalink: "api-implementation-nodejs"
 'twitter:title': "Applications serveur + API : Implémentation de l’API en Node.js"
 'twitter:description': "L’implémentation Node.js de l’API pour le scénario d’architecture Serveur Client + API"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Dans le cadre du [scénario d’architecture serveur + API](https://auth0.com/docs/architecture-scenarios/application/server-api), nous allons implémenter l’API Feuilles de temps dans Node.js. Veuillez vous référer au scénario pour obtenir des informations sur la solution implémentation.
 
@@ -116,8 +118,7 @@ Les étapes que nous suivrons dans notre code sont :
 
 C’est également le bon moment pour implémenter la logique d’enregistrement des entrées de la feuille de temps dans une base de données locale, ou tout autre mécanisme de stockage que vous préférez. Voici notre exemple d’implémentation (certains codes sont omis en raison aux fins de concision) :
 
-```javascript lines
-// set dependencies - code omitted
+export const codeExample = `// set dependencies - code omitted
 
 // enable the use of request body parsing middleware - code omitted
 
@@ -128,12 +129,12 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://{yourDomain}/.well-known/jwks.json`
+    jwksUri: \`https://{yourDomain}/.well-known/jwks.json\`
   }),
 
   // Validate the audience and the issuer.
   audience: process.env.AUTH0_AUDIENCE,
-  issuer: `https://{yourDomain}/`,
+  issuer: \`https://{yourDomain}/\`,
   algorithms: ['RS256']
 });
 
@@ -147,8 +148,9 @@ app.post('/timesheets/upload', checkJwt, function(req, res){
   res.status(201).send(timesheet);
 })
 
-// launch the API Server at localhost:8080 - code omitted
-```
+// launch the API Server at localhost:8080 - code omitted`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 Si nous lançons notre serveur maintenant et effectuons un HTTP POST vers `localhost:8080/timesheets/upload` nous obtiendrons le message d’erreur `Missing or invalid token`, ce qui est correct, car nous n’avons pas envoyé de jeton d’accès dans notre requête.
 

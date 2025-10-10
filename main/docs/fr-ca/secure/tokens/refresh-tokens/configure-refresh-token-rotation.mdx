@@ -8,6 +8,8 @@ permalink: "configure-refresh-token-rotation"
 'twitter:title': "Configurer la rotation des jetons d’actualisation"
 'twitter:description': "Décrit comment configurer la rotation des jetons d’actualisation."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Configurer la rotation du jeton d’actualisation pour chaque application à l’aide du Dashbaord ou de la [trousse SDK Auth0 pour les applications à page unique (SPA)](/docs/fr-ca/libraries/auth0-single-page-app-sdk). Lorsque la rotation des jetons d’actualisation est activée, la transition pour l’utilisateur est transparente. L’application utilise le jeton d’actualisation non rotatif précédent, non expiré, et le remplace par un jeton d’actualisation rotatif.
 
@@ -23,7 +25,7 @@ Les scénarios de migration tiennent compte de la révocation automatique des je
 1. Allez à [Dashboard > Applications](https://manage.auth0.com/#/applications).
 2. Sélectionnez l’application que vous souhaitez configurer.
 3. Allez dans l’onglet **Paramètres**.
-4. Sous **Rotation des jetons d’actualisation**, activez **Autoriser la rotation des jetons d’actualisation**.
+4. Sous **Rotation des jetons d’actualisation**, activez **Autoriser la rotation des jetons d’actualisation**.](/docs/images/
 
    <Frame>![Dashboard (Tableau de bord) Applications Onglet Application Settings (Paramètres d’application) Refresh Token Rotation (Rotation du jeton d’actualisation)](/images/fr-ca/cdy7uua7fh8z/Rk6i8MUVWZG34P7K6aurb/f416d625f4aa157a89238d975736086a/2025-02-27_16-05-01.png)</Frame>
 
@@ -45,16 +47,17 @@ Vous pouvez utiliser la trousse SDK Auth0 pour les applications à page unique (
    `npm install @auth0/auth0-spa-js`
 2. Activez la fonctionnalité sur la trousse SDK en définissant `useRefreshTokens: true` pour commencer à envoyer la permission `offline_access`.
 
-   codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
+   
 
-   ```javascript lines
-   const auth0 = await createAuth0Client({
+   export const codeExample = `   const auth0 = await createAuth0Client({
          domain: '{yourDomain}',
          client_id: '{yourClientId}',
          audience: '{yourApiIdentifier}',
          useRefreshTokens: true
        });
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
    
 

@@ -8,6 +8,8 @@ permalink: "configure-your-application-for-m2m-access"
 'twitter:title': "Configurer votre application pour l’accès communication entre machines (machine-to-machine/M2M)"
 'twitter:description': "Découvrez comment configurer votre application pour l’accès communication entre machines (machine-to-machine/M2M) à l’aide d’Auth0 Dashboard et de Management API."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Après avoir créé l’application, configurez-la pour l’accès communication entre machines en procédant comme suit :
 
@@ -54,7 +56,7 @@ Pour une application de communication entre machines, définissez le comportemen
 1. Naviguez vers **Auth0 Dashboard > Applications**, et sélectionnez l’application pour laquelle vous souhaitez configurer les Organizations.
 2. Passez à l’onglet **API** et élargissez les détails `client_grant` pour l’API dont vous souhaitez configurer l’accès.
 3. Configurez les paramètres appropriés comme expliqué dans le tableau [Définir le comportement d’Organization](#define-organization-behavior-table).
-4. Sélectionnez **Save (Enregistrer).**
+4. Sélect](/docs/images/ave (Enregistrer).**
 
 <Frame>![](/images/fr-ca/cdy7uua7fh8z/2GYvtLuuDm1mgyLivYeqJh/a09082e1b3af85877cad397e989872a0/Acme_Bot_-_Travel0_API_Config.png)</Frame>
 
@@ -64,7 +66,7 @@ Autre possibilité, s’il ne s’agit pas d’une application de communication 
 2. Passez à l’onglet **Machine To Machine Applications (Applications de communication entre machines)**. Toutes les applications, et pas seulement les applications de communication entre machines. Localisez votre application parmi la liste.
 3. Pour permettre l’accès, cliquez sur la bascule correspondant à votre application. Cliquez ensuite sur votre application pour afficher les détails de la configuration.
 4. Configurez les paramètres appropriés comme expliqué dans le tableau [Définir le comportement d’Organization](#define-organization-behavior-table).
-5. Sélectionner **Save (Enregistrer)**.
+5. Sélect](/docs/images/ave (Enregistrer)**.
 
 <Frame>![](/images/fr-ca/cdy7uua7fh8z/6wvsRl1mL4AbKzg5ycP8Pj/496c473bbe4823f03883707830373ab3/Travel0_API_-_M2M_Tab.png)</Frame>
 
@@ -74,9 +76,8 @@ Vous pouvez également définir le comportement organisationnel d’une applicat
 
 L’exemple de code suivant crée un objet `client_grant` avec un accès M2M :
 
-```json lines
-curl --request POST \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants' \
+export const codeExample1 = `curl --request POST \
+  --url 'https://{yourDomain}/api/v2/client-grants' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
@@ -88,21 +89,22 @@ curl --request POST \
     ],
     "organization_usage": "ORG_USAGE",
     "allow_any_organization": false
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 L’exemple de code suivant met à jour un objet `client_grant` avec un accès M2M :
 
-```json lines
-curl --request PATCH \
-  --url 'https://{YOUR_DOMAIN}/api/v2/client-grants/CLIENT_GRANT_ID' \
+export const codeExample2 = `curl --request PATCH \
+  --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
     "organization_usage": "ORG_USAGE",
     "allow_any_organization": false
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 </Tab></Tabs>
 
@@ -147,7 +149,7 @@ Pour activer une organisation par défaut pour une application via Auth0 Dashboa
 1. Naviguez vers **Auth0 Dashboard > Applications**, et sélectionnez l’application pour laquelle vous souhaitez configurer la MFA.
 2. Sélectionnez l’onglet **Organizations**.
 3. Configurez les paramètres appropriés comme expliqué dans le tableau [Set default organization (Définir l’organisation par défaut)](#set-default-organization-table).
-4. Cliquez sur **Save (Enregistrer)**.
+4. Clique](/docs/images/ve (Enregistrer)**.
 
 <Frame>![](/images/fr-ca/cdy7uua7fh8z/29rhTFMnYDp7TbGS9S6b5J/e6b9d8280ae0c3e99547fc6b8ae1ac03/2025-07-18_15-55-48.png)</Frame>
 
@@ -157,15 +159,15 @@ Vous pouvez configurer l’organization par défaut pour une application via les
 
 L’exemple de code suivant met à jour un client avec une organization par défaut :
 
-```json lines
-curl -X PATCH --location "https://{YOUR_DOMAIN}/api/v2/clients/{CLIENT_ID}" \
+export const codeExample3 = `curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json' \
   --data '{
           "default_organization": "ORGANIZATION_ID",
 	   "flows": ["client_credentials"]
-        }'
-```
+        }'`;
+
+<AuthCodeBlock children={codeExample3} language="json" />
 
 </Tab></Tabs>
 

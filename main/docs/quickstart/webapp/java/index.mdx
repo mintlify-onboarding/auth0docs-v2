@@ -2,6 +2,8 @@
 title: "Java"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Jim Anderson
 
@@ -98,8 +100,7 @@ If you are using Maven, add them to your `pom.xml`:
 
 Your Java App needs some information in order to authenticate against your Auth0 account. The samples read this information from the deployment descriptor file `src/main/webapp/WEB-INF/web.xml`, but you could store them anywhere else. The required information is:
 
-```xml lines
-<!-- src/main/webapp/WEB-INF/web.xml -->
+export const codeExample = `<!-- src/main/webapp/WEB-INF/web.xml -->
 
 <context-param>
     <param-name>com.auth0.domain</param-name>
@@ -114,8 +115,9 @@ Your Java App needs some information in order to authenticate against your Auth0
 <context-param>
     <param-name>com.auth0.clientSecret</param-name>
     <param-value>YOUR_CLIENT_SECRET</param-value>
-</context-param>
-```
+</context-param>`;
+
+<AuthCodeBlock children={codeExample} language="xml" />
 
 
 

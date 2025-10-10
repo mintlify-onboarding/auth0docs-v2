@@ -8,6 +8,8 @@ permalink: "auth0-react"
 'twitter:title': "シングルページアプリ用Auth0 React SDK"
 'twitter:description': "Reactシングルページアプリ用Auth0 SDKについて説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0 React SDK（auth0-react.js）は、Auth0を使用してReactアプリケーションで認証と認可を実装するためのJavaScriptライブラリです。カスタムReactフックとその他の高階コンポーネントを提供し、ベストプラクティスに従ってReactアプリをセキュリティ保護しながら、同時にコードの量を減らすことができます。
 
@@ -29,8 +31,7 @@ Auth0 React SDKは、付与とプロトコルの詳細、トークンの失効�
 
 まず、アプリケーションを1つの`Auth0Provider`コンポーネントでラップする必要があります。これにより、アプリケーションの内部に配置されたコンポーネントにReactのコンテキストが提供されます。
 
-```javascript lines
-import React from 'react';
+export const codeExample = `import React from 'react';
     import ReactDOM from 'react-dom';
     import { Auth0Provider } from '@auth0/auth0-react';
     import App from './App';
@@ -45,8 +46,9 @@ import React from 'react';
       <App />
     </Auth0Provider>,
     document.getElementById('app')
- );
-```
+ );`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 ## isLoadingとerror
 

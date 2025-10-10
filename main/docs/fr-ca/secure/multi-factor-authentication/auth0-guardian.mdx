@@ -25,7 +25,7 @@ Les notifications poussées d’Auth0 peuvent être mises en œuvre à l’aide 
 * Firebase Cloud Messaging (FCM)
 * Notification poussée Apple (APN)
 
-<Frame>![Auth0 Guardian flow diagram](/images/fr-ca/cdy7uua7fh8z/TdN0nXfYs0mqHpi9U3JQ9/7bf919773ed8f94c7d5be25cc345eebd/diagram.png)</Frame>
+<Frame>![Auth0 Guardian flow diagram](/docs/images/fr-ca/cdy7uua7fh8z/TdN0nXfYs0mqHpi9U3JQ9/7bf919773ed8f94c7d5be25cc345eebd/diagram.png)</Frame>
 
 ### S’inscrire aux notifications poussées
 
@@ -34,7 +34,7 @@ Lorsque vous utilisez Gardien Auth0 pour configurer les notifications poussées,
 Vous pouvez activer les notifications poussées à partir d’<Tooltip href="/docs/docs/fr-ca/glossary?term=auth0-dashboard" tip="Auth0 Dashboard
 Principal produit d’Auth0 pour configurer vos services." cta="Voir le glossaire">Auth0 Dashboard</Tooltip> sous [Security (Sécurité )> Multi-factor Auth > Push Notification using Auth0 Guardian (Notification poussée via Gardien Auth0)](https://manage.auth0.com/#/security/mfa/guardian).
 
-<Frame>![Auth0 Dashboard > Security > Multi-factor Auth > Push Notification using Auth0 Guardian](/images/fr-ca/cdy7uua7fh8z/fwjSKFNhsvObzdPDiA79N/3f9c8a05f8ddf5b2bc5c7cecf8272f02/Auth0_Guardian_Notifications.png)</Frame>
+<Frame>![Auth0 Dashboard > Security > Multi-factor Auth > Push Notification using Auth0 Guardian](/docs/images/fr-ca/cdy7uua7fh8z/fwjSKFNhsvObzdPDiA79N/3f9c8a05f8ddf5b2bc5c7cecf8272f02/Auth0_Guardian_Notifications.png)</Frame>
 
 Lorsqu’un utilisateur s’inscrit ou se connecte pour la première fois à votre application, la [connexion universelle](/docs/fr-ca/authenticate/login/auth0-universal-login) fournit un code QR qui peut être utilisé pour enregistrer l’application Gardien Auth0 ou l’application personnalisée avec la trousse SDK Guardian en tant que facteur d’authentification secondaire. L’utilisateur dispose d’un court laps de temps pour balayer ce code avec l’application désignée afin de terminer son inscription.
 
@@ -68,7 +68,7 @@ Si un utilisateur ne reçoit pas de notification poussée via Gardien Auth0 ou d
 1. Un utilisateur tente de se connecter à votre application. Il arrive à l’invite de connexion universelle MFA, mais il n’obtient aucune notification poussée.
 2. Dans l’invite MFA, l’utilisateur sélectionne le bouton **Saisir le code manuellement**. L’utilisateur doit sélectionner cette option pour authentifier l’utilisation des OTP.
 
-   <Frame>![Un exemple d’invite MFA affichant le bouton Manually Enter Code (Saisir le code manuellement).](/images/fr-ca/cdy7uua7fh8z/7reEOLI5CWxbpRzgZY7gxg/df676a5f852e4db12bfb38d54e8346b3/MFA_-_Push_-_French.png)</Frame>
+   <Frame>![Un exemple d’invite MFA affichant le bouton Manually Enter Code (Saisir le code manuellement).](/docs/images/fr-ca/cdy7uua7fh8z/7reEOLI5CWxbpRzgZY7gxg/df676a5f852e4db12bfb38d54e8346b3/MFA_-_Push_-_French.png)</Frame>
 
 3. L’utilisateur ouvre l’application Gardien Auth0 ou l’application trousse SDK Guardian personnalisée, puis sélectionne l’application à laquelle il tente d’accéder.
 4. L’utilisateur copie l’OTP affiché en bas de la page Informations du compte.
@@ -84,11 +84,11 @@ Les utilisateurs peuvent choisir d’utiliser un OTP en tant que facteur MFA lo
 
 * **Pour les appareils autres que les appareils mobiles** : La connexion universelle présente un code QR que l’utilisateur peut scanner pour poursuivre l’inscription.
 
-<Frame>![Un exemple d’invite OTP enrollment (Inscription avec OTP) affichant le lien Trouble Scanning? (Problème de numérisation?)](/images/fr-ca/cdy7uua7fh8z/3kbyOBiLOpJiY8vI0kUqwg/d949805ca4df1408a133e6ff50fc12e8/OTP_Challenge_3_-_French.png)</Frame>
+<Frame>![Un exemple d’invite OTP enrollment (Inscription avec OTP) affichant le lien Trouble Scanning? (Problème de numérisation?)](/docs/images/fr-ca/cdy7uua7fh8z/3kbyOBiLOpJiY8vI0kUqwg/d949805ca4df1408a133e6ff50fc12e8/OTP_Challenge_3_-_French.png)</Frame>
 
 * **Pour les appareils mobiles** : La connexion universelle ignore le code QR et affiche directement le code d’inscription.
 
-<Frame>![The temporary one-time password enrollment screen as displayed on a mobile device. ](/images/fr-ca/cdy7uua7fh8z/5QvQ9FLYnVZXINFAeLkIr9/36f3ce53abd3ccd0ad67adcdcd44c369/OTP_prompt_-_French.png)</Frame>
+<Frame>![The temporary one-time password enrollment screen as displayed on a mobile device. ](/docs/images/fr-ca/cdy7uua7fh8z/5QvQ9FLYnVZXINFAeLkIr9/36f3ce53abd3ccd0ad67adcdcd44c369/OTP_prompt_-_French.png)</Frame>
 
 Quelle que soit la méthode choisie, les utilisateurs peuvent suivre les étapes à l’écran pour enregistrer l’application Gardien Auth0 ou une application personnalisée utilisant la trousse SDK Guardian comme facteur d’authentification secondaire. En général, ce processus consiste à demander à l’utilisateur d’ajouter votre application à l’application appropriée et de récupérer le mot de passe à usage unique (OTP) généré pour cette application. L’utilisateur saisit ensuite l’OTP dans l’invite de connexion universelle pour terminer le processus d’inscription.
 

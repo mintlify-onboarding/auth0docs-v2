@@ -9,7 +9,12 @@ export const DocsBanner = () => {
         </p>
 
         <div className="flex justify-center mt-5">
-          <img noZoom src="/images/home/home-banner.svg" alt="Auth0 Docs Banner" className="rounded-xl shadow-md" />
+          <img
+            noZoom
+            src="/docs/images/home/home-banner.svg"
+            alt="Auth0 Docs Banner"
+            className="rounded-xl shadow-md"
+          />
         </div>
       </div>
     </div>
@@ -21,19 +26,19 @@ export const DocsFeatureCards = () => {
     {
       title: "Documentation",
       link: "/docs/get-started",
-      icon: "/images/home/icon1.svg",
+      icon: "/docs/images/home/icon1.svg",
       external: true,
     },
     {
       title: "API References",
       link: "https://auth0.com/docs/api",
-      icon: "/images/home/icon2.svg",
+      icon: "/docs/images/home/icon2.svg",
       external: false,
     },
     {
       title: "SDKs",
       link: "/docs/libraries",
-      icon: "/images/home/icon3.svg",
+      icon: "/docs/images/home/icon3.svg",
       external: false,
     },
   ];
@@ -84,50 +89,50 @@ export const DocsFeatureCards = () => {
 export const LanguageGrid = () => {
   const languages = [
     {
-      img: "/images/home/node-light.svg",
-      imgDark: "/images/home/node-dark.svg",
+      img: "/docs/images/home/node-light.svg",
+      imgDark: "/docs/images/home/node-dark.svg",
       label: "NodeJS",
       href: "/docs/quickstart/backend/nodejs",
     },
     {
-      img: "/images/home/rails-light.svg",
-      imgDark: "/images/home/rails-dark.svg",
+      img: "/docs/images/home/rails-light.svg",
+      imgDark: "/docs/images/home/rails-dark.svg",
       label: "Ruby",
       href: "/docs/quickstart/backend/rails",
     },
     {
-      img: "/images/home/go-light.svg",
-      imgDark: "/images/home/go-dark.svg",
+      img: "/docs/images/home/go-light.svg",
+      imgDark: "/docs/images/home/go-dark.svg",
       label: "Go",
       href: "/docs/quickstart/backend/go",
     },
     {
-      img: "/images/home/php-light.svg",
-      imgDark: "/images/home/php-dark.svg",
+      img: "/docs/images/home/php-light.svg",
+      imgDark: "/docs/images/home/php-dark.svg",
       label: "PHP",
       href: "/docs/quickstart/backend/php",
     },
     {
-      img: "/images/home/python-light.svg",
-      imgDark: "/images/home/python-dark.svg",
+      img: "/docs/images/home/python-light.svg",
+      imgDark: "/docs/images/home/python-dark.svg",
       label: "Python",
       href: "/docs/quickstart/backend/python",
     },
     {
-      img: "/images/home/node-light.svg",
-      imgDark: "/images/home/node-dark.svg",
+      img: "/docs/images/home/node-light.svg",
+      imgDark: "/docs/images/home/node-dark.svg",
       label: ".NET",
       href: "/docs/quickstart/backend/dotnet",
     },
     {
-      img: "/images/home/java-light.svg",
-      imgDark: "/images/home/java-dark.svg",
+      img: "/docs/images/home/java-light.svg",
+      imgDark: "/docs/images/home/java-dark.svg",
       label: "Java",
       href: "/docs/quickstart/backend/java",
     },
     {
-      img: "/images/home/laravel-light.svg",
-      imgDark: "/images/home/laravel-dark.svg",
+      img: "/docs/images/home/laravel-light.svg",
+      imgDark: "/docs/images/home/laravel-dark.svg",
       label: "Laravel",
       href: "/docs/quickstart/backend/laravel",
     },
@@ -249,13 +254,13 @@ export const LearnBasicsGrid = () => {
               <div className="h-full w-full rounded-[18px] overflow-hidden border border-black/5 dark:border-white/5">
                 {/* GRID image (light) */}
                 <img
-                  src="/images/home/LearnBasics_Light.svg"
+                  src="/docs/images/home/LearnBasics_Light.svg"
                   alt=""
                   className="h-full w-full object-cover block dark:hidden"
                 />
                 {/* GRID image (dark) */}
                 <img
-                  src="/images/home/LearnBasics_Dark.svg"
+                  src="/docs/images/home/LearnBasics_Dark.svg"
                   alt=""
                   className="h-full w-full object-cover hidden dark:block"
                 />

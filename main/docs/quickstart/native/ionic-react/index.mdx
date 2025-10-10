@@ -2,6 +2,8 @@
 title: "Ionic & Capacitor (React)"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Steve Hobbs
 
@@ -135,8 +137,7 @@ Under the hood, the Auth0 React SDK uses [React Context](https://reactjs.org/doc
 
 Open `src/index.tsx` and wrap the `App` component in the `Auth0Provider` component.
 
-```js lines
-import React from 'react';
+export const codeExample1 = `import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
@@ -155,8 +156,9 @@ root.render(
   >
     <App />
   </Auth0Provider>
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample1} language="js" />
 
 
 
@@ -307,8 +309,7 @@ Similar to the login step, if you do not set `openUrl` when calling `logout`, th
 
 Create a new file `LogoutButton.tsx` and add the following code to the file. Then, add the `LogoutButton` component to your app.
 
-```js lines
-import { useAuth0 } from '@auth0/auth0-react';
+export const codeExample2 = `import { useAuth0 } from '@auth0/auth0-react';
 import { Browser } from '@capacitor/browser';
 import { IonButton } from '@ionic/react';
 
@@ -337,8 +338,9 @@ const LogoutButton: React.FC = () => {
   return <IonButton onClick={doLogout}>Log out</IonButton>;
 };
 
-export default LogoutButton;
-```
+export default LogoutButton;`;
+
+<AuthCodeBlock children={codeExample2} language="js" />
 
 
 

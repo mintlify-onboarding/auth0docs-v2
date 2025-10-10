@@ -8,6 +8,8 @@ permalink: "aws-api-gateway-custom-authorizers"
 'twitter:title': "カスタムオーソライザーを使用してAWS API Gatewayエンドポイントをセキュリティ保護する"
 'twitter:description': "Auth0発行のアクセストークンを受け入れるカスタムオーソライザーを使用して、安全なAWS API Gatewayを使用する方法。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 AWS Lambda関数（カスタムオーソライザーを含む）を作成・構成してAPIエンドポイントを保護し、認可フローを実装します。これにより、ユーザーはAuth0からAPIへのアクセス取得に必要なアクセストークンを取得できるようになります。
 
@@ -246,11 +248,12 @@ Auth0発行トークンをサポートする[サンプルのカスタムオー�
 
    たとえば、`.env`ファイルのテキストは、完了すると以下のようになります。
 
-   ``` lines
-   JWKS_URI=https://{yourDomain}/.well-known/jwks.json
+   export const codeExample = `   JWKS_URI=https://{yourDomain}/.well-known/jwks.json
    AUDIENCE=https://your-api-gateway
    TOKEN_ISSUER=https://{yourDomain}/
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    
 

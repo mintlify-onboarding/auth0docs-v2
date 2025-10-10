@@ -8,6 +8,8 @@ permalink: "google-cloud-endpoints"
 'twitter:title': "Auth0でGoogle Cloud Endpointsをセキュリティ保護する"
 'twitter:description': "Google Cloud Endpoints APIをAuth0でセキュリティ保護する方法"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 [Google Cloud Endpoints（GCE）](https://cloud.google.com/endpoints/)は、APIの作成、維持、およびセキュリティ保護などの機能を提供するAPI管理システムです。GCEは[OpenAPI](https://www.openapis.org/)を使用して、APIのエンドポイント、入出力、エラー、およびセキュリティ記述を定義します。
 
@@ -225,16 +227,16 @@ dataTask.resume()
 
 
 
-```yaml lines
-securityDefinitions:
+export const codeExample1 = `securityDefinitions:
   auth0_jwt:
     authorizationUrl: "https://{yourDomain}/authorize"
     flow: "implicit"
     type: "oauth2"
     x-google-issuer: "https://{yourDomain}/"
     x-google-jwks_uri: "https://{yourDomain}/.well-known/jwks.json"
-    x-google-audiences: "{yourApiIdentifier}"
-```
+    x-google-audiences: "{yourApiIdentifier}"`;
+
+<AuthCodeBlock children={codeExample1} language="yaml" />
 
 ### エンドポイントを更新する
 
@@ -269,8 +271,7 @@ OpenAPIの構成が更新されると、以下のようになります。
 
 
 
-```yaml lines expandable
----
+export const codeExample2 = `---
 swagger: "2.0"
 info:
   title: "Airport Codes"
@@ -306,8 +307,9 @@ securityDefinitions:
     type: "oauth2"
     x-google-issuer: "https://{yourDomain}/"
     x-google-jwks_uri: "https://{yourDomain}/.well-known/jwks.json"
-    x-google-audiences: "{yourApiIdentifier}"
-```
+    x-google-audiences: "{yourApiIdentifier}"`;
+
+<AuthCodeBlock children={codeExample2} language="yaml" />
 
 ### APIを再デプロイする
 

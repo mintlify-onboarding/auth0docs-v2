@@ -8,6 +8,8 @@ permalink: "configure-silent-authentication"
 'twitter:title': "Configurer l’authentification silencieuse"
 'twitter:description': "Découvrez comment garder les utilisateurs connectés à votre application à l’aide de l’authentification silencieuse."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Le [protocole OpenID Connect](/docs/docs/fr-ca/authenticate/protocols/openid-connect-protocol) prend en charge un paramètre `prompt=none` sur la demande d’authentification qui permet aux applications d’indiquer que le serveur d’autorisation ne doit afficher aucune interaction utilisateur (telle que l’authentification, le consentement ou la <Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip>). Auth0 renverra soit la réponse demandée à l’application, soit une erreur si l’utilisateur n’est pas déjà authentifié ou si un type de consentement ou d’invite est requis avant de continuer.
@@ -26,8 +28,7 @@ Pour lancer une demande d’authentification silencieuse, ajoutez le paramètre 
 
 Par exemple :
 
-``` lines
-GET https://{yourDomain}/authorize
+export const codeExample = `GET https://{yourDomain}/authorize
     ?response_type=id_token token&
     client_id=...&
     redirect_uri=...&
@@ -36,8 +37,9 @@ GET https://{yourDomain}/authorize
     nonce=...&
     audience=...&
     response_mode=...&
-    prompt=none
-```
+    prompt=none`;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
 Le paramètre `prompt=none` oblige Auth0 à envoyer immédiatement un résultat à la `redirection_uri` (URL de rappel) indiquée, en utilisant le `response_mode` indiqué, avec l’une des deux réponses possibles : réussite ou erreur.
 

@@ -10,6 +10,8 @@ title: Dynamic Application Registration
   the Management API.
 'twitter:title': Dynamic Application Registration
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 You can dynamically register third-party applications for your tenant. This feature is based on the [OpenID Connect Dynamic Client Registration specification](https://openid.net/specs/openid-connect-registration-1_0.html).
 
 ## Enable dynamic client registration
@@ -26,27 +28,20 @@ To do so, go to [Dashboard > Settings > Advanced](https://manage.auth0.com/#/ten
 
 Alternatively, you can update this flag using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [`/Tenant/patch_settings`](https://auth0.com/docs/api/management/v2#!/Tenants/patch_settings) endpoint.
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample1 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
   --header 'authorization: Bearer API2_ACCESS_TOKEN' \
   --header 'cache-control: no-cache' \
   --header 'content-type: application/json' \
-  --data '{ "flags": { "enable_dynamic_client_registration": true } }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
+  --data '{ "flags": { "enable_dynamic_client_registration": true } }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer API2_ACCESS_TOKEN");
 request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ \"flags\": { \"enable_dynamic_client_registration\": true } }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -75,19 +70,14 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
   .header("authorization", "Bearer API2_ACCESS_TOKEN")
   .header("cache-control", "no-cache")
   .body("{ \"flags\": { \"enable_dynamic_client_registration\": true } }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -104,10 +94,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer API2_ACCESS_TOKEN",
@@ -133,11 +121,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/tenants/settings",
@@ -164,10 +149,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -184,11 +167,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/tenants/settings", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -205,10 +185,8 @@ request["cache-control"] = 'no-cache'
 request.body = "{ \"flags\": { \"enable_dynamic_client_registration\": true } }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -236,8 +214,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 You need to update the `API2_ACCESS_TOKEN` with a valid token with the scope `update:tenant_settings`. To learn more, read [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens).
@@ -252,23 +241,16 @@ To dynamically register an application with Auth0, you need to send an HTTP `POS
 
 To create an application with the name `My Dynamic application` and the callback URLs `https://application.example.com/callback` and `https://application.example.com/callback2`, use the following snippet:
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample11 = `curl --request POST \
   --url 'https://{yourDomain}/oidc/register' \
   --header 'content-type: application/json' \
-  --data '{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/oidc/register");
+  --data '{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/oidc/register");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{\"client_name\":\"My Dynamic Application\",\"redirect_uris\": [\"https://application.example.com/callback\", \"https://application.example.com/callback2\"]}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -295,17 +277,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/oidc/register")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oidc/register")
   .header("content-type", "application/json")
   .body("{\"client_name\":\"My Dynamic Application\",\"redirect_uris\": [\"https://application.example.com/callback\", \"https://application.example.com/callback2\"]}")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -324,10 +301,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"client_name": @"My Dynamic Application",
@@ -352,11 +327,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/oidc/register",
@@ -381,10 +353,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -397,11 +367,8 @@ conn.request("POST", "/{yourDomain}/oidc/register", payload, headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -416,10 +383,8 @@ request["content-type"] = 'application/json'
 request.body = "{\"client_name\":\"My Dynamic Application\",\"redirect_uris\": [\"https://application.example.com/callback\", \"https://application.example.com/callback2\"]}"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = [
@@ -446,8 +411,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 Where:
@@ -497,16 +473,16 @@ We will go through a simple example, that shows how to call an API from a client
 
 First, you need to configure your application to send the user to the authorization URL:
 
-```http lines
-https://{yourDomain}/authorize?
+export const codeExample21 = `https://{yourDomain}/authorize?
   audience={API_AUDIENCE}&
   scope={SCOPE}&
   response_type={RESPONSE_TYPE}&
   client_id={yourClientId}&
   redirect_uri={https://yourApp/callback}&
   nonce={NONCE}
-  state={OPAQUE_VALUE}
-```
+  state={OPAQUE_VALUE}`;
+
+<AuthCodeBlock children={codeExample21} language="http" />
 
 
 
@@ -525,11 +501,11 @@ Where:
 
 For example:
 
-```html lines
-<a href="https://{yourDomain}/authorize?scope=appointments%20contacts&audience=appointments:api&response_type=id_token%20token&client_id={yourClientId}&redirect_uri={https://yourApp/callback}">
+export const codeExample22 = `<a href="https://{yourDomain}/authorize?scope=appointments%20contacts&audience=appointments:api&response_type=id_token%20token&client_id={yourClientId}&redirect_uri={https://yourApp/callback}">
   Sign In
-</a>
-```
+</a>`;
+
+<AuthCodeBlock children={codeExample22} language="html" />
 
 
 

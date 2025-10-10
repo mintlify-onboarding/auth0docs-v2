@@ -8,6 +8,8 @@ permalink: "oauth2"
 'twitter:title': "汎用のOAuth2認可サーバーにアプリを接続する"
 'twitter:description': "Auth0のカスタムソーシャル接続を使用して、任意のOAuth2プロバイダーを追加する方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 最も一般的な[IDプロバイダー（IdP）](/docs/ja-jp/authenticate/identity-providers)は、[Auth0 Dashboard](https://manage.auth0.com/#)や[Auth0 Marketplace](https://marketplace.auth0.com/features/social-connections)から利用できます。ただし、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>では、任意の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=oath2" tip="OAuth 2.0: 認可プロトコルとワークフローを定義する認可フレームワーク。" cta="用語集の表示">OAuth 2.0</Tooltip>プロバイダーを **カスタムソーシャル接続** として追加することもできます。
 
@@ -125,14 +127,14 @@ function fetchUserProfile(accessToken, context, callback) {
 
 カスタム接続でのユーザーログインには、Auth0の標準的なメカニズムであれば何でも使用することができます。直接リンクは以下のようになります。
 
-```text lines
-https://{yourDomain}/authorize
+export const codeExample1 = `https://{yourDomain}/authorize
   ?response_type=code
   &client_id={yourClientId}
   &redirect_uri={https://yourApp/callback}
   &scope=openid%20profile%20email
-  &connection=NAME_OF_CONNECTION
-```
+  &connection=NAME_OF_CONNECTION`;
+
+<AuthCodeBlock children={codeExample1} language="text" />
 
 ## アイコンと表示名を変更する
 
@@ -145,23 +147,16 @@ IDプロバイダーのログインボタンにアイコンを追加するには
 
 </Warning>
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample2 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION-ID' \
   --header 'content-type: application/json' \
-  --data '{ "options": { "client_id": "...", "client_secret": "...", "icon_url": "https://cdn.example.com/assets/icon.png", "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }, "display_name": "Connection Name"'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
+  --data '{ "options": { "client_id": "...", "client_secret": "...", "icon_url": "https://cdn.example.com/assets/icon.png", "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }, "display_name": "Connection Name"'`;
+export const codeExample3 = `var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"icon_url\": \"https://cdn.example.com/assets/icon.png\", \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://public-auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }, \"display_name\": \"Connection Name\"", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample4 = `package main
 
 import (
 	"fmt"
@@ -188,17 +183,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
+}`;
+export const codeExample5 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"icon_url\": \"https://cdn.example.com/assets/icon.png\", \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://public-auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }, \"display_name\": \"Connection Name\"")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample6 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -211,10 +201,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample7 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 
@@ -237,11 +225,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample8 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections/CONNECTION-ID",
@@ -266,10 +251,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample9 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -282,11 +265,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/connections/CONNECTION-ID", payload,
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample10 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -301,10 +281,8 @@ request["content-type"] = 'application/json'
 request.body = "{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"icon_url\": \"https://cdn.example.com/assets/icon.png\", \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://public-auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }, \"display_name\": \"Connection Name\""
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample11 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 
@@ -327,8 +305,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample2} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample3} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample4} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample5} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample6} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample7} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample8} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample9} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample10} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample11} language="swift" filename="Swift" />
 </CodeGroup>
 
 ## プロバイダー固有のパラメータを渡す
@@ -339,23 +328,16 @@ OAuth 2.0プロバイダーの認可エンドポイントには、プロバイ�
 
 静的パラメーター（すべての認可要求で送信されるパラメーター）を渡すには、[Management API](/docs/ja-jp/api/management/v2#!/Connections/patch_connections_by_id)を使ってOAuth 2.0接続を構成した場合、`option`の`authParams`要素を使用することができます。以下の呼び出しは、すべての認可要求について、`custom_param`の静的パラメーターを`custom.param.value`に設定します。
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample12 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION-ID' \
   --header 'content-type: application/json' \
-  --data '{ "options": { "client_id": "...", "client_secret": "...", "authParams": { "custom_param": "custom.param.value" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
+  --data '{ "options": { "client_id": "...", "client_secret": "...", "authParams": { "custom_param": "custom.param.value" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }'`;
+export const codeExample13 = `var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"authParams\": { \"custom_param\": \"custom.param.value\" }, \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://public-auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample14 = `package main
 
 import (
 	"fmt"
@@ -382,17 +364,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
+}`;
+export const codeExample15 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"authParams\": { \"custom_param\": \"custom.param.value\" }, \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://public-auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample16 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -416,10 +393,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample17 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"options": @{ @"client_id": @"...", @"client_secret": @"...", @"authParams": @{ @"custom_param": @"custom.param.value" }, @"scripts": @{ @"fetchUserProfile": @"..." }, @"authorizationURL": @"https://public-auth.example.com/oauth2/authorize", @"tokenURL": @"https://auth.example.com/oauth2/token", @"scope": @"auth" },
@@ -444,11 +419,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample18 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections/CONNECTION-ID",
@@ -473,10 +445,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample19 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -489,11 +459,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/connections/CONNECTION-ID", payload,
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample20 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -508,10 +475,8 @@ request["content-type"] = 'application/json'
 request.body = "{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"authParams\": { \"custom_param\": \"custom.param.value\" }, \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://public-auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample21 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = [
@@ -546,8 +511,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample12} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample13} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample14} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample15} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample16} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample17} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample18} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample19} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample20} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample21} language="swift" filename="Swift" />
 </CodeGroup>
 
 ### 動的パラメーターを渡す
@@ -558,23 +534,16 @@ dataTask.resume()
 
 この場合には、`/authorize`エンドポイントが受け入れる既存の追加パラメーターの1つ（`access_type`など）を使って、それを`custom_param`パラメーターにマッピングすることができます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request PATCH \
+export const codeExample22 = `curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION-ID' \
   --header 'content-type: application/json' \
-  --data '{ "options": { "client_id": "...", "client_secret": "...", "authParamsMap": { "custom_param": "access_type" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
+  --data '{ "options": { "client_id": "...", "client_secret": "...", "authParamsMap": { "custom_param": "access_type" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }'`;
+export const codeExample23 = `var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"authParamsMap\": { \"custom_param\": \"access_type\" }, \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample24 = `package main
 
 import (
 	"fmt"
@@ -601,17 +570,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
+}`;
+export const codeExample25 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"authParamsMap\": { \"custom_param\": \"access_type\" }, \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample26 = `var axios = require("axios").default;
 
 var options = {
   method: 'PATCH',
@@ -635,10 +599,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample27 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json" };
 NSDictionary *parameters = @{ @"options": @{ @"client_id": @"...", @"client_secret": @"...", @"authParamsMap": @{ @"custom_param": @"access_type" }, @"scripts": @{ @"fetchUserProfile": @"..." }, @"authorizationURL": @"https://auth.example.com/oauth2/authorize", @"tokenURL": @"https://auth.example.com/oauth2/token", @"scope": @"auth" },
@@ -663,11 +625,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample28 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/connections/CONNECTION-ID",
@@ -692,10 +651,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample29 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -708,11 +665,8 @@ conn.request("PATCH", "/{yourDomain}/api/v2/connections/CONNECTION-ID", payload,
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample30 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -727,10 +681,8 @@ request["content-type"] = 'application/json'
 request.body = "{ \"options\": { \"client_id\": \"...\", \"client_secret\": \"...\", \"authParamsMap\": { \"custom_param\": \"access_type\" }, \"scripts\": { \"fetchUserProfile\": \"...\" }, \"authorizationURL\": \"https://auth.example.com/oauth2/authorize\", \"tokenURL\": \"https://auth.example.com/oauth2/token\", \"scope\": \"auth\" }, \"enabled_clients\": [ \"...\" ] }"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample31 = `import Foundation
 
 let headers = ["content-type": "application/json"]
 let parameters = [
@@ -765,8 +717,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample22} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample23} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample24} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample25} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample26} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample27} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample28} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample29} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample30} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample31} language="swift" filename="Swift" />
 </CodeGroup>
 
 これで、`/authorize`エンドポイントを呼び出す際に`access_type`パラメーターにアクセスタイプを渡すことができ、その値が`custom_param`パラメーターで認可エンドポイントに渡されます。

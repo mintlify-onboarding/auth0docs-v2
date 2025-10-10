@@ -2,6 +2,8 @@
 title: "ASP.NET Core Web API: Authorization"
 permalink: "01-authorization"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Damien Guard
 
@@ -46,14 +48,14 @@ This example demonstrates:
 
 The sample code has an `appsettings.json` file which configures it to use the correct Auth0 **Domain** and **API Identifier** for your API. If you download the code from this page while logged in, it will be automatically filled. If you use the example from Github, you will need to fill it yourself.
 
-```json lines
-{
+export const codeExample = `{
   "Auth0": {
     "Domain": "{yourDomain}",
     "Audience": "{yourApiIdentifier}"
   }
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample} language="json" />
 
 
 

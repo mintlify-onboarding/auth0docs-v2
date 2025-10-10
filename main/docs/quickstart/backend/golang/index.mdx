@@ -2,6 +2,8 @@
 title: "Go API: Authorization"
 permalink: "01-authorization"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 
 ##### By Sergiu Ghitea
@@ -83,14 +85,14 @@ go mod download
 Create a `.env` file within the root of your project directory to store the app configuration, and fill in the
 environment variables:
 
-``` bash lines
-# The URL of our Auth0 Tenant Domain.
+export const codeExample = `# The URL of our Auth0 Tenant Domain.
 # If you're using a Custom Domain, be sure to set this to that value instead.
 AUTH0_DOMAIN='{yourDomain}'
 
 # Our Auth0 API's Identifier.
-AUTH0_AUDIENCE='YOUR_API_IDENTIFIER'
-```
+AUTH0_AUDIENCE='YOUR_API_IDENTIFIER'`;
+
+<AuthCodeBlock children={codeExample} language="bash" />
 
 
 

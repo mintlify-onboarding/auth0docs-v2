@@ -8,6 +8,8 @@ permalink: "bulk-user-imports"
 'twitter:title': "一括ユーザーインポート"
 'twitter:description': "Management APIを使用して一括ユーザーインポートを行う方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ユーザーデータを一括してAuth0にインポートするには、[ユーザーインポートジョブ作成](/docs/ja-jp/api/management/v2#!/Jobs/post_users_imports)エンドポイントを使用します。一括インポートは、ユーザーを既存のデータベースやサービスからAuth0に移行するのに便利です。
 
@@ -50,26 +52,19 @@ JSONファイルのスキーマと例については、「[一括インポート
 
 一括ユーザーインポートジョブを始めるには、`POST`要求を[一括ユーザーインポートジョブ作成](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports)エンドポイントに対して行います。必ず、`MGMT_API_ACCESS_TOKEN`、`USERS_IMPORT_FILE.json`、`CONNECTION_ID`、および`EXTERNAL_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークン、ユーザーのJSONファイル、データベース[接続ID](/docs/ja-jp/authenticate/identity-providers/locate-the-connection-id)と外部IDに置き換えます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request POST \
+export const codeExample1 = `curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-imports' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --form users=@USERS_IMPORT_FILE.json \
   --form connection_id=CONNECTION_ID \
-  --form external_id=EXTERNAL_ID
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-imports");
+  --form external_id=EXTERNAL_ID`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-imports");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddHeader("content-type", "multipart/form-data; boundary=---011000010111000001101001");
 request.AddParameter("multipart/form-data; boundary=---011000010111000001101001", "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"users\"; filename=\"USERS_IMPORT_FILE.json\"\r\nContent-Type: text/json\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"connection_id\"\r\n\r\nCONNECTION_ID\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"external_id\"\r\n\r\nEXTERNAL_ID\r\n-----011000010111000001101001--\r\n", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
 
 import (
 	"fmt"
@@ -97,18 +92,13 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-imports")
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-imports")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .header("content-type", "multipart/form-data; boundary=---011000010111000001101001")
   .body("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"users\"; filename=\"USERS_IMPORT_FILE.json\"\r\nContent-Type: text/json\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"connection_id\"\r\n\r\nCONNECTION_ID\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"external_id\"\r\n\r\nEXTERNAL_ID\r\n-----011000010111000001101001--\r\n")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
 
 var options = {
   method: 'POST',
@@ -124,10 +114,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines expandable
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN",
                            @"content-type": @"multipart/form-data; boundary=---011000010111000001101001" };
@@ -172,11 +160,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/jobs/users-imports",
@@ -202,10 +187,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample8 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -221,11 +204,8 @@ conn.request("POST", "/{yourDomain}/api/v2/jobs/users-imports", payload, headers
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -241,10 +221,8 @@ request["content-type"] = 'multipart/form-data; boundary=---01100001011100000110
 request.body = "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"users\"; filename=\"USERS_IMPORT_FILE.json\"\r\nContent-Type: text/json\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"connection_id\"\r\n\r\nCONNECTION_ID\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"external_id\"\r\n\r\nEXTERNAL_ID\r\n-----011000010111000001101001--\r\n"
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines expandable
-import Foundation
+puts response.read_body`;
+export const codeExample10 = `import Foundation
 
 let headers = [
   "authorization": "Bearer MGMT_API_ACCESS_TOKEN",
@@ -305,8 +283,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
 </CodeGroup>
 
 <table class="table"><thead>
@@ -374,23 +363,16 @@ dataTask.resume()
 
 ジョブのステータスを確認するには、`GET`要求を[ジョブ取得](https://auth0.com/docs/api/management/v2#!/Jobs/get_jobs_by_id)エンドポイントに対して行います。必ず、`MGMT_API_ACCESS_TOKEN`および`JOB_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークンとユーザーインポートジョブIDに置き換えます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample11 = `curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/JOB_ID' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --header 'content-type: application/json'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/jobs/JOB_ID");
+  --header 'content-type: application/json'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/jobs/JOB_ID");
 var request = new RestRequest(Method.GET);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
 
 import (
 	"fmt"
@@ -415,17 +397,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/JOB_ID")
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/JOB_ID")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -440,10 +417,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN" };
@@ -464,11 +439,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/jobs/JOB_ID",
@@ -493,10 +465,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample18 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -510,11 +480,8 @@ conn.request("GET", "/{yourDomain}/api/v2/jobs/JOB_ID", headers=headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -529,10 +496,8 @@ request["content-type"] = 'application/json'
 request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample20 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -555,8 +520,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
 </CodeGroup>
 
 ユーザーインポートジョブのステータスに応じて、以下のような応答の1つを受け取ります。
@@ -628,23 +604,16 @@ dataTask.resume()
 
 ユーザーインポートジョブにエラーがある場合には、`GET`要求を[ジョブエラー詳細取得](/docs/ja-jp/api/management/v2#!/Jobs/get_errors)エンドポイントに行って、エラー詳細を取得することができます。必ず、`MGMT_API_ACCESS_TOKEN`および`JOB_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークンとユーザーインポートジョブIDに置き換えます。
 
-<CodeGroup>
-```bash cURL lines
-curl --request GET \
+export const codeExample21 = `curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/JOB_ID/errors' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --header 'content-type: application/json'
-```
-```csharp C# lines
-var client = new RestClient("https://{yourDomain}/api/v2/jobs/JOB_ID/errors");
+  --header 'content-type: application/json'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/jobs/JOB_ID/errors");
 var request = new RestRequest(Method.GET);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
-IRestResponse response = client.Execute(request);
-```
-
-```go Go lines expandable
-package main
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
 
 import (
 	"fmt"
@@ -669,17 +638,12 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(string(body))
 
-}
-```
-```java Java lines
-HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/JOB_ID/errors")
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/JOB_ID/errors")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
-  .asString();
-```
-
-```javascript Node.JS lines
-var axios = require("axios").default;
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
 
 var options = {
   method: 'GET',
@@ -694,10 +658,8 @@ axios.request(options).then(function (response) {
   console.log(response.data);
 }).catch(function (error) {
   console.error(error);
-});
-```
-```obj-c Obj-C lines
-#import <Foundation/Foundation.h>
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
 
 NSDictionary *headers = @{ @"content-type": @"application/json",
                            @"authorization": @"Bearer MGMT_API_ACCESS_TOKEN" };
@@ -718,11 +680,8 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     NSLog(@"%@", httpResponse);
                                                 }
                                             }];
-[dataTask resume];
-```
-
-```php PHP lines expandable
-$curl = curl_init();
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
 
 curl_setopt_array($curl, [
   CURLOPT_URL => "https://{yourDomain}/api/v2/jobs/JOB_ID/errors",
@@ -747,10 +706,8 @@ if ($err) {
   echo "cURL Error #:" . $err;
 } else {
   echo $response;
-}
-```
-```python Python lines
-import http.client
+}`;
+export const codeExample28 = `import http.client
 
 conn = http.client.HTTPSConnection("")
 
@@ -764,11 +721,8 @@ conn.request("GET", "/{yourDomain}/api/v2/jobs/JOB_ID/errors", headers=headers)
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
-```
-
-```ruby Ruby lines
-require 'uri'
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
 require 'net/http'
 require 'openssl'
 
@@ -783,10 +737,8 @@ request["content-type"] = 'application/json'
 request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 
 response = http.request(request)
-puts response.read_body
-```
-```swift Swift lines
-import Foundation
+puts response.read_body`;
+export const codeExample30 = `import Foundation
 
 let headers = [
   "content-type": "application/json",
@@ -809,8 +761,19 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
   }
 })
 
-dataTask.resume()
-```
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
 </CodeGroup>
 
 要求に成功すると、以下のような応答を受け取ります。`hash.value`などの機密フィールドは応答内でマスクされます。

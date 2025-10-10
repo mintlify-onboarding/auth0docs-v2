@@ -10,211 +10,210 @@ title: Add User Attributes to Deny List
   to save in Auth0 databases.
 'twitter:title': Add User Attributes to Deny List
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the Deny List. To add attributes to the Deny List, make a `PATCH` call to the Update Connection endpoint of the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 1. Get a valid access token to access the `/patch_connections_by_id` [endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). The token must include the `update:connections` scope. See [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens) for details.
 2. With the access token and the list of attributes to be denied, call the API. Here is an example HTTP request that denies two attributes: ethnicity and gender. Keep in mind you need to retrieve the options object and send the whole object in your PATCH request as there is no "merge" when you only update one or two values.
 
-   <CodeGroup>
-   ```bash cURL lines
-    curl --request PATCH \
-      --url 'https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID' \
-      --header 'authorization: Bearer YOUR_TOKEN' \
-      --header 'content-type: application/json' \
-      --data '{"options": {"non_persistent_attrs": ["ethnicity", "gender"]}}'
-   ```
-   ```csharp C# lines
-    var client = new RestClient("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID");
-    var request = new RestRequest(Method.PATCH);
-    request.AddHeader("authorization", "Bearer YOUR_TOKEN");
-    request.AddHeader("content-type", "application/json");
-    request.AddParameter("application/json", "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}", ParameterType.RequestBody);
-    IRestResponse response = client.Execute(request);
-   ```
+export const codeExample1 = `    curl --request PATCH \
+  --url 'https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID' \
+  --header 'authorization: Bearer YOUR_TOKEN' \
+  --header 'content-type: application/json' \
+  --data '{"options": {"non_persistent_attrs": ["ethnicity", "gender"]}}'
+`;
+export const codeExample2 = `    var client = new RestClient("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID");
+var request = new RestRequest(Method.PATCH);
+request.AddHeader("authorization", "Bearer YOUR_TOKEN");
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+`;
+export const codeExample3 = `    package main
 
-   ```go Go lines expandable
-    package main
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
 
-    import (
-      "fmt"
-      "strings"
-      "net/http"
-      "io/ioutil"
-    )
+func main() {
 
-    func main() {
+  url := "https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID"
 
-      url := "https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID"
+  payload := strings.NewReader("{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}")
 
-      payload := strings.NewReader("{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}")
+  req, _ := http.NewRequest("PATCH", url, payload)
 
-      req, _ := http.NewRequest("PATCH", url, payload)
+  req.Header.Add("authorization", "Bearer YOUR_TOKEN")
+  req.Header.Add("content-type", "application/json")
 
-      req.Header.Add("authorization", "Bearer YOUR_TOKEN")
-      req.Header.Add("content-type", "application/json")
+  res, _ := http.DefaultClient.Do(req)
 
-      res, _ := http.DefaultClient.Do(req)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-      defer res.Body.Close()
-      body, _ := ioutil.ReadAll(res.Body)
+  fmt.Println(res)
+  fmt.Println(string(body))
 
-      fmt.Println(res)
-      fmt.Println(string(body))
+}
+`;
+export const codeExample4 = `    HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID")
+  .header("authorization", "Bearer YOUR_TOKEN")
+  .header("content-type", "application/json")
+  .body("{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}")
+  .asString();
+`;
+export const codeExample5 = `    var axios = require("axios").default;
 
+var options = {
+  method: 'PATCH',
+  url: 'https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID',
+  headers: {authorization: 'Bearer YOUR_TOKEN', 'content-type': 'application/json'},
+  data: {options: {non_persistent_attrs: ['ethnicity', 'gender']}}
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});
+`;
+export const codeExample6 = `    #import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"authorization": @"Bearer YOUR_TOKEN",
+                          @"content-type": @"application/json" };
+NSDictionary *parameters = @{ @"options": @{ @"non_persistent_attrs": @[ @"ethnicity", @"gender" ] } };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID"]
+                                                      cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                  timeoutInterval:10.0];
+[request setHTTPMethod:@"PATCH"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];
+`;
+export const codeExample7 = `    $curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "PATCH",
+  CURLOPT_POSTFIELDS => "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}",
+  CURLOPT_HTTPHEADER => [
+    "authorization: Bearer YOUR_TOKEN",
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}
+`;
+export const codeExample8 = `    import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}"
+
+headers = {
+    'authorization': "Bearer YOUR_TOKEN",
+    'content-type': "application/json"
     }
-   ```
-   ```java Java lines
-    HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID")
-      .header("authorization", "Bearer YOUR_TOKEN")
-      .header("content-type", "application/json")
-      .body("{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}")
-      .asString();
-   ```
 
-   ```javascript Node.JS lines
-    var axios = require("axios").default;
+conn.request("PATCH", "/{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID", payload, headers)
 
-    var options = {
-      method: 'PATCH',
-      url: 'https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID',
-      headers: {authorization: 'Bearer YOUR_TOKEN', 'content-type': 'application/json'},
-      data: {options: {non_persistent_attrs: ['ethnicity', 'gender']}}
-    };
+res = conn.getresponse()
+data = res.read()
 
-    axios.request(options).then(function (response) {
-      console.log(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    });
-   ```
-   ```obj-c Obj-C lines expandable
-    #import <Foundation/Foundation.h>
+print(data.decode("utf-8"))
+`;
+export const codeExample9 = `    require 'uri'
+require 'net/http'
+require 'openssl'
 
-    NSDictionary *headers = @{ @"authorization": @"Bearer YOUR_TOKEN",
-                              @"content-type": @"application/json" };
-    NSDictionary *parameters = @{ @"options": @{ @"non_persistent_attrs": @[ @"ethnicity", @"gender" ] } };
+url = URI("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID")
 
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID"]
-                                                          cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                      timeoutInterval:10.0];
-    [request setHTTPMethod:@"PATCH"];
-    [request setAllHTTPHeaderFields:headers];
-    [request setHTTPBody:postData];
+request = Net::HTTP::Patch.new(url)
+request["authorization"] = 'Bearer YOUR_TOKEN'
+request["content-type"] = 'application/json'
+request.body = "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}"
 
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
-                                                    }
-                                                }];
-    [dataTask resume];
-   ```
+response = http.request(request)
+puts response.read_body
+`;
+export const codeExample10 = `    import Foundation
 
-   ```php PHP lines expandable
-    $curl = curl_init();
+let headers = [
+  "authorization": "Bearer YOUR_TOKEN",
+  "content-type": "application/json"
+]
+let parameters = ["options": ["non_persistent_attrs": ["ethnicity", "gender"]]] as [String : Any]
 
-    curl_setopt_array($curl, [
-      CURLOPT_URL => "https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "PATCH",
-      CURLOPT_POSTFIELDS => "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}",
-      CURLOPT_HTTPHEADER => [
-        "authorization: Bearer YOUR_TOKEN",
-        "content-type: application/json"
-      ],
-    ]);
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "PATCH"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
-    curl_close($curl);
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
 
-    if ($err) {
-      echo "cURL Error #:" . $err;
-    } else {
-      echo $response;
-    }
-   ```
-   ```python Python lines
-    import http.client
+dataTask.resume()
+`;
 
-    conn = http.client.HTTPSConnection("")
-
-    payload = "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}"
-
-    headers = {
-        'authorization': "Bearer YOUR_TOKEN",
-        'content-type': "application/json"
-        }
-
-    conn.request("PATCH", "/{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID", payload, headers)
-
-    res = conn.getresponse()
-    data = res.read()
-
-    print(data.decode("utf-8"))
-   ```
-
-   ```ruby Ruby lines
-    require 'uri'
-    require 'net/http'
-    require 'openssl'
-
-    url = URI("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID")
-
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    request = Net::HTTP::Patch.new(url)
-    request["authorization"] = 'Bearer YOUR_TOKEN'
-    request["content-type"] = 'application/json'
-    request.body = "{\"options\": {\"non_persistent_attrs\": [\"ethnicity\", \"gender\"]}}"
-
-    response = http.request(request)
-    puts response.read_body
-   ```
-   ```swift Swift lines expandable
-    import Foundation
-
-    let headers = [
-      "authorization": "Bearer YOUR_TOKEN",
-      "content-type": "application/json"
-    ]
-    let parameters = ["options": ["non_persistent_attrs": ["ethnicity", "gender"]]] as [String : Any]
-
-    let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
-
-    let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID")! as URL,
-                                            cachePolicy: .useProtocolCachePolicy,
-                                        timeoutInterval: 10.0)
-    request.httpMethod = "PATCH"
-    request.allHTTPHeaderFields = headers
-    request.httpBody = postData as Data
-
-    let session = URLSession.shared
-    let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-      if (error != nil) {
-        print(error)
-      } else {
-        let httpResponse = response as? HTTPURLResponse
-        print(httpResponse)
-      }
-    })
-
-    dataTask.resume()
-   ```
-   </CodeGroup>
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
+</CodeGroup>
    
    Where:
    1. `{yourConnectionId}` is the [connection ID](/docs/authenticate/identity-providers/locate-the-connection-id) for which these attributes will be denied.

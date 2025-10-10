@@ -8,6 +8,8 @@ title: Configure Refresh Token Rotation
 'twitter:description': Describes how to configure refresh token rotation.
 'twitter:title': Configure Refresh Token Rotation
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 Configure <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip> rotation for each application using the Dashboard or the [Auth0 SPA SDK](/docs/libraries/auth0-single-page-app-sdk). When <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token+rotation">refresh token rotation</Tooltip> is enabled, the transition for the user is seamless. The application uses the previous, unexpired non-rotating refresh token and swaps it for a rotating refresh token.
 
 Migration scenarios accommodate automatic token revocation when migrating from a non-rotating refresh token to a rotating refresh token and vice-versa.
@@ -46,14 +48,15 @@ You can use the Auth0 SPA SDK to enable refresh token rotation. You must enable 
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
 
-   ```javascript lines
-   const auth0 = await createAuth0Client({
+   export const codeExample = `   const auth0 = await createAuth0Client({
          domain: '{yourDomain}',
          client_id: '{yourClientId}',
          audience: '{yourApiIdentifier}',
          useRefreshTokens: true
        });
-   ```
+   `;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
    
 3. Configure the Refresh Token rotation settings. For example:

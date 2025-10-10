@@ -8,6 +8,8 @@ permalink: "test-connections"
 'twitter:title': "接続をテストする"
 'twitter:description': "接続をテストする方法について説明します。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 一般的に、接続をテストするには、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>にログインする必要があります。
 
@@ -34,9 +36,10 @@ Auth0はアプリケーションだと想定して認証フローのシミュレ
    * オーディエンスを指定しないと、アクセストークンが不透明な[JWEトークン](https://datatracker.ietf.org/doc/html/rfc7516#section-3.3)となり、[Auth0のAuthentication API](https://auth0.com/docs/api/authentication)だけしかそれを認識できなくなります。
 3. ログインのリンクをパートナーに送信します。
 
-   ``` lines
-   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection={connectionToTest}
-   ```
+   export const codeExample = `   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection={connectionToTest}
+   `;
+
+<AuthCodeBlock children={codeExample} language="text" lines />
 
    
 

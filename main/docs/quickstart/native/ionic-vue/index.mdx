@@ -2,6 +2,8 @@
 title: "Ionic & Capacitor (Vue)"
 permalink: "01-login"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By Steve Hobbs
 
@@ -135,8 +137,7 @@ The SDK exports `createAuth0`, a composable that contains all the services requi
 
 Open `src/main.ts` and install the plugin using `app.use`
 
-```js lines
-import { createApp } from "vue";
+export const codeExample = `import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
@@ -148,7 +149,7 @@ import config from "./auth.config";
 // ..
 
 // Build the URL that Auth0 should redirect back to
-const redirect_uri = `${config.appId}://{yourDomain}/capacitor/${config.appId}/callback`;
+const redirect_uri = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
 
 const app = createApp(App).use(IonicVue).use(router);
 
@@ -166,8 +167,9 @@ app.use(
 
 router.isReady().then(() => {
   app.mount("#app");
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample} language="js" />
 
 
 

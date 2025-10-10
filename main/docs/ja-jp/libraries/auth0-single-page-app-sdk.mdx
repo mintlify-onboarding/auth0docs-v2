@@ -8,6 +8,8 @@ permalink: "auth0-single-page-app-sdk"
 'twitter:title': "Auth0 Single-Page App SDK"
 'twitter:description': "このシングルページアプリケーション用のAuth0 SDKは、PKCEを用いた認可コード付与フローを使用しています。"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Auth0 Single-Page App SDKは新しいJavaScriptライブラリーで、シングルページアプリ（SPA）でAuth0を使って認証と認可を実装します。高水準のAPIを提供して、大量の詳細情報を処理しているため、作成するコードの量を低減しながら、SPAにベストプラクティスを実装することができます。
 
@@ -39,25 +41,25 @@ Auth0 SPA SDKは、付与とプロトコルの詳細、トークンの失効と�
 
 #### async/awaitを使用する
 
-```javascript lines
-import { createAuth0Client } from '@auth0/auth0-spa-js';
+export const codeExample1 = `import { createAuth0Client } from '@auth0/auth0-spa-js';
 
 const auth0 = await createAuth0Client({
   domain: '{yourDomain}',
   clientId: '{yourClientId}'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 #### promiseを使用する
 
-```javascript lines
-createAuth0Client({
+export const codeExample2 = `createAuth0Client({
   domain: '{yourDomain}',
   clientId: '{yourClientId}'
 }).then(auth0 => {
   //...
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 `Auth0Client`コンストラクターを使って、クライアントを直接作成することもできます。これは、以下の場合に便利です。
 
@@ -65,14 +67,14 @@ createAuth0Client({
 * カスタムエラー処理を行う
 * SDKを同期的に初期化する
 
-```javascript lines
-import { Auth0Client } from '@auth0/auth0-spa-js';
+export const codeExample3 = `import { Auth0Client } from '@auth0/auth0-spa-js';
 
 const auth0 = new Auth0Client({
   domain: '{yourDomain}',
   clientId: '{yourClientId}'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample3} language="javascript" />
 
 ### ログインしてユーザー情報を取得する
 
@@ -185,15 +187,15 @@ Auth0 SPA SDKはデフォルトでトークンをメモリーに保管します�
 
 </Warning>
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```javascript lines
-const auth0 = await createAuth0Client({
+
+export const codeExample4 = `const auth0 = await createAuth0Client({
   domain: '{yourDomain}',
   clientId: '{yourClientId}',
   cacheLocation: 'localstorage'
-});
-```
+});`;
+
+<AuthCodeBlock children={codeExample4} language="javascript" />
 
 ### リフレッシュトークンのローテーションを使用する
 
@@ -201,18 +203,18 @@ const auth0 = await createAuth0Client({
 
 このためには、初期化時に`useRefreshTokens`を`true`に設定してSDKを構成します。
 
-codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet
 
-```javascript lines
-const auth0 = await createAuth0Client({
+
+export const codeExample5 = `const auth0 = await createAuth0Client({
   domain: '{yourDomain}',
   clientId: '{yourClientId}',
   useRefreshTokens: true
 });
 
 // Request a new access token using a refresh token
-const token = await auth0.getTokenSilently();
-```
+const token = await auth0.getTokenSilently();`;
+
+<AuthCodeBlock children={codeExample5} language="javascript" />
 
 リフレッシュトークンは、SPAで使用する前に[テナント用に構成される](/docs/ja-jp/secure/tokens/refresh-tokens/configure-refresh-token-rotation)必要もあります。
 

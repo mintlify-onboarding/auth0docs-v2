@@ -8,6 +8,8 @@ permalink: "cron-implementation-python"
 'twitter:title': "Applications serveur + API : Implémentation Python pour la tâche Cron"
 'twitter:description': "L’implémentation Python de la tâche Cron du serveur pour le scénario d’architecture Serveur client + API"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Dans le cadre du [scénario d’architecture Serveur + API](https://auth0.com/docs/architecture-scenarios/application/server-api), nous expliquerons comment implémenter le processus du serveur dans Python. Veuillez vous référer au document [Scénario d’architecture Serveur + API](https://auth0.com/docs/architecture-scenarios/application/server-api) pour obtenir des informations sur la solution implémentée.
 
@@ -19,8 +21,7 @@ Pour effectuer la requête HTTP vers le point de terminaison Auth0 `/oauth/toke
 
 Voici un exemple d’implémentation :
 
-```python lines
-def main():
+export const codeExample = `def main():
   import json, urllib, urllib2, httplib
 
   # Configuration Values
@@ -45,8 +46,9 @@ def main():
 
 # Standard boilerplate to call the main() function.
 if __name__ == '__main__':
-  main()
-```
+  main()`;
+
+<AuthCodeBlock children={codeExample} language="python" />
 
 Pour la tester, modifiez votre code pour imprimer la variable `access_token` et exécutez le processus en utilisant `python cron.py`.
 

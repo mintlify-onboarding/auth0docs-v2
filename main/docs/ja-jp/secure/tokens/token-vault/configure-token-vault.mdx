@@ -8,6 +8,8 @@ permalink: "configure-token-vault"
 'twitter:title': "Configure Token Vault"
 'twitter:description': "Learn how to configure Token Vault. "
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Warning>
 
@@ -63,8 +65,7 @@ When you use the `options` parameter when making a `PATCH` call to the [Update a
 
 </Callout>
 
-```bash lines
-# set your variables
+export const codeExample1 = `# set your variables
 export access_token="YOUR_MANAGEMENT_API_ACCESS_TOKEN"
 export auth0_domain_url="https://{yourDomain}"
 export connection_id="YOUR_CONNECTION_ID"
@@ -80,8 +81,9 @@ curl --request PATCH \
   --header "Authorization: Bearer ${access_token}" \
   --header 'content-type: application/json' \
   --url "${auth0_domain_url}/api/v2/connections/${connection_id}" \
-  --data "${BODY}"
-```
+  --data "${BODY}"`;
+
+<AuthCodeBlock children={codeExample1} language="bash" />
 
 </Tab></Tabs>
 
@@ -108,8 +110,7 @@ Only certain types of clients can use the Token Vault grant type:
 
 To enable Token Vault for an application, make a `PATCH` call to the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint to add the `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token` grant type to the client JSON object:
 
-```bash lines
-curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
+export const codeExample2 = `curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>' \
   --data '{
@@ -118,8 +119,9 @@ curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}'
       "refresh_token",
       "urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token"
     ]
-  }'
-```
+  }'`;
+
+<AuthCodeBlock children={codeExample2} language="bash" />
 
 </Tab></Tabs>
 
@@ -138,11 +140,11 @@ To get a user's tokensets, you need a [Management API access token](/docs/ja-jp/
 
 Make a `GET` request to the `/federated-connections-tokensets` endpoint:
 
-```bash lines
-curl --request GET \
+export const codeExample3 = `curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/{userId}/federated-connections-tokensets' \
-  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'
-```
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'`;
+
+<AuthCodeBlock children={codeExample3} language="bash" />
 
 If successful, you should receive a list of tokensets for the user:
 
@@ -180,11 +182,11 @@ To delete a tokenset, you need a [Management API access token](/docs/ja-jp/secur
 
 Make a `DELETE` request to the `/tokensets` endpoint:
 
-```bash lines
-curl --request DELETE \
+export const codeExample4 = `curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/users/{userId}/federated-connections-tokensets/{tokensetId}' \
-  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'
-```
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'`;
+
+<AuthCodeBlock children={codeExample4} language="bash" />
 
 If successful, you should receive the following response:
 

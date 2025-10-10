@@ -2,6 +2,8 @@
 title: "Node (Express) API: Authorization"
 permalink: "01-authorization"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 ##### By David Patrick
 
@@ -67,8 +69,7 @@ npm install --save express-oauth2-jwt-bearer
 
 Configure `express-oauth2-jwt-bearer` with your Domain and API Identifier.
 
-```javascript lines
-// server.js
+export const codeExample = `// server.js
 
 const express = require('express');
 const app = express();
@@ -78,9 +79,10 @@ const { auth } = require('express-oauth2-jwt-bearer');
 // exist and be verified against the Auth0 JSON Web Key Set.
 const checkJwt = auth({
   audience: '{yourApiIdentifier}',
-  issuerBaseURL: `https://{yourDomain}/`,
-});
-```
+  issuerBaseURL: \`https://{yourDomain}/\`,
+});`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 
 

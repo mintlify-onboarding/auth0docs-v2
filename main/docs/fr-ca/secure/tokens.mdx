@@ -8,6 +8,8 @@ permalink: "tokens"
 'twitter:title': "Jetons"
 'twitter:description': "Décrit les types de jetons liés à l’identité et à l’authentification et la manière dont ils sont utilisés par Auth0."
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Il existe deux types de jetons liés à l’identité : les jetons d’ID et les jetons d’accès.
 
@@ -26,8 +28,7 @@ Norme ouverte d’authentification qui permet aux applications de vérifier l’
 
 Le contenu décodé d’un jeton d’ID ressemble à ce qui suit :
 
-```json lines
-{
+export const codeExample1 = `{
   "iss": "http://{yourDomain}/",
   "sub": "auth0|123456",
   "aud": "{yourClientId}",
@@ -40,8 +41,9 @@ Le contenu décodé d’un jeton d’ID ressemble à ce qui suit :
   "birthdate": "0000-10-31",
   "email": "janedoe@example.com",
   "picture": "http://example.com/janedoe/me.jpg"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample1} language="json" />
 
 Ce jeton authentifie l’utilisateur auprès de l’application. L'audience (la demande **aud**) du jeton est définie sur l’identifiant de l’application, ce qui signifie que seule cette application spécifique doit consommer ce jeton.
 
@@ -58,8 +60,7 @@ Les jetons d’accès ne doivent **jamais** être utilisés pour  [l’authentif
 
 Voici un exemple de jeton d’accès :
 
-```json lines
-{
+export const codeExample2 = `{
   "iss": "https://{yourDomain}/",
   "sub": "auth0|123456",
   "aud": [
@@ -70,8 +71,9 @@ Voici un exemple de jeton d’accès :
   "exp": 1489179954,
   "iat": 1489143954,
   "scope": "openid profile email address phone read:appointments"
-}
-```
+}`;
+
+<AuthCodeBlock children={codeExample2} language="json" />
 
 Notez que le jeton ne contient aucune information sur l’utilisateur en dehors de son ID (demande **sub**). Il ne contient que des informations d’autorisation sur les actions que l’application est autorisée à effectuer au niveau de l’API (demande **scope**). C’est ce qui le rend utile pour sécuriser une API, mais pas pour authentifier un utilisateur.
 

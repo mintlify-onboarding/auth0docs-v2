@@ -10,6 +10,8 @@ title: Fine-Grained Machine-to-Machine Token Quotas Early Access
   and organizations associated with your tenant.
 'twitter:title': Fine-Grained Machine-to-Machine Token Quotas
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 Fine-grained M2M token quotas are currently in Early Access. Reach out to your Auth0 contact to request access. To learn more about Auth0's product release cycle, read [Product release stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
@@ -292,23 +294,22 @@ In the `Auth0-Client-Quota-Limit` example:
 
 Auth0 SDKs provide built-in utilities for reading and parsing quota headers, enabling apps to utilize real-time quota information for debugging, implementing slow-down strategies, and more. The following is an example using Node.js and the [node-auth0](https://github.com/auth0/node-auth0) SDK:
 
-```javascript lines expandable
-const {
+export const codeExample1 = `const {
     AuthenticationClient,
     HttpResponseHeadersUtils,
   } = require("auth0");
 
 const auth0 = new AuthenticationClient({
-    domain: '{{YOUR_DOMAIN}}',
-    clientId: '{{YOUR_CLIENT_ID}}',
-    clientSecret: '{{YOUR_SECRET}}'
+    domain: '{{yourDomain}}',
+    clientId: '{{yourClientId}}',
+    clientSecret: '{{yourSecret}}'
 });
 
 async function getAccessToken() {
     try {
         //get the token
         const response = await auth0.oauth.clientCredentialsGrant({
-            audience: '{{YOU_AUDIENCE}}'
+            audience: '{{yourAudience}}'
         });
 
         // Surface M2M token quota information to your application to monitor 
@@ -330,8 +331,9 @@ async function getAccessToken() {
     }
 }
 
-getAccessToken();
-```
+getAccessToken();`;
+
+<AuthCodeBlock children={codeExample1} language="javascript" />
 
 
 
@@ -370,16 +372,15 @@ Use the `Retry-After` header to determine the wait time for obtaining a new M2M 
 
 The following code sample is a Node.js example that tries to get a new M2M token, receives a 429 error, and re-tries again if the wait time is less than 60 seconds. Otherwise, it throws an error:
 
-```javascript lines expandable
-const {
+export const codeExample2 = `const {
     AuthenticationClient,
     HttpResponseHeadersUtils,
   } = require("auth0");
 
 const auth0 = new AuthenticationClient({
-    domain: '{{YOUR_DOMAIN}}',
-    clientId: '{{YOUR_CLIENT_ID}}',
-    clientSecret: '{{YOUR_SECRET}}'
+    domain: '{{yourDomain}}',
+    clientId: '{{yourClientId}}',
+    clientSecret: '{{yourSecret}}'
 });
 
 const MAX_RETRY_AFTER = 60;
@@ -392,7 +393,7 @@ async function getAccessToken(retry = true) {
     try {
         //get the token
         const response = await auth0.oauth.clientCredentialsGrant({
-            audience: '{{YOU_AUDIENCE}}'
+            audience: '{{yourAudience}}'
         });
 
         return response.data.access_token;
@@ -404,7 +405,7 @@ async function getAccessToken(retry = true) {
             const retryAfter = parseInt(error.headers.get('retry-after'), 10);
             if (retryAfter < MAX_RETRY_AFTER) {
                 // Retry is less than a max number of seconds
-                console.warn(`Rate limited. Retrying in ${retryAfter} seconds...`);
+                console.warn(\`Rate limited. Retrying in ${retryAfter} seconds...\`);
                 await sleep(retryAfter);
                 return getAccessToken(false); // Retry only once
             }
@@ -414,8 +415,9 @@ async function getAccessToken(retry = true) {
     }
 }
 
-getAccessToken();
-```
+getAccessToken();`;
+
+<AuthCodeBlock children={codeExample2} language="javascript" />
 
 
 

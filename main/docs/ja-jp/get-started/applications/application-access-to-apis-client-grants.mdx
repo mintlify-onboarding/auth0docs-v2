@@ -2,6 +2,8 @@
 title: "Application Access to APIs: Client Grants"
 permalink: "application-access-to-apis-client-grants"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 API Access Policies for Applications is currently available in [Early Access](/docs/troubleshoot/product-lifecycle/product-release-stages). By using this feature, you agree to the applicable Free Trial terms in Okta’s [Master Subscription Agreement](https://www.okta.com/legal/?_gl=1*agihqh*_gcl_au*NjM2NjA1MDg4LjE3NTM5ODE4NjY.*_ga*MTgyNDA4MjM2Ny4xNzE1MTAyMjQy*_ga_QKMSDV5369*czE3NTQ0NzQ3NTAkbzM1MyRnMSR0MTc1NDQ3NjU5MCRqNiRsMCRoMA..).
@@ -119,8 +121,7 @@ To create a new client grant, make a [`POST`](https://auth0.com/docs/api/managem
 
 The following code sample creates a client grant for an application to access the `https://api.my-service.com` API. The `subject_type` is `user`, which means the client grant is for user access, and allows the application to request the `read:item` scope and the `payment` authorization details type.
 
-```bash
-curl --location 'https://{yourDomain}/api/v2/client-grants' \
+export const codeExample1 = `curl --location 'https://{yourDomain}/api/v2/client-grants' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {YOUR_MANAGEMENT_API_TOKEN}' \
 --data '{
@@ -131,8 +132,9 @@ curl --location 'https://{yourDomain}/api/v2/client-grants' \
     ],
     "authorization_details_types":["payment"],
     "subject_type": "user"
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample1} language="bash" />
 
 ### Update client grant
 
@@ -140,8 +142,7 @@ To update an existing client grant, make a [`PATCH`](https://auth0.com/docs/api/
 
 The following code sample updates an existing client grant to expand its permissions. The application can now also request the `update:item` scope and an additional `credits_transfer` authorization details type.
 
-```bash
-curl --location --request PATCH 'https://{yourDomain}/api/v2/client-grants/{CLIENT_GRANT_ID}' \
+export const codeExample2 = `curl --location --request PATCH 'https://{yourDomain}/api/v2/client-grants/{CLIENT_GRANT_ID}' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer {YOUR_MANAGEMENT_API_TOKEN}' \
 --data '{
@@ -150,8 +151,9 @@ curl --location --request PATCH 'https://{yourDomain}/api/v2/client-grants/{CLIE
         "update:item"
     ],
     "authorization_details_types":["payment", "credits_transfer"]
-}'
-```
+}'`;
+
+<AuthCodeBlock children={codeExample2} language="bash" />
 
 ### Delete client grant
 
@@ -159,10 +161,10 @@ To delete a client grant, make a [`DELETE`](https://auth0.com/docs/api/managemen
 
 The following code sample removes the client grant which revokes the application's access to the API:
 
-```bash
-curl --location --request DELETE 'https://{yourDomain}/api/v2/client-grants/{CLIENT_GRANT_ID}' \
---header 'Authorization: Bearer {YOUR_MANAGEMENT_API_TOKEN}'
-```
+export const codeExample3 = `curl --location --request DELETE 'https://{yourDomain}/api/v2/client-grants/{CLIENT_GRANT_ID}' \
+--header 'Authorization: Bearer {YOUR_MANAGEMENT_API_TOKEN}'`;
+
+<AuthCodeBlock children={codeExample3} language="bash" />
 
 ### Retrieve client grants
 
@@ -170,12 +172,12 @@ You can also query and paginate through the `client-grants` collections by using
 
 The following code sample retrieves all client grants that allow for user access to the `https://api.my-service.com` API.
 
-```bash
-curl --request GET \
+export const codeExample4 = `curl --request GET \
 --url 'https://{yourDomain}/api/v2/client-grants?subject_type=user&audience=https%3A%2F%2Fapi.my-service.com' \
 --header 'Authorization: Bearer {YOUR_MANAGEMENT_API_TOKEN}' \
---header 'Accept: application/json'
-```
+--header 'Accept: application/json'`;
+
+<AuthCodeBlock children={codeExample4} language="bash" />
 
 ## Learn more
 

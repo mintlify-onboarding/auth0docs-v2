@@ -8,6 +8,8 @@ permalink: "lock-authentication-modes"
 'twitter:title': "Modes d’authentification Lock"
 'twitter:description': "Détails sur les modes d’authentification Lock"
 ---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
 
 Lock peut fonctionner selon deux modes différents. Le mode par défaut est le **mode de redirection**. Dans ce mode, votre utilisateur est redirigé pour être authentifié, puis il est renvoyé vers l’application. Dans le second mode, le **mode contextuel**, une fenêtre contextuelle permet à l’utilisateur de s’authentifier auprès du fournisseur d’identité sans quitter l’application.
 
@@ -24,8 +26,7 @@ La mise en œuvre de Lock avec le mode contextuel est à nouveau une simple modi
 
 
 
-```javascript lines
-var lock = new Auth0Lock(
+export const codeExample = `var lock = new Auth0Lock(
   '{yourClientId}',
   '{yourDomain}',
   {
@@ -33,8 +34,9 @@ var lock = new Auth0Lock(
       redirect: false
     }
   }
-);
-```
+);`;
+
+<AuthCodeBlock children={codeExample} language="javascript" />
 
 L’authentification multifacteur (<Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip>) n’est pas prise en charge lorsque Lock est en mode contextuel et intégré à votre application. En outre, le mode contextuel ne fonctionne pas avec la connexion universelle.
