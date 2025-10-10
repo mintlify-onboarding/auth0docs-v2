@@ -625,6 +625,7 @@ a.card[href^="http"]::after {
 }
 
 .code-block > div > div > div,
+.code-block > div div.z-10.relative div,
 .code-group > div div.z-10.relative div {
   color: black;
 }
