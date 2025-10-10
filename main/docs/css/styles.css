@@ -667,3 +667,12 @@ a.card[href^="http"]::after {
 #banner {
   background-color: #232220;
 }
+
+#banner a {
+  color: #fff !important;
+  border-bottom-color: #fff !important;
+}
+
+#banner a:hover {
+  border-bottom: 2px solid #fff !important;
+}
