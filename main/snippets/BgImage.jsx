@@ -7,7 +7,7 @@ export const BgImage = () => {
           backgroundImage: "url('/docs/images/bg_light.svg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          backgroundPosition: "left -350px",
+          backgroundPosition: "left -250px",
           backgroundAttachment: "fixed",
         }}
       />

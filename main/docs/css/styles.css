@@ -663,3 +663,7 @@ a.card[href^="http"]::after {
 .dark .quickstart_button:hover {
   border: 1px solid #535353 !important;
 }
+
+#banner {
+  background-color: #232220;
+}
