@@ -1,0 +1,939 @@
+---
+description: Learn about the different use cases for the Tenant Access Control
+  List feature.
+'og:image': https://cdn2.auth0.com/docs/1.14553.0/img/share-image.png
+'og:title': Use Cases
+'og:url': https://auth0.com/docs/
+permalink: use-cases
+title: Use Cases
+'twitter:description': Learn about the different use cases for the Tenant Access Control
+  List feature.
+'twitter:title': Use Cases
+---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+
+Tenant Access Control List (ACL) is an Early Access Service and currently available only to customers on an Enterprise plan with the [Attack Protection add-on](https://www.auth0.com/pricing).
+
+By using this feature, you agree to the applicable Free Trial Service terms described in [Okta’s Master Subscription Agreement](https://www.okta.com/agreements/) and to [Okta’s Privacy Policy](https://www.okta.com/privacy-policy/).
+
+To learn more about Auth0 releases, review [Product Release Stages](/docs/troubleshoot/product-lifecycle/product-release-stages).
+
+</Callout>
+
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+
+**Tenant ACL Early Access Restrictions and Limitations**
+
+Restrictions
+
+* Customers on an Enterprise plan with the Attack Protection add-on can create up to 10 Tenant ACLs.
+* Each Tenant ACL can include up to 10 entries per source identifier (such as IPv4, CIDR, and more).
+
+Limitations
+
+* The **User Agent** identifier is not supported when using self-managed custom domains.
+* The `auth0-forwarded-for` header is not supported.
+
+Coming soon
+
+* Customers on any Enterprise plan can create up to one (1) Tenant ACL.
+
+</Callout>
+
+Tenant Access Control List (ACL) provides the power and flexibility needed to handle a large variety of scenarios.
+
+## Block a request
+
+Here is an example of a Tenant ACL rule that blocks incoming traffic from a specific geolocation country code.
+
+export const codeExample1 = `curl --request POST \
+  --url 'https://{yourDomain}/api/v2/network-acls' \
+  --header 'authorization: Bearer MANAGEMENT_API_TOKEN' \
+  --header 'content-type: application/json' \
+  --data '{
+  "description": "Example of a blocking request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "block": true },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/network-acls");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer MANAGEMENT_API_TOKEN");
+request.AddParameter("application/json", "{\n  \"description\": \"Example of a blocking request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/api/v2/network-acls"
+
+	payload := strings.NewReader("{\n  \"description\": \"Example of a blocking request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer MANAGEMENT_API_TOKEN")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/network-acls")
+  .header("content-type", "application/json")
+  .header("authorization", "Bearer MANAGEMENT_API_TOKEN")
+  .body("{\n  \"description\": \"Example of a blocking request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}")
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/api/v2/network-acls',
+  headers: {
+    'content-type': 'application/json',
+    authorization: 'Bearer MANAGEMENT_API_TOKEN'
+  },
+  data: '{\n  "description": "Example of a blocking request",\n  "active": true,\n  “priority”: 2,\n  "rule": {\n    "action": { "block": true },\n    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },\n    "scope": "authentication"\n  }\n}'
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json",
+                           @"authorization": @"Bearer MANAGEMENT_API_TOKEN" };
+
+NSData *postData = [[NSData alloc] initWithData:[@"{
+  "description": "Example of a blocking request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "block": true },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}" dataUsingEncoding:NSUTF8StringEncoding]];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/network-acls"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/api/v2/network-acls",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\n  \"description\": \"Example of a blocking request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}",
+  CURLOPT_HTTPHEADER => [
+    "authorization: Bearer MANAGEMENT_API_TOKEN",
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample8 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\n  \"description\": \"Example of a blocking request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+headers = {
+    'content-type': "application/json",
+    'authorization': "Bearer MANAGEMENT_API_TOKEN"
+    }
+
+conn.request("POST", "/{yourDomain}/api/v2/network-acls", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/api/v2/network-acls")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer MANAGEMENT_API_TOKEN'
+request.body = "{\n  \"description\": \"Example of a blocking request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample10 = `import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer MANAGEMENT_API_TOKEN"
+]
+
+let postData = NSData(data: "{
+  "description": "Example of a blocking request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "block": true },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}".data(using: String.Encoding.utf8)!)
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/network-acls")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
+</CodeGroup>
+
+### Example of a block page
+
+<Frame>![](/docs/images/cdy7uua7fh8z/34bruOvQ9n8CpMW1DndkYn/fb87ec4a0c9218caed2e0c49d1a7459a/Tenant_ACL_-_Block_page_example.png)</Frame>
+
+## Allow a request
+
+Here is an example of a Tenant ACL rule that allows traffic only from a specific geolocation country code.
+
+export const codeExample11 = `curl --request POST \
+  --url 'https://{yourDomain}/api/v2/network-acls' \
+  --header 'authorization: Bearer MANAGEMENT_API_TOKEN' \
+  --header 'content-type: application/json' \
+  --data '{
+  "description": "Example of allowing a request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "allow": true },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/network-acls");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer MANAGEMENT_API_TOKEN");
+request.AddParameter("application/json", "{\n  \"description\": \"Example of allowing a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"allow\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/api/v2/network-acls"
+
+	payload := strings.NewReader("{\n  \"description\": \"Example of allowing a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"allow\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer MANAGEMENT_API_TOKEN")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/network-acls")
+  .header("content-type", "application/json")
+  .header("authorization", "Bearer MANAGEMENT_API_TOKEN")
+  .body("{\n  \"description\": \"Example of allowing a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"allow\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}")
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/api/v2/network-acls',
+  headers: {
+    'content-type': 'application/json',
+    authorization: 'Bearer MANAGEMENT_API_TOKEN'
+  },
+  data: '{\n  "description": "Example of allowing a request",\n  "active": true,\n  “priority”: 2,\n  "rule": {\n    "action": { "allow": true },\n    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },\n    "scope": "authentication"\n  }\n}'
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json",
+                           @"authorization": @"Bearer MANAGEMENT_API_TOKEN" };
+
+NSData *postData = [[NSData alloc] initWithData:[@"{
+  "description": "Example of allowing a request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "allow": true },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}" dataUsingEncoding:NSUTF8StringEncoding]];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/network-acls"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/api/v2/network-acls",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\n  \"description\": \"Example of allowing a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"allow\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}",
+  CURLOPT_HTTPHEADER => [
+    "authorization: Bearer MANAGEMENT_API_TOKEN",
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample18 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\n  \"description\": \"Example of allowing a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"allow\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+headers = {
+    'content-type': "application/json",
+    'authorization': "Bearer MANAGEMENT_API_TOKEN"
+    }
+
+conn.request("POST", "/{yourDomain}/api/v2/network-acls", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/api/v2/network-acls")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer MANAGEMENT_API_TOKEN'
+request.body = "{\n  \"description\": \"Example of allowing a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"allow\": true },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample20 = `import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer MANAGEMENT_API_TOKEN"
+]
+
+let postData = NSData(data: "{
+  "description": "Example of allowing a request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "allow": true },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}".data(using: String.Encoding.utf8)!)
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/network-acls")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
+</CodeGroup>
+
+## Redirect a request
+
+Here is an example of a Tenant ACL rule that redirects all traffic from a specific geolocation country code.
+
+export const codeExample21 = `curl --request POST \
+  --url 'https://{yourDomain}/api/v2/network-acls' \
+  --header 'authorization: Bearer MANAGEMENT_API_TOKEN' \
+  --header 'content-type: application/json' \
+  --data '{
+  "description": "Example of redirecting a request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "redirect": true, "redirect_uri": "REDIRECT_URI" },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/api/v2/network-acls");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer MANAGEMENT_API_TOKEN");
+request.AddParameter("application/json", "{\n  \"description\": \"Example of redirecting a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"redirect\": true, \"redirect_uri\": \"REDIRECT_URI\" },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/api/v2/network-acls"
+
+	payload := strings.NewReader("{\n  \"description\": \"Example of redirecting a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"redirect\": true, \"redirect_uri\": \"REDIRECT_URI\" },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer MANAGEMENT_API_TOKEN")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/network-acls")
+  .header("content-type", "application/json")
+  .header("authorization", "Bearer MANAGEMENT_API_TOKEN")
+  .body("{\n  \"description\": \"Example of redirecting a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"redirect\": true, \"redirect_uri\": \"REDIRECT_URI\" },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}")
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/api/v2/network-acls',
+  headers: {
+    'content-type': 'application/json',
+    authorization: 'Bearer MANAGEMENT_API_TOKEN'
+  },
+  data: '{\n  "description": "Example of redirecting a request",\n  "active": true,\n  “priority”: 2,\n  "rule": {\n    "action": { "redirect": true, "redirect_uri": "REDIRECT_URI" },\n    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },\n    "scope": "authentication"\n  }\n}'
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json",
+                           @"authorization": @"Bearer MANAGEMENT_API_TOKEN" };
+
+NSData *postData = [[NSData alloc] initWithData:[@"{
+  "description": "Example of redirecting a request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "redirect": true, "redirect_uri": "REDIRECT_URI" },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}" dataUsingEncoding:NSUTF8StringEncoding]];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/network-acls"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/api/v2/network-acls",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\n  \"description\": \"Example of redirecting a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"redirect\": true, \"redirect_uri\": \"REDIRECT_URI\" },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}",
+  CURLOPT_HTTPHEADER => [
+    "authorization: Bearer MANAGEMENT_API_TOKEN",
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample28 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\n  \"description\": \"Example of redirecting a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"redirect\": true, \"redirect_uri\": \"REDIRECT_URI\" },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+headers = {
+    'content-type': "application/json",
+    'authorization': "Bearer MANAGEMENT_API_TOKEN"
+    }
+
+conn.request("POST", "/{yourDomain}/api/v2/network-acls", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/api/v2/network-acls")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer MANAGEMENT_API_TOKEN'
+request.body = "{\n  \"description\": \"Example of redirecting a request\",\n  \"active\": true,\n  “priority”: 2,\n  \"rule\": {\n    \"action\": { \"redirect\": true, \"redirect_uri\": \"REDIRECT_URI\" },\n    \"match\": {  \"geo_country_codes\": [\"GEO_COUNTRY_CODE\"] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample30 = `import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer MANAGEMENT_API_TOKEN"
+]
+
+let postData = NSData(data: "{
+  "description": "Example of redirecting a request",
+  "active": true,
+  “priority”: 2,
+  "rule": {
+    "action": { "redirect": true, "redirect_uri": "REDIRECT_URI" },
+    "match": {  "geo_country_codes": ["GEO_COUNTRY_CODE"] },
+    "scope": "authentication"
+  }
+}".data(using: String.Encoding.utf8)!)
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/network-acls")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
+</CodeGroup>
+
+## Complex comparisons
+
+You can combine the `match` and `not_match` operators in a single Tenant ACL rule to enforce fine-grained access policies.
+
+Here is an example of a Tenant ACL rule that evaluates the `geo_country_code` and `geo_subdivision_code` signals to block all traffic from a given country except for a specific state, region, or province within that country.
+
+export const codeExample31 = `curl --request POST \
+  --url 'https://{yourDomain}/api/v2/network-acls' \
+  --header 'authorization: Bearer MANAGEMENT_API_TOKEN' \
+  --header 'content-type: application/json' \
+  --data '{
+  "description": "Creating a new access control list",
+  "active": false,
+  "priority": 1,
+  "rule": {
+    "action": { "block": true },
+    "match": { "geo_country_codes": [ "GEO_COUNTRY_CODE"] },
+    "not_match": { "geo_subdivision_codes": [ "GEO_SUBDIVISION_CODE" ] },
+    "scope": "authentication"
+  }
+}'`;
+export const codeExample32 = `var client = new RestClient("https://{yourDomain}/api/v2/network-acls");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer MANAGEMENT_API_TOKEN");
+request.AddParameter("application/json", "{\n  \"description\": \"Creating a new access control list\",\n  \"active\": false,\n  \"priority\": 1,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": { \"geo_country_codes\": [ \"GEO_COUNTRY_CODE\"] },\n    \"not_match\": { \"geo_subdivision_codes\": [ \"GEO_SUBDIVISION_CODE\" ] },\n    \"scope\": \"authentication\"\n  }\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample33 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/api/v2/network-acls"
+
+	payload := strings.NewReader("{\n  \"description\": \"Creating a new access control list\",\n  \"active\": false,\n  \"priority\": 1,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": { \"geo_country_codes\": [ \"GEO_COUNTRY_CODE\"] },\n    \"not_match\": { \"geo_subdivision_codes\": [ \"GEO_SUBDIVISION_CODE\" ] },\n    \"scope\": \"authentication\"\n  }\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer MANAGEMENT_API_TOKEN")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample34 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/network-acls")
+  .header("content-type", "application/json")
+  .header("authorization", "Bearer MANAGEMENT_API_TOKEN")
+  .body("{\n  \"description\": \"Creating a new access control list\",\n  \"active\": false,\n  \"priority\": 1,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": { \"geo_country_codes\": [ \"GEO_COUNTRY_CODE\"] },\n    \"not_match\": { \"geo_subdivision_codes\": [ \"GEO_SUBDIVISION_CODE\" ] },\n    \"scope\": \"authentication\"\n  }\n}")
+  .asString();`;
+export const codeExample35 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/api/v2/network-acls',
+  headers: {
+    'content-type': 'application/json',
+    authorization: 'Bearer MANAGEMENT_API_TOKEN'
+  },
+  data: {
+    description: 'Creating a new access control list',
+    active: false,
+    priority: 1,
+    rule: {
+      action: {block: true},
+      match: {geo_country_codes: ['GEO_COUNTRY_CODE']},
+      not_match: {geo_subdivision_codes: ['GEO_SUBDIVISION_CODE']},
+      scope: 'authentication'
+    }
+  }
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample36 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json",
+                           @"authorization": @"Bearer MANAGEMENT_API_TOKEN" };
+NSDictionary *parameters = @{ @"description": @"Creating a new access control list",
+                              @"active": @NO,
+                              @"priority": @1,
+                              @"rule": @{ @"action": @{ @"block": @YES }, @"match": @{ @"geo_country_codes": @[ @"GEO_COUNTRY_CODE" ] }, @"not_match": @{ @"geo_subdivision_codes": @[ @"GEO_SUBDIVISION_CODE" ] }, @"scope": @"authentication" } };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/network-acls"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample37 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/api/v2/network-acls",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\n  \"description\": \"Creating a new access control list\",\n  \"active\": false,\n  \"priority\": 1,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": { \"geo_country_codes\": [ \"GEO_COUNTRY_CODE\"] },\n    \"not_match\": { \"geo_subdivision_codes\": [ \"GEO_SUBDIVISION_CODE\" ] },\n    \"scope\": \"authentication\"\n  }\n}",
+  CURLOPT_HTTPHEADER => [
+    "authorization: Bearer MANAGEMENT_API_TOKEN",
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample38 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\n  \"description\": \"Creating a new access control list\",\n  \"active\": false,\n  \"priority\": 1,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": { \"geo_country_codes\": [ \"GEO_COUNTRY_CODE\"] },\n    \"not_match\": { \"geo_subdivision_codes\": [ \"GEO_SUBDIVISION_CODE\" ] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+headers = {
+    'content-type': "application/json",
+    'authorization': "Bearer MANAGEMENT_API_TOKEN"
+    }
+
+conn.request("POST", "/{yourDomain}/api/v2/network-acls", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample39 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/api/v2/network-acls")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer MANAGEMENT_API_TOKEN'
+request.body = "{\n  \"description\": \"Creating a new access control list\",\n  \"active\": false,\n  \"priority\": 1,\n  \"rule\": {\n    \"action\": { \"block\": true },\n    \"match\": { \"geo_country_codes\": [ \"GEO_COUNTRY_CODE\"] },\n    \"not_match\": { \"geo_subdivision_codes\": [ \"GEO_SUBDIVISION_CODE\" ] },\n    \"scope\": \"authentication\"\n  }\n}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample40 = `import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer MANAGEMENT_API_TOKEN"
+]
+let parameters = [
+  "description": "Creating a new access control list",
+  "active": false,
+  "priority": 1,
+  "rule": [
+    "action": ["block": true],
+    "match": ["geo_country_codes": ["GEO_COUNTRY_CODE"]],
+    "not_match": ["geo_subdivision_codes": ["GEO_SUBDIVISION_CODE"]],
+    "scope": "authentication"
+  ]
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/network-acls")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample31} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample32} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample33} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample34} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample35} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample36} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample37} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample38} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample39} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample40} language="swift" filename="Swift" />
+</CodeGroup>

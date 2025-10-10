@@ -9,7 +9,12 @@ export const DocsBanner = () => {
         </p>
 
         <div className="flex justify-center mt-5">
-          <img noZoom src="/images/home/home-banner.svg" alt="Auth0 Docs Banner" className="rounded-xl shadow-md" />
+          <img
+            noZoom
+            src="/docs/images/home/home-banner.svg"
+            alt="Auth0 Docs Banner"
+            className="rounded-xl shadow-md"
+          />
         </div>
       </div>
     </div>
@@ -21,19 +26,19 @@ export const DocsFeatureCards = () => {
     {
       title: "Documentation",
       link: "/docs/get-started",
-      icon: "/images/home/icon1.svg",
+      icon: "/docs/images/home/icon1.svg",
       external: true,
     },
     {
       title: "API References",
       link: "https://auth0.com/docs/api",
-      icon: "/images/home/icon2.svg",
+      icon: "/docs/images/home/icon2.svg",
       external: false,
     },
     {
       title: "SDKs",
       link: "/docs/libraries",
-      icon: "/images/home/icon3.svg",
+      icon: "/docs/images/home/icon3.svg",
       external: false,
     },
   ];
@@ -84,52 +89,52 @@ export const DocsFeatureCards = () => {
 export const LanguageGrid = () => {
   const languages = [
     {
-      img: "/images/home/react-light.svg",
-      imgDark: "/images/home/react-dark.svg",
+      img: "/docs/images/home/react-light.svg",
+      imgDark: "/docs/images/home/react-dark.svg",
       label: "React",
-      href: "/quickstart/spa/react",
+      href: "/docs/quickstart/spa/react",
     },
     {
-      img: "/images/home/nextjs-light.svg",
-      imgDark: "/images/home/nextjs-dark.svg",
+      img: "/docs/images/home/nextjs-light.svg",
+      imgDark: "/docs/images/home/nextjs-dark.svg",
       label: "Next.js",
-      href: "/quickstart/webapp/nextjs",
+      href: "/docs/quickstart/webapp/nextjs",
     },
     {
-      img: "/images/home/angular-light.svg",
-      imgDark: "/images/home/angular-dark.svg",
+      img: "/docs/images/home/angular-light.svg",
+      imgDark: "/docs/images/home/angular-dark.svg",
       label: "Angular",
-      href: "/quickstart/spa/angular",
+      href: "/docs/quickstart/spa/angular",
     },
     {
-      img: "/images/home/ios-light.svg",
-      imgDark: "/images/home/ios-dark.svg",
+      img: "/docs/images/home/ios-light.svg",
+      imgDark: "/docs/images/home/ios-dark.svg",
       label: "iOS",
-      href: "/quickstart/native/ios-swift",
+      href: "/docs/quickstart/native/ios-swift",
     },
     {
-      img: "/images/home/android-light.svg",
-      imgDark: "/images/home/android-dark.svg",
+      img: "/docs/images/home/android-light.svg",
+      imgDark: "/docs/images/home/android-dark.svg",
       label: "Android",
-      href: "/quickstart/native/android",
+      href: "/docs/quickstart/native/android",
     },
     {
-      img: "/images/home/dotnet-light.svg",
-      imgDark: "/images/home/dotnet-dark.svg",
+      img: "/docs/images/home/dotnet-light.svg",
+      imgDark: "/docs/images/home/dotnet-dark.svg",
       label: ".NET",
-      href: "/quickstart/backend/aspnet-core-webapi/interactive",
+      href: "/docs/quickstart/backend/aspnet-core-webapi/interactive",
     },
     {
-      img: "/images/home/java-light.svg",
-      imgDark: "/images/home/java-dark.svg",
+      img: "/docs/images/home/java-light.svg",
+      imgDark: "/docs/images/home/java-dark.svg",
       label: "Java",
-      href: "/quickstart/backend/java-spring-security5/interactive",
+      href: "/docs/quickstart/backend/java-spring-security5/interactive",
     },
     {
-      img: "/images/home/django-light.svg",
-      imgDark: "/images/home/django-dark.svg",
+      img: "/docs/images/home/django-light.svg",
+      imgDark: "/docs/images/home/django-dark.svg",
       label: "Django",
-      href: "/quickstart/backend/django/interactive",
+      href: "/docs/quickstart/backend/django/interactive",
     },
   ];
 
@@ -249,13 +254,13 @@ export const LearnBasicsGrid = () => {
               <div className="h-full w-full rounded-[18px] overflow-hidden border border-black/5 dark:border-white/5">
                 {/* GRID image (light) */}
                 <img
-                  src="/images/home/LearnBasics_Light.svg"
+                  src="/docs/images/home/LearnBasics_Light.svg"
                   alt=""
                   className="h-full w-full object-cover block dark:hidden"
                 />
                 {/* GRID image (dark) */}
                 <img
-                  src="/images/home/LearnBasics_Dark.svg"
+                  src="/docs/images/home/LearnBasics_Dark.svg"
                   alt=""
                   className="h-full w-full object-cover hidden dark:block"
                 />

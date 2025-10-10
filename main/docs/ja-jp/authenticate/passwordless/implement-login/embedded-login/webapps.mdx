@@ -1,0 +1,1016 @@
+---
+title: "通常のWebアプリケーションの埋め込み型パスワードレスログイン"
+permalink: "webapps"
+'description': "通常のアプリケーションに埋め込み型ログインのパスワードレス認証を実装する方法について説明します。"
+'og:title': "通常のWebアプリケーションの埋め込み型パスワードレスログイン"
+'og:description': "通常のアプリケーションに埋め込み型ログインのパスワードレス認証を実装する方法について説明します。"
+'og:image': "https://cdn2.auth0.com/docs/1.14567.0/img/share-image.png"
+'twitter:title': "通常のWebアプリケーションの埋め込み型パスワードレスログイン"
+'twitter:description': "通常のアプリケーションに埋め込み型ログインのパスワードレス認証を実装する方法について説明します。"
+---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
+
+通常のWebアプリケーションで埋め込み型パスワードレスAPIを使用するには、[［Auth0 Dashboard］>［Applications（アプリケーション）］>［Applications（アプリケーション）］](https://manage.auth0.com/#/applications)に移動して、アプリケーション設定の **［Advanced Settings（高度な設定］** > **［Grant Types（付与タイプ）］** で **［<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=passwordless" tip="パスワードレス: 最初の要素としてパスワードに依存しない認証の形式。" cta="用語集の表示">Passwordless</Tooltip> OTP（パスワードレスOTP）］** の付与を有効にしなければなりません。
+
+通常のWebアプリケーションのパスワードレス認証は、2つのステップで構成されています。
+
+1. アプリケーションでユーザーIDを取得し（ユーザーのメールまたは電話番号）、 `/passwordless/start`エンドポイントを呼び出し、パスワードレスフローを開始します。ユーザーは、1回限り使用できるコードまたはマジックリンクが記載されたメール、SMSを受け取ります。
+2. マジックリンクを送信しなかった場合は、１回限り使用できるコードの使用をユーザーに促し、認証トークンを取得するために`/oauth/token`エンドポイントを呼び出します。
+
+マジックリンクを使用する場合は、`/oauth/token`を呼び出す必要がないことに注意してください。ユーザーは、マジックリンクをクリックすると、アプリケーションのコールバックURLにリダイレクトされます。
+
+以下に、様々なシナリオに対して、これらのAPIエンドポイントを呼び出すために使用できるコードスニペットをいくつか挙げます。バックエンド技術用のAuth0 SDK（たとえば、Java、.NET、Ruby、PHP、Python、 Node JS）は、これらのエンドポイントに対応するように更新されていないため、直接呼び出す必要があります。
+
+**メールで一回限り使用できるコードを送信する**
+
+export const codeExample1 = `curl --request POST \
+  --url 'https://{yourDomain}/passwordless/start' \
+  --header 'content-type: application/json' \
+  --data '{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "code"}'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/passwordless/start");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"code\"}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/passwordless/start"
+
+	payload := strings.NewReader("{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"code\"}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
+  .header("content-type", "application/json")
+  .body("{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"code\"}")
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/passwordless/start',
+  headers: {'content-type': 'application/json'},
+  data: {
+    client_id: '{yourClientId}',
+    client_secret: '{yourClientSecret}',
+    connection: 'email',
+    email: '{userEmail}',
+    send: 'code'
+  }
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json" };
+NSDictionary *parameters = @{ @"client_id": @"{yourClientId}",
+                              @"client_secret": @"{yourClientSecret}",
+                              @"connection": @"email",
+                              @"email": @"{userEmail}",
+                              @"send": @"code" };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/passwordless/start"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/passwordless/start",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"code\"}",
+  CURLOPT_HTTPHEADER => [
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample8 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"code\"}"
+
+headers = { 'content-type': "application/json" }
+
+conn.request("POST", "/{yourDomain}/passwordless/start", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/passwordless/start")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request.body = "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"code\"}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample10 = `import Foundation
+
+let headers = ["content-type": "application/json"]
+let parameters = [
+  "client_id": "{yourClientId}",
+  "client_secret": "{yourClientSecret}",
+  "connection": "email",
+  "email": "{userEmail}",
+  "send": "code"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/passwordless/start")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
+</CodeGroup>
+
+**メールでマジックリンクを送信する**
+
+`send: link`を指定する必要があります。
+
+export const codeExample11 = `curl --request POST \
+  --url 'https://{yourDomain}/passwordless/start' \
+  --header 'content-type: application/json' \
+  --data '{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "link"}'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/passwordless/start");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"link\"}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/passwordless/start"
+
+	payload := strings.NewReader("{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"link\"}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
+  .header("content-type", "application/json")
+  .body("{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"link\"}")
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/passwordless/start',
+  headers: {'content-type': 'application/json'},
+  data: {
+    client_id: '{yourClientId}',
+    client_secret: '{yourClientSecret}',
+    connection: 'email',
+    email: '{userEmail}',
+    send: 'link'
+  }
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json" };
+NSDictionary *parameters = @{ @"client_id": @"{yourClientId}",
+                              @"client_secret": @"{yourClientSecret}",
+                              @"connection": @"email",
+                              @"email": @"{userEmail}",
+                              @"send": @"link" };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/passwordless/start"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/passwordless/start",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"link\"}",
+  CURLOPT_HTTPHEADER => [
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample18 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"link\"}"
+
+headers = { 'content-type': "application/json" }
+
+conn.request("POST", "/{yourDomain}/passwordless/start", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/passwordless/start")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request.body = "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"email\", \"email\": \"{userEmail}\",\"send\": \"link\"}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample20 = `import Foundation
+
+let headers = ["content-type": "application/json"]
+let parameters = [
+  "client_id": "{yourClientId}",
+  "client_secret": "{yourClientSecret}",
+  "connection": "email",
+  "email": "{userEmail}",
+  "send": "link"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/passwordless/start")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
+</CodeGroup>
+
+**SMSで一回限り使用できるパスワードを送信する**
+
+export const codeExample21 = `curl --request POST \
+  --url 'https://{yourDomain}/passwordless/start' \
+  --header 'content-type: application/json' \
+  --data '{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "sms", "phone_number": "{userPhoneNumber}","send": "code"}'`;
+export const codeExample22 = `var client = new RestClient("https://{yourDomain}/passwordless/start");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"sms\", \"phone_number\": \"{userPhoneNumber}\",\"send\": \"code\"}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample23 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/passwordless/start"
+
+	payload := strings.NewReader("{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"sms\", \"phone_number\": \"{userPhoneNumber}\",\"send\": \"code\"}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample24 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
+  .header("content-type", "application/json")
+  .body("{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"sms\", \"phone_number\": \"{userPhoneNumber}\",\"send\": \"code\"}")
+  .asString();`;
+export const codeExample25 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/passwordless/start',
+  headers: {'content-type': 'application/json'},
+  data: {
+    client_id: '{yourClientId}',
+    client_secret: '{yourClientSecret}',
+    connection: 'sms',
+    phone_number: '{userPhoneNumber}',
+    send: 'code'
+  }
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample26 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json" };
+NSDictionary *parameters = @{ @"client_id": @"{yourClientId}",
+                              @"client_secret": @"{yourClientSecret}",
+                              @"connection": @"sms",
+                              @"phone_number": @"{userPhoneNumber}",
+                              @"send": @"code" };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/passwordless/start"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample27 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/passwordless/start",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"sms\", \"phone_number\": \"{userPhoneNumber}\",\"send\": \"code\"}",
+  CURLOPT_HTTPHEADER => [
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample28 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"sms\", \"phone_number\": \"{userPhoneNumber}\",\"send\": \"code\"}"
+
+headers = { 'content-type': "application/json" }
+
+conn.request("POST", "/{yourDomain}/passwordless/start", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample29 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/passwordless/start")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request.body = "{\"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"connection\": \"sms\", \"phone_number\": \"{userPhoneNumber}\",\"send\": \"code\"}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample30 = `import Foundation
+
+let headers = ["content-type": "application/json"]
+let parameters = [
+  "client_id": "{yourClientId}",
+  "client_secret": "{yourClientSecret}",
+  "connection": "sms",
+  "phone_number": "{userPhoneNumber}",
+  "send": "code"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/passwordless/start")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample21} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample22} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample23} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample24} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample25} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample26} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample27} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample28} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample29} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample30} language="swift" filename="Swift" />
+</CodeGroup>
+
+**SMSユーザーを認証する**
+
+export const codeExample31 = `curl --request POST \
+  --url 'https://{yourDomain}/oauth/token' \
+  --header 'content-type: application/json' \
+  --data '{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "YOUR_CLIENT_SECRET", "username": "USER_PHONE_NUMBER", "otp": "code", "realm": "sms", "audience": "your-api-audience","scope": "openid profile email"}'`;
+export const codeExample32 = `var client = new RestClient("https://{yourDomain}/oauth/token");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"YOUR_CLIENT_SECRET\", \"username\": \"USER_PHONE_NUMBER\", \"otp\": \"code\", \"realm\": \"sms\", \"audience\": \"your-api-audience\",\"scope\": \"openid profile email\"}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample33 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/oauth/token"
+
+	payload := strings.NewReader("{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"YOUR_CLIENT_SECRET\", \"username\": \"USER_PHONE_NUMBER\", \"otp\": \"code\", \"realm\": \"sms\", \"audience\": \"your-api-audience\",\"scope\": \"openid profile email\"}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample34 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+  .header("content-type", "application/json")
+  .body("{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"YOUR_CLIENT_SECRET\", \"username\": \"USER_PHONE_NUMBER\", \"otp\": \"code\", \"realm\": \"sms\", \"audience\": \"your-api-audience\",\"scope\": \"openid profile email\"}")
+  .asString();`;
+export const codeExample35 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/oauth/token',
+  headers: {'content-type': 'application/json'},
+  data: {
+    grant_type: 'http://auth0.com/oauth/grant-type/passwordless/otp',
+    client_id: '{yourClientId}',
+    client_secret: 'YOUR_CLIENT_SECRET',
+    username: 'USER_PHONE_NUMBER',
+    otp: 'code',
+    realm: 'sms',
+    audience: 'your-api-audience',
+    scope: 'openid profile email'
+  }
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample36 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json" };
+NSDictionary *parameters = @{ @"grant_type": @"http://auth0.com/oauth/grant-type/passwordless/otp",
+                              @"client_id": @"{yourClientId}",
+                              @"client_secret": @"YOUR_CLIENT_SECRET",
+                              @"username": @"USER_PHONE_NUMBER",
+                              @"otp": @"code",
+                              @"realm": @"sms",
+                              @"audience": @"your-api-audience",
+                              @"scope": @"openid profile email" };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/oauth/token"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample37 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/oauth/token",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"YOUR_CLIENT_SECRET\", \"username\": \"USER_PHONE_NUMBER\", \"otp\": \"code\", \"realm\": \"sms\", \"audience\": \"your-api-audience\",\"scope\": \"openid profile email\"}",
+  CURLOPT_HTTPHEADER => [
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample38 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"YOUR_CLIENT_SECRET\", \"username\": \"USER_PHONE_NUMBER\", \"otp\": \"code\", \"realm\": \"sms\", \"audience\": \"your-api-audience\",\"scope\": \"openid profile email\"}"
+
+headers = { 'content-type': "application/json" }
+
+conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample39 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/oauth/token")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request.body = "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"YOUR_CLIENT_SECRET\", \"username\": \"USER_PHONE_NUMBER\", \"otp\": \"code\", \"realm\": \"sms\", \"audience\": \"your-api-audience\",\"scope\": \"openid profile email\"}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample40 = `import Foundation
+
+let headers = ["content-type": "application/json"]
+let parameters = [
+  "grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp",
+  "client_id": "{yourClientId}",
+  "client_secret": "YOUR_CLIENT_SECRET",
+  "username": "USER_PHONE_NUMBER",
+  "otp": "code",
+  "realm": "sms",
+  "audience": "your-api-audience",
+  "scope": "openid profile email"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/oauth/token")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample31} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample32} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample33} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample34} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample35} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample36} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample37} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample38} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample39} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample40} language="swift" filename="Swift" />
+</CodeGroup>
+
+**メールユーザーを認証する**
+
+export const codeExample41 = `curl --request POST \
+  --url 'https://{yourDomain}/oauth/token' \
+  --header 'content-type: application/json' \
+  --data '{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "username": "{userPhoneNumber}", "otp": "code", "realm": "email", "audience": "your-api-audience", "scope": "openid profile email"}'`;
+export const codeExample42 = `var client = new RestClient("https://{yourDomain}/oauth/token");
+var request = new RestRequest(Method.POST);
+request.AddHeader("content-type", "application/json");
+request.AddParameter("application/json", "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"username\": \"{userPhoneNumber}\", \"otp\": \"code\", \"realm\": \"email\", \"audience\": \"your-api-audience\", \"scope\": \"openid profile email\"}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample43 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/oauth/token"
+
+	payload := strings.NewReader("{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"username\": \"{userPhoneNumber}\", \"otp\": \"code\", \"realm\": \"email\", \"audience\": \"your-api-audience\", \"scope\": \"openid profile email\"}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample44 = `HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
+  .header("content-type", "application/json")
+  .body("{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"username\": \"{userPhoneNumber}\", \"otp\": \"code\", \"realm\": \"email\", \"audience\": \"your-api-audience\", \"scope\": \"openid profile email\"}")
+  .asString();`;
+export const codeExample45 = `var axios = require("axios").default;
+
+var options = {
+  method: 'POST',
+  url: 'https://{yourDomain}/oauth/token',
+  headers: {'content-type': 'application/json'},
+  data: {
+    grant_type: 'http://auth0.com/oauth/grant-type/passwordless/otp',
+    client_id: '{yourClientId}',
+    client_secret: '{yourClientSecret}',
+    username: '{userPhoneNumber}',
+    otp: 'code',
+    realm: 'email',
+    audience: 'your-api-audience',
+    scope: 'openid profile email'
+  }
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample46 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json" };
+NSDictionary *parameters = @{ @"grant_type": @"http://auth0.com/oauth/grant-type/passwordless/otp",
+                              @"client_id": @"{yourClientId}",
+                              @"client_secret": @"{yourClientSecret}",
+                              @"username": @"{userPhoneNumber}",
+                              @"otp": @"code",
+                              @"realm": @"email",
+                              @"audience": @"your-api-audience",
+                              @"scope": @"openid profile email" };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/oauth/token"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"POST"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample47 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/oauth/token",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"username\": \"{userPhoneNumber}\", \"otp\": \"code\", \"realm\": \"email\", \"audience\": \"your-api-audience\", \"scope\": \"openid profile email\"}",
+  CURLOPT_HTTPHEADER => [
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample48 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"username\": \"{userPhoneNumber}\", \"otp\": \"code\", \"realm\": \"email\", \"audience\": \"your-api-audience\", \"scope\": \"openid profile email\"}"
+
+headers = { 'content-type': "application/json" }
+
+conn.request("POST", "/{yourDomain}/oauth/token", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample49 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/oauth/token")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Post.new(url)
+request["content-type"] = 'application/json'
+request.body = "{\"grant_type\": \"http://auth0.com/oauth/grant-type/passwordless/otp\", \"client_id\": \"{yourClientId}\", \"client_secret\": \"{yourClientSecret}\", \"username\": \"{userPhoneNumber}\", \"otp\": \"code\", \"realm\": \"email\", \"audience\": \"your-api-audience\", \"scope\": \"openid profile email\"}"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample50 = `import Foundation
+
+let headers = ["content-type": "application/json"]
+let parameters = [
+  "grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp",
+  "client_id": "{yourClientId}",
+  "client_secret": "{yourClientSecret}",
+  "username": "{userPhoneNumber}",
+  "otp": "code",
+  "realm": "email",
+  "audience": "your-api-audience",
+  "scope": "openid profile email"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/oauth/token")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample41} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample42} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample43} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample44} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample45} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample46} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample47} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample48} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample49} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample50} language="swift" filename="Swift" />
+</CodeGroup>
+
+**マジックリンクを通してユーザーを認証する**
+
+マジックリンクを送信する場合、ユーザーを認証するためにAPIを呼び出す必要はありません。ユーザーはリンクをクリックすると、コールバックURLにリダイレクトされます。
+
+## レート制限目的でauth0-forwarded-forヘッダーを設定する
+
+`/passwordless/start`エンドポイントは、IPごとに一時間に50要求の[レート制限](/docs/ja-jp/troubleshoot/customer-support/operational-policies/rate-limit-policy)があります。サーバー側からAPIを呼び出す場合、バックエンドのIPがこのレート制限にすぐに達する可能性があります。この問題の対処方法については、「[パスワードレスAPIの使用](/docs/ja-jp/authenticate/passwordless/implement-login/embedded-login/relevant-api-endpoints)」のパスワードレスエンドポイントのレート制限のセクションをご覧ください。

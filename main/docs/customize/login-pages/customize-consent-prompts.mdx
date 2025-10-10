@@ -1,0 +1,446 @@
+---
+description: Describes how to customize the consent prompt presented to users
+  during authorization.
+'og:image': https://cdn2.auth0.com/docs/1.14553.0/img/share-image.png
+'og:title': Customize Consent Prompts
+'og:url': https://auth0.com/docs/
+permalink: customize-consent-prompts
+title: Customize Consent Prompts
+'twitter:description': Describes how to customize the consent prompt presented to
+  users during authorization.
+'twitter:title': Customize Consent Prompts
+---
+import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
+
+When a third-party application requests scopes, users see a consent prompt. By default, this prompt uses the scope **name** to generate text and groups all scopes for a resource, displaying the resource's actions in a single line.
+
+If you require a specialized consent prompt, for example, parental consent, you need to build your own custom consent form. Be aware that laws vary according to country.
+
+For example, let's say you have an Auth0-registered API with the following defined scopes:
+
+* `read:messages`: Be able to read your email messages
+* `write:messages`: Write messages
+
+The consent prompt will display **Messages: read and write your messages**.
+
+Instead, you can use your defined scope **description** to generate this text. In this case, the consent dialog would display: **Be able to read your email messages**, **Write messages**.
+
+This change is made at the tenant level, so it will affect consent prompts for all APIs on the tenant.
+
+## Use scope descriptions to generate consent prompt text
+
+Set your tenant's **use_scope_descriptions_for_consent** flag to `true` by making the following API call:
+
+export const codeExample1 = `curl --request PATCH \
+  --url 'https://{yourDomain}/api/v2/tenants/settings' \
+  --header 'authorization: Bearer API_ACCESS_TOKEN' \
+  --header 'cache-control: no-cache' \
+  --header 'content-type: application/json' \
+  --data '{ "flags": { "use_scope_descriptions_for_consent": true } }'`;
+export const codeExample2 = `var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
+var request = new RestRequest(Method.PATCH);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer API_ACCESS_TOKEN");
+request.AddHeader("cache-control", "no-cache");
+request.AddParameter("application/json", "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample3 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/api/v2/tenants/settings"
+
+	payload := strings.NewReader("{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }")
+
+	req, _ := http.NewRequest("PATCH", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer API_ACCESS_TOKEN")
+	req.Header.Add("cache-control", "no-cache")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample4 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
+  .header("content-type", "application/json")
+  .header("authorization", "Bearer API_ACCESS_TOKEN")
+  .header("cache-control", "no-cache")
+  .body("{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }")
+  .asString();`;
+export const codeExample5 = `var axios = require("axios").default;
+
+var options = {
+  method: 'PATCH',
+  url: 'https://{yourDomain}/api/v2/tenants/settings',
+  headers: {
+    'content-type': 'application/json',
+    authorization: 'Bearer API_ACCESS_TOKEN',
+    'cache-control': 'no-cache'
+  },
+  data: {flags: {use_scope_descriptions_for_consent: true}}
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample6 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json",
+                           @"authorization": @"Bearer API_ACCESS_TOKEN",
+                           @"cache-control": @"no-cache" };
+NSDictionary *parameters = @{ @"flags": @{ @"use_scope_descriptions_for_consent": @YES } };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/tenants/settings"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"PATCH"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample7 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/api/v2/tenants/settings",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "PATCH",
+  CURLOPT_POSTFIELDS => "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }",
+  CURLOPT_HTTPHEADER => [
+    "authorization: Bearer API_ACCESS_TOKEN",
+    "cache-control: no-cache",
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample8 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }"
+
+headers = {
+    'content-type': "application/json",
+    'authorization': "Bearer API_ACCESS_TOKEN",
+    'cache-control': "no-cache"
+    }
+
+conn.request("PATCH", "/{yourDomain}/api/v2/tenants/settings", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample9 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/api/v2/tenants/settings")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Patch.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer API_ACCESS_TOKEN'
+request["cache-control"] = 'no-cache'
+request.body = "{ \"flags\": { \"use_scope_descriptions_for_consent\": true } }"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample10 = `import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer API_ACCESS_TOKEN",
+  "cache-control": "no-cache"
+]
+let parameters = ["flags": ["use_scope_descriptions_for_consent": true]] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/tenants/settings")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "PATCH"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample1} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample2} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample3} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample4} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample5} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample6} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample7} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample8} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample9} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample10} language="swift" filename="Swift" />
+</CodeGroup>
+
+## Use scope names to generate consent prompt text
+
+Set your tenant's **use_scope_descriptions_for_consent** flag to `false` by making the following API call:
+
+export const codeExample11 = `curl --request PATCH \
+  --url 'https://{yourDomain}/api/v2/tenants/settings' \
+  --header 'authorization: Bearer API_ACCESS_TOKEN' \
+  --header 'cache-control: no-cache' \
+  --header 'content-type: application/json' \
+  --data '{ "flags": { "use_scope_descriptions_for_consent": false } }'`;
+export const codeExample12 = `var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
+var request = new RestRequest(Method.PATCH);
+request.AddHeader("content-type", "application/json");
+request.AddHeader("authorization", "Bearer API_ACCESS_TOKEN");
+request.AddHeader("cache-control", "no-cache");
+request.AddParameter("application/json", "{ \"flags\": { \"use_scope_descriptions_for_consent\": false } }", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);`;
+export const codeExample13 = `package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io/ioutil"
+)
+
+func main() {
+
+	url := "https://{yourDomain}/api/v2/tenants/settings"
+
+	payload := strings.NewReader("{ \"flags\": { \"use_scope_descriptions_for_consent\": false } }")
+
+	req, _ := http.NewRequest("PATCH", url, payload)
+
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer API_ACCESS_TOKEN")
+	req.Header.Add("cache-control", "no-cache")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}`;
+export const codeExample14 = `HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
+  .header("content-type", "application/json")
+  .header("authorization", "Bearer API_ACCESS_TOKEN")
+  .header("cache-control", "no-cache")
+  .body("{ \"flags\": { \"use_scope_descriptions_for_consent\": false } }")
+  .asString();`;
+export const codeExample15 = `var axios = require("axios").default;
+
+var options = {
+  method: 'PATCH',
+  url: 'https://{yourDomain}/api/v2/tenants/settings',
+  headers: {
+    'content-type': 'application/json',
+    authorization: 'Bearer API_ACCESS_TOKEN',
+    'cache-control': 'no-cache'
+  },
+  data: {flags: {use_scope_descriptions_for_consent: false}}
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});`;
+export const codeExample16 = `#import <Foundation/Foundation.h>
+
+NSDictionary *headers = @{ @"content-type": @"application/json",
+                           @"authorization": @"Bearer API_ACCESS_TOKEN",
+                           @"cache-control": @"no-cache" };
+NSDictionary *parameters = @{ @"flags": @{ @"use_scope_descriptions_for_consent": @NO } };
+
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/tenants/settings"]
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                   timeoutInterval:10.0];
+[request setHTTPMethod:@"PATCH"];
+[request setAllHTTPHeaderFields:headers];
+[request setHTTPBody:postData];
+
+NSURLSession *session = [NSURLSession sharedSession];
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"%@", error);
+                                                } else {
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                    NSLog(@"%@", httpResponse);
+                                                }
+                                            }];
+[dataTask resume];`;
+export const codeExample17 = `$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://{yourDomain}/api/v2/tenants/settings",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "PATCH",
+  CURLOPT_POSTFIELDS => "{ \"flags\": { \"use_scope_descriptions_for_consent\": false } }",
+  CURLOPT_HTTPHEADER => [
+    "authorization: Bearer API_ACCESS_TOKEN",
+    "cache-control: no-cache",
+    "content-type: application/json"
+  ],
+]);
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}`;
+export const codeExample18 = `import http.client
+
+conn = http.client.HTTPSConnection("")
+
+payload = "{ \"flags\": { \"use_scope_descriptions_for_consent\": false } }"
+
+headers = {
+    'content-type': "application/json",
+    'authorization': "Bearer API_ACCESS_TOKEN",
+    'cache-control': "no-cache"
+    }
+
+conn.request("PATCH", "/{yourDomain}/api/v2/tenants/settings", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))`;
+export const codeExample19 = `require 'uri'
+require 'net/http'
+require 'openssl'
+
+url = URI("https://{yourDomain}/api/v2/tenants/settings")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Patch.new(url)
+request["content-type"] = 'application/json'
+request["authorization"] = 'Bearer API_ACCESS_TOKEN'
+request["cache-control"] = 'no-cache'
+request.body = "{ \"flags\": { \"use_scope_descriptions_for_consent\": false } }"
+
+response = http.request(request)
+puts response.read_body`;
+export const codeExample20 = `import Foundation
+
+let headers = [
+  "content-type": "application/json",
+  "authorization": "Bearer API_ACCESS_TOKEN",
+  "cache-control": "no-cache"
+]
+let parameters = ["flags": ["use_scope_descriptions_for_consent": false]] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/tenants/settings")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "PATCH"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()`;
+
+<CodeGroup>
+<AuthCodeBlock children={codeExample11} language="bash" filename="cURL" />
+<AuthCodeBlock children={codeExample12} language="csharp" filename="C#" />
+<AuthCodeBlock children={codeExample13} language="go" filename="Go" />
+<AuthCodeBlock children={codeExample14} language="java" filename="Java" />
+<AuthCodeBlock children={codeExample15} language="javascript" filename="Node.JS" />
+<AuthCodeBlock children={codeExample16} language="obj-c" filename="Obj-C" />
+<AuthCodeBlock children={codeExample17} language="php" filename="PHP" />
+<AuthCodeBlock children={codeExample18} language="python" filename="Python" />
+<AuthCodeBlock children={codeExample19} language="ruby" filename="Ruby" />
+<AuthCodeBlock children={codeExample20} language="swift" filename="Swift" />
+</CodeGroup>
+
+## Learn more
+
+* [Scopes](/docs/get-started/apis/scopes)
+* [Sample Use Cases: Scopes and Claims](/docs/get-started/apis/scopes/sample-use-cases-scopes-and-claims)
+* [OpenID Connect Scopes](/docs/get-started/apis/scopes/openid-connect-scopes)
+* [API Scopes](/docs/get-started/apis/scopes/api-scopes)
+* [Auth0 Security Bulletin for Assigning Scopes Based on Email Address](/docs/secure/security-guidance/security-bulletins/2019-09-05-scopes)
