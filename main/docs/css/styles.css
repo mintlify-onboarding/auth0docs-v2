@@ -145,11 +145,50 @@ ol ol {
   ) {
   border-bottom: 1px solid #fff;
 }
-.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *, [class~="card"], .quickstart_button)),
-.prose :where(a:hover):not(:where([class~="not-prose"], [class~="not-prose"] *, [class~="card"], .quickstart_button)),
+
+.prose
+  :where(a):not(
+    :where(
+        [class~="not-prose"],
+        [class~="not-prose"] *,
+        [class~="card"],
+        .quickstart_button,
+        h2 .absolute a,
+        h3 .absolute a,
+        h4 .absolute a,
+        h5 .absolute a,
+        h6 .absolute a
+      )
+  ),
+.prose
+  :where(a:hover):not(
+    :where(
+        [class~="not-prose"],
+        [class~="not-prose"] *,
+        [class~="card"],
+        .quickstart_button,
+        h2 .absolute a,
+        h3 .absolute a,
+        h4 .absolute a,
+        h5 .absolute a,
+        h6 .absolute a
+      )
+  ),
 .dark
   .prose
-  :where(a:hover):not(:where([class~="not-prose"], [class~="not-prose"] *, [class~="card"], .quickstart_button)) {
+  :where(a:hover):not(
+    :where(
+        [class~="not-prose"],
+        [class~="not-prose"] *,
+        [class~="card"],
+        .quickstart_button,
+        h2 .absolute a,
+        h3 .absolute a,
+        h4 .absolute a,
+        h5 .absolute a,
+        h6 .absolute a
+      )
+  ) {
   border-bottom-width: 2px;
 }
 
@@ -520,7 +559,7 @@ a[href^="http"]:not([href="https://auth0.com"]):hover::after
   margin-left: 4px;
   position: relative;
   top: 1px;
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236742d5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E<path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'></path><polyline points='15 3 21 3 21 9'></polyline><line x1='10' y1='14' x2='21' y2='3'></line></svg>");
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23373737' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E<path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'></path><polyline points='15 3 21 3 21 9'></polyline><line x1='10' y1='14' x2='21' y2='3'></line></svg>");
 }
 
 /* Dark mode */
@@ -550,19 +589,17 @@ a.card[href^="http"]::after {
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   color: #191919 !important;
 }
-.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *, .quickstart_button)):visited,
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *, .quickstart_button)):hover {
-  color: #252525 !important;
-  border-bottom-color: #252525;
+  color: #232220 !important;
+  border-bottom-color: #232220;
 }
 /* DARK LINKS COLOR */
 .dark .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   color: #efede9 !important;
 }
-.dark .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *, .quickstart_button)):visited,
 .dark .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *, .quickstart_button)):hover {
-  color: #99a7f1 !important;
-  border-bottom-color: #99a7f1;
+  color: #6742d5 !important;
+  border-bottom-color: #6742d5;
 }
 
 /* CALLOUT LINKS COLOR */
