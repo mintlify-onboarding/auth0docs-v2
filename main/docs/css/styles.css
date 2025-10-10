@@ -657,7 +657,7 @@ a.card[href^="http"]::after {
 }
 
 .dark .quickstart_button {
-  border: 1px solid #2c2c2c !important;
+  border: 1px solid #454545 !important;
 }
 
 .dark .quickstart_button:hover {
