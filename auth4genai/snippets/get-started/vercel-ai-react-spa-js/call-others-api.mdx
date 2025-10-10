@@ -1,5 +1,4 @@
 import { Prerequisites } from "/snippets/get-started/prerequisites/call-others-api.jsx";
-import { AccountAndAppSteps } from "/snippets/get-started/prerequisites/account-app-steps.jsx";
 
 <Prerequisites
   createAuth0ApplicationStep={{
@@ -7,9 +6,8 @@ import { AccountAndAppSteps } from "/snippets/get-started/prerequisites/account-
     callbackUrl: "http://localhost:5173/auth/callback",
     logoutUrl: "http://localhost:5173",
     allowedWebOrigins: "http://localhost:5173",
-  }}
-  refreshTokenGrantStep={{
-    applicationName: "Single Page Web Application",
+    enableTokenVaultGrant: true,
+    enableRefreshTokenGrant: true,
   }}
   createAuth0ApiStep={{}}
   createResourceServerClientStep={{}}

@@ -1,7 +1,10 @@
 import { Prerequisites } from "/snippets/get-started/prerequisites/call-others-api.jsx";
-import { AccountAndAppSteps } from "/snippets/get-started/prerequisites/account-app-steps.jsx";
 
-<Prerequisites />
+<Prerequisites 
+  createAuth0ApplicationStep={{
+    enableTokenVaultGrant: true,
+  }}
+/>
 
 <Tabs>
   <Tab
