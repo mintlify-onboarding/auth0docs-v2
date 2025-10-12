@@ -1,5 +1,4 @@
 import { type MouseEventHandler, useEffect, useRef } from 'react';
-import { Button } from './button';
 import { DisplayText } from './display-text';
 
 interface OptOutBannerProps {
@@ -59,20 +58,25 @@ function OptOutBanner({ onOptOut }: OptOutBannerProps) {
   return (
     <div
       ref={bannerRef}
-      className="adu:top-banner adu:bg-[#232220] adu:fixed adu:top-0 adu:left-0 adu:right-0 adu:z-[9999] adu:p-2"
+      className="adu:top-banner adu:flex adu:gap-1 adu:items-center adu:flex-wrap adu:justify-center adu:text-center adu:bg-[#232220] adu:fixed adu:top-0 adu:left-0 adu:right-0 adu:z-[9999] adu:p-2.5"
     >
       <DisplayText
         asChild
         variant="link-sm-bold"
-        className="adu:banner-text adu:text-[#f4f4f4] adu:text-center adu:flex adu:flex-wrap adu:items-center adu:justify-center adu:gap-2"
+        className="adu:banner-text adu:text-[#f4f4f4]"
       >
         <p>
           🚀 We've rolled out a new docs experience - faster, cleaner, and a
           better developer experience.
-          <Button variant="secondary" onClick={onOptOut}>
-            Switch to old version
-          </Button>
         </p>
+      </DisplayText>
+      <DisplayText
+        asChild
+        variant="link-sm-bold"
+        className="adu:underline adu:text-[#f4f4f4] adu:underline-offset-auto"
+        style={{ textUnderlinePosition: 'from-font' }}
+      >
+        <button onClick={onOptOut}>Switch to old version</button>
       </DisplayText>
     </div>
   );
