@@ -77,13 +77,13 @@ function ProfileMenuTrigger({
   return (
     <DropdownMenuTrigger
       className={cn(
-        'adu:flex adu:w-8 adu:items-center adu:gap-2 adu:lg:w-auto adu:focus-visible:outline-hidden',
+        'adu:flex adu:w-8 adu:items-center adu:gap-2 adu:focus-visible:outline-hidden adu:lg:w-auto',
         className,
       )}
     >
       <ContentText
         variant="button"
-        className="adu:text-foreground-bold adu:hidden adu:lg:block"
+        className="adu:hidden adu:text-foreground-bold adu:lg:block"
         asChild
       >
         <span>{selectedTenant.name}</span>
@@ -94,7 +94,7 @@ function ProfileMenuTrigger({
       </Avatar>
       <SvgIcon
         iconName="caret-down"
-        className="adu:text-foreground adu:hidden adu:lg:block"
+        className="adu:hidden adu:text-foreground adu:lg:block"
       />
     </DropdownMenuTrigger>
   );
@@ -165,11 +165,11 @@ function ProfileMenuContent({
           </DropdownMenuItem>
         )}
       </div>
-      <DropdownMenuItem className="adu:bg-surface-selected adu:h-14 adu:shrink-0 adu:items-center adu:justify-center adu:rounded-none">
+      <DropdownMenuItem className="adu:h-14 adu:shrink-0 adu:items-center adu:justify-center adu:rounded-none adu:bg-surface-selected">
         <ContentText variant="button" className="adu:text-foreground" asChild>
           <button onClick={onLogout}>Log Out</button>
         </ContentText>
-        <SvgIcon iconName="logout" className="adu:text-foreground adu:ml-2" />
+        <SvgIcon iconName="logout" className="adu:ml-2 adu:text-foreground" />
       </DropdownMenuItem>
     </div>
   );

@@ -124,7 +124,7 @@ export function useMenuAnimation(): [
     ) {
       return cn(
         className,
-        'adu:animate-in adu:fade-in adu:slide-in-from-right adu:left-0',
+        'adu:left-0 adu:animate-in adu:fade-in adu:slide-in-from-right',
       );
     }
 
@@ -134,7 +134,7 @@ export function useMenuAnimation(): [
     ) {
       return cn(
         className,
-        'adu:animate-out adu:fade-out adu:slide-out-to-right adu:left-73',
+        'adu:left-73 adu:animate-out adu:fade-out adu:slide-out-to-right',
       );
     }
 

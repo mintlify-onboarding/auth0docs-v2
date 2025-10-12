@@ -5,19 +5,19 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const displayTextVariants = cva(
-  'adu:font-aeonik adu:text-foreground-bold adu:font-medium',
+  'adu:font-aeonik adu:font-medium adu:text-foreground-bold',
   {
     variants: {
       variant: {
-        'heading-lg': 'adu:leading-1.20 adu:tracking-n-6xl adu:text-3xl',
-        'heading-regular': 'adu:leading-1.20 adu:tracking-n-2xl adu:text-2xl',
-        'heading-sm': 'adu:leading-1.15 adu:tracking-n-xl adu:text-xl',
-        'subtitle-regular': 'adu:leading-1.40 adu:tracking-n-md adu:text-lg',
-        'subtitle-sm': 'adu:leading-1.40 adu:tracking-p-xs adu:text-base',
+        'heading-lg': 'adu:text-3xl adu:leading-1.20 adu:tracking-n-6xl',
+        'heading-regular': 'adu:text-2xl adu:leading-1.20 adu:tracking-n-2xl',
+        'heading-sm': 'adu:text-xl adu:leading-1.15 adu:tracking-n-xl',
+        'subtitle-regular': 'adu:text-lg adu:leading-1.40 adu:tracking-n-md',
+        'subtitle-sm': 'adu:text-base adu:leading-1.40 adu:tracking-p-xs',
         'link-regular':
-          'adu:tracking-p-md adu:text-base adu:leading-1.25 adu:font-normal',
-        'link-sm': 'adu:leading-1.40 adu:text-sm adu:font-normal',
-        'link-sm-bold': 'adu:leading-1.40 adu:text-sm',
+          'adu:text-base adu:leading-1.25 adu:font-normal adu:tracking-p-md',
+        'link-sm': 'adu:text-sm adu:leading-1.40 adu:font-normal',
+        'link-sm-bold': 'adu:text-sm adu:leading-1.40',
       },
     },
   },

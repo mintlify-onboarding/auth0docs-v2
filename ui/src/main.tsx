@@ -27,7 +27,7 @@ function main() {
             window.location.reload();
           }}
         />
-        <div className="adu:bg-page adu:flex adu:flex-col adu:items-start adu:gap-8 adu:p-4">
+        <div className="adu:flex adu:flex-col adu:items-start adu:gap-8 adu:bg-page adu:p-4">
           <Button
             onClick={() => {
               document.body.classList.toggle('dark');

@@ -58,7 +58,7 @@ function OptOutBanner({ onOptOut }: OptOutBannerProps) {
   return (
     <div
       ref={bannerRef}
-      className="adu:top-banner adu:flex adu:gap-1 adu:items-center adu:flex-wrap adu:justify-center adu:text-center adu:bg-[#232220] adu:fixed adu:top-0 adu:left-0 adu:right-0 adu:z-[9999] adu:p-2.5"
+      className="adu:top-banner adu:fixed adu:top-0 adu:right-0 adu:left-0 adu:z-[9999] adu:flex adu:flex-wrap adu:items-center adu:justify-center adu:gap-1 adu:bg-[#232220] adu:p-2.5 adu:text-center"
     >
       <DisplayText
         asChild
@@ -73,7 +73,7 @@ function OptOutBanner({ onOptOut }: OptOutBannerProps) {
       <DisplayText
         asChild
         variant="link-sm-bold"
-        className="adu:underline adu:text-[#f4f4f4] adu:underline-offset-auto"
+        className="adu:text-[#f4f4f4] adu:underline adu:underline-offset-auto"
         style={{ textUnderlinePosition: 'from-font' }}
       >
         <button onClick={onOptOut}>Switch to old version</button>
