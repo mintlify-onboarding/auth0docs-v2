@@ -2,7 +2,7 @@ import type { MouseEventHandler } from 'react';
 
 import { cn, getInitials } from '@/lib/utils';
 
-import { Tenant, type TenantData } from './tenant';
+import { Tenant, type TenantData } from './tenant-menu';
 import {
   DropdownMenuItem,
   DropdownMenuSeparator,

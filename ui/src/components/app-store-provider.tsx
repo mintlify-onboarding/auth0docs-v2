@@ -1,12 +1,21 @@
-import { useState, useEffect, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 
-import { AppStoreContext } from '@/lib/app-store';
-import type { AppStore, AppStoreData, SessionData } from '@/lib/app-store';
+import {
+  AppStoreContext,
+  type AppStore,
+  type AppStoreData,
+  type SessionData,
+} from '@/lib/app-store';
 import { toTenantData, toUserData } from '@/lib/helpers';
+import {
+  getCurrentUser,
+  getTenants,
+  patchUserSession,
+  type Client,
+  type ResourceServer,
+} from '@/lib/api';
 
-import type { Client, ResourceServer } from '../../lib/api';
-import { getCurrentUser, getTenants, patchUserSession } from '../../lib/api';
-import type { TenantData } from './tenant';
+import type { TenantData } from './ui/tenant-menu';
 
 export async function getAppStoreData(): Promise<AppStoreData> {
   const currentUser = await getCurrentUser();

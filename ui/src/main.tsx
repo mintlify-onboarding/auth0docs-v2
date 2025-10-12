@@ -3,24 +3,30 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 
 import {
+  AppStoreProvider,
   Button,
   ContentText,
   DisplayText,
   FlagIcon,
   NavActions,
+  OptOutBanner,
   SvgIcon,
-} from './components';
-import { initOneTrust } from './lib/one-trust';
-import { userLogin, getCurrentUser } from './lib/api';
-import { AppStoreProvider } from './components/ui/app-store-provider';
-import { OptOutBanner } from './components/ui/opt-out-banner';
+} from '@/components';
+import { getCurrentUser, patchRolloutConsent, userLogin } from '@/lib/api';
+import { initOneTrust } from '@/lib/one-trust';
 
 function main() {
   initOneTrust();
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <OptOutBanner />
       <AppStoreProvider>
+        <OptOutBanner
+          onOptOut={async () => {
+            await patchRolloutConsent({ choice: 'opt_out' });
+            window.heap.track('docs-v2:opt_out');
+            window.location.reload();
+          }}
+        />
         <div className="adu:bg-page adu:flex adu:flex-col adu:items-start adu:gap-8 adu:p-4">
           <Button
             onClick={() => {

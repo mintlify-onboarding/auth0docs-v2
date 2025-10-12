@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 
 import './index.css';
 
-import { NavActions } from './components/nav-actions';
-import { initOneTrust } from './lib/one-trust';
-import { AppStoreProvider } from './components/ui/app-store-provider';
+import { AppStoreProvider, NavActions, OptOutBanner } from '@/components';
+import { patchRolloutConsent } from '@/lib/api';
+import { initOneTrust } from '@/lib/one-trust';
 
 function main() {
   const root = document.createElement('div');
@@ -18,6 +18,13 @@ function main() {
   createRoot(root).render(
     <StrictMode>
       <AppStoreProvider>
+        <OptOutBanner
+          onOptOut={async () => {
+            await patchRolloutConsent({ choice: 'opt_out' });
+            window.heap.track('docs-v2:opt_out');
+            window.location.reload();
+          }}
+        />
         <NavActions />
       </AppStoreProvider>
     </StrictMode>,
@@ -27,11 +34,11 @@ function main() {
 main();
 
 export {
+  AuthMenu,
   Button,
   ContentText,
   DisplayText,
   FlagIcon,
   SvgIcon,
-  AuthMenu,
   type TenantData,
 } from './components';

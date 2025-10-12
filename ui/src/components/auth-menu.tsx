@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { ProfileMenuContent, ProfileMenuTrigger } from './ui/profile-menu';
 import { useAppStore } from '@/hooks/use-app-store';
 
-import { TenantMenuContent, type TenantData } from './ui/tenant';
+import { TenantMenuContent, type TenantData } from './ui/tenant-menu';
 import { DropdownMenu, DropdownMenuContent } from './ui/dropdown-menu';
 import { userLogout } from '@/lib/api';
 
