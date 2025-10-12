@@ -73,7 +73,7 @@ function OptOutBanner({ onOptOut }: OptOutBannerProps) {
       <DisplayText
         asChild
         variant="link-sm-bold"
-        className="adu:text-[#f4f4f4] adu:underline adu:underline-offset-auto"
+        className="adu:text-sm! adu:text-[#f4f4f4] adu:underline adu:underline-offset-auto"
         style={{ textUnderlinePosition: 'from-font' }}
       >
         <button onClick={onOptOut}>Switch to old version</button>
