@@ -3,45 +3,42 @@ import { createRoot } from 'react-dom/client';
 
 import './index.css';
 
-import { AppStoreProvider, NavActions, OptOutBanner } from '@/components';
+import { NavActions, OptOutBanner } from '@/components';
 import { patchRolloutConsent } from '@/lib/api';
 import { initOneTrust } from '@/lib/one-trust';
 import { initRootStore } from '@/stores';
 
-function main() {
+async function main() {
   const root = document.createElement('div');
   root.id = 'adu-root';
   document.body.appendChild(root);
 
-  // initialize the mobx store
-  initRootStore();
-  // initialize one-trust for cookie-consent management
+  // Initialize the MobX store before rendering
+  await initRootStore();
+
+  // Initialize one-trust for cookie-consent management
   initOneTrust();
 
   createRoot(root).render(
     <StrictMode>
-      <AppStoreProvider>
-        <OptOutBanner
-          onOptOut={async () => {
-            await patchRolloutConsent({ choice: 'opt_out' });
-            window.heap.track('docs-v2:opt_out');
-            window.location.reload();
-          }}
-        />
-        <NavActions />
-      </AppStoreProvider>
+      <OptOutBanner
+        onOptOut={async () => {
+          await patchRolloutConsent({ choice: 'opt_out' });
+          window.heap.track('docs-v2:opt_out');
+          window.location.reload();
+        }}
+      />
+      <NavActions />
     </StrictMode>,
   );
 }
 
 main();
 
-export {
-  AuthMenu,
-  Button,
-  ContentText,
-  DisplayText,
-  FlagIcon,
-  SvgIcon,
-  type TenantData,
-} from './components';
+// exports to expose following components and utilities to mintlify app
+// via `window.Auth0DocsUI`
+
+export * from '@/components';
+export { rootStore, initRootStore } from '@/stores';
+export { autorun, reaction, observe } from 'mobx';
+export { observer } from 'mobx-react-lite';

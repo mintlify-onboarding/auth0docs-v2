@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import { cn } from '@/lib/utils';
+import { rootStore } from '@/stores';
 
 import { ProfileMenuContent, ProfileMenuTrigger } from './ui/profile-menu';
-import { useAppStore } from '@/hooks/use-app-store';
-
 import { TenantMenuContent, type TenantData } from './ui/tenant-menu';
 import { DropdownMenu, DropdownMenuContent } from './ui/dropdown-menu';
 import { userLogout } from '@/lib/api';
@@ -169,12 +169,13 @@ export function useMenuAnimation(): [
   ];
 }
 
-function AuthMenu() {
-  const { session, tenants } = useAppStore();
+const AuthMenu = observer(() => {
+  const { sessionStore, tenantStore } = rootStore;
   const [menuState, menuActions, animationClasses, refs] = useMenuAnimation();
 
-  const user = session.user;
-  const selectedTenant = session.selectedTenant;
+  const user = sessionStore.user;
+  const selectedTenant = sessionStore.selectedTenant;
+  const tenants = tenantStore.tenants;
 
   const handleSelectTenant = async (tenant: TenantData) => {
     try {
@@ -221,6 +222,6 @@ function AuthMenu() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+});
 
 export { AuthMenu };

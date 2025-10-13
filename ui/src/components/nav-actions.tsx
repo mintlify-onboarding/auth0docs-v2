@@ -1,19 +1,20 @@
 import { useEffect, useRef } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import { cn } from '@/lib/utils';
 import { useBreakpoint } from '@/hooks/media-query';
-import { useAppStore } from '@/hooks/use-app-store';
+import { rootStore } from '@/stores';
 import { userLogin } from '@/lib/api';
 
 import { AuthMenu } from './auth-menu';
 import { Button } from './ui/button';
 
-function NavActions({ className }: { className?: string }) {
-  const { session } = useAppStore();
+const NavActions = observer(({ className }: { className?: string }) => {
+  const { sessionStore } = rootStore;
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isLgUp = useBreakpoint('lg');
-  const user = session.user;
+  const user = sessionStore.user;
 
   useEffect(() => {
     const updatePosition = () => {
@@ -74,6 +75,6 @@ function NavActions({ className }: { className?: string }) {
       )}
     </div>
   );
-}
+});
 
 export { NavActions };

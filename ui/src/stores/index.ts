@@ -1,5 +1,4 @@
 import { autorun, reaction } from 'mobx';
-
 import { RootStore } from './root-store';
 
 declare global {
@@ -10,13 +9,17 @@ declare global {
   }
 }
 
+export const rootStore = new RootStore();
+
 export async function initRootStore() {
-  const rootStore = new RootStore();
   await rootStore.init();
 
-  window.rootStore = rootStore;
-  window.autorun = autorun;
-  window.reaction = reaction;
+  // Make store available globally (useful for debugging)
+  if (typeof window !== 'undefined') {
+    window.rootStore = rootStore;
+    window.autorun = autorun;
+    window.reaction = reaction;
+  }
 
   // broadcast store ready event
   const storeReadyEvent = new CustomEvent('adu:storeReady', {
@@ -27,3 +30,11 @@ export async function initRootStore() {
 
   return rootStore;
 }
+
+// Export stores and types
+export { RootStore } from './root-store';
+export { SessionStore, type UserData } from './session-store';
+export { TenantStore } from './tenant-store';
+export { ClientStore } from './client-store';
+export { ResourceServerStore } from './resource-server-store';
+export { VariableStore } from './variable-store';

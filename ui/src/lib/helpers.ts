@@ -1,7 +1,7 @@
 import type { TenantData } from '@/components';
 
 import type { Tenant, ProfileData } from './api';
-import type { UserData } from './app-store';
+import type { UserData } from '@/stores';
 
 export function toTenantData(tenant: Tenant): TenantData {
   return {
