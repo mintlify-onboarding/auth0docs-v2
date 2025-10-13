@@ -117,15 +117,13 @@ export const LanguageGrid = () => {
     },
     {
       img: "android.svg",
-      imgDark: "/docs/images/home/python-dark.svg",
       label: "Android",
       href: "/docs/quickstart/native/android",
     },
     {
       img: "java.svg",
-      imgDark: "/docs/images/home/node-dark.svg",
       label: "Java",
-      href: "/docs/quickstart/backend/java",
+      href: "/docs/quickstart/backend/java-spring-security5/interactive",
     },
     {
       img: "dotnet.svg",
@@ -134,8 +132,8 @@ export const LanguageGrid = () => {
     },
     {
       img: "python.svg",
-      label: "Django",
-      href: "/docs/quickstart/backend/laravel",
+      label: "Python",
+      href: "/docs/quickstart/backend/python",
     },
   ];
 
