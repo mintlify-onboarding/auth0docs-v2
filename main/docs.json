@@ -11,10 +11,6 @@
       "canonical": "https://auth0.com/docs"
     }
   },
-  "banner": {
-    "content": "🚀 We've rolled out a new docs experience - faster, cleaner, and a better developer experience. [Switch to old version](https://auth0.com/docs).",
-    "dismissible": true
-  },
   "colors": {
     "primary": "#000",
     "dark": "#fff",

@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
+
 import { cn } from '@/lib/utils';
 import { useBreakpoint } from '@/hooks/media-query';
+import { useAppStore } from '@/hooks/use-app-store';
+import { userLogin } from '@/lib/api';
 
 import { AuthMenu } from './auth-menu';
 import { Button } from './ui/button';
-import { useAppStore } from '@/hooks/use-app-store';
-import { userLogin } from '@/lib/api';
 
 function NavActions({ className }: { className?: string }) {
   const { session } = useAppStore();

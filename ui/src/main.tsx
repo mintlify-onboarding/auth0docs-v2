@@ -14,9 +14,17 @@ import {
 } from '@/components';
 import { getCurrentUser, patchRolloutConsent, userLogin } from '@/lib/api';
 import { initOneTrust } from '@/lib/one-trust';
+import { initRootStore } from './stores';
 
 function main() {
+  window.addEventListener('adu:storeReady', () => {
+    console.log('RootStore initialized');
+  });
+
+  initRootStore();
+
   initOneTrust();
+
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <AppStoreProvider>

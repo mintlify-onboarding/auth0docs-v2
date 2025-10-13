@@ -1,46 +1,53 @@
-export const AuthCodeBlock = ({ filename, icon, language, highlight, children }) => {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+export const AuthCodeBlock = ({
+  filename,
+  icon,
+  language,
+  highlight,
+  children,
+}) => {
+  const [processedChildren, setProcessedChildren] = useState(children);
 
-  const userDomainPlaceholder = /{yourDomain}/g;
-  const userClientIdPlaceholder = /{yourClientId}/g;
-  const userClientSecretPlaceholder = /{yourClientSecret}/g;
-  const userSecretPlaceholder = /{yourSecret}/g;
-  const userRedirectUriPlaceholder = /{redirectUri}/g;
-  const yourAudiencePlaceholder = /{yourAudience}/g;
-
-  const processedChildren = children
-    .replace(userDomainPlaceholder, user?.userdomain || "{yourDomain}")
-    .replace(userClientIdPlaceholder, user?.userClientId || "{yourClientId}")
-    .replace(userClientSecretPlaceholder, user?.userClientSecret || "{yourClientSecret}")
-    .replace(userSecretPlaceholder, user?.userSecret || "{yourSecret}")
-    .replace(yourAudiencePlaceholder, user?.yourAudience || "{yourAudience}")
-    .replace(userRedirectUriPlaceholder, user?.userRedirectUri || "{redirectUri}");
+  console.log("AuthCodeBlock");
 
   useEffect(() => {
-    const initUser = async () => {
-      try {
-        await window.authService.getAuthStatus();
-        const user = window.authService.user;
-        if (!user) {
-          throw new Error("User not found");
-        }
-        console.log("User fetched:", user);
-        setUser(user);
-        setIsAuthenticated(true);
-      } catch (error) {
-        console.error("Failed to initialize user:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    let unsubscribe = null;
 
-    initUser();
-  }, []);
+    function init() {
+      unsubscribe = window.autorun(() => {
+        let processedChildren = children;
+        for (const [
+          key,
+          value,
+        ] of window.rootStore.variableStore.values.entries()) {
+          processedChildren = processedChildren.replace(
+            new RegExp(key, "g"),
+            value
+          );
+        }
+        setProcessedChildren(processedChildren);
+      });
+    }
+
+    if (window.rootStore) {
+      init();
+    } else {
+      window.addEventListener("adu:storeReady", init);
+    }
+
+    return () => {
+      window.removeEventListener("adu:storeReady", init);
+      unsubscribe?.();
+    };
+  }, [children]);
 
   return (
-    <CodeBlock filename={filename} icon={icon} language={language} lines highlight={highlight}>
+    <CodeBlock
+      filename={filename}
+      icon={icon}
+      language={language}
+      lines
+      highlight={highlight}
+    >
       {processedChildren}
     </CodeBlock>
   );
