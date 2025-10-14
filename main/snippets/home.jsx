@@ -177,9 +177,9 @@ export const LanguageGrid = () => {
 
 export const ProductGrid = () => {
   const products = [
-    { label: "Authentication", href: "/docs/authentication" },
-    { label: "Fine-Grained Authorization", href: "/docs/fine-grained-authorization" },
-    { label: "Auth for GenAI", href: "/docs/genai-auth" },
+    { label: "Authentication", href: "https://auth0.com/platform/authentication" },
+    { label: "Fine-Grained Authorization", href: "https://auth0.com/fine-grained-authorization" },
+    { label: "Auth0 for AI Agents", href: "https://auth0.com/ai" },
   ];
 
   return (
@@ -194,6 +194,7 @@ export const ProductGrid = () => {
             key={p.href}
             href={p.href}
             className="
+              no_external_icon
               group
               flex items-center justify-center
               rounded-2xl
