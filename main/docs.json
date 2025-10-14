@@ -1741,6 +1741,8 @@
                           "docs/secure/attack-protection/brute-force-protection",
                           "docs/secure/attack-protection/suspicious-ip-throttling",
                           "docs/secure/attack-protection/view-attack-protection-events",
+                          "docs/secure/attack-protection/configure-akamai-supplemental-signals",
+                          "docs/secure/attack-protection/use-akamai-supplemental-signals-actions",
                           "docs/secure/attack-protection/state-parameters",
                           {
                             "group": "Playbooks",
