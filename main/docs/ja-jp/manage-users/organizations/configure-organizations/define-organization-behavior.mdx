@@ -10,6 +10,8 @@ permalink: "define-organization-behavior"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0でアプリケーションを表す場合には、アプリケーションが対応するべきユーザーの種類を指定することができます。個人による個人アカウントへのログインに対応するアプリケーションもあれば、[組織](/docs/ja-jp/manage-users/organizations/organizations-overview)のメンバーによる使用が目的のものもあります。それらの両方に対応するものもあります。これは組織の動作と呼ばれ、Auth0に接続するアプリケーションのそれぞれに設定することができます。
 
 たとえば、アプリケーションには以下を設定することができます。
@@ -54,7 +56,7 @@ Auth0 Dashboardを使用して組織の動作を定義するには、以下を�
 
 [クライアント更新エンドポイント](/docs/ja-jp/api/management/v2#!/Clients/patch_clients_by_id)に`PATCH`呼び出しを行います。`client_id`、`mgmt_api_access_token`、`organization_usage`、および`organization_require_behavior`のプレースホルダーをそれぞれクライアントID、Management APIのアクセストークン、組織の使用オプション、組織の動作オプションに置き換えます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/CLIENT_ID' \
@@ -269,7 +271,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

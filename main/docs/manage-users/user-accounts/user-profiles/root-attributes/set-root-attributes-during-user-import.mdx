@@ -12,11 +12,13 @@ title: Set Root Attributes During User Import
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 This guide will show you how to set root attributes for a user during import using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. This allows you to minimize the number of API calls required to set root attributes when importing users. To see which attributes you can import, visit [Normalized User Profile Structure](/docs/manage-users/user-accounts/user-profiles/user-profile-structure).
 
 Make a `POST` call to the [Create Job to Import Users endpoint](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `CONNECTION_ID`, and `JSON_USER_FILE_PATH` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, connection ID, and users filename, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/usersimports' \
@@ -212,7 +214,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

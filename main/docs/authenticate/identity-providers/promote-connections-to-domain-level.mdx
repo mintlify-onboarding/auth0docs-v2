@@ -12,13 +12,15 @@ title: Promote Connections to Domain Level
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 If your tenant has [Dynamic Client Registration](/docs/get-started/applications/dynamic-client-registration) enabled, you can let [third party applications](/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications) use a connection by promoting it to a domain level connection. Domain level connections are enabled or disabled for all applications in a tenant.
 
 You can promote a connection to domain level using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 Make a `PATCH` call to the [Update a Connection endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Be sure to replace `CONNECTION_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your connection ID and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION_ID' \
@@ -226,7 +228,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

@@ -10,6 +10,8 @@ permalink: "call-your-api-using-the-device-authorization-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 Ce tutoriel vous aidera à appeler votre propre API à partir d’un appareil à entrée limitée en utilisant le flux d’autorisation d’appareil. Pour savoir comment fonctionne le flux et pourquoi vous devriez l’utiliser, consultez [Flux d’autorisation d’appareil](/docs/fr-ca/get-started/authentication-and-authorization-flow/device-authorization-flow).
@@ -60,7 +62,7 @@ Pour obtenir le code de l’appareil, votre application doit demander un code à
 
 #### Exemple POST vers l’URL de code d’appareil
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/device/code' \
@@ -246,7 +248,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Paramètres du code d’appareil
 
@@ -348,7 +350,7 @@ Pour éviter des erreurs dues à la latence du réseau, vous devez commencer à 
 
 #### Exemple de demande POST de jeton vers l’URL de jeton.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -538,7 +540,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Paramètres de demande de jeton
 
@@ -692,7 +694,7 @@ Les jetons d’actualisation doivent être stockés en toute sécurité car ils 
 
 Pour appeler votre API, l’application doit transmettre le jeton d’accès récupéré en tant que jeton du porteur dans l’en-tête d’autorisation de votre requête HTTP.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -872,7 +874,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Jetons d’actualisation
 
@@ -887,7 +889,7 @@ Pour actualiser votre jeton, effectuez une requête `POST` au point de terminais
 
 #### Exemple de jeton d’actualisation POST vers l’URL de jeton.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1081,7 +1083,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Paramètres de requête de jeton d’actualisation
 

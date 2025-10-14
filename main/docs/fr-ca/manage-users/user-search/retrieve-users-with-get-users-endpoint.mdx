@@ -10,6 +10,8 @@ permalink: "retrieve-users-with-get-users-endpoint"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Le point de terminaison [`GET /api/v2/users`](/docs/fr-ca/api/management/v2#!/Users/get_users) vous permet de récupérer une liste d’utilisateurs. Ce point de terminaison permet ce qui suit :
 
 * Rechercher sur la base d’un grand nombre de critères
@@ -24,7 +26,7 @@ Pour rechercher des utilisateurs, faites une requête `GET` au point de terminai
 
 Par exemple, pour rechercher un utilisateur dont le courriel est exactement `jane@exampleco.com`, utilisez `q=email:"jane@exampleco.com »` :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=email%3A%22jane%40exampleco.com%22&search_engine=v3' \
@@ -188,7 +190,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si la recherche aboutit, vous recevrez une réponse semblable à celle-ci :
 

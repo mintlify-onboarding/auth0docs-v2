@@ -10,6 +10,8 @@ permalink: "configure-connection-sync-with-auth0"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez mettre à jour les préférences de connexion pour un fournisseur d’identité en amont afin de contrôler quand les mises à jour des attributs racine du profil utilisateur sont autorisées à l’aide de <Tooltip href="/docs/docs/fr-ca/glossary?term=auth0-dashboard" tip="Auth0 Dashboard
 Principal produit d’Auth0 pour configurer vos services." cta="Voir le glossaire">Auth0 Dashboard</Tooltip> ou de <Tooltip href="/docs/docs/fr-ca/glossary?term=management-api" tip="Management API
 Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip>.
@@ -38,7 +40,7 @@ Avant de terminer cette étape, vous devez d’abord [récupérer les valeurs ex
 
 Effectuez une requête `PATCH` au point de terminaison [Mettre à jour un connexion](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Veillez à inclure les valeurs originales des options dans la requête afin d’éviter d’écraser les valeurs actuelles. De plus, assurez-vous de remplacer les paramètres fictifs `CONNECTION_ID`, `MGMT_API_ACCESS_TOKEN`, et `ATTRIBUTE_UPDATE_VALUE` par votre ID de connexion, le jeton d’accès de Management API et la valeur de mise à jour de l’attribut, respectivement.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION_ID' \
@@ -246,7 +248,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

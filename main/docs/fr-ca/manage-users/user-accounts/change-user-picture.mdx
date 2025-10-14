@@ -10,6 +10,8 @@ permalink: "change-user-picture"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 normalise les propriétés de profil commun dans le profil utilisateur : `name`, `picture`, etc. Le champ relatif à l’image est alimenté soit par l’image de profil du fournisseur social, soit par l’image Gravatar associée à l’adresse courriel de l’utilisateur.
 
 Par défaut, tous les utilisateurs de la base de données auront une image de remplacement avec leurs initiales. Lorsque vous authentifiez un utilisateur, ce champ d’image est appelé `user.picture`.
@@ -20,7 +22,7 @@ L’attribut `user.picture` n’est pas directement modifiable lorsqu’il est f
 
 Alternativement, vous pouvez utiliser des métadonnées pour stocker l’attribut d’image pour les utilisateurs. Par exemple, si votre application permet de télécharger des photos de profil, une fois la photo téléchargée, vous pouvez définir l’URL de l’image dans `user.user_metadata.picture` :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -218,7 +220,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Utiliser les Actions
 

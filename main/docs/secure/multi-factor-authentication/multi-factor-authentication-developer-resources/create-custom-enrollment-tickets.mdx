@@ -11,6 +11,8 @@ title: Create Custom Enrollment Tickets
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 If you want to customize and manage your users' [Multi-Factor Authentication (MFA)](/docs/secure/multi-factor-authentication) enrollments, you can use Custom Enrollment Tickets. Auth0's Custom Enrollment Tickets generate a single-use link to direct your users to enroll in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> with the [factor(s)](/docs/secure/multi-factor-authentication/multi-factor-authentication-factors) you specify.
 
 ### Use cases
@@ -26,7 +28,7 @@ Use Custom Enrollment Tickets for:
 
 Make a post call to <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>'s [`/guardian/post_ticket`](https://auth0.com/docs/api/management/v2#!/Guardian/post_ticket) endpoint.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/guardian/post-ticket' \
@@ -292,7 +294,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

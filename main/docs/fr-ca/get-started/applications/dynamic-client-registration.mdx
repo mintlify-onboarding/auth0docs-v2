@@ -10,6 +10,8 @@ permalink: "dynamic-client-registration"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez enregistrer dynamiquement des applications tierces pour votre locataire. Cette fonctionnalité est basée sur la spécification [Enregistrement dynamique du client OpenID Connect](https://openid.net/specs/openid-connect-registration-1_0.html).
 
 ## Activer l’enregistrement dynamique des clients
@@ -27,7 +29,7 @@ Pour ce faire, accédez à [Dashboard > Settings (Paramètres) > Advanced (Avanc
 Vous pouvez également mettre à jour cet indicateur en utilisant le point de terminaison de <Tooltip href="/docs/docs/fr-ca/glossary?term=management-api" tip="Management API
 Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip> [`/Tenant/patch_settings`](/docs/fr-ca/api/management/v2#!/Tenants/patch_settings).
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -235,7 +237,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Vous devez mettre à jour `API2_ACCESS_TOKEN` avec un jeton valide avec la permission `update:tenant_settings`. Pour en savoir plus, lisez [Jetons d’accès à Management API](/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens).
 
@@ -249,7 +251,7 @@ Pour enregistrer dynamiquement une application avec Auth0, vous devez envoyer un
 
 Pour créer une application portant le nom `Mon application dynamique` et les URL de rappel `https://application.example.com/callback` et `https://application.example.com/callback2`, utilisez l’extrait de code suivant :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oidc/register' \
@@ -422,7 +424,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Où :
 

@@ -12,6 +12,8 @@ title: Add Login Using the Authorization Code Flow with PKCE
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can add login to your native, mobile, or single-page app using the Authorization Code Flow with PKCE. To learn how the flow works and why you should use it, read [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). To learn how to call your API from a native, mobile, or single-page app, read [Call Your API Using Authorization Code Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce).
 
 To implement the Authorization Code Flow with Proof Key for Code Exchange (PKCE), you can use the following resources:
@@ -273,7 +275,7 @@ Now that you have an Authorization Code, you must exchange it for tokens. Using 
 
 ### POST to token URL example
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -471,7 +473,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Parameters
 

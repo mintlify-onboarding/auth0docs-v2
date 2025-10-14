@@ -12,11 +12,13 @@ title: Set Root Attributes During User Signup
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can set root attributes for a user during sign-up using Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. This allows you to minimize the number of API calls required to set root attributes when creating users.
 
 Make a `POST` call to the [Create a User endpoint](https://auth0.com/docs/api/management/v2#!/Users/post_users). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `CONNECTION_NAME`, `EMAIL_VALUE`, `PASSWORD_VALUE`, `GIVEN_NAME_VALUE`, `FAMILY_NAME_VALUE`, `NAME_VALUE`, `NICKNAME_VALUE`, and `PICTURE` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, initial connection name, email address, password, given name, family name, name, nickname, and picture URL, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users' \
@@ -222,7 +224,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

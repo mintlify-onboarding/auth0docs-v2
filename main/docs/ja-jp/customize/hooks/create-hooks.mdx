@@ -10,6 +10,8 @@ permalink: "create-hooks"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 RulesとHooksのサポート終了（EOL）日は **2026年11月18日** であり、 **2023年10月16** 日の時点で作成された新しいテナントは使用できなくなります。Hooksが有効な既存のテナントは、サポート終了までHooksを利用できます。
@@ -57,7 +59,7 @@ RulesからActionsへの移行方法については、「[RulesからActionsに�
 
 [フック作成エンドポイント](/docs/ja-jp/api/management/v2/#!/Hooks/post_hooks)に`POST`呼び出しを行います。`MGMT_API_ACCESS_TOKEN`、`HOOK_NAME`、`HOOK_SCRIPT`、`EXTENSIBILITY_POINT_NAME`のプレースホルダーをそれぞれ実際のManagement APIのアクセストークン、フック名、フックスクリプト、および拡張ポイント名に置き換えます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/hooks' \
@@ -275,7 +277,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

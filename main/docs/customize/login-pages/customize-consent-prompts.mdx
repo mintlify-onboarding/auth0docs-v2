@@ -12,6 +12,8 @@ title: Customize Consent Prompts
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 When a third-party application requests scopes, users see a consent prompt. By default, this prompt uses the scope **name** to generate text and groups all scopes for a resource, displaying the resource's actions in a single line.
 
 If you require a specialized consent prompt, for example, parental consent, you need to build your own custom consent form. Be aware that laws vary according to country.
@@ -31,7 +33,7 @@ This change is made at the tenant level, so it will affect consent prompts for a
 
 Set your tenant's **use_scope_descriptions_for_consent** flag to `true` by making the following API call:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -239,13 +241,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Use scope names to generate consent prompt text
 
 Set your tenant's **use_scope_descriptions_for_consent** flag to `false` by making the following API call:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -453,7 +455,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Learn more
 

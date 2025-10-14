@@ -10,6 +10,8 @@ permalink: "get-management-api-access-tokens-for-production"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 本番環境に定期的かつ頻繁な呼び出しを行うには、バックエンドでトークンを自動的に提供するプロセスを構築（して、擬似的に無期限のトークンに）します。
 
 ## 前提条件
@@ -22,7 +24,7 @@ Auth0に<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/d
 
 ペイロードは次の形式でなければなりません。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -216,7 +218,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 [アプリケーションの設定タブ](https://manage.auth0.com/#/applications/{yourClientId}/settings)で必ず``{yourClientSecret}``をクライアントシークレットに更新します。
 
@@ -275,7 +277,7 @@ HTTP呼び出しの代わりに、[node-auth0](https://www.npmjs.com/package/aut
 
 このトークンを使用するには、要求の`Authorization`ヘッダーに含めます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request POST \
   --url http:///%7BmgmtApiEndpoint%7D \
@@ -455,11 +457,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 たとえば、[すべてのアプリケーションを取得](/docs/ja-jp/api/management/v2#!/Clients/get_clients)するには、以下を使用します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/clients' \
@@ -635,7 +637,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

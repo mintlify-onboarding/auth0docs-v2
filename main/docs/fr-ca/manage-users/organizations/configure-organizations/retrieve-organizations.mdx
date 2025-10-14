@@ -10,6 +10,8 @@ permalink: "retrieve-organizations"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Lorsque vous travaillez avec [organizations](/docs/fr-ca/manage-users/organizations/organizations-overview) de manière programmatique, vous pouvez avoir besoin de récupérer soit une liste de toutes les organisations, soit des organisations individuellement par nom ou par ID.
 
 <Warning>
@@ -31,7 +33,7 @@ Pour récupérer plus de 1000 résultats, vous devez utiliser la méthode de pa
 
 Effectuez un appel `GET` au point de terminaison`Get Organizations`. Veillez à remplacer la valeur de remplacement `MGMT_API_ACCESS_TOKEN` par votre jeton d’accès au Management API.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations' \
@@ -194,7 +196,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -290,7 +292,7 @@ Vous pouvez récupérer une organisation par son identifiant via Management API.
 
 Effectuez un appel `GET` au point de terminaison`Get Organization`. Veillez à remplacer les valeurs de remplacement `ORG_ID` et `MGMT_API_ACCESS_TOKEN` par l’identifiant de votre organisation et le jeton d’accès à Management API, respectivement.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations/ORG_ID' \
@@ -453,7 +455,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -547,7 +549,7 @@ Vous pouvez récupérer une organisation par son nom via Management API.
 
 Effectuez un appel `GET` au point de terminaison`Get Organization by Name`. Veillez à remplacer les valeurs fictives `ORG_NAME` et `MGMT_API_ACCESS_TOKEN` par l’identifiant de votre organisation et le jeton d’accès à Management API, respectivement.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations/name/ORG_NAME' \
@@ -710,7 +712,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

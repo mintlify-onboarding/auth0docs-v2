@@ -10,6 +10,8 @@ permalink: "add-login-auth-code-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez ajouter une connexion à votre application Web classique à l’aide du Flux de code d’autorisation. Pour savoir comment fonctionne le flux et pourquoi vous devriez l’utiliser, lisez [Flux du code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow). Pour appeler votre API à partir d’une application Web ordinaire, lisez [Appeler votre API à l’aide du flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow).
 
 Pour implémenter le Flux de code d’autorisation, Auth0 fournit les ressources suivantes :
@@ -126,7 +128,7 @@ Maintenant que vous avez un code d’authentification, vous pouvez l’échanger
 
 ### Exemple d’URL « POST to token »
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -324,7 +326,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Paramètres
 

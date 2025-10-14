@@ -10,6 +10,8 @@ permalink: "retrieve-users-with-get-users-by-email-endpoint"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 [`GET /api/v2/users-by-email`エンドポイント](/docs/ja-jp/api/management/v2#!/Users_By_Email/get_users_by_email)を使うと、メールアドレスを使用してユーザーを検索できます。この検索では指定したメールアドレスとの完全一致を探し、小文字と大文字を区別します。
 
 このエンドポイントには**即時整合性** があるため、次の場合にこのエンドポイントを使用することをお勧めします。
@@ -23,7 +25,7 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 必要なスコープ：`read:users`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users-by-email?email=%7BuserEmailAddress%7D' \
@@ -187,7 +189,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ```json lines
 [

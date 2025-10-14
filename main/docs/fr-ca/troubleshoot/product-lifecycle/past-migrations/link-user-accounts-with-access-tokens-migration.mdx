@@ -10,6 +10,8 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auparavant, il était possible d’utiliser des jetons d’ID pour associer et désassocier des comptes d’utilisateurs dans certains cas d’utilisation. Auth0 supprime cette fonctionnalité. Vous devrez désormais utiliser des jetons d’accès dans tous les cas.
 
 <Warning>
@@ -255,7 +257,7 @@ Si vous obtenez un jeton d’accès pour l’association de comptes qui contient
 
 Toutefois, cette nouvelle méthode offre une alternative. Vous utiliserez toujours un jeton d’accès contenant la permission `update:users` pour vous authentifier auprès de l’API, mais dans la charge utile de la demande, vous pouvez envoyer le jeton d’ID du compte secondaire (au lieu du `user_id` et du `provider`).
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
@@ -450,7 +452,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Les conditions suivantes doivent être remplies :
 

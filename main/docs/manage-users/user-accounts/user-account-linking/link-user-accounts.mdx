@@ -13,6 +13,8 @@ title: Link User Accounts
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Card title="Availability varies by Auth0 plan">
 
 Both your specific login implementation and your Auth0 plan or custom agreement affect whether this feature is available. To learn more, read [Pricing](https://auth0.com/pricing).
@@ -392,7 +394,7 @@ For user-initiated client-side account linking, you need an access token that co
 
 An access token that contains the `update:current_user_identities` scope can only be used to update the information of the currently logged-in user. Therefore, this method is suitable for scenarios where the user initiates the linking process.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
@@ -590,7 +592,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Server-side account linking
 
@@ -603,7 +605,7 @@ For server-side account linking, you need an access token that contains the foll
 
 Access tokens that contain the `update:users` scope can be used to update the information of any user. Therefore, this method is intended for use in server-side code only.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
@@ -805,7 +807,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The secondary user account's `user_id` and `provider` can be deduced by its unique identifier. For example, for the identifier `google-oauth2|108091299999329986433`:
 
@@ -814,7 +816,7 @@ The secondary user account's `user_id` and `provider` can be deduced by its uniq
 
 Alternatively, you can you can send the secondary account's ID token instead of the `provider` and `user_id`:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
@@ -1012,7 +1014,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Auth0.js library
 

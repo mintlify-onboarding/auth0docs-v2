@@ -10,13 +10,15 @@ permalink: "sort-search-results"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ユーザー検索結果を並べ替えるには、要求を行う際に`field:order`値を`sort`パラメーターに渡します。`field`は並べ替えるフィールドの名前で、昇順には`1`、降順には`-1`を設定することができます。
 
 `app_metadata`または`user_metadata`による並べ替えには対応していません。
 
 たとえば、`created_at`フィールドでユーザーを昇順に並べ替えるには、`created_at:1`値を`sort`パラメータに渡します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=logins_count%3A%5B100%20TO%20200%5D&sort=created_at%3A1&search_engine=v3' \
@@ -180,6 +182,6 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 `sort`や他のパラメーターについては、[Management API Explorer](https://auth0.com/docs/api/management/v2#!/Users/get_users)のドキュメントをお読みください。

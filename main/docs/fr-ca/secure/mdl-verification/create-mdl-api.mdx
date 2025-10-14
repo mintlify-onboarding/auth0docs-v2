@@ -10,6 +10,8 @@ permalink: "create-mdl-api"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 Auth0’s Mobile Driver's License Verification Service is in Early Access. By using this feature, you agree to the applicable Free Trial terms in Okta’s [Master Subscription Agreement](https://www.okta.com/legal). To learn more about Auth0’s release stages, read Product Release Stages.
@@ -55,7 +57,7 @@ Once you've been approved to join the EA, you can create the mDL Verification AP
 
 1. Make a `POST` call to the [Create a Resource Server](https://auth0.com/docs/api/management/v2/resource-servers/post-resource-servers) endpoint.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
    curl --request POST \
    --url 'https://{yourDomain}/api/v2/resource-servers/post-resource-servers' \
@@ -241,7 +243,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 })
 
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 2. Enable the permissions by following instructions for [Management API](https://auth0.com/docs/get-started/apis/add-api-permissions#use-the-management-api).
 

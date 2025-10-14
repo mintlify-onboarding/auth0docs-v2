@@ -10,6 +10,8 @@ permalink: "manage-email-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 La date de fin de vie (EOL) des Règles et des Appels sera le **18 novembre 2026**. Ils ne sont plus disponibles pour les nouveaux locataires créés à partir du **16 octobre 2023**. Les locataires actuels ayant des hooks actifs conserveront l’accès aux produit Hooks jusqu’à la fin de leur durée de vie.
@@ -49,7 +51,7 @@ Vous pouvez demander aux utilisateurs de vérifier leur adresse courriel avant d
 
 Le [point de terminaison Envoyer un courriel de vérification de l’adresse courriel](https://auth0.com/docs/api/management/v2#!/Jobs/post_verification_email) envoie à l’utilisateur un courriel l’invitant à vérifier son adresse électronique.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/verification-email' \
@@ -263,7 +265,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab><Tab title="Règles">
 

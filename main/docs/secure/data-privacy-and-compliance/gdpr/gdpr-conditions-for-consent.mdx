@@ -12,6 +12,8 @@ title: 'GDPR: Conditions for Consent'
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 According to Article 7 of GDPR, you must ask users to consent on the processing of their personal data in a clear and easily accessible form. You must also show that the user has consented, and provide an easy way to withdraw consent at any time.
 
 This article explains how you can use Auth0 features to implement these requirements.
@@ -81,7 +83,7 @@ Set the **fields** request parameter to `user_metadata` in order to limit th
 
 Sample request:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata' \
@@ -245,7 +247,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Sample response:
 
@@ -272,7 +274,7 @@ Set the **fields** request parameter to `user_metadata` in order to limit th
 
 Sample request:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata' \
@@ -436,7 +438,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Sample response:
 
@@ -482,7 +484,7 @@ If your metadata are stored as inner properties:
 
 Updates to root-level properties are merged, so you only need to send the value for the field you want to update. For example, let's say we want to add a consent date and set it to `01/23/2018`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -680,7 +682,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 This will add a new property to the user profile, the **user_metadata.consentDate**, which will hold the date the customer consented. The response will be the full user profile. The updated metadata will look like this:
 
@@ -698,7 +700,7 @@ To update an inner property, you must send the whole metadata object, even if yo
 
 Let's add an inner property for the consent date and set it to `01/23/2018`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -902,7 +904,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 This will add a new property to the user profile, the **user_metadata.consent.date,** which will hold the date the customer consented. The response will be the full user profile. The updated metadata will look like this:
 
@@ -939,7 +941,7 @@ First, you have to decide how you will handle the withdrawal of consent: will yo
 
 To delete a user, use the [**Delete a User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/delete_users_by_id).
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -1102,7 +1104,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The response body for this endpoint is empty, so if you want to confirm that the user was successfully deleted try to retrieve the user using their email. If the endpoint returns an error, then your call to delete the user was successful.
 
@@ -1118,7 +1120,7 @@ To flag a user as deleted, use the app_metadata. In the following example, we wi
 
 To update a user's metadata, use the [**Update a User** endpoint](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id).
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -1316,7 +1318,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Disable login for flagged users
 

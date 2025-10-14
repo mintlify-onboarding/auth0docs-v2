@@ -10,6 +10,8 @@ permalink: "webapps"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 通常のWebアプリケーションで埋め込み型パスワードレスAPIを使用するには、[［Auth0 Dashboard］>［Applications（アプリケーション）］>［Applications（アプリケーション）］](https://manage.auth0.com/#/applications)に移動して、アプリケーション設定の **［Advanced Settings（高度な設定］** > **［Grant Types（付与タイプ）］** で **［<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=passwordless" tip="パスワードレス: 最初の要素としてパスワードに依存しない認証の形式。" cta="用語集の表示">Passwordless</Tooltip> OTP（パスワードレスOTP）］** の付与を有効にしなければなりません。
 
 通常のWebアプリケーションのパスワードレス認証は、2つのステップで構成されています。
@@ -23,7 +25,7 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 **メールで一回限り使用できるコードを送信する**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -221,13 +223,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **メールでマジックリンクを送信する**
 
 `send: link`を指定する必要があります。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -425,11 +427,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **SMSで一回限り使用できるパスワードを送信する**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -627,11 +629,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **SMSユーザーを認証する**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -838,11 +840,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **メールユーザーを認証する**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1049,7 +1051,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **マジックリンクを通してユーザーを認証する**
 

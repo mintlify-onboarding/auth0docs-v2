@@ -10,6 +10,8 @@ permalink: "update-grant-types"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 アプリケーションの付与タイプは、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>または管理APIを使って変更できます。
 
 ## Dashboardの使用
@@ -27,7 +29,7 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 [`/Clients/patch_clients_by_id`](/docs/ja-jp/api/management/v2#!/Clients/patch_clients_by_id)エンドポイントに`PATCH`呼び出しを行います。必ず、`{yourClientId}`、`{yourManagementApiAccessToken}`、および`{grantType}`のプレースホルダーの値をそれぞれ、ご自身のクライアントID、管理APIのアクセストークン、希望する付与タイプに置き換えてください。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/%7ByourClientId%7D' \
@@ -235,7 +237,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

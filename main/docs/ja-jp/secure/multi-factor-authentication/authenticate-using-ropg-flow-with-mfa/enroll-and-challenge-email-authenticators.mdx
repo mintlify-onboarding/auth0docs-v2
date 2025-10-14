@@ -10,6 +10,8 @@ permalink: "enroll-and-challenge-email-authenticators"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0は、[ユニバーサルログイン](/docs/ja-jp/authenticate/login/auth0-universal-login)を使用した組み込みの<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>登録と認証フローを提供します。ただし、独自のインターフェイスを作成したい場合は、[MFA API](/docs/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)を使用することもできます。
 
 要素としてメールを有効にする場合、メールアドレスが検証されているユーザーは誰でもメールを使ってMFAを完了できます。
@@ -65,7 +67,7 @@ MFA APIを使用するには、事前にアプリケーションに対してMFA�
 </tbody>
 </table>
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
@@ -270,7 +272,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 成功すると、次のような応答を受け取ります：
 
@@ -294,7 +296,7 @@ dataTask.resume()
 
 登録を完了するには、[**`/oath/token`** ](https://auth0.com/docs/api/authentication#get-token)エンドポイントに`POST`要求を行います。メールに記載された値とともに、前の応答で返された`oob_code`と`binding_code`を入れます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -478,7 +480,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 呼び出しが成功すると、アクセストークンを含む応答が以下のフォーマットで返されます。
 
@@ -508,7 +510,7 @@ MFA Authenticatorエンドポイントを呼び出すことで、Authenticator�
 
 ユーザーにチャレンジするには、チャレンジしたい要素の`authenticator_id`が必要です。登録された全Authenticatorの一覧は、MFA Authenticatorエンドポイントを使って表示できます：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -684,13 +686,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### OTPを使ってユーザーにチャレンジする
 
 メールチャレンジをトリガーするには、対応する`authenticator_id`と`mfa_token`を使ってMFAチャレンジエンドポイントへ`POST`を送ります。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
@@ -870,7 +872,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 受信したコードを使って認証を完了します。
 
@@ -886,7 +888,7 @@ dataTask.resume()
 
 アプリケーションがユーザーに対してコード入力画面を表示し、`oauth``/token`エンドポイントへの以下の呼び出しの中で`binding_code`パラメーターの要求の一部として送信します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1088,7 +1090,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 呼び出しが成功すると、アクセストークンを含む応答が以下のフォーマットで返されます：
 

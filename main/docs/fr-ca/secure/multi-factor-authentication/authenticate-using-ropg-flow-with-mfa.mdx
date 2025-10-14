@@ -10,6 +10,8 @@ permalink: "authenticate-using-ropg-flow-with-mfa"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez utiliser [l’API Auth0 pour l’authentification multifacteur (MFA)](/docs/fr-ca/api/authentication#multi-factor-authentication) pour compléter le flux d’authentification à l’aide du [Flux de mot de passe du propriétaire de ressource](/docs/fr-ca/get-started/authentication-and-authorization-flow/resource-owner-password-flow) (parfois appelé Autorisation de mot de passe du propriétaire des ressources ou ROPG lorsque <Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip> est activée.
 
@@ -21,7 +23,7 @@ Avant de pouvoir utiliser les API MFA, vous devrez activer le type d’autorisat
 
 Lorsque vous utilisez le Flux de mot de passe du propriétaire de ressource pour l’authentification, vous appelez le point de terminaison `/oauth/token` avec le nom d’utilisateur et le mot de passe de l’utilisateur.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -227,7 +229,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Lorsque MFA est activé, la réponse comprend une erreur `mfa_required` et un jeton `mfa_token`.
 

@@ -10,6 +10,8 @@ permalink: "my-account-api"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 **The My Account API is available in Limited Early Access.**
@@ -129,7 +131,7 @@ The My Account API supports the following scopes:
 
 ##### Step 1: Request authorization code
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F'
@@ -282,11 +284,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Step 2: Exchange code for access token
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -493,13 +495,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Embedded login with native passkeys
 
 ##### Step 1: Request login challenge
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passkey/challenge' \
@@ -681,11 +683,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Step 2: Authenticate existing user
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -865,7 +867,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Rate limits
 

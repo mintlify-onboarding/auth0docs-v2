@@ -12,6 +12,8 @@ title: Configure and Implement Native to Web SSO
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 Native to Web SSO is currently available in Early Access. To use this feature, you must have an Enterprise plan. By using this feature, you agree to the applicable Free Trial terms in Okta’s [Master Subscription Agreement](https://www.okta.com/legal). To learn more about Auth0's product release cycle, read [Product Release Stages](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages).
@@ -242,7 +244,7 @@ If your web application does not support cookie injection, you can configure you
 * Open the web application using  WebView or browser.
 * Log the web application appending the `session_transfer_token` as a URL parameter to the [/authorize](https://auth0.com/docs/api/authentication/authorization-code-flow/authorize-application) endpoint. The Auth0 tenant authenticates the user without requiring first-factor authentication, as the session_transfer_token is valid and trusted
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url 'https://your_web_app_login_url/?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN'
@@ -352,7 +354,7 @@ request = Net::HTTP::Get.new(url)
 response = http.request(request)
 puts response.read_body
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### In your web application
 
@@ -368,7 +370,7 @@ Implement Native to Web Web Single SSO in your web application using URL paramet
 
 From the application login URL, redirect to the `/authorize` endpoint when the `session_transfer_token` is sent as a URL parameter.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code'
@@ -463,7 +465,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Option 2: Add the Session Transfer Token to web applications using Auth0 SDKs
 
@@ -502,7 +504,7 @@ app.use((req, res, next) => {
 
 If your web application uses <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> or <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=WS-Fed">WS-Fed</Tooltip> service provider and Auth0 as the <Tooltip tip="Web Service Federation (WS-Fed): Protocol for managing user identities across domains." cta="View Glossary" href="/docs/glossary?term=IdP">IdP</Tooltip>, you can send the `session_transfer_token` as an URL parameter to the Auth0 `/authorize` endpoint and the `redirect_uri` is the SAML or WS-Fed sign-in URL.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/samlp//{yourClientId}?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN' \
@@ -620,7 +622,7 @@ request["cookie"] = 'session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN'
 response = http.request(request)
 puts response.read_body
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Session Transfer Token with Actions
 

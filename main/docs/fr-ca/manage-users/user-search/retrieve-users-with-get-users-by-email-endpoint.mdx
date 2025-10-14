@@ -10,6 +10,8 @@ permalink: "retrieve-users-with-get-users-by-email-endpoint"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Le point de terminaison [`GET /api/v2/users-by-email`](/docs/fr-ca/api/management/v2#!/Users_By_Email/get_users_by_email) vous permet de chercher des utilisateurs en utilisant leur adresse courriel. La recherche cible une correspondance exacte pour l’adresse courriel saisie et est sensible à la casse.
 
 Ce point de terminaison est **immédiatement cohérent**, et pour cette raison, nous recommandons que vous l’utilisiez pour :
@@ -23,7 +25,7 @@ La requête doit inclure [un jeton d’accès à Management API](/docs/fr-ca/sec
 
 Permissions requises : `read:users`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users-by-email?email=%7BuserEmailAddress%7D' \
@@ -187,7 +189,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ```json lines
 [

@@ -10,6 +10,8 @@ permalink: "rotate-signing-keys"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez faire pivoter manuellement et périodiquement une clé de connexion afin de modifier la clé Web JSON (JWK) utilisée par les applications et les API pour valider les jetons. Si votre application ou API **ne** permet pas ce changement de clé et tente d’utiliser une clé de connexion expirée pour vérifier un jeton, la demande d’authentification échouera.
 
 <Warning>
@@ -47,7 +49,7 @@ Un produit permettant aux clients d’effectuer des tâches administratives." ct
 1. Pour obtenir une liste des clés d’authentification, effectuez un appel `GET` au point de terminaison [Obtenir toutes les clés de connexion d’application](/docs/fr-ca/api/management/v2#!/Keys/get_signing_keys).
 2. Pour faire pivoter la clé de connexion, effectuez un appel `POST` au point de terminaison [Rotate the Application Signing Key](/docs/fr-ca/api/management/v2#!/Keys/post_signing_keys) (Faire pivoter la clé de connexion d’application). Assurez-vous de remplacer la valeur de remplacement `MGMT_API_ACCESS_TOKEN` par votre jeton d’accès de Management API.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
    curl --request POST \
    --url 'https://{yourDomain}/api/v2/keys/signing/rotate' \
@@ -220,7 +222,7 @@ if (error != nil) {
 dataTask.resume()
 
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

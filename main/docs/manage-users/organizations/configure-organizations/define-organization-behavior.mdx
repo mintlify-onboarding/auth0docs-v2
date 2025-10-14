@@ -12,6 +12,8 @@ title: Define Organization Behavior
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 When representing your application in Auth0, you can specify what types of users the application should support. Some applications support individuals logging in with personal accounts, while others are intended for use by members of [organizations](/docs/manage-users/organizations/organizations-overview). Some should support both. This is known as organization behavior and can be set for each application that you connect to Auth0.
 
 For example, your application could have:
@@ -102,7 +104,7 @@ To define organization behavior via the Auth0 Dashboard:
 
 Make a `PATCH` call to the [Update a Client endpoint](https://auth0.com/docs/api/management/v2#!/Clients/patch_clients_by_id). Be sure to replace `client_id`, `mgmt_api_access_token`, `organization_usage`, and `organization_require_behavior` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip>, Management API <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, organization use option, and organization behavior option, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/CLIENT_ID' \
@@ -317,7 +319,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table">
   <thead>

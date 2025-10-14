@@ -10,6 +10,8 @@ permalink: "custom-error-pages"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Lorsqu’une erreur d’autorisation se produit et que votre URL de rappel est valide, le serveur d’autorisations renvoie les paramètres d’erreur et d’état appropriés à votre URL de rappel. Si votre URL de rappel n’est pas valide, votre application affichera la [page d’erreur Auth0 par défaut](/docs/fr-ca/authenticate/login/auth0-universal-login/error-pages).
 
 Votre application peut également afficher la page d’erreur Auth0 par défaut pour des raisons autres qu’une URL de rappel non valide, tel que :
@@ -79,7 +81,7 @@ Utilisez Dashboard pour configurer Auth0 en redirigeant les utilisateurs vers un
 Utilisez le point de terminaison de <Tooltip href="/docs/docs/fr-ca/glossary?term=management-api" tip="Management API
 Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip> [Update Tenant Settings (Mettre à jour les paramètres du locataire)](/docs/fr-ca/api/management/v2/#!/Tenants/patch_settings). Remplacez la valeur du paramètre fictif `{mgmtApiAccessToken}` avec votre jeton d’accès de Management API et mettez à jour la valeur du champ `url` dans le corps JSON pour pointer vers l’emplacement de la page d’erreur.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -281,7 +283,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -324,7 +326,7 @@ Vous pouvez utiliser la syntaxe Liquid pour inclure les variables suivantes :
 * `{error_description}`
 * `{tracking}`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request PATCH \
   --url https://login.auth0.com/api/v2/tenants/settings \
@@ -540,7 +542,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

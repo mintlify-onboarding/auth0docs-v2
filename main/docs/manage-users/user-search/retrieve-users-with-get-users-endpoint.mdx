@@ -10,6 +10,8 @@ title: Retrieve Users with the Get Users Endpoint
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 The [`GET /api/v2/users` endpoint](https://auth0.com/docs/api/management/v2#!/Users/get_users) allows you to retrieve a list of users. Using this endpoint, you can:
 
 * Search based on a variety of criteria
@@ -24,7 +26,7 @@ To search for users, make a `GET` request to the [`/api/v2/users` endpoint](http
 
 For example, to search for a user whose email is exactly `jane@exampleco.com`, use `q=email:"jane@exampleco.com"`:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=email%3A%22jane%40exampleco.com%22&search_engine=v3' \
@@ -188,7 +190,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If successful, you'll receive a response like this:
 

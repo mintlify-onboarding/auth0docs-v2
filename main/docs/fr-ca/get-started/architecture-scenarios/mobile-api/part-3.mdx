@@ -10,6 +10,8 @@ permalink: "part-3"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Dans cette section, nous verrons comment nous pouvons mettre en œuvre une API pour notre scénario.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -153,7 +155,7 @@ Location: https://{yourDomain}/callback?code=AUTHORIZATION_CODE`;
 
 Ensuite vous pouvez échanger le `authorization_code` de la réponse pour un jeton d’accès qui peut être utilisé pour appeler votre API. Réalisez une demande `POST` à l’[URL du jeton](/docs/fr-ca/api/authentication#authorization-code-pkce-) incluant les données suivantes :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -351,7 +353,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -452,7 +454,7 @@ Un [Jeton d’actualisation](https://auth0.com/docs/tokens/concepts/refresh-tok
 
 Votre demande devrait comprendre :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -621,7 +623,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

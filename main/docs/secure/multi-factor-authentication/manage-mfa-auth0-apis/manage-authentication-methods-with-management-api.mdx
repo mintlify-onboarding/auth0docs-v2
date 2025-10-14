@@ -11,6 +11,8 @@ title: Manage Authentication Methods with Management API
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Card title="Before you start">
 
 * Configure a [machine-to-machine (M2M) application](/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps), and [grant it access to the Auth0 Management API](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the following scopes:
@@ -36,7 +38,7 @@ This endpoint requires the scope: `read:authentication_methods`.
 
 The following request returns a list of all authentication methods for a specified user.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -203,7 +205,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Responses
 
@@ -231,7 +233,7 @@ This endpoint requires the scope: `read:authentication_methods`.
 
 The following request returns a single authentication method for a user based on the specified authentication method's ID.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
@@ -398,7 +400,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Responses
 
@@ -434,7 +436,7 @@ Send users an OTP over SMS which the user is then prompted to enter before they 
 
 The following request creates a SMS authentication method for a user.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -626,7 +628,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Responses
 
@@ -650,7 +652,7 @@ Send users an OTP over email which the user is then prompted to enter before the
 
 The following request creates an email authentication method for a user.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -842,7 +844,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Responses
 
@@ -866,7 +868,7 @@ Enable users to use an authenticator application, such as Google Authenticator, 
 
 The following request creates an OTP authentication method for a user.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1054,7 +1056,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Responses
 
@@ -1078,7 +1080,7 @@ Enable users to use FIDO-compliant security keys (for example, [Yubikey](https:
 
 The following request creates a WebAuthn with security keys authentication method for a user.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1276,7 +1278,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Responses
 
@@ -1304,7 +1306,7 @@ This endpoint requires the scope: `update:authentication_methods`.
 
 The following request replaces all existing authentication methods for a user.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request PUT \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1504,7 +1506,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Responses
 
@@ -1539,7 +1541,7 @@ This endpoint requires the scope: `update:authentication_methods`.
 
 The following request updates a single authentication method for a user based on the specific authentication method's ID.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request PATCH \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
@@ -1725,7 +1727,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Responses
 
@@ -1759,7 +1761,7 @@ This endpoint requires the scope: `delete:authentication_methods`.
 
 The following request deletes all authentication methods for a user.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request DELETE \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1926,7 +1928,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Responses
 
@@ -1940,7 +1942,7 @@ Use the [Deletes an authentication method by ID](https://auth0.com/docs/api/mana
 
 The following request deletes a single authentication method for a user based on the specified authentication method's ID.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request DELETE \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
@@ -2107,7 +2109,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Responses
 

@@ -12,12 +12,14 @@ title: View Application Ownership
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can use Auth0's <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> to check whether an application is registered with Auth0 as a first-party or third-party application.
 
 Make a `GET` call to the [Get a Client endpoint](https://auth0.com/docs/api/management/v2#!/Clients/get_clients_by_id). Be sure to replace `{yourClientId}`
 and `{yourMgmtApiAccessToken}` placeholder values with your <Tooltip tip="Client ID: Identification value given to your registered resource from Auth0." cta="View Glossary" href="/docs/glossary?term=client+ID">client ID</Tooltip> and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/clients/%7ByourClientId%7D?fields=is_first_party&include_fields=true' \
@@ -181,7 +183,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

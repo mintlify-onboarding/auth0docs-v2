@@ -10,6 +10,8 @@ permalink: "gdpr-track-consent-with-custom-ui"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Dans ce tutoriel, nous allons expliquer comment utiliser auth0.js ou les API Auth0 pour obtenir des informations sur le consentement, puis enregistrer ces informations dans les métadonnées de l’utilisateur. Pour en savoir plus, lisez [Comprendre le fonctionnement des métadonnées dans les profils utilisateurs](/docs/fr-ca/manage-users/user-accounts/metadata).
 
 Si vous préférez suivre le consentement en utilisant Lock, consultez [RGPD : Track Consent with Lock (Suivre le consentement avec Lock)](https://auth0.com/docs/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-lock).
@@ -120,7 +122,7 @@ Si vous servez votre page de connexion à partir de votre propre serveur, alors 
 
 En ce qui concerne le même scénario dont nous avons discuté jusqu’à présent, une fois que vous inscrivez un nouvel utilisateur, vous pouvez utiliser le fragment de code suivant pour créer l’utilisateur dans Auth0 et définir les métadonnées. N’oubliez pas de remplacer la valeur du paramètre de requête `consentTimestamp` par la date/heure à laquelle l’utilisateur a donné son consentement.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/dbconnections/signup' \
@@ -318,7 +320,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Notez que nous définissons la valeur des métadonnées sur une chaîne avec la valeur `true` et non sur une valeur booléenne en raison de la restriction d’API qui admet les chaînes comme valeurs et pas les booléens.
 
@@ -339,7 +341,7 @@ Définissez le paramètre de requête **<Tooltip data-tooltip-id="react-contain
 
 Une fois que vous disposez d’un jeton valide, utilisez le fragment de code suivant pour mettre à jour les métadonnées de l’utilisateur.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/%7BUSER_ID%7D' \
@@ -537,7 +539,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Notez que pour effectuer cet appel, vous devez connaître l’`user_id` unique. Vous pouvez le récupérer à partir de la demande `sub` du jeton d’ID, si vous en avez reçue une dans la réponse. Pour en savoir plus, lisez [Jetons d’ID](/docs/fr-ca/secure/tokens/id-tokens). Si vous ne disposez que de l’adresse courriel, vous pouvez récupérer l’ID en appelant un autre point de terminaison de Management API. Pour en savoir plus, lisez [Meilleures pratiques de recherche d’utilisateurs](/docs/fr-ca/manage-users/user-search/user-search-best-practices).
 

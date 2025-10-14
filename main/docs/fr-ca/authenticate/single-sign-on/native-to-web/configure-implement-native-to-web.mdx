@@ -10,6 +10,8 @@ permalink: "configure-implement-native-to-web"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 Native to Web SSO is currently available in Early Access. To use this feature, you must have an Enterprise plan. By using this feature, you agree to the applicable Free Trial terms in Okta’s [Master Subscription Agreement](https://www.okta.com/legal/?_gl=1*agihqh*_gcl_au*NjM2NjA1MDg4LjE3NTM5ODE4NjY.*_ga*MTgyNDA4MjM2Ny4xNzE1MTAyMjQy*_ga_QKMSDV5369*czE3NTQ0NzQ3NTAkbzM1MyRnMSR0MTc1NDQ3NjU5MCRqNiRsMCRoMA..). To learn more about Auth0's product release cycle, review Product Release Stages.
@@ -236,7 +238,7 @@ If your web application does not support cookie injection, you can configure you
 * Open the web application using  WebView or browser.
 * Log the web application appending the `session_transfer_token` as a URL parameter to the [/authorize](https://auth0.com/docs/api/authentication/authorization-code-flow/authorize-application) endpoint. The Auth0 tenant authenticates the user without requiring first-factor authentication, as the session_transfer_token is valid and trusted
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url 'https://your_web_app_login_url/?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN'
@@ -386,7 +388,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### In your web application
 
@@ -402,7 +404,7 @@ Implement Native to Web Web Single SSO in your web application using URL paramet
 
 From the application login URL, redirect to the `/authorize` endpoint when the `session_transfer_token` is sent as a URL parameter.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code'
@@ -553,7 +555,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Option 2: Add the Session Transfer Token to web applications using Auth0 SDKs
 
@@ -595,7 +597,7 @@ Protocole normalisé permettant à deux parties d’échanger des informations d
 Protocole de gestion des identités des utilisateurs à travers les domaines." cta="Voir le glossaire">WS-Fed</Tooltip> service provider and Auth0 as the <Tooltip href="/docs/docs/fr-ca/glossary?term=idp" tip="Fournisseur d’identité (IdP)
 Service de stockage et de gestion des identités numériques." cta="Voir le glossaire">IdP</Tooltip>, you can send the `session_transfer_token` as an URL parameter to the Auth0 `/authorize` endpoint and the `redirect_uri` is the SAML or WS-Fed sign-in URL.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/samlp//{yourClientId}?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN' \
@@ -759,7 +761,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Session Transfer Token with Actions
 

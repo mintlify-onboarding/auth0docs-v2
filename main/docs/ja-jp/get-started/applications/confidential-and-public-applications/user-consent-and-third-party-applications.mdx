@@ -10,6 +10,8 @@ permalink: "user-consent-and-third-party-applications"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 [OIDC](/docs/ja-jp/authenticate/protocols/openid-connect-protocol)準拠の認証パイプラインでは、リソースサーバー（APIなど）をアプリケーションとは別のエンティティとして定義することができます。そうすることで、APIを使用するアプリケーションからAPIを切り離すだけでなく、[サードパーティアプリケーション](/docs/ja-jp/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications)を定義して、外部パーティに対し、APIの内部で保護されているリソースへの安全なアクセスを許可することができます。
 
 ## 同意ダイアログ
@@ -49,7 +51,7 @@ client_id=some_third_party_client
 
 **use_scope_descriptions_for_consent** フラグを設定するには、APIに適切な呼び出しをする必要があります。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -257,7 +259,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## 拒否された許可に対処する
 

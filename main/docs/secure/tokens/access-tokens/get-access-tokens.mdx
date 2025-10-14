@@ -14,6 +14,8 @@ title: Get Access Tokens
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 To access your API, you must request an [access token](/docs/secure/tokens/access-tokens) when authenticating a user.
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -29,7 +31,7 @@ To request an <Tooltip tip="Access Token: Authorization credential, in the form 
 
 #### Example POST to token URL
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -223,7 +225,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Parameters
 

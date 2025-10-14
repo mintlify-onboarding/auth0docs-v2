@@ -11,6 +11,8 @@ title: Create Roles
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can create [roles](/docs/manage-users/access-control/rbac) using Auth0's Dashboard or the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>. The roles can be used with the API Authorization Core feature set.
 
 ## Prerequisites
@@ -28,7 +30,7 @@ You can create [roles](/docs/manage-users/access-control/rbac) using Auth0's Das
 
 Make a `POST` call to the [Create Role endpoint](https://auth0.com/docs/api/management/v2#!/Roles/post_roles). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `ROLE_NAME`, and `ROLE_DESC` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, role name, and role description, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/roles' \
@@ -240,7 +242,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 | **Value** | **Description** |
 | --- | --- |

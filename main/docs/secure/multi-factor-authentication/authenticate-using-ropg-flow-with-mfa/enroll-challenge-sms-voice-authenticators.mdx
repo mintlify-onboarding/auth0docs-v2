@@ -12,6 +12,8 @@ title: Enroll and Challenge SMS and Voice Authenticators
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/docs/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
 
 ## Prerequisites
@@ -35,7 +37,7 @@ Make a `POST` request to the MFA Associate endpoint to enroll the user's authent
 
 To enroll with SMS or voice, they enroll with a phone number that can be challenged either with SMS or voice. Specific the parameters below to call the endpoint. The `oob_channels` parameter indicates how you want to send the code to the user (SMS or voice).
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
@@ -236,7 +238,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -283,7 +285,7 @@ Users should receive a message with a 6-digit code that they need to provide to 
 
 To complete enrollment, make a `POST` request to the <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=Token+endpoint">Token endpoint</Tooltip>. You need to include the `oob_code` returned in the previous response, and the `binding_code` with the value received in the message.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -501,7 +503,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If the call was successful, you'll receive a response in the following format, containing the access token:
 
@@ -525,7 +527,7 @@ Get an MFA token following the steps described in [Authenticate With Resource Ow
 
 To challenge the user, you need the `authenticator_id` for the factor you want to challenge. You can list all enrolled authenticators using the MFA Authenticators endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -701,7 +703,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 You will get a list of authenticators with the following format:
 
@@ -733,7 +735,7 @@ You will get a list of authenticators with the following format:
 
 To trigger a challenge, `POST` to the MFA Challenge endpoint using the corresponding `authenticator_id` and the `mfa_token`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
@@ -931,7 +933,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Complete authentication using received code
 
@@ -947,7 +949,7 @@ If success, you receive the following response:
 
 Your application needs to prompt the user for the 6-digit code sent in the message and should be set in the `binding_code` parameter. You can verify the code and get authentication tokens using the OAuth0 Token endpoint, specifying the `binding_code` and `oob_code` returned by the previous call:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1149,7 +1151,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If the call was successful, you'll receive a response in the format below, containing the access token:
 

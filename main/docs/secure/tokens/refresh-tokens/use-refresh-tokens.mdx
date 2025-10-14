@@ -10,6 +10,8 @@ title: Use Refresh Tokens
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=Refresh+tokens">Refresh tokens</Tooltip> are used to request a new <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> and/or <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=ID+token">ID token</Tooltip> for a user without requiring them to re-authenticate.
 
 Typically, you should request a new access token before the previous one expires (to avoid any service interruption), but not every time you call an API, as token exchanges are subject to our [Rate Limiting Policy](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy).
@@ -24,7 +26,7 @@ To learn more about the authentication methods available for the Authentication 
 
 ### Use Basic authentication
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -230,11 +232,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Use Post authentication
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -428,7 +430,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Parameter definition
 

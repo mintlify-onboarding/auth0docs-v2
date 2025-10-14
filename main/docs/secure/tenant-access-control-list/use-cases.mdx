@@ -12,6 +12,8 @@ title: Use Cases
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 Tenant Access Control List (ACL) is an Early Access Service and currently available only to customers on an Enterprise plan with the [Attack Protection add-on](https://www.auth0.com/pricing).
@@ -48,7 +50,7 @@ Tenant Access Control List (ACL) provides the power and flexibility needed to ha
 
 Here is an example of a Tenant ACL rule that blocks incoming traffic from a specific geolocation country code.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/network-acls' \
@@ -334,7 +336,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Example of a block page
 
@@ -344,7 +346,7 @@ dataTask.resume()
 
 Here is an example of a Tenant ACL rule that allows traffic only from a specific geolocation country code.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/network-acls' \
@@ -630,13 +632,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Redirect a request
 
 Here is an example of a Tenant ACL rule that redirects all traffic from a specific geolocation country code.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/network-acls' \
@@ -922,7 +924,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Complex comparisons
 
@@ -930,7 +932,7 @@ You can combine the `match` and `not_match` operators in a single Tenant ACL rul
 
 Here is an example of a Tenant ACL rule that evaluates the `geo_country_code` and `geo_subdivision_code` signals to block all traffic from a given country except for a specific state, region, or province within that country.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/network-acls' \
@@ -1221,4 +1223,4 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>

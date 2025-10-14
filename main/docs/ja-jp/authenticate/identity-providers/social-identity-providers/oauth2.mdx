@@ -10,6 +10,8 @@ permalink: "oauth2"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 最も一般的な[IDプロバイダー（IdP）](/docs/ja-jp/authenticate/identity-providers)は、[Auth0 Dashboard](https://manage.auth0.com/#)や[Auth0 Marketplace](https://marketplace.auth0.com/features/social-connections)から利用できます。ただし、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=auth0-dashboard" tip="Auth0 Dashboard: サービスを構成するためのAuth0の主製品。" cta="用語集の表示">Auth0 Dashboard</Tooltip>では、任意の<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=oath2" tip="OAuth 2.0: 認可プロトコルとワークフローを定義する認可フレームワーク。" cta="用語集の表示">OAuth 2.0</Tooltip>プロバイダーを **カスタムソーシャル接続** として追加することもできます。
 
 1. Dashboardから、[［Authentication（認証）］>［Social（ソーシャル）］](https://manage.auth0.com/#/connections/social)に移動します。
@@ -146,7 +148,7 @@ IDプロバイダーのログインボタンにアイコンを追加するには
 
 </Warning>
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION-ID' \
@@ -326,7 +328,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## プロバイダー固有のパラメータを渡す
 
@@ -336,7 +338,7 @@ OAuth 2.0プロバイダーの認可エンドポイントには、プロバイ�
 
 静的パラメーター（すべての認可要求で送信されるパラメーター）を渡すには、[Management API](/docs/ja-jp/api/management/v2#!/Connections/patch_connections_by_id)を使ってOAuth 2.0接続を構成した場合、`option`の`authParams`要素を使用することができます。以下の呼び出しは、すべての認可要求について、`custom_param`の静的パラメーターを`custom.param.value`に設定します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION-ID' \
@@ -541,7 +543,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 動的パラメーターを渡す
 
@@ -551,7 +553,7 @@ dataTask.resume()
 
 この場合には、`/authorize`エンドポイントが受け入れる既存の追加パラメーターの1つ（`access_type`など）を使って、それを`custom_param`パラメーターにマッピングすることができます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION-ID' \
@@ -756,7 +758,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 これで、`/authorize`エンドポイントを呼び出す際に`access_type`パラメーターにアクセスタイプを渡すことができ、その値が`custom_param`パラメーターで認可エンドポイントに渡されます。
 

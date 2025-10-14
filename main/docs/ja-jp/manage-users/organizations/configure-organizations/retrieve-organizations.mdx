@@ -10,6 +10,8 @@ permalink: "retrieve-organizations"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 プログラムで[組織](/docs/ja-jp/manage-users/organizations/organizations-overview)を操作する場合は、すべての組織のリストを取得するか、名前またはIDで組織を個別に取得する必要がある場合があります。
 
 <Warning>
@@ -30,7 +32,7 @@ Management APIには、機密のクライアントを使ってアクセスする
 
 `Get Organizations`エンドポイントに対して`GET`呼び出しを行います。`MGMT_API_ACCESS_TOKEN`プレースホルダーの値をManagement APIのアクセストークンで置き換えてください。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations' \
@@ -193,7 +195,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -289,7 +291,7 @@ Management APIを介してIDで組織を取得できます。
 
 `Get Organization`エンドポイントに対して`GET`呼び出しを行います。`ORG_ID`と`MGMT_API_ACCESS_TOKEN`のプレースホルダーの値を、それぞれ組織IDとManagement APIのアクセストークンに置き換えてください。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations/ORG_ID' \
@@ -452,7 +454,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -546,7 +548,7 @@ Management APIを介して組織を名前で取得できます。
 
 `Get Organization by Name`エンドポイントへの`GET`呼び出しを行います。`ORG_NAME`と`MGMT_API_ACCESS_TOKEN`のプレースホルダーの値を、それぞれ組織IDとManagement APIのアクセストークンに置き換えてください。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations/name/ORG_NAME' \
@@ -709,7 +711,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

@@ -10,6 +10,8 @@ permalink: "calling-an-external-idp-api"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 FacebookやGitHubなどの外部IDプロバイダー(<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>)でユーザーを正常に認証すると、多くの場合、IdPはAuth0に返すユーザープロファイルにアクセストークンを含めます。
 
 このトークンを取得して使用し、IdPのAPIを呼び出すことができます。
@@ -104,7 +106,7 @@ FacebookやGitHubなどの外部IDプロバイダー(<Tooltip data-tooltip-id="r
 
 ユーザーのプロファイルを取得するには、前のセクションで抽出したアクセストークンを使用して、Management APIの[［Get a User endpoint（ユーザーエンドポイントの取得）］](/docs/ja-jp/api/management/v2#!/Users/get_users_by_id)を呼び出します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
 --url 'https://{yourDomain}/api/v2/users/%7BuserId%7D' \
@@ -236,7 +238,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 次の値を置き換えます:
 

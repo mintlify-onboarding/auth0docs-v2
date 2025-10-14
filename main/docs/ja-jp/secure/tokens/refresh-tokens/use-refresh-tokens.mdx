@@ -10,6 +10,8 @@ permalink: "use-refresh-tokens"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 リフレッシュトークンは、ユーザーに再認証を求めることなく、ユーザーの新しいアクセストークンおよび/またはIDトークンを要求するために使用します。
 
 通常、（サービスの中断を防ぐため）以前のアクセストークンが期限切れになる前に新しいアクセストークンを要求すべきですが、トークン交換には当社の[レート制限ポリシー](/docs/ja-jp/troubleshoot/customer-support/operational-policies/rate-limit-policy)が適用されるため、API呼び出しのたびには行いません。
@@ -24,7 +26,7 @@ Authentication APIで使える認証方法の詳細は、「[認証方法](https
 
 ### 基本認証の使用
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -230,11 +232,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### POST認証の使用
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -428,7 +430,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### パラメーターの定義
 

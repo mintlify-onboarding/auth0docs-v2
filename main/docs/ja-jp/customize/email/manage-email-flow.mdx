@@ -10,6 +10,8 @@ permalink: "manage-email-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 RulesとHooksのサポート終了（EOL）日は **2026年11月18日** であり、 **2023年10月16** 日の時点で作成された新しいテナントは使用できなくなります。Hooksが有効な既存のテナントは、サポート終了までHooksを利用できます。
@@ -48,7 +50,7 @@ Auth0 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/doc
 
 [メールアドレスの検証メール送信](https://auth0.com/docs/api/management/v2#!/Jobs/post_verification_email)のエンドポイントを選ぶと、ユーザーにメールアドレスの検証を要求するメールが送信されます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/verification-email' \
@@ -262,7 +264,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab><Tab title="Rules">
 

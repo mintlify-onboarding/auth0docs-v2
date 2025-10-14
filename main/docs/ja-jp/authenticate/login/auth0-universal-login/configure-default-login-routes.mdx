@@ -10,13 +10,15 @@ permalink: "configure-default-login-routes"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 場合によっては（以下を参照）、Auth0がOIDCサードパーティ起点のログインを使って、アプリケーションのログイン開始エンドポイントにリダイレクトしなければならないことがあります。詳細については、[OpenID Foundation](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin)の「[Initiating Login from a Third Party](https://openid.net)」をお読みください。
 
 これらのURIは、Dashboardの[［Application Settings（アプリケーション設定）］](https://manage.auth0.com/#/applications/settings)や[［Tenant Advanced Settings（高度なテナント設定）］](https://manage.auth0.com/#/tenant/advanced)、または<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>で構成することができます。
 
 <Tabs><Tab title="アプリケーションレベル">
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/{yourClientId}' \
@@ -224,11 +226,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab><Tab title="テナントレベル">
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -436,7 +438,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab></Tabs>
 
@@ -468,7 +470,7 @@ Organizationsを使用している場合、エンドユーザーが組織のロ�
 
 ユニバーサルログインを使うテナントの場合、[`/post-password-change`](/docs/ja-jp/api/management/v2/#!/Tickets/post_password_change)エンドポイントは、ユーザーを特定のアプリケーションにリダイレクトする動作に対応しています。`client_id`が指定され、アプリケーションのログインURIが設定されている場合は、パスワードのリセット完了後にユーザーをアプリケーションに送り返すボタンが表示されます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/tickets/password-change' \
@@ -670,7 +672,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### メール検証フローを完了する
 

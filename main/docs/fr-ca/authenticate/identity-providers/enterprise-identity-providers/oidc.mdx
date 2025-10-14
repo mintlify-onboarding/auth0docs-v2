@@ -10,6 +10,8 @@ permalink: "oidc"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## Prérequis
 
 * [Enregistrez votre application avec Auth0](/docs/docs/fr-ca/get-started/auth0-overview/create-applications).
@@ -210,7 +212,7 @@ Un produit permettant aux clients d’effectuer des tâches administratives." ct
 
 #### Utiliser un canal de façade avec point de terminaison de découverte
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -412,11 +414,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Utiliser un canal d'appui avec point de terminaison de découverte
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -620,11 +622,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Utiliser un canal d'appui spécifiant les configurations de l’émetteur
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -830,11 +832,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Utiliser un canal de façade spécifiant les configurations de l’émetteur
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -1040,7 +1042,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Configurer la PKCE et le mappage des demandes
 

@@ -10,6 +10,8 @@ permalink: "link-user-accounts-with-access-tokens-migration"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 以前は、一部のケースで、IDトークンを使ってユーザーアカウントのリンクやリンク解除ができました。この機能は、廃止されます。今後は、すべてのケースでアクセストークンを使う必要があります。
 
 <Warning>
@@ -260,7 +262,7 @@ export const codeExample5 = `   // get an Access Token
 
 ただ、ここで紹介している新しいメソッドはその代わりになります。APIでの認証には引き続き`update:users`スコープを含むアクセストークンを使用しますが、要求のペイロードでセカンダリのアカウントIDトークンを（`user_id`および`プロバイダー`の代わりに）送信できます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
@@ -455,7 +457,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 次のような条件があります。
 

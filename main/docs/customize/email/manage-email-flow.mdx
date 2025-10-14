@@ -12,6 +12,8 @@ title: Customize Email Handling
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
@@ -50,7 +52,7 @@ You can send verification emails in more than one way:
 
 The [Send an email address verification email endpoint](https://auth0.com/docs/api/management/v2#!/Jobs/post_verification_email) sends the user an email prompting them to verify their email address.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/verification-email' \
@@ -264,7 +266,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab><Tab title="Rules">
 

@@ -12,6 +12,8 @@ title: Enroll and Challenge Push Authenticators
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/docs/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
 
 You can enroll and challenge users using push notifications with the Guardian application or SDK using the MFA API.
@@ -37,7 +39,7 @@ Make a `POST` request to the MFA Associate endpoint to enroll the user's authent
 
 To enroll with push, set the `authenticator_types` parameter to `[oob]` and the `oob_channels` parameter to `[auth0]`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
@@ -236,7 +238,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If successful, you receive a response like this:
 
@@ -262,7 +264,7 @@ To confirm the enrollment, the end user will need to scan a QR code with the `ba
 
 Once that is done, the Guardian application will notify Auth0 that the user enrolled successfully. To know if that happened, poll the Auth0 <Tooltip tip="Token Endpoint: Endpoint on the Authorization Server that is used to programmatically request tokens." cta="View Glossary" href="/docs/glossary?term=Token+endpoint">Token endpoint</Tooltip> with the `oob_code` returned by the MFA Associate endpoint call.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -476,7 +478,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If the user has not scanned the code, it will return an `authorization_pending` response, indicating that you need to call `oauth_token` again in a few seconds:
 
@@ -513,7 +515,7 @@ Get an MFA token following the steps described in [Authenticate With Resource Ow
 
 To challenge the user, you need the `authenticator_id` for the factor you want to challenge. You can list all enrolled authenticators using the MFA Authenticators endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -689,7 +691,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 You will get a list of authenticators with the following format:
 
@@ -721,7 +723,7 @@ When users enroll with push, they also get enrolled in OTP, as Guardian supports
 
 To trigger a push challenge, `POST` to the MFA Challenge endpoint using the corresponding `authenticator_id` and the `mfa_token`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
@@ -901,7 +903,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Complete authentication using received code
 
@@ -916,7 +918,7 @@ If success, you receive the following response:
 
 Your application must start polling the OAuth0 Token endpoint until the user accepts the push notification.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1114,7 +1116,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The call can return one of the following results:
 

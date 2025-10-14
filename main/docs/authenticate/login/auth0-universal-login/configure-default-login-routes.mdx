@@ -12,13 +12,15 @@ title: Configure Default Login Routes
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 In certain cases (described below), Auth0 may need to redirect back to the application's Login Initiation endpoint, using OIDC third-party initiated login. To learn more, read [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) at the [OpenID Foundation](https://openid.net).
 
 You can configure these URIs with the Dashboard in [Application Settings](https://manage.auth0.com/#/applications/settings) or [Tenant Advanced Settings](https://manage.auth0.com/#/tenant/advanced) or with the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 <Tabs><Tab title="Application level">
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/{yourClientId}' \
@@ -226,11 +228,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab><Tab title="Tenant level">
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -438,7 +440,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab></Tabs>
 
@@ -470,7 +472,7 @@ This behavior only happens when you enable the <Tooltip tip="Universal Login: Yo
 
 For tenants using Universal Login, the [`/post-password-change`](https://auth0.com/docs/api/management/v2/#!/Tickets/post_password_change) endpoint supports redirecting users back to a specific application. When `client_id` is specified and the application's login URI is set, users will see a button sending them back to the application after completing a password reset.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/tickets/password-change' \
@@ -672,7 +674,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Complete email verification flow
 

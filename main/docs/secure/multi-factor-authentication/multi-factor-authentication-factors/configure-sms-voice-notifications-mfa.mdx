@@ -11,6 +11,8 @@ title: Configure SMS and Voice Notifications for MFA
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 The Unified Phone Experience centralizes all your phone provider configurations in one place in your tenant, so you don’t need to configure the same phone provider multiple times for various phone authentication factors. To learn more, read [Use Auth0's Unified Phone Experience for Multi-Factor Authentication](/docs/customize/phone-messages/unified-phone/use-auth0s-unified-phone-experience-for-multi-factor-authentication).
@@ -82,7 +84,7 @@ You can customize your SMS and voice message templates. To learn more, read [Cus
 
 You can use the Management API to configure which message delivery methods are enabled by using the `/api/v2/guardian/factors/phone/message-types` endpoint. The `message_types` parameter is an array that can have `["sms"]`, `["voice"]`, or `["sms", "voice"]`. You need a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens) with the `update:guardian_factors` scope as a bearer token to call the API:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
   --url 'https://{yourDomain}/api/v2/guardian/factors/phone/message-types' \
@@ -280,7 +282,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Integrated SMS messaging providers
 

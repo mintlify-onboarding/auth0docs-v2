@@ -12,6 +12,8 @@ title: Manage Authentication Factors with Authentication API
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Card title="Before you start">
 
 * Enable the **MFA** grant type for your application. To learn more, read [Update Grant Types](/docs/get-started/applications/update-grant-types).
@@ -87,7 +89,7 @@ When you request a token for the MFA audience, you can request the following sco
 
 To get a list of the authenticators for a user, you can call the MFA Authenticators endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -250,7 +252,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 You should receive information about the authenticator type(s) in the response:
 
@@ -319,7 +321,7 @@ To delete an associated authenticator, send a `DELETE` request to the MFA Authen
 
 If an `mfa_token` was used to list authenticators, users will need to [complete MFA to obtain an access token](https://auth0.com/docs/api/authentication/muti-factor-authentication/verify-mfa-with-otp) with an audience of `https://{yourDomain}/mfa/` in order to delete an authenticator.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/mfa/authenticators/AUTHENTICATOR_ID' \
@@ -482,7 +484,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If the authenticator was deleted, a 204 response is returned.
 
@@ -514,7 +516,7 @@ When you delete an authenticator, the following actions take place depending on 
 
 To delete a recovery code and generate a new one, get an Auth0 [Management API access token](https://auth0.com/docs/api/management/v2/tokens) and use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Recovery Code Regeneration endpoint](https://auth0.com/docs/api/management/v2/#!/Users/post_recovery_code_regeneration).
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/USER_ID/recovery-code-regeneration' \
@@ -677,7 +679,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 You will get a new recovery code that the end user will need to capture, for example:
 

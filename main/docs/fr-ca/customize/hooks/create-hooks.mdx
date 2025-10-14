@@ -10,6 +10,8 @@ permalink: "create-hooks"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 La date de fin de vie (EOL) des Règles et des Appels sera le **18 novembre 2026**. Ils ne sont plus disponibles pour les nouveaux locataires créés à partir du **16 octobre 2023**. Les locataires actuels ayant des hooks actifs conserveront l’accès aux produit Hooks jusqu’à la fin de leur durée de vie.
@@ -58,7 +60,7 @@ En option, vous pouvez ajouter des secrets (tels que des clés Twilio ou des cha
 
 Effectuez un appel `POST` au point de terminaison [Créer un point de terminaison de hook](/docs/fr-ca/api/management/v2/#!/Hooks/post_hooks). Veillez à remplacer les paramètres fictifs `MGMT_API_ACCESS_TOKEN`, `HOOK_NAME`, `HOOK_SCRIPT` et `EXTENSIBILITY_POINT_NAME` par votre jeton d’accès à Management API, le nom de l’appel, le script du hook et le nom du point d’extensibilité, respectivement.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/hooks' \
@@ -276,7 +278,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

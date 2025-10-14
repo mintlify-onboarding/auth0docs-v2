@@ -10,6 +10,8 @@ permalink: "call-api-hybrid-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 Ce tutoriel vous aidera à appeler votre propre API à l’aide du flux Hybride. Pour en savoir plus sur le fonctionnement du flux et pourquoi l’utiliser, voir [Flux hybride](/docs/fr-ca/get-started/authentication-and-authorization-flow/hybrid-flow).
@@ -216,7 +218,7 @@ Le jeton d’accès que vous recevez à cette étape est celui que vous devez ut
 
 #### Exemple de POST à une URL de jeton
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -414,7 +416,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Paramètres
 
@@ -483,7 +485,7 @@ Les jetons d’actualisation doivent être stockés en toute sécurité car ils 
 
 Pour appeler votre API à partir d’une application Web standard (ou de cas similaires dans lesquels les informations d’identification de l’application peuvent être stockées en toute sécurité), l’application doit transmettre le jeton d’accès récupéré en tant que jeton du porteur dans l’en-tête d’autorisation de votre requête HTTP.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -663,7 +665,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Jetons d’actualisation
 
@@ -678,7 +680,7 @@ Pour actualiser votre jeton, effectuez une requête `POST` au point de terminais
 
 #### Exemple de POST à une URL de jeton
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -868,7 +870,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Paramètres
 

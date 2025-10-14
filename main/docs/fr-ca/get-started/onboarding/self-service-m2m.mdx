@@ -10,6 +10,8 @@ permalink: "self-service-m2m"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Si votre cas d’utilisation s’adresse à une <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" tip="">audience</Tooltip> non interactive comme des API ou des serveurs dorsaux, vous serez intégré avec une configuration machine-machine (M2M).
 
 ## Cas d’utilisation
@@ -239,7 +241,7 @@ Auth0 prend en charge d’autres méthodes d’authentification client en plus d
 
 Une demande au point de terminaison `/oauth/token` doit être similaire à l’exemple ci-dessous :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -433,7 +435,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 La réponse devrait être similaire à l’exemple ci-dessous :
 

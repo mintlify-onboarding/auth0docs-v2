@@ -12,6 +12,8 @@ title: User Data Storage
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 stores user information for your tenant in a hosted cloud database, or you can choose to store user data in your own custom external database.
 
 To store user data beyond the basic information Auth0 uses for authentication, you can use the Auth0 data store or a custom database. However, if you use the additional data for authentication purposes, we recommend that you use the Auth0 data store, as this allows you to manage your user data through the [Auth0 Management Dashboard](https://manage.auth0.com/#).
@@ -80,7 +82,7 @@ Here's a look at the screen the user would use to change their `displayName`:
 
 To save the changes to the database, the application makes a call to the [Get a User](https://auth0.com/docs/api/management/v2#!/Users/get_users_by_id) endpoint of the Management API to identify the appropriate user:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://%7ByourAccount%7D.auth0.com/api/v2/users/user_id \
@@ -247,11 +249,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 This is followed by a call to the [Update a User](https://auth0.com/docs/api/management/v2#!/Users/patch_users_by_id) endpoint to update the `user_metadata` field:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/user_id' \
@@ -444,7 +446,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 You must replace `{yourAccessToken}` with a [Management API Access Token](https://auth0.com/docs/api/management/v2/concepts/tokens).
 

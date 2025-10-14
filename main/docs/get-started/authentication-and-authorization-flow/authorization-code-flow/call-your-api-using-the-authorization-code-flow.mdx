@@ -11,6 +11,8 @@ title: Call Your API Using the Authorization Code Flow
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 This tutorial will help you call your own API using the Authorization Code Flow. If you want to learn how the flow works and why you should use it, see [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow). If you want to learn to add login to your regular web app, see [Add Login Using the Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
@@ -142,7 +144,7 @@ Now that you have an Authorization Code, you must exchange it for tokens. Using 
 
 #### Example POST to token URL
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -334,7 +336,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Parameters
 
@@ -405,7 +407,7 @@ Refresh tokens must be stored securely since they allow a user to remain authent
 
 To call your API from a regular web application, the application must pass the retrieved access token as a Bearer token in the Authorization header of your HTTP request.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -584,7 +586,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Accordion>
 
@@ -601,7 +603,7 @@ To refresh your token, make a `POST` request to the `/oauth/token` endpoint in t
 
 ##### Example POST to token URL
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -781,7 +783,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ###### Parameters
 

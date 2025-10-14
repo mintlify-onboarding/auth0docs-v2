@@ -10,6 +10,8 @@ permalink: "user-search-query-syntax"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 ここでは、現在のAuth0ユーザー検索であるバージョン3について説明します。
@@ -111,7 +113,7 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 たとえば、`jane smith`という名前のユーザーを検索するには、`q=name:"jane smith"`を使用します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3A%22jane%20smith%22&search_engine=v3' \
@@ -275,7 +277,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## ワイルドカード
 
@@ -288,7 +290,7 @@ dataTask.resume()
 * `q=name:john*` は、 `john`で始まる名前のユーザーすべてを返します。
 * サフィックスの照合の場合、リテラルは3文字以上である必要があります。たとえば、`name:*usa`は使用できますが、`name:*sa`は使用できません。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3Ajohn*&search_engine=v3' \
@@ -452,7 +454,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## 範囲
 
@@ -463,7 +465,7 @@ dataTask.resume()
 * 中括弧と角括弧は同じ範囲の表現内で組み合わせることができます：`logins_count:[100 TO 200}`
 * ワイルドカードと組み合わせて範囲を使用します。たとえば、100回以上ログインしているユーザーを見つけるには、 `q=logins_count:{100 TO *]`を使用します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=logins_count%3A%7B100%20TO%20*%5D&search_engine=v3' \
@@ -627,7 +629,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## 検索可能なプロファイル属性の例
 

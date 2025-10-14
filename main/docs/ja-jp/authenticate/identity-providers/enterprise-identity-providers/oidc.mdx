@@ -10,6 +10,8 @@ permalink: "oidc"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## 前提条件
 
 * [Auth0にアプリケーションを登録します](/docs/ja-jp/get-started/auth0-overview/create-applications)。
@@ -212,7 +214,7 @@ Auth0 Dashboardを介した構成を可能にするためには、OpenID Connect
 
 #### ディスカバリーエンドポイントでフロントチャネルを使用
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -414,11 +416,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### ディスカバリーエンドポイントでバックチャネルを使用
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -622,11 +624,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### バックチャネルを使って発行者の設定を指定
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -832,11 +834,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### フロントチャネルを使って発行者の設定を指定
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -1042,7 +1044,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## PKCEとクレームのマッピングを構成する
 

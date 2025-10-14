@@ -12,6 +12,8 @@ title: Connect Your App to SAML Identity Providers
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 lets you create <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP) connections.
 
 ## Prerequisites
@@ -179,7 +181,7 @@ You can also use the [Management API](https://auth0.com/docs/api/management/v2) 
 
 Make a `POST` call to the [Create a Connection endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Be sure to replace `MGMT_API_ACCESS_TOKEN`, `CONNECTION_NAME`, `SIGN_IN_ENDPOINT_URL`, `SIGN_OUT_ENDPOINT_URL`, and `BASE64_SIGNING_CERT` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, connection name, sign in URL, sign out URL, and Base64-encoded signing certificate (in PEM or CER format), respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -411,7 +413,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -470,7 +472,7 @@ Rather than specifying each SAML configuration field, you can specify a SAML met
 
 Use the `metadataXml` option to provide content of the document:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -690,13 +692,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Provide a metadata document URL
 
 Use the `metadataUrl` option to provide the URL of the document:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -916,7 +918,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 When providing the URL, content is downloaded only once; the connection will not automatically reconfigure if the content of the URL changes in the future.
 

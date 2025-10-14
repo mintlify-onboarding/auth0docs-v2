@@ -12,6 +12,8 @@ title: Change User Pictures
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 normalizes common profile properties in the User Profile, this includes the `name`, `picture` field and more. The picture field is populated by either the social provider profile picture or the Gravatar image associated with the user's email address.
 
 By default, all database users will have a placeholder image with their initials. When you authenticate the user, this picture field is referred to as `user.picture`.
@@ -22,7 +24,7 @@ The `user.picture` attribute is not directly editable when provided by <Tooltip 
 
 Alternatively, you can use metadata to store the picture attribute for users. For example, if your app provides a way to upload profile pictures, once the picture is uploaded, you can set the URL to the picture in the `user.user_metadata.picture`:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -220,7 +222,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Use Actions
 

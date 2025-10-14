@@ -10,6 +10,8 @@ permalink: "enroll-and-challenge-push-authenticators"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 offre un flux intégré d’enregistrement et d’authentification <Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip> en utilisant la [connexion universelle](/docs/fr-ca/authenticate/login/auth0-universal-login). Cependant, si vous souhaitez créer votre propre interface utilisateur, vous pouvez utiliser [l’API MFA](/docs/fr-ca/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) pour ce faire.
 
@@ -36,7 +38,7 @@ Faites une demande `POST (PUBLIER)` au point de terminaison d’association MFA 
 
 Pour inscrire avec Push, définissez le paramètre `authenticator_types` sur `[oob]` et le paramètre `oob_channels` sur `[auth0]`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
@@ -235,7 +237,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si l’étape réussie, vous recevez une réponse comme celle-ci :
 
@@ -261,7 +263,7 @@ Pour confirmer l’inscription, l’utilisateur final devra balayer un code QR a
 
 Ensuite, l’application Guardian application informera Auth0 que l’utilisateur a bien été inscrit. Pour savoir si cela s'est produit, interrogez le point de terminaison des jetons Auth0 avec le code `oob_code` renvoyé par l’appel au point de terminaison MFA Associate.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -475,7 +477,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si l’utilisateur n’a pas balayé le code, une réponse `authorization_pending` sera renvoyée, indiquant que vous devez appeler de nouveau `oauth_token` dans quelques secondes :
 
@@ -512,7 +514,7 @@ Obtenez un jeton MFA en suivant les étapes décrites dans [Authentification ave
 
 Pour effectuer le défi-réponse avec l’utilisateur, vous aurez besoin de l’`authenticator_id` pour le facteur que vous désirez utiliser. Vous pouvez énumérer toutes les authentifications à l’aide du point de terminaison des facteurs d’authentification multifacteur :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -688,7 +690,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Vous obtiendrez une liste de facteurs d’authentification avec le format suivant :
 
@@ -720,7 +722,7 @@ Lorsque les utilisateurs s’inscrivent avec Push, ils sont également inscrits 
 
 Pour déclencher un défi-réponse avec courriel, `POST` au point de terminaison du défi-réponse d’AMF à l’aide de l’ `authenticator_id` correspondante et du `mfa_token`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
@@ -900,7 +902,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Compléter l’authentification à l’aide du code reçu
 
@@ -915,7 +917,7 @@ Si l’opération réussit, vous recevrez la réponse suivante :
 
 Votre application doit commencer à interroger le point de terminaison OAuth0 Token jusqu’à ce que l’utilisateur accepte la notification poussée.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1113,7 +1115,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 L’appel peut renvoyer un des résultats suivants :
 

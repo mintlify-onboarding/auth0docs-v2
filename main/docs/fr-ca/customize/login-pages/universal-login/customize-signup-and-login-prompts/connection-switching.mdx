@@ -10,6 +10,8 @@ permalink: "connection-switching"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Flexible connection switching is an optional feature that allows users to choose their method of authentication when logging in to an application. When implemented, your application's login screen presents users with the option to authenticate with either traditional database credentials or a <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" tip="">passwordless</Tooltip> connection. Users who select a [passwordless connection](/docs/fr-ca/authenticate/passwordless) receive a one-time password (OTP) through email or SMS that they can use to log in to your application.
 
 Flexible connection switching uses [custom Universal Login prompts](/docs/fr-ca/customize/login-pages/universal-login/customize-signup-and-login-prompts) to provide users with a more autonomous authentication experience.
@@ -68,7 +70,7 @@ In the code samples below, ensure you replace the placeholders with the appropri
 
 You can configure the `signup-password` prompt using the [Set partials for a prompt](/docs/api/management/v2/prompts/put-partials) endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
 --url 'https://{yourDomain}/api/v2/prompts/signup-password/partials' \
@@ -232,7 +234,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 As a result, a **Send a secure code by email button** is added to the `signup-password` screen. When a user selects this button, it submits a form body containing the login state parameter and the name of the desired connection.
 
@@ -242,7 +244,7 @@ For best results, configuring the login prompt for both password and passwordles
 
 You can configure the `login-password` prompt using the [Set partials for a prompt](/docs/api/management/v2/prompts/put-partials) endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
 --url 'https://{yourDomain}/api/v2/prompts/login-password/partials' \
@@ -406,13 +408,13 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 As a result, a **Send a secure code by email button** is added to the `login-password` screen. When a user selects this button, it submits a form body containing the login state parameter and the name of the desired connection.
 
 Similarly, you can configure the `login-passwordless` prompt using the [Set partials for a prompt](/docs/api/management/v2/prompts/put-partials) endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
 --url 'https://{yourDomain}/api/v2/prompts/login-passwordless/partials' \
@@ -576,5 +578,5 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 

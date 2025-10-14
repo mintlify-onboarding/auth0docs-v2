@@ -10,6 +10,8 @@ title: SAML Identity Provider Configuration Settings
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## Common settings
 
 These are the settings used to configure a <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> (IdP).
@@ -52,7 +54,7 @@ You can create a custom Entity ID using the property `connection.options.entityI
 
 You can obtain the custom Entity ID value using the Get a Connection endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D' \
@@ -215,7 +217,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Replace the `ACCESS_TOKEN` header value, with a Management APIv2 <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>.
 

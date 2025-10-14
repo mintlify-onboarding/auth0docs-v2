@@ -12,6 +12,8 @@ title: Configure Rules
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Card title="Before you start">
 
 To configure a Tenant ACL rule, you need a [Management API access token](/docs/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the following scopes:
@@ -139,7 +141,7 @@ You can enable [monitoring mode](/docs/secure/tenant-access-control-list) for a 
 
 Add the `log` property to the `rule.action` object and set its value to `true`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
   --url 'https://{yourDomain}/api/v2/network-acls/ACL_ID' \
@@ -425,4 +427,4 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>

@@ -10,6 +10,8 @@ permalink: "enroll-and-challenge-otp-authenticators"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 offre un flux intégré d’enregistrement et d’authentification <Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip> en utilisant la [connexion universelle](/docs/fr-ca/authenticate/login/auth0-universal-login). Cependant, si vous souhaitez créer votre propre interface utilisateur, vous pouvez utiliser [l’API MFA](/docs/fr-ca/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) pour ce faire.
 
@@ -34,7 +36,7 @@ Faites une demande `POST (PUBLIER)` au point de terminaison d’association MFA 
 
 Pour vous inscrire avec OTP, définissez le paramètre `authenticator_types` sur `[otp]`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
@@ -230,7 +232,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si l’étape réussie, vous recevez une réponse comme celle-ci :
 
@@ -254,7 +256,7 @@ Pour confirmer l’inscription, l’utilisateur final devra entrer le code secre
 Après que l’utilisateur a entré le code secret, l’application OTP affichera un code à 6 chiffres que l’utilisateur devra entrer dans votre application. L’application doit ensuite effectuer une requête `POST` vers le point de terminaison du jeton <Tooltip href="/docs/docs/fr-ca/glossary?term=oath2" tip="OAuth 2.0
 Cadre d’applications d’autorisation qui définit les protocoles d’autorisation et les flux de production." cta="Voir le glossaire">OAuth</Tooltip>, en incluant cette valeur `otp`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -452,7 +454,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si l’appel ne réussi pas, vous recevrez une réponse dans le format suivant, contenant le jeton d’accès :
 
@@ -480,7 +482,7 @@ Obtenez un jeton MFA en suivant les étapes décrites dans [Autorisation par mot
 
 Vous pouvez énumérer toutes les authentifications à l’aide du point de terminaison des facteurs d’authentification MFA :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -656,7 +658,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Vous obtiendrez une liste de facteurs d’authentification avec le format suivant :
 
@@ -681,7 +683,7 @@ L’utilisateur obtiendra un mot de passe à usage unique, que vous récupérere
 
 Vous pouvez vérifier le code et obtenir des jetons d’authentification en utilisant le point de terminaison du jeton Oauth0, tout en précisant le mot de passe à usage unique dans le paramètre `otp`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -879,7 +881,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si l’appel réussi, vous recevrez une réponse dans le format ci-dessous, contenant le jeton d’accès :
 

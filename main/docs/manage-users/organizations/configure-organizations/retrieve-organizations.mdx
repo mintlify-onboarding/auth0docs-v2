@@ -11,6 +11,8 @@ title: Retrieve Organizations
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 When working with [organizations](/docs/manage-users/organizations/organizations-overview) programmatically, you may need to retrieve either a list of all organizations or organizations individually by name or ID.
 
 <Warning>
@@ -31,7 +33,7 @@ To retrieve more than 1000 results, you must use the checkpoint pagination metho
 
 Make a `GET` call to the `Get Organizations` endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN` placeholder value with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations' \
@@ -194,7 +196,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+</AuthCodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 **Find Your Auth0 Domain**
 
@@ -229,7 +231,7 @@ You can retrieve an organization by its ID through the Management API.
 
 Make a `GET` call to the `Get Organization` endpoint. Be sure to replace the `ORG_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your organization ID and Management API Access Token, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations/ORG_ID' \
@@ -392,7 +394,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+</AuthCodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 **Find Your Auth0 Domain**
 
@@ -427,7 +429,7 @@ You can retrieve an organization by its name through the Management API.
 
 Make a `GET` call to the `Get Organization by Name` endpoint. Be sure to replace the `ORG_NAME` and `MGMT_API_ACCESS_TOKEN` placeholder values with your organization ID and Management API Access Token, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations/name/ORG_NAME' \
@@ -590,7 +592,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+</AuthCodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 **Find Your Auth0 Domain**
 

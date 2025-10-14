@@ -10,6 +10,8 @@ permalink: "pass-parameters-to-idps"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 認証中、プロバイダー固有のパラメーターをIDプロバイダー（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>）に渡せます。値は、接続ごとに静的またはユーザーごとに動的のいずれにも設定できます。
 
 ## 制限事項
@@ -36,7 +38,7 @@ WordPressでは、その<Tooltip data-tooltip-id="react-containers-DefinitionToo
 
 Management APIの[接続の取得](/docs/ja-jp/api/management/v2#!/Connections/get_connections_by_id)エンドポイントを呼び出し、`options`オブジェクトの既存の値を取得します：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D' \
@@ -215,7 +217,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 `options`オブジェクトは、次のようになります：
 
@@ -248,7 +250,7 @@ dataTask.resume()
 
 Management APIの[接続を更新](https://auth0.com/docs/api/management/v2/#!/Connections/patch_connections_by_id)エンドポイントを、本文の`options`オブジェクトを次の通りにして呼び出します：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D' \
@@ -458,7 +460,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 これで、ユーザーがこの接続と認証するたびに、Wordpress認証エンドポイントへの要求には、クエリパラメーターとなる`blog=myblog.wordpress.com`が含まれるようになります。
 
@@ -509,7 +511,7 @@ Xにより、任意の`screen_name`のパラメーターをOAuth認証エンド�
 
 Management APIの[接続の取得](/docs/ja-jp/api/management/v2#!/Connections/get_connections_by_id)エンドポイントを呼び出し、`options`オブジェクトの既存の値を取得します：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D' \
@@ -688,7 +690,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 `options`オブジェクトは、次のようになります：
 
@@ -721,7 +723,7 @@ dataTask.resume()
 
 Management APIの[接続を更新](https://auth0.com/docs/api/management/v2/#!/Connections/patch_connections_by_id)エンドポイントを、本文の`options`オブジェクトを次の通りにして呼び出します：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D' \
@@ -931,7 +933,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### ログインエンドポイントを呼び出す
 

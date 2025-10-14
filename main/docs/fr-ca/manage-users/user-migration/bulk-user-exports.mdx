@@ -10,6 +10,8 @@ permalink: "bulk-user-exports"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez utiliser le point de terminaison `POST /api/v2/jobs/users-exports` pour créer une tâche qui exporte tous les utilisateurs associés à une [connexion](/docs/fr-ca/identityproviders), ou tous les utilisateurs du locataire.
 
 Pour une liste des champs de profil utilisateur qui peuvent être importés et exportés, consultez [Structure du profil utilisateur](/docs/fr-ca/manage-users/user-accounts/user-profiles/user-profile-structure).
@@ -53,7 +55,7 @@ Mettez à jour le `connection_id` avec votre ID de connexion à la base de donn�
 
 Permissions requises : `read:users`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-exports' \
@@ -270,7 +272,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 La réponse devrait ressembler à ceci :
 
@@ -332,7 +334,7 @@ Par exemple, pour des métadonnées structurées comme ceci.
 
 La demande d’exportation (pour les trois champs) ressemblerait à ceci.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-exports' \
@@ -548,7 +550,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -572,7 +574,7 @@ Avant de pouvoir importer des utilisateurs en utilisant un export généré par 
 
 Dans ce cas, pour le même exemple que nous avons utilisé précédemment, la requête ressemblerait à ceci :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-exports' \
@@ -783,7 +785,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Vérifier le statut de l’exportation
 
@@ -793,7 +795,7 @@ Indiquez l’ID de la tâche (que vous avez reçu dans la réponse lors de la cr
 
 Permissions requises : `create:users`, `read:users`, `create:passwords_checking_job`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D' \
@@ -956,7 +958,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Vous devriez obtenir une réponse similaire à :
 

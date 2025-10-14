@@ -10,6 +10,8 @@ permalink: "call-api-hybrid-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 このチュートリアルでは、ハイブリッドフローを使用して独自のAPIをを呼び出します。フローの仕組みやメリットについては、「[ハイブリッドフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/hybrid-flow)」を参照してください。
@@ -215,7 +217,7 @@ IDトークンをデコードして解析すると、`c_hash`という追加の�
 
 #### トークンURLへのPOSTの例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -413,7 +415,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### パラメーター
 
@@ -482,7 +484,7 @@ dataTask.resume()
 
 通常のWebアプリケーション（または同様のケースで、アプリケーションの資格情報を安全に保存できる場合）からAPIを呼び出すには、アプリケーションは、取得したアクセストークンをベアラートークンとしてHTTP要求の認可ヘッダーで渡さなければなりません。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -662,7 +664,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### リフレッシュトークン
 
@@ -677,7 +679,7 @@ dataTask.resume()
 
 #### トークンURLへのPOSTの例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -867,7 +869,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### パラメーター
 

@@ -10,6 +10,8 @@ permalink: "universal-login-internationalization"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## ユニバーサルログインのローカライズ
 
 ユニバーサルログインエクスペリエンスは、以下の言語にローカライズされています。
@@ -339,7 +341,7 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>を使用して、[Update Tenant Settingsエンドポイント](/docs/ja-jp/api/management/v2#!/Tenants/patch_settings)からテナントの有効な言語を指定することもできます。リストの最初の言語がデフォルトの言語になります。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -534,7 +536,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 制限事項
 

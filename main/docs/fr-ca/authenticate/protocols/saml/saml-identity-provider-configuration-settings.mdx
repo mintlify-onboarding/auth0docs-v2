@@ -10,6 +10,8 @@ permalink: "saml-identity-provider-configuration-settings"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## Paramètres communs
 
 Il s’agit des paramètres utilisés pour configurer un fournisseur d’identités (<Tooltip href="/docs/docs/fr-ca/glossary?term=idp" tip="Fournisseur d’identité (IdP)
@@ -55,7 +57,7 @@ Vous pouvez créer un identifiant d’entité personnalisé à l’aide de la pr
 
 Vous pouvez obtenir la valeur de l’identifiant d’entité personnalisée en utilisant le point de terminaison Obtenir une connexion :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D' \
@@ -218,7 +220,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Remplacer la valeur de l’en-tête `ACCESS_TOKEN` par un jeton d’accès de Management APIv2.
 

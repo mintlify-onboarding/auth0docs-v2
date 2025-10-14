@@ -12,6 +12,8 @@ title: Customize Universal Login Page Templates
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can customize <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> pages by providing a page template created with the [Liquid template language](https://shopify.github.io/liquid/basics/introduction/). With page templates, you can define the content displayed around Universal Login prompts, such as the login box or an <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> challenge. As the same page template is used for all login flow pages, this method of customization allows you to easily implement a consistent, branded experience for users.
 
 To use customized page templates, you must configure a [Custom Domain](/docs/customize/custom-domains) for your tenant. Further, you can only update Universal Login page templates with the [Management API](https://auth0.com/docs/api/management/v2).
@@ -6246,7 +6248,7 @@ To set the page template, you need to use the <Tooltip tip="Management API: A pr
 
 To set the template, you need to use the following endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
@@ -6440,11 +6442,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 To retrieve the template, you need to use the following endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
@@ -6607,11 +6609,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 To delete the template, you need to use the following endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
@@ -6774,7 +6776,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The maximum size for the Page Template is 100KB. If that is not big enough, consider moving images/css files outside of the Page Template code.
 

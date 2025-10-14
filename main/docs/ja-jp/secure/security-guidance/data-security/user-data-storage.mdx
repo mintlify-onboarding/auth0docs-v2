@@ -10,6 +10,8 @@ permalink: "user-data-storage"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0ではテナントのユーザー情報をホストされたクラウドデータベースに保存しますが、独自の外部カスタムデータベースにユーザーデータを保存することもできます。
 
 Auth0が認証に使用する基本情報以外のユーザーデータを保存するには、Auth0のデータストアまたはカスタムデータベースを使用できます。ただし、その追加データを認証目的で使用する場合は、ユーザーデータを[Auth0 Management Dashboard](https://manage.auth0.com/#)で管理できるよう、Auth0のデータストアを使用することを推奨します。
@@ -78,7 +80,7 @@ function(user, context, callback){
 
 変更内容をデータベースに保存するため、アプリケーションが<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>の[ユーザー取得](/docs/api/management/v2#!/Users/get_users_by_id)エンドポイントを呼び出して適切なユーザーを識別します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
 --url https://%7ByourAccount%7D.auth0.com/api/v2/users/user_id \
@@ -214,11 +216,11 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 その後、[ユーザー更新](/docs/api/management/v2#!/Users/patch_users_by_id)エンドポイントが呼び出され、`user_metadata`フィールドが更新されます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
 --url 'https://{yourDomain}/api/v2/users/user_id' \
@@ -376,7 +378,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 `{yourAccessToken}`を[Management APIアクセストークン](/docs/api/management/v2/concepts/tokens)に置き換える必要があります。
 

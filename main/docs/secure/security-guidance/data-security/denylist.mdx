@@ -12,12 +12,14 @@ title: Add User Attributes to Deny List
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the Deny List. To add attributes to the Deny List, make a `PATCH` call to the Update Connection endpoint of the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 1. Get a valid access token to access the `/patch_connections_by_id` [endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). The token must include the `update:connections` scope. See [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens) for details.
 2. With the access token and the list of attributes to be denied, call the API. Here is an example HTTP request that denies two attributes: ethnicity and gender. Keep in mind you need to retrieve the options object and send the whole object in your PATCH request as there is no "merge" when you only update one or two values.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
     curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID' \
@@ -222,7 +224,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 dataTask.resume()
 
 ```
-</CodeGroup>
+</AuthCodeGroup>
    
    Where:
    1. `{yourConnectionId}` is the [connection ID](/docs/authenticate/identity-providers/locate-the-connection-id) for which these attributes will be denied.

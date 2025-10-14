@@ -10,6 +10,8 @@ permalink: "assign-permissions-to-users"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez attribuer des [autorisations](/docs/fr-ca/manage-users/access-control/rbac) à un utilisateur en utilisant <Tooltip href="/docs/docs/fr-ca/glossary?term=auth0-dashboard" tip="Auth0 Dashboard
 Principal produit d’Auth0 pour configurer vos services." cta="Voir le glossaire">Auth0 Dashboard</Tooltip> ou <Tooltip href="/docs/docs/fr-ca/glossary?term=management-api" tip="Management API
 Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip>. Les autorisations attribuées peuvent être utilisées avec l’ensemble de fonctionnalités API Authorization Core.
@@ -48,7 +50,7 @@ Vous pouvez également attribuer des autorisations aux utilisateurs dans leur pa
 
 Effectuez un appel `POST` au [point de terminaison Attribuer des autorisations à un utilisateur](https://auth0.com/docs/api/management/v2#!/Users/post_permissions). Assurez-vous de remplacer les valeurs des paramètres fictifs `USER_ID`, `MGMT_API_ACCESS_TOKEN`, `API_IDENTIFIER` et `PERMISSION_NAME` avec votre ID d’utilisateur, le jeton d’accès à Management API, le ou les identificateurs de l’API et le ou les noms des autorisations, respectivement.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/USER_ID/permissions' \
@@ -276,7 +278,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

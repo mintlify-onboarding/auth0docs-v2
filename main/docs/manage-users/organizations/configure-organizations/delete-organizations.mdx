@@ -11,6 +11,8 @@ title: Delete Organizations
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 When deleting an [organization](/docs/manage-users/organizations/organizations-overview), the association between all users’ membership and the deleted organization will be removed, though the users themselves will not be deleted from your tenant.
 
 <Warning>
@@ -32,7 +34,7 @@ To delete an organization via the Auth0 Dashboard:
 
 Make a `DELETE` call to the `Delete Organization` endpoint. Be sure to replace the `ORG_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your organization ID and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/organizations/ORG_ID' \
@@ -195,7 +197,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+</AuthCodeGroup><Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 **Find Your Auth0 Domain**
 

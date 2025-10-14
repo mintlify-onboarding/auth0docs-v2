@@ -10,6 +10,8 @@ permalink: "use-refresh-tokens"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Les jetons d’actualisation sont utilisés pour demander un nouveau jeton d’accès et/ou un nouveau jeton d’ID pour un utilisateur sans qu’il soit nécessaire de se réauthentifier.
 
 En général, vous devez demander un nouveau jeton d’accès avant l’expiration du précédent (pour éviter toute interruption de service), mais pas à chaque appel à une API, car les échanges de jetons sont soumis à notre [Politique de limite anti-attaques](/docs/fr-ca/troubleshoot/customer-support/operational-policies/rate-limit-policy).
@@ -24,7 +26,7 @@ Pour en savoir plus sur les méthodes d’authentification disponibles pour l’
 
 ### Utiliser l’authentification Basic
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -230,11 +232,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Utiliser l’authentification Post
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -428,7 +430,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Définition des paramètres
 

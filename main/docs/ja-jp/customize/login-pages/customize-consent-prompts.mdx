@@ -10,6 +10,8 @@ permalink: "customize-consent-prompts"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 サードパーティーアプリケーションがスコープを要求するとき、ユーザーには同意プロンプトが表示されます。デフォルトでは、このプロンプトはスコープの**名前** を使用してテキストを生成し、リソースのアクションを1行に表示してリソースのすべてのスコープをグループ化します。
 
 保護者の同意など、特別な同意プロンプトが必要な場合は、独自のカスタム同意フォームを作成する必要があります。国によって法律が異なるのでご注意ください。
@@ -29,7 +31,7 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 以下のAPI呼び出しを行って、テナントの**［use_scope_descriptions_for_consent］** フラグを`true`に設定します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -237,13 +239,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## スコープの名前を使って同意プロンプトのテキストを生成する
 
 以下のAPI呼び出しを行って、テナントの**［use_scope_descriptions_for_consent］** フラグを`false`に設定します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -451,7 +453,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## もっと詳しく
 

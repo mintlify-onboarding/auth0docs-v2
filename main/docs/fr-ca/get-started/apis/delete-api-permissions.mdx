@@ -10,6 +10,8 @@ permalink: "delete-api-permissions"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez supprimer les autorisations d’une API à l’aide d’Auth0 Dashboard ou de Management API.
 
 ## Utiliser le Dashboard
@@ -26,7 +28,7 @@ Vous pouvez supprimer les autorisations d’une API à l’aide d’Auth0 Dash
 
 Faites un appel PATCH au [point de terminaison Mise à jour du serveur de ressources](https://auth0.com/docs/api/management/v2#!/Resource_Servers/patch_resource_servers_by_id) en incluant toutes les autorisations que vous souhaitez conserver et en excluant toutes celles que vous souhaitez supprimer. Remplacez les valeurs des placeholders `API_ID`, `MGMT_API_ACCESS_TOKEN`, `PERMISSION_NAME` et `PERMISSION_DESC` par l’identifiant de l’API, le jeton d’accès à Management API, le ou les nom de l’autorisation et la ou les descriptions de l’autorisation, respectivement.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/resource-servers/API_ID' \
@@ -248,7 +250,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

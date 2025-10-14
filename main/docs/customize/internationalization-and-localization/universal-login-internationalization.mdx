@@ -11,6 +11,8 @@ title: Universal Login Internationalization
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## Universal Login localization
 
 The <Tooltip tip="Universal Login: Your application redirects to Universal Login, hosted on Auth0's Authorization Server, to verify a user's identity." cta="View Glossary" href="/docs/glossary?term=Universal+Login">Universal Login</Tooltip> experience is localized to the following languages. Entries marked with an asterisk are read right to left.
@@ -360,7 +362,7 @@ After it's added, specify the language in the`ui_locales` query parameter of the
 
 You can also specify the enabled languages for the tenant via the Management API using the [Update Tenant Settings endpoint](https://auth0.com/docs/api/management/v2#!/Tenants/patch_settings). The first language in the list will be the default one.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -555,7 +557,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Right-to-left languages
 

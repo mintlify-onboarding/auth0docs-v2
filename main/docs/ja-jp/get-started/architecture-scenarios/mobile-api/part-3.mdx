@@ -10,6 +10,8 @@ permalink: "part-3"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 このセクションでは、当社シナリオでAPIを実装する方法を説明します。
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -152,7 +154,7 @@ Location: https://{yourDomain}/callback?code=AUTHORIZATION_CODE`;
 
 次に、応答の`認可コード`をAPIを呼び出すのに使用するアクセストークンと交換します。以下のデータを含めて、[トークン URL](/docs/ja-jp/api/authentication#authorization-code-pkce-)への`POST`要求を実行します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -350,7 +352,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -451,7 +453,7 @@ APIから安全なリソースにアクセスするには、認証されたユ�
 
 要求には以下を含める必要があります。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -620,7 +622,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

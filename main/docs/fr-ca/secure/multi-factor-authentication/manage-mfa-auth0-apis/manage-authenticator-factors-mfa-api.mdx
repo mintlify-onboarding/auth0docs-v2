@@ -10,6 +10,8 @@ permalink: "manage-authenticator-factors-mfa-api"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Card title="Before you start">
 
 * Activez le type d’autorisation **MFA** pour votre application. Pour en savoir plus, lisez [Mettre à jour les types d’autorisation](/docs/fr-ca/get-started/applications/update-grant-types).
@@ -78,7 +80,7 @@ Lorsque vous demandez un jeton pour l'audience MFA, vous pouvez demander les per
 
 Pour obtenir une liste des authentifiants pour un utilisateur, vous pouvez appeler le point de terminaison des authentifiants MFA :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -241,7 +243,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Dans la réponse, vous devriez recevoir des informations concernant le(s) type(s) d’authentifiants :
 
@@ -310,7 +312,7 @@ Pour supprimer un authentifiant associé, envoyez une demande `DELETE` au point 
 
 Si un `mfa_token` a été utilisé pour répertorier les authentifiants, les utilisateurs devront [compléter MFA pour obtenir un jeton d’accès](https://auth0.com/docs/fr-ca/api/authentication/muti-factor-authentication/verify-mfa-with-otp) avec une audience de `https://{yourDomain}/mfa/` afin de supprimer un authentifiant.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/mfa/authenticators/AUTHENTICATOR_ID' \
@@ -473,7 +475,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si l’authentifiant a été supprimé, une réponse 204 est renvoyée.
 
@@ -486,7 +488,7 @@ Un produit permettant aux clients d’effectuer des tâches administratives." ct
 
 Pour supprimer un code de récupération et en générer un nouveau, obtenez un [Jeton d’accès à Management API](https://auth0.com/docs/api/management/v2/tokens) et utiliser le [point de terminaison de régénération](https://auth0.com/docs/api/management/v2/#!/Users/post_recovery_code_regeneration) Management API.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/USER_ID/recovery-code-regeneration' \
@@ -649,7 +651,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Vous obtiendrez un nouveau code de récupération que l’utilisateur final devra enregistrer, par exemple :
 

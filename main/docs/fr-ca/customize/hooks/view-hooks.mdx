@@ -10,6 +10,8 @@ permalink: "view-hooks"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 La date de fin de vie (EOL) des Règles et des Appels sera le **18 novembre 2026**. Ils ne sont plus disponibles pour les nouveaux locataires créés à partir du **16 octobre 2023**. Les locataires actuels ayant des hooks actifs conserveront l’accès aux produit Hooks jusqu’à la fin de leur durée de vie.
@@ -43,7 +45,7 @@ Tous les hooks configurés sont répertoriés en fonction du point d’extensibi
 
 Effectuez un appel `GET` au point de terminaison [Obtenir les hooks](/docs/fr-ca/api/management/v2/#!/Hooks/get_hooks). Veillez à remplacer le paramètre fictif `MGMT_API_ACCESS_TOKEN` par votre jeton d’accès à Management API.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/hooks' \
@@ -206,7 +208,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

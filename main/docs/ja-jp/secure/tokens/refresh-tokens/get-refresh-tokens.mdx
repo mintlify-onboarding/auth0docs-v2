@@ -10,6 +10,8 @@ permalink: "get-refresh-tokens"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 リフレッシュトークンを取得するには、`/authorize`エンドポイントを通じて認証要求を開始する際に、`offline_access`[スコープ](/docs/ja-jp/get-started/apis/scopes)を含める必要があります。必ずAPIでオフラインアクセスを開始してください。詳細については、「[API設定](/docs/ja-jp/get-started/apis/api-settings)」をお読みください。
 
 たとえば、[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)を使用している場合、認証要求は以下のようになります。
@@ -28,7 +30,7 @@ export const codeExample1 = `https://{yourDomain}/authorize?
 
 ユーザー認証が成功すると、アプリケーションは`redirect_uri`にリダイレクトされ、URLの一部として`code`が付加されます（`{https://yourApp/callback}?code=BPPLN3Z4qCTvSNOy`）。`/oauth/token`エンドポイントを使用して、このコードをアクセストークンと交換できます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -226,7 +228,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 応答には、アクセストークンとリフレッシュトークンが含まれているはずです。
 

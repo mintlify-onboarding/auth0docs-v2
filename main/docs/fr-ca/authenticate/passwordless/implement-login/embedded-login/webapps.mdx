@@ -10,6 +10,8 @@ permalink: "webapps"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Pour utiliser les API sans mot de passe intégrées dans les applications Web classiques, assurez-vous d’activer l’option **OTP sans mot de passe** octroyer à [Auth0 Dashboard (Tableau de bord Auth0) > Applications > Applications](https://manage.auth0.com/#/applications) dans les paramètres de votre application sous **Advanced Settings (Paramètres avancés)** > **Types d’autorisation**.
 
 L’authentification sans mot de passe pour les applications Web classiques se compose de deux étapes :
@@ -23,7 +25,7 @@ Voici quelques extraits de code qui peuvent être utilisés pour appeler ces poi
 
 **Envoyer un code à usage unique par courriel**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -221,13 +223,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Envoyer un lien magique par courriel**
 
 Vous devez préciser `send: link`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -425,11 +427,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Envoyer un mot de passe à usage unique par SMS**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -627,11 +629,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authentifier un utilisateur SMS**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -838,11 +840,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authentifier un utilisateur de messagerie**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1049,7 +1051,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authentifier un utilisateur via un lien magique**
 

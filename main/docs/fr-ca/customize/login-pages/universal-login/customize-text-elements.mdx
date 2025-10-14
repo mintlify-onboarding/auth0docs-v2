@@ -10,6 +10,8 @@ permalink: "customize-text-elements"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 La Connexion universelle consiste en un ensemble de pages qui facilitent plusieurs actions liées au compte, telles que la connexion, l’enrôlement des facteurs d’authentification multifacteur (<Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip>) ou la réinitialisation des mots de passe. Auth0 fournit le texte de ces pages en plusieurs langues.
 
@@ -52,7 +54,7 @@ Vous pouvez utiliser Management API pour personnaliser les invites pour le texte
 
 Vous pourriez configurer le composant de texte `description` de l’invite `login` (connexion) sur l’écran de `connexion` pour `se connecter au site Web d’ACME` en appelant le point de terminaison [Set custom text for a specific prompt](https://auth0.com/docs/api/management/v2#!/Prompts/put_custom_text_by_language) (Définir un texte personnalisé pour une invite donnée) de Management API de la façon suivante :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
   --url 'https://{yourDomain}/api/v2/prompts/login/custom-text/en' \
@@ -250,13 +252,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Supprimer un texte personnalisé pour une invite
 
 Si vous voulez supprimer tout texte personnalisé pour une invite, appelez le point de terminaison [Set custom text for a specific prompt](https://auth0.com/docs/api/management/v2#!/Prompts/put_custom_text_by_language) (Définir un texte personnalisé pour une invite donnéée) de Management API en indiquant un objet vide (`{})` comme paramètre du `corps` :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
   --url 'https://{yourDomain}/api/v2/prompts/login/custom-text/en' \
@@ -454,7 +456,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab></Tabs>
 

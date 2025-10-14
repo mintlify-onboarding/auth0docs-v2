@@ -10,6 +10,8 @@ permalink: "change-user-picture"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0は、ユーザープロファイル内の共通プロファイルプロパティを正規化します。これには、`name`や`picture`フィールドなどが含まれます。画像フィールドには、ソーシャルプロバイダーのプロフィール画像、またはユーザーのメールアドレスに関連付けられたGravatar画像のいずれかが入力されます。
 
 デフォルトでは、すべてのデータベースユーザーにイニシャルの入ったプレースホルダー画像が設定されます。ユーザーの認証では、この画像フィールドは`user.picture`と呼ばれます。
@@ -20,7 +22,7 @@ Auth0は、ユーザープロファイル内の共通プロファイルプロパ
 
 または、メタデータを使用してユーザーの画像属性を保管することもできます。たとえば、アプリにプロフィール画像をアップロードする方法がある場合は、画像をアップロードすれば、`user.user_metadata.picture`でURLを画像に設定できます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -218,7 +220,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## アクションを使用する
 

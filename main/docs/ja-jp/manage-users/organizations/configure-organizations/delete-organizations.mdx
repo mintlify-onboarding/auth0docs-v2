@@ -10,6 +10,8 @@ permalink: "delete-organizations"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 [組織](/docs/ja-jp/manage-users/organizations/organizations-overview)を削除すると、すべてのユーザーのメンバーシップと削除された組織との関連付けが削除されますが、ユーザー自体はテナントから削除されることはありません。
 
 <Warning>
@@ -31,7 +33,7 @@ Auth0 Dashboardを使用して組織を削除するには、以下を行いま�
 
 `DELETE`呼び出しを`Delete Organization`（組織削除）エンドポイントに対して行います。`ORG_ID`と`MGMT_API_ACCESS_TOKEN`のプレースホルダーの値を、それぞれ組織IDとManagement APIのアクセストークンに置き換えてください。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/organizations/ORG_ID' \
@@ -194,7 +196,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 

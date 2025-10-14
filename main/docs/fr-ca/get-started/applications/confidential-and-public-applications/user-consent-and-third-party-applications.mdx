@@ -10,6 +10,8 @@ permalink: "user-consent-and-third-party-applications"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Le pipeline d’authentification conforme à l’[OIDC](/docs/fr-ca/authenticate/protocols/openid-connect-protocol) prend charge la définition des serveurs de ressources (tels que les API) en tant qu’entités distinctes des applications. Cela vous permet de découpler les API des applications qui les consomment, et vous permet également de définir des [applications tierces](/docs/fr-ca/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) permettant à des tiers d’accéder en toute sécurité à des ressources protégées derrière votre API.
 
 ## Dialogue sur le consentement
@@ -49,7 +51,7 @@ Si vous souhaitez afficher le champ **Description** à la place, vous pouvez le 
 
 Pour définir l’indicateur **use_scope_descriptions_for_consent** vous devrez faire la requête appropriée à l’API :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -257,7 +259,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Traiter les autorisations rejetées
 

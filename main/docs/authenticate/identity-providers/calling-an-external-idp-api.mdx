@@ -10,6 +10,8 @@ title: Call an Identity Provider API
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 If you have [Token Vault](/docs/secure/tokens/token-vault) enabled for your connection, access and refresh tokens will no longer be stored in the user’s `identities` array. Instead, they will be stored in a secure tokenset within the Token Vault. To enable Token Vault, read [Configure Token Vault](/docs/secure/tokens/token-vault/configure-token-vault).
@@ -110,7 +112,7 @@ These tokens **cannot be revoked**. To minimize risk, we recommend issuing short
 
 To get a user's profile, call the [Get a User endpoint](https://auth0.com/docs/api/management/v2#!/Users/get_users_by_id) of the Management API using the Access Token you extracted in the previous section:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/%7BuserId%7D' \
@@ -273,7 +275,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Replace these values:
 

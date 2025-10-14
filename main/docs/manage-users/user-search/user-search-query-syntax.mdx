@@ -10,6 +10,8 @@ title: User Search Query Syntax
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 This content describes the current Auth0 user search, version 3.
@@ -111,7 +113,7 @@ To find exact matches, use double quotes: `name:"jane smith"`.
 
 For example, to find users with the name `jane smith`, use `q=name:"jane smith"`:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3A%22jane%20smith%22&search_engine=v3' \
@@ -275,7 +277,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Wildcards
 
@@ -288,7 +290,7 @@ Wildcard searches can be run on terms using the asterisk character (`*`) to repl
 * `q=name:john*` returns all users whose names start with `john`.
 * For suffix matching, literals must have 3 characters or more. For example, `name:*usa` is allowed, but `name:*sa` is not.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3Ajohn*&search_engine=v3' \
@@ -452,7 +454,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Ranges
 
@@ -463,7 +465,7 @@ You can use ranges in your user search queries. Range searches are not available
 * Curly and square brackets can be combined in the same range expression: `logins_count:[100 TO 200}`.
 * Use ranges in combination with wildcards. For example, to find all users with more than 100 logins, use `q=logins_count:{100 TO *]`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=logins_count%3A%7B100%20TO%20*%5D&search_engine=v3' \
@@ -627,7 +629,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Searchable Profile Attribute Examples
 

@@ -10,6 +10,8 @@ permalink: "enroll-and-challenge-push-authenticators"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0は、[ユニバーサルログイン](/docs/ja-jp/authenticate/login/auth0-universal-login)を使用した組み込みの<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=multifactor-authentication" tip="多要素認証（MFA）: ユーザー名とパスワードに加えて、SMS経由のコードなどの要素を使用するユーザー認証プロセス。" cta="用語集の表示">MFA</Tooltip>登録と認証フローを提供します。ただし、独自のインターフェイスを作成したい場合は、[MFA API](/docs/ja-jp/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api)を使用することもできます。
 
 GuardianアプリケーションまたはMFA APIを用いたSDKを使用して、プッシュ通知でユーザーの登録とチャレンジを行うことができます。
@@ -35,7 +37,7 @@ MFA APIを使用するには、事前にアプリケーションに対してMFA�
 
 プッシュで登録するには、`authenticator_types`パラメーターを`[oob]`、`oob_channels`パラメーターを`[auth0]`に設定します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
@@ -234,7 +236,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 成功すると、次のような応答を受け取ります：
 
@@ -260,7 +262,7 @@ dataTask.resume()
 
 完了すると、ユーザーが正常に登録されたことをGuardianアプリケーションがAuth0に通知します。スキャンされたかを知るためには、MFA Associateエンドポイントの呼び出しで返された`oob_code`を使用して、Auth0トークンエンドポイントをポーリングします。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -474,7 +476,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ユーザーがコードをスキャンしなかった場合には、`authorization_pending`応答が返され、数秒以内に`oauth_token`をもう一度呼び出す必要があることが分かります。
 
@@ -511,7 +513,7 @@ MFA Authenticatorエンドポイントを呼び出すことで、Authenticator�
 
 ユーザーにチャレンジするには、チャレンジしたい要素の`authenticator_id`が必要です。登録された全Authenticatorの一覧は、MFA Authenticatorエンドポイントを使って表示できます：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -687,7 +689,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Authenticatorのリストは以下の形式で取得されます。
 
@@ -719,7 +721,7 @@ Authenticatorのリストは以下の形式で取得されます。
 
 プッシュチャレンジをトリガーするには、対応する`authenticator_id`と`mfa_token`を使ってMFAチャレンジエンドポイントに`POST`を行います。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
@@ -899,7 +901,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 受信したコードを使って認証を完了します。
 
@@ -914,7 +916,7 @@ dataTask.resume()
 
 アプリケーションは、ユーザーがプッシュ通知を受領するまで、OAuth0トークンエンドポイントをポーリングしなければなりません。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1112,7 +1114,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 呼び出しでは、以下の結果のうち1つが返されます。
 

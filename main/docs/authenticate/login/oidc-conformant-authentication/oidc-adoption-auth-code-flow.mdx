@@ -12,6 +12,8 @@ title: Authorization Code Flow with OIDC
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 The [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow) is used by server-side applications that are capable of securely storing secrets, or by native applications through [Authorization Code Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
 
 The OIDC-conformant pipeline affects the Authorization Code Flow in the following areas:
@@ -70,7 +72,7 @@ Location: https://app.example.com/callback?
 
 An authorization code can be exchanged in the same way in both pipelines:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -268,13 +270,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Code exchange request - Authorization Code flow with PKCE
 
 An authorization code can be exchanged in the same way in both pipelines:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -472,7 +474,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Code exchange response
 

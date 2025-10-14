@@ -10,6 +10,8 @@ permalink: "add-login-auth-code-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 認可コードフローを使用すると、ログインを通常のWebアプリケーションに追加することができます。フローの仕組みと使用すべき理由については、[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)をお読みください。通常のWebアプリからAPIを呼び出すには、[認可コードフローを使用してAPIを呼び出す](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/call-your-api-using-the-authorization-code-flow)をお読みください。
 
 認可コードフローの実装に、Auth0は以下のリソースを提供しています。
@@ -126,7 +128,7 @@ Location: {https://yourApp/callback}?code={authorizationCode}&state=xyzABC123
 
 ### トークンURLへのPOSTの例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -324,7 +326,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### パラメーター
 

@@ -12,6 +12,8 @@ title: Get Refresh Tokens
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 To get a <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip>, you must include the `offline_access` [scope](/docs/get-started/apis/scopes) when you initiate an authentication request through the `/authorize` endpoint. Be sure to initiate Offline Access in your API. For more information, read [API Settings](/docs/get-started/apis/api-settings).
 
 For example, if you are using the [Authorization Code Flow](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow), the authentication request would look like the following:
@@ -30,7 +32,7 @@ The refresh token is stored in session. Then, when a session needs to be refresh
 
 Once the user authenticates successfully, the application will be redirected to the `redirect_uri`, with a `code` as part of the URL: `{https://yourApp/callback}?code=BPPLN3Z4qCTvSNOy`. You can exchange this code with an <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip> using the `/oauth/token` endpoint.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -228,7 +230,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The response should contain an access token and a refresh token.
 

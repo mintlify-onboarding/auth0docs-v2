@@ -10,6 +10,8 @@ permalink: "customize-templates"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez personnaliser les pages de connexion universelle en fournissant un modèle de page créé avec le [langage de modèle Liquid](https://shopify.github.io/liquid/basics/introduction/). Avec les modèles de page, vous pouvez définir le contenu affiché autour des invites de connexion universelle, telles que la boîte de connexion ou un défi <Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">MFA</Tooltip>. Comme le même modèle de page est utilisé pour toutes les pages de flux de connexion, cette méthode de personnalisation vous permet de mettre en œuvre facilement une expérience cohérente et reflétant votre marque pour les utilisateurs.
 
@@ -6116,7 +6118,7 @@ Pour définir le modèle de page, vous devez utiliser la Management API. Vous de
 
 Pour définir le modèle, vous devez utiliser le point de terminaison suivant :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PUT \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
@@ -6310,11 +6312,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Pour récupérer le modèle, vous devez utiliser le point de terminaison suivant :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
@@ -6477,11 +6479,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Pour supprimer le modèle, vous devez utiliser le point de terminaison suivant :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
@@ -6644,7 +6646,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 La taille maximale du modèle de page est de 100 Ko. Si cette taille n’est pas suffisante, envisagez de déplacer les fichiers images/css en dehors du code du modèle de page.
 

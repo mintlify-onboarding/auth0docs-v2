@@ -10,6 +10,8 @@ permalink: "add-login-using-the-authorization-code-flow-with-pkce"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Vous pouvez ajouter une connexion à votre application native, mobile ou à page unique en utilisant le flux de code d’autorisation avec PKCE. Pour savoir comment fonctionne le flux et pourquoi vous devriez l’utiliser, consultez [Flux de code d’autorisation avec Proof Key for Code Exchange (PKCE)](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce). Pour apprendre à appeler votre API à partir d’une application native, mobile ou à page unique, consultez [Appeler votre API en utilisant le flux de code d’autorisation avec PKCE](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/call-your-api-using-the-authorization-code-flow-with-pkce).
 
 Pour implémenter le flux de code d’autorisation avec Proof Key for Code Exchange (PKCE), consultez les ressources suivantes :
@@ -276,7 +278,7 @@ Maintenant que vous avez un code d’authentification, vous pouvez l’échanger
 
 ### Exemple d’URL « POST to token »
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -474,7 +476,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Paramètres
 

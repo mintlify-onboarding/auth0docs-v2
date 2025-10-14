@@ -10,6 +10,8 @@ permalink: "call-your-api-using-the-authorization-code-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 このチュートリアルでは、認可コードフローを使用して独自のAPIを呼び出します。フローの仕組みやメリットについては、「[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)」を参照してください。通常のWebアプリにログインを追加する方法については、「[認可コードフローを使用してログインを追加する](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow)」を参照してください。
@@ -112,7 +114,7 @@ Location: {https://yourApp/callback}?code={authorizationCode}&state=xyzABC123
 
 #### トークンURLへのPOSTの例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -304,7 +306,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### パラメーター
 
@@ -375,7 +377,7 @@ dataTask.resume()
 
 通常のWebアプリケーションからAPIを呼び出すには、アプリケーションは、取得したアクセストークンをベアラートークンとしてHTTP要求の認可ヘッダーで渡さなければなりません。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -554,7 +556,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Accordion>
 
@@ -571,7 +573,7 @@ dataTask.resume()
 
 ##### トークンURLへのPOSTの例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -751,7 +753,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ###### パラメーター
 

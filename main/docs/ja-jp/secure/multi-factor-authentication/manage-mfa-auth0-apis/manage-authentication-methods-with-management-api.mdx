@@ -10,6 +10,8 @@ permalink: "manage-authentication-methods-with-management-api"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Card title="始める前に">
 
 * [マシンツーマシン（M2M）アプリケーション](/docs/ja-jp/get-started/auth0-overview/create-applications/machine-to-machine-apps)を構成し、以下のスコープで[Auth0 Management APIへのアクセスを付与](/docs/ja-jp/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production)します。
@@ -35,7 +37,7 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 以下の要求は特定のユーザーについて、すべての認証方法のリストを返します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -202,7 +204,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 応答
 
@@ -230,7 +232,7 @@ dataTask.resume()
 
 以下の要求は、指定された認証方法のIDに基づいて、ユーザーの1つの認証方法を返します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
@@ -397,7 +399,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 応答
 
@@ -433,7 +435,7 @@ SMSでユーザーにワンタイムパスワード（OTP）を送信します�
 
 以下の要求はユーザーのSMS認証方法を作成します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -625,7 +627,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### 応答
 
@@ -649,7 +651,7 @@ Management APIは、有効な各要求に対して、JSON形式の応答を返�
 
 以下の要求はユーザーのメール認証方法を作成します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -841,7 +843,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### 応答
 
@@ -865,7 +867,7 @@ Management APIは、有効な各要求に対して、JSON形式の応答を返�
 
 以下の要求はユーザーのOTP認証方法を作成します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1053,7 +1055,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### 応答
 
@@ -1077,7 +1079,7 @@ Management APIは、有効な各要求に対して、JSON形式の応答を返�
 
 以下の要求はユーザーについて、セキュリティキーを使ったWebAuthn認証方法を作成します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1275,7 +1277,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### 応答
 
@@ -1303,7 +1305,7 @@ Management APIは、有効な各要求に対して、JSON形式の応答を返�
 
 以下の要求はユーザーについて、既存のすべての認証方法を置き換えます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request PUT \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1503,7 +1505,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 応答
 
@@ -1538,7 +1540,7 @@ Management APIは、有効な各要求に対して、JSON形式の応答を返�
 
 以下の要求は、特定の認証方法のIDに基づいて、ユーザーの1つの認証方法を更新します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request PATCH \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
@@ -1724,7 +1726,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 応答
 
@@ -1758,7 +1760,7 @@ Management APIは、有効な各要求に対して、JSON形式の応答を返�
 
 以下の要求はユーザーのすべての認証方法を削除します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request DELETE \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
@@ -1925,7 +1927,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 応答
 
@@ -1939,7 +1941,7 @@ Management APIは、有効な各要求に対して、ステータスコード`20
 
 以下の要求は、指定された認証方法のIDに基づいて、ユーザーの1つの認証方法を削除します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request DELETE \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
@@ -2106,7 +2108,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### 応答
 

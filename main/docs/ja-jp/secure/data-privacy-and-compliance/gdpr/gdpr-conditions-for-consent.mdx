@@ -10,6 +10,8 @@ permalink: "gdpr-conditions-for-consent"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 GDPRの第7条によると、明確かつ利用しやすい方法で、ユーザーの個人データの処理についてユーザーに同意を求める必要があります。また、ユーザーが同意したことを示さなければならず、いつでも同意を取り消すことができる簡単な方法を提供しなければなりません。
 
 この記事では、これらの要件を実装するためのAuth0の機能の使い方について説明します。
@@ -79,7 +81,7 @@ Management APIにアクセスするには、アクセストークンが必要で
 
 要求例：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
 --url 'https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata' \
@@ -212,7 +214,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 応答例
 
@@ -239,7 +241,7 @@ IDを使用してユーザーを検索するには、[**Get a User（ユーザ�
 
 要求例：
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
 --url 'https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata' \
@@ -372,7 +374,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 応答例
 
@@ -418,7 +420,7 @@ dataTask.resume()
 
 ルートレベルのプロパティの更新はマージされるため、更新したいフィールドの値を送信するだけです。たとえば、同意日を追加して、`01/23/2018`に設定したいとします。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
 --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -581,7 +583,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 これにより、ユーザープロファイルに新しいプロパティ**user_metadata.consentDate**が追加され、 顧客が同意した日を保持します。応答は完全なユーザープロファイルです。更新されたメタデータは以下のようになります。
 
@@ -599,7 +601,7 @@ dataTask.resume()
 
 同意日の内部プロパティを追加し、`01/23/2018`に設定しましょう。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
 --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -768,7 +770,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 これにより、ユーザープロファイルに新しいプロパティ**user_metadata.consentDate**が追加され、 顧客が同意した日を保持します。応答は完全なユーザープロファイルです。更新されたメタデータは以下のようになります。
 
@@ -805,7 +807,7 @@ Management APIを使用してユーザーのリストをエクスポートする
 
 ユーザーを削除するには、[**Delete a User（ユーザーの削除）**エンドポイント](/docs/api/management/v2#!/Users/delete_users_by_id)を使用します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
 --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -937,7 +939,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 このエンドポイントの応答本文は空白のため、ユーザーが正常に削除されたことを確認したい場合は、メールアドレスを使用してユーザーの取得を試みます。エンドポイントがエラーを返したら、ユーザーの削除が成功したことを意味します。
 
@@ -953,7 +955,7 @@ dataTask.resume()
 
 ユーザーのメタデータを更新するには、[**Update a User（ユーザーの更新）**エンドポイント](/docs/api/management/v2#!/Users/patch_users_by_id)を使用します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
 --url 'https://{yourDomain}/api/v2/users/USER_ID' \
@@ -1116,7 +1118,7 @@ print(httpResponse)
 })
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### フラグ付けされたユーザーのログインを無効にする
 

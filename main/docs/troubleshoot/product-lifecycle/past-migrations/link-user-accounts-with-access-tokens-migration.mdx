@@ -12,6 +12,8 @@ title: Migrate to Access Tokens for Account Linking
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Previously you could use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+tokens">ID tokens</Tooltip> to link and unlink user accounts for some use cases. Auth0 is deprecating this functionality. You will now need to use <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=access+tokens">access tokens</Tooltip> in all cases.
 
 <Warning>
@@ -246,7 +248,7 @@ If you get an access token for account linking that contains the `update:users` 
 
 However, this new method introduces an alternative to this. You still use an access token that contains the `update:users` scope to authenticate with the API, but in the request's payload you can send the secondary's account ID token (instead of `user_id` and `provider`).
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities' \
@@ -441,7 +443,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The following must apply:
 

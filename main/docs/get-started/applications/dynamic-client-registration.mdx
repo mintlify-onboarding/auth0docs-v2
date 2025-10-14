@@ -12,6 +12,8 @@ title: Dynamic Application Registration
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can dynamically register third-party applications for your tenant. This feature is based on the [OpenID Connect Dynamic Client Registration specification](https://openid.net/specs/openid-connect-registration-1_0.html).
 
 ## Enable dynamic client registration
@@ -28,7 +30,7 @@ To do so, go to [Dashboard > Settings > Advanced](https://manage.auth0.com/#/ten
 
 Alternatively, you can update this flag using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [`/Tenant/patch_settings`](https://auth0.com/docs/api/management/v2#!/Tenants/patch_settings) endpoint.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -236,7 +238,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 You need to update the `API2_ACCESS_TOKEN` with a valid token with the scope `update:tenant_settings`. To learn more, read [Management API Access Tokens](/docs/secure/tokens/access-tokens/management-api-access-tokens).
 
@@ -250,7 +252,7 @@ To dynamically register an application with Auth0, you need to send an HTTP `POS
 
 To create an application with the name `My Dynamic application` and the callback URLs `https://application.example.com/callback` and `https://application.example.com/callback2`, use the following snippet:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oidc/register' \
@@ -442,7 +444,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Where:
 

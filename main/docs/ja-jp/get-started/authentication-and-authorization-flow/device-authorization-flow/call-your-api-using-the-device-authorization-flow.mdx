@@ -10,6 +10,8 @@ permalink: "call-your-api-using-the-device-authorization-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 このチュートリアルでは、デバイス認可フローを使用して、入力に制約のあるデバイスから独自のAPIを呼び出します。フローの仕組みやメリットについては、「[デバイス認可フロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/device-authorization-flow)」を参照してください。
@@ -60,7 +62,7 @@ Auth0を使用すると、以下を使ってアプリでデバイス認可フロ
 
 #### デバイスコードに対するPOSTの例URL
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/device/code' \
@@ -246,7 +248,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### デバイスコードのパラメーター
 
@@ -348,7 +350,7 @@ CLIをビルドする際は、この手順をスキップし、`verification_uri
 
 #### トークンURLに対するトークンPOST要求の例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -538,7 +540,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### トークン要求のパラメーター
 
@@ -691,7 +693,7 @@ IDトークンにはデコードして抽出するべきユーザー情報が含
 
 APIを呼び出すには、アプリケーションは、取得したアクセストークンをベアラートークンとしてHTTP要求の認証ヘッダーで渡さなければなりません。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -871,7 +873,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### リフレッシュトークン
 
@@ -886,7 +888,7 @@ dataTask.resume()
 
 #### トークンURLに対するリフレッシュトークンのPOST要求の例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1080,7 +1082,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### リフレッシュトークン要求パラメーター
 

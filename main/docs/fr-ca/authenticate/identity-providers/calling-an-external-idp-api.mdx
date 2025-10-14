@@ -10,6 +10,8 @@ permalink: "calling-an-external-idp-api"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Lorsque vous authentifiez avec succès un utilisateur auprès d’un fournisseur d’identité externe (<Tooltip href="/docs/docs/fr-ca/glossary?term=idp" tip="Fournisseur d’identité (IdP)
 Service de stockage et de gestion des identités numériques." cta="Voir le glossaire">IdP</Tooltip>), tel que Facebook ou GitHub, l’IdP inclut souvent un jeton d’accès dans le profil utilisateur qu’il renvoie à Auth0.
 
@@ -106,7 +108,7 @@ Ces jetons**ne peuvent pas être révoqués**. Pour minimiser les risques, nous 
 
 Pour obtenir le profil d’un utilisateur, appelez le point de terminaison [Obtenir un utilisateur](/docs/docs/fr-ca/api/management/v2#!/Users/get_users_by_id) du Management API en utilisant le jeton d’accès que vous avez extrait dans la section précédente.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/%7BuserId%7D' \
@@ -269,7 +271,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Remplacer ces valeurs :
 

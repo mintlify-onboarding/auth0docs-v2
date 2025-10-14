@@ -10,13 +10,15 @@ permalink: "configure-default-login-routes"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Dans certains cas (décrits ci-dessous), Auth0 peut avoir besoin de rediriger vers le point de terminaison d’initiation de la connexion de l’application, en utilisant la connexion initiée par une tierce partie OIDC. Pour en savoir plus, consulter [Initier une connexion à partir d’une tierce partie](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) dans la [Fondation OpenID](https://openid.net).
 
 Vous pouvez configurer ces URI à l’aide du tableau de bord dans les [Application Settings (Réglages de l’application)](https://manage.auth0.com/#/applications/settings) ou [Tenant Advanced Settings (Réglages avancés du locataire)](https://manage.auth0.com/#/tenant/advanced) ou avec Management API.
 
 <Tabs><Tab title="Niveau de l’application">
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/clients/{yourClientId}' \
@@ -224,11 +226,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab><Tab title="Niveau du locataire">
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -436,7 +438,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Tab></Tabs>
 
@@ -468,7 +470,7 @@ Ce comportement ne se produit que lorsque vous activez l’expérience de connex
 
 Pour les locataires utilisant la connexion universelle, le point de terminaison [`/post-password-change`](/docs/docs/fr-ca/api/management/v2/#!/Tickets/post_password_change) permet de rediriger les utilisateurs vers une application en particulier. Lorsque `client_id` est indiqué et que l’URI de connexion de l’application est défini, les utilisateurs verront un bouton les renvoyant à l’application après avoir effectué une réinitialisation de mot de passe.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/tickets/password-change' \
@@ -670,7 +672,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Flux complet de vérification par courriel
 

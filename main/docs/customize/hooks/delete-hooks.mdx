@@ -11,6 +11,8 @@ title: Delete Hooks
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Warning>
 
 The End of Life (EOL) date of Rules and Hooks will be **November 18, 2026**, and they are no longer available to new tenants created as of **October 16, 2023**. Existing tenants with active Hooks will retain Hooks product access through end of life.
@@ -42,7 +44,7 @@ When you no longer need hooks, you can delete them using either the Dashboard or
 
 Make a `DELETE` call to the [Delete a Hook endpoint](https://auth0.com/docs/api/management/v2/#!/Hooks/delete_hooks_by_id). Be sure to replace `HOOK_ID` and `MGMT_API_ACCESS_TOKEN` placeholder values with your hook ID and Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/hooks/HOOK_ID' \
@@ -205,7 +207,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

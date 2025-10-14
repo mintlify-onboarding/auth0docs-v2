@@ -10,6 +10,8 @@ permalink: "call-your-api-using-the-authorization-code-flow-with-pkce"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 このチュートリアルでは、PKCEを使った認可コードフローを用いて、ネイティブやモバイル、シングルページのアプリから独自のAPIを呼び出します。フローの仕組みやメリットについては、「[Proof Key for Code Exchange（PKCE）を使った認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce)」をお読みください。ネイティブやモバイル、シングルページのアプリケーションにログインを追加する方法については、「[PKCEを使った認可コードフローを使用してログインを追加する](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce/add-login-using-the-authorization-code-flow-with-pkce)」をお読みください。
@@ -294,7 +296,7 @@ Location: {yourCallbackUrl}?code={authorizationCode}&state=xyzABC123
 
 #### トークンURLへのPOSTの例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -492,7 +494,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### パラメーター
 
@@ -562,7 +564,7 @@ dataTask.resume()
 
 ネイティブ/モバイルアプリケーションからAPIを呼び出すには、アプリケーションは、取得したアクセストークンをBearerトークンとしてHTTP要求の認証ヘッダーで渡さなければなりません。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -742,7 +744,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### リフレッシュトークン
 
@@ -757,7 +759,7 @@ dataTask.resume()
 
 #### トークンURLへのPOSTの例
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -947,7 +949,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### パラメーター
 

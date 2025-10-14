@@ -10,6 +10,8 @@ permalink: "native"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Pour utiliser les API sans mot de passe intégrées dans les applications natives, assurez-vous d’activer l’autorisation **OTP sans mot de passe** en accédant à [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) dans les paramètres de votre application sous **Paramètres avancés** > **Types d’autorisation**.
 
 L’authentification sans mot de passe pour les applications natives se compose de deux étapes :
@@ -21,7 +23,7 @@ Voici quelques extraits de code qui peuvent être utilisés pour appeler ces poi
 
 **Envoyer un mot de passe à usage unique par courriel**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -216,11 +218,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Envoyer un lien magique par courriel**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -415,11 +417,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Envoyer un mot de passe à usage unique par SMS**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -614,11 +616,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authentifier un utilisateur SMS**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -816,11 +818,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authentifier un utilisateur de messagerie**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1024,7 +1026,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Si vous préférez, vous pouvez utiliser les trousses SDK pour Android ou iOS qui enveloppent ces API d’une manière conviviale pour la plateforme :
 

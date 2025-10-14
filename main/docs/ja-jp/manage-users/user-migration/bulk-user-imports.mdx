@@ -10,6 +10,8 @@ permalink: "bulk-user-imports"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ユーザーデータを一括してAuth0にインポートするには、[ユーザーインポートジョブ作成](/docs/ja-jp/api/management/v2#!/Jobs/post_users_imports)エンドポイントを使用します。一括インポートは、ユーザーを既存のデータベースやサービスからAuth0に移行するのに便利です。
 
 <Warning>
@@ -51,7 +53,7 @@ JSONファイルのスキーマと例については、「[一括インポート
 
 一括ユーザーインポートジョブを始めるには、`POST`要求を[一括ユーザーインポートジョブ作成](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports)エンドポイントに対して行います。必ず、`MGMT_API_ACCESS_TOKEN`、`USERS_IMPORT_FILE.json`、`CONNECTION_ID`、および`EXTERNAL_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークン、ユーザーのJSONファイル、データベース[接続ID](/docs/ja-jp/authenticate/identity-providers/locate-the-connection-id)と外部IDに置き換えます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-imports' \
@@ -416,7 +418,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -483,7 +485,7 @@ dataTask.resume()
 
 ジョブのステータスを確認するには、`GET`要求を[ジョブ取得](https://auth0.com/docs/api/management/v2#!/Jobs/get_jobs_by_id)エンドポイントに対して行います。必ず、`MGMT_API_ACCESS_TOKEN`および`JOB_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークンとユーザーインポートジョブIDに置き換えます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/JOB_ID' \
@@ -662,7 +664,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ユーザーインポートジョブのステータスに応じて、以下のような応答の1つを受け取ります。
 
@@ -733,7 +735,7 @@ dataTask.resume()
 
 ユーザーインポートジョブにエラーがある場合には、`GET`要求を[ジョブエラー詳細取得](/docs/ja-jp/api/management/v2#!/Jobs/get_errors)エンドポイントに行って、エラー詳細を取得することができます。必ず、`MGMT_API_ACCESS_TOKEN`および`JOB_ID`のプレースホルダーの値をそれぞれManagement APIのアクセストークンとユーザーインポートジョブIDに置き換えます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/JOB_ID/errors' \
@@ -912,7 +914,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 要求に成功すると、以下のような応答を受け取ります。`hash.value`などの機密フィールドは応答内でマスクされます。
 

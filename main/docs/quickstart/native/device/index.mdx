@@ -4,6 +4,8 @@ permalink: "01-login"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ##### By Rachel Khoriander
 
 This tutorial demonstrates how to call your API from an input-constrained device using the Device Authorization flow.We recommend that you log in to follow this quickstart with examples configured for your account.
@@ -62,7 +64,7 @@ To get the device code, your app must request a code from the [device code URL](
 
 ### Example POST to device code URL
 
-<CodeGroup>
+<AuthCodeGroup>
 <AuthCodeBlock children={codeExample1} language="bash" />
 <AuthCodeBlock children={codeExample2} language="javascript" />
 ```go Go
@@ -220,7 +222,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Device Code Parameters
 
@@ -316,7 +318,7 @@ To avoid errors due to network latency, you should start counting each interval 
 
 ### Example request token POST to token URL
 
-<CodeGroup>
+<AuthCodeGroup>
 <AuthCodeBlock children={codeExample11} language="bash" />
 ```cs C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
@@ -499,7 +501,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Token Request Parameters
 
@@ -650,7 +652,7 @@ Refresh Tokens must be stored securely since they allow a user to remain authent
 
 To call your API, the application must pass the retrieved Access Token as a Bearer token in the Authorization header of your HTTP request.
 
-<CodeGroup>
+<AuthCodeGroup>
 
 ```bash cURL lines
 curl --request GET \
@@ -836,7 +838,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Refresh Tokens
 
@@ -851,7 +853,7 @@ To refresh your token, make a `POST` request to the `/oauth/token` endpoint in t
 
 ### Example refresh token POST to token URL
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1045,7 +1047,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Refresh Token Request Parameters
 

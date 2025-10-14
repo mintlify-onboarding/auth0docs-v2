@@ -11,6 +11,8 @@ title: Retrieve Users with the Get Users by ID Endpoint
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 The [`GET /api/v2/users/{id}` endpoint](https://auth0.com/docs/api/management/v2#!/Users/get_users_by_id) allows you to retrieve a specific user using their Auth0 user ID.
 
 This endpoint is **immediately consistent**, and as such, we recommend that you use this endpoint for:
@@ -26,7 +28,7 @@ The request must include a [Management API access token](/docs/secure/tokens/acc
 
 Required Scopes: `read:users`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/%7BuserId%7D' \
@@ -189,7 +191,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ```json lines expandable
 {

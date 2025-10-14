@@ -12,6 +12,8 @@ title: Embedded Passwordless Login in Regular Web Applications
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 To use the Embedded <Tooltip tip="Passwordless: Form of authentication that does not rely on a password as the first factor." cta="View Glossary" href="/docs/glossary?term=Passwordless">Passwordless</Tooltip> APIs in Regular Web Applications, make sure you enable the **Passwordless OTP** grant at [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) in your application's settings under **Advanced Settings** > **Grant Types**.
 
 Passwordless authentication for Regular Web Applications consists of two steps:
@@ -25,7 +27,7 @@ Below, we list a few code snippets that can be used to call these API endpoints 
 
 **Send a one-time-use code via email**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -223,13 +225,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Send a magic link via email**
 
 You need to specify `send: link`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -427,11 +429,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Send a one-time-use password via SMS**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/passwordless/start' \
@@ -629,11 +631,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authenticate an SMS user**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -840,11 +842,11 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authenticate an Email user**
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1051,7 +1053,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 **Authenticate a user through a magic link**
 

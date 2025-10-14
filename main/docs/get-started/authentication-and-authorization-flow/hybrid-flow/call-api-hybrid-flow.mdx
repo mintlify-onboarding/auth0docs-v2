@@ -14,6 +14,8 @@ title: Call Your API Using the Hybrid Flow
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 This tutorial will help you call your own API using the Hybrid Flow. If you want to learn how the flow works and why you should use it, see [Hybrid Flow](/docs/get-started/authentication-and-authorization-flow/hybrid-flow).
@@ -219,7 +221,7 @@ The <Tooltip tip="Access Token: Authorization credential, in the form of an opaq
 
 #### Example POST to token URL
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -417,7 +419,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Parameters
 
@@ -486,7 +488,7 @@ Refresh tokens must be stored securely since they allow a user to remain authent
 
 To call your API from a regular web application (or similar cases in which the application credentials can be safely stored), the application must pass the retrieved Access Token as a Bearer token in the Authorization header of your HTTP request.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -666,7 +668,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Refresh tokens
 
@@ -681,7 +683,7 @@ To refresh your token, make a `POST` request to the `/oauth/token` endpoint in t
 
 #### Example POST to token URL
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -871,7 +873,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Parameters
 

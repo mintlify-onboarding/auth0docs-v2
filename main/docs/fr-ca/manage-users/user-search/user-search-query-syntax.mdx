@@ -10,6 +10,8 @@ permalink: "user-search-query-syntax"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 Ce contenu décrit la Recherche d’utilisateurs Auth0 actuelle, version 3.
@@ -111,7 +113,7 @@ Pour trouver des correspondances exactes, utilisez des guillemets doubles : `na
 
 Par exemple, pour trouver les utilisateurs portant le nom `jane smith`, utilisez `q=name:"jane smith"` :
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3A%22jane%20smith%22&search_engine=v3' \
@@ -275,7 +277,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Recherche générique
 
@@ -288,7 +290,7 @@ Les recherches par caractères de remplacement peuvent être effectuées sur les
 * `q=name:john*` renvoie tous les utilisateurs dont le nom commence par `john`.
 * Pour la correspondance des suffixes, les éléments littéraux doivent comporter trois caractères ou plus. Par exemple, `name:*usa` est autorisé, mais `name:*sa` ne l’est pas.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3Ajohn*&search_engine=v3' \
@@ -452,7 +454,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Plages
 
@@ -463,7 +465,7 @@ Vous pouvez utiliser des plages dans vos requêtes de recherche d’utilisateurs
 * Les crochets et les apostrophes courbes peuvent être combinés dans la même expression de plage : `logins_count:[100 TO 200}`.
 * Utilisez les plages en combinaison avec des caractères de remplacement. Par exemple, pour trouver tous les utilisateurs ayant plus de 100 connexions, utilisez `q=logins_count:{100 TO *]`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=logins_count%3A%7B100%20TO%20*%5D&search_engine=v3' \
@@ -627,7 +629,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Exemples d’attributs de profil pouvant faire l’objet d’une recherche
 

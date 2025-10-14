@@ -10,6 +10,8 @@ permalink: "universal-login-internationalization"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## Localisation de la connexion universelle
 
 L’expérience de connexion universelle est localisée dans les langues suivantes :
@@ -340,7 +342,7 @@ Vous pouvez définir les langues prises en charge et celles par défaut dans la 
 
 Vous pouvez également spécifier les langues activées pour le locataire par le biais de Management API en utilisant le [point de terminaison Mettre à jour les paramètres du locataire](/docs/fr-ca/api/management/v2#!/Tenants/patch_settings). La première langue de la liste sera la langue par défaut.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -535,7 +537,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Limites
 

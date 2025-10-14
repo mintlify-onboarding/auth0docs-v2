@@ -11,6 +11,8 @@ title: Bulk User Imports
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can bulk import user data into Auth0 using the [Create Import Users Job](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports) endpoint. Bulk imports are useful for migrating users from an existing database or service to Auth0.
 
 <Warning>
@@ -52,7 +54,7 @@ The file size limit for a bulk import is 500KB. You will need to start multiple 
 
 To start a bulk user import job, make a `POST` request to the [Create Import Users Job](https://auth0.com/docs/api/management/v2#!/Jobs/post_users_imports) endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN`, `USERS_IMPORT_FILE.json`, `CONNECTION_ID`, and `EXTERNAL_ID` placeholder values with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, users JSON file, database [connection ID](/docs/authenticate/identity-providers/locate-the-connection-id), and external ID, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/jobs/users-imports' \
@@ -417,7 +419,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -484,7 +486,7 @@ The [Create Import Users Job](https://auth0.com/docs/api/management/v2#!/Jobs/po
 
 To check a job's status, make a `GET` request to the [Get a Job](https://auth0.com/docs/api/management/v2#!/Jobs/get_jobs_by_id) endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN` and `JOB_ID` placeholder values with your Management API Access Token and user import job ID.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/JOB_ID' \
@@ -663,7 +665,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Depending on the status of the user import job, you'll receive a response similar to one of the following:
 
@@ -734,7 +736,7 @@ All of the job-related data is automatically deleted after 24 hours and cannot b
 
 If there were errors in the user import job, you can get the error details by making a `GET` request to the [Get Job Error Details](https://auth0.com/docs/api/management/v2#!/Jobs/get_errors) endpoint. Be sure to replace the `MGMT_API_ACCESS_TOKEN` and `JOB_ID` placeholder values with your Management API Access Token and user import job ID.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/JOB_ID/errors' \
@@ -913,7 +915,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If the request is successful, you'll receive a response similar to the following. Sensitive fields such as `hash.value` will be redacted in the response.
 

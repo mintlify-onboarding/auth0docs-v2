@@ -12,6 +12,8 @@ title: Manage Metadata Using the Management API
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## User metadata
 
 ### Create user metadata
@@ -32,7 +34,7 @@ To create a user with the following profile details:
 
 Make the following `POST` call to the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [`/post_users`](https://auth0.com/docs/api/management/v2#!/Users/post_users) endpoint to create the user and set the property values:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users' \
@@ -240,7 +242,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Update user metadata
 
@@ -272,7 +274,7 @@ To update `user_metadata` and add the user's home address as a second-level prop
 
 You would make the following `PATCH` call:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/user_id' \
@@ -470,7 +472,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The user's profile will now appear as follows:
 
@@ -514,7 +516,7 @@ For example, to add a user's work address as an additional inner property, you w
 
 Therefore, the corresponding `PATCH` call to the API would be:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/users/user_id' \
@@ -722,7 +724,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Delete user metadata
 

@@ -12,6 +12,8 @@ title: Enroll and Challenge Email Authenticators
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0 provides a built-in <Tooltip tip="Multi-factor authentication (MFA): User authentication process that uses a factor in addition to username and password such as a code via SMS." cta="View Glossary" href="/docs/glossary?term=MFA">MFA</Tooltip> enrollment and authentication flow using [Universal Login](/docs/authenticate/login/auth0-universal-login). However, if you want to create your own user interface, you can use the [MFA API](/docs/secure/multi-factor-authentication/multi-factor-authentication-developer-resources/mfa-api) to accomplish it.
 
 When email is enabled as a factor, all users with verified emails will be able to use them to complete MFA.
@@ -67,7 +69,7 @@ Use the following parameters:
 </tbody>
 </table>
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/associate' \
@@ -272,7 +274,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If successful, you receive a response like this:
 
@@ -296,7 +298,7 @@ The user should receive an email containing the 6-digit code that they can provi
 
 To complete the enrollment, make a `POST` request to the [**`/oath/token`**](https://auth0.com/docs/api/authentication#get-token) endpoint. Include the `oob_code` returned in the previous response and the `binding_code` with the value in the email message.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -480,7 +482,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If the call was successful, you'll receive a response in the following format, containing the access token:
 
@@ -510,7 +512,7 @@ Get an MFA token following the steps described in [Authenticate With Resource Ow
 
 To challenge the user, you need the `authenticator_id` for the factor you want to challenge. You can list all enrolled authenticators using the MFA Authenticators endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -686,13 +688,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Challenge user with OTP
 
 To trigger an email challenge, `POST` to the MFA Challenge endpoint using the corresponding `authenticator_id` and the `mfa_token`.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
@@ -872,7 +874,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ### Complete authentication using received code
 
@@ -888,7 +890,7 @@ If successful, you receive the following response:
 
 Your application should prompt the user for the code and send it as part of the request in the `binding_code` parameter in the following call to the `oauth``/token` endpoint:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -1090,7 +1092,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 If the call was successful, you'll receive a response in the format below, containing the access token:
 

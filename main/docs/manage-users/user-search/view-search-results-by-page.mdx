@@ -10,6 +10,8 @@ title: View Search Results by Page
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 To page the user search results, use the `page`, `per_page`, and `include_totals` parameters at your request.
 
 <table class="table"><thead>
@@ -36,7 +38,7 @@ To page the user search results, use the `page`, `per_page`, and `include_totals
 
 ## Sample request
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=logins_count%3A%5B100%20TO%20200%5D&page=2&per_page=10&include_totals=true&search_engine=v3' \
@@ -206,7 +208,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Sample response
 

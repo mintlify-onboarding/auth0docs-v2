@@ -11,6 +11,8 @@ title: 'GDPR: Track Consent with Custom UI'
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 In this tutorial we will see how you can use auth0.js or the Auth0 APIs to ask for consent information and save the input at the user's metadata. To learn more, read [Understand How Metadata Works in User Profiles](/docs/manage-users/user-accounts/metadata).
 
 If you would instead like to track consent using Lock, see [GDPR: Track Consent with Lock](/docs/secure/data-privacy-and-compliance/gdpr/gdpr-track-consent-with-lock).
@@ -121,7 +123,7 @@ If you serve your login page from your own server, then you can call the Authent
 
 For the same scenario we have been discussing so far, once you sign up a new user, you can use the following snippet to create the user at Auth0 and set the metadata. Remember to replace the value of the `consentTimestamp` request parameter with the timestamp of when the user provided consent.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/dbconnections/signup' \
@@ -319,7 +321,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Note that we set the value of the metadata to a string with the value `true` and not to a boolean value due to the API restriction that accepts strings as values, not booleans.
 
@@ -339,7 +341,7 @@ Set the **<Tooltip tip="Audience: Unique identifier of the audience for an issu
 
 Once you have a valid token, use the following snippet to update the user's metadata.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/%7BUSER_ID%7D' \
@@ -537,7 +539,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Note that in order to make this call you need to know the unique `user_id`. You can retrieve this from the `sub` claim of the <Tooltip tip="ID Token: Credential meant for the client itself, rather than for accessing a resource." cta="View Glossary" href="/docs/glossary?term=ID+Token">ID Token</Tooltip>, if you got one from the response. To learn more, read [ID Tokens](/docs/secure/tokens/id-tokens). Alternatively, if all you have is the email, you can retrieve the Id by calling another endpoint of the Management API. To learn more, read [User Search Best Practices](/docs/manage-users/user-search/user-search-best-practices).
 

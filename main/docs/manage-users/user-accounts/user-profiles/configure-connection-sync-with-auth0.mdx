@@ -12,6 +12,8 @@ title: Configure Identity Provider Connection for User Profile Updates
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can update connection preferences for an upstream <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=identity+provider">identity provider</Tooltip> so you can control when updates to user profile root attributes are allowed using the <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
 By default, user profile attributes provided by identity providers other than Auth0 (such as Google, Facebook, or X) are not directly editable because they are updated from the identity provider each time the user logs in.
@@ -38,7 +40,7 @@ Before completing this step, you should first [retrieve the existing values of t
 
 Make a `PATCH` call to the [Update a Connection endpoint](https://auth0.com/docs/api/management/v2#!/Connections/patch_connections_by_id). Make sure you include the original options values in the call to avoid overriding the current values. Also, be sure to replace `CONNECTION_ID`, `MGMT_API_ACCESS_TOKEN`, and `ATTRIBUTE_UPDATE_VALUE` placeholder values with your connection ID, Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=access+token">access token</Tooltip>, and attribute update value, respectively.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/CONNECTION_ID' \
@@ -246,7 +248,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

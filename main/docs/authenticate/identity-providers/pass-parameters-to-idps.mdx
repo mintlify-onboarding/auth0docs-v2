@@ -10,6 +10,8 @@ title: Pass Parameters to Identity Providers
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 You can pass provider-specific parameters to an <Tooltip tip="Identity Provider (IdP): Service that stores and manages digital identities." cta="View Glossary" href="/docs/glossary?term=Identity+Provider">Identity Provider</Tooltip> (IdP) during authentication. The values can either be static per connection or dynamic per user.
 
 ## Limitations
@@ -36,7 +38,7 @@ To follow this example, you'll need a working [WordPress Social connection](http
 
 Call the Management API [Get a connection](https://auth0.com/docs/api/management/v2#!/Connections/get_connections_by_id) endpoint to retrieve the existing values of the `options` object:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D' \
@@ -215,7 +217,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The `options` object will look something like this:
 
@@ -248,7 +250,7 @@ Copy the existing `options` object, and then add the `upstream_params` object wi
 
 Call the Management API [Update a connection](https://auth0.com/docs/api/management/v2/#!/Connections/patch_connections_by_id) endpoint with the `options` object in the body:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D' \
@@ -458,7 +460,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Now every time a user authenticates with this connection, the request to the Wordpress authorization endpoint will include the query parameter `blog=myblog.wordpress.com`.
 
@@ -509,7 +511,7 @@ To follow this example, you'll need a working [Twitter Social connection](https:
 
 Call the Management API [Get a connection](https://auth0.com/docs/api/management/v2#!/Connections/get_connections_by_id) endpoint to retrieve the existing values of the `options` object:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D' \
@@ -688,7 +690,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 The `options` object will look something like this:
 
@@ -721,7 +723,7 @@ Copy the existing `options` object, add the `upstream_params` object with the `s
 
 Call the Management API [Update a connection](https://auth0.com/docs/api/management/v2/#!/Connections/patch_connections_by_id) endpoint with the `options` object in the body:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D' \
@@ -931,7 +933,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 #### Call the login endpoint
 

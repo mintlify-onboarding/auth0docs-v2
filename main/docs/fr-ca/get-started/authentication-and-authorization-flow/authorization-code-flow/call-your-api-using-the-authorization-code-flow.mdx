@@ -10,6 +10,8 @@ permalink: "call-your-api-using-the-authorization-code-flow"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 Ce tutoriel vous aidera à appeler votre propre API en utilisant le flux de code d’autorisation. Pour en savoir plus sur le fonctionnement du flux et pourquoi l’utiliser, voir [Flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow). Si vous souhaitez apprendre comment ajouter la connexion à votre application Web classique, consultez [Ajout d’une connexion avec le flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
@@ -143,7 +145,7 @@ Maintenant que vous avez un code d’authentification, vous pouvez l’échanger
 
 #### Exemple d’un POST à une URL de jeton
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -335,7 +337,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### Paramètres
 
@@ -406,7 +408,7 @@ Les jetons d’actualisation doivent être stockés en toute sécurité car ils 
 
 Pour appeler votre API à partir d’une application web ordinaire, l’application doit transmettre le jeton d’accès récupéré en tant que jeton du porteur dans l’en-tête Authorization (Autorisation) de votre requête HTTP.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request GET \
   --url https://myapi.com/api \
@@ -585,7 +587,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 </Accordion>
 
@@ -602,7 +604,7 @@ Pour actualiser votre jeton, effectuez une requête `POST` au point de terminais
 
 ##### Exemple de requête POST à une URL de jeton
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/oauth/token' \
@@ -782,7 +784,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ###### Paramètres
 

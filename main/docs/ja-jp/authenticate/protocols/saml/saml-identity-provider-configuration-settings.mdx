@@ -10,6 +10,8 @@ permalink: "saml-identity-provider-configuration-settings"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 ## 共通設定
 
 これらは<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip> IDプロバイダー（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>）を構成するために使用される設定です。
@@ -52,7 +54,7 @@ urn:auth0:{yourTenant}:{yourConnectionName}
 
 カスタムエンティティIDは接続取得エンドポイントを用いて取得することができます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/connections/%7ByourConnectionID%7D' \
@@ -215,7 +217,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 `ACCESS_TOKEN`ヘッダー値をManagement APIv2アクセストークンと置き換えます。
 

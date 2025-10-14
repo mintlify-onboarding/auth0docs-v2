@@ -10,6 +10,8 @@ permalink: "manage-authenticator-factors-mfa-api"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 <Card title="Before you start">
 
 * アプリケーションに対して**MFA** の付与タイプを有効にします。詳細については、「[付与タイプを更新する](/docs/ja-jp/get-started/applications/update-grant-types)」をお読みください。
@@ -74,7 +76,7 @@ MFAオーディエンスのトークンを要求する際、以下のスコー�
 
 ## Authenticatorのリスト
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
@@ -237,7 +239,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 応答にAuthenticatorの種類に関する情報が含まれています。
 
@@ -306,7 +308,7 @@ Authenticatorを異なる要素で登録する方法については、以下の�
 
 Authenticatorのリストのために`mfa_token`を使用した場合、Authenticatorを削除するために、[ユーザーは、MFAを完了させて](https://auth0.com/docs/ja-jp/api/authentication/muti-factor-authentication/verify-mfa-with-otp)、`https://{yourDomain}/mfa/`のオーディエンスのアクセストークンを取得する必要があります。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request DELETE \
   --url 'https://{yourDomain}/mfa/authenticators/AUTHENTICATOR_ID' \
@@ -469,7 +471,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 Authenticatorが削除されると、204応答が返されます。
 
@@ -501,7 +503,7 @@ Authenticatorを削除する際、Authenticatorの種類に応じて以下のア
 
 ## 復旧コードを再生成する
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/USER_ID/recovery-code-regeneration' \
@@ -664,7 +666,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 新しい復旧コードが生成され、エンドユーザーはそれをキャプチャする必要があります。例：
 

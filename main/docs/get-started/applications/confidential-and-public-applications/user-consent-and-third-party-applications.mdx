@@ -11,6 +11,8 @@ title: User Consent and Third-Party Applications
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 The [OIDC](/docs/authenticate/protocols/openid-connect-protocol)-conformant authentication pipeline supports defining <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=resource+servers">resource servers</Tooltip> (such as APIs) as entities separate from applications. This lets you decouple APIs from the applications that consume them, and also lets you define [third-party applications](/docs/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications) that allow external parties to securely access protected resources behind your API.
 
 ## Consent dialog
@@ -50,7 +52,7 @@ If you would like to display the **Description** field instead, you can do so by
 
 To set the **use_scope_descriptions_for_consent** flag, you will need to make the appropriate call to the API:
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -258,7 +260,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ## Handle rejected permissions
 

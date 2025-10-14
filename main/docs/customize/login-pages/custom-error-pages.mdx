@@ -12,6 +12,8 @@ title: Customize Error Pages
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 When an authorization error occurs, and your callback URL is valid, the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=Authorization+Server">Authorization Server</Tooltip> returns the appropriate error and state parameters to your callback URL. If your callback URL is invalid, your application will display the [default Auth0 error page](/docs/authenticate/login/auth0-universal-login/error-pages).
 
 Your application may also display the default Auth0 error page for reasons other than an invalid callback URL, such as:
@@ -80,7 +82,7 @@ Use the Dashboard to configure Auth0 to redirect users to a custom error page:
 
 Use the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip> [Update Tenant Settings](https://auth0.com/docs/api/management/v2/#!/Tenants/patch_settings) endpoint. Replace the `{mgmtApiAccessToken}` placeholder value with your Management API <Tooltip tip="Access Token: Authorization credential, in the form of an opaque string or JWT, used to access an API." cta="View Glossary" href="/docs/glossary?term=Access+Token">Access Token</Tooltip>, and update the value of the `url` field in the JSON body to point to the location of the error page.
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request PATCH \
   --url 'https://{yourDomain}/api/v2/tenants/settings' \
@@ -282,7 +284,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -325,7 +327,7 @@ You can use Liquid syntax to include the following variables:
 * `{error_description}`
 * `{tracking}`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL lines
 curl --request PATCH \
   --url https://login.auth0.com/api/v2/tenants/settings \
@@ -541,7 +543,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>

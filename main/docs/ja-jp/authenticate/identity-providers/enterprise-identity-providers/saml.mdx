@@ -10,6 +10,8 @@ permalink: "saml"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 Auth0を使用すると、<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" href="/docs/ja-jp/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language（SAML）: パスワードなしに二者間で認証情報を交換できる標準化プロトコル。" cta="用語集の表示">SAML</Tooltip> IDプロバイダー（<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-2" href="/docs/ja-jp/glossary?term=idp" tip="IDプロバイダー（IdP）: デジタルIDを保存および管理するサービス。" cta="用語集の表示">IdP</Tooltip>）の接続を作成することができます。
 
 ## 前提条件
@@ -180,7 +182,7 @@ SAMLログインでは、Auth0はサービスプロバイダーとして機能�
 
 [接続作成エンドポイント](/docs/ja-jp/api/management/v2#!/Connections/patch_connections_by_id)に`POST`呼び出しを行います。`MGMT_API_ACCESS_TOKEN`、`CONNECTION_NAME`、`SIGN_IN_ENDPOINT_URL`、`SIGN_OUT_ENDPOINT_URL`と`BASE64_SIGNING_CERT`のプレースホルダーをそれぞれManagement APIのアクセストークン、接続名、サインインURL、サインアウトURLとBase64エンコードされた署名証明書（PEMまたはCERの形式）に置き換えます。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -412,7 +414,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 <table class="table"><thead>
 <tr>
@@ -471,7 +473,7 @@ SAMLの構成フィールドをそれぞれ指定する代わりに、構成値�
 
 `metadataXml`オプションを使用して、ドキュメントの内容を提供します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -691,13 +693,13 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ##### メタデータドキュメントのURLを提供する
 
 `metadataUrl`オプションを使用して、ドキュメントのURLを提供します。
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request POST \
   --url 'https://{yourDomain}/api/v2/connections' \
@@ -917,7 +919,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 URLを提供すると、コンテンツが一度だけダウンロードされます。後でURLのコンテンツが変更されても、接続は自動的には再構成されません。
 

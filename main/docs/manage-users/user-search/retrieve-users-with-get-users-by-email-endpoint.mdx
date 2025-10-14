@@ -12,6 +12,8 @@ title: Retrieve Users with Get Users by Email Endpoint
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
+
 The [`GET /api/v2/users-by-email` endpoint](https://auth0.com/docs/api/management/v2#!/Users_By_Email/get_users_by_email) allows you to search for users using their email addresses. The search looks for an exact match to the provided email address and is case-sensitive.
 
 This endpoint is **immediately consistent**, and as such, we recommend that you use this endpoint for:
@@ -25,7 +27,7 @@ The request must include a [Management API access token](/docs/secure/tokens/acc
 
 Required Scopes: `read:users`
 
-<CodeGroup>
+<AuthCodeGroup>
 ```bash cURL
 curl --request GET \
   --url 'https://{yourDomain}/api/v2/users-by-email?email=%7BuserEmailAddress%7D' \
@@ -189,7 +191,7 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-</CodeGroup>
+</AuthCodeGroup>
 
 ```json lines expandable
 [
