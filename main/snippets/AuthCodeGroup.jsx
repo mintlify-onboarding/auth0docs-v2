@@ -1,35 +1,53 @@
 export const AuthCodeGroup = ({ children, dropdown }) => {
-  const [user, setUser] = useState(null);
+  const [processedChildren, setProcessedChildren] = useState(children);
 
-  const userDomainPlaceholder = /{yourDomain}/g;
-  const userClientIdPlaceholder = /{yourClientId}/g;
-  const userClientSecretPlaceholder = /{yourClientSecret}/g;
-  const userSecretPlaceholder = /{yourSecret}/g;
-  const userRedirectUriPlaceholder = /{redirectUri}/g;
-  const yourAudiencePlaceholder = /{yourAudience}/g;
+  useEffect(() => {
+    let unsubscribe = null;
 
-  const processChildren = (node) => {
-    if (typeof node === "string") {
-      return node
-        .replace(userDomainPlaceholder, user?.userdomain || "{yourDomain}")
-        .replace(userClientIdPlaceholder, user?.userClientId || "{yourClientId}")
-        .replace(userClientSecretPlaceholder, user?.userClientSecret || "{yourClientSecret}")
-        .replace(userSecretPlaceholder, user?.userSecret || "{yourSecret}")
-        .replace(yourAudiencePlaceholder, user?.yourAudience || "{yourAudience}")
-        .replace(userRedirectUriPlaceholder, user?.userRedirectUri || "{redirectUri}");
-    } else if (Array.isArray(node)) {
-      return node.map(processChildren);
-    } else if (node && node.props && node.props.children) {
-      return {
-        ...node,
-        props: {
-          ...node.props,
-          children: processChildren(node.props.children),
-        },
-      };
+    function init() {
+      unsubscribe = window.autorun(() => {
+        const processChildren = (node) => {
+          if (typeof node === "string") {
+            let processedNode = node;
+            for (const [
+              key,
+              value,
+            ] of window.rootStore.variableStore.values.entries()) {
+              processedNode = processedNode.replace(
+                new RegExp(key, "g"),
+                value
+              );
+            }
+            return processedNode;
+          } else if (Array.isArray(node)) {
+            return node.map(processChildren);
+          } else if (node && node.props && node.props.children) {
+            return {
+              ...node,
+              props: {
+                ...node.props,
+                children: processChildren(node.props.children),
+              },
+            };
+          }
+          return node;
+        };
+
+        setProcessedChildren(processChildren(children));
+      });
     }
-    return node;
-  };
 
-  return <CodeGroup dropdown={dropdown}>{processChildren(children)}</CodeGroup>;
+    if (window.rootStore) {
+      init();
+    } else {
+      window.addEventListener("adu:storeReady", init);
+    }
+
+    return () => {
+      window.removeEventListener("adu:storeReady", init);
+      unsubscribe?.();
+    };
+  }, [children]);
+
+  return <CodeGroup dropdown={dropdown}>{processedChildren}</CodeGroup>;
 };

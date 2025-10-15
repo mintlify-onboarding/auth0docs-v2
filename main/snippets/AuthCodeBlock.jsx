@@ -7,8 +7,6 @@ export const AuthCodeBlock = ({
 }) => {
   const [processedChildren, setProcessedChildren] = useState(children);
 
-  console.log("AuthCodeBlock");
-
   useEffect(() => {
     let unsubscribe = null;
 
