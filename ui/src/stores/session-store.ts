@@ -24,6 +24,7 @@ export class SessionStore {
   isAuthenticated = false;
   user: UserData | null = null;
   selectedTenantName: string | null = null;
+  domain: string | null = null;
 
   get selectedTenant() {
     if (!this.selectedTenantName) return null;
@@ -61,17 +62,18 @@ export class SessionStore {
         profileUrl: `/dashboard/<locality>/<tenant-name>/profile/general`,
       };
       this.selectedTenantName = response.account.tenant;
+      this.domain = response.account.namespace;
 
-      // Set initial selected client and API from user resources
-      if (response.user_resources?.selected_client_id) {
+      // Set initial selected client
+      if (response.account?.client_id) {
         this.rootStore.clientStore.setSelectedClient(
-          response.user_resources.selected_client_id,
+          response.account.client_id,
         );
       }
-      if (response.user_resources?.selected_api_id) {
-        this.rootStore.resourceServerStore.setSelectedApi(
-          response.user_resources.selected_api_id,
-        );
+
+      // Set initial selected api
+      if (response.api_id) {
+        this.rootStore.resourceServerStore.setSelectedApi(response.api_id);
       }
     } catch (error) {
       console.error('Failed to initialize SessionStore:', error);

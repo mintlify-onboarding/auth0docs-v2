@@ -18,13 +18,6 @@ interface Account {
   callback: string;
 }
 
-interface UserResources {
-  /** The currently selected client ID */
-  selected_client_id: string;
-  /** The currently selected API identifier */
-  selected_api_id: string;
-}
-
 export interface ProfileData {
   sub: string;
   name: string;
@@ -38,11 +31,12 @@ export interface GetCurrentUserResponse {
   account: Account;
   /** The connection name being used */
   connection_name: string;
+  /** The selected API ID */
+  api_id: string;
   /** The selected API identifier */
   api_identifier: string;
   /** The Auth0 management dashboard URL */
   manage_url: string;
-  user_resources: UserResources;
   /** User profile information */
   profile: Record<string, never> | ProfileData;
 }

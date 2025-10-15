@@ -36,9 +36,19 @@ export class ClientStore {
 
   setSelectedClient(clientId: string | null) {
     this.selectedClientId = clientId;
+    const { variableStore } = this.rootStore;
+    if (clientId) {
+      variableStore.setValue('{yourClientId}', clientId);
+    } else {
+      variableStore.resetKey('{yourClientId}');
+    }
   }
 
   get selectedClient() {
-    return this.clients.find(client => client.client_id === this.selectedClientId) || null;
+    return (
+      this.clients.find(
+        (client) => client.client_id === this.selectedClientId,
+      ) || null
+    );
   }
 }

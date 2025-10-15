@@ -1,4 +1,4 @@
-import { autorun, makeAutoObservable } from 'mobx';
+import { autorun, makeAutoObservable, type IReactionDisposer } from 'mobx';
 
 import { SessionStore } from './session-store';
 import { TenantStore } from './tenant-store';
@@ -13,6 +13,8 @@ export class RootStore {
   resourceServerStore: ResourceServerStore;
   variableStore: VariableStore;
 
+  #disposer: IReactionDisposer | null = null;
+
   constructor() {
     makeAutoObservable(this);
     this.sessionStore = new SessionStore(this);
@@ -23,9 +25,12 @@ export class RootStore {
   }
 
   async init() {
+    // dispose previously subscribed listener
+    this.#disposer?.();
+
     await this.sessionStore.init();
 
-    autorun(() => {
+    this.#disposer = autorun(async () => {
       if (!this.sessionStore.isAuthenticated) {
         this.tenantStore.reset();
         this.clientStore.reset();
@@ -34,9 +39,11 @@ export class RootStore {
         return;
       }
 
-      this.tenantStore.init();
-      this.clientStore.init();
-      this.resourceServerStore.init();
+      await this.tenantStore.init();
+      await Promise.all([
+        this.clientStore.init(),
+        this.resourceServerStore.init(),
+      ]);
       this.variableStore.init();
     });
   }
