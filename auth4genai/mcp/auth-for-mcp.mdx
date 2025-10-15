@@ -52,7 +52,7 @@ Here is the standard OAuth authorization code flow when an MCP server uses Auth0
     The MCP client requests the [resource metadata](https://datatracker.ietf.org/doc/html/rfc9728/) from the MCP server at the `/.well-known/oauth-protected-resource` endpoint.
   </Step>
   <Step>
-    The MPC client parses the metadata, selects an authorization server (Auth0) from the list, and then fetches its OAuth 2.0 Authorization Server Metadata from the `/.well-known/oauth-authorization-server` endpoint.
+    The MPC client parses the metadata, selects an authorization server (Auth0) from the list, and then fetches its OAuth 2.0 Authorization Server Metadata from the `/.well-known/oauth-authorization-server` endpoint. [Dynamic Client Registration (DCR)](https://auth0.com/docs/get-started/applications/dynamic-client-registration#enable-dynamic-client-registration) can happen after receiving the metadata response.
   </Step>
   <Step>
     The client generates [PKCE](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce) parameters and builds the authorization request, then opens the browser to the authorization endpoint.
