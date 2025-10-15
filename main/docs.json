@@ -2373,6 +2373,7 @@
                 "group": "Regular Web App",
                 "pages": [
                   "docs/quickstart/webapp/nextjs/index",
+                  "docs/quickstart/webapp/nuxt/index",
                   "docs/quickstart/webapp/express/interactive",
                   "docs/quickstart/webapp/python/interactive",
                   "docs/quickstart/webapp/django/interactive",
