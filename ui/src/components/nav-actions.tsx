@@ -47,7 +47,7 @@ const NavActions = observer(({ className }: { className?: string }) => {
     <div
       ref={wrapperRef}
       className={cn(
-        'adu:fixed adu:top-0 adu:z-30 adu:flex adu:h-14 adu:items-center adu:gap-2',
+        'adu:fixed adu:top-0 adu:z-30 adu:flex adu:h-14 adu:items-center adu:gap-3',
         className,
       )}
     >
@@ -61,12 +61,20 @@ const NavActions = observer(({ className }: { className?: string }) => {
           >
             Log In
           </Button>
-          <Button variant="default" asChild>
+          <Button
+            className="no_external_icon adu:text-foreground-inverse!"
+            variant="default"
+            asChild
+          >
             <a href="https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22docs%22%7D">
               Sign Up
             </a>
           </Button>
-          <Button variant="outline" asChild>
+          <Button
+            className="no_external_icon adu:adu:border-border-muted! adu:border!"
+            variant="outline"
+            asChild
+          >
             <a href="https://auth0.com/get-started?place=header&type=button&text=talk%20to%20sales">
               Contact Sales
             </a>
