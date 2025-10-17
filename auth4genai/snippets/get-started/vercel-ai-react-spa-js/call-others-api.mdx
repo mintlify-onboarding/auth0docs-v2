@@ -87,21 +87,21 @@ PORT=3001
 
 Unlike the <a href="/get-started/call-others-apis-on-users-behalf#vercel-ai-%2B-next-js" target="_blank">Next.js example</a>, which uses refresh tokens, this React SPA approach uses **access tokens** for token exchange with Token Vault. The SPA handles step-up authorization using Auth0 SPA SDK's `loginWithPopup()` method to display the consent screen and allow the user to grant additional permissions.
 
-Create `client/src/components/FederatedConnectionPopup.tsx`:
+Create `client/src/components/TokenVaultConsentPopup.tsx`:
 
-```tsx client/src/components/FederatedConnectionPopup.tsx wrap lines
+```tsx client/src/components/TokenVaultConsentPopup.tsx wrap lines
 import { getAuth0Client } from "../lib/auth0";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 import type { Auth0InterruptionUI } from "@auth0/ai-vercel/react";
-interface FederatedConnectionPopupProps {
+interface TokenVaultConsentPopupProps {
   interrupt: Auth0InterruptionUI;
 }
 
-export function FederatedConnectionPopup({
+export function TokenVaultConsentPopup({
   interrupt,
-}: FederatedConnectionPopupProps) {
+}: TokenVaultConsentPopupProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const { connection, requiredScopes, resume } = interrupt;
@@ -199,7 +199,7 @@ import { tool } from "ai";
 import { google } from "googleapis";
 import { z } from "zod";
 
-import { getAccessTokenForConnection } from "@auth0/ai-vercel";
+import { getAccessTokenFromTokenVault } from "@auth0/ai-vercel";
 
 import type { ToolWrapper } from "@auth0/ai-vercel";
 
@@ -217,7 +217,7 @@ export const createListUserCalendarsTool = (
       parameters: z.object({}),
       execute: async () => {
         // Get the access token from Token Vault using the enhanced SDK
-        const token = getAccessTokenForConnection();
+        const token = getAccessTokenFromTokenVault();
 
         const calendar = google.calendar("v3");
         const auth = new google.auth.OAuth2();
@@ -267,7 +267,7 @@ export const createGoogleCalendarTool = (c: Context): ToolWrapper => {
   if (!accessToken) {
     throw new Error("Access token not available in auth context");
   }
-  return auth0AI.withTokenForConnection({
+  return auth0AI.withTokenVault({
     accessToken: async () => accessToken,
     subjectTokenType: SUBJECT_TOKEN_TYPES.SUBJECT_TYPE_ACCESS_TOKEN,
     connection: process.env.GOOGLE_CONNECTION_NAME || "google-oauth2",
@@ -355,7 +355,7 @@ export const app = new Hono().post("/chat", jwtAuthMiddleware(), async (c) => {
         // Handle Auth0 AI interrupts
         if (
           error.cause instanceof Auth0Interrupt ||
-          error.cause instanceof FederatedConnectionInterrupt
+          error.cause instanceof TokenVaultInterrupt
         ) {
           const serializableError = {
             ...error.cause.toJSON(),
@@ -392,7 +392,7 @@ import { Loader2, Send, Trash2 } from "lucide-react";
 import { useChat } from "@ai-sdk/react";
 import { useInterruptions } from "@auth0/ai-vercel/react";
 import { useAuth0 } from "../hooks/useAuth0";
-import { FederatedConnectionPopup } from "./FederatedConnectionPopup";
+import { TokenVaultConsentPopup } from "./TokenVaultConsentPopup";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
@@ -512,7 +512,7 @@ export function Chat() {
 
         {/* Step-Up Auth Interrupt Handling */}
         {toolInterrupt && (
-          <FederatedConnectionPopup interrupt={toolInterrupt} />
+          <TokenVaultConsentPopup interrupt={toolInterrupt} />
         )}
 
         {/* Input form */}
@@ -562,6 +562,6 @@ function MessageBubble({ message }: { message: Message }) {
 
 The application will automatically prompt for additional calendar permissions when needed using Auth0's step-up authorization flow.
 
-That's it! You've successfully integrated federated connections with access tokens into your React SPA + Vercel AI application.
+That's it! You've successfully integrated Token Vault with access tokens into your React SPA + Vercel AI application.
 
 Explore [the example app on GitHub](https://github.com/auth0-lab/auth0-ai-js/tree/main/examples/calling-apis/spa-with-backend-api/react-hono-ai-sdk).
