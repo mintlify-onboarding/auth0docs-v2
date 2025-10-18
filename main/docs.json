@@ -1094,6 +1094,7 @@
                           "docs/manage-users/sessions/configure-session-lifetime-settings",
                           "docs/manage-users/sessions/non-persistent-sessions",
                           "docs/manage-users/sessions/manage-sessions-actions",
+                          "docs/manage-users/sessions/configure-keep-me-signed-in-sessions",
                           "docs/manage-users/sessions/manage-multi-site-sessions",
                           "docs/manage-users/sessions/manage-user-sessions-with-auth0-management-api"
                         ]
