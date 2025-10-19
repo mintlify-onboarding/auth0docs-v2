@@ -1095,7 +1095,15 @@
                           "docs/manage-users/sessions/non-persistent-sessions",
                           "docs/manage-users/sessions/manage-sessions-actions",
                           "docs/manage-users/sessions/manage-multi-site-sessions",
-                          "docs/manage-users/sessions/manage-user-sessions-with-auth0-management-api"
+                          "docs/manage-users/sessions/manage-user-sessions-with-auth0-management-api",
+                          {
+                            "group": "Session Metadata",
+                            "pages": [
+                              "docs/manage-users/sessions/session-metadata",
+                              "docs/manage-users/sessions/session-metadata/configure-session-metadata",
+                              "docs/manage-users/sessions/session-metadata/add-organization-information"                              
+                            ]
+                          }
                         ]
                       },
                       {
