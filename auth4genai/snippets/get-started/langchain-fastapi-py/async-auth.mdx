@@ -79,9 +79,7 @@ with_async_authorization = auth0_ai.with_async_authorization(
     .get("user")
     .get("sub"),
     # param: requested_expiry
-    # Note: Setting a requested expiry greater than 300 (seconds) will force email verification
-    # instead of using the push notification flow.
-    # requested_expiry=301,
+    # Controls how long the authorization request is valid.
 
     # param: on_authorization_request
     # When this flag is set to `block`, the execution of the tool awaits
@@ -94,9 +92,6 @@ with_async_authorization = auth0_ai.with_async_authorization(
     # could crash or timeout before the user approves the request.
     on_authorization_request="block",
 
-    # Note: Setting a requested expiry greater than 300 (seconds) will force email verification
-    # instead of using the push notification flow.
-    # requested_expiry=301,
 )
 ```
 
