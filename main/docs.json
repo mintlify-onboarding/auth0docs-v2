@@ -1933,7 +1933,8 @@
                             ]
                           },
                           "docs/secure/security-guidance/prevent-threats",
-                          "docs/secure/security-guidance/incident-response-using-logs"
+                          "docs/secure/security-guidance/incident-response-using-logs",
+                          "docs/secure/security-guidance/measures-against-app-impersonation"
                         ]
                       },
                       {
@@ -2302,7 +2303,8 @@
                             "group": "Deprecations and Migrations",
                             "pages": [
                               "docs/troubleshoot/product-lifecycle/deprecations-and-migrations",
-                              "docs/troubleshoot/product-lifecycle/deprecations-and-migrations/migrate-nodejs-22"
+                              "docs/troubleshoot/product-lifecycle/deprecations-and-migrations/migrate-nodejs-22",
+                              "docs/troubleshoot/product-lifecycle/deprecations-and-migrations/migrate-to-non-verifiable-callback-uri-end-user-confirmation"
                             ]
                           },
                           {
