@@ -87,7 +87,7 @@ That's it! You successfully called a third-party API using Token Vault.
 
 In the root directory of your project, install the following packages:
 
-- `@auth0/ai-langchain`: [Auth0 AI SDK for LangChain](https://github.com/auth0-lab/auth0-ai-js/tree/main/packages/ai-langchain) built for AI agents powered by LangChain.
+- `@auth0/ai-langchain`: [Auth0 AI SDK for LangChain](https://github.com/auth0/auth0-ai-js/tree/main/packages/ai-langchain) built for AI agents powered by LangChain.
 - `@langchain/langgraph`: For building stateful, multi-actor applications with LLMs.
 - `langchain`: The LangChain library.
 - `@langchain/core`: LangChain core libraries.
@@ -96,7 +96,7 @@ In the root directory of your project, install the following packages:
 - `langgraph-nextjs-api-passthrough`: API passthrough for LangGraph.
 
 ```bash wrap lines
-npm install @auth0/ai-langchain@3.5.0 @langchain/community@0.3.53 @langchain/core@0.3.77 @langchain/langgraph@0.4.4 @langchain/openai@0.6.13 langchain@0.3.12 langgraph-nextjs-api-passthrough@0.1.4
+npm install @auth0/ai-langchain@4 @langchain/community@0.3.53 @langchain/core@0.3.77 @langchain/langgraph@0.4.4 @langchain/openai@0.6.13 langchain@0.3.12 langgraph-nextjs-api-passthrough@0.1.4
 ```
 
 ### Update your environment file
@@ -135,7 +135,7 @@ Lastly, set your OpenAI API key or use any provider supported by the Vercel AI S
 
 ### Set up Token Vault for Google social connection
 
-Use the [Auth0 AI SDK for LangChain](https://github.com/auth0-lab/auth0-ai-js/tree/main/packages/ai-langchain) to get an access token for the [Google Social Connection](/integrations/google) using [Token Vault](https://auth0.com/docs/secure/tokens/token-vault):
+Use the [Auth0 AI SDK for LangChain](https://github.com/auth0/auth0-ai-js/tree/main/packages/ai-langchain) to get an access token for the [Google Social Connection](/integrations/google) using [Token Vault](https://auth0.com/docs/secure/tokens/token-vault):
 
 - `connection`: pass in the name of the connection you want to access.
 - `scopes`: pass in the scopes to be authorized for this connection.
@@ -155,7 +155,7 @@ const auth0AI = new Auth0AI({
 });
 
 const withAccessTokenForConnection = (connection: string, scopes: string[]) =>
-  auth0AI.withTokenForConnection({
+  auth0AI.withTokenVault({
     connection,
     scopes,
     accessToken: async (_, config) => {
@@ -327,7 +327,7 @@ This example uses `GmailSearch` from the `@langchain/community` tools. This tool
 
 ```ts src/lib/tools/gmail-seatch.ts wrap lines highlight={10}
 //...
-import { getAccessTokenForConnection } from "@auth0/ai-langchain";
+import { getAccessTokenFromTokenVault } from "@auth0/ai-langchain";
 import { GmailSearch } from "@langchain/community/tools/gmail";
 
 import { withGmailSearch } from "../../lib/auth0-ai";
@@ -335,7 +335,7 @@ import { withGmailSearch } from "../../lib/auth0-ai";
 export const gmailSearchTool = withGmailSearch(
   new GmailSearch({
     credentials: {
-      accessToken: async () => getAccessTokenForConnection(),
+      accessToken: async () => getAccessTokenFromTokenVault(),
     },
   })
 );
@@ -371,36 +371,36 @@ When you try to use the tool, the application requests any additional Google sco
 To implement, install the Auth0 AI Components for Next.js SDK to get the required UI components:
 
 ```bash wrap lines
-npx @auth0/ai-components add FederatedConnections
+npx @auth0/ai-components add TokenVault
 ```
 
-Add a new file, `src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx`, with the following code:
+Add a new file, `src/components/auth0-ai/TokenVault/TokenVaultInterruptHandler.tsx`, with the following code:
 
-```tsx src/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler.tsx wrap lines
-import { FederatedConnectionInterrupt } from "@auth0/ai/interrupts";
+```tsx src/components/auth0-ai/TokenVault/TokenVaultInterruptHandler.tsx wrap lines
+import { TokenVaultInterrupt } from "@auth0/ai/interrupts";
 import type { Interrupt } from "@langchain/langgraph-sdk";
 
-import { EnsureAPIAccess } from "@/components/auth0-ai/FederatedConnections";
+import { TokenVaultConsent } from "@/components/auth0-ai/TokenVault";
 
-interface FederatedConnectionInterruptHandlerProps {
+interface TokenVaultInterruptHandlerProps {
   interrupt: Interrupt | undefined | null;
   onFinish: () => void;
 }
 
-export function FederatedConnectionInterruptHandler({
+export function TokenVaultInterruptHandler({
   interrupt,
   onFinish,
-}: FederatedConnectionInterruptHandlerProps) {
+}: TokenVaultInterruptHandlerProps) {
   if (
     !interrupt ||
-    !FederatedConnectionInterrupt.isInterrupt(interrupt.value)
+    !TokenVaultInterrupt.isInterrupt(interrupt.value)
   ) {
     return null;
   }
 
   return (
     <div key={interrupt.ns?.join("")} className="whitespace-pre-wrap">
-      <EnsureAPIAccess
+      <TokenVaultConsent
         mode="popup"
         interrupt={interrupt.value}
         onFinish={onFinish}
@@ -415,11 +415,11 @@ export function FederatedConnectionInterruptHandler({
 }
 ```
 
-Now, update your chat window code to include the `FederatedConnectionInterruptHandler` component, for example:
+Now, update your chat window code to include the `TokenVaultInterruptHandler` component, for example:
 
 ```tsx src/components/chat-window.tsx wrap lines highlight={2,3,8-19,36-38}
 //...
-import { FederatedConnectionInterruptHandler } from '@/components/auth0-ai/FederatedConnections/FederatedConnectionInterruptHandler';
+import { TokenVaultInterruptHandler } from '@/components/auth0-ai/TokenVault/TokenVaultInterruptHandler';
 
 //... existing code
 export function ChatWindow(props: {
@@ -454,7 +454,7 @@ export function ChatWindow(props: {
                 emptyStateComponent={props.emptyStateComponent}
               />
               <div className="flex flex-col max-w-[768px] mx-auto pb-12 w-full">
-                <FederatedConnectionInterruptHandler interrupt={chat.interrupt} onFinish={() => chat.submit(null)} />
+                <TokenVaultInterruptHandler interrupt={chat.interrupt} onFinish={() => chat.submit(null)} />
               </div>
             </>
           )
