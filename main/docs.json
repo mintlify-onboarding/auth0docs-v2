@@ -482,7 +482,7 @@
                     "group": "Auth0 AI",
                     "pages": [
                       "docs/get-started/auth0-guide",
-                      "docs/get-started/auth-for-genai",
+                      "docs/get-started/auth0-for-ai-agents",
                       {
                         "group": "Auth0 Model Context Protocol (MCP) Server",
                         "pages": [
@@ -2898,7 +2898,7 @@
                     "group": "Auth0 AI",
                     "pages": [
                       "docs/fr-ca/get-started/auth0-guide",
-                      "docs/fr-ca/get-started/auth-for-genai",
+                      "docs/fr-ca/get-started/auth0-for-ai-agents",
                       {
                         "group": "Auth0 Model Context Protocol (MCP) Server",
                         "pages": [
@@ -5301,7 +5301,7 @@
                     "group": "Auth0 AI",
                     "pages": [
                       "docs/ja-jp/get-started/auth0-guide",
-                      "docs/ja-jp/get-started/auth-for-genai",
+                      "docs/ja-jp/get-started/auth0-for-ai-agents",
                       {
                         "group": "Auth0 Model Context Protocol (MCP) Server",
                         "pages": [
@@ -7414,6 +7414,19 @@
     {
       "source": "/docs/quickstart/spa/flutter/interactive",
       "destination": "/docs/quickstart/spa/flutter"
+    },
+    {
+      "source": "/docs/get-started/auth-for-genai",
+      "destination": "/docs/get-started/auth0-for-ai-agents"
+    },
+    {
+      "source": "/docs/docs/fr-ca/get-started/auth-for-genai",
+      "destination": "/docs/docs/fr-ca/get-started/auth0-for-ai-agents"
+    },
+    {
+      "source": "/docs/ja-jp/get-started/auth-for-genai",
+      "destination": "/docs/ja-jp/get-started/auth0-for-ai-agents"
     }
+
   ]
 }
