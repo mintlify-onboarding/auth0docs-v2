@@ -80,6 +80,7 @@ with_async_authorization = auth0_ai.with_async_authorization(
     .get("sub"),
     # param: requested_expiry
     # Controls how long the authorization request is valid.
+    # requested_expiry=301,
 
     # param: on_authorization_request
     # When this flag is set to `block`, the execution of the tool awaits
@@ -92,6 +93,7 @@ with_async_authorization = auth0_ai.with_async_authorization(
     # could crash or timeout before the user approves the request.
     on_authorization_request="block",
 
+    # requested_expiry=301,
 )
 ```
 
