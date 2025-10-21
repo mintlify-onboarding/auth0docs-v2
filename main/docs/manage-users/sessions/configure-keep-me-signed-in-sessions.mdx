@@ -182,7 +182,7 @@ exports.onExecutePostLogin = async (event, api) => {
 };
 ```
 
-Use Auth0 CLI to create or update your post-login Action using the set-session-persistence.js file:
+Use Auth0 CLI to create or update your post-login Action using the `set-session-persistence.js` file:
 
 ```bash lines
 auth0 actions create --name kmsi --trigger post-login --code "$(cat set-session-persistence.js)"
