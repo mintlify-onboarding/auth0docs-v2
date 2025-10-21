@@ -19,24 +19,24 @@ Connect your AI agent to Stripe to manage your account setup, review payments, o
     2. Setup your account and complete any necessary verification steps to work with [Stripe Connect](https://dashboard.stripe.com/connect).
     3. Navigate to the Onboarding options for your Stripe Connect account and select [OAuth](https://dashboard.stripe.com/settings/connect/onboarding-options/oauth).
     4. Toggle **Enable OAuth** then fill in the Redirect URI and note your **Client ID** for later.
-      - Redirect URI: `https://YOUR_AUTH0_DOMAIN/login/callback`
-      <FindDomainInfoBlock />
+       - Redirect URI: `https://YOUR_AUTH0_DOMAIN/login/callback`
+       <FindDomainInfoBlock />
     5. Navigate to the [API Keys Page](https://dashboard.stripe.com/apikeys) and copy the **Client Secret**.
 
   </Step>
   <Step title="Auth0 setup">
-    <Auth0SetupBlock providerName="Stripe" scopesName="Attributes" allowFreeFormScopes={true} />
+    <Auth0SetupBlock providerName="Stripe Connect" scopesName="Attributes" allowFreeFormScopes={true} />
   </Step>
 </Steps>
 
-<IntegrationInfoBlock providerName="Stripe" />
+<IntegrationInfoBlock providerName="Stripe Connect" />
 
 ## Token Vault configuration example
 
 To configure the Token Vault for your Stripe connection, you can use the following code snippet in your application:
 
 <TokenVaultConfigBlock
-  providerName="Stripe"
+  providerName="Stripe Connect"
   connectionName="stripe"
   scopes={["read_write"]}
 />
