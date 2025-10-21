@@ -44,7 +44,7 @@ This solution is ideal for customers prioritizing:
 
 * Trusted device overrides
 
-## Configure a Universal Login page and Add a custom prompt
+## 1. Configure a Universal Login page and Add a custom prompt
 
 To gather the user’s **Keep Me Signed In** preference, you need to customize [Universal Login](/docs/customize/login-pages/universal-login/customize-signup-and-login-prompts) by configuring a page template and adding a custom prompt using Auth0 CLI.
 
@@ -107,7 +107,7 @@ Do you want to save the template? Yes
 ▸ Successfully updated the template for the New Universal Login Experience!
 ```
 
-## Add a Keep Me Signed In checkbox using Auth0 CLI
+## 2. Add a Keep Me Signed In checkbox using Auth0 CLI
 To add a checkbox into the Universal Login screen, follow these steps:
 
 ### Launch the customization editor
@@ -117,7 +117,7 @@ Open the customization editor for the login-id or login prompt  depending on you
 auth0 universal-login customize -p login-id
 ```
 
-Select **Standard** for rendering mode
+Select **standard** for rendering mode
 
 ```bash lines
 Rendering Mode: standard
@@ -139,11 +139,11 @@ If you are unsure whether your tenant uses `login` or `login-id`, refer to Auth0
 
 Open the **Partials** option in the customization editor:
 
-Set **Prompt** to: `login-id` (or `login`)
+1. Set **Prompt** to: `login-id` (or `login`)
 
-Set **Screen** to: `login-id` (or `login`)
+2. Set **Screen** to: `login-id` (or `login`)
 
-Set **Partial** to: `form-footer-end`
+3. Set **Partial** to: `form-footer-end`
 
 <Frame>![Auth0 CLI partials](/docs/images/cdy7uua7fh8z/sessions-use-case/partials.png)</Frame>
 
@@ -168,7 +168,7 @@ The login screen includes a **Keep Me Signed** In checkbox.
 
 <Frame>![Login image](/docs/images/cdy7uua7fh8z/sessions-use-case/keep-me-signed-in-login.png)</Frame>
 
-## Create a Post-Login Action using Auth0 CLI
+## 3. Create a Post-Login Action using Auth0 CLI
 
 Create a new file called `set-session-persistence.js` for use with Auth0 CLI and add the following code:
 
@@ -234,7 +234,7 @@ exports.onExecutePostLogin = async (event, api) => {
 };
 ```
 
-## Test implementation
+## 4. Test implementation
 
 To verify the session behavior, you can:
 
