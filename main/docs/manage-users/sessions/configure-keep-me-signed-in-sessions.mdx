@@ -111,13 +111,13 @@ Do you want to save the template? Yes
 To add a checkbox into the Universal Login screen, follow these steps:
 
 ### Launch the customization editor
-Open the customization editor for the login-id or login prompt  depending on your tenant configuration:
+1. Open the customization editor for the login-id or login prompt  depending on your tenant configuration:
 
 ```bash lines
 auth0 universal-login customize -p login-id
 ```
 
-Select **standard** for rendering mode
+2. Select **standard** for rendering mode
 
 ```bash lines
 Rendering Mode: standard
@@ -214,7 +214,7 @@ Deploy your Action using its `id`:
 auth0 actions deploy <id>
 ```
 
-Navigate to the **Auth0 Dashboard > Actions > Triggers > Post-Login** to add the new action to the current flow and select **Apply**.
+Navigate to the [Auth0 Dashboard > Actions > Triggers > Post-Login](https://manage.auth0.com/#/actions/triggers/post-login) to add the new action to the current flow and select **Apply**.
 
 <Frame>![Dashboard Actions Triggers Post Login](/docs/images/cdy7uua7fh8z/sessions-use-case/post-login.png)</Frame>
 
