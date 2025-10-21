@@ -177,9 +177,9 @@ export const LanguageGrid = () => {
 
 export const ProductGrid = () => {
   const products = [
-    { label: "Authentication", href: "https://auth0.com/platform/authentication" },
-    { label: "Fine-Grained Authorization", href: "https://auth0.com/fine-grained-authorization" },
-    { label: "Auth0 for AI Agents", href: "https://auth0.com/ai" },
+    { label: "Authentication", href: "/docs/authentication" },
+    { label: "Fine-Grained Authorization", href: "/docs/fine-grained-authorization" },
+    { label: "Auth0 for AI Agents", href: "https://auth0.com/ai/docs" },
   ];
 
   return (
