@@ -291,6 +291,10 @@
     {
       "source": "/mcp/cloudflare-mcp",
       "destination": "/mcp/guides/cloudflare-mcp"
+    },
+    {
+      "source": "mcp/auth-for-mcp",
+      "destination": "/mcp/intro/overview"
     }
   ],
   "logo": {
