@@ -1,13 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 import { rootStore } from '@/stores';
 
+import { userLogout } from '@/lib/api';
+import { config } from '@/lib/config';
+
+import { DropdownMenu, DropdownMenuContent } from './ui/dropdown-menu';
 import { ProfileMenuContent, ProfileMenuTrigger } from './ui/profile-menu';
 import { TenantMenuContent, type TenantData } from './ui/tenant-menu';
-import { DropdownMenu, DropdownMenuContent } from './ui/dropdown-menu';
-import { userLogout } from '@/lib/api';
 
 const SelectedMenu = {
   NONE: 'none',
@@ -196,7 +198,7 @@ const AuthMenu = observer(() => {
     <DropdownMenu open={menuState.isOpen} onOpenChange={menuActions.openMenu}>
       <ProfileMenuTrigger selectedTenant={selectedTenant} user={user} />
       <DropdownMenuContent
-        className="adu:relative adu:max-h-74 adu:w-73 adu:overflow-hidden adu:p-0 adu:transition-[height] adu:ease-in-out"
+        className="adu:relative adu:max-h-72.5 adu:w-73 adu:overflow-hidden adu:p-0 adu:transition-[height] adu:ease-in-out"
         style={{ height: menuState.height }}
         align="end"
         onInteractOutside={menuActions.closeMenu}
@@ -205,6 +207,7 @@ const AuthMenu = observer(() => {
           ref={refs.profileMenuRef}
           onSwitchTenant={menuActions.openTenantMenu}
           className={animationClasses.profileMenuClasses}
+          dashboardBaseUrl={config.dashboardBaseUrl}
           selectedTenant={selectedTenant}
           user={user}
           onLogout={() => {
