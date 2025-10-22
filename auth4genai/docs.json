@@ -281,6 +281,10 @@
     {
       "source": "/client-initiated-account-linking",
       "destination": "/guides/client-initiated-account-linking"
+    },
+    {
+      "source": "/mcp/cloudflare-mcp",
+      "destination": "/mcp/guides/cloudflare-mcp"
     }
   ],
   "logo": {
