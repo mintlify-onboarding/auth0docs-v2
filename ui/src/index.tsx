@@ -5,6 +5,7 @@ import './index.css';
 
 import { NavActions, OptOutBanner } from '@/components';
 import { patchRolloutConsent } from '@/lib/api';
+import { overrideHistoryMethods } from '@/lib/history';
 import { initOneTrust } from '@/lib/one-trust';
 import { initRootStore } from '@/stores';
 
@@ -13,11 +14,14 @@ async function main() {
   root.id = 'adu-root';
   document.body.appendChild(root);
 
-  // Initialize the MobX store before rendering
-  await initRootStore();
-
   // Initialize one-trust for cookie-consent management
   initOneTrust();
+
+  // Override history methods to dispatch events on route changes
+  overrideHistoryMethods();
+
+  // Initialize the MobX store before rendering
+  await initRootStore();
 
   createRoot(root).render(
     <StrictMode>
@@ -39,6 +43,6 @@ main();
 // via `window.Auth0DocsUI`
 
 export * from '@/components';
-export { rootStore, initRootStore } from '@/stores';
-export { autorun, reaction, observe } from 'mobx';
+export { initRootStore, rootStore } from '@/stores';
+export { autorun, observe, reaction } from 'mobx';
 export { observer } from 'mobx-react-lite';

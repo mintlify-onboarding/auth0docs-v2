@@ -1,4 +1,10 @@
 import { type MouseEventHandler, useEffect, useRef } from 'react';
+
+import {
+  addRouteChangeListener,
+  removeRouteChangeListener,
+} from '@/lib/history';
+
 import { DisplayText } from './display-text';
 
 interface OptOutBannerProps {
@@ -9,33 +15,39 @@ function OptOutBanner({ onOptOut }: OptOutBannerProps) {
   const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateBodyPadding = () => {
-      if (bannerRef.current) {
-        const height = bannerRef.current.offsetHeight;
-        document.body.style.paddingTop = `${height}px`;
-        // Update CSS custom property for other components that might need it
-        document.documentElement.style.setProperty(
-          '--opt-out-banner-height',
-          `${height}px`,
-        );
+    let isMounted = true;
 
-        // fix navbar top positioning
-        const navbar = document.getElementById('navbar');
-        if (navbar) {
-          navbar.style.top = `var(--opt-out-banner-height, 0)`;
+    const updateBodyPadding = () => {
+      const timerId = setInterval(() => {
+        if (!isMounted) {
+          clearInterval(timerId);
+          return;
         }
-      }
+
+        if (bannerRef.current) {
+          clearInterval(timerId);
+          const height = bannerRef.current.offsetHeight;
+          document.body.style.paddingTop = `${height}px`;
+          // Update CSS custom property for other components that might need it
+          document.documentElement.style.setProperty(
+            '--opt-out-banner-height',
+            `${height}px`,
+          );
+
+          // fix navbar top positioning
+          const navbar = document.getElementById('navbar');
+          if (navbar) {
+            navbar.style.top = `var(--opt-out-banner-height, 0)`;
+          }
+        }
+      }, 100);
     };
 
     // Initial setup
     updateBodyPadding();
 
-    // Update on window resize
-    const handleResize = () => {
-      updateBodyPadding();
-    };
-
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', updateBodyPadding);
+    addRouteChangeListener(updateBodyPadding);
 
     // Use ResizeObserver for more precise height changes
     const resizeObserver = new ResizeObserver(() => {
@@ -48,9 +60,11 @@ function OptOutBanner({ onOptOut }: OptOutBannerProps) {
 
     return () => {
       // Cleanup
+      isMounted = false;
       document.body.style.paddingTop = '';
       document.documentElement.style.removeProperty('--opt-out-banner-height');
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', updateBodyPadding);
+      removeRouteChangeListener(updateBodyPadding);
       resizeObserver.disconnect();
     };
   }, []);
@@ -58,7 +72,7 @@ function OptOutBanner({ onOptOut }: OptOutBannerProps) {
   return (
     <div
       ref={bannerRef}
-      className="adu:top-banner adu:fixed adu:top-0 adu:right-0 adu:left-0 adu:z-[9999] adu:flex adu:flex-wrap adu:items-center adu:justify-center adu:gap-1 adu:bg-[#232220] adu:p-2.5 adu:text-center"
+      className="adu:top-banner adu:fixed adu:top-0 adu:right-0 adu:left-0 adu:z-[39] adu:flex adu:flex-wrap adu:items-center adu:justify-center adu:gap-1 adu:bg-[#232220] adu:p-2.5 adu:text-center"
     >
       <DisplayText
         asChild
