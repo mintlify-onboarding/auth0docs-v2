@@ -180,6 +180,12 @@
               "mcp/intro/overview"
             ]
           },{
+            "group": "Build with AI",
+            "icon": "code",
+            "pages": [
+              "build-with-ai/using-ai-tools"
+            ]
+          },{
             "group": "Guides",
             "icon": "graduation-cap",
             "pages": [
