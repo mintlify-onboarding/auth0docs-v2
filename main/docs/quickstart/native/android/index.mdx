@@ -77,16 +77,9 @@ title: Add Login to Your Android Application
     ```xml app/src/main/res/values/strings.xml
     <?xml version="1.0" encoding="utf-8"?>
     <resources>
-        <string name="app_name">Auth0 Android Sample</string>
-        <string name="app_title">Auth0 Android Sample</string>
-        <!-- Auth0 Domain and Client Id -->
         <string name="com_auth0_domain">YOUR_AUTH0_DOMAIN</string>
         <string name="com_auth0_client_id">YOUR_AUTH0_CLIENT_ID</string>
         <string name="com_auth0_scheme">https</string>
-        <string name="welcome_unauthenticated">Get started by signing in to your account</string>
-        <string name="welcome_authenticated">Welcome to Auth0 Android!</string>
-        <string name="log_in">Log In</string>
-        <string name="log_out">Log Out</string>
     </resources>
     ```
 
@@ -117,182 +110,37 @@ title: Add Login to Your Android Application
     </Warning>
   </Step>
 
-  <Step title="Create the Authentication Service" stepNumber={4}>
-    Create a centralized service to handle all authentication logic.
+  <Step title="Create the Authentication" stepNumber={4}>
 
-    **Add a new Kotlin file:**
+    **Implement Login:** Use WebAuthProvider to launch the universal login page.
+    ```kotlin 
+      WebAuthProvider.login(auth0)
+        .withScheme("https")
+        .withScope("openid profile email offline_access")
+        .start(context, object : Callback<Credentials, AuthenticationException> {
+            override fun onSuccess(credentials: Credentials) {
+                //Save the credentials
+               
+            }
 
-    1. Right-click your package → **New** → **Kotlin Class/File** → **File**
-    2. Name it `AuthenticationManager`
-    3. Replace its contents with:
-
-    ```kotlin AuthenticationManager.kt expandable lines
-package com.auth0.samples.android
-
-import android.content.Context
-import androidx.fragment.app.FragmentActivity
-import com.auth0.android.Auth0
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import com.auth0.android.authentication.AuthenticationAPIClient
-import com.auth0.android.authentication.AuthenticationException
-import com.auth0.android.authentication.storage.CredentialsManagerException
-import com.auth0.android.authentication.storage.SecureCredentialsManager
-import com.auth0.android.authentication.storage.SharedPreferencesStorage
-import com.auth0.android.callback.Callback
-import com.auth0.android.provider.WebAuthProvider
-import com.auth0.android.result.Credentials
-import com.auth0.android.result.UserProfile
-
-class AuthenticationManager(private val context: Context) {
-
-    private val auth0 = Auth0.getInstance(context)
-    private val credentialsManager: SecureCredentialsManager
-
-    private val _isAuthenticated = MutableStateFlow(false)
-    val isAuthenticated: StateFlow<Boolean> = _isAuthenticated.asStateFlow()
-
-    init {
-        val authentication = AuthenticationAPIClient(auth0)
-        val storage = SharedPreferencesStorage(context)
-        credentialsManager = SecureCredentialsManager(context, auth0, storage)
-    }
-
-
-    fun login() {
-
-        WebAuthProvider.login(auth0)
-            .withScheme("https")
-            .withScope("openid profile email offline_access")
-            .start(context as FragmentActivity, object : Callback<Credentials, AuthenticationException> {
-                override fun onSuccess(credentials: Credentials) {
-                    //Save the credentials
-                    credentialsManager.saveCredentials(credentials)
-                    _isAuthenticated.value = true
-                }
-
-                override fun onFailure(exception: AuthenticationException) {
-                    //Handle error cases
-                }
-            })
-    }
-
-    fun logout() {
-
-        WebAuthProvider.logout(auth0)
-            .withScheme("https")
-            .start(context as FragmentActivity, object : Callback<Void?, AuthenticationException> {
-                override fun onSuccess(result: Void?) {
-                    credentialsManager.clearCredentials()
-                    _isAuthenticated.value = false
-                }
-
-                override fun onFailure(exception: AuthenticationException) {
-                }
-            })
-    }
-}
-    ```
-  </Step>
-
-  <Step title="Create the layout and styling" stepNumber={6}>
-    Create a modern Android layout with Material Design components.
-
-    **Update your `activity_main.xml` layout file:**
-
-    ```xml app/src/main/res/layout/activity_main.xml expandable lines
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_color"
-    tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/authStatusIcon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ic_shield"
-        app:tint="@color/auth0_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/app_name"
-        android:textColor="@color/text_primary"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/authStatusIcon" />
-
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/welcome_unauthenticated"
-        android:textColor="@color/text_secondary"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appTitle" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginButton"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/log_in"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeText" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/logoutButton"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/logout_red"
-        android:text="@string/log_out"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:cornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeText" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            override fun onFailure(exception: AuthenticationException) {
+                //Handle error cases
+            }
+        })
     ```
 
-    **Add drawable resources:**
-    Create `app/src/main/res/drawable/ic_shield.xml`:
+    **Implement Logout:** Use WebAuthProvider to clear the user's session.
+    ```kotlin 
+     WebAuthProvider.logout(auth0)
+        .withScheme("https")
+        .start(context, object : Callback<Void?, AuthenticationException> {
+            override fun onSuccess(result: Void?) {
+               //clear saved credentials
+            }
 
-    ```xml app/src/main/res/drawable/ic_shield.xml expandable lines
-    <vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="24dp"
-        android:height="24dp"
-        android:viewportWidth="24"
-        android:viewportHeight="24">
-        <path
-            android:fillColor="@android:color/black"
-            android:pathData="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z" />
-    </vector>
+            override fun onFailure(exception: AuthenticationException) {
+            }
+        })
     ```
   </Step>
 
