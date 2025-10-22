@@ -176,6 +176,12 @@
           {
             "group": " ",
             "pages": ["mcp/auth-for-mcp", "mcp/cloudflare-mcp"]
+          },{
+            "group": "Guides",
+            "icon": "graduation-cap",
+            "pages": [
+              "mcp/guides/resource-param-compatibility-profile"
+            ]
           }
         ]
       },
