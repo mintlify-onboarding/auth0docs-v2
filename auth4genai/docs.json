@@ -174,9 +174,12 @@
         "tab": "Auth for MCP",
         "groups": [
           {
-            "group": " ",
-            "pages": ["mcp/auth-for-mcp"]
-          }{
+            "group": "Auth for MCP",
+            "icon": "book-open",
+            "pages": [
+              "mcp/intro/overview"
+            ]
+          },{
             "group": "Guides",
             "icon": "graduation-cap",
             "pages": [
