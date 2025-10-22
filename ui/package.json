@@ -1,11 +1,12 @@
 {
   "name": "ui",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "copy:build": "./scripts/copy-build.sh",
     "lint": "eslint .",
     "format": "prettier . --write",
     "preview": "vite preview"
