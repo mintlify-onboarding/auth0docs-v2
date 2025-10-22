@@ -54,6 +54,10 @@ export interface TenantEnvironment {
 export interface Tenant {
   name: string;
   login_url: string;
+  locality: {
+    id: string;
+    name: string;
+  }
   override_subdomain?: string;
   access_token?: string;
   environment: TenantEnvironment;

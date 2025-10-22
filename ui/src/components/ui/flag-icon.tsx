@@ -3,7 +3,15 @@ import { SvgIcon } from './svg-icon';
 
 interface FlagIconProps {
   className?: string;
-  country: 'australia' | 'canada' | 'india' | 'japan' | 'uk' | 'us';
+  country:
+    | 'australia'
+    | 'canada'
+    | 'eu'
+    | 'globe'
+    | 'india'
+    | 'japan'
+    | 'uk'
+    | 'us';
 }
 
 function FlagIcon(props: FlagIconProps) {
