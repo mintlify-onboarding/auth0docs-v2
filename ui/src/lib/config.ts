@@ -1,5 +1,6 @@
 interface EnvConfig {
   apiBaseUrl: string;
+  dashboardBaseUrl: string;
   heapAnalytics: {
     appId: string;
     enabled: boolean;
@@ -19,6 +20,7 @@ type Env = 'prod' | 'staging' | 'dev' | 'local';
 const env: { [key in Env]: EnvConfig } = {
   prod: {
     apiBaseUrl: 'https://auth0.com/docs/v2',
+    dashboardBaseUrl: 'https://manage.auth0.com',
     heapAnalytics: {
       enabled: true,
       appId: '1279799279',
@@ -34,6 +36,7 @@ const env: { [key in Env]: EnvConfig } = {
   },
   staging: {
     apiBaseUrl: 'https://sus.auth0.com/docs/v2',
+    dashboardBaseUrl: 'https://manage.sus.auth0.com',
     heapAnalytics: {
       enabled: true,
       appId: '2269341915',
@@ -49,6 +52,7 @@ const env: { [key in Env]: EnvConfig } = {
   },
   dev: {
     apiBaseUrl: 'https://tus.auth0.com/docs/v2',
+    dashboardBaseUrl: 'https://manage.tus.auth0.com',
     heapAnalytics: {
       enabled: true,
       appId: '2269341915',
@@ -64,6 +68,7 @@ const env: { [key in Env]: EnvConfig } = {
   },
   local: {
     apiBaseUrl: 'http://localhost:7200/docs/v2',
+    dashboardBaseUrl: 'https://manage.local.dev.auth0.com',
     heapAnalytics: {
       enabled: true,
       appId: '2269341915',

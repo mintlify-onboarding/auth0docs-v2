@@ -6,6 +6,7 @@ import {
   userLogout,
   patchUserSession,
 } from '@/lib/api';
+import { config } from '@/lib/config';
 
 import type { RootStore } from './root-store';
 
@@ -22,9 +23,10 @@ export class SessionStore {
   rootStore: RootStore;
 
   isAuthenticated = false;
-  user: UserData | null = null;
   selectedTenantName: string | null = null;
   domain: string | null = null;
+
+  #user: UserData | null = null;
 
   get selectedTenant() {
     if (!this.selectedTenantName) return null;
@@ -32,6 +34,17 @@ export class SessionStore {
       (t) => t.name === this.selectedTenantName,
     );
     return tenant ?? null;
+  }
+
+  get user(): UserData | null {
+    if (!this.#user) return null;
+
+    return {
+      ...this.#user,
+      profileUrl: this.selectedTenant
+        ? `${config.dashboardBaseUrl}/dashboard/${this.selectedTenant.locality}/${this.selectedTenant.name}/profile/general`
+        : '#',
+    };
   }
 
   constructor(rootStore: RootStore) {
@@ -54,15 +67,17 @@ export class SessionStore {
         return;
       }
 
-      this.user = {
+      this.domain = response.account.namespace;
+      this.selectedTenantName = response.account.tenant;
+      this.#user = {
         id: response.profile.sub ?? '',
         email: response.profile.email ?? 'guest@example.com',
         name: response.profile.name ?? 'Guest',
         profilePicture: response.profile.picture ?? '',
-        profileUrl: `/dashboard/<locality>/<tenant-name>/profile/general`,
+        profileUrl: this.selectedTenant
+          ? `${config.dashboardBaseUrl}/dashboard/${this.selectedTenant.locality}/${this.selectedTenant.name}/profile/general`
+          : '#',
       };
-      this.selectedTenantName = response.account.tenant;
-      this.domain = response.account.namespace;
 
       // Set initial selected client
       if (response.account?.client_id) {
@@ -83,7 +98,7 @@ export class SessionStore {
 
   reset() {
     this.isAuthenticated = false;
-    this.user = null;
+    this.#user = null;
     this.selectedTenantName = null;
   }
 

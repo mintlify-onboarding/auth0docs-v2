@@ -103,12 +103,14 @@ function ProfileMenuTrigger({
 interface ProfileMenuContentProps extends React.ComponentProps<'div'> {
   selectedTenant: TenantData;
   user: UserData;
+  dashboardBaseUrl: string;
   onSwitchTenant?: MouseEventHandler<HTMLDivElement>;
   onLogout?: MouseEventHandler<HTMLButtonElement>;
 }
 
 function ProfileMenuContent({
   className,
+  dashboardBaseUrl,
   onSwitchTenant,
   onLogout,
   selectedTenant,
@@ -135,7 +137,8 @@ function ProfileMenuContent({
             asChild
           >
             <a
-              href="https://manage.auth0.com/"
+              className="no_external_icon"
+              href={`${dashboardBaseUrl}/dashboard/${selectedTenant.locality}/${selectedTenant.name}`}
               target="_blank"
               rel="noreferrer"
             >
