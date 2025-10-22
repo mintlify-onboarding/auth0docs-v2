@@ -4,10 +4,9 @@ import { observer } from 'mobx-react-lite';
 import { cn } from '@/lib/utils';
 import { useBreakpoint } from '@/hooks/media-query';
 import { rootStore } from '@/stores';
-import { userLogin } from '@/lib/api';
 
 import { AuthMenu } from './auth-menu';
-import { Button } from './ui/button';
+import { UnauthenticatedMenu } from './ui/unauthenticated-menu';
 
 const NavActions = observer(({ className }: { className?: string }) => {
   const { sessionStore } = rootStore;
@@ -27,7 +26,7 @@ const NavActions = observer(({ className }: { className?: string }) => {
       const { right } = referenceDiv.getBoundingClientRect();
 
       if (wrapperRef.current) {
-        const iconsWidth = isLgUp ? 30 + 16 : 0; // icon width + margin
+        const iconsWidth = isLgUp ? 30 + 16 : -8; // icon width + margin
         wrapperRef.current.style.right = `${window.innerWidth - right + iconsWidth}px`;
         wrapperRef.current.style.top = `var(--opt-out-banner-height, 0px)`;
       }
@@ -51,36 +50,7 @@ const NavActions = observer(({ className }: { className?: string }) => {
         className,
       )}
     >
-      {user ? (
-        <AuthMenu />
-      ) : (
-        <>
-          <Button
-            variant="ghost"
-            onClick={() => userLogin(window.location.href)}
-          >
-            Log In
-          </Button>
-          <Button
-            className="no_external_icon adu:text-foreground-inverse!"
-            variant="default"
-            asChild
-          >
-            <a href="https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22docs%22%7D">
-              Sign Up
-            </a>
-          </Button>
-          <Button
-            className="no_external_icon adu:adu:border-border-muted! adu:border!"
-            variant="outline"
-            asChild
-          >
-            <a href="https://auth0.com/get-started?place=header&type=button&text=talk%20to%20sales">
-              Contact Sales
-            </a>
-          </Button>
-        </>
-      )}
+      {user ? <AuthMenu /> : <UnauthenticatedMenu />}
     </div>
   );
 });
