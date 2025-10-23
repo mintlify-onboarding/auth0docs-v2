@@ -178,7 +178,8 @@
             "icon": "book-open",
             "pages": [
               "mcp/intro/overview",
-              "mcp/intro/user-authentication"
+              "mcp/intro/user-authentication",
+              "mcp/intro/metadata-discovery-and-client-registration"
             ]
           },{
             "group": "Get Started",
