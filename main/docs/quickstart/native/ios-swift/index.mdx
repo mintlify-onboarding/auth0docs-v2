@@ -111,7 +111,23 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
         2. **Applications** > **Create Application** > Name it, select **Native** > **Create**
         3. Copy **Client ID** and **Domain** from **Settings** tab into `Auth0.plist`
         4. Drag `Auth0.plist` into Xcode (check "Add to target")
-        5. Set **Allowed Callback URLs** and **Allowed Logout URLs**:
+        5. Configure the following URLs:
+
+        **Allowed Callback URLs:**
+
+        **iOS:**
+        ```
+        https://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback
+        ```
+
+        **macOS:**
+        ```
+        https://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback
+        ```
+
+        **Allowed Logout URLs:**
 
         **iOS:**
         ```
@@ -130,7 +146,23 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
         1. Go to [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
         2. **Applications** > **Create Application** > Name it, select **Native** > **Create**
         3. Note **Client ID** and **Domain** from **Settings** tab
-        4. Set **Allowed Callback URLs** and **Allowed Logout URLs**:
+        4. Configure the following URLs:
+
+        **Allowed Callback URLs:**
+
+        **iOS:**
+        ```
+        https://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback
+        ```
+
+        **macOS:**
+        ```
+        https://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback
+        ```
+
+        **Allowed Logout URLs:**
 
         **iOS:**
         ```

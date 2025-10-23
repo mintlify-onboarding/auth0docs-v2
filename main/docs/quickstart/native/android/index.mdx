@@ -41,13 +41,6 @@ title: Add Login to Your Android Application
     **Update your app-level `build.gradle.kts` file:**
 
     ```kotlin app/build.gradle.kts lines
-    android {
-        defaultConfig {
-            // Auth0 configuration
-            manifestPlaceholders["auth0Domain"] = "@string/com_auth0_domain"
-            manifestPlaceholders["auth0Scheme"] = "@string/com_auth0_scheme"
-        }
-    }
     dependencies {   
         // Auth0 SDK
         implementation("com.auth0.android:auth0:3.10.0")
@@ -65,7 +58,7 @@ title: Add Login to Your Android Application
     ```
 
     <Tip>
-      The Auth0 SDK automatically handles dependency resolution and includes secure token storage capabilities. Manifest placeholders will be configured with your Auth0 credentials in the next step.
+      The Auth0 SDK automatically handles dependency resolution and includes secure token storage capabilities.
     </Tip>
   </Step>
 
@@ -89,10 +82,16 @@ title: Add Login to Your Android Application
     4. Switch to the **Settings** tab on the Application Details page
     5. Replace `YOUR_AUTH0_DOMAIN` and `YOUR_AUTH0_CLIENT_ID` in the `strings.xml` file with the **Domain** and **Client ID** values from the dashboard
 
-    Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs** and **Allowed Logout URLs** to:
+    Finally, on the **Settings** tab of your Application Details page, configure the following URLs:
 
+    **Allowed Callback URLs:**
     ```
-    https://YOUR_AUTH0_DOMAIN/android/com.auth0.samples.android/callback
+    https://YOUR_AUTH0_DOMAIN/android/PACKAGE_NAME/callback
+    ```
+
+    **Allowed Logout URLs:**
+    ```
+    https://YOUR_AUTH0_DOMAIN/android/PACKAGE_NAME/callback
     ```
 
     Replace `YOUR_AUTH0_DOMAIN` with your actual Auth0 domain (e.g., `dev-abc123.us.auth0.com`).
@@ -110,41 +109,132 @@ title: Add Login to Your Android Application
     </Warning>
   </Step>
 
-  <Step title="Create the Authentication" stepNumber={4}>
+  <Step title="Initialize the Auth0 SDK" stepNumber={4}>
+    Create an Auth0 instance in your Activity to communicate with Auth0.
 
-    **Implement Login:** Use WebAuthProvider to launch the universal login page.
-    ```kotlin 
-      WebAuthProvider.login(auth0)
-        .withScheme("https")
-        .withScope("openid profile email offline_access")
-        .start(context, object : Callback<Credentials, AuthenticationException> {
-            override fun onSuccess(credentials: Credentials) {
-                //Save the credentials
-               
-            }
+    **In your `MainActivity.kt`:**
 
-            override fun onFailure(exception: AuthenticationException) {
-                //Handle error cases
-            }
-        })
+    ```kotlin MainActivity.kt lines
+    import com.auth0.android.Auth0
+    import com.auth0.android.authentication.AuthenticationException
+    import com.auth0.android.callback.Callback
+    import com.auth0.android.provider.WebAuthProvider
+    import com.auth0.android.result.Credentials
+
+    class MainActivity : ComponentActivity() {
+        private lateinit var auth0: Auth0
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            
+            // Initialize Auth0
+            auth0 = Auth0(
+                getString(R.string.com_auth0_client_id),
+                getString(R.string.com_auth0_domain)
+            )
+        }
+    }
     ```
 
-    **Implement Logout:** Use WebAuthProvider to clear the user's session.
-    ```kotlin 
-     WebAuthProvider.logout(auth0)
-        .withScheme("https")
-        .start(context, object : Callback<Void?, AuthenticationException> {
-            override fun onSuccess(result: Void?) {
-               //clear saved credentials
-            }
-
-            override fun onFailure(exception: AuthenticationException) {
-            }
-        })
-    ```
+    <Tip>
+      The Auth0 instance is initialized with your client ID and domain from the `strings.xml` file you configured earlier. This instance will be used for all authentication operations.
+    </Tip>
   </Step>
 
-  <Step title="Run your app" stepNumber={7}>
+  <Step title="Implement Login and Logout" stepNumber={5}>
+
+    **Implement Login:** Use WebAuthProvider to launch the universal login page.
+
+    Add these methods to your `MainActivity`:
+
+    <Tabs>
+      <Tab title="Kotlin Callback">
+        ```kotlin MainActivity.kt lines
+        private fun login() {
+            WebAuthProvider.login(auth0)
+                .withScheme("https")
+                .withScope("openid profile email offline_access")
+                .start(this, object : Callback<Credentials, AuthenticationException> {
+                    override fun onSuccess(credentials: Credentials) {
+                        // Save the credentials
+                        // User is authenticated
+                    }
+
+                    override fun onFailure(exception: AuthenticationException) {
+                        // Handle error cases
+                    }
+                })
+        }
+        ```
+      </Tab>
+
+      <Tab title="Coroutine">
+        ```kotlin MainActivity.kt lines
+        private fun login() {
+            lifecycleScope.launch {
+                try {
+                    val credentials = WebAuthProvider.login(auth0)
+                        .withScheme("https")
+                        .withScope("openid profile email offline_access")
+                        .await(this@MainActivity)
+                    // Save the credentials
+                    // User is authenticated
+                } catch (exception: AuthenticationException) {
+                    // Handle error
+                }
+            }
+        }
+        ```
+      </Tab>
+    </Tabs>
+
+    **Implement Logout:** Use WebAuthProvider to clear the user's session.
+
+    <Tabs>
+      <Tab title="Kotlin Callback">
+        ```kotlin MainActivity.kt lines
+        private fun logout() {
+            WebAuthProvider.logout(auth0)
+                .withScheme("https")
+                .start(this, object : Callback<Void?, AuthenticationException> {
+                    override fun onSuccess(result: Void?) {
+                        // Clear saved credentials
+                        // User is logged out
+                    }
+
+                    override fun onFailure(exception: AuthenticationException) {
+                        // Handle error
+                    }
+                })
+        }
+        ```
+      </Tab>
+
+      <Tab title="Coroutine">
+        ```kotlin MainActivity.kt lines
+        private fun logout() {
+            lifecycleScope.launch {
+                try {
+                    WebAuthProvider.logout(auth0)
+                        .withScheme("https")
+                        .await(this@MainActivity)
+                    // Clear saved credentials
+                    // User is logged out
+                } catch (exception: AuthenticationException) {
+                    // Handle error
+                }
+            }
+        }
+        ```
+      </Tab>
+    </Tabs>
+
+    <Info>
+      The `login()` and `logout()` methods should be called when the user taps the respective buttons in your UI. The code uses `this` (referring to the Activity) as the context parameter, which is required for WebAuthProvider to launch Chrome Custom Tabs and handle the authentication flow.
+    </Info>
+  </Step>
+
+  <Step title="Run your app" stepNumber={6}>
     Build and run your Android application.
 
     **In Android Studio:**

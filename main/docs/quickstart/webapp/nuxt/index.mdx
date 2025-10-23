@@ -92,11 +92,20 @@ This quickstart demonstrates how to add Auth0 authentication to a Nuxt.js applic
         5. Replace the values in the `.env` file with the **Domain**, **Client ID**, and **Client Secret** values from the dashboard
         6. Generate a session secret by running: `openssl rand -hex 64` and use it for `NUXT_AUTH0_SESSION_SECRET`
 
-        Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs**, **Allowed Logout URLs** and **Allowed Web Origins** to:
+        Finally, on the **Settings** tab of your Application Details page, configure the following URLs:
 
+        **Allowed Callback URLs:**
         ```
         http://localhost:3000/auth/callback
+        ```
+
+        **Allowed Logout URLs:**
+        ```
         http://localhost:3000
+        ```
+
+        **Allowed Web Origins:**
+        ```
         http://localhost:3000
         ```
 
@@ -139,7 +148,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Nuxt.js applic
     And add the following code snippets
 
     <CodeGroup>
-      ```vue app/components/LoginButton.vue lines
+      ```vue app/components/LoginButton.vue expandable lines
       <template>
        <a 
           href="/auth/login" 
@@ -187,7 +196,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Nuxt.js applic
       </style>
       ```
 
-      ```vue app/components/LogoutButton.vue lines
+      ```vue app/components/LogoutButton.vue expandable lines
       <template>
        <a
           href="/auth/logout"
@@ -235,7 +244,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Nuxt.js applic
       </style>
       ```
 
-      ```vue app/components/UserProfile.vue lines
+      ```vue app/components/UserProfile.vue expandable lines
       <template>
         <div v-if="pending" class="loading-text">
           Loading profile...

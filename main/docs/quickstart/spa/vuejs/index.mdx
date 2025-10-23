@@ -765,8 +765,19 @@ This quickstart demonstrates how to integrate Auth0 authentication into a Vue.js
         4. Switch to the **Settings** tab on the Application Details page
         5. Replace `YOUR_AUTH0_APP_DOMAIN` and `YOUR_AUTH0_APP_CLIENT_ID` on the `.env` file with the **Domain** and **Client ID** values from the dashboard
 
-        Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs**, **Allowed Logout URLs** and **Allowed Web Origins** to:
+        Finally, on the **Settings** tab of your Application Details page, configure the following URLs:
 
+        **Allowed Callback URLs:**
+        ```
+        http://localhost:5173
+        ```
+
+        **Allowed Logout URLs:**
+        ```
+        http://localhost:5173
+        ```
+
+        **Allowed Web Origins:**
         ```
         http://localhost:5173
         ```
@@ -867,7 +878,7 @@ This quickstart demonstrates how to integrate Auth0 authentication into a Vue.js
     </script>
     ```
 
-    ```vue src/components/UserProfile.vue lines
+    ```vue src/components/UserProfile.vue expandable lines
     <template>
       <div v-if="isLoading" class="loading-text">
         Loading profile...

@@ -2374,7 +2374,8 @@
                   "docs/quickstart/spa/vanillajs/index",
                   "docs/quickstart/spa/capn-web/index",
                   "docs/quickstart/spa/vuejs/index",
-                  "docs/quickstart/spa/flutter/index"
+                  "docs/quickstart/spa/flutter/index",
+                  "docs/quickstart/spa/svelte/index"
                 ]
               },
               {
