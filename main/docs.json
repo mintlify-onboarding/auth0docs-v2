@@ -1101,7 +1101,7 @@
                             "pages": [
                               "docs/manage-users/sessions/session-metadata",
                               "docs/manage-users/sessions/session-metadata/configure-session-metadata",
-                              "docs/manage-users/sessions/session-metadata/add-organization-information"                              
+                              "docs/manage-users/sessions/session-metadata/add-organization-information"
                             ]
                           }
                         ]
@@ -7268,7 +7268,7 @@
   "logo": {
     "light": "/docs/logo/light.svg",
     "dark": "/docs/logo/dark.svg",
-    "href": "https://auth0-migration.mintlify.app/"
+    "href": "https://auth0.com/docs/"
   },
   "favicon": "/docs/logo/favicon.svg",
   "footer": {
@@ -7437,6 +7437,5 @@
       "source": "/docs/ja-jp/get-started/auth-for-genai",
       "destination": "/docs/ja-jp/get-started/auth0-for-ai-agents"
     }
-
   ]
 }
