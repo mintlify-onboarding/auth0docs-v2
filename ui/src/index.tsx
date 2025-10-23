@@ -9,20 +9,7 @@ import { overrideHistoryMethods } from '@/lib/history';
 import { initOneTrust } from '@/lib/one-trust';
 import { initRootStore } from '@/stores';
 
-async function main() {
-  const root = document.createElement('div');
-  root.id = 'adu-root';
-  document.body.appendChild(root);
-
-  // Initialize one-trust for cookie-consent management
-  initOneTrust();
-
-  // Override history methods to dispatch events on route changes
-  overrideHistoryMethods();
-
-  // Initialize the MobX store before rendering
-  await initRootStore();
-
+function mountApp(root: HTMLElement) {
   createRoot(root).render(
     <StrictMode>
       <OptOutBanner
@@ -35,6 +22,30 @@ async function main() {
       <NavActions />
     </StrictMode>,
   );
+}
+
+async function main() {
+  const root = document.createElement('div');
+  root.id = 'adu-root';
+  document.body.appendChild(root);
+
+  // Override history methods to dispatch events on route changes
+  overrideHistoryMethods();
+
+  // Initialize the MobX store before rendering
+  await initRootStore();
+
+  const path = window.location.pathname;
+  if (path.includes('/_minimal/')) {
+    // Minimal mode is active, do not mount the custom UI changes
+    return;
+  }
+
+  // Initialize one-trust for cookie-consent management
+  initOneTrust();
+
+  // Mount the main application
+  mountApp(root);
 }
 
 main();
