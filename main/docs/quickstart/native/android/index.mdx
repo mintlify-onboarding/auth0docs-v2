@@ -89,8 +89,14 @@ title: Add Login to Your Android Application
     4. Switch to the **Settings** tab on the Application Details page
     5. Replace `YOUR_AUTH0_DOMAIN` and `YOUR_AUTH0_CLIENT_ID` in the `strings.xml` file with the **Domain** and **Client ID** values from the dashboard
 
-    Finally, on the **Settings** tab of your Application Details page, set **Allowed Callback URLs** and **Allowed Logout URLs** to:
+    Finally, on the **Settings** tab of your Application Details page, configure the following URLs:
 
+    **Allowed Callback URLs:**
+    ```
+    https://YOUR_AUTH0_DOMAIN/android/PACKAGE_NAME/callback
+    ```
+
+    **Allowed Logout URLs:**
     ```
     https://YOUR_AUTH0_DOMAIN/android/PACKAGE_NAME/callback
     ```
@@ -113,35 +119,72 @@ title: Add Login to Your Android Application
   <Step title="Create the Authentication" stepNumber={4}>
 
     **Implement Login:** Use WebAuthProvider to launch the universal login page.
-    ```kotlin 
-      WebAuthProvider.login(auth0)
-        .withScheme("https")
-        .withScope("openid profile email offline_access")
-        .start(context, object : Callback<Credentials, AuthenticationException> {
-            override fun onSuccess(credentials: Credentials) {
-                //Save the credentials
-               
-            }
 
-            override fun onFailure(exception: AuthenticationException) {
-                //Handle error cases
-            }
-        })
-    ```
+    <Tabs>
+      <Tab title="Kotlin Callback">
+        ```kotlin 
+        WebAuthProvider.login(auth0)
+          .withScheme("https")
+          .withScope("openid profile email offline_access")
+          .start(context, object : Callback<Credentials, AuthenticationException> {
+              override fun onSuccess(credentials: Credentials) {
+                  // Save the credentials
+              }
+
+              override fun onFailure(exception: AuthenticationException) {
+                  // Handle error cases
+              }
+          })
+        ```
+      </Tab>
+
+      <Tab title="Coroutine">
+        ```kotlin 
+        try {
+            val credentials = WebAuthProvider.login(auth0)
+                .withScheme("https")
+                .withScope("openid profile email offline_access")
+                .await(context)
+            // Save the credentials
+        } catch (exception: AuthenticationException) {
+            // Handle error
+        }
+        ```
+      </Tab>
+    </Tabs>
 
     **Implement Logout:** Use WebAuthProvider to clear the user's session.
-    ```kotlin 
-     WebAuthProvider.logout(auth0)
-        .withScheme("https")
-        .start(context, object : Callback<Void?, AuthenticationException> {
-            override fun onSuccess(result: Void?) {
-               //clear saved credentials
-            }
 
-            override fun onFailure(exception: AuthenticationException) {
-            }
-        })
-    ```
+    <Tabs>
+      <Tab title="Kotlin Callback">
+        ```kotlin 
+        WebAuthProvider.logout(auth0)
+          .withScheme("https")
+          .start(context, object : Callback<Void?, AuthenticationException> {
+              override fun onSuccess(result: Void?) {
+                  // Clear saved credentials
+              }
+
+              override fun onFailure(exception: AuthenticationException) {
+                  // Handle error
+              }
+          })
+        ```
+      </Tab>
+
+      <Tab title="Coroutine">
+        ```kotlin 
+        try {
+            WebAuthProvider.logout(auth0)
+                .withScheme("https")
+                .await(context)
+            // Clear saved credentials
+        } catch (exception: AuthenticationException) {
+            // Handle error
+        }
+        ```
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Run your app" stepNumber={7}>
