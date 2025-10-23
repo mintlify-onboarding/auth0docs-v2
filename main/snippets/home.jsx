@@ -2,7 +2,7 @@ export const DocsBanner = () => {
   return (
     <div className="gap-5 flex justify-center p-6 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(180,160,255,.45)_0%,rgba(255,235,240,.35)_40%,rgba(255,245,235,.6)_100%)]">
       <div className="w-[min(860px,90vw)] text-center px-6 py-12">
-        <h1 className="mb-5 font-inter text-5xl text-center text-gray-900 dark:text-white">Auth0 Docs</h1>
+        <h1 className="mb-5 font-inter font-semibold text-5xl text-center text-gray-900 dark:text-white">Auth0 Docs</h1>
         <p className="mt-4 mb-10 font-inter font-normal text-body-l leading-body-l tracking-body-l text-center text-gray-600 max-w-2xl mx-auto dark:text-white">
           Browse the latest sample code, articles, tutorials,
           <br /> and API reference.
@@ -37,7 +37,7 @@ export const DocsFeatureCards = () => {
     },
     {
       title: "API References",
-      link: "https://auth0.com/docs/api",
+      link: "/docs/api",
       icon: "/docs/images/home/icon2",
       external: false,
     },
@@ -177,9 +177,9 @@ export const LanguageGrid = () => {
 
 export const ProductGrid = () => {
   const products = [
-    { label: "Authentication", href: "/docs/authentication" },
-    { label: "Fine-Grained Authorization", href: "/docs/fine-grained-authorization" },
-    { label: "Auth0 for AI Agents", href: "https://auth0.com/ai/docs" },
+    { label: "Authentication", href: "https://auth0.com/platform/authentication" },
+    { label: "Fine-Grained Authorization", href: "https://auth0.com/fine-grained-authorization" },
+    { label: "Auth0 for AI Agents", href: "https://auth0.com/ai" },
   ];
 
   return (
