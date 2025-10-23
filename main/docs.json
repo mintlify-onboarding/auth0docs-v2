@@ -7268,7 +7268,7 @@
   "logo": {
     "light": "/docs/logo/light.svg",
     "dark": "/docs/logo/dark.svg",
-    "href": "https://docs-staging.mintlify.app/docs/"
+    "href": "https://auth0.com/docs/"
   },
   "favicon": "/docs/logo/favicon.svg",
   "footer": {
