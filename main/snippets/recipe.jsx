@@ -659,9 +659,12 @@ export const SignUpForm = () => {
     );
   };
 
-  // Don't render anything until store is ready
-  if (!storeReady) {
-    return <SignUpFormInternal />;
-  }
-  return isAuthenticated ? <LoggedInForm /> : <SignUpFormInternal />;
+  // // Don't render anything until store is ready
+  // if (!storeReady) {
+  //   return <SignUpFormInternal />;
+  // }
+  // return isAuthenticated ? <LoggedInForm /> : <SignUpFormInternal />;
+
+  // Temporarily disable/hide the sign-up form until backend integration is ready
+  return <></>;
 }
