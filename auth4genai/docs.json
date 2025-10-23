@@ -179,8 +179,15 @@
             "pages": [
               "mcp/intro/overview",
               "mcp/intro/user-authentication"
-              ]
-            },{
+            ]
+          },{
+            "group": "Get Started",
+            "icon": "rocket-launch",
+            "pages": [
+              "mcp/get-started/overview",
+              "mcp/get-started/user-authentication"
+            ]
+          },{
             "group": "Core Concepts",
             "icon": "gear",
             "pages": [
