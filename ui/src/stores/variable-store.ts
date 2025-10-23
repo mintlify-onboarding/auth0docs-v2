@@ -63,9 +63,7 @@ export class VariableStore {
       return;
     }
 
-    console.log(`Setting ${key} to ${value}`);
     this.values.set(key, value);
-    console.log('Values after update:', this.values);
   }
 
   resetKey(key: AllowedKeys) {
