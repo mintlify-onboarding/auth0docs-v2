@@ -185,7 +185,8 @@
             "icon": "rocket-launch",
             "pages": [
               "mcp/get-started/overview",
-              "mcp/get-started/user-authentication"
+              "mcp/get-started/user-authentication",
+              "mcp/get-started/metadata-discovery-and-client-registration"
             ]
           },{
             "group": "Core Concepts",
