@@ -46,3 +46,4 @@ export * from '@/components';
 export { initRootStore, rootStore } from '@/stores';
 export { autorun, observe, reaction } from 'mobx';
 export { observer } from 'mobx-react-lite';
+export { getSample, postSample } from '@/lib/api';

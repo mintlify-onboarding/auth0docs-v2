@@ -39,6 +39,8 @@ export class ResourceServerStore {
   }
 
   get selectedApi() {
-    return this.resourceServers.find(api => api.id === this.selectedApiId) || null;
+    return (
+      this.resourceServers.find((api) => api.id === this.selectedApiId) || null
+    );
   }
 }

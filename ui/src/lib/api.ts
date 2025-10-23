@@ -1,3 +1,5 @@
+import { saveAs } from 'file-saver';
+
 import { config } from './config';
 import { request } from './request';
 
@@ -57,7 +59,7 @@ export interface Tenant {
   locality: {
     id: string;
     name: string;
-  }
+  };
   override_subdomain?: string;
   access_token?: string;
   environment: TenantEnvironment;
@@ -125,6 +127,28 @@ interface RolloutConsentResponse {
   version: 'v1' | 'v2';
   bucket?: 'v1' | 'v2' | 'opted_out';
   rollout_id: string;
+}
+
+// Sample Interfaces
+export interface SampleRequest {
+  /** Repository name */
+  repo: string;
+  /** Branch name */
+  branch: string;
+  /** Path within the repository */
+  path?: string;
+  /** Auth0 client ID */
+  client_id?: string;
+  /** Auth0 client secret */
+  client_secret?: string;
+  /** Auth0 tenant name */
+  tenant?: string;
+  /** Auth0 domain */
+  domain?: string;
+  /** Callback URL */
+  callback_url?: string;
+  /** API identifier */
+  api_id?: string;
 }
 
 // Auth Methods (these return void as they redirect)
@@ -255,4 +279,79 @@ export async function patchRolloutConsent(consentData: RolloutConsentRequest) {
   );
 }
 
-export function user() {}
+// Sample Methods
+export async function getSample(
+  params: {
+    repo: string;
+    branch: string;
+    path?: string;
+    client_id?: string;
+    tenant?: string;
+    domain?: string;
+    callback_url?: string;
+    api_id?: string;
+  },
+  filename?: string,
+) {
+  const queryParams = new URLSearchParams();
+
+  queryParams.append('repo', params.repo);
+  queryParams.append('branch', params.branch);
+
+  if (params.path) {
+    queryParams.append('path', params.path);
+  }
+  if (params.client_id) {
+    queryParams.append('client_id', params.client_id);
+  }
+  if (params.tenant) {
+    queryParams.append('tenant', params.tenant);
+  }
+  if (params.domain) {
+    queryParams.append('domain', params.domain);
+  }
+  if (params.callback_url) {
+    queryParams.append('callback_url', params.callback_url);
+  }
+  if (params.api_id) {
+    queryParams.append('api_id', params.api_id);
+  }
+
+  const response = await fetch(
+    `${config.apiBaseUrl}/samples?${queryParams.toString()}`,
+    {
+      headers: {
+        Accept: 'application/*',
+      },
+      credentials: 'include',
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to download sample: ${response.statusText}`);
+  }
+
+  const blob = await response.blob();
+  const defaultFilename = `${params.repo.split('/').pop()}-${params.branch}.zip`;
+  saveAs(blob, filename || defaultFilename);
+}
+
+export async function postSample(sampleData: SampleRequest, filename?: string) {
+  const response = await fetch(`${config.apiBaseUrl}/samples`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/*',
+    },
+    body: JSON.stringify(sampleData),
+    credentials: 'include',
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to download sample: ${response.statusText}`);
+  }
+
+  const blob = await response.blob();
+  const defaultFilename = `${sampleData.repo.split('/').pop()}-${sampleData.branch}.zip`;
+  saveAs(blob, filename || defaultFilename);
+}

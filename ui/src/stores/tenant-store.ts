@@ -22,7 +22,7 @@ export class TenantStore {
   async init() {
     try {
       const rawTenants = await getTenants();
-      this.tenants = rawTenants.map(tenant => toTenantData(tenant));
+      this.tenants = rawTenants.map((tenant) => toTenantData(tenant));
     } catch (error) {
       console.error('Failed to initialize TenantStore:', error);
       this.reset();
