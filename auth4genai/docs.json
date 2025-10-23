@@ -180,6 +180,12 @@
               "mcp/intro/overview"
             ]
           },{
+            "group": "Core Concepts",
+            "icon": "gear",
+            "pages": [
+              "mcp/core-concepts/core-concepts"
+            ]
+          },{
             "group": "Build with AI",
             "icon": "code",
             "pages": [
