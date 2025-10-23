@@ -202,6 +202,10 @@
               "build-with-ai/using-ai-tools"
             ]
           },{
+            "group": "Sample Apps",
+            "icon": "robot",
+            "pages": ["mcp/sample-apps"]
+          },{
             "group": "Guides",
             "icon": "graduation-cap",
             "pages": [
