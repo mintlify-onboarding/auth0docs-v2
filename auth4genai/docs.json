@@ -177,9 +177,10 @@
             "group": "Auth for MCP",
             "icon": "book-open",
             "pages": [
-              "mcp/intro/overview"
-            ]
-          },{
+              "mcp/intro/overview",
+              "mcp/intro/user-authentication"
+              ]
+            },{
             "group": "Core Concepts",
             "icon": "gear",
             "pages": [
