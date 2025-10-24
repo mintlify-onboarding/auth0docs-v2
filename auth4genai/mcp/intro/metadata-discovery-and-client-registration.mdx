@@ -1,30 +1,58 @@
 ---
 title: Metadata Discovery and Client Registration
-description: Register MCP clients and servers so AI Agents can safely connect to your resources using OAuth 2.0.
+description: Register MCP clients and servers so AI Agents can safely connect to your resources using OAuth 2.1.
 sidebarTitle: Metadata Discovery and Client Registration
 ---
 
-Auth0 automatically validates client metadata, issues unique credentials, and exposes standardized discovery endpoints for authorization: 
-
-* Supports the `resource` parameter on `/authorize` and related endpoints to issue tokens scoped to specific APIs or MCP Servers
-
-* Exposes the `.well-known/oauth-authorization-server` document for automatic endpoint discovery
-
-* Provides SDKs that manage registration, discovery, and token exchange for secure MCP integration
+Auth0 provides mechanisms to issue unique client credentials and exposes standardized discovery endpoints for authorization. It supports the `resource` parameter on `/authorize` and related endpoints to issue tokens scoped to specific APIs or MCP Servers. Auth0 SDKs manage registration, discovery, and token exchange for secure MCP integration.
 
 This pattern establishes trust between clients and APIs, limits access to approved agents, and provides secure, auditable registration for every MCP integration.
 
 ### Metadata Discovery
 
-Metadata discovery is part of the authorization flow in MCP-powered applications. During the authorization process the MCP client will request the server information and the authorization server information should it exist (for details see [MCP Authorization Flow with Auth0](/mcp/core-concepts/core-concepts#mcp-authorization-flow-with-auth0)).
+Metadata discovery is part of the authorization flow in MCP powered applications. During the authorization process, the MCP client will request the server metadata and the authorization server information if it exists. For details, see [MCP Authorization Flow with Auth0](/mcp/core-concepts/core-concepts#mcp-authorization-flow-with-auth0).
+
+Auth0 exposes the `.well-known/oauth-authorization-server` document for automatic endpoint discovery ([RFC 8414](https://datatracker.ietf.org/doc/html/rfc8414)).
 
 ### Client Registration
 
-After receiving the information about the MCP server and the authorization server the MCP client can be registered through either exchanging the client credentials or by performing Dynamic Client Registration (DCR).
+After receiving metadata from the MCP server and authorization server, the MCP client can be registered either through static client registration or by performing Dynamic Client Registration (DCR).
 
-<Warning>
-Auth0 supports [Open Dynamic Registration](https://auth0.com/docs/get-started/applications/dynamic-client-registration#enable-dynamic-client-registration), which means that if you enable this feature, anyone will be able to create applications in your tenant without a token.
-</Warning>
+**Static client registration (recommended for production)**
+
+[Manually create and configure the client in Auth0](/mcp/get-started/user-authentication#create-an-application-to-represent-your-mcp-client), issue credentials, and assign scopes for the MCP API. This provides stronger control, predictable client identifiers, and easier auditing.
+
+```shell wrap lines
+auth0 api post clients --data '{
+  "name": "MCP Inspector",
+  "app_type": "regular_web",
+  "is_first_party": false,
+  "callbacks": ["http://localhost:6274/oauth/callback"],
+  "grant_types": ["authorization_code"],
+  "token_endpoint_auth_method": "client_secret_post",
+  "oidc_conformant": true,
+  "jwt_configuration": { "alg": "RS256" },
+  "logo_uri": "https://avatars.githubusercontent.com/u/182288589"
+}'
+```
+
+**Dynamic Client Registration (DCR)**
+
+Allows clients to register themselves dynamically. Auth0 supports [Open Dynamic Registration](https://auth0.com/docs/get-started/applications/dynamic-client-registration#enable-dynamic-client-registration), which means that if you enable this feature, anyone can create applications in your tenant without a token. Read **[Securing Open DCR Endpoints](/mcp/intro/metadata-discovery-and-client-registration#securing-open-dcr-endpoints)** below for strategies to mitigate risk.
+
+#### Securing Open DCR Endpoints
+
+Open Dynamic Client Registration (Open DCR) provides flexibility for MCP integrations but also exposes your tenant to potential abuse if left unauthenticated. To mitigate these risks, consider one of the following approaches depending on your tenant type:
+
+* **Set up a Reverse Proxy (All customers)**
+
+  You can place a reverse proxy such as Cloudflare in front of your tenant to filter, rate-limit, and authenticate requests before they reach the DCR endpoint. This setup helps ensure only expected traffic is forwarded to Auth0. See [Configure Cloudflare for Use as a Reverse Proxy](https://auth0.com/docs/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy) for guidance.
+
+* **Set up a Tenant Access Control List (Enterprise customers only)**
+
+  Enterprise tenants can restrict which IP ranges or domains are allowed to interact with tenant APIs, including DCR endpoints, by using the [Tenant Access Control List (ACL)](https://auth0.com/docs/secure/tenant-access-control-list). This adds a managed layer of network-based access control to prevent unauthorized registration attempts.
+
+These configurations reduce exposure to untrusted clients while preserving the flexibility of Open DCR for legitimate integrations.
 
 ## Authentication and Authorization for MCP Servers
 
@@ -44,7 +72,7 @@ For a client to interact with your server, the MCP specification requires you to
 
 ## Resource Parameter
 
-The Model Context Protocol (MCP) specification requires the use of the standards-compliant `resource` parameter as defined in [RFC 8707](https://www.rfc-editor.org/rfc/rfc8707.html). If you want to use `resource` parameter on your applications you can enable it in the Auth0 Dashboard, follow the [Enable Resource Parameter Compatibility Profile guide](/mcp/guides/resource-param-compatibility-profile) to learn how.  
+The Model Context Protocol (MCP) specification requires the use of the standards-compliant `resource` parameter as defined in [RFC 8707](https://www.rfc-editor.org/rfc/rfc8707.html). If you want to use `resource` parameter on your applications you can enable it in the Auth0 Dashboard, follow the [Enable Resource Parameter Compatibility Profile guide](/mcp/guides/resource-param-compatibility-profile) to learn how.
 
 ## MCP Authorization flow with Auth0
 
