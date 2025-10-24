@@ -6,7 +6,7 @@ sidebarTitle: Metadata Discovery and Client Registration
 
 After receiving the metadata from the MCP server and the authorization server, the MCP client can be registered through either exchanging the client credentials or by performing Dynamic Client Registration (DCR).
 
-<Warning>Auth0 supports [Open Dynamic Registration](https://auth0.com/docs/get-started/applications/dynamic-client-registration#enable-dynamic-client-registration), which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. *Use with caution.*</Warning>
+<Warning>Auth0 supports [Open Dynamic Registration](https://auth0.com/docs/get-started/applications/dynamic-client-registration#enable-dynamic-client-registration), which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Read [Securing Open DCR Endpoints](/mcp/intro/metadata-discovery-and-client-registration#securing-open-dcr-endpoints) to learn strategies to mitigate risks with Open DCR.</Warning>
 
 By the end of this quickstart, you should have an MCP server that can:
 
@@ -75,7 +75,8 @@ auth0 tenant-settings update set flags.enable_dynamic_client_registration
 
 Enabling `enable_dynamic_client_registration` allows MCP tools to register themselves as applications automatically through Dynamic Client Registration (DCR).
 
-<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Use with caution.</Warning>
+<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Read [Securing Open DCR Endpoints](/mcp/intro/metadata-discovery-and-client-registration#securing-open-dcr-endpoints) to learn strategies to mitigate risks with Open DCR.</Warning>
+
 
 ## Configure Tenant Settings
 
@@ -220,7 +221,7 @@ npx @modelcontextprotocol/inspector@latest
 This will open the MCP Inspector interface on your default browser. 
 
 <Warning>
-Because of DCR MCP Inspector will create one application in your tenant every time you run it because it doesn’t cache the application information to re-use it.
+Because of DCR MCP Inspector will create one application in your tenant every time you run it because it doesn’t cache the application information to re-use it. Read [Securing Open DCR Endpoints](/mcp/intro/metadata-discovery-and-client-registration#securing-open-dcr-endpoints) to learn strategies to mitigate risks with Open DCR.
 </Warning>
 
 <Frame>
@@ -291,7 +292,7 @@ Now, click on the tool you want to use and **Run Tool**.
   />
 </Frame>
 
-<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Use with caution.</Warning>
+<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Read [Securing Open DCR Endpoints](/mcp/intro/metadata-discovery-and-client-registration#securing-open-dcr-endpoints) to learn strategies to mitigate risks with Open DCR.</Warning>
 
 ---
 
