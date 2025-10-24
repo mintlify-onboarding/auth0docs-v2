@@ -57,6 +57,13 @@ By the end of this quickstart, you should have an MCP server that can:
 
         If more than one tenant is configured, the default tenant will be indicated by an arrow.
   </Step>
+  <Step title="Improve user consent experience">
+    Enable the [user-friendly descriptions for scopes](https://auth0.com/docs/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications#scope-descriptions) on the consent screen:
+
+    ```shell wrap lines
+    auth0 tenant-settings update set flags.use_scope_descriptions_for_consent
+    ```
+  </Step>
 </Steps>
 
 ## Enable Dynamic Client Registration (DCR)
