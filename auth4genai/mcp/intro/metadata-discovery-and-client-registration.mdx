@@ -34,13 +34,13 @@ When an MCP server is exposed to the internet, it must be secured. The MCP speci
 
 For a client to interact with your server, the MCP specification requires you to announce your authorization configuration and use standard HTTP responses.
 
-1. Announce Your Auth Server with Protected Resource Metadata ([RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728))
+1. **Use the `WWW-Authenticate` Header for 401 Errors**
 
-   Your MCP server must tell clients where to get authorized. To do this, you must expose a metadata endpoint. Create a `.well-known/oauth-authorization-server` endpoint on your server that returns a JSON object pointing to your Auth0 tenant. This allows MCP clients to automatically discover your authorization endpoints without manual configuration.
+   When a client makes a request without a valid token, your server must return a `401 Unauthorized` status. Crucially, this response must include the `WWW-Authenticate` header, pointing to the metadata URL you configured above. This signals to the client that authentication is required and tells it exactly.
 
-2. Use the `WWW-Authenticate` Header for 401 Errors
+2. **Announce Your Auth Server with Protected Resource Metadata ([RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728))**
 
-   When a client makes a request without a valid token, your server must return a `401 Unauthorized` status. Crucially, this response must include the `WWW-Authenticate` header, pointing to the metadata URL you configured above. This signals to the client that authentication is required and tells it exactly 
+   Your MCP server must tell clients where to get authorized. To do this, you must expose a metadata endpoint. Create a `.well-known/oauth-protected-resource` endpoint on your server that returns a JSON object pointing to your Auth0 tenant. This allows MCP clients to automatically discover your authorization endpoints without manual configuration.
 
 ## Resource Parameter
 
