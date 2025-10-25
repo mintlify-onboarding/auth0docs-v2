@@ -70,10 +70,6 @@ For a client to interact with your server, the MCP specification requires you to
 
    Your MCP server must tell clients where to get authorized. To do this, you must expose a metadata endpoint. Create a `.well-known/oauth-protected-resource` endpoint on your server that returns a JSON object pointing to your Auth0 tenant. This allows MCP clients to automatically discover your authorization endpoints without manual configuration.
 
-## Resource Parameter
-
-The Model Context Protocol (MCP) specification requires the use of the standards-compliant `resource` parameter as defined in [RFC 8707](https://www.rfc-editor.org/rfc/rfc8707.html). If you want to use `resource` parameter on your applications you can enable it in the Auth0 Dashboard, follow the [Enable Resource Parameter Compatibility Profile guide](/mcp/guides/resource-param-compatibility-profile) to learn how.
-
 ## MCP Authorization flow with Auth0
 
 With Auth0 your MCP servers can follow OAuth 2.1 features required by the Model Context Protocol specification. [Learn more](/mcp/core-concepts#mcp-authorization-flow-with-auth0).

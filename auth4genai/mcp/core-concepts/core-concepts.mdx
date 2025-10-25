@@ -66,6 +66,10 @@ Here is the standard OAuth authorization code flow when an MCP server uses Auth0
   />
 </Frame>
 
+### Resource Parameter
+
+The Model Context Protocol (MCP) specification requires the use of the standards-compliant `resource` parameter as defined in [RFC 8707](https://www.rfc-editor.org/rfc/rfc8707.html). If you want to use `resource` parameter on your applications you can enable it in the Auth0 Dashboard, follow the [Enable Resource Parameter Compatibility Profile guide](/mcp/guides/resource-param-compatibility-profile) to learn how.
+
 ### Access Token Validation in MCP
 
 Receiving a token is not enough. Your MCP server must validate every token to ensure it is authentic and intended for your server. This involves several checks:
