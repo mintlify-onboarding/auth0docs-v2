@@ -179,7 +179,8 @@
             "pages": [
               "mcp/intro/overview",
               "mcp/intro/user-authentication",
-              "mcp/intro/metadata-discovery-and-client-registration"
+              "mcp/intro/metadata-discovery-and-client-registration",
+              "mcp/intro/call-your-apis-on-users-behalf"
             ]
           },{
             "group": "Get Started",
@@ -187,7 +188,8 @@
             "pages": [
               "mcp/get-started/overview",
               "mcp/get-started/user-authentication",
-              "mcp/get-started/metadata-discovery-and-client-registration"
+              "mcp/get-started/metadata-discovery-and-client-registration",
+              "mcp/get-started/call-your-apis-on-users-behalf"
             ]
           },{
             "group": "Core Concepts",
