@@ -43,6 +43,13 @@ When an **AI Agent** connects to your **MCP server**, the server often needs to 
 
 **Auth0’s Custom Token Exchange** enables this secure delegation. The MCP server exchanges the token it received from the agent for a new, short-lived access token scoped to the internal API. Custom Token Exchange allows **MCP servers** to call internal APIs safely on behalf of users while **Auth0** issues and manages all access centrally.
 
+<Card
+  title="Learn more"
+  href="/mcp/intro/call-your-apis-on-users-behalf"
+  icon="book"
+  horizontal
+  iconType="solid" />
+
 ### Call Third-Party APIs on a User’s behalf
 
 MCP Servers often connect AI Agents to third-party services such as Google, Microsoft, Jira, or Notion. Auth0’s **Token Vault** handles these integrations by managing token issuance, storage, rotation, and revocation for external APIs. Token Vault eliminates manual credential handling and makes it easy to extend MCP connectivity across the modern SaaS ecosystem.
