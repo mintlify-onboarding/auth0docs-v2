@@ -325,3 +325,9 @@
   border-width: 1px;
   border-color: var(--border-input);
 }
+
+/* Chat Assistant height fix, can be removed once we remove the opt-out banner */
+div:has(> #chat-assistant-sheet) {
+  height: calc(100vh - 8rem) !important;
+  top: 8rem !important;
+}
