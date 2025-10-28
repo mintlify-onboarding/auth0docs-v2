@@ -19,11 +19,11 @@ When deleting an Organization discovery domain, the association between the doma
 Once you confirm a Discovery Domain for deletion, this operation cannot be undone.
 </Warning>
 
-Delete an Organization domains via the Auth0 Dashboard or the Management API.
+Delete an Organization domains in the Auth0 Dashboard or with the Management API.
 
 <Tabs>
   <Tab title="Auth0 Dashboard">
-To delete an organization domain via the Auth0 Dashboard:
+To delete an organization domain in the Auth0 Dashboard:
 
 1. Navigate to Navigate to [Auth0 Dashboard > Organizations](https://manage.auth0.com/#/organizations).
 2. Select the **Domains** tab.
@@ -47,7 +47,7 @@ If you have a custom domains configured and verified in Auth0 Dashboard, your do
 
 </Callout>
 
-Make a `DELETE` call to the Delete Organization Discovery Domain endpoint. Ensure you replace the placeholder values with the appropriate values from your tenant.
+Call the Management API `Delete Organization Discovery Domain` endpoint. Ensure you replace the placeholder values with the appropriate values from your tenant.
 
 ```bash
 curl --request DELETE \
@@ -58,8 +58,8 @@ curl --request DELETE \
 | <b>Value</b> | <b>Description</b> |
 | ----- | ----------- |
 | `MGMT_API_ACCESS_TOKEN` | [Access Token for Management API](/docs/tokens/management-api-access-tokens) with the scope `delete:organization`. |
-| `ORGANIZATION_ID` | ID of the organization to which you want to add the discovery domain (e.g., `org_abc123`). |
-| `ORGANIZATION_DOMAIN_ID` | Required. Email domain you want to associate for Organization Discovery  (for example, example.com).|
+| `ORGANIZATION_ID` | ID of the organization to which you want to add the discovery domain (for example, `org_abc123`). |
+| `ORGANIZATION_DOMAIN_ID` | Required. Email domain you want to associate for Organization Discovery  (for example, `example.com`).|
 
 | <b> Status code </b>| <b> Error description </b>| <b>Message</b> |<b>Cause</b>|
 | ------- | ------- | ------- | ------- |
@@ -69,7 +69,7 @@ curl --request DELETE \
 | `401` | | Invalid signature received for JSON Web Token (JWT) validation. ||
 | `403` | `insufficient_scope` | Insufficient scope; expected any of: `delete:organization_discovery_domains`. | Tried to read/write a field that is not allowed with provided bearer token scopes. |
 | `404` | | The Organization domain does not exist. | |
-| `429` |  | Too many requests. Check the X-RateLimit-Limit, X-RateLimit-Remaining and X-RateLimit-Reset headers. ||
+| `429` |  | Too many requests. Check the `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset` headers. ||
 
 </Tab>
 </Tabs>
