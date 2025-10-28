@@ -95,6 +95,38 @@ To define organization behavior via the Auth0 Dashboard:
         </ul>
       </td>
     </tr>
+    <tr>
+    <td>
+    <strong>Organization Discovery</strong>
+    </td>
+    <td>
+    Defines the method used to identify the user’s organization before authentication. Only available with Prompt for Organization Login Flow. <br /><br /> Options include:
+    <ul>
+    <li>
+    <strong>Prompt for Organization Email</strong>: Users are first asked to provide their email address associated with their Organization.
+    </li>
+    <li>
+    <strong>Prompt for Organization Name</strong>: Users are first asked to provide the name of their Organization.
+    </li>
+    <li>
+    <strong>Prompt for Organization Email and Name</strong>: Users are first asked to provide the name of their Organization or email associated with their Organization.
+    </li>
+    </ul>
+    </td>
+    <td>
+    <ul>
+    <li>
+    <strong>Prompt for Emails</strong>: maps to `email`.
+    </li>
+    <li>
+    <strong>Prompt for Organization</strong>: maps to `organization_name`.
+    </li>
+    <li>
+    <strong>Prompt for Organization Email and Name</strong>: maps to `email` and `organization_name`.
+    </li>
+    </ul>
+    </td>
+    </tr>
   </tbody>
 </table>
 
@@ -360,6 +392,24 @@ dataTask.resume()
           <li><code>post_login_prompt</code>: Prompt users to log in with their credentials. After they log in, prompt users to select their Organization.</li>
         </ul>
       </td>
+    </tr>
+    <tr>
+    <td><code>ORGANIZATION_DISCOVERY_METHODS</code></td>
+    <td>
+    Determines the method to identify a user’s organization before authentication. Only applicable when <code>organization_require_behavior</code> is <code>pre_login_prompt</code> and <code>organization_usage</code> is set to require or allow.
+    </br></br>
+    <ul>
+    <li>
+    <code>email</code>: (Default) Users are prompted to enter their email address associated with their Organization.
+    </li>
+    <li>
+    <code>organization_name</code>: Users are prompted to enter the name associated with their Organization. 
+    </li>
+    <li>
+    <code>Organization name</code> and <code>email</code>: Users are prompted for the email address or name associated with their Organization.
+    </li>
+    </ul>
+    </td>
     </tr>
   </tbody>
 </table>
