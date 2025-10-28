@@ -68,22 +68,21 @@ When a user begins authentication, Auth0 first determines the Organization (if a
 ###### User input
 
 The user begins by entering either:
-    * Their email address. For example: `alice@rockymountainadventures.com`, or
-    * Their organization name. For example, “Rocky Mountain High Adventures.”
+   - Their email address (for example, `alice@rockymountainadventures.com`)
+   - Their organization name (for example, `Rocky Mountain High Adventures`)
 
 
 ###### Organization Domain Discovery (optional)
 
 If a tenant has configured verified Organization domains and no `organization` parameter is provided, Auth0 attempts to determine the user’s organization automatically:
+   - If exactly one Organization matches, Auth0 automatically selects it and continues the Identifier First Authentication flow in that Organization’s context.
+   - If multiple Organizations share the same domain or name (for example, both AdventureZ and Granite Outpost each configured `travelco.com`), Auth0 displays an Organization selector so the user can choose. Once chosen, Auth0 continues the Identifier First Authentication flow.
+   - Only verified domains are used for discovery; pending domains are ignored.
+   - If no match is found, Auth0 proceeds with standard Identifier First Authentication.
 
-    * If exactly one Organization matches, Auth0 automatically selects it and continues the Identifier First Authentication flow in that Organization’s context.
-    * If multiple Organizations share the same domain or name (for example, both AdventureZ and Granite Outpost each configured `travelco.com`), Auth0 displays an Organization selector so the user can choose. Once chosen, Auth0 continues the Identifier First Authentication flow.
-    * Only verified domains are used for discovery; pending domains are ignored.
-    * If no match is found, Auth0 proceeds with standard Identifier First Authentication.
-
-If the application’s Login Experience > Type of Users setting is configured as:
-    * Both, the prompt screen will include both the Organization Prompt and an option to Continue with Personal Account.
-    * Business Users, the option to continue with a personal account will not be displayed, and the user must log in with an Organization.
+If the application’s **Login Experience > Type of Users** setting is configured as:
+   - **Both**: The prompt screen will include both the Organization Prompt and an option to Continue with Personal Account.
+   - **Business Users**: The option to continue with a personal account will not be displayed, and the user must log in with an Organization.
 
 In both cases, Organization Domain Discovery attempts to determine whether the user belongs to a specific organization or should continue with a personal account if permitted before moving into Identifier First Authentication.
 
@@ -93,8 +92,8 @@ The goal of Identifier First Authentication is to determine which connection or 
 
 Once the organization (if any) is determined, Auth0 applies Identifier First Authentication with Home Realm Discovery:
 
-    * If a `connection` parameter is provided, Auth0 uses it to route the user to that specific connection.
-    * Otherwise, Auth0 examines all Enterprise Connections enabled for both the application and the organization (if applicable).
+   - If a `connection` parameter is provided, Auth0 uses it to route the user to that specific connection.
+   - Otherwise, Auth0 examines all Enterprise Connections enabled for both the application and the organization (if applicable).
 
 If a matching IdP is found based on the user’s email domain, Auth0 redirects the user to that IdP for authentication.
 
