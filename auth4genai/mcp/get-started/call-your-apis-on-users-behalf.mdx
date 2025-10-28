@@ -4,16 +4,18 @@ description: Learn how to call an Auth0-protected API from your MCP Server.
 sidebarTitle: Call Your API on User's Behalf
 ---
 
-To be able to call your APIs on your users’ you might need to exchange a custom token for an Auth0 access token and verify it, this is called Token Exchange and in the context of MCP this can be done using Custom Token Exchange.
+To call your APIs on behalf of your users, the MCP Server needs to exchange the Auth0 access token it received from the MCP Client (with the audience set to the MCP Server itself) for a new Auth0 access token with the audience set to your API. In Auth0, this is called Custom Token Exchange and uses [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693.html).
 
 By the end of this quickstart, you should have an MCP server that can:
 
-* Exchange a custom token for an Auth0 access token using RFC 8693  
-* Verify the access token with `jose` against your tenant JWKS, enforcing issuer, audience, and RS256
-
-  Custom Token Exchange is currently in Early Access for Enterprise customers only and it is available under the Early Access program. Go to the [Early Access section](/mcp/intro/overview#early-access) to learn how to gain access.
+* Exchange an Auth0 access token for another Auth0 access token with a different audience using Custom Token Exchange
+* Verify the access token using the `@auth0/auth0-api-js` library (which uses `jose` under the hood) against your tenant JWKS, enforcing issuer, audience, and RS256
 
 ## Pre-requisites
+
+<Note>
+Auth for MCP is currently available in Early Access and it's available for Universal Login flows only. To participate in the Early Access program, fill the [form](https://forms.gle/hvJ1ZRLmHr9YjV2a9). We'll reach out to you when your request is processed.
+</Note>
 
 <Steps>
   <Step title="Create or log in to your Auth0 Account">
@@ -22,7 +24,7 @@ By the end of this quickstart, you should have an MCP server that can:
   <Step title="Enable your Tenant to use the Resource Parameter Compatibility Profile">
       To use the `resource` parameter in your access tokens, you need to enable the compatibility profile
 
-      1. Navigate to Settings and click on the **Advanced** tab  
+      1. Navigate to Settings and click on the **Advanced** tab
       2. Scroll down to the Settings section, find and enable **Resource Parameter Compatibility Profile**.
       <Frame>
         <img
@@ -40,7 +42,7 @@ By the end of this quickstart, you should have an MCP server that can:
   </Step>
   <Step title="Install the Auth0 CLI ">
       This guide uses [Auth0 CLI](https://auth0.github.io/auth0-cli/) to configure an Auth0 tenant for secure MCP tool access.
-      1. Follow the [Auth0 CLI installation instructions](https://auth0.github.io/auth0-cli/).  
+      1. Follow the [Auth0 CLI installation instructions](https://auth0.github.io/auth0-cli/).
       2. Log in to your account with the Auth0 CLI:
         ```shell wrap lines
         auth0 login --scopes "read:client_grants,create:client_grants,delete:client_grants,read:clients,create:clients,update:clients,read:resource_servers,create:resource_servers,update:resource_servers,read:roles,create:roles,update:roles,update:tenant_settings,read:connections,update:connections,create:token_exchange_profiles"
@@ -75,9 +77,9 @@ To allow third-party clients like [MCP inspector](https://modelcontextprotocol.i
     ```
   </Step>
   <Step title="Choose your connections">
-    From the list, identify which connections you want to use for the MCP server and copy the ID.  
-      * For the username and password database, look for the connection with the strategy `auth0`.  
-      * For Google social connection, look for the connection with the strategy `google-oauth2`.  
+    From the list, identify which connections you want to use for the MCP server and copy the ID.
+      * For the username and password database, look for the connection with the strategy `auth0`.
+      * For Google social connection, look for the connection with the strategy `google-oauth2`.
   </Step>
   <Step title="Upgrade the connection to domain-level">
     For each of those specific connection IDs, run the following command to mark it as a domain-level connection. Replace `YOUR_CONNECTION_ID` with the actual ID (e.g., `con_XXXXXXXXXXXXXXXX`)
@@ -95,7 +97,7 @@ In the custom token exchange scenario, the MCP server acts as a client in order 
 ```shell wrap lines
 auth0 api post clients --data '{
   "name": "MCP Server Client",
-  "app_type": "non_interactive",
+  "app_type": "resource_server",
   "is_first_party": true,
   "grant_types": ["authorization_code"],
   "token_endpoint_auth_method": "client_secret_post",
@@ -109,10 +111,10 @@ Save the `Client ID` and the `Client Secret` from the output.
 Now use the `Client ID` from the last command and allow your client to use custom token exchange:
 
 ```shell
-auth0 api patch clients/<client_id> --data '{ 
-  "token_exchange": { 
+auth0 api patch clients/<client_id> --data '{
+  "token_exchange": {
     "allow_any_profile_of_type": ["custom_authentication"]
-  } 
+  }
 }'
 ```
 
@@ -151,6 +153,8 @@ auth0 api post resource-servers --data '{
   ]
 }'
 ```
+
+Note that `rfc9068_profile_authz` is used as the [token dialect](https://auth0.com/docs/get-started/apis/enable-role-based-access-control-for-apis#token-dialect-options) to include the `permissions` claim in the access token, which can be useful for the API to check user permissions without making additional calls.
 
 ## Configure Roles and Permissions
 
@@ -361,7 +365,7 @@ This will open the MCP Inspector interface on your default browser.
 
 In the MCP Inspector, select `Streamable HTTP` as the **Transport Type** and enter `http://localhost:3001/mcp` as the URL.
 
-Open the Authentication menu on the navigation menu on the left, and add the `Client ID` and `Client Secret` from the TOD[client creation step](./call-your-apis-on-users-behalf#create-an-application-for-your-mcp-server) in the corresponding fields and click **Connect.**
+Open the Authentication menu on the navigation menu on the left, and add the `Client ID` and `Client Secret` from the [Create an Application to Represent Your MCP Client](./call-your-apis-on-users-behalf#create-an-application-to-represent-your-mcp-client) step in the corresponding fields and click **Connect.**
 
 When you connect to the server for the first time you will be guided through the authentication process using the Auth0 Universal Login. You’ll see the consent screen where you can check the tools you have access:
 
@@ -539,7 +543,7 @@ async function bearerForUpstream(subjectToken: string) {
   }
 }
 ```
-   
+
 The `exchangeCustomToken` holds the token exchange logic can be found in `src/auth0.ts` which uses an `ApiClient` from the `auth0-api-js` SDK to facilitate the implementation:
 
 ```javascript wrap lines highlight={1,9}
@@ -570,7 +574,7 @@ Users with the **Tool User** role will only see the `whoami` tool:
   />
 </Frame>
 
-Whereas users with the **Tool Administrator** role will see both the `greet` and the `whoami` tools:  
+Whereas users with the **Tool Administrator** role will see both the `greet` and the `whoami` tools:
 
 <Frame>
   <img
@@ -595,5 +599,3 @@ TODO: missing image of the the greet tool call with token exchange
 ## Next steps
 
 * To set up user authentication, complete the [User Authentication](./user-authentication) quickstart.
-* To learn how to enable Dynamic Client Registration (DCR), complete the [Metadata Discovery and Client Registration](./metadata-discovery-and-client-registration) quickstart.
-* Learn more about [Calling Your APIs on Users Behalf](/mcp/intro/call-your-apis-on-users-behalf).

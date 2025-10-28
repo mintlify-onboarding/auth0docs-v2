@@ -65,16 +65,17 @@ Once the **Resource Parameter Compatibility Profile** is enabled, Auth0 will use
 
 If both the `resource` and `audience` are available, the `audience` will still be used. Auth0 will not forward the `resource` to upstream Identity Providers (IdPs), [learn more](./resource-param-compatibility-profile#resource-parameter-forwarding-to-upstream-identity-provider-idp).
 
-*RFC 8707 requires the `resource` parameter to [be an absolute URI](https://www.rfc-editor.org/rfc/rfc8707.html#name-resource-parameter), to conform with RFC 8707 we recommend defining your resource server identifiers (API identifiers) in [URI format](https://datatracker.ietf.org/doc/html/rfc3986).*
+*RFC 8707 requires the `resource` parameter to [be an absolute URI](https://www.rfc-editor.org/rfc/rfc8707.html#name-resource-parameter), to conform with RFC 8707 we recommend defining your resource server identifiers (API identifiers) in [URI format](https://datatracker.ietf.org/doc/html/rfc3986). Using an absolute URI as the identifier of your MCP Server is also a requirement from the MCP Authorization specification.*
 
 ## Supported Flows
 
 The `resource` parameter is supported in the following flows:
 
-* Standard Authorization Flow (`/authorize`)  
-* Pushed Authorization Requests (PAR)  
-* JWT-Secured Authorization Requests (JAR)  
+* Standard Authorization Flow (`/authorize`)
+* Pushed Authorization Requests (PAR)
+* JWT-Secured Authorization Requests (JAR)
 * Client-Initiated Backchannel Authentication (CIBA)
+* Refresh Token Grant Type
 
 ## Resource Parameter Forwarding to Upstream Identity Provider (IdP) 
 
