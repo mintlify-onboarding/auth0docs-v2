@@ -128,7 +128,7 @@ export const LanguageGrid = () => {
     {
       img: "dotnet.svg",
       label: ".NET",
-      href: "/docs/quickstart/backend/dotnet",
+      href: "/docs/quickstart/backend/aspnet-core-webapi/interactive",
     },
     {
       img: "python.svg",
