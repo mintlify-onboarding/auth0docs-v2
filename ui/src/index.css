@@ -327,7 +327,9 @@
 }
 
 /* Chat Assistant height fix, can be removed once we remove the opt-out banner */
-div:has(> #chat-assistant-sheet) {
-  height: calc(100vh - 8rem) !important;
-  top: 8rem !important;
+@media (width > 1024px) {
+  div:has(> #chat-assistant-sheet) {
+    height: calc(100vh - 6rem - var(--opt-out-banner-height)) !important;
+    top: calc(6rem + var(--opt-out-banner-height)) !important;
+  }
 }
