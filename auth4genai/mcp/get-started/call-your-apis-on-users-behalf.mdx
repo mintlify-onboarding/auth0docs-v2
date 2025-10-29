@@ -45,7 +45,7 @@ Auth for MCP is currently available in Early Access and it's available for Unive
       1. Follow the [Auth0 CLI installation instructions](https://auth0.github.io/auth0-cli/).
       2. Log in to your account with the Auth0 CLI:
         ```shell wrap lines
-        auth0 login --scopes "read:client_grants,create:client_grants,delete:client_grants,read:clients,create:clients,update:clients,read:resource_servers,create:resource_servers,update:resource_servers,read:roles,create:roles,update:roles,update:tenant_settings,read:connections,update:connections,create:token_exchange_profiles"
+        auth0 login --scopes "read:client_grants,create:client_grants,delete:client_grants,read:clients,create:clients,update:clients,read:resource_servers,create:resource_servers,update:resource_servers,read:roles,create:roles,update:roles,update:tenant_settings,read:connections,update:connections"
         ```
 
         Confirm you are in the correct tenant by double-checking on the terminal the tenant domain, or run the command below:
@@ -102,7 +102,7 @@ auth0 api post clients --data '{
   "grant_types": ["authorization_code"],
   "token_endpoint_auth_method": "client_secret_post",
   "oidc_conformant": true,
-  "jwt_configuration": { "alg": "RS256" },
+  "jwt_configuration": { "alg": "RS256" }
 }' | jq -r '"\nClient ID:     " + .client_id + "\nClient Secret: " +  .client_secret'
 ```
 
@@ -301,12 +301,17 @@ If you have more Actions in your tenant look for the one that matches the same n
 
 Now use the Action ID in the command below:
 
+<Note>Setting the custom token exchange profile is currently not supported by the Auth0 CLI as the feature is in Early Access.</Note>
+
 ```shell
-auth0 api post token-exchange-profiles -d '{
-  "name": "fastmcp-cte-profile",
-  "subject_token_type": "urn:fastmcp:mcp",
-  "action_id": "<your-action-id>",
-  "type": "custom_authentication"
+curl --location 'https://{{YOUR _TENANT}}/api/v2/token-exchange-profiles' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer {{MANAGEMENT_API_TOKEN}}' \
+--data '{
+    "name": "{{PROFILE_NAME}}",
+    "subject_token_type": "urn:fastmcp:mcp",
+    "action_id": "<your-action-id>",
+    "type": "custom_authentication"
 }'
 ```
 
@@ -584,15 +589,6 @@ Whereas users with the **Tool Administrator** role will see both the `greet` and
 </Frame>
 
 Now, click on the tool you want to use and **Run Tool**.
-
-<Frame>
-  <img
-    src="/img/mcp/greet_tool_call_with_cte.png"
-    alt="WhoAmI tool call response in MCP Inspector"
-  />
-</Frame>
-
-TODO: missing image of the the greet tool call with token exchange
 
 ---
 
