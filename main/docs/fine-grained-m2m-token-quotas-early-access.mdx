@@ -405,7 +405,7 @@ async function getAccessToken(retry = true) {
             const retryAfter = parseInt(error.headers.get('retry-after'), 10);
             if (retryAfter < MAX_RETRY_AFTER) {
                 // Retry is less than a max number of seconds
-                console.warn(\`Rate limited. Retrying in ${retryAfter} seconds...\`);
+                console.warn(\`Rate limited. Retrying in \${retryAfter} seconds...\`);
                 await sleep(retryAfter);
                 return getAccessToken(false); // Retry only once
             }

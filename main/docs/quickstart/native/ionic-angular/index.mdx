@@ -147,7 +147,7 @@ import config from '../../capacitor.config';
 // ..
 
 // Build the URL that Auth0 should redirect back to
-const redirect_uri = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
+const redirect_uri = \`\${config.appId}://{yourDomain}/capacitor/\${config.appId}/callback\`;
 
 // Register AuthModule with your AppModule
 @NgModule({
@@ -262,7 +262,7 @@ import { mergeMap } from 'rxjs/operators';
 import { Browser } from '@capacitor/browser';
 import { App } from '@capacitor/app';
 
-const callbackUri = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
+const callbackUri = \`\${config.appId}://{yourDomain}/capacitor/\${config.appId}/callback\`;
 
 @Component({
   selector: 'app-root',
@@ -342,7 +342,7 @@ import { Browser } from '@capacitor/browser';
 import { tap } from 'rxjs/operators';
 
 // Build the URL to return back to your app after logout
-const returnTo = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
+const returnTo = \`\${config.appId}://{yourDomain}/capacitor/\${config.appId}/callback\`;
 
 @Component({
   selector: 'app-logout-button',

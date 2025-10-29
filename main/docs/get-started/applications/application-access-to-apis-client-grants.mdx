@@ -56,7 +56,7 @@ The following table explains how client grants control application access to API
 <tr>
 <td>User access flows</td>
 <td>Set <code>subject_type</code> to <code>user</code>.</td>
-<td>The client grant defines the maximum permissions the application can request from the API. The final permissions in the access token issued to the application on the user’s behalf are the intersection of the permissions:<br/><ul><li style="font-size: .875rem;">Requested by the application</li><li style="font-size: .875rem;">Allowed by the client grant</li><li style="font-size: .875rem;">Allowed by <a href="/docs/manage-users/access-control/rbac">Role-Based Access Control policies</a> for the user</li><li style="font-size: .875rem;"><a href="/docs/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications">Consented to by the end user</a>, if applicable.</li></ul><br/>To learn more about user access flows, read <a href="/docs/get-started/authentication-and-authorization-flow">Authentication and Authorization Flows</a>. User access flows do not include the Client Credentials Flow.</td>
+<td>The client grant defines the maximum permissions the application can request from the API. The final permissions in the access token issued to the application on the user’s behalf are the intersection of the permissions:<br/><ul><li style={{fontSize: ".875rem"}}>Requested by the application</li><li style={{fontSize: ".875rem"}}>Allowed by the client grant</li><li style={{fontSize: ".875rem"}}>Allowed by <a href="/docs/manage-users/access-control/rbac">Role-Based Access Control policies</a> for the user</li><li style={{fontSize: ".875rem"}}><a href="/docs/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications">Consented to by the end user</a>, if applicable.</li></ul><br/>To learn more about user access flows, read <a href="/docs/get-started/authentication-and-authorization-flow">Authentication and Authorization Flows</a>. User access flows do not include the Client Credentials Flow.</td>
 </tr>
 </tbody>
 </table>
@@ -98,7 +98,7 @@ A client grant has several attributes that you can define to configure applicati
 </tr>
 <tr>
 <td><code>subject_type</code></td>
-<td>The type of application access the client grant allows for:<br/><ul><li style="font-size: .875rem;"><code>user</code>: used for user access, which corresponds to all flows that generate a token associated with an end user.</li><li style="font-size: .875rem;"><code>client</code>: used for machine access, which corresponds to the Client Credentials Flow.</li></ul></td>
+<td>The type of application access the client grant allows for:<br/><ul><li style={{fontSize: ".875rem"}}><code>user</code>: used for user access, which corresponds to all flows that generate a token associated with an end user.</li><li style={{fontSize: ".875rem"}}><code>client</code>: used for machine access, which corresponds to the Client Credentials Flow.</li></ul></td>
 </tr>
 <tr>
 <td><code>organization_usage</code></td>
