@@ -13,13 +13,13 @@ export const DocsBanner = () => {
             noZoom
             src="/docs/images/home/banner.svg"
             alt="Auth0 Docs Banner"
-            className="block dark:hidden rounded-xl shadow-md"
+            className="block dark:hidden rounded-xl"
           />
           <img
             noZoom
             src="/docs/images/home/banner-dark.svg"
             alt="Auth0 Docs Banner"
-            className="hidden dark:block rounded-xl shadow-md"
+            className="hidden dark:block rounded-xl"
           />
         </div>
       </div>
@@ -50,7 +50,7 @@ export const DocsFeatureCards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[962px] mx-auto py-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[962px] mx-auto py-6 px-8 lg:px-0">
       {features.map((f, i) => (
         <a
           key={i}
@@ -138,7 +138,7 @@ export const LanguageGrid = () => {
   ];
 
   return (
-    <section className="max-w-[962px] mx-auto py-12">
+    <section className="max-w-[962px] mx-auto py-12 px-8 lg:px-0">
       <h2 className="font-inter !font-medium text-[24px] text-gray-900 dark:text-white mb-6">
         Get started with authentication
       </h2>
@@ -183,7 +183,7 @@ export const ProductGrid = () => {
   ];
 
   return (
-    <section className="max-w-[962px] mx-auto py-12">
+    <section className="max-w-[962px] mx-auto py-12 px-8 lg:px-0">
       <h2 className="font-inter !font-medium text-[24px] text-gray-900 dark:text-white mb-6 text-left">
         Browse by product
       </h2>
@@ -247,7 +247,7 @@ export const LearnBasicsGrid = () => {
   ];
 
   return (
-    <section className="max-w-[962px] mx-auto py-12 pb-30">
+    <section className="max-w-[962px] mx-auto py-12 pb-30 px-8 lg:px-0">
       <h2 className="font-inter !font-medium text-[24px] text-gray-900 dark:text-white mb-6 text-left">
         Learn identity basics
       </h2>
