@@ -300,7 +300,7 @@ auth0 tenant-settings update set flags.enable_dynamic_client_registration
 
 Enabling `enable_dynamic_client_registration` allows MCP tools to register themselves as applications automatically through Dynamic Client Registration (DCR).
 
-<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Read [Securing an Open DCR Endpoint](/mcp/intro/metadata-discovery-and-client-registration#securing-an-open-dcr-endpoint) to learn strategies to mitigate risks with Open DCR.</Warning>
+<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Read [Securing an Open DCR Endpoint](/mcp/guides/registering-your-mcp-client-application#securing-an-open-dcr-endpoint) to learn strategies to mitigate risks with Open DCR.</Warning>
 
 ## Run your application and login
 
@@ -319,7 +319,7 @@ npx @modelcontextprotocol/inspector@latest
 This will open the MCP Inspector interface on your default browser.
 
 <Warning>
-Because of DCR MCP Inspector will create one application in your tenant every time you run it because it doesn’t cache the application information to re-use it. Read [Securing an Open DCR Endpoint](/mcp/intro/metadata-discovery-and-client-registration#securing-an-open-dcr-endpoint) to learn strategies to mitigate risks with Open DCR.
+Because of DCR MCP Inspector will create one application in your tenant every time you run it because it doesn’t cache the application information to re-use it. Read [Securing an Open DCR Endpoint](/mcp/guides/registering-your-mcp-client-application#securing-an-open-dcr-endpoint) to learn strategies to mitigate risks with Open DCR.
 </Warning>
 
 <Frame>
@@ -350,7 +350,7 @@ This will open a tab with the Auth0 Universal Login page for you to login.
 
 Use the same user you gave access to the tools in the previous step. You can sign in with that account on future visits.
 
-When you perform the Quick OAuth Flow button, MCP Inspector performs all the steps in the OAuth Flow Progress section as outlined in the [MCP authorization flow with Auth0](/mcp/core-concepts/core-concepts#mcp-authorization-flow-with-auth0).
+When you perform the Quick OAuth Flow button, MCP Inspector performs all the steps in the OAuth Flow Progress section as outlined in the [MCP authorization flow with Auth0](/mcp/intro/user-authentication#mcp-authorization-flow-with-auth0).
 
 ## Run your tools
 
@@ -390,7 +390,7 @@ Now, click on the tool you want to use and **Run Tool**.
   />
 </Frame>
 
-<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Read [Securing an Open DCR Endpoint](/mcp/intro/metadata-discovery-and-client-registration#securing-an-open-dcr-endpoint) to learn strategies to mitigate risks with Open DCR.</Warning>
+<Warning>Auth0 supports Open Dynamic Registration, which means that if you enable this feature, anyone will be able to create applications in your tenant without a token. Read [Securing an Open DCR Endpoint](/mcp/guides/registering-your-mcp-client-application#securing-an-open-dcr-endpoint) to learn strategies to mitigate risks with Open DCR.</Warning>
 </Tab>
 </Tabs>
 
