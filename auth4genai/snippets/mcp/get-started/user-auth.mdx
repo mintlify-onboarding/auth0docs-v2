@@ -1,5 +1,6 @@
 import MCPGetStartedPrerequisites from "/snippets/mcp/get-started/pre-reqs/prerequisites.mdx";
 import MCPGetStartedConfigTenantSettings from "/snippets/mcp/get-started/config-tenant/config-tenant-settings.mdx";
+import { DownloadQuickstartButton } from "/snippets/download-quickstart/DownloadQuickstartButton.jsx";
 
 Authentication is the process of proving a user’s identity before granting them access to a resource. In this quickstart, you’ll learn how to bring [Universal Login](https://auth0.com/docs/authenticate/login/auth0-universal-login) to your MCP-based applications and leverage OAuth 2.0 and OpenID Connect to securely authenticate users.
 
@@ -36,14 +37,14 @@ auth0 api post resource-servers --data '{
 
 Note that `rfc9068_profile_authz` is used as the [token dialect](https://auth0.com/docs/get-started/apis/enable-role-based-access-control-for-apis#token-dialect-options) to include the `permissions` claim in the access token, which can be useful for the API to check user permissions without making additional calls.
 
-## Clone the sample app
+### Download sample app
 
-Clone the repository and navigate to the correct folder:
+Start by downloading and extracting the sample app. Then open in your preferred IDE.
 
-```shell wrap lines
-git clone https://github.com/auth0-samples/auth0-ai-samples.git
-cd auth0-ai-samples/auth-for-mcp/fastmcp-mcp-js
-```
+<DownloadQuickstartButton
+  category="auth-for-mcp"
+  framework="fastmcp-mcp-js"
+/>
 
 This repository contains the code for various MCP servers examples, for this quickstart you are going to use the FastMCP MCP Server with Auth0 Integration in JavaScript.
 
