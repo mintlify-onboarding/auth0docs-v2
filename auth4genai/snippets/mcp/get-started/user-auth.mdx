@@ -1,3 +1,6 @@
+import MCPGetStartedPrerequisites from "/snippets/mcp/get-started/pre-reqs/prerequisites.mdx";
+import MCPGetStartedConfigTenantSettings from "/snippets/mcp/get-started/config-tenant/config-tenant-settings.mdx";
+
 Authentication is the process of proving a user’s identity before granting them access to a resource. In this quickstart, you’ll learn how to bring [Universal Login](https://auth0.com/docs/authenticate/login/auth0-universal-login) to your MCP-based applications and leverage OAuth 2.0 and OpenID Connect to securely authenticate users.
 
 When a user authenticates with an identity provider through Auth0, Auth0 can pass user information to the MCP server in order to allow the user to access the appropriate tools and resources.
@@ -8,85 +11,9 @@ By the end of this quickstart, you should have an MCP server that can:
 * Authenticate and authorize users using OAuth 2.0 and OpenID Connect.
 * Let users use specific tools based on their roles.
 
-## Pre-requisites
+<MCPGetStartedPrerequisites />
 
-<Note>
-Auth for MCP is currently available in Early Access and it's available for Universal Login flows only. To participate in the Early Access program, fill the [form](https://forms.gle/hvJ1ZRLmHr9YjV2a9). We'll reach out to you when your request is processed.
-</Note>
-
-<Steps>
-  <Step title="Create or log in to your Auth0 Account">
-      To continue with this quickstart, you need to have an [Auth0 account](https://auth0.com/signup).
-  </Step>
-  <Step title="Enable your Tenant to use the Resource Parameter Compatibility Profile">
-      To use the `resource` parameter in your access tokens, you need to enable the compatibility profile
-
-      1. Navigate to Settings and click on the **Advanced** tab
-      2. Scroll down to the Settings section, find and enable **Resource Parameter Compatibility Profile**.
-      <Frame>
-        <img
-          className="hidden dark:block"
-          src="/img/mcp/enable_resource_param_compatibility_dark.png"
-          alt="Resource Parameter Compatibility Profile enabled"
-        />
-        <img
-          className="block dark:hidden"
-          src="/img/mcp/enable_resource_param_compatibility_light.png"
-          alt="Resource Parameter Compatibility Profile enabled"
-        />
-      </Frame>
-      Resource Parameter Compatibility Profile is available under the Early Access program. Go to the [Early Access section](/mcp/intro/overview#early-access) to learn how to gain access.
-  </Step>
-  <Step title="Install the Auth0 CLI ">
-      This guide uses [Auth0 CLI](https://auth0.github.io/auth0-cli/) to configure an Auth0 tenant for secure MCP tool access.
-      1. Follow the [Auth0 CLI installation instructions](https://auth0.github.io/auth0-cli/).
-      2. Log in to your account with the Auth0 CLI:
-        ```shell wrap lines
-        auth0 login --scopes "read:client_grants,create:client_grants,delete:client_grants,read:clients,create:clients,update:clients,read:resource_servers,create:resource_servers,update:resource_servers,read:roles,create:roles,update:roles,update:tenant_settings,read:connections,update:connections"
-        ```
-
-        Confirm you are in the correct tenant by double-checking on the terminal the tenant domain, or run the command below:
-
-        ```shell
-        auth0 tenants list
-        ```
-
-        If more than one tenant is configured, the default tenant will be indicated by an arrow.
-  </Step>
-  <Step title="Improve user consent experience">
-    Enable the [user-friendly descriptions for scopes](https://auth0.com/docs/get-started/applications/confidential-and-public-applications/user-consent-and-third-party-applications#scope-descriptions) on the consent screen:
-
-    ```shell wrap lines
-    auth0 tenant-settings update set flags.use_scope_descriptions_for_consent
-    ```
-  </Step>
-</Steps>
-
-
-## Configure Tenant Settings
-
-To allow third-party clients like [MCP inspector](https://modelcontextprotocol.io/docs/tools/inspector) to use a connection like username-and-password or a social connection, you need to promote the connection to a domain level. [Learn more about enabling third-party applications](https://auth0.com/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications).
-
-<Steps>
-  <Step title="List your connection">
-    List your connections to get their IDs
-    ```shell
-    auth0 api get connections
-    ```
-  </Step>
-  <Step title="Choose your connections">
-    From the list, identify which connections you want to use for the MCP server and copy the ID.
-      * For the username and password database, look for the connection with the strategy `auth0`.
-      * For Google social connection, look for the connection with the strategy `google-oauth2`.
-  </Step>
-  <Step title="Upgrade the connection to domain-level">
-    For each of those specific connection IDs, run the following command to mark it as a domain-level connection. Replace `YOUR_CONNECTION_ID` with the actual ID (e.g., `con_XXXXXXXXXXXXXXXX`)
-
-    ```shell wrap lines
-    auth0 api patch connections/YOUR_CONNECTION_ID --data '{"is_domain_connection": true}'
-    ```
-  </Step>
-</Steps>
+<MCPGetStartedConfigTenantSettings />
 
 ## Create an API to Represent Your MCP Server
 
@@ -108,54 +35,6 @@ auth0 api post resource-servers --data '{
 ```
 
 Note that `rfc9068_profile_authz` is used as the [token dialect](https://auth0.com/docs/get-started/apis/enable-role-based-access-control-for-apis#token-dialect-options) to include the `permissions` claim in the access token, which can be useful for the API to check user permissions without making additional calls.
-
-## Configure Roles and Permissions
-
-The sample application in this quickstart is prepared to show different tools depending on the role of a given user. For example an Tool Administrator will have access to different tools from an Tool User.
-
-If your application doesn’t require that level of access, i.e. all users have access to available tools, this step is not required for your use case.
-
-Let’s create roles that allow you to control which users can access which tools.
-
-### Create roles
-
-For each role you need (e.g., "Tool Administrator", "Tool User"), run the create command as below.
-
-```shell wrap lines
-# Example for an admin role
-auth0 roles create --name "Tool Administrator" --description "Grants access to all MCP tools"
-
-# Example for a basic user role
-auth0 roles create --name "Tool User" --description "Grants access to basic MCP tools"
-```
-
-Save the ID from the output (they start with `rol_`) as you’ll need them for the next step.
-
-### Assign permissions to roles
-
-After creating roles, assign the API permissions to it:
-
-```shell wrap lines
-# Example for admin role (all scopes)
-auth0 roles permissions add YOUR_ADMIN_ROLE_ID --api-id "http://localhost:3001/" --permissions "tool:whoami,tool:greet"
-
-# Example for user role (one scope)
-auth0 roles permissions add YOUR_USER_ROLE_ID --api-id "http://localhost:3001/" --permissions "tool:whoami"
-```
-
-### Assign Roles to Users
-
-Find users and assign them to the roles. You can search by their email address:
-
-```shell wrap lines
-auth0 users search --query "email:\"example@google.com\""
-```
-
-Copy the user ID (`USERID`) from last command’s output then assign the role to the user:
-
-```shell wrap lines
-auth0 users roles assign "USER_ID_HERE" --roles "YOUR_ROLE_ID_HERE"
-```
 
 ## Clone the sample app
 

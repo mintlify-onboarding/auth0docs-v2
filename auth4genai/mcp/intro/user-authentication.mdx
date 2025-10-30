@@ -25,35 +25,12 @@ Auth0 is a flexible, drop-in solution to add authentication and authorization se
 - [Corporate credentials and Single Sign On (SSO)](https://auth0.com/docs/authenticate/single-sign-on) for B2B AI applications
 - And more.
 
-<Frame caption="Auth0 Authentication Flow for MCP">
-  <img
-    className="block"
-    src="/img/mcp/mcp_auth_dark.png"
-    alt="Auth0 Authentication Flow for MCP"
-  />
-</Frame>
-
 Auth0 also provides the following features for enhanced security and scalability:
 
 - [Multi-factor Authentication](https://auth0.com/docs/secure/multi-factor-authentication)
 - [Attack Protection](https://auth0.com/docs/secure/attack-protection): Detect attacks and stop malicious attempts to access your application, such as blocking traffic from certain IPs and displaying CAPTCHA. This includes Bot Detection, Suspicious IP Throttling, Brute Force Protection, and Breached Password Detection.
 - [Highly Regulated Identity](https://auth0.com/docs/secure/highly-regulated-identity)
 - UI and login flow customizations via [Actions](https://auth0.com/docs/customize/actions) and [Forms](https://auth0.com/docs/customize/forms)
-
-## Why use Auth0 for MCP?
-
-MCP offers practical advantages: Standardized interfaces for LLMs to interact with and LLM-facing tools with rich context and metadata.
-
-Auth0 allows your users to securely interact with trusted agents without worrying about LLMs gaining access to sensitive information like access tokens: Auth0 enforces scoped, identity-bound, least-privilege access for AI Agents, both first-party and third-party APIs.
-
-Auth0 manages consent flows and per-client permissions and secures credentials via Token Vault and Token Exchange while making it possible to audit logs and keep track of lifecycle events.
-
-The MCP specification highlights several key OAuth 2.1 features that Auth0 provides:
-
-* **Proof Key for Code Exchange (PKCE):** [PKCE](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce) mandatory security feature that mitigates authorization code interception and is handled automatically in Auth0's SDKs.
-* **Metadata Discovery:** Is mandatory per the MCP spec. Servers must advertise their OAuth endpoints. An Auth0 tenant provides [an authorization server discovery document](https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery#configure-applications-with-oauth-2-0-authorization-server-metadata) (`/.well-known/oauth-authorization-server`) so MCP clients can dynamically find the required endpoints for authorization, token exchange, etc., reducing manual client-side configuration.
-* **Dynamic Client Registration (DCR):** DCR is crucial for scalability. It allows MCP clients (like a generic AI workbench) to programmatically register with your Auth0-secured MCP server via an API call. This avoids forcing users to manually create a client application in the Auth0 Dashboard for every new tool they want to connect.
-* **Delegating Authentication to a Third-Party Identity Provider (IdP):** The specification supports delegating the user login process. You can configure your MCP server to use Auth0 as the trusted identity provider, centralizing user management and sign-on logic.
 
 ## MCP Authorization flow with Auth0
 
