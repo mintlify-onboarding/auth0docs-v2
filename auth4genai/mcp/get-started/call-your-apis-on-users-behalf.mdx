@@ -63,7 +63,7 @@ auth0 api post resource-servers --data '{
   "scopes": [
     {"value": "read:private", "description": "Private scope"}
   ]
-}' | jq -r '"\nAudience:     " + .identifier'
+}' | jq -r '"Audience: " + .identifier'
 ```
 
 Save the `Audience` from the command output, you'll need it on a later step.
