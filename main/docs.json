@@ -17,7 +17,12 @@
     "light": "#fff"
   },
   "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude"]
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   },
   "fonts": {
     "heading": {
@@ -33,7 +38,9 @@
         "tabs": [
           {
             "tab": "Home",
-            "pages": ["docs/index"]
+            "pages": [
+              "docs/index"
+            ]
           },
           {
             "tab": "Documentation",
@@ -165,6 +172,7 @@
                           "docs/get-started/applications/dynamic-client-registration",
                           "docs/get-started/applications/set-up-database-connections",
                           "docs/get-started/applications/test-database-connections",
+                          "docs/get-started/applications/application-access-to-apis-client-grants",
                           "docs/get-started/applications/application-grant-types",
                           "docs/get-started/applications/update-grant-types",
                           "docs/get-started/applications/revoke-api-access",
@@ -209,6 +217,7 @@
                         "pages": [
                           "docs/get-started/apis",
                           "docs/get-started/apis/api-settings",
+                          "docs/get-started/apis/api-access-policies-for-applications",
                           "docs/get-started/apis/add-api-permissions",
                           "docs/get-started/apis/delete-api-permissions",
                           {
@@ -2356,7 +2365,9 @@
             "groups": [
               {
                 "group": " ",
-                "pages": ["docs/quickstarts"]
+                "pages": [
+                  "docs/quickstarts"
+                ]
               },
               {
                 "group": "Single Page App",
@@ -2431,14 +2442,18 @@
           },
           {
             "tab": "API Reference",
-            "pages": ["docs/api"]
+            "pages": [
+              "docs/api"
+            ]
           },
           {
             "tab": "SDKs",
             "groups": [
               {
                 "group": " ",
-                "pages": ["docs/libraries"]
+                "pages": [
+                  "docs/libraries"
+                ]
               }
             ]
           },
@@ -2453,7 +2468,9 @@
         "tabs": [
           {
             "tab": "Home",
-            "pages": ["docs/fr-ca/index"]
+            "pages": [
+              "docs/fr-ca/index"
+            ]
           },
           {
             "tab": "Documentation",
@@ -4752,7 +4769,9 @@
             "groups": [
               {
                 "group": " ",
-                "pages": ["docs/fr-ca/quickstarts"]
+                "pages": [
+                  "docs/fr-ca/quickstarts"
+                ]
               },
               {
                 "group": "Application à page unique",
@@ -4824,14 +4843,18 @@
           },
           {
             "tab": "API Reference",
-            "pages": ["docs/api"]
+            "pages": [
+              "docs/api"
+            ]
           },
           {
             "tab": "SDKs",
             "groups": [
               {
                 "group": " ",
-                "pages": ["docs/fr-ca/libraries"]
+                "pages": [
+                  "docs/fr-ca/libraries"
+                ]
               }
             ]
           },
@@ -4846,7 +4869,9 @@
         "tabs": [
           {
             "tab": "Home",
-            "pages": ["docs/ja-jp/index"]
+            "pages": [
+              "docs/ja-jp/index"
+            ]
           },
           {
             "tab": "Documentation",
@@ -7146,7 +7171,9 @@
             "groups": [
               {
                 "group": " ",
-                "pages": ["docs/ja-jp/quickstarts"]
+                "pages": [
+                  "docs/ja-jp/quickstarts"
+                ]
               },
               {
                 "group": "シングルページアプリ",
@@ -7218,14 +7245,18 @@
           },
           {
             "tab": "API Reference",
-            "pages": ["docs/api"]
+            "pages": [
+              "docs/api"
+            ]
           },
           {
             "tab": "SDKs",
             "groups": [
               {
                 "group": " ",
-                "pages": ["docs/ja-jp/libraries"]
+                "pages": [
+                  "docs/ja-jp/libraries"
+                ]
               }
             ]
           },
