@@ -6,6 +6,7 @@ sidebarTitle: Call Your API on User's Behalf
 
 import MCPGetStartedPrerequisites from "/snippets/mcp/get-started/pre-reqs/prerequisites.mdx";
 import MCPGetStartedConfigTenantSettings from "/snippets/mcp/get-started/config-tenant/config-tenant-settings.mdx";
+import CreateProfile from "/snippets/mcp/get-started/create-custom-token-exchange-profile.mdx";
 
 To call your APIs on behalf of your users, the MCP Server needs to exchange the Auth0 access token it received from the MCP Client (with the audience set to the MCP Server itself) for a new Auth0 access token with the audience set to your API. In Auth0, this is called Custom Token Exchange and uses [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693.html).
 
@@ -219,29 +220,7 @@ Once the action is created you can **Deploy** it. When you deploy the Action, Au
 
 ### Setup the token exchange profile
 
-Copy the action ID by running the command below:
-
-```shell
-auth0 actions list
-```
-
-If you have more Actions in your tenant look for the one that matches the same name you used when you created the Action.
-
-Now use the Action ID in the command below:
-
-<Note>Setting the custom token exchange profile is currently not supported by the Auth0 CLI as the feature is in Early Access.</Note>
-
-```shell
-curl --location 'https://{{YOUR _TENANT}}/api/v2/token-exchange-profiles' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer {{MANAGEMENT_API_TOKEN}}' \
---data '{
-    "name": "{{PROFILE_NAME}}",
-    "subject_token_type": "urn:fastmcp:mcp",
-    "action_id": "<your-action-id>",
-    "type": "custom_authentication"
-}'
-```
+<CreateProfile />
 
 ## Create an Application to Represent Your MCP Client
 

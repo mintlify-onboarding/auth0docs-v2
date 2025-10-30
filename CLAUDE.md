@@ -320,6 +320,40 @@ Common attributes:
 - **`wrap lines`**: Enable line wrapping for long lines
 - **`highlight={lines}`**: Highlight specific lines (e.g., `{1,7-10}`)
 
+### Placeholder Conventions
+
+When including placeholders in code examples and commands, follow these consistent patterns:
+
+**`YOUR_SOMETHING`** - For general configuration values that users need to replace:
+```bash
+auth0 api patch connections/YOUR_CONNECTION_ID --data '{"is_domain_connection": true}'
+```
+- Examples: `YOUR_TENANT`, `YOUR_AUTH0_DOMAIN`, `YOUR_CONNECTION_ID`, `YOUR_MANAGEMENT_API_TOKEN`
+- Used for domains, tokens, API keys, and other configuration values
+- Always use uppercase with underscores
+
+**`<something>`** - For specific IDs or values extracted from previous commands:
+```bash
+auth0 api patch clients/<client_id> --data '{...}'
+```
+- Examples: `<client_id>`, `<your-action-id>`, `<resource-server-id>`
+- Used for IDs returned by API calls or CLI commands
+- Typically lowercase with hyphens
+
+**DO NOT use** `{{VAR}}` syntax - This is not the established pattern in this repository.
+
+**Example combining both patterns:**
+```bash
+curl --location 'https://YOUR_TENANT/api/v2/token-exchange-profiles' \
+--header 'Authorization: Bearer YOUR_MANAGEMENT_API_TOKEN' \
+--data '{
+    "name": "YOUR_PROFILE_NAME",
+    "action_id": "<your-action-id>"
+}'
+```
+
+Always provide clear instructions before code blocks explaining what each placeholder represents and where users can find the values.
+
 ### Accordion Groups
 
 For collapsible content sections:
