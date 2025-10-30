@@ -1,7 +1,7 @@
 ---
-title: User Authentication for MCP
-description: Authenticate users before they or their AI Agents connect to MCP Servers.
-sidebarTitle: User Authentication
+title: Why use Auth0 for MCP
+description: Benefits of using Auth0 to authenticate users before they or their AI Agents connect to MCP Servers.
+sidebarTitle: Why use Auth0 for MCP
 ---
 
 <Note>
@@ -14,6 +14,21 @@ Auth0’s Universal Login supports social, enterprise, and custom identity provi
 
 * Secure and controlled access: Safeguards user data, manages who can use your MCP server and what they can do, and establishes a clear audit trail for activities performed through MCP servers and clients.
 * Auditability: Provides a record of user activities for auditing and compliance.
+
+## Why use Auth0 for MCP?
+
+MCP offers practical advantages: Standardized interfaces for LLMs to interact with and LLM-facing tools with rich context and metadata.
+
+Auth0 allows your users to securely interact with trusted agents without worrying about LLMs gaining access to sensitive information like access tokens: Auth0 enforces scoped, identity-bound, least-privilege access for AI Agents, both first-party and third-party APIs.
+
+Auth0 manages consent flows and per-client permissions and secures credentials via Token Vault and Token Exchange while making it possible to audit logs and keep track of lifecycle events.
+
+The MCP specification highlights several key OAuth 2.1 features that Auth0 provides:
+
+* **Proof Key for Code Exchange (PKCE):** [PKCE](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce) mandatory security feature that mitigates authorization code interception and is handled automatically in Auth0's SDKs.
+* **Metadata Discovery:** Is mandatory per the MCP spec. Servers must advertise their OAuth endpoints. An Auth0 tenant provides [an authorization server discovery document](https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery#configure-applications-with-oauth-2-0-authorization-server-metadata) (`/.well-known/oauth-authorization-server`) so MCP clients can dynamically find the required endpoints for authorization, token exchange, etc., reducing manual client-side configuration.
+* **Dynamic Client Registration (DCR):** DCR is crucial for scalability. It allows MCP clients (like a generic AI workbench) to programmatically register with your Auth0-secured MCP server via an API call. This avoids forcing users to manually create a client application in the Auth0 Dashboard for every new tool they want to connect.
+* **Delegating Authentication to a Third-Party Identity Provider (IdP):** The specification supports delegating the user login process. You can configure your MCP server to use Auth0 as the trusted identity provider, centralizing user management and sign-on logic.
 
 ## Authentication for users of MCP Servers
 
@@ -73,9 +88,8 @@ Here is the standard OAuth authorization code flow when an MCP server uses Auth0
   />
 </Frame>
 
-## Workforce Identity for MCP
-
-Integrate your MCP environment with your enterprise identity provider using your **Workforce Single Sign-On (SSO)**. Auth0 connects to Okta, Entra ID, Ping, Google Workspace, and other IdPs so employees can authenticate with existing credentials before any MCP connection begins.
+## Enterprise Identity for MCP
+For enterprise environments, you can use your organization's identity provider and Single Sign-On (SSO) to authenticate users to your MCP servers. Auth0 connects to Okta, Entra ID, Ping, Google Workspace, and other IdPs so employees can authenticate with existing credentials before any MCP connection begins.
 
 This pattern provides:
 
@@ -83,7 +97,7 @@ This pattern provides:
 * Centralized access policy enforcement and device posture checks
 * Consistent session context across all agent interactions
 
-Workforce identity ensures that every request to an MCP Server originates from a verified employee identity governed by your enterprise security controls.
+Enterprise identity ensures that every request to an MCP Server originates from a verified employee identity governed by your enterprise security controls.
 
 ## Get started
 

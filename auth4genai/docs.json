@@ -178,14 +178,8 @@
             "icon": "book-open",
             "pages": [
               "mcp/intro/overview",
-              {
-                "group": "Authentication",
-                "pages": [
-                  "mcp/intro/user-authentication",
-                  "mcp/intro/call-your-apis-on-users-behalf"
+              "mcp/intro/why-auth0-for-mcp"
                 ]
-              }
-            ]
           },{
             "group": "Get Started",
             "icon": "rocket-launch",
