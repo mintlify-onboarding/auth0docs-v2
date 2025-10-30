@@ -81,10 +81,8 @@ Regularly review your tenant logs to identify suspicious patterns such as rapid 
 **To monitor client registrations:**
 
 1. Navigate to **Monitoring > Logs** in your Auth0 Dashboard
-2. Use the search query:
-   ```
-   type:sapi AND description:"Dynamic client registration"
-   ```
+2. Use the search query: `type:sapi AND description:"Dynamic client registration"`
+
    This filters for successful Management API operations (`sapi`) specifically related to Dynamic Client Registration events.
 
 3. Review the log entries for:
