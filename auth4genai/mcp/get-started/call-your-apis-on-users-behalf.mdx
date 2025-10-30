@@ -8,7 +8,6 @@ import MCPGetStartedPrerequisites from "/snippets/mcp/get-started/pre-reqs/prere
 import MCPGetStartedConfigTenantSettings from "/snippets/mcp/get-started/config-tenant/config-tenant-settings.mdx";
 import CreateProfile from "/snippets/mcp/get-started/create-custom-token-exchange-profile.mdx";
 import { DownloadQuickstartButton } from "/snippets/download-quickstart/DownloadQuickstartButton.jsx";
-import DownloadOrCloneButton from "/snippets/download-quickstart/DownloadOrCloneButton.jsx";
 
 To call your APIs on behalf of your users, the MCP Server needs to exchange the Auth0 access token it received from the MCP Client (with the audience set to the MCP Server itself) for a new Auth0 access token with the audience set to your API. In Auth0, this is called Custom Token Exchange and uses [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693.html).
 
@@ -140,13 +139,9 @@ auth0 users roles assign "USER_ID_HERE" --roles "YOUR_ROLE_ID_HERE"
 Start by downloading the sample app for this quickstart. The sample includes a FastMCP MCP Server with Auth0 integration and a protected API built with
 [Fastify](https://fastify.dev/).
 
-<DownloadOrCloneButton
+<DownloadQuickstartButton
   category="auth-for-mcp"
   framework="fastmcp-mcp-customtokenexchange-js"
-  label="Download sample"
-  githubRepo="auth0-samples/auth0-ai-samples"
-  codespacesUrl="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=auth0-samples%2Fauth0-ai-samples"
-  stackblitzUrl="https://stackblitz.com/github/auth0-samples/auth0-ai-samples"
 />
 
 Once downloaded, extract the files and open the project in your preferred IDE.
