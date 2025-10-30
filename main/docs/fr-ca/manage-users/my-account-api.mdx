@@ -45,7 +45,7 @@ Principal produit d’Auth0 pour configurer vos services." cta="Voir le glossair
 
 1. Navigate to **Authentication > APIs**.
 2. Locate the **MyAccount API** banner.
-3. Select](/docs/images/e**.
+3. Select **Activate**.
 
 <Frame>![](/images/fr-ca/cdy7uua7fh8z/DGkDQNIHcegN8vtQyEvF3/a2e98b06867701a66fa1f1b3df1c996b/My_Account_API_-_Activate.png)</Frame>
 
@@ -875,3 +875,18 @@ dataTask.resume()
 ## Rate limits
 
 During Early Access, the My Account API is limited at a tenant level to 25 requests per second.
+
+## Cross-Origin Requests
+
+If you intend to call the My Account API directly from a browser-based application (like a Single Page Application) running on a different domain than your Auth0 tenant, you will encounter browser security policies known as Cross-Origin Resource Sharing (CORS). By default, browsers block these cross-origin requests.
+To allow your application to successfully make requests to the API, you must add your application's domain (its "origin") to your client's configuration:
+
+1. Navigate to [Auth0 Dashboard > Applications > Applications](https://manage.auth0.com/#/applications) and select the name of the application.
+2. Under **Settings**, toggle on ** Allow Cross-Origin Authentication**.
+3. Enter your application's origin URL under **Allowed Origins (CORS)**.
+4. **Save** your changes.
+
+<Note>
+If you do not need to use CORS for your application, ensure that Allow Cross-Origin Authentication is toggled off. Adding your application's URL to this list tells Auth0 to trust requests from that origin, allowing your client-side application to access the API.
+</Note>
+To learn more, read [Configure Cross-Origin Resource Sharing](/docs/get-started/applications/set-up-cors).
