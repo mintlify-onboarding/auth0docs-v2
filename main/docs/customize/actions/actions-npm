@@ -1,0 +1,89 @@
+---
+description: Code your project's Actions using @auth0/actions NPM package
+'og:image': https://cdn2.auth0.com/docs/1.14553.0/img/share-image.png
+'og:title': Actions NPM
+'og:url': https://auth0.com/docs/
+permalink: actions-npm
+sidebarTitle: Actions NPM
+title: Actions NPM
+---
+
+The **`@auth0/actions`** NPM package is the **official Actions library** that facilitates the **Auth0 Actions TypeScript definitions**. This helps you code and test your project’s Actions in external editors and IDEs.
+
+---
+
+### Benefits
+
+This library helps you with the following use cases:
+
+* **IDE / Code Editor Assistance**: By referencing this library, IDEs and code editors can help developers coding with **autocompletion**, **object and function definitions**, and **error checking**.
+* **TypeScript Development**: Although Actions are still coded and work using Node.js CommonJS, this library enables Actions development on external projects using **TypeScript** which then can be built and deployed as Common JS to the Auth0 Tenant.
+* **Unit Testing Improvements**: By enabling TypeScript development on external projects, this library allows developers to follow best practices and to **improve their Unit Testing** based on the TypeScript definitions.
+* **AI Actions Generation**: This library gets us one step closer for AI to be able to generate more accurate Action examples.
+
+---
+
+### How It Works
+
+#### Installation
+
+Use one of the following package managers to install the package as a **development dependency**:
+
+> The package must be used as a development dependency to supplement your development tools.
+
+* **NPM**: `npm install @auth0/actions --save-dev`
+* **Yarn**: `yarn add @auth0/actions --dev`
+* **Pnpm**: `pnpm add @auth0/actions --save-dev`
+
+---
+
+#### Import
+
+The library has the following **structure**:
+
+\`\`\`
+@auth0/actions
+│
+└───credentials-exchange
+│   └───v1
+│   └───v2
+└───custom-email-provider
+│   └───v1
+└───custom-phone-provider
+│   └───v1
+└───custom-token-exchange
+│   └───v1
+└───event-stream
+│   └───v1
+└───password-reset-post-challenge
+│   └───v1
+└───post-change-password
+│   └───v1
+│   └───v2
+└───post-login
+│   └───v1
+│   └───v2
+│   └───v3
+└───post-user-registration
+│   └───v1
+│   └───v2
+└───pre-user-registration
+│   └───v1
+│   └───v2
+└───send-phone-message
+    └───v2
+\`\`\`
+
+The import statement should be based on each **trigger name** and **version number** considering the previous library structure.
+
+**Follow the pattern**: `@auth0/actions/[trigger_name]/[trigger_version]`
+
+**For example**: `@auth0/actions/post-login/v3`
+
+Use one of the following alternatives to import the TypeScript definitions into your Actions depending on your technology:
+
+<Tabs><Tab title="JSDoc @import">
+
+Use this alternative when you want IntelliSense without changing your existing JavaScript code structure:
+
+
