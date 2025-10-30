@@ -58,9 +58,19 @@ These security options are available to Enterprise customers only. To upgrade yo
 
 There are two approaches you can implement to mitigate these risks:
 
-* **[Tenant Access Control List (ACL)](https://auth0.com/docs/secure/tenant-access-control-list) (Recommended)** - Restrict which IP address ranges or domains can access your tenant's DCR endpoints through Auth0's built-in ACL feature. This approach protects both your custom domain and canonical Auth0 hostname (e.g., `tenant.auth0.com`), providing comprehensive protection. It's ideal when you know the IP ranges of legitimate clients (such as your internal network or specific cloud providers) and want to enforce network-based access control without managing additional infrastructure.
+### Tenant Access Control List (Recommended)
 
-* **[Reverse Proxy](https://auth0.com/docs/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy)** - Place a reverse proxy (such as Cloudflare) in front of your custom domain to rate-limit, filter, and authenticate requests before they reach the DCR endpoint. This approach allows you to control request volume, implement custom authentication logic, and monitor traffic patterns. However, note that even with a reverse proxy on your custom domain, the DCR endpoint remains accessible via your canonical Auth0 hostname (e.g., `tenant.auth0.com`), which can bypass the proxy. For comprehensive protection, use this approach in combination with Tenant ACL.
+Restrict which IP address ranges or domains can access your tenant's DCR endpoints through Auth0's built-in [Tenant Access Control List (ACL)](https://auth0.com/docs/secure/tenant-access-control-list) feature. This approach protects both your custom domain and canonical Auth0 hostname (e.g., `tenant.auth0.com`), providing comprehensive protection.
+
+It's ideal when you know the IP ranges of legitimate clients (such as your internal network or specific cloud providers) and want to enforce network-based access control without managing additional infrastructure.
+
+### Reverse Proxy
+
+Place a [reverse proxy](https://auth0.com/docs/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy) (such as Cloudflare) in front of your custom domain to rate-limit, filter, and authenticate requests before they reach the DCR endpoint. This approach allows you to control request volume, implement custom authentication logic, and monitor traffic patterns.
+
+However, note that even with a reverse proxy on your custom domain, the DCR endpoint remains accessible via your canonical Auth0 hostname (e.g., `tenant.auth0.com`), which can bypass the proxy. For comprehensive protection, use this approach in combination with Tenant ACL.
+
+### Defense in Depth
 
 Both approaches can be used together for defense-in-depth security. Regardless of which approach you choose, monitor your [tenant logs](https://auth0.com/docs/deploy-monitor/logs) to detect suspicious registration patterns.
 
