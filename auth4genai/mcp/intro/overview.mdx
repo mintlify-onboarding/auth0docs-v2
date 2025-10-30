@@ -27,7 +27,7 @@ The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is an open 
 
 Auth0's **Auth for MCP** lets developers securely and easily implement the authorization parts of the MCP spec with OAuth 2.1 and OpenID Connect. It provides sign in, standards based discovery and client registration, resource scoped tokens, and token exchange so you can control which agents connect, which resources they can access, and which actions they can perform.
 
-### User Authentication
+### User authentication
 
 Require users to sign in before they or their AI agents connect to MCP servers. Auth0 Universal Login supports social, enterprise, and custom identity providers so users can sign in with existing credentials. Access tokens issued by Auth0 include identity details that MCP servers can validate on every request.
 
@@ -52,20 +52,20 @@ Register MCP clients and servers using standards-aligned discovery and registrat
   horizontal
   iconType="solid" />
 
-### Call Your APIs on User’s Behalf
+### Call your APIs on user’s behalf
 
 When an **AI agent** connects to your **MCP server**, the server may need to call your internal APIs to read data or trigger workflows. Those APIs need tokens that reflect who the user is and what the server is allowed to do.
 
 **Auth0 Custom Token Exchange** enables that delegation. The MCP server exchanges the token it received from the client for a new, short-lived access token scoped to the internal API. This lets **MCP servers** call internal APIs on behalf of users while **Auth0** issues and governs access centrally.
 
 <Card
-  title="Use this Quickstart to call your APIs on user's behalf from your MCP server"
+  title="Use this quickstart to call your APIs on user's behalf from your MCP server"
   href="/mcp/get-started/call-your-apis-on-users-behalf"
   icon="book"
   horizontal
   iconType="solid" />
 
-### Call Third-Party APIs on User’s Behalf
+### Call third-party APIs on user’s behalf
 
 MCP Servers often connect AI Agents to third-party services such as Google, Microsoft, Jira, or Notion. Auth0’s **Token Vault** handles these integrations by managing token issuance, storage, rotation, and revocation for external APIs. Token Vault eliminates manual credential handling and makes it easy to extend MCP connectivity across the modern SaaS ecosystem.
 
@@ -110,6 +110,13 @@ To begin using Auth for MCP in your MCP server, refer to the following resources
   />
 
   <Card
+    title="Test you MCP Server with MCP Inspector"
+    href="/mcp/guides/test-your-mcp-server-with-mcp-inspector"
+    icon="book"
+    horizontal
+  />
+
+  <Card
     title="Cloudflare MCP"
     href="/mcp/guides/cloudflare-mcp"
     icon="book"
@@ -117,7 +124,7 @@ To begin using Auth for MCP in your MCP server, refer to the following resources
   />
 </Columns>
 
-### Sample Apps
+### Sample apps
 
 <Columns>
   <Card
@@ -165,7 +172,7 @@ To begin using Auth for MCP in your MCP server, refer to the following resources
 </Columns>
 
 
-## Early Access
+## Early access
 
 Auth for MCP delivers a more secure and scalable authentication and authorization for MCP servers using Auth0. It offers OAuth-compliant solutions for developers building applications that integrate AI agents.
 

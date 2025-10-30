@@ -10,11 +10,11 @@ The Model Context Protocol (MCP) specification requires the use of the standards
 
 The Resource Parameter Compatibility Profile is disabled by default. To enable it, you should:
 
-1. Create an Auth0 Account  
-   To continue with this quickstart, you need to have an [Auth0 account](https://auth0.com/signup).  
-2. Enable your Tenant to use the Resource Parameter Compatibility Profile  
-   To use the `resource` parameter in your access tokens, you need to enable the compatibility profile  
-1. Navigate to Settings and click on the **Advanced** tab  
+1. Create an Auth0 Account
+   To continue with this quickstart, you need to have an [Auth0 account](https://auth0.com/signup).
+2. Enable your Tenant to use the Resource Parameter Compatibility Profile
+   To use the `resource` parameter in your access tokens, you need to enable the compatibility profile
+1. Navigate to Settings and click on the **Advanced** tab
 2. Scroll down to the Settings section, find and enable **Resource Parameter Compatibility Profile**.
 
 <Frame>
@@ -33,7 +33,7 @@ The Resource Parameter Compatibility Profile is disabled by default. To enable i
 
 ## How it works
 
-When disabled, the **Resource Parameter Compatibility Profile** will keep the experience as is and only use the `audience` parameter in the Auth0 access token.  
+When disabled, the **Resource Parameter Compatibility Profile** will keep the experience as is and only use the `audience` parameter in the Auth0 access token.
 
 <Frame>
   <img
@@ -48,7 +48,7 @@ When disabled, the **Resource Parameter Compatibility Profile** will keep the ex
   />
 </Frame>
 
-Once the **Resource Parameter Compatibility Profile** is enabled, Auth0 will use the `resource` parameter if it is available to define the token's audience.  
+Once the **Resource Parameter Compatibility Profile** is enabled, Auth0 will use the `resource` parameter if it is available to define the token's audience.
 
 <Frame>
   <img
@@ -67,7 +67,7 @@ If both the `resource` and `audience` are available, the `audience` will still b
 
 *RFC 8707 requires the `resource` parameter to [be an absolute URI](https://www.rfc-editor.org/rfc/rfc8707.html#name-resource-parameter), to conform with RFC 8707 we recommend defining your resource server identifiers (API identifiers) in [URI format](https://datatracker.ietf.org/doc/html/rfc3986). Using an absolute URI as the identifier of your MCP Server is also a requirement from the MCP Authorization specification.*
 
-## Supported Flows
+## Supported flows
 
 The `resource` parameter is supported in the following flows:
 
@@ -77,15 +77,15 @@ The `resource` parameter is supported in the following flows:
 * Client-Initiated Backchannel Authentication (CIBA)
 * Refresh Token Grant Type
 
-## Resource Parameter Forwarding to Upstream Identity Provider (IdP) 
+## Resource Parameter Forwarding to Upstream Identity Provider (IdP)
 
 When federating to an upstream IdP, Auth0 provides a way for initiating clients to [forward parameters](https://auth0.com/docs/authenticate/identity-providers/pass-parameters-to-idps). In the documentation, notice that `resource` is one of the parameters [available for forwarding to upstream IdPs](https://auth0.com/docs/authenticate/identity-providers/pass-parameters-to-idps#available-fields).
 
 To avoid leaking access token details, Auth0 will not forward the resource parameter to upstream IdPs while the Resource Parameter Compatibility Profile is enabled.
 
-* Resource Parameter Compatibility **disabled** (default behavior):  
-  * `resource` is available as an upstream IdP parameter.  
-* Resource Parameter Compatibility **enabled**:  
+* Resource Parameter Compatibility **disabled** (default behavior):
+  * `resource` is available as an upstream IdP parameter.
+* Resource Parameter Compatibility **enabled**:
   * `resource` is not available as an upstream IdP parameter, and will not be forwarded.
 
   <Note>If passing the resource parameter to an upstream IdP, Resource Parameter Compatibility Profile should not be enabled.</Note>

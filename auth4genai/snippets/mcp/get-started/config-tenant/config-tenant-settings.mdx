@@ -1,8 +1,7 @@
-## Configure Tenant Settings
-
+## Configure tenant settings
 
 <AccordionGroup>
-  <Accordion title="1. Promote the connection to domain-level">
+  <Accordion title="1. Promote the Connection to domain-level">
     To allow third-party clients like [MCP inspector](https://modelcontextprotocol.io/docs/tools/inspector) to use a connection like username-and-password or a social connection, you need to promote the connection to a domain level. [Learn more about enabling third-party applications](https://auth0.com/docs/get-started/applications/confidential-and-public-applications/enable-third-party-applications).
     <Steps>
       <Step title="List your connection">
@@ -25,7 +24,7 @@
       </Step>
     </Steps>
   </Accordion>
-  <Accordion title="2. Add Roles and Permissions (Optional)">
+  <Accordion title="2. Add roles and permissions (optional)">
     The sample application in this quickstart is prepared to show different tools depending on the role of a given user. For example an Tool Administrator will have access to different tools from an Tool User.
 
     <Warning>If you decide to skip this step, you'll only have access to the tool `get_current_time`, which is the only tool in the sample apps that doesn't require any permissions.</Warning>
@@ -60,7 +59,7 @@
     auth0 roles permissions add YOUR_USER_ROLE_ID --api-id "http://localhost:3001/" --permissions "tool:whoami"
     ```
 
-### Assign Roles to Users
+### Assign roles to users
 
     Find users and assign them to the roles. You can search by their email address:
 
