@@ -62,7 +62,38 @@ There are two approaches you can implement to mitigate these risks:
 
 * **[Reverse Proxy](https://auth0.com/docs/customize/custom-domains/self-managed-certificates/configure-cloudflare-for-use-as-reverse-proxy)** - Place a reverse proxy (such as Cloudflare) in front of your custom domain to rate-limit, filter, and authenticate requests before they reach the DCR endpoint. This approach allows you to control request volume, implement custom authentication logic, and monitor traffic patterns. However, note that even with a reverse proxy on your custom domain, the DCR endpoint remains accessible via your canonical Auth0 hostname (e.g., `tenant.auth0.com`), which can bypass the proxy. For comprehensive protection, use this approach in combination with Tenant ACL.
 
-Both approaches can be used together for defense-in-depth security. Regardless of which approach you choose, regularly monitor your [tenant logs](https://auth0.com/docs/deploy-monitor/logs) to detect suspicious registration patterns, such as rapid application creation or registrations from unexpected sources.
+Both approaches can be used together for defense-in-depth security. Regardless of which approach you choose, monitor your [tenant logs](https://auth0.com/docs/deploy-monitor/logs) to detect suspicious registration patterns.
+
+### Monitoring DCR Activity
+
+Regularly review your tenant logs to identify suspicious patterns such as rapid application creation or registrations from unexpected sources.
+
+**To monitor client registrations:**
+
+1. Navigate to **Monitoring > Logs** in your Auth0 Dashboard
+2. Use the search query:
+   ```
+   type:sapi AND description:*Create*client*
+   ```
+   This filters for successful Management API operations (`sapi`) related to client creation, which includes both manual and Dynamic Client Registration events.
+
+3. Review the log entries for:
+   - **Unusual volume**: Multiple clients created in a short time span
+   - **Unexpected sources**: Registrations from unfamiliar IP addresses or locations
+   - **Suspicious patterns**: Similar client names, callback URLs pointing to unexpected domains, or clients created outside business hours
+
+**Advanced monitoring with the Management API:**
+
+You can also retrieve DCR logs programmatically:
+
+```shell wrap lines
+# Get recent client creation events (last 24 hours)
+curl --request GET \
+  --url 'https://YOUR_TENANT/api/v2/logs?q=type:sapi%20AND%20description:*Create*client*' \
+  --header 'Authorization: Bearer YOUR_MANAGEMENT_API_TOKEN'
+```
+
+Consider setting up [log streams](https://auth0.com/docs/customize/log-streams) to forward DCR events to your SIEM or monitoring platform for automated alerting on suspicious registration activity.
 
 ## Authentication and Authorization for MCP Servers
 
