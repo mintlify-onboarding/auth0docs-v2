@@ -396,7 +396,7 @@ export function registerTools(mcpServer: FastMCP<FastMCPAuthSession>) {
 
 The `greet` tool makes the custom token exchange and then calls the upstream first-party API with the received access token in the highlighted section below:
 
-```javascript wrap lines highlight={23-25,28-33}
+```javascript expandable wrap lines highlight={23-25,28-33}
  mcpServer.addTool({
     name: "greet",
     description:
@@ -460,7 +460,7 @@ async function bearerForUpstream(subjectToken: string) {
 
 The `exchangeCustomToken` holds the token exchange logic can be found in `src/auth0.ts` which uses an `ApiClient` from the `auth0-api-js` SDK to facilitate the implementation:
 
-```javascript wrap lines highlight={1,9}
+```javascript expandable wrap lines highlight={1,9}
  const exchangeClient = new ApiClient({
   domain: AUTH0_DOMAIN,
   audience: API_AUTH0_AUDIENCE,
