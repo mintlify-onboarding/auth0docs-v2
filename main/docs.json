@@ -994,6 +994,8 @@
                               "docs/manage-users/organizations/configure-organizations",
                               "docs/manage-users/organizations/configure-organizations/create-organizations",
                               "docs/manage-users/organizations/configure-organizations/delete-organizations",
+                              "/docs/manage-users/organizations/configure-organizations/create-org-domains",
+                              "/docs/manage-users/organizations/configure-organizations/delete-org-domains",
                               "docs/manage-users/organizations/configure-organizations/use-org-name-authentication-api",
                               "docs/manage-users/organizations/configure-organizations/define-organization-behavior",
                               "docs/manage-users/organizations/configure-organizations/enable-connections",

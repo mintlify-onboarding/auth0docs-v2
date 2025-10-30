@@ -78,7 +78,7 @@ To define organization behavior via the Auth0 Dashboard:
             <strong>Prompt for Credentials</strong>: Users are first asked to provide their login credentials. After logging in, users can select their Organization.
           </li>
           <li>
-            <strong>Prompt for Organization</strong>: Users are first asked to select their Organization. Then, they can provide their credentials to log in. You can only use this option if you set Type of Users to Business Users.
+            <strong>Prompt for Organization</strong>: Users are first asked to select their Organization. Then, they can provide their credentials to log in.
           </li>
           <li>
             <strong>No Prompt</strong>: Auth0 does not dictate which login prompt is given to users. Instead, your application is responsible for sending the required parameters to Auth0 to display the appropriate prompt.
@@ -94,6 +94,38 @@ To define organization behavior via the Auth0 Dashboard:
           <li><strong>No Prompt</strong> maps to <code>no_prompt</code></li>
         </ul>
       </td>
+    </tr>
+    <tr>
+    <td>
+    <strong>Organization Discovery</strong>
+    </td>
+    <td>
+    Defines the method used to identify the user’s organization before authentication. Only available with Prompt for Organization Login Flow. <br /><br /> Options include:
+    <ul>
+    <li>
+    <strong>Prompt for Organization Email</strong>: Users are first asked to provide their email address associated with their Organization.
+    </li>
+    <li>
+    <strong>Prompt for Organization Name</strong>: Users are first asked to provide the name of their Organization.
+    </li>
+    <li>
+    <strong>Prompt for Organization Email and Name</strong>: Users are first asked to provide the name of their Organization or email associated with their Organization.
+    </li>
+    </ul>
+    </td>
+    <td>
+    <ul>
+    <li>
+    <strong>Prompt for Emails</strong>: maps to `email`.
+    </li>
+    <li>
+    <strong>Prompt for Organization</strong>: maps to `organization_name`.
+    </li>
+    <li>
+    <strong>Prompt for Organization Email and Name</strong>: maps to `email` and `organization_name`.
+    </li>
+    </ul>
+    </td>
     </tr>
   </tbody>
 </table>
@@ -360,6 +392,23 @@ dataTask.resume()
           <li><code>post_login_prompt</code>: Prompt users to log in with their credentials. After they log in, prompt users to select their Organization.</li>
         </ul>
       </td>
+    </tr>
+    <tr>
+    <td><code>ORGANIZATION_DISCOVERY_METHODS</code></td>
+    <td>
+    Determines the method to identify a user’s organization before authentication. Only applicable when <code>organization_require_behavior</code> is <code>pre_login_prompt</code> and <code>organization_usage</code> is set to require or allow.
+    <ul>
+    <li>
+    <code>email</code>: (Default) Users are prompted to enter their email address associated with their Organization.
+    </li>
+    <li>
+    <code>organization_name</code>: Users are prompted to enter the name associated with their Organization. 
+    </li>
+    <li>
+    <code>Organization name</code> and <code>email</code>: Users are prompted for the email address or name associated with their Organization.
+    </li>
+    </ul>
+    </td>
     </tr>
   </tbody>
 </table>
