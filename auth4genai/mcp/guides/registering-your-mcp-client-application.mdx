@@ -83,9 +83,9 @@ Regularly review your tenant logs to identify suspicious patterns such as rapid 
 1. Navigate to **Monitoring > Logs** in your Auth0 Dashboard
 2. Use the search query:
    ```
-   type:sapi AND description:*Create*client*
+   type:sapi AND description:"Dynamic client registration"
    ```
-   This filters for successful Management API operations (`sapi`) related to client creation, which includes both manual and Dynamic Client Registration events.
+   This filters for successful Management API operations (`sapi`) specifically related to Dynamic Client Registration events.
 
 3. Review the log entries for:
    - **Unusual volume**: Multiple clients created in a short time span
@@ -97,8 +97,8 @@ Regularly review your tenant logs to identify suspicious patterns such as rapid 
 You can also retrieve DCR logs programmatically using the Auth0 CLI:
 
 ```shell wrap lines
-# Get recent client creation events
-auth0 logs list --filter "type:sapi AND description:*Create*client*" --number 100
+# Get recent Dynamic Client Registration events
+auth0 logs list --filter "type:sapi AND description:\"Dynamic client registration\"" --number 100
 ```
 
 Consider setting up [log streams](https://auth0.com/docs/customize/log-streams) to forward DCR events to your SIEM or monitoring platform for automated alerting on suspicious registration activity.
