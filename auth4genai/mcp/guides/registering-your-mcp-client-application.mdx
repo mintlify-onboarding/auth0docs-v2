@@ -82,15 +82,13 @@ Regularly review your tenant logs to identify suspicious patterns such as rapid 
    - **Unexpected sources**: Registrations from unfamiliar IP addresses or locations
    - **Suspicious patterns**: Similar client names, callback URLs pointing to unexpected domains, or clients created outside business hours
 
-**Advanced monitoring with the Management API:**
+**Retrieve logs using the Auth0 CLI:**
 
-You can also retrieve DCR logs programmatically:
+You can also retrieve DCR logs programmatically using the Auth0 CLI:
 
 ```shell wrap lines
-# Get recent client creation events (last 24 hours)
-curl --request GET \
-  --url 'https://YOUR_TENANT/api/v2/logs?q=type:sapi%20AND%20description:*Create*client*' \
-  --header 'Authorization: Bearer YOUR_MANAGEMENT_API_TOKEN'
+# Get recent client creation events
+auth0 logs list --filter "type:sapi AND description:*Create*client*" --number 100
 ```
 
 Consider setting up [log streams](https://auth0.com/docs/customize/log-streams) to forward DCR events to your SIEM or monitoring platform for automated alerting on suspicious registration activity.
