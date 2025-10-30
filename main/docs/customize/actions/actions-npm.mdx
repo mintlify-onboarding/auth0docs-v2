@@ -86,4 +86,190 @@ Use one of the following alternatives to import the TypeScript definitions into 
 
 Use this alternative when you want IntelliSense without changing your existing JavaScript code structure:
 
+\`\`\`
+/** @import {Event, PostLoginAPI} from "@auth0/actions/post-login/v3" */
 
+/**
+* Handler that will be called during the execution of a PostLogin flow.
+*
+* @param {Event} event - Details about the user and the context in which they are logging in.
+* @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+*/
+exports.onExecutePostLogin = async (event, api) => {
+  // Your code
+}
+\`\`\`
+
+</Tab><Tab title="JSDoc @param">
+
+Use this alternative for type safety in JavaScript files using import statements in JSDoc comments:
+\`\`\`
+/**
+* Handler that will be called during the execution of a PostLogin flow.
+*
+* @param {import('@auth0/actions/post-login/v3').Event} event - Details about the user and the context in which they are logging in.
+* @param {import('@auth0/actions/post-login/v3').PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+*/
+exports.onExecutePostLogin = async (event, api) => {
+  // Your code
+}
+\`\`\`
+
+</Tab><Tab title="TypeScript import">
+Use this alternative when developing with TypeScript for full type checking and modern syntax:
+
+\`\`\`
+import type { Event, PostLoginAPI } from '@auth0/actions/post-login/v3';
+
+/**
+* Handler that will be called during the execution of a PostLogin flow.
+*
+* @param {Event} event - Details about the user and the context in which they are logging in.
+* @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+*/
+exports.onExecutePostLogin = async (event: Event, api: PostLoginAPI) => {
+  // Your code
+};
+\`\`\`
+</Tab></Tabs>
+
+> [!WARNING]  
+> When using TypeScript, you must compile your code to JavaScript before deploying to Auth0. The Auth0 Actions runtime only executes JavaScript.Use the TypeScript compiler (`tsc`) to transpile your `.ts` files to `.js` files, before it can be deployed. You must also include JSDoc comments to enable IntelliSense in the Dashboard.
+
+
+### Examples
+The following Actions examples are intentionally presented in both JavaScript and TypeScript to provide a direct, side-by-side comparison.
+
+#### Configuration
+
+<Tabs><Tab title="JavaScript">
+
+In your `package.json`, define any development dependencies to have intelliSense help when writing your Action:
+
+\`\`\`
+{
+  "name": "actions-js",
+  "version": "1.0.0",
+  "description": "Actions JS",
+  "main": "example.js",
+  "author": "John Doe",
+  "license": "ISC",
+  "devDependencies": {
+    "@auth0/actions": "^0.7.1"
+  }
+}
+\`\`\`
+
+</Tab><Tab title="TypeScript">
+
+In your `package.json`, define any development dependencies to have intelliSense help when writing your Action.
+
+\`\`\`
+{
+  "name": "actions-ts",
+  "version": "1.0.0",
+  "description": "Actions TS",
+  "main": "example.ts",
+  "author": "John Doe",
+  "license": "ISC",
+  "devDependencies": {
+    "@auth0/actions": "^0.7.1",
+    "@types/node": "22.14.0",
+    "typescript": "^5.9.2"
+  }
+}
+\`\`\`
+
+In your `tsconfig.json`, define any development dependencies to have intelliSense help when writing your Action.
+
+\`\`\`
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "outDir": "dist",
+    "declaration": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
+\`\`\`
+</Tab></Tabs>
+
+#### Post-Login access control and ID token custom claims
+
+The following example Action would execute during the Post-Login flow. It checks if the user has roles assigned, and calls `api.access.deny()` if none are found. If roles are present, it proceeds to set the custom claim on the ID token.
+
+The import statement declares the availability of external types to your code. This allows the editor to know the structure of the `event` and `api` objects.
+
+<Tabs><Tab title="JavaScript">
+
+\`\`\`
+/** @import {Event, PostLoginAPI} from "@auth0/actions/post-login/v3" */
+
+const CUSTOM_CLAIM_NAMESPACE = 'https://example.com';
+
+/**
+* Handler that will be called during the execution of a PostLogin flow.
+*
+* @param {Event} event - Details about the user and the context in which they are logging in.
+* @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+*/
+exports.onExecutePostLogin = async (event, api) => {
+  const roles = event.authorization?.roles;
+
+  if (roles === undefined || roles.length === 0) {
+    api.access.deny('Restricted');
+    return;
+  }
+
+  api.idToken.setCustomClaim(`${CUSTOM_CLAIM_NAMESPACE}/roles`, roles);
+}
+\`\`\`
+
+</Tab><Tab title="TypeScript">
+
+\`\`\`
+import type { Event, PostLoginAPI } from '@auth0/actions/post-login/v3';
+
+const CUSTOM_CLAIM_NAMESPACE = 'https://example.com';
+
+/**
+* Handler that will be called during the execution of a PostLogin flow.
+*
+* @param {Event} event - Details about the user and the context in which they are logging in.
+* @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+*/
+exports.onExecutePostLogin = async (event: Event, api: PostLoginAPI) => {
+  const roles = event.authorization?.roles;
+
+  if (roles === undefined || roles.length === 0) {
+    api.access.deny('Restricted');
+    return;
+  }
+
+  api.idToken.setCustomClaim(`${CUSTOM_CLAIM_NAMESPACE}/roles`, roles);
+};
+\`\`\`
+
+</Tab></Tabs>
+
+To learn more about @auth0/actions, visit: https://www.npmjs.com/package/@auth0/actions.
+
+To learn more about writing Actions, see [Write Your First Action](main/docs/customize/actions/write-your-first-action.mdx).
