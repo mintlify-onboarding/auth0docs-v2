@@ -3792,8 +3792,7 @@
                                       "docs/fr-ca/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger",
                                       "docs/fr-ca/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object",
                                       "docs/fr-ca/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object",
-                                      "docs/fr-ca/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions",
-                                      "docs/fr-ca/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/releases"
+                                      "docs/fr-ca/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions"
                                     ]
                                   },
                                   {
@@ -3861,7 +3860,6 @@
                           "docs/fr-ca/customize/actions/manage-dependencies",
                           "docs/fr-ca/customize/actions/manage-versions",
                           "docs/fr-ca/customize/actions/test-actions",
-                          "docs/fr-ca/customize/actions/releases",
                           {
                             "group": "Migrer vers les actions",
                             "pages": [
@@ -6196,7 +6194,6 @@
                                       "docs/ja-jp/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object",
                                       "docs/ja-jp/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object",
                                       "docs/ja-jp/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions",
-                                      "docs/ja-jp/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/releases"
                                     ]
                                   },
                                   {
@@ -6264,7 +6261,6 @@
                           "docs/ja-jp/customize/actions/manage-dependencies",
                           "docs/ja-jp/customize/actions/manage-versions",
                           "docs/ja-jp/customize/actions/test-actions",
-                          "docs/ja-jp/customize/actions/releases",
                           {
                             "group": "アクションへの移行",
                             "pages": [
@@ -19503,15 +19499,15 @@
     },
     {
       "source": "/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/releases",
-      "destination": "https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
+      "destination": "/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
     },
     {
       "source": "/docs/customize/actions/releases",
-      "destination": "https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
+      "destination": "/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
     },
     {
       "source": "/docs/customize/actions/flows-and-triggers/login-flow/releases",
-      "destination": "https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
+      "destination": "/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
     },
     {
       "source": "/docs/customize/actions/flows-and-triggers/login-flow/redirect-with-actions",
