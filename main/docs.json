@@ -1375,7 +1375,6 @@
                                       "docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-event-object",
                                       "docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/post-login-api-object",
                                       "docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/redirect-with-actions",
-                                      "docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/releases"
                                     ]
                                   },
                                   {
@@ -1444,7 +1443,6 @@
                           "docs/customize/actions/manage-dependencies",
                           "docs/customize/actions/manage-versions",
                           "docs/customize/actions/test-actions",
-                          "docs/customize/actions/releases",
                           {
                             "group": "Migrate to Actions",
                             "pages": [
@@ -19504,8 +19502,16 @@
       "destination": "/docs/secure/attack-protection"
     },
     {
+      "source": "/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/releases",
+      "destination": "https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
+    },
+    {
+      "source": "/docs/customize/actions/releases",
+      "destination": "https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
+    },
+    {
       "source": "/docs/customize/actions/flows-and-triggers/login-flow/releases",
-      "destination": "/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger/releases"
+      "destination": "https://auth0.com/docs/customize/actions/explore-triggers/signup-and-login-triggers/login-trigger"
     },
     {
       "source": "/docs/customize/actions/flows-and-triggers/login-flow/redirect-with-actions",
