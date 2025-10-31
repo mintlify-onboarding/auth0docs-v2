@@ -1,26 +1,28 @@
 export const DocsBanner = () => {
   return (
     <div className="gap-5 flex justify-center p-6 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(180,160,255,.45)_0%,rgba(255,235,240,.35)_40%,rgba(255,245,235,.6)_100%)]">
-      <div className="w-[min(860px,90vw)] text-center px-6 py-12">
+      <div className="w-[min(860px,90vw)] text-center px-0 py-2 md:px-6 md:py-12">
         <h1 className="mb-5 font-inter font-semibold text-5xl text-center text-gray-900 dark:text-white">Auth0 Docs</h1>
         <p className="mt-4 mb-10 font-inter font-normal text-body-l leading-body-l tracking-body-l text-center text-gray-600 max-w-2xl mx-auto dark:text-white">
           Browse the latest sample code, articles, tutorials,
           <br /> and API reference.
         </p>
 
-        <div className="flex justify-center mt-5">
-          <img
-            noZoom
-            src="/docs/images/home/banner.svg"
-            alt="Auth0 Docs Banner"
-            className="block dark:hidden rounded-xl"
-          />
-          <img
-            noZoom
-            src="/docs/images/home/banner-dark.svg"
-            alt="Auth0 Docs Banner"
-            className="hidden dark:block rounded-xl"
-          />
+        <div className="flex justify-center mt-5 w-full overflow-hidden rounded-xl">
+          <div className="w-full overflow-hidden rounded-xl scale-[1.75] md:scale-100 origin-center">
+            <img
+              noZoom
+              src="/docs/images/home/banner.svg"
+              alt="Auth0 Docs Banner"
+              className="block dark:hidden w-full h-auto"
+            />
+            <img
+              noZoom
+              src="/docs/images/home/banner-dark.svg"
+              alt="Auth0 Docs Banner"
+              className="hidden dark:block w-full h-auto"
+            />
+          </div>
         </div>
       </div>
     </div>
