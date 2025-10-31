@@ -10,6 +10,12 @@ permalink: "configure-access-token-profile"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample = `curl --request PATCH \\
+  --url 'https://{yourDomain}/api/v2/resource-servers/API_ID' \\
+  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \\
+  --header 'content-type: application/json' \\
+  --data '{"token_dialect": "TOKEN_DIALECT" }'
+`;
 
 どのアクセストークンプロファイル（Auth0トークンプロファイル、またはRFC 9068トークンプロファイル）をAPIに使用するか選択できます。構成するアクセストークンプロファイルは、APIに発行されたアクセストークンの形式を決定します。
 
@@ -34,12 +40,6 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 Management APIを使用する際、アクセストークンプロファイルをトークンダイアレクトとして参照します。アクセストークンプロファイルを構成するには、Management APIで、APIに対する`token_dialect`パラメーターを設定します。
 
 次のコードサンプルは、[リソースサーバーエンドポイントの更新](https://auth0.com/docs/api/management/v2/resource-servers/patch-resource-servers-by-id)にPATCH要求を行います。
-
-export const codeExample = `curl --request PATCH \
-  --url 'https://{yourDomain}/api/v2/resource-servers/API_ID' \
-  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --header 'content-type: application/json' \
-  --data '{"token_dialect": "TOKEN_DIALECT" }'`;
 
 <AuthCodeBlock children={codeExample} language="bash" />
 

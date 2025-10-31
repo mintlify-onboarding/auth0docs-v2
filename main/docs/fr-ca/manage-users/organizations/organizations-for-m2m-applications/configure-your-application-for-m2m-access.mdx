@@ -10,6 +10,40 @@ permalink: "configure-your-application-for-m2m-access"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample1 = `curl --request POST \\
+  --url 'https://{yourDomain}/api/v2/client-grants' \\
+  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \\
+  --header 'content-type: application/json' \\
+  --data '{
+    "client_id": "CLIENT_ID",
+    "audience": "API_IDENTIFIER",
+    "scope": [
+        "scope1",
+        "scope2"
+    ],
+    "organization_usage": "ORG_USAGE",
+    "allow_any_organization": false
+  }'
+`;
+
+export const codeExample2 = `curl --request PATCH \\
+  --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \\
+  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \\
+  --header 'content-type: application/json' \\
+  --data '{
+    "organization_usage": "ORG_USAGE",
+    "allow_any_organization": false
+  }'
+`;
+
+export const codeExample3 = `curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \\
+  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \\
+  --header 'content-type: application/json' \\
+  --data '{
+    "default_organization": "ORGANIZATION_ID",
+	  "flows": ["client_credentials"]
+  }'
+`;
 
 Après avoir créé l’application, configurez-la pour l’accès communication entre machines en procédant comme suit :
 
@@ -76,35 +110,11 @@ Vous pouvez également définir le comportement organisationnel d’une applicat
 
 L’exemple de code suivant crée un objet `client_grant` avec un accès M2M :
 
-export const codeExample1 = `curl --request POST \
-  --url 'https://{yourDomain}/api/v2/client-grants' \
-  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --header 'content-type: application/json' \
-  --data '{
-    "client_id": "CLIENT_ID",
-    "audience": "API_IDENTIFIER",
-    "scope": [
-        "scope1",
-        "scope2"
-    ],
-    "organization_usage": "ORG_USAGE",
-    "allow_any_organization": false
-}'`;
-
-<AuthCodeBlock children={codeExample1} language="json" />
+<AuthCodeBlock children={codeExample1} language="bash" />
 
 L’exemple de code suivant met à jour un objet `client_grant` avec un accès M2M :
 
-export const codeExample2 = `curl --request PATCH \
-  --url 'https://{yourDomain}/api/v2/client-grants/CLIENT_GRANT_ID' \
-  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --header 'content-type: application/json' \
-  --data '{
-    "organization_usage": "ORG_USAGE",
-    "allow_any_organization": false
-}'`;
-
-<AuthCodeBlock children={codeExample2} language="json" />
+<AuthCodeBlock children={codeExample2} language="bash" />
 
 </Tab></Tabs>
 
@@ -159,15 +169,7 @@ Vous pouvez configurer l’organization par défaut pour une application via les
 
 L’exemple de code suivant met à jour un client avec une organization par défaut :
 
-export const codeExample3 = `curl -X PATCH --location "https://{yourDomain}/api/v2/clients/{CLIENT_ID}" \
-  --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
-  --header 'content-type: application/json' \
-  --data '{
-          "default_organization": "ORGANIZATION_ID",
-	   "flows": ["client_credentials"]
-        }'`;
-
-<AuthCodeBlock children={codeExample3} language="json" />
+<AuthCodeBlock children={codeExample3} language="bash" />
 
 </Tab></Tabs>
 
