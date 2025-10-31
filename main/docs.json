@@ -7432,10 +7432,6 @@
       "destination": "/docs/customize/actions/migrate/migrate-from-rules-to-actions"
     },
     {
-      "source": "/docs/secure/tokens/token-vault/call-apis-with-token-vault",
-      "destination": "/docs/secure/tokens/token-vault/refresh-token-exchange-with-token-vault"
-    },
-    {
       "source": "/docs/fine-grained-m2m-token-quotas-early-access",
       "destination": "/docs/fine-grained-m2m-token-quotas"
     },
