@@ -10,6 +10,14 @@ title: Configure Refresh Token Rotation
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample = `const auth0 = await createAuth0Client({
+   domain: '{yourDomain}',
+   client_id: '{yourClientId}',
+   audience: '{yourApiIdentifier}',
+   useRefreshTokens: true
+});
+`;
+
 Configure <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token">refresh token</Tooltip> rotation for each application using the Dashboard or the [Auth0 SPA SDK](/docs/libraries/auth0-single-page-app-sdk). When <Tooltip tip="Refresh Token: Token used to obtain a renewed Access Token without forcing users to log in again." cta="View Glossary" href="/docs/glossary?term=refresh+token+rotation">refresh token rotation</Tooltip> is enabled, the transition for the user is seamless. The application uses the previous, unexpired non-rotating refresh token and swaps it for a rotating refresh token.
 
 Migration scenarios accommodate automatic token revocation when migrating from a non-rotating refresh token to a rotating refresh token and vice-versa.
@@ -46,31 +54,21 @@ You can use the Auth0 SPA SDK to enable refresh token rotation. You must enable 
 2. Enable the feature on the SDK by setting `useRefreshTokens: true` to start sending the `offline_access` scope.
 
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
-
-
-   export const codeExample = `   const auth0 = await createAuth0Client({
-         domain: '{yourDomain}',
-         client_id: '{yourClientId}',
-         audience: '{yourApiIdentifier}',
-         useRefreshTokens: true
-       });
-   `;
-
-<AuthCodeBlock children={codeExample} language="javascript" />
+   <AuthCodeBlock children={codeExample} language="javascript" />
 
    
 3. Configure the Refresh Token rotation settings. For example:
 
-   ```text lines
+   ```http lines
    PATCH /api/v2/clients/{client_id}
-       {
-         "refresh_token": {
-           "rotation_type": "rotating",
-           "expiration_type": "expiring",
-           "token_lifetime": "2592000",
-           "leeway": 3
-         }
-       }
+   {
+     "refresh_token": {
+       "rotation_type": "rotating",
+       "expiration_type": "expiring",
+       "token_lifetime": "2592000",
+       "leeway": 3
+     }
+   }
    ```
 
    <table class="table"><thead>
@@ -102,8 +100,6 @@ You can use the Auth0 SPA SDK to enable refresh token rotation. You must enable 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 Refresh Token Rotation is only supported for OIDC-conformant applications with the Refresh Token grant type enabled.
-
-## 
 
 </Callout>
 

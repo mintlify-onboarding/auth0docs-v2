@@ -10,6 +10,7 @@ permalink: "test-connections"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample = `https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http%3A%2F%2Fjwt.io&connection={connectionToTest}`;
 
 En général, pour tester une connexion, vous devez vous connecter à <Tooltip href="/docs/docs/fr-ca/glossary?term=auth0-dashboard" tip="Auth0 Dashboard
 Principal produit d’Auth0 pour configurer vos services." cta="Voir le glossaire">Auth0 Dashboard</Tooltip>.
@@ -39,14 +40,7 @@ Service de stockage et de gestion des identités numériques." cta="Voir le glos
    * Si aucune audience n’est spécifiée, le jeton d’accès devient un jeton opaque [JWE](https://datatracker.ietf.org/doc/html/rfc7516#section-3.3) qui ne peut être reconnu que par [Auth0 Authentication API](https://auth0.com/docs/api/authentication).
 3. Envoyez à votre partenaire le lien de connexion.
 
-   export const codeExample = `   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection={connectionToTest}
-   `;
-
-<AuthCodeBlock children={codeExample} language="text" lines />
-
-   
-
-   
+    <AuthCodeBlock children={codeExample} language="text" lines />
 
    Remplacez ces deux paramètres.
    * `client_id` : ID client de l’application créée à l’étape 1.
