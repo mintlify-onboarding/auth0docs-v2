@@ -8,21 +8,29 @@ export const DocsBanner = () => {
           <br /> and API reference.
         </p>
 
-        <div className="flex justify-center mt-5 w-full overflow-hidden rounded-xl">
-          <div className="w-full overflow-hidden rounded-xl scale-[1.75] md:scale-100 origin-center">
-            <img
-              noZoom
-              src="/docs/images/home/banner.svg"
-              alt="Auth0 Docs Banner"
-              className="block dark:hidden w-full h-auto"
-            />
-            <img
-              noZoom
-              src="/docs/images/home/banner-dark.svg"
-              alt="Auth0 Docs Banner"
-              className="hidden dark:block w-full h-auto"
-            />
-          </div>
+        <div className="flex justify-center mt-5">
+          {/* Mobile light banner (< 420px, light mode) */}
+          <img
+            noZoom
+            src="/docs/images/home/banner-mobile.svg"
+            alt="Auth0 Docs Banner"
+            className="block w-full h-auto sm:hidden"
+          />
+
+          {/* Desktop light banner (>= 420px, light mode) */}
+          <img
+            noZoom
+            src="/docs/images/home/banner.svg"
+            alt="Auth0 Docs Banner"
+            className="hidden w-full h-auto sm:block dark:hidden"
+          />
+          {/* Desktop dark banner (>= 420px, dark mode) */}
+          <img
+            noZoom
+            src="/docs/images/home/banner-dark.svg"
+            alt="Auth0 Docs Banner (dark)"
+            className="hidden w-full h-auto sm:dark:block"
+          />
         </div>
       </div>
     </div>
