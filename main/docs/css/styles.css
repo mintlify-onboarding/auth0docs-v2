@@ -678,3 +678,7 @@ a.card[href^="http"]::after {
 #banner a:hover {
   border-bottom: 2px solid #fff !important;
 }
+
+.dark .text-popover-foreground button.code-snippet-feedback-form-submit-button span {
+  color: #000 !important;
+}
