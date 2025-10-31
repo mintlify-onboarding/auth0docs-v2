@@ -11,6 +11,15 @@ title: Configure Logical API for Multiple APIs
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample = `https://{yourDomain}/authorize?
+   scope=read:contacts%20read:calendar&
+   audience=organize&
+   response_type=id_token%20token&
+   client_id={yourClientId}&
+   redirect_uri=http://localhost:3000&
+   nonce={nonce}
+`;
+
 If you have multiple distinct API implementations that are all logically a part of the same API, you can simplify your authorization process by representing them with a single logical API in the <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip>. Doing this allows you to implement just one <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=authorization+flow">authorization flow</Tooltip>, while still controlling access to the individual APIs by assigning the appropriate scopes.
 
 The following sections describe how to use and represent multiple APIs as a single <Tooltip tip="Resource Server: Server hosting protected resources. Resource servers accept and respond to protected resource requests." cta="View Glossary" href="/docs/glossary?term=Resource+Server">Resource Server</Tooltip> in Auth0. We will use the following sample application in the examples. The sample application uses a microservices architecture and contains:
@@ -75,22 +84,7 @@ To learn about Authorization flows, read [Authentication and Authorization Flows
 
    {/* codeblockOld.header.login.logInButton codeblockOld.header.login.configureSnippet */}
 
-
-   export const codeExample = `   https://{yourDomain}/authorize?
-   scope=read:contacts%20read:calendar&
-   audience=organize&
-   response_type=id_token%20token&
-   client_id={yourClientId}&
-   redirect_uri=http://localhost:3000&
-   nonce={nonce}
-   `;
-
-<AuthCodeBlock children={codeExample} language="text" />
-
-
-   
-
-   
+    <AuthCodeBlock children={codeExample} language="http" />
 
    <Frame>![Example application sign in page](/docs/images/cdy7uua7fh8z/1ogYIaeDdyGL3Qo511m6Sh/5ab97c1535b2b62523a367594d44d66f/home.png)</Frame>
 2. Your Auth0 Authorization Server redirects the user to the login page, where the user authenticates using one of the configured login options.
@@ -112,14 +106,9 @@ To learn about Authorization flows, read [Authentication and Authorization Flows
    }
    ```
 
+   In our sample, after you successfully log in, you will see buttons that allow you to call either of your APIs using the Access Token obtained from the logical API.
 
-   
-
-   
-
-In our sample, after you successfully log in, you will see buttons that allow you to call either of your APIs using the Access Token obtained from the logical API.
-
-<Frame>![Example application user authorized screen](/docs/images/cdy7uua7fh8z/2pGWG5Wa7U1tBPhAJZ7Bat/7e194066560605cc842f20624b80d958/apis.png)</Frame>
+   <Frame>![Example application user authorized screen](/docs/images/cdy7uua7fh8z/2pGWG5Wa7U1tBPhAJZ7Bat/7e194066560605cc842f20624b80d958/apis.png)</Frame>
 
 ### Implement single logout (SLO) or single sign-on (SSO)
 

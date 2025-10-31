@@ -10,15 +10,6 @@ permalink: "sample-use-cases-scopes-and-claims"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
-
-Dans ces exemples, nous utilisons le [flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow) pour authentifier un utilisateur et demander les permissions et les jetons nécessaires. Pour plus de détails sur les paramètres des requêtes ou pour savoir comment implémenter entièrement ce flux, lisez notre tutoriel : [Ajouter une connexion aux applications Web standard](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
-
-## Authentifier un utilisateur et faire des demandes standard
-
-Dans cet exemple, nous souhaitons authentifier un utilisateur et obtenir des détails sur cet utilisateur qui nous permettront de personnaliser notre interface utilisateur. Pour ce faire, nous devons obtenir un jeton d’ID contenant le nom, le surnom, la photo de profil et les informations de courrier électronique de l’utilisateur.
-
-1. Lancer le flux d’authentification en envoyant l’utilisateur à l’URL d’autorisation :
-
 export const codeExample1 = `https://{yourDomain}/authorize?
   response_type=code&
   client_id={yourClientId}&
@@ -26,24 +17,6 @@ export const codeExample1 = `https://{yourDomain}/authorize?
   scope=openid%20profile%20email&
   state=YOUR_STATE_VALUE
 `;
-
-   <AuthCodeBlock children={codeExample1} language="text" lines />
-
-   
-
-   
-
-   Notez que dans cet exemple :
-   * Le paramètre `response_type` comprend une valeur :
-
-     + `code` : parce que nous utilisons le flux d’application Web standard, notre demande initiale concerne un code d’autorisation; lorsque nous demandons nos jetons à l’aide de ce code, nous recevons le jeton d’ID dont nous avons besoin pour l’authentification.
-   * Le paramètre `scope` comprend trois valeurs; les permissions OIDC demandées :
-
-     + `openid` : pour indiquer que l’application a l’intention d’utiliser OIDC pour vérifier l’identité de l’utilisateur.
-     + `profile` : pour obtenir le `name`, le `nickname` et la `picture`.
-     + `email` : pour accéder à `email` et `email_verified`.
-2. Une fois que l’utilisateur a consenti (si nécessaire) et qu’Auth0 a redirigé vers votre application, [demandez des jetons](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
-3. Extrayez le jeton d’ID de la réponse et [décodez-le](/docs/fr-ca/secure/tokens/id-tokens). Vous devriez voir les demandes suivantes :
 
 export const codeExample2 = `{
   "name": "John Doe",
@@ -59,14 +32,49 @@ export const codeExample2 = `{
   "iat": 1490886820,
   "nonce": "crypto-value",
   "at_hash": "IoS3ZGppJKUn3Bta_LgE2A"
-}
+}`;
+
+export const codeExample3 = `https://{yourDomain}/authorize?
+  response_type=code&
+  client_id={yourClientId}&
+  redirect_uri={https://yourApp/callback}& 
+  scope=read:appointments&
+  audience=YOUR_API_AUDIENCE&
+  state=YOUR_STATE_VALUE
 `;
 
+export const codeExample4 = `https://{yourDomain}/authorize?
+  response_type=code&
+  client_id={yourClientId}&
+  redirect_uri={https://yourApp/callback}& 
+  scope=openid%20profile%20email%20read:appointments&
+  audience=YOUR_API_AUDIENCE&
+  state=YOUR_STATE_VALUE
+`;
+
+Dans ces exemples, nous utilisons le [flux de code d’autorisation](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow) pour authentifier un utilisateur et demander les permissions et les jetons nécessaires. Pour plus de détails sur les paramètres des requêtes ou pour savoir comment implémenter entièrement ce flux, lisez notre tutoriel : [Ajouter une connexion aux applications Web standard](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
+
+## Authentifier un utilisateur et faire des demandes standard
+
+Dans cet exemple, nous souhaitons authentifier un utilisateur et obtenir des détails sur cet utilisateur qui nous permettront de personnaliser notre interface utilisateur. Pour ce faire, nous devons obtenir un jeton d’ID contenant le nom, le surnom, la photo de profil et les informations de courrier électronique de l’utilisateur.
+
+1. Lancer le flux d’authentification en envoyant l’utilisateur à l’URL d’autorisation :
+
+   <AuthCodeBlock children={codeExample1} language="text" lines />
+
+   Notez que dans cet exemple :
+   * Le paramètre `response_type` comprend une valeur :
+
+     + `code` : parce que nous utilisons le flux d’application Web standard, notre demande initiale concerne un code d’autorisation; lorsque nous demandons nos jetons à l’aide de ce code, nous recevons le jeton d’ID dont nous avons besoin pour l’authentification.
+   * Le paramètre `scope` comprend trois valeurs; les permissions OIDC demandées :
+
+     + `openid` : pour indiquer que l’application a l’intention d’utiliser OIDC pour vérifier l’identité de l’utilisateur.
+     + `profile` : pour obtenir le `name`, le `nickname` et la `picture`.
+     + `email` : pour accéder à `email` et `email_verified`.
+2. Une fois que l’utilisateur a consenti (si nécessaire) et qu’Auth0 a redirigé vers votre application, [demandez des jetons](/docs/fr-ca/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow).
+3. Extrayez le jeton d’ID de la réponse et [décodez-le](/docs/fr-ca/secure/tokens/id-tokens). Vous devriez voir les demandes suivantes :
+
    <AuthCodeBlock children={codeExample2} language="json" />
-
-   
-
-   
 
    Votre application peut désormais récupérer les attributs utilisateur et les utiliser pour personnaliser votre interface utilisateur.
 
@@ -78,20 +86,7 @@ Avant d’utiliser une API personnalisée, vous devez savoir quelles permissions
 
 1. Lancer le flux d’autorisation en envoyant l’utilisateur à l’URL d’autorisation :
 
-export const codeExample3 = `https://{yourDomain}/authorize?
-  response_type=code&
-  client_id={yourClientId}&
-  redirect_uri={https://yourApp/callback}& 
-  scope=read:appointments&
-  audience=YOUR_API_AUDIENCE&
-  state=YOUR_STATE_VALUE
-`;
-
    <AuthCodeBlock children={codeExample3} language="text" lines />
-
-   
-
-   
 
    Notez que dans cet exemple :
    * Le paramètre `response_type` comprend toujours une valeur :
@@ -122,20 +117,7 @@ Avant d’utiliser une API personnalisée, vous devez savoir quelles permissions
 
 1. Lancer le flux d’authentification en envoyant l’utilisateur à l’URL d’autorisation :
 
-export const codeExample4 = `https://{yourDomain}/authorize?
-  response_type=code&
-  client_id={yourClientId}&
-  redirect_uri={https://yourApp/callback}& 
-  scope=openid%20profile%20email%20read:appointments&
-  audience=YOUR_API_AUDIENCE&
-  state=YOUR_STATE_VALUE
-`;
-
    <AuthCodeBlock children={codeExample4} language="text" lines />
-
-   
-
-   
 
    Notez que dans cet exemple :
    * Le paramètre `response_type` comprend toujours une valeur :
@@ -222,9 +204,6 @@ Pour recevoir les données personnalisées, nous devons [créer une nouvelle act
    };
    ```
 
-   
-
-   
 4. Dans la barre latérale de l'Éditeur de code d’Actions, sélectionnez Tester (l'icône de lecture), puis sélectionnez **Exécuter** pour [tester votre code](/docs/fr-ca/customize/actions/test-actions).
 5. Lorsque vous êtes prêt à lancer l’action, sélectionnez **Déployer**.
 

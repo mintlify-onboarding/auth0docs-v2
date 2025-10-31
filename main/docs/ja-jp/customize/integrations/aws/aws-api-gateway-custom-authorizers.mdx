@@ -13,6 +13,12 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
 
+export const codeExample = `JWKS_URI="https://{yourDomain}/.well-known/jwks.json"
+AUDIENCE="https://your-api-gateway"
+TOKEN_ISSUER="https://{yourDomain}/"
+`;
+
+
 AWS Lambda関数（カスタムオーソライザーを含む）を作成・構成してAPIエンドポイントを保護し、認可フローを実装します。これにより、ユーザーはAuth0からAPIへのアクセス取得に必要なアクセストークンを取得できるようになります。
 
 詳細は、[AWS API Gateway](https://aws.amazon.com/api-gateway/)にログインして、「[AWS Lambdaの概要](https://aws.amazon.com/lambda/)」をご覧ください。
@@ -250,16 +256,7 @@ Auth0発行トークンをサポートする[サンプルのカスタムオー�
 
    たとえば、`.env`ファイルのテキストは、完了すると以下のようになります。
 
-   export const codeExample = `   JWKS_URI=https://{yourDomain}/.well-known/jwks.json
-   AUDIENCE=https://your-api-gateway
-   TOKEN_ISSUER=https://{yourDomain}/
-   `;
-
-<AuthCodeBlock children={codeExample} language="text" lines />
-
-   
-
-   
+    <AuthCodeBlock children={codeExample} language="shell" lines />
 
 ### カスタムオーソライザーをローカルでテストする
 
@@ -278,7 +275,7 @@ Auth0発行トークンをサポートする[サンプルのカスタムオー�
 
 lambda-localパッケージを使用して、トークンを用いてカスタムオーソライザーをテストします。テストに成功すると、以下のように表示されます。
 
-``` lines
+```json lines
 Message
 ------
 {
@@ -318,19 +315,19 @@ IAMロールにはLambda関数を呼び出すために必要なアクセス許�
 
    ```json lines
    {
-   "Version": "2012-10-17",
-   "Statement": [
-       {
-       "Effect": "Allow",
-       "Principal": {
-           "Service": [
-           "apigateway.amazonaws.com",
-           "lambda.amazonaws.com"
-           ]
-       },
-       "Action": "sts:AssumeRole"
-       }
-   ]
+      "Version": "2012-10-17",
+      "Statement": [
+         {
+            "Effect": "Allow",
+            "Principal": {
+               "Service": [
+                  "apigateway.amazonaws.com",
+                  "lambda.amazonaws.com"
+               ]
+            },
+            "Action": "sts:AssumeRole"
+         }
+      ]
    }
    ```
 
@@ -529,7 +526,8 @@ APIのエンドポイントを保護する方法については、Amazon API Gat
 ```bash cURL lines
 curl --request GET \
 --url https://%7ByourInvokeUrl%7D/pets
-``` lines
+```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourInvokeUrl%7D/pets");
 var request = new RestRequest(Method.GET);
@@ -552,7 +550,8 @@ body, _ := ioutil.ReadAll(res.Body)
 fmt.Println(res)
 fmt.Println(string(body))
 }
-``` lines
+```
+
 ```java Java lines
 HttpResponse response = Unirest.get("https://%7ByourInvokeUrl%7D/pets")
 .asString();
@@ -566,7 +565,8 @@ console.log(response.data);
 }).catch(function (error) {
 console.error(error);
 });
-``` lines
+```
+
 ```obj-c Obj-C lines
 #import 
 NSMutableURLRequest \*request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://%7ByourInvokeUrl%7D/pets"]
@@ -605,7 +605,8 @@ echo "cURL Error #:" . $err;
 } else {
 echo $response;
 }
-``` lines
+```
+
 ```python Python lines
 import http.client
 conn = http.client.HTTPSConnection("")
@@ -626,7 +627,8 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Get.new(url)
 response = http.request(request)
 puts response.read_body
-``` lines
+```
+
 ```swift Swift lines
 import Foundation
 let request = NSMutableURLRequest(url: NSURL(string: "https://%7ByourInvokeUrl%7D/pets")! as URL,

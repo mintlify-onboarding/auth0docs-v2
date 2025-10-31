@@ -10,15 +10,6 @@ permalink: "sample-use-cases-scopes-and-claims"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
-
-以下の例では、[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)を使ってユーザーを認証し、必要な権限（スコープ）とトークンを要求します。要求パラメーターおよびこのフローの完全実装の詳細については、チュートリアル「[ログインを通常のWebアプリケーションに追加する](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow)」をお読みください。
-
-## ユーザーを認可して標準クレームを要求する
-
-この例では、ユーザーを認証し、ユーザーインターフェイスをパーソナライズできるようにユーザー詳細を取得したいとします。このためには、ユーザー名、ニックネーム、プロフィール画像、およびメール情報を含んだIDトークンが必要です。
-
-1. ユーザーに認証URLを送信して、認可フローを開始します。
-
 export const codeExample1 = `https://{yourDomain}/authorize?
   response_type=code&
   client_id={yourClientId}&
@@ -26,24 +17,6 @@ export const codeExample1 = `https://{yourDomain}/authorize?
   scope=openid%20profile%20email&
   state=YOUR_STATE_VALUE
 `;
-
-   <AuthCodeBlock children={codeExample1} language="text" lines />
-
-   
-
-   
-
-   この例では、以下の点に注意してください。
-   * `response_type`パラメーターには1つの値が含まれます。
-
-     + `code`：標準のWebアプリケーションを使用しているため、最初に認証コードに対する要求が行われます。このコードを使ってトークンを要求すると、認証に必要なIDトークンが送られてきます。
-   * `scope`パラメーターには、3つの値（要求されたOIDCスコープ）が含まれます。
-
-     + `openid`：アプリケーションがユーザーの身元検証にOIDCを使用することを伝えるため
-     + `profile`：`name`、`nickname`、および`picture`を取得するため
-     + `email`：`email`と`email_verified`を取得するため
-2. ユーザーが同意し（必要な場合）、Auth0がアプリにリダイレクトした後、[トークンを要求します](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow)。
-3. 応答からIDトークンを抽出し、[解読します](/docs/ja-jp/secure/tokens/id-tokens)。次のクレームが表示されます。
 
 export const codeExample2 = `{
   "name": "John Doe",
@@ -59,14 +32,49 @@ export const codeExample2 = `{
   "iat": 1490886820,
   "nonce": "crypto-value",
   "at_hash": "IoS3ZGppJKUn3Bta_LgE2A"
-}
+}`;
+
+export const codeExample3 = `https://{yourDomain}/authorize?
+  response_type=code&
+  client_id={yourClientId}&
+  redirect_uri={https://yourApp/callback}& 
+  scope=read:appointments&
+  audience=YOUR_API_AUDIENCE&
+  state=YOUR_STATE_VALUE
 `;
 
+export const codeExample4 = `https://{yourDomain}/authorize?
+  response_type=code&
+  client_id={yourClientId}&
+  redirect_uri={https://yourApp/callback}& 
+  scope=openid%20profile%20email%20read:appointments&
+  audience=YOUR_API_AUDIENCE&
+  state=YOUR_STATE_VALUE
+`;
+
+以下の例では、[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)を使ってユーザーを認証し、必要な権限（スコープ）とトークンを要求します。要求パラメーターおよびこのフローの完全実装の詳細については、チュートリアル「[ログインを通常のWebアプリケーションに追加する](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow)」をお読みください。
+
+## ユーザーを認可して標準クレームを要求する
+
+この例では、ユーザーを認証し、ユーザーインターフェイスをパーソナライズできるようにユーザー詳細を取得したいとします。このためには、ユーザー名、ニックネーム、プロフィール画像、およびメール情報を含んだIDトークンが必要です。
+
+1. ユーザーに認証URLを送信して、認可フローを開始します。
+
+   <AuthCodeBlock children={codeExample1} language="text" lines />
+
+   この例では、以下の点に注意してください。
+   * `response_type`パラメーターには1つの値が含まれます。
+
+     + `code`：標準のWebアプリケーションを使用しているため、最初に認証コードに対する要求が行われます。このコードを使ってトークンを要求すると、認証に必要なIDトークンが送られてきます。
+   * `scope`パラメーターには、3つの値（要求されたOIDCスコープ）が含まれます。
+
+     + `openid`：アプリケーションがユーザーの身元検証にOIDCを使用することを伝えるため
+     + `profile`：`name`、`nickname`、および`picture`を取得するため
+     + `email`：`email`と`email_verified`を取得するため
+2. ユーザーが同意し（必要な場合）、Auth0がアプリにリダイレクトした後、[トークンを要求します](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow)。
+3. 応答からIDトークンを抽出し、[解読します](/docs/ja-jp/secure/tokens/id-tokens)。次のクレームが表示されます。
+
    <AuthCodeBlock children={codeExample2} language="json" />
-
-   
-
-   
 
    アプリはユーザー属性を取得し、この属性を使ってUIをパーソナライズできるようになります。
 
@@ -78,20 +86,7 @@ export const codeExample2 = `{
 
 1. ユーザーに認証URLを送信して、認可フローを開始します。
 
-export const codeExample3 = `https://{yourDomain}/authorize?
-  response_type=code&
-  client_id={yourClientId}&
-  redirect_uri={https://yourApp/callback}& 
-  scope=read:appointments&
-  audience=YOUR_API_AUDIENCE&
-  state=YOUR_STATE_VALUE
-`;
-
    <AuthCodeBlock children={codeExample3} language="text" lines />
-
-   
-
-   
 
    この例では、以下の点に注意してください。
    * `response_type`パラメーターには1つの値が含まれたままです。
@@ -122,20 +117,7 @@ export const codeExample3 = `https://{yourDomain}/authorize?
 
 1. ユーザーに認証URLを送信して、認可フローを開始します。
 
-export const codeExample4 = `https://{yourDomain}/authorize?
-  response_type=code&
-  client_id={yourClientId}&
-  redirect_uri={https://yourApp/callback}& 
-  scope=openid%20profile%20email%20read:appointments&
-  audience=YOUR_API_AUDIENCE&
-  state=YOUR_STATE_VALUE
-`;
-
    <AuthCodeBlock children={codeExample4} language="text" lines />
-
-   
-
-   
 
    この例では、以下の点に注意してください。
    * `response_type`パラメーターには1つの値が含まれたままです。

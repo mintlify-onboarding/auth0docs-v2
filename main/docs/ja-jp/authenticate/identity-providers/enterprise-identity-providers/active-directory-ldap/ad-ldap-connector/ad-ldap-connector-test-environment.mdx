@@ -10,6 +10,7 @@ permalink: "ad-ldap-connector-test-environment"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample = `https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http%3A%2F%2Fjwt.io&connection=auth0-test-ad`;
 
 クラウドにデプロイしたVM上にAD Domain Controllerを最小限にインストールして、テスト環境をセットアップすることができます。VMは任意のクラウドプラットフォーム上で実行することができます。この例では、Microsoft Azure上にセットアップする方法を説明します。
 
@@ -24,18 +25,14 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
    ```text lines
    > New-ADGroup -Name "Accounting" -GroupScope "DomainLocal"
-       > New-ADGroup -Name "IT" -GroupScope "DomainLocal"
-       
-       > New-ADUser -GivenName Bob -Surname Johnson -Name "Bob Johnson" -SamAccountName bob.johnson -Enabled $True -AccountPassword (ConvertTo-SecureString "Pass@word1!" -AsPlainText -force) -PasswordNeverExpires $True
-       > New-ADUser -GivenName Mary -Surname Smith -Name "Mary Smith" -SamAccountName mary.smith -Enabled $True -AccountPassword (ConvertTo-SecureString "Pass@word1!" -AsPlainText -force) -PasswordNeverExpires $True
-       
-       > Add-ADGroupMember -Identity Accounting -Members "bob.johnson", "mary.smith"
-       > Add-ADGroupMember -Identity IT -Members "mary.smith"
+   > New-ADGroup -Name "IT" -GroupScope "DomainLocal"
+   
+   > New-ADUser -GivenName Bob -Surname Johnson -Name "Bob Johnson" -SamAccountName bob.johnson -Enabled $True -AccountPassword (ConvertTo-SecureString "Pass@word1!" -AsPlainText -force) -PasswordNeverExpires $True
+   > New-ADUser -GivenName Mary -Surname Smith -Name "Mary Smith" -SamAccountName mary.smith -Enabled $True -AccountPassword (ConvertTo-SecureString "Pass@word1!" -AsPlainText -force) -PasswordNeverExpires $True
+   
+   > Add-ADGroupMember -Identity Accounting -Members "bob.johnson", "mary.smith"
+   > Add-ADGroupMember -Identity IT -Members "mary.smith"
    ```
-
-   
-
-   
 
 ## AD/LDAPコネクターをインストールして構成する
 
@@ -63,13 +60,7 @@ Auth0アカウントを使用してすべてが動作していることを確実
 5. **［Enterprise（エンタープライズ）］** で、「`auth0-test-ad`」という名前の **Active Directory / LDAP** 接続を有効にします。
 6. ブラウザーで以下のリンクを開いて、認証フローをテストします。
 
-   export const codeExample = `   https://{yourDomain}/authorize?response_type=token&scope=openid%20profile&client_id={yourClientId}&redirect_uri=http://jwt.io&connection=auth0-test-ad
-   `;
-
-<AuthCodeBlock children={codeExample} language="http" />
-
-   
-
+    <AuthCodeBlock children={codeExample} language="http" />
    
 7. ディレクトリに作成したテストユーザーの1人でログインします。
 
