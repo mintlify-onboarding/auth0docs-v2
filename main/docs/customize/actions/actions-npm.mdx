@@ -41,7 +41,7 @@ Use one of the following package managers to install the package as a **developm
 
 The library has the following **structure**:
 
-\`\`\`
+```bash
 @auth0/actions
 │
 └───credentials-exchange
@@ -72,7 +72,7 @@ The library has the following **structure**:
 │   └───v2
 └───send-phone-message
     └───v2
-\`\`\`
+```
 
 The import statement should be based on each **trigger name** and **version number** considering the previous library structure.
 
@@ -82,11 +82,14 @@ The import statement should be based on each **trigger name** and **version numb
 
 Use one of the following alternatives to import the TypeScript definitions into your Actions depending on your technology:
 
-<Tabs><Tab title="JSDoc @import">
+Use this alternative when you want IntelliSense without changing your existing JavaScript code structure:
+
+<Tabs>
+<Tab title="JSDoc @import">
 
 Use this alternative when you want IntelliSense without changing your existing JavaScript code structure:
 
-\`\`\`
+```javascript
 /** @import {Event, PostLoginAPI} from "@auth0/actions/post-login/v3" */
 
 /**
@@ -98,12 +101,13 @@ Use this alternative when you want IntelliSense without changing your existing J
 exports.onExecutePostLogin = async (event, api) => {
   // Your code
 }
-\`\`\`
+```
 
-</Tab><Tab title="JSDoc @param">
+</Tab>
+<Tab title="JSDoc @param">
 
 Use this alternative for type safety in JavaScript files using import statements in JSDoc comments:
-\`\`\`
+```javascript
 /**
 * Handler that will be called during the execution of a PostLogin flow.
 *
@@ -112,13 +116,15 @@ Use this alternative for type safety in JavaScript files using import statements
 */
 exports.onExecutePostLogin = async (event, api) => {
   // Your code
-}
-\`\`\`
+};
+```
 
-</Tab><Tab title="TypeScript import">
+</Tab>
+
+<Tab title="TypeScript import">
 Use this alternative when developing with TypeScript for full type checking and modern syntax:
 
-\`\`\`
+```javascript
 import type { Event, PostLoginAPI } from '@auth0/actions/post-login/v3';
 
 /**
@@ -130,23 +136,25 @@ import type { Event, PostLoginAPI } from '@auth0/actions/post-login/v3';
 exports.onExecutePostLogin = async (event: Event, api: PostLoginAPI) => {
   // Your code
 };
-\`\`\`
-</Tab></Tabs>
+```
+</Tab>
+</Tabs>
 
-> [!WARNING]  
-> When using TypeScript, you must compile your code to JavaScript before deploying to Auth0. The Auth0 Actions runtime only executes JavaScript.Use the TypeScript compiler (`tsc`) to transpile your `.ts` files to `.js` files, before it can be deployed. You must also include JSDoc comments to enable IntelliSense in the Dashboard.
-
+<Warning>
+When using TypeScript, you must compile your code to JavaScript before deploying to Auth0. The Auth0 Actions runtime only executes JavaScript.Use the TypeScript compiler (`tsc`) to transpile your `.ts` files to `.js` files, before it can be deployed. You must also include JSDoc comments to enable IntelliSense in the Dashboard.
+</Warning>
 
 ### Examples
 The following Actions examples are intentionally presented in both JavaScript and TypeScript to provide a direct, side-by-side comparison.
 
 #### Configuration
 
-<Tabs><Tab title="JavaScript">
+<Tabs>
+<Tab title="JavaScript">
 
 In your `package.json`, define any development dependencies to have intelliSense help when writing your Action:
 
-\`\`\`
+```javascript
 {
   "name": "actions-js",
   "version": "1.0.0",
@@ -158,13 +166,14 @@ In your `package.json`, define any development dependencies to have intelliSense
     "@auth0/actions": "^0.7.1"
   }
 }
-\`\`\`
+```
 
-</Tab><Tab title="TypeScript">
+</Tab>
+<Tab title="TypeScript">
 
 In your `package.json`, define any development dependencies to have intelliSense help when writing your Action.
 
-\`\`\`
+```typescript
 {
   "name": "actions-ts",
   "version": "1.0.0",
@@ -178,11 +187,11 @@ In your `package.json`, define any development dependencies to have intelliSense
     "typescript": "^5.9.2"
   }
 }
-\`\`\`
+```
 
 In your `tsconfig.json`, define any development dependencies to have intelliSense help when writing your Action.
 
-\`\`\`
+```typescript
 {
   "compilerOptions": {
     "target": "ES2020",
@@ -209,8 +218,9 @@ In your `tsconfig.json`, define any development dependencies to have intelliSens
     "dist"
   ]
 }
-\`\`\`
-</Tab></Tabs>
+```
+</Tab>
+</Tabs>
 
 #### Post-Login access control and ID token custom claims
 
@@ -220,7 +230,7 @@ The import statement declares the availability of external types to your code. T
 
 <Tabs><Tab title="JavaScript">
 
-\`\`\`
+```javascript
 /** @import {Event, PostLoginAPI} from "@auth0/actions/post-login/v3" */
 
 const CUSTOM_CLAIM_NAMESPACE = 'https://example.com';
@@ -241,11 +251,11 @@ exports.onExecutePostLogin = async (event, api) => {
 
   api.idToken.setCustomClaim(`${CUSTOM_CLAIM_NAMESPACE}/roles`, roles);
 }
-\`\`\`
+```
 
 </Tab><Tab title="TypeScript">
 
-\`\`\`
+```typescript
 import type { Event, PostLoginAPI } from '@auth0/actions/post-login/v3';
 
 const CUSTOM_CLAIM_NAMESPACE = 'https://example.com';
@@ -266,10 +276,10 @@ exports.onExecutePostLogin = async (event: Event, api: PostLoginAPI) => {
 
   api.idToken.setCustomClaim(`${CUSTOM_CLAIM_NAMESPACE}/roles`, roles);
 };
-\`\`\`
+```
 
 </Tab></Tabs>
 
 To learn more about @auth0/actions, visit: https://www.npmjs.com/package/@auth0/actions.
 
-To learn more about writing Actions, see [Write Your First Action](main/docs/customize/actions/write-your-first-action.mdx).
+To learn more about writing Actions, see [Write Your First Action](/docs/customize/actions/write-your-first-action).
