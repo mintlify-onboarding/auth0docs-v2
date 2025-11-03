@@ -18,7 +18,7 @@ Ce tutoriel vous aidera à appeler votre propre API en utilisant le flux de code
 
 </Callout>
 
-Auth0 permet à votre application d’implémenter facilement le <Tooltip href="/docs/docs/fr-ca/glossary?term=authorization-code" tip="Code d’autorisation
+Auth0 permet à votre application d’implémenter facilement le <Tooltip href="/docs/fr-ca/glossary?term=authorization-code" tip="Code d’autorisation
 Chaîne aléatoire générée par le serveur d’autorisation et renvoyée à l’application dans le cadre de la réponse d’autorisation lors de l’utilisation du flux de code d’autorisation (avec ou sans PKCE)." cta="Voir le glossaire">Code d’autorisation</Tooltip> flux à l’aide de(s) :
 
 * [Guides de démarrage rapide pour applications Web classiques](/docs/fr-ca/quickstart/webapp) : la manière la plus simple d’implémenter le flux.
@@ -93,7 +93,7 @@ Notez que pour autoriser un utilisateur lors de l’appel d’une API personnali
 </tr>
 <tr>
 <td>`scope`</td>
-<td>Précise les <a href="/docs/docs/fr-ca/scopes">permissions</a> pour lesquelles vous souhaitez demander une autorisation, ce qui dicte les permissions (ou attributs utilisateur) que vous souhaitez voir renvoyées. Elles doivent être séparées par un espace. Vous pouvez demander n’importe lequel des <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">scopes standard OpenID Connect (OIDC)</a> sur les utilisateurs, comme `profile` ou `email`, <a href="/docs/docs/fr-ca/tokens/concepts/jwt-claims#custom-claims">demandes personnalisées</a> conforme à un <a href="/docs/docs/fr-ca/tokens/guides/create-namespaced-custom-claims">format d'espace de noms</a>, ou n’importe quelle permission prise en charge par l’API cible (p. ex., `read:contacts`). Incluez `offline_access` pour obtenir un <dfn id="react-containers-DefinitionTooltip-1"><span class="tooltip-portal-underlined-word" data-react-universal-portal="">Jeton d’actualisation</span></dfn> (assurez-vous que le champ <strong>Allow Offline Access</strong> est activé dans les <a href="https://manage.auth0.com/#/applications">Paramètres de l’application</a>).</td>
+<td>Précise les <a href="/docs/fr-ca/scopes">permissions</a> pour lesquelles vous souhaitez demander une autorisation, ce qui dicte les permissions (ou attributs utilisateur) que vous souhaitez voir renvoyées. Elles doivent être séparées par un espace. Vous pouvez demander n’importe lequel des <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">scopes standard OpenID Connect (OIDC)</a> sur les utilisateurs, comme `profile` ou `email`, <a href="/docs/fr-ca/tokens/concepts/jwt-claims#custom-claims">demandes personnalisées</a> conforme à un <a href="/docs/fr-ca/tokens/guides/create-namespaced-custom-claims">format d'espace de noms</a>, ou n’importe quelle permission prise en charge par l’API cible (p. ex., `read:contacts`). Incluez `offline_access` pour obtenir un <dfn id="react-containers-DefinitionTooltip-1"><span class="tooltip-portal-underlined-word" data-react-universal-portal="">Jeton d’actualisation</span></dfn> (assurez-vous que le champ <strong>Allow Offline Access</strong> est activé dans les <a href="https://manage.auth0.com/#/applications">Paramètres de l’application</a>).</td>
 </tr>
 <tr>
 <td>`audience`</td>
@@ -101,7 +101,7 @@ Notez que pour autoriser un utilisateur lors de l’appel d’une API personnali
 </tr>
 <tr>
 <td>`state`</td>
-<td>(recommandé) Une chaîne alphanumérique arbitraire opaque que votre application ajoute à la requête initiale qu’Auth0 inclut lorsqu’elle redirige vers votre application. Pour voir comment utiliser cette valeur pour prévenir les attaques de falsification de requête intersites (CSRF), consultez <a href="/docs/docs/fr-ca/protocols/oauth2/mitigate-csrf-attacks">Atténuer les attaques CSRF avec les paramètres d’état</a>.</td>
+<td>(recommandé) Une chaîne alphanumérique arbitraire opaque que votre application ajoute à la requête initiale qu’Auth0 inclut lorsqu’elle redirige vers votre application. Pour voir comment utiliser cette valeur pour prévenir les attaques de falsification de requête intersites (CSRF), consultez <a href="/docs/fr-ca/protocols/oauth2/mitigate-csrf-attacks">Atténuer les attaques CSRF avec les paramètres d’état</a>.</td>
 </tr>
 <tr>
 <td>`organization`</td>
@@ -109,7 +109,7 @@ Notez que pour autoriser un utilisateur lors de l’appel d’une API personnali
 </tr>
 <tr>
 <td>`invitation`</td>
-<td>(facultatif) Identifiant de l’invitation à l’organisation. Lors de l’<a href="/docs/docs/fr-ca/organizations/invite-members">invitation d’un membre à une organisation</a>, votre application doit gérer l’acceptation de l’invitation en transmettant les paires clé-valeur `invitation` et `organization` lorsque l’utilisateur accepte l’invitation.</td>
+<td>(facultatif) Identifiant de l’invitation à l’organisation. Lors de l’<a href="/docs/fr-ca/organizations/invite-members">invitation d’un membre à une organisation</a>, votre application doit gérer l’acceptation de l’invitation en transmettant les paires clé-valeur `invitation` et `organization` lorsque l’utilisateur accepte l’invitation.</td>
 </tr>
 </tbody>
 </table>
@@ -362,7 +362,7 @@ dataTask.resume()
 </tr>
 <tr>
 <td>`client_secret`</td>
-<td>Le secret client de votre application. Vous pouvez trouver cette valeur dans les <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</a>.  Pour en savoir plus sur les méthodes d’authentification d’application disponibles, lisez <a href="/docs/docs/fr-ca/secure/application-credentials">Identifiants d’applications</a>.</td>
+<td>Le secret client de votre application. Vous pouvez trouver cette valeur dans les <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</a>.  Pour en savoir plus sur les méthodes d’authentification d’application disponibles, lisez <a href="/docs/fr-ca/secure/application-credentials">Identifiants d’applications</a>.</td>
 </tr>
 <tr>
 <td>`redirect_uri`</td>

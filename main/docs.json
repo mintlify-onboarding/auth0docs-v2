@@ -24182,8 +24182,8 @@
       "destination": "/docs/quickstart/spa/flutter"
     },
     {
-      "source": "/docs/docs/fr-ca/get-started/auth-for-genai",
-      "destination": "/docs/docs/fr-ca/get-started/auth0-for-ai-agents"
+      "source": "/docs/fr-ca/get-started/auth-for-genai",
+      "destination": "/docs/fr-ca/get-started/auth0-for-ai-agents"
     },
     {
       "source": "/docs/ja-jp/get-started/auth-for-genai",

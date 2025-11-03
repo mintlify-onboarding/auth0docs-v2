@@ -9,17 +9,17 @@ permalink: "which-oauth-2-0-flow-should-i-use"
 'twitter:description': "Apprenez comment identifier le flux OAuth 2.0 adapté à chaque cas d’utilisation."
 ---
 
-Le [cadre d’applications Authorization OAuth 2.0](/docs/fr-ca/authenticate/protocols/oauth) prend en charge différents flux (ou autorisations) différents. <Tooltip href="/docs/docs/fr-ca/glossary?term=flow" tip="Flux
+Le [cadre d’applications Authorization OAuth 2.0](/docs/fr-ca/authenticate/protocols/oauth) prend en charge différents flux (ou autorisations) différents. <Tooltip href="/docs/fr-ca/glossary?term=flow" tip="Flux
 Processus qui peuvent être étendus par des actions. Chaque flux est composé d’un ou de plusieurs déclencheurs et représente le pipeline logique dans lequel l’information se déplace à un moment donné du parcours d’Auth0." cta="Voir le glossaire">Flux</Tooltip> sont des façons de récupérer un jeton d’accès. Le choix d’un flux le mieux adapté pour votre cas d’utilisation dépend surtout de votre [application type](/docs/fr-ca/get-started/applications) (type d’application), mais d’autres paramètres entrent également en ligne de compte, comme le niveau de confiance vis-à-vis du client ou l’expérience que vous souhaitez offrir à vos utilisateurs.
 
 ## Terminologie OAuth 2.0
 
-* **<Tooltip href="/docs/docs/fr-ca/glossary?term=resource-owner" tip="Propriétaire de ressources
+* **<Tooltip href="/docs/fr-ca/glossary?term=resource-owner" tip="Propriétaire de ressources
 Entité (telle qu’un utilisateur ou une application) capable d’accorder l’accès à une ressource protégée." cta="Voir le glossaire">Resource Owner</Tooltip>** (Propriétaire de ressource) : Une entité pouvant accorder l’accès à une ressource protégée. Il s’agit généralement de l’utilisateur final.
 * **Client**  : Application demandant l’accès à une ressource protégée au nom du propriétaire de ressource.
-* **<Tooltip href="/docs/docs/fr-ca/glossary?term=resource-server" tip="Serveur de ressources
+* **<Tooltip href="/docs/fr-ca/glossary?term=resource-server" tip="Serveur de ressources
 Serveur hébergeant des ressources protégées. Les serveurs de ressources traitent les requêtes pour des ressources sécurisées et y répondent." cta="Voir le glossaire">Resource Server</Tooltip>** (Serveur de ressources) : Serveur hébergeant les ressources protégées. Il s’agit de l’API à laquelle vous souhaitez accéder.
-* **<Tooltip href="/docs/docs/fr-ca/glossary?term=authorization-server" tip="Serveur d’autorisations :
+* **<Tooltip href="/docs/fr-ca/glossary?term=authorization-server" tip="Serveur d’autorisations :
 Serveur centralisé qui contribue à définir les limites de l’accès d’un utilisateur. Par exemple, votre serveur d’autorisations peut contrôler les données, les tâches et les fonctionnalités accessibles à un utilisateur. Un serveur d’autorisation ne sert pas à authentifier les utilisateurs. Cette tâche incombe au serveur d’authentification, qui est chargé de vérifier l’identité d’un utilisateur." cta="Voir le glossaire">Authorization Server</Tooltip>** (Serveur d’autorisations) : Serveur qui identifie le propriétaire de la ressource et émet les jetons d’accès après réception d’une autorisation en bonne et due forme. Dans ce cas, Auth0.
 * **Agent utilisateur** : Agent utilisé par le propriétaire de la ressource pour interagir avec le client (par exemple, un navigateur ou une application native).
 
@@ -74,7 +74,7 @@ L’authentification CIBA est actuellement en accès anticipé. Pour activer l�
 
 </Callout>
 
-L’authentification par canal arrière initiée par le client (CIBA) est une norme de la <Tooltip href="/docs/docs/fr-ca/glossary?term=openid" tip="OpenID
+L’authentification par canal arrière initiée par le client (CIBA) est une norme de la <Tooltip href="/docs/fr-ca/glossary?term=openid" tip="OpenID
 Norme ouverte d’authentification qui permet aux applications de vérifier l’identité des utilisateurs sans avoir à collecter leurs informations de connexion." cta="Voir le glossaire">OpenID</Tooltip> Foundation pour mettre en œuvre un flux d’authentification alternatif à [OpenID Connect](https://openid.net/developers/how-connect-works/). CIBA diffère du flux standard d’OpenID Connect en ce que :
 
 * L’application cliente initie le processus d’authentification au nom de l’utilisateur final.

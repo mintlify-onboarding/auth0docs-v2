@@ -15,17 +15,17 @@ The **AD/LDAP Connector** (1), is a bridge between your **Active Directory/LDAP*
 
 <Frame>![Diagramme de présentation du connecteur AD/LDAP](/docs/images/fr-ca/cdy7uua7fh8z/2HT4cRvUDzA2OdEPlfgLDV/40813726f4d35e6c582e7625f5b1fac2/ldap-connect.png)</Frame>
 
-Pour la [haute disponibilité et l’équilibrage de charge](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability), vous pouvez installer plusieurs instances du connecteur. Toutes les connexions sont sortantes du connecteur vers le serveur Auth0, de sorte qu’il n’est généralement pas nécessaire de modifier votre pare-feu.
+Pour la [haute disponibilité et l’équilibrage de charge](/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/ad-ldap-high-availability), vous pouvez installer plusieurs instances du connecteur. Toutes les connexions sont sortantes du connecteur vers le serveur Auth0, de sorte qu’il n’est généralement pas nécessaire de modifier votre pare-feu.
 
 ## Prérequis
 
 Avant de démarrer :
 
-* [Enregistrez votre application avec Auth0](/docs/docs/fr-ca/get-started/auth0-overview/create-applications).
+* [Enregistrez votre application avec Auth0](/docs/fr-ca/get-started/auth0-overview/create-applications).
 
   + Sélectionnez un **Type d’application** approprié.
   + Ajouter une **URL de rappel autorisée** de `{https://yourApp/callback}`.
-  + Assurez-vous que les [**Types d’autorisation**](/docs/docs/fr-ca/get-started/applications/update-grant-types) de votre application comprennent les flux appropriés.
+  + Assurez-vous que les [**Types d’autorisation**](/docs/fr-ca/get-started/applications/update-grant-types) de votre application comprennent les flux appropriés.
 
 ## Étapes
 
@@ -98,23 +98,23 @@ Nous proposons différentes versions du connecteur à installer sur les platefor
 
 ## Installez le connecteur sur votre réseau
 
-Configurez le [Connecteur AD/LDAP](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector) en suivant les instructions pour votre plate-forme :
+Configurez le [Connecteur AD/LDAP](/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector) en suivant les instructions pour votre plate-forme :
 
-* [Installez le connecteur AD/LDAP sur Windows](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
-* [Installez le connecteur AD/LDAP sur les plates-formes non Microsoft](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
+* [Installez le connecteur AD/LDAP sur Windows](/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
+* [Installez le connecteur AD/LDAP sur les plates-formes non Microsoft](/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap/ad-ldap-connector/install-configure-ad-ldap-connector)
 
 ## Permettre une connexion entreprise pour votre application Auth0
 
-Pour utiliser votre nouvelle connexion AD, vous devez premièrement [activer la connexion](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) pour vos applications Auth0.
+Pour utiliser votre nouvelle connexion AD, vous devez premièrement [activer la connexion](/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/enable-enterprise-connections) pour vos applications Auth0.
 
 ## Tester la connexion
 
-Vous êtes maintenant prêt à [tester votre connexion](/docs/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
+Vous êtes maintenant prêt à [tester votre connexion](/docs/fr-ca/authenticate/identity-providers/enterprise-identity-providers/test-enterprise-connections).
 
 ## Prochaines étapes
 
-* [Intégrer Auth0 en utilisant l’une de nos bibliothèques](/docs/docs/fr-ca/libraries)
-* [Intégrer Auth0 en utilisant notre Authentication API](/docs/docs/fr-ca/api/authentication)
-* [En savoir plus sur le flux d’authentification](/docs/docs/fr-ca/get-started/authentication-and-authorization-flow)
-* [Transmettre des paramètres supplémentaires au fournisseur d’identité](/docs/docs/fr-ca/authenticate/identity-providers/pass-parameters-to-idps)
-* [Redemander des autorisations aux utilisateurs](/docs/docs/fr-ca/authenticate/identity-providers/social-identity-providers/reprompt-permissions)
+* [Intégrer Auth0 en utilisant l’une de nos bibliothèques](/docs/fr-ca/libraries)
+* [Intégrer Auth0 en utilisant notre Authentication API](/docs/fr-ca/api/authentication)
+* [En savoir plus sur le flux d’authentification](/docs/fr-ca/get-started/authentication-and-authorization-flow)
+* [Transmettre des paramètres supplémentaires au fournisseur d’identité](/docs/fr-ca/authenticate/identity-providers/pass-parameters-to-idps)
+* [Redemander des autorisations aux utilisateurs](/docs/fr-ca/authenticate/identity-providers/social-identity-providers/reprompt-permissions)

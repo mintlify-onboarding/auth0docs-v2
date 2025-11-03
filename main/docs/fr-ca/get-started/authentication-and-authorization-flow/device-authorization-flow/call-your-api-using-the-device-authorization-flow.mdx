@@ -276,7 +276,7 @@ Si votre application ne demande un jeton d’accès que pour récupérer des inf
 </tr>
 <tr>
 <td>`scope`</td>
-<td>Les <a href="/docs/docs/fr-ca/scopes">permissions</a> pour lesquels vous souhaitez demander une autorisation. Ceux-ci doivent être séparés par un espace. Vous pouvez demander n’importe laquelle des <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">permissions OIDC standard</a> concernant les utilisateurs, telles que `profile` et `email`, des <a href="/docs/docs/fr-ca/tokens/concepts/jwt-claims#custom-claims">demandes personnalisées</a> conformes à un <a href="/docs/docs/fr-ca/tokens/guides/create-namespaced-custom-claims">format d’espace de noms</a>, ou n’importe quelle <a href="/docs/docs/fr-ca/scopes/current/api-scopes">permission prise en charge par l’API cible</a> (par exemple, `read:contacts`. Incluez `openid` pour obtenir un jeton d’ID ou pour pouvoir utiliser le <a href="/docs/docs/fr-ca/api/authentication#user-profile">point de terminaison /userinfo</a> pour récupérer les informations de profil de l’utilisateur. Incluez `offline_access` pour obtenir un jeton d’actualisation (assurez-vous que le champ <strong>Autoriser l’accès hors ligne</strong> est activé dans les <a href="https://manage.auth0.com/#/apis">Paramètres de l’API</a>). Notez que cela doit être codé par URL.</td>
+<td>Les <a href="/docs/fr-ca/scopes">permissions</a> pour lesquels vous souhaitez demander une autorisation. Ceux-ci doivent être séparés par un espace. Vous pouvez demander n’importe laquelle des <a href="https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">permissions OIDC standard</a> concernant les utilisateurs, telles que `profile` et `email`, des <a href="/docs/fr-ca/tokens/concepts/jwt-claims#custom-claims">demandes personnalisées</a> conformes à un <a href="/docs/fr-ca/tokens/guides/create-namespaced-custom-claims">format d’espace de noms</a>, ou n’importe quelle <a href="/docs/fr-ca/scopes/current/api-scopes">permission prise en charge par l’API cible</a> (par exemple, `read:contacts`. Incluez `openid` pour obtenir un jeton d’ID ou pour pouvoir utiliser le <a href="/docs/fr-ca/api/authentication#user-profile">point de terminaison /userinfo</a> pour récupérer les informations de profil de l’utilisateur. Incluez `offline_access` pour obtenir un jeton d’actualisation (assurez-vous que le champ <strong>Autoriser l’accès hors ligne</strong> est activé dans les <a href="https://manage.auth0.com/#/apis">Paramètres de l’API</a>). Notez que cela doit être codé par URL.</td>
 </tr>
 <tr>
 <td>`audience`</td>
@@ -644,7 +644,7 @@ L’utilisateur terminera la transaction en se connectant. Cette étape peut com
 
 * Authentifier l’utilisateur;
 * Rediriger l’utilisateur vers un fournisseur d’identité pour gérer l’authentification;
-* Vérification des sessions actives d’authentification unique (<Tooltip href="/docs/docs/fr-ca/glossary?term=single-sign-on" tip="Authentification unique (SSO)
+* Vérification des sessions actives d’authentification unique (<Tooltip href="/docs/fr-ca/glossary?term=single-sign-on" tip="Authentification unique (SSO)
 Service qui, après qu’un utilisateur se soit connecté à une application, le connecte automatiquement à d’autres applications." cta="Voir le glossaire">SSO</Tooltip>);
 * Obtenir le consentement de l’utilisateur pour l’appareil, à moins qu’il n’ait été donné au préalable.
 
