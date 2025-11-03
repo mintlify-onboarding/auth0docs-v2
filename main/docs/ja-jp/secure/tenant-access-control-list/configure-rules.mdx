@@ -10,6 +10,75 @@ permalink: "configure-rules"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample1 = `package main
+
+import (
+	"context"
+	"log"
+
+	"github.com/auth0/go-auth0"
+	"github.com/auth0/go-auth0/management"
+)
+
+func main() {
+	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	networkACL := &management.NetworkACL{
+		Description: auth0.String("Block all traffic from China"),
+		Active:      auth0.Bool(true),
+		Priority:    auth0.Int(1),
+		Rule: &management.NetworkACLRule{
+			Action: &management.NetworkACLRuleAction{
+				Block: auth0.Bool(true),
+			},
+			Match: &management.NetworkACLRuleMatch{
+				GeoCountryCodes: &[]string{"CN"},
+			},
+			Scope: auth0.String("authentication"),
+		},
+	}
+
+	err = mgmt.NetworkACL.Create(context.Background(), networkACL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Network ACL has been created")
+}`;
+
+export const codeExample2 = `package main
+
+import (
+	"context"
+	"log"
+
+	"github.com/auth0/go-auth0"
+	"github.com/auth0/go-auth0/management"
+)
+
+func main() {
+	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	networkACL := &management.NetworkACL{
+		Rule: &management.NetworkACLRule{
+			Action: &management.NetworkACLRuleAction{
+				Log: auth0.Bool(true),
+			},
+			Scope: auth0.String("authentication"),
+		},
+	}
+
+	err = mgmt.NetworkACL.Patch(context.Background(), "YOUR_TENANT_ACL_ID", networkACL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Network ACL has been updated to enable monitoring mode")
+}`;
 
 You can configure Tenant Access Control List (ACL) rules with the Auth0 <Tooltip data-tooltip-id="react-containers-DefinitionTooltip-0" href="/docs/ja-jp/glossary?term=management-api" tip="Management API: 顧客が管理タスクを実行できるようにするための製品。" cta="用語集の表示">Management API</Tooltip>.
 
@@ -127,44 +196,6 @@ To create a Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-export const codeExample1 = `package main
-
-import (
-	"context"
-	"log"
-
-	"github.com/auth0/go-auth0"
-	"github.com/auth0/go-auth0/management"
-)
-
-func main() {
-	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	networkACL := &management.NetworkACL{
-		Description: auth0.String("Block all traffic from China"),
-		Active:      auth0.Bool(true),
-		Priority:    auth0.Int(1),
-		Rule: &management.NetworkACLRule{
-			Action: &management.NetworkACLRuleAction{
-				Block: auth0.Bool(true),
-			},
-			Match: &management.NetworkACLRuleMatch{
-				GeoCountryCodes: &[]string{"CN"},
-			},
-			Scope: auth0.String("authentication"),
-		},
-	}
-
-	err = mgmt.NetworkACL.Create(context.Background(), networkACL)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Network ACL has been created")
-}`;
-
 <AuthCodeBlock children={codeExample1} language="go" />
 
 </Tab><Tab title="Node SDK">
@@ -190,7 +221,7 @@ const createNetworkAcl = await client.networkAcls.create(createNetworkAclPayload
 
 </Tab><Tab title="Terraform">
 
-``` lines
+```hcl lines
 resource "auth0_network_acl" "block_traffic_acl" {
     description = "Block all traffic from China"
     active = true
@@ -209,7 +240,7 @@ resource "auth0_network_acl" "block_traffic_acl" {
 
 </Tab><Tab title="Deploy CLI">
 
-``` lines
+```yaml lines
 networkACLs:
   - description: Block all traffic from China
     active: true
@@ -225,12 +256,12 @@ networkACLs:
 
 </Tab><Tab title="Auth0 CLI">
 
-``` lines
+```sh lines
 auth0 network-acl create \
---description "Block all traffic from China" \
---priority 1 \
---active true \
---rule '{"action":{"block":true},"match":{"geo_country_codes":["CN"]},"scope":"authentication"}'
+  --description "Block all traffic from China" \
+  --priority 1 \
+  --active true \
+  --rule '{"action":{"block":true},"match":{"geo_country_codes":["CN"]},"scope":"authentication"}'
 ```
 
 </Tab></Tabs>
@@ -265,38 +296,6 @@ To enable monitoring mode for a Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-export const codeExample2 = `package main
-
-import (
-	"context"
-	"log"
-
-	"github.com/auth0/go-auth0"
-	"github.com/auth0/go-auth0/management"
-)
-
-func main() {
-	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	networkACL := &management.NetworkACL{
-		Rule: &management.NetworkACLRule{
-			Action: &management.NetworkACLRuleAction{
-				Log: auth0.Bool(true),
-			},
-			Scope: auth0.String("authentication"),
-		},
-	}
-
-	err = mgmt.NetworkACL.Patch(context.Background(), "YOUR_TENANT_ACL_ID", networkACL)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Network ACL has been updated to enable monitoring mode")
-}`;
-
 <AuthCodeBlock children={codeExample2} language="go" />
 
 </Tab><Tab title="Node SDK">
@@ -316,7 +315,7 @@ const updateNetworkAcl = await client.networkAcls.update("YOUR_TENANT_ACL_ID", u
 
 </Tab><Tab title="Terraform">
 
-``` lines
+```hcl lines
 resource "auth0_network_acl" "block_traffic_acl" {
     description = "Block all traffic from China"
     active = true
@@ -336,7 +335,7 @@ resource "auth0_network_acl" "block_traffic_acl" {
 
 </Tab><Tab title="Deploy CLI">
 
-``` lines
+```yaml lines
 networkACLs:
   - description: Block all traffic from China
     active: true
@@ -353,7 +352,7 @@ networkACLs:
 
 </Tab><Tab title="Auth0 CLI">
 
-``` lines
+```sh lines
 auth0 network-acl update YOUR_TENANT_ACL_ID --action log
 ```
 

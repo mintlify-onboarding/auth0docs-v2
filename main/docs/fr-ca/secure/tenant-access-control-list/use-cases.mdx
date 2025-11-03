@@ -10,45 +10,6 @@ permalink: "use-cases"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
-
-Tenant Access Control List (ACL) provides the power and flexibility needed to handle a large variety of scenarios.
-
-## Block a request
-
-Here is an example of a Tenant ACL rule that blocks incoming traffic from a specific geolocation country code.
-
-<Tabs><Tab title="Management API">
-
-To create this Tenant ACL rule with the Management API:
-
-1. [Get a Management API access token](/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the `create:network_acls` scope.
-2. Call the Management API [Create access control list](/docs/fr-ca/api/management/v2/network-acls/post-network-acls) endpoint with the following body:
-
-   ```json lines
-   {
-     "description": "Example of blocking a request",
-     "active": true,
-     "priority": 2,
-     "rule": {
-       "action": {
-         "block": true
-       },
-       "match": {
-         "geo_country_codes": [
-           "GEO_COUNTRY_CODE"
-         ]
-       },
-       "scope": "authentication"
-     }
-   }
-   ```
-
-   
-
-   
-
-</Tab><Tab title="Go SDK">
-
 export const codeExample1 = `package main
 
 import (
@@ -86,116 +47,6 @@ func main() {
 	}
 	log.Println("Network ACL has been created")
 }`;
-
-<AuthCodeBlock children={codeExample1} language="go" />
-
-</Tab><Tab title="Node SDK">
-
-```javascript lines
-const createNetworkAclPayload: Management.CreateNetworkAclRequestContent = {
-  description: "Example of blocking a request",
-  active: true,
-  priority: 2,
-  rule: {
-    action: {
-      block: true,
-    },
-    match: {
-      geo_country_codes: ["GEO_COUNTRY_CODE"],
-    },
-    scope: "authentication",
-  },
-};
-
-const createNetworkAcl = await client.networkAcls.create(createNetworkAclPayload);
-```
-
-</Tab><Tab title="Terraform">
-
-``` lines
-resource "auth0_network_acl" "example_blocking_request_acl" {
-    description = "Example of blocking a request"
-    active = true
-    priority = 2
-    rule {
-        action {
-            block = true
-        }
-        match {
-            geo_country_codes = ["GEO_COUNTRY_CODE"]
-        }
-        scope = "authentication"
-    }
-}
-```
-
-</Tab><Tab title="Deploy CLI">
-
-``` lines
-networkACLs:
-  - description: Example of blocking a request
-    active: true
-    priority: 2
-    rule:
-      action:
-        block: true
-      match:
-        geo_country_codes:
-          - GEO_COUNTRY_CODE
-      scope: authentication
-```
-
-</Tab><Tab title="Auth0 CLI">
-
-``` lines
-auth0 network-acl create \
---description "Example of blocking a request" \
---active true \
---priority 2 \
---rule '{"action":{"block":true},"match":{"geo_country_codes":["GEO_COUNTRY_CODE"]},"scope":"authentication"}'
-```
-
-</Tab></Tabs>
-
-### Examp](/docs/images/ock page
-
-<Frame>![](/images/fr-ca/cdy7uua7fh8z/34bruOvQ9n8CpMW1DndkYn/fb87ec4a0c9218caed2e0c49d1a7459a/Tenant_ACL_-_Block_page_example.png)</Frame>
-
-## Allow a request
-
-Here is an example of a Tenant ACL rule that allows traffic only from a specific geolocation country code.
-
-<Tabs><Tab title="Management API">
-
-To create this Tenant ACL rule with the Management API:
-
-1. [Get a Management API access token](/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the `create:network_acls` scope.
-2. Call the Management API [Create access control list](/docs/fr-ca/api/management/v2/network-acls/post-network-acls) endpoint with the following body:
-
-   ```json lines
-   {
-     "description": "Example of allowing a request",
-     "active": true,
-     "priority": 2,
-     "rule": {
-       "action": {
-         "allow": true
-       },
-       "match": {
-         "geo_country_codes": [
-           "GEO_COUNTRY_CODE"
-         ]
-       },
-       "scope": "authentication"
-     }
-   }
-   ```
-
-   
-
-   
-
-</Tab><Tab title="Go SDK">
 
 export const codeExample2 = `package main
 
@@ -235,6 +86,226 @@ func main() {
 	log.Println("Network ACL has been created")
 }`;
 
+export const codeExample3 = `package main
+
+import (
+	"context"
+	"log"
+
+	"github.com/auth0/go-auth0"
+	"github.com/auth0/go-auth0/management"
+)
+
+func main() {
+	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	networkACL := &management.NetworkACL{
+		Description: auth0.String("Example of redirecting a request"),
+		Active:      auth0.Bool(true),
+		Priority:    auth0.Int(2),
+		Rule: &management.NetworkACLRule{
+			Action: &management.NetworkACLRuleAction{
+				Redirect: auth0.Bool(true),
+				RedirectURI: auth0.String("REDIRECT_URI"),
+			},
+			Match: &management.NetworkACLRuleMatch{
+				GeoCountryCodes: &[]string{"GEO_COUNTRY_CODE"},
+			},
+			Scope: auth0.String("authentication"),
+		},
+	}
+
+	err = mgmt.NetworkACL.Create(context.Background(), networkACL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Network ACL has been created")
+}`;
+
+export const codeExample4 = `package main
+
+import (
+	"context"
+	"log"
+
+	"github.com/auth0/go-auth0"
+	"github.com/auth0/go-auth0/management"
+)
+
+func main() {
+	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	networkACL := &management.NetworkACL{
+		Description: auth0.String("Example of a complex comparison"),
+		Active:      auth0.Bool(true),
+		Priority:    auth0.Int(1),
+		Rule: &management.NetworkACLRule{
+			Action: &management.NetworkACLRuleAction{
+				Block: auth0.Bool(true),
+			},
+			Match: &management.NetworkACLRuleMatch{
+				GeoCountryCodes: &[]string{"GEO_COUNTRY_CODE"},
+			},
+			NotMatch: &management.NetworkACLRuleMatch{
+				GeoSubdivisionCodes: &[]string{"GEO_SUBDIVISION_CODE"},
+			},
+			Scope: auth0.String("authentication"),
+		},
+	}
+
+	err = mgmt.NetworkACL.Create(context.Background(), networkACL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Network ACL has been created")
+}`;
+
+Tenant Access Control List (ACL) provides the power and flexibility needed to handle a large variety of scenarios.
+
+## Block a request
+
+Here is an example of a Tenant ACL rule that blocks incoming traffic from a specific geolocation country code.
+
+<Tabs><Tab title="Management API">
+
+To create this Tenant ACL rule with the Management API:
+
+1. [Get a Management API access token](/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the `create:network_acls` scope.
+2. Call the Management API [Create access control list](/docs/fr-ca/api/management/v2/network-acls/post-network-acls) endpoint with the following body:
+
+   ```json lines
+   {
+     "description": "Example of blocking a request",
+     "active": true,
+     "priority": 2,
+     "rule": {
+       "action": {
+         "block": true
+       },
+       "match": {
+         "geo_country_codes": [
+           "GEO_COUNTRY_CODE"
+         ]
+       },
+       "scope": "authentication"
+     }
+   }
+   ```
+
+</Tab><Tab title="Go SDK">
+
+<AuthCodeBlock children={codeExample1} language="go" />
+
+</Tab><Tab title="Node SDK">
+
+```javascript lines
+const createNetworkAclPayload: Management.CreateNetworkAclRequestContent = {
+  description: "Example of blocking a request",
+  active: true,
+  priority: 2,
+  rule: {
+    action: {
+      block: true,
+    },
+    match: {
+      geo_country_codes: ["GEO_COUNTRY_CODE"],
+    },
+    scope: "authentication",
+  },
+};
+
+const createNetworkAcl = await client.networkAcls.create(createNetworkAclPayload);
+```
+
+</Tab><Tab title="Terraform">
+
+```hcl lines
+resource "auth0_network_acl" "example_blocking_request_acl" {
+    description = "Example of blocking a request"
+    active = true
+    priority = 2
+    rule {
+        action {
+            block = true
+        }
+        match {
+            geo_country_codes = ["GEO_COUNTRY_CODE"]
+        }
+        scope = "authentication"
+    }
+}
+```
+
+</Tab><Tab title="Deploy CLI">
+
+```yaml lines
+networkACLs:
+  - description: Example of blocking a request
+    active: true
+    priority: 2
+    rule:
+      action:
+        block: true
+      match:
+        geo_country_codes:
+          - GEO_COUNTRY_CODE
+      scope: authentication
+```
+
+</Tab><Tab title="Auth0 CLI">
+
+```sh lines
+auth0 network-acl create \
+--description "Example of blocking a request" \
+--active true \
+--priority 2 \
+--rule '{"action":{"block":true},"match":{"geo_country_codes":["GEO_COUNTRY_CODE"]},"scope":"authentication"}'
+```
+
+</Tab></Tabs>
+
+### Example of a block page
+
+<Frame>![](/images/fr-ca/cdy7uua7fh8z/34bruOvQ9n8CpMW1DndkYn/fb87ec4a0c9218caed2e0c49d1a7459a/Tenant_ACL_-_Block_page_example.png)</Frame>
+
+## Allow a request
+
+Here is an example of a Tenant ACL rule that allows traffic only from a specific geolocation country code.
+
+<Tabs><Tab title="Management API">
+
+To create this Tenant ACL rule with the Management API:
+
+1. [Get a Management API access token](/docs/fr-ca/secure/tokens/access-tokens/management-api-access-tokens/get-management-api-access-tokens-for-production) with the `create:network_acls` scope.
+2. Call the Management API [Create access control list](/docs/fr-ca/api/management/v2/network-acls/post-network-acls) endpoint with the following body:
+
+   ```json lines
+   {
+     "description": "Example of allowing a request",
+     "active": true,
+     "priority": 2,
+     "rule": {
+       "action": {
+         "allow": true
+       },
+       "match": {
+         "geo_country_codes": [
+           "GEO_COUNTRY_CODE"
+         ]
+       },
+       "scope": "authentication"
+     }
+   }
+   ```
+
+</Tab><Tab title="Go SDK">
+
 <AuthCodeBlock children={codeExample2} language="go" />
 
 </Tab><Tab title="Node SDK">
@@ -260,7 +331,7 @@ const createNetworkAcl = await client.networkAcls.create(createNetworkAclPayload
 
 </Tab><Tab title="Terraform">
 
-``` lines
+```hcl lines
 resource "auth0_network_acl" "example_allowing_request_acl" {
     description = "Example of allowing a request"
     active = true
@@ -279,7 +350,7 @@ resource "auth0_network_acl" "example_allowing_request_acl" {
 
 </Tab><Tab title="Deploy CLI">
 
-``` lines
+```yaml lines
 networkACLs:
   - description: Example of allowing a request
     active: true
@@ -295,7 +366,7 @@ networkACLs:
 
 </Tab><Tab title="Auth0 CLI">
 
-``` lines
+```sh lines
 auth0 network-acl create \
 --description "Example of allowing a request" \
 --active true \
@@ -342,44 +413,7 @@ To create this Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-export const codeExample3 = `package main
 
-import (
-	"context"
-	"log"
-
-	"github.com/auth0/go-auth0"
-	"github.com/auth0/go-auth0/management"
-)
-
-func main() {
-	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	networkACL := &management.NetworkACL{
-		Description: auth0.String("Example of redirecting a request"),
-		Active:      auth0.Bool(true),
-		Priority:    auth0.Int(2),
-		Rule: &management.NetworkACLRule{
-			Action: &management.NetworkACLRuleAction{
-				Redirect: auth0.Bool(true),
-				RedirectURI: auth0.String("REDIRECT_URI"),
-			},
-			Match: &management.NetworkACLRuleMatch{
-				GeoCountryCodes: &[]string{"GEO_COUNTRY_CODE"},
-			},
-			Scope: auth0.String("authentication"),
-		},
-	}
-
-	err = mgmt.NetworkACL.Create(context.Background(), networkACL)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Network ACL has been created")
-}`;
 
 <AuthCodeBlock children={codeExample3} language="go" />
 
@@ -407,7 +441,7 @@ const createNetworkAcl = await client.networkAcls.create(createNetworkAclPayload
 
 </Tab><Tab title="Terraform">
 
-``` lines
+```hcl lines
 resource "auth0_network_acl" "example_redirecting_request_acl" {
     description = "Example of redirecting a request"
     active = true
@@ -427,7 +461,7 @@ resource "auth0_network_acl" "example_redirecting_request_acl" {
 
 </Tab><Tab title="Deploy CLI">
 
-``` lines
+```yaml lines
 networkACLs:
   - description: Example of redirecting a request
     active: true
@@ -444,7 +478,7 @@ networkACLs:
 
 </Tab><Tab title="Auth0 CLI">
 
-``` lines
+```sh lines
 auth0 network-acl create \
 --description "Example of redirecting a request" \
 --active true \
@@ -497,47 +531,6 @@ To create this Tenant ACL rule with the Management API:
 
 </Tab><Tab title="Go SDK">
 
-export const codeExample4 = `package main
-
-import (
-	"context"
-	"log"
-
-	"github.com/auth0/go-auth0"
-	"github.com/auth0/go-auth0/management"
-)
-
-func main() {
-	mgmt, err := management.New("{yourDomain}", management.WithClientCredentials("{yourClientId}", "{yourClientSecret}"))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	networkACL := &management.NetworkACL{
-		Description: auth0.String("Example of a complex comparison"),
-		Active:      auth0.Bool(true),
-		Priority:    auth0.Int(1),
-		Rule: &management.NetworkACLRule{
-			Action: &management.NetworkACLRuleAction{
-				Block: auth0.Bool(true),
-			},
-			Match: &management.NetworkACLRuleMatch{
-				GeoCountryCodes: &[]string{"GEO_COUNTRY_CODE"},
-			},
-			NotMatch: &management.NetworkACLRuleMatch{
-				GeoSubdivisionCodes: &[]string{"GEO_SUBDIVISION_CODE"},
-			},
-			Scope: auth0.String("authentication"),
-		},
-	}
-
-	err = mgmt.NetworkACL.Create(context.Background(), networkACL)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Network ACL has been created")
-}`;
-
 <AuthCodeBlock children={codeExample4} language="go" />
 
 </Tab><Tab title="Node SDK">
@@ -566,7 +559,7 @@ const createNetworkAcl = await client.networkAcls.create(createNetworkAclPayload
 
 </Tab><Tab title="Terraform">
 
-``` lines
+```hcl lines
 resource "auth0_network_acl" "example_complex_comparison_acl" {
     description = "Example of a complex comparison"
     active = true
@@ -588,7 +581,7 @@ resource "auth0_network_acl" "example_complex_comparison_acl" {
 
 </Tab><Tab title="Deploy CLI">
 
-``` lines
+```yaml lines
 networkACLs:
   - description: Example of a complex comparison
     active: true
@@ -607,7 +600,7 @@ networkACLs:
 
 </Tab><Tab title="Auth0 CLI">
 
-``` lines
+```sh lines
 auth0 network-acl create \
 --description "Example of a complex comparison" \
 --active true \
