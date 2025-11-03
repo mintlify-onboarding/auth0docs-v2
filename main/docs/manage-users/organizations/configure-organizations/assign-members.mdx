@@ -34,7 +34,7 @@ Make a `POST` call to the `Create Organization Members` endpoint. Be sure to rep
 
 ```bash cURL lines
 curl --request POST \
-  --url https://your_auth0_domain/api/v2/organizations/ORG_ID/members \
+  --url https://{yourDomain}/api/v2/organizations/ORG_ID/members \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'cache-control: no-cache' \
   --header 'content-type: application/json' \
@@ -42,7 +42,7 @@ curl --request POST \
 ```
 
 ```csharp C# lines
-var client = new RestClient("https://your_auth0_domain/api/v2/organizations/ORG_ID/members");
+var client = new RestClient("https://{yourDomain}/api/v2/organizations/ORG_ID/members");
 var request = new RestRequest(Method.POST);
 request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
@@ -63,7 +63,7 @@ import (
 
 func main() {
 
-	url := "https://your_auth0_domain/api/v2/organizations/ORG_ID/members"
+	url := "https://{yourDomain}/api/v2/organizations/ORG_ID/members"
 
 	payload := strings.NewReader("{ \"members\": [ \"USER_ID\", \"USER_ID\", \"USER_ID\" ] }")
 
@@ -85,7 +85,7 @@ func main() {
 ```
 
 ```java Java lines
-HttpResponse<String> response = Unirest.post("https://your_auth0_domain/api/v2/organizations/ORG_ID/members")
+HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/organizations/ORG_ID/members")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .header("cache-control", "no-cache")
@@ -98,7 +98,7 @@ var axios = require("axios").default;
 
 var options = {
   method: 'POST',
-  url: 'https://your_auth0_domain/api/v2/organizations/ORG_ID/members',
+  url: 'https://{yourDomain}/api/v2/organizations/ORG_ID/members',
   headers: {
     'content-type': 'application/json',
     authorization: 'Bearer MGMT_API_ACCESS_TOKEN',
@@ -124,7 +124,7 @@ NSDictionary *parameters = @{ @"members": @[ @"USER_ID", @"USER_ID", @"USER_ID" 
 
 NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
 
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://your_auth0_domain/api/v2/organizations/ORG_ID/members"]
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/organizations/ORG_ID/members"]
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                    timeoutInterval:10.0];
 [request setHTTPMethod:@"POST"];
@@ -148,7 +148,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://your_auth0_domain/api/v2/organizations/ORG_ID/members",
+  CURLOPT_URL => "https://{yourDomain}/api/v2/organizations/ORG_ID/members",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -178,7 +178,7 @@ if ($err) {
 ```python Python lines
 import http.client
 
-conn = http.client.HTTPSConnection("your_auth0_domain")
+conn = http.client.HTTPSConnection("{yourDomain}")
 
 payload = "{ \"members\": [ \"USER_ID\", \"USER_ID\", \"USER_ID\" ] }"
 
@@ -201,7 +201,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://your_auth0_domain/api/v2/organizations/ORG_ID/members")
+url = URI("https://{yourDomain}/api/v2/organizations/ORG_ID/members")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -229,7 +229,7 @@ let parameters = ["members": ["USER_ID", "USER_ID", "USER_ID"]] as [String : Any
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://your_auth0_domain/api/v2/organizations/ORG_ID/members")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/organizations/ORG_ID/members")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"

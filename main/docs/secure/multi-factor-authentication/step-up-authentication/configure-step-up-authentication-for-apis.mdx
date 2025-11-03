@@ -78,7 +78,7 @@ Create an Action that challenges the user to authenticate with MFA when the `tra
 ```javascript
 {
 exports.onExecutePostLogin = async (event, api) => {
-  const CLIENTS_WITH_MFA = ['REPLACE_WITH_YOUR_CLIENT_ID'];
+  const CLIENTS_WITH_MFA = ['REPLACE_WITH_{yourClientId}'];
   // run only for the specified clients
   if (CLIENTS_WITH_MFA.includes(event.client.client_id)) {
     // ask for MFA only if scope transfer:funds was requested

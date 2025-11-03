@@ -93,7 +93,7 @@ export const codeExample = `var lock = new Auth0Lock(
 
 ユーザーが使うつもりのレルムについて、認証を要求しているアプリケーションが事前に知っていることもあります。たとえば、マルチテナントアプリケーションが`https://{customer}.yoursite.com`や`https://www.yoursite.com/{customer}`というURLを使う可能性があるとします。ユーザーがアプリケーションのバニティURLに到達したら、`tenant`の値を抽出し、`login_hint`の値として`authorize`要求で渡すことができます：
 
-`https://{YOUR_AUTH0_DOMAIN}/authorize?client_id=[...]&login_hint={customer}`
+`https://{yourDomain}/authorize?client_id=[...]&login_hint={customer}`
 
 `login_hint`は、ユーザーがログインに使うかもしれないものを認可サーバー（Auth0）へ教えるためのヒントです。この例では、ユーザーが到達したURLを基に、「customer」をレルムとして扱います。
 

@@ -145,9 +145,9 @@ Create a simple web page that invokes the Lock widget triggering the SAML login 
      <script src="https://cdn.auth0.com/js/auth0/9.19.0/auth0.min.js"></script>
      <script>
        var auth0 = new auth0.WebAuth({
-         domain: YOUR_AUTH0_DOMAIN,
-         clientID: YOUR_CLIENT_ID,
-         redirectUri: URL_TO_THIS_PAGE,
+         domain: '{yourDomain}',
+         clientID: '{yourClientId}',
+         redirectUri: 'URL_TO_THIS_PAGE',
          responseType: 'token id_token',
          scope: 'openid email profile'
        })

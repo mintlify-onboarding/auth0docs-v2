@@ -70,7 +70,7 @@ title: Add Login to Your Android Application
     ```xml app/src/main/res/values/strings.xml
     <?xml version="1.0" encoding="utf-8"?>
     <resources>
-        <string name="com_auth0_domain">YOUR_AUTH0_DOMAIN</string>
+        <string name="com_auth0_domain">{yourDomain}</string>
         <string name="com_auth0_client_id">YOUR_AUTH0_CLIENT_ID</string>
         <string name="com_auth0_scheme">https</string>
     </resources>
@@ -80,21 +80,21 @@ title: Add Login to Your Android Application
     2. Click on **Applications** > **Applications** > **Create Application**
     3. In the popup, enter a name for your app, select `Native` as the app type and click **Create**
     4. Switch to the **Settings** tab on the Application Details page
-    5. Replace `YOUR_AUTH0_DOMAIN` and `YOUR_AUTH0_CLIENT_ID` in the `strings.xml` file with the **Domain** and **Client ID** values from the dashboard
+    5. Replace `{yourDomain}` and `YOUR_AUTH0_CLIENT_ID` in the `strings.xml` file with the **Domain** and **Client ID** values from the dashboard
 
     Finally, on the **Settings** tab of your Application Details page, configure the following URLs:
 
     **Allowed Callback URLs:**
     ```
-    https://YOUR_AUTH0_DOMAIN/android/PACKAGE_NAME/callback
+    https://{yourDomain}/android/PACKAGE_NAME/callback
     ```
 
     **Allowed Logout URLs:**
     ```
-    https://YOUR_AUTH0_DOMAIN/android/PACKAGE_NAME/callback
+    https://{yourDomain}/android/PACKAGE_NAME/callback
     ```
 
-    Replace `YOUR_AUTH0_DOMAIN` with your actual Auth0 domain (e.g., `dev-abc123.us.auth0.com`).
+    Replace `{yourDomain}` with your actual Auth0 domain (e.g., `dev-abc123.us.auth0.com`).
 
     <Info>
       **Allowed Callback URLs** are a critical security measure to ensure users are safely returned to your application after authentication. Without a matching URL, the login process will fail, and users will be blocked by an Auth0 error page instead of accessing your app.

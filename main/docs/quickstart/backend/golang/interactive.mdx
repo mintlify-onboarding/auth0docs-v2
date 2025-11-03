@@ -94,7 +94,7 @@ export const sections = [
       ```env lines
       # The URL of our Auth0 Tenant Domain.
       If you're using a Custom Domain, be sure to set this to that value instead.
-      AUTH0_DOMAIN='dev-gja8kxz4ndtex3rq.us.auth0.com'
+      AUTH0_DOMAIN='{yourDomain}'
       Our Auth0 API's Identifier.
       AUTH0_AUDIENCE='{yourApiIdentifier}'
       ```
@@ -110,7 +110,7 @@ export const sections = [
 
       By default, your API will be set up to use RS256 as the algorithm for signing tokens. Since RS256 works by using
             a private/public keypair, tokens can be verified against the public key for your Auth0 account. This public key is
-            accessible at `https://dev-gja8kxz4ndtex3rq.us.auth0.com/.well-known/jwks.json`.
+            accessible at `https://{yourDomain}/.well-known/jwks.json`.
 
       Include a mechanism to check that the token has sufficient **scope** to access the requested resources.
 
@@ -265,7 +265,7 @@ export const sections = [
       import http.client
       conn = http.client.HTTPConnection("")
       headers = { 'authorization': "Bearer YOUR_ACCESS_TOKEN_HERE" }
-      conn.request("get", "/dev-gja8kxz4ndtex3rq.us.auth0.com/api_path", headers=headers)
+      conn.request("get", "/{yourDomain}/api_path", headers=headers)
       res = conn.getresponse()
       data = res.read()
       print(data.decode("utf-8"))

@@ -68,7 +68,7 @@ export const sections = [
       <Info>
       If you are following along with the sample project you downloaded from the top of this page, you should
                       set the **Allowed Callback URLs** to
-                      `https://dev-gja8kxz4ndtex3rq.us.auth0.com/mobile`.
+                      `https://{yourDomain}/mobile`.
       </Info>
 
       markdownlint-disable MD002 MD041
@@ -83,7 +83,7 @@ export const sections = [
       <Info>
       If you are following along with the sample project you downloaded from the top of this page, the
                         logout URL you need to add to the **Allowed Logout URLs** field is
-                        `https://dev-gja8kxz4ndtex3rq.us.auth0.com/mobile`.
+                        `https://{yourDomain}/mobile`.
       </Info>
     
     <LoggedInForm />
@@ -137,8 +137,8 @@ export const sections = [
 
       var client = new Auth0Client(new Auth0ClientOptions
       {
-          Domain = "dev-gja8kxz4ndtex3rq.us.auth0.com",
-          ClientId = "mz9iNEIo2PHu7oeh8QRt19ndTyyCIgai"
+          Domain = "{yourDomain}",
+          ClientId = "{yourClientId}"
       });
       ```
 

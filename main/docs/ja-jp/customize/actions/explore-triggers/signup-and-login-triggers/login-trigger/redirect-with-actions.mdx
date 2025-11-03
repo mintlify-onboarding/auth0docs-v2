@@ -99,7 +99,7 @@ exports.onContinuePostLogin = async (event, api) => {
 * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
 */
 exports.onExecutePostLogin = async (event, api) => {
-  const YOUR_AUTH0_DOMAIN = event.secrets.YOUR_AUTH0_DOMAIN || event.request.hostname
+  const yourDomain = event.secrets.YOUR_AUTH0_DOMAIN || event.request.hostname
 
   // Craft a signed session token
   const token = api.redirect.encodeToken({
@@ -109,7 +109,7 @@ exports.onExecutePostLogin = async (event, api) => {
       // Custom claims to be added to the token
       email: event.user.email,
       externalUserId: 1234,
-      continue_uri: `https://${YOUR_AUTH0_DOMAIN}/continue`
+      continue_uri: `https://${yourDomain}/continue`
     },
   });
 

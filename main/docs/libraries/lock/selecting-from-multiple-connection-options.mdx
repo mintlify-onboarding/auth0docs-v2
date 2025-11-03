@@ -93,7 +93,7 @@ Note that you can also provide the `allowedConnections` option to the `lock.show
 
 Sometimes the application requesting an authentication can know, in advance, the realm intended to be used by the user. E.g. a multi-tenant application might use URLs in the form of: `https://{customer}.yoursite.com` or `https://www.yoursite.com/{customer}`. When a user arrives at your application with the vanity URL, you can pick up that `tenant` value and pass it as the `login_hint` in the `authorize` request:
 
-`https://{YOUR_AUTH0_DOMAIN}/authorize?client_id=[...]&login_hint={customer}`
+`https://{yourDomain}/authorize?client_id=[...]&login_hint={customer}`
 
 `login_hint` is a hint to the <Tooltip tip="Authorization Server: Centralized server that contributes to defining the boundaries of a user’s access. For example, your authorization server can control the data, tasks, and features available to a user." cta="View Glossary" href="/docs/glossary?term=authorization+server">authorization server</Tooltip> (Auth0) to indicate what the user might use to log in. In this case, based on the URL where the user landed, we treat the "customer" as the realm.
 

@@ -79,7 +79,7 @@ Créez une action qui demande à l’utilisateur de s’authentifier avec la MFA
 
 ```js lines
 exports.onExecutePostLogin = async (event, api) => {
-  const CLIENTS_WITH_MFA = ['REPLACE_WITH_YOUR_CLIENT_ID'];
+  const CLIENTS_WITH_MFA = ['REPLACE_WITH_{yourClientId}'];
   // run only for the specified clients
   if (CLIENTS_WITH_MFA.includes(event.client.client_id)) {
     // ask for MFA only if scope transfer:funds was requested

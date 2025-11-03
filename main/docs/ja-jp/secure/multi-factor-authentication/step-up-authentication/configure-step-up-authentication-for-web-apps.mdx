@@ -112,7 +112,7 @@ Webアプリが要求した際に、MFAによる認証のチャレンジをユ�
 
 ```javascript lines
 exports.onExecutePostLogin = async (event, api) => {
- const CLIENTS_WITH_MFA = ['REPLACE_WITH_YOUR_CLIENT_ID'];
+ const CLIENTS_WITH_MFA = ['REPLACE_WITH_{yourClientId}'];
  // run only for the specified clients
  if (CLIENTS_WITH_MFA.includes(event.client.client_id)) {
  // ask for MFA only if the web app said so in the authentication request
