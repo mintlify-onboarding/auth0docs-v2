@@ -337,7 +337,7 @@
           },
           {
             "label": "Compliance",
-            "href": "https://auth0.com/compliance"
+            "href": "https://auth0.com/security"
           },
           {
             "label": "Partners",
@@ -345,7 +345,7 @@
           },
           {
             "label": "About us",
-            "href": "https://auth0.com/company"
+            "href": "https://www.okta.com/company/"
           }
         ]
       }
