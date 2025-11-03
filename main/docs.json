@@ -24188,6 +24188,10 @@
     {
       "source": "/docs/ja-jp/get-started/auth-for-genai",
       "destination": "/docs/ja-jp/get-started/auth0-for-ai-agents"
+    },
+    {
+     "source": "/docs/secure/security-guidance/measures-against-application-impersonation",
+      "destination": "/docs/secure/security-guidance/measures-against-app-impersonation"
     }
   ]
 }
