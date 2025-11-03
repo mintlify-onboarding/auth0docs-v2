@@ -23,7 +23,7 @@ Pour en savoir plus sur l’obsolescence des Règles et des Appels, consultez no
 
 </Warning>
 
-You can use [Auth0 Rules](/docs/fr-ca/customize/rules) to redirect users before an authentication transaction is complete. This lets you implement custom authentication flows that require additional user interaction beyond the standard login form. Redirect rules are commonly used to do custom <Tooltip href="/docs/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
+You can use [Auth0 Rules](/docs/fr-ca/customize/rules) to redirect users before an authentication transaction is complete. This lets you implement custom authentication flows that require additional user interaction beyond the standard login form. Redirect rules are commonly used to do custom <Tooltip href="/docs/fr-ca/glossary?term=multifactor-authentication" tip="Authentification multifacteur (MFA)
 Processus d’authentification de l’utilisateur qui utilise un facteur en plus du nom d’utilisateur et du mot de passe, tel qu’un code par SMS." cta="Voir le glossaire">Multi-factor Authentication</Tooltip> (MFA) in Auth0, but they can also be used for:
 
 * Custom privacy policy acceptance, terms of service, and data disclosure forms.
@@ -65,7 +65,7 @@ export const codeExample1 = `https://{yourDomain}/continue?state={originalState}
 
 <AuthCodeBlock children={codeExample1} language="bash" />
 
-If you're using a <Tooltip href="/docs/docs/fr-ca/glossary?term=custom-domain" tip="Domaine personnalisé
+If you're using a <Tooltip href="/docs/fr-ca/glossary?term=custom-domain" tip="Domaine personnalisé
 Domaine tiers avec un nom spécialisé ou reflétant votre marque." cta="Voir le glossaire">custom domain</Tooltip>:
 
 ```bash lines
@@ -81,7 +81,7 @@ export const codeExample2 = `https://{yourDomain}/continue?state=abc123`;
 When a user has been redirected to the `/continue` endpoint:
 
 * **all rules will be run again**, however, the `context.redirect` will be ignored to allow authentication to continue.
-* any changes to the user object are made during the redirect, prior to calling the `/continue` endpoint. For example, updates through the Auth0 <Tooltip href="/docs/docs/fr-ca/glossary?term=management-api" tip="Management API
+* any changes to the user object are made during the redirect, prior to calling the `/continue` endpoint. For example, updates through the Auth0 <Tooltip href="/docs/fr-ca/glossary?term=management-api" tip="Management API
 Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip> are available after continuing the transaction.
 
 ## Validate resumed login
@@ -169,14 +169,14 @@ Beware of storing too much data in the Auth0 profile. This data is intended to b
 
 ## Security considerations
 
-Passing information back and forth in the front channel opens up surface area for <Tooltip href="/docs/docs/fr-ca/glossary?term=bad-actors" tip="Acteurs menaçants
+Passing information back and forth in the front channel opens up surface area for <Tooltip href="/docs/fr-ca/glossary?term=bad-actors" tip="Acteurs menaçants
 Des entités qui représentent une menace pour une entreprise ou un environnement, avec l’intention de causer des dommages." cta="Voir le glossaire">bad actors</Tooltip> to attack. This should definitely be done only in conditions where you must take action in the rule (such as rejecting the authorization attempt with `UnauthorizedError`).
 
 If, however, you need to communicate directly back to Auth0 and give it instructions for restricting access (you are implementing CAPTCHA checks or custom MFA), then you must have a way to securely tell Auth0 that the requirements of that operation were performed. Likewise, if you need to hand information to the application that you are redirecting to, then you must have a secure way to ensure that the information transferred has not been tampered with.
 
 ### Ensure app is logging into the same user
 
-The application is going to redirect the user back to the Auth0 tenant, so any data related to the user can be gathered through the <Tooltip href="/docs/docs/fr-ca/glossary?term=id-token" tip="Jeton d’ID
+The application is going to redirect the user back to the Auth0 tenant, so any data related to the user can be gathered through the <Tooltip href="/docs/fr-ca/glossary?term=id-token" tip="Jeton d’ID
 Identifiant conçu pour le client lui-même, et non pour l’accès à une ressource." cta="Voir le glossaire">ID token</Tooltip> that is returned to the application. However, you may want to ensure that the application is logging into the same user that is being redirected from to ensure that there is no tampering of any sort in-between. Therefore you will likely want to send a token along with the request.
 
 The token sent to the app should have the following requirements:
@@ -284,9 +284,9 @@ Redirect Rules won't work with:
 You can detect the above cases by checking `context.protocol`:
 
 * For Password exchange: `context.protocol === 'oauth2-password'`
-* For <Tooltip href="/docs/docs/fr-ca/glossary?term=refresh-token" tip="Jeton d’actualisation
+* For <Tooltip href="/docs/fr-ca/glossary?term=refresh-token" tip="Jeton d’actualisation
 Jeton utilisé pour obtenir un jeton d’accès renouvelé sans obliger les utilisateurs à se connecter à nouveau." cta="Voir le glossaire">Refresh Token</Tooltip> exchange: `context.protocol === 'oauth2-refresh-token'`
-* For <Tooltip href="/docs/docs/fr-ca/glossary?term=resource-owner" tip="Propriétaire de ressources
+* For <Tooltip href="/docs/fr-ca/glossary?term=resource-owner" tip="Propriétaire de ressources
 Entité (telle qu’un utilisateur ou une application) capable d’accorder l’accès à une ressource protégée." cta="Voir le glossaire">Resource Owner</Tooltip> logins: `context.protocol === 'oauth2-resource-owner'`
 
 ### Session timeout

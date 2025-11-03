@@ -317,8 +317,8 @@ Vous pouvez faire appel à cette méthode pour déterminer si nous devons affich
         <li><a *ngIf="auth.isAuthenticated() && auth.userHasScopes(['approve:timesheets'])" routerLink="/approval">Approve Timesheets</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a *ngIf="!auth.isAuthenticated()" href="/docs/docs/fr-ca/javascript:void(0)" (click)="auth.login()">Log In</a></li>
-        <li><a *ngIf="auth.isAuthenticated()" href="/docs/docs/fr-ca/javascript:void(0)" (click)="auth.logout()">Log Out</a></li>
+        <li><a *ngIf="!auth.isAuthenticated()" href="/docs/fr-ca/javascript:void(0)" (click)="auth.login()">Log In</a></li>
+        <li><a *ngIf="auth.isAuthenticated()" href="/docs/fr-ca/javascript:void(0)" (click)="auth.logout()">Log Out</a></li>
       </ul>
     </div>
   </div>

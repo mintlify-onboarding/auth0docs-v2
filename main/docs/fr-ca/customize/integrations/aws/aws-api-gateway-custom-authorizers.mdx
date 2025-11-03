@@ -33,24 +33,24 @@ Suivez les étapes suivantes pour utiliser des autorisateurs personnalisés :
 4. [Sécuriser l’API à l’aide d’autorisateurs personnalisés](#secure-the-api-using-custom-authorizers)
 5. [Tester votre déploiement](#test-your-deployment)
 
-Pour en savoir plus sur les algorithmes de signature, lisez [Algorithmes de signature](/docs/docs/fr-ca/get-started/applications/signing-algorithms). Pour plus de détails sur l’utilisation de JWKS, consultez [JSON Web Key Sets](/docs/docs/fr-ca/secure/tokens/json-web-tokens/json-web-key-sets) (Ensembles de clés JSON Web).
+Pour en savoir plus sur les algorithmes de signature, lisez [Algorithmes de signature](/docs/fr-ca/get-started/applications/signing-algorithms). Pour plus de détails sur l’utilisation de JWKS, consultez [JSON Web Key Sets](/docs/fr-ca/secure/tokens/json-web-tokens/json-web-key-sets) (Ensembles de clés JSON Web).
 
 ## Fonctionnement des autorisateurs personnalisés de la passerelle API
 
-[Selon Amazon](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html), un autorisateur personnalisé de passerelle API est une « fonction Lambda que vous fournissez pour contrôler l’accès à votre API à l’aide de stratégies d’authentification par jeton du porteur, telles que <Tooltip href="/docs/docs/fr-ca/glossary?term=oath2" tip="OAuth 2.0
-Cadre d’applications d’autorisation qui définit les protocoles d’autorisation et les flux de production." cta="Voir le glossaire">OAuth</Tooltip> ou <Tooltip href="/docs/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
+[Selon Amazon](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html), un autorisateur personnalisé de passerelle API est une « fonction Lambda que vous fournissez pour contrôler l’accès à votre API à l’aide de stratégies d’authentification par jeton du porteur, telles que <Tooltip href="/docs/fr-ca/glossary?term=oath2" tip="OAuth 2.0
+Cadre d’applications d’autorisation qui définit les protocoles d’autorisation et les flux de production." cta="Voir le glossaire">OAuth</Tooltip> ou <Tooltip href="/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
 Protocole normalisé permettant à deux parties d’échanger des informations d’authentification sans mot de passe." cta="Voir le glossaire">SAML</Tooltip> ».
 
 Chaque fois qu’une personne (ou un programme) tente d’appeler votre API, la passerelle API vérifie si un autorisateur personnalisé est configuré pour l’API.
 
 S’**il existe un autorisateur personnalisé pour l’API**, la passerelle API appelle l’autorisateur personnalisé et fournit le jeton d’autorisation extrait de l’en-tête de la demande reçue.
 
-Vous pouvez utiliser l'autorisateur personnalisé pour mettre en œuvre différents types de stratégies d'autorisation, y compris la vérification <Tooltip href="/docs/docs/fr-ca/glossary?term=json-web-token" tip="Jeton Web JSON (JWT)
+Vous pouvez utiliser l'autorisateur personnalisé pour mettre en œuvre différents types de stratégies d'autorisation, y compris la vérification <Tooltip href="/docs/fr-ca/glossary?term=json-web-token" tip="Jeton Web JSON (JWT)
 Format standard de jeton d’ID (et souvent de jeton d’accès) utilisé pour représenter en toute sécurité des demandes entre deux parties." cta="Voir le glossaire">JWT</Tooltip>, pour renvoyer des politiques IAM autorisant la demande. Si la politique renvoyée n'est pas valide ou si les autorisations sont refusées, l'appel à l'API échoue.
 
 Dans le cas d’une politique valide, l’API met en cache la politique renvoyée, l’associe au jeton entrant et l’utilise pour la demande actuelle et les demandes suivantes. Vous pouvez configurer la durée pendant laquelle la politique est mise en cache. La valeur par défaut est `300` secondes et la durée maximale de mise en cache est `3600` secondes (vous pouvez également fixer la valeur à 0 pour désactiver la mise en cache).
 
-Pour en savoir plus, consultez [What is Amazon API Gateway?](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html) (Qu’est-ce que la passerelle API Amazon) dans le Amazon Developer’s Guide. Pour plus d’informations sur la vérification des JWT, consultez notre article [Jeton Web JSON](/docs/docs/fr-ca/secure/tokens/json-web-tokens) .
+Pour en savoir plus, consultez [What is Amazon API Gateway?](http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html) (Qu’est-ce que la passerelle API Amazon) dans le Amazon Developer’s Guide. Pour plus d’informations sur la vérification des JWT, consultez notre article [Jeton Web JSON](/docs/fr-ca/secure/tokens/json-web-tokens) .
 
 ## Conditions préalables
 
@@ -267,7 +267,7 @@ export const codeExample = `   JWKS_URI=https://{yourDomain}/.well-known/jwks.js
 
 ### Tester localement l’autorisateur personnalisé
 
-Obtenir un jeton d’accès JWT valide. Il y a plusieurs façons d’en obtenir un et la méthode que vous choisissez dépend du type de votre application, du niveau de confiance ou de l’expérience globale de l’utilisateur final. Pour plus d’informations, consultez [Obtenir des jetons d’accès](/docs/docs/fr-ca/secure/tokens/access-tokens/get-access-tokens).
+Obtenir un jeton d’accès JWT valide. Il y a plusieurs façons d’en obtenir un et la méthode que vous choisissez dépend du type de votre application, du niveau de confiance ou de l’expérience globale de l’utilisateur final. Pour plus d’informations, consultez [Obtenir des jetons d’accès](/docs/fr-ca/secure/tokens/access-tokens/get-access-tokens).
 
 1. Vous pouvez obtenir un jeton de test pour votre API en naviguant vers [Auth0 Dashboard > Applications > API](https://manage.auth0.com/#/apis), en sélectionnant votre API et en sélectionnant **Test**.
 2. Créez un fichier local `event.json` contenant le jeton. Vous pouvez copier le fichier d’exemple (exécutez `cp event.json.sample event.json`). Remplacez `ACCESS_TOKEN` par votre jeton JWT et `methodArn` par la valeur ARN appropriée pour la méthode `GET` de votre API.
@@ -528,7 +528,7 @@ En cas de succès, vous serez redirigé vers l’éditeur de développement et d
 
 Pour tester votre déploiement, faites une requête `GET` au **Invoke URL** que vous avez notée à l’étape précédente. Si ce test échoue, vérifiez que vous avez obtenu correctement le jeton d’accès JWT.
 
-Pour plus de détails, voir [Obtenir des jetons d’accès](/docs/docs/fr-ca/secure/tokens/access-tokens/get-access-tokens).
+Pour plus de détails, voir [Obtenir des jetons d’accès](/docs/fr-ca/secure/tokens/access-tokens/get-access-tokens).
 
 <AuthCodeGroup>
 ```bash cURL lines

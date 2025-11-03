@@ -15,16 +15,16 @@ Créez une [connexion SAML](https://auth0.com/docs/authenticate/identity-provide
 
 </Card>
 
-Cette section décrit comment configurer une intégration <Tooltip href="/docs/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
+Cette section décrit comment configurer une intégration <Tooltip href="/docs/fr-ca/glossary?term=security-assertion-markup-language" tip="Security Assertion Markup Language (SAML)
 Protocole normalisé permettant à deux parties d’échanger des informations d’authentification sans mot de passe." cta="Voir le glossaire">SAML</Tooltip> et une application SCIM personnalisées dans un nuage d’identité Okta Workforce, qui peut être utilisé pour la fourniture d’utilisateurs à votre point de terminaison Auth0 SCIM.
 
 ### Configuration des paramètres SCIM dans Auth0
 
 1. Lancez [Auth0 Dashboard](https://manage.auth0.com/#/) et rendez-vous dans **Authentification > Entreprise > SAML > [Connexion] > Fourniture.**
-2. Désactivez **Synchroniser les attributs du profil utilisateur à chaque connexion** sauf si vous souhaitez [synchroniser des attributs supplémentaires à la connexion](/docs/docs/fr-ca/authenticate/protocols/scim/configure-inbound-scim).
+2. Désactivez **Synchroniser les attributs du profil utilisateur à chaque connexion** sauf si vous souhaitez [synchroniser des attributs supplémentaires à la connexion](/docs/fr-ca/authenticate/protocols/scim/configure-inbound-scim).
 3. Dans la même section, activez **Synchroniser les profils utilisateurs à l’aide du SCIM**.
 4. Dans l’onglet **Mappage**, assurez-vous que l’**attribut SCIM contenant l’identifiant utilisateur** est réglé sur **userName**.
-5. Passez en revue les **mappages supplémentaires** pour vous assurer que les attributs SCIM étendus sont mappés avec vos attributs Auth0 préférés, en examinant [mappage des attributs](/docs/docs/fr-ca/authenticate/protocols/scim/configure-inbound-scim#attribute-mapping) pour plus de détails. Si vous recevez des numéros de téléphone et des adresses physiques, notez qu’Okta Workflow les envoie en tant que valeur`phoneNumbers[primary eq true].value` et `adresses[primary eq true].*` par défaut.
+5. Passez en revue les **mappages supplémentaires** pour vous assurer que les attributs SCIM étendus sont mappés avec vos attributs Auth0 préférés, en examinant [mappage des attributs](/docs/fr-ca/authenticate/protocols/scim/configure-inbound-scim#attribute-mapping) pour plus de détails. Si vous recevez des numéros de téléphone et des adresses physiques, notez qu’Okta Workflow les envoie en tant que valeur`phoneNumbers[primary eq true].value` et `adresses[primary eq true].*` par défaut.
 6. Mappez l’attribut SCIM `userName` à l’attribut Auth0 `email`afin qu’Okta puisse [trouver et faire correspondre les utilisateurs existants](https://developer.okta.com/docs/reference/scim/scim-20/#create-users) si cette connexion a déjà été déployée en production en utilisant l’adresse courriel comme identifiant de la connexion et qu’aucun attribut Auth0 `username` n’est défini sur les profils utilisateurs existants. Dans **Mappages supplémentaires** trouvez la paire d’attributs suivante :
 
    ```json lines
