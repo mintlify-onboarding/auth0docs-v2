@@ -212,7 +212,7 @@ export const sections = [
       import http.client
       conn = http.client.HTTPConnection("")
       headers = { 'authorization': "Bearer YOUR_ACCESS_TOKEN_HERE" }
-      conn.request("get", "/dev-gja8kxz4ndtex3rq.us.auth0.com.com/api_path", headers=headers)
+      conn.request("get", "/{yourDomain}.com/api_path", headers=headers)
       res = conn.getresponse()
       data = res.read()
       print(data.decode("utf-8"))

@@ -173,12 +173,12 @@ export const sections = [
       <AuthCodeGroup>
       ```sh cURL lines
       curl --request post \
-      --url 'https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token' \
+      --url 'https://{yourDomain}/oauth/token' \
       --header 'content-type: application/x-www-form-urlencoded'
       ```
 
       ```cs C# lines
-      var client = new RestClient("https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token");
+      var client = new RestClient("https://{yourDomain}/oauth/token");
       var request = new RestRequest(Method.POST);
       request.AddHeader("content-type", "application/x-www-form-urlencoded");
       IRestResponse response = client.Execute(request);
@@ -192,7 +192,7 @@ export const sections = [
       "io/ioutil"
       )
       func main() {
-      url := "https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token"
+      url := "https://{yourDomain}/oauth/token"
       req, _ := http.NewRequest("post", url, nil)
       req.Header.Add("content-type", "application/x-www-form-urlencoded")
       res, _ := http.DefaultClient.Do(req)
@@ -204,7 +204,7 @@ export const sections = [
       ```
 
       ```java Java lines
-      HttpResponse<String> response = Unirest.post("https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token")
+      HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
       .header("content-type", "application/x-www-form-urlencoded")
       .asString();
       ```
@@ -213,7 +213,7 @@ export const sections = [
       var axios = require("axios").default;
       var options = {
       method: 'post',
-      url: 'https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token',
+      url: 'https://{yourDomain}/oauth/token',
       headers: {'content-type': 'application/x-www-form-urlencoded'}
       };
       axios.request(options).then(function (response) {
@@ -226,7 +226,7 @@ export const sections = [
       ```obj-c Obj-C lines
       #import <Foundation/Foundation.h>
       NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
-      NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token"]
+      NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/oauth/token"]
                                                          cachePolicy:NSURLRequestUseProtocolCachePolicy
 
                                                      timeoutInterval:10.0];
@@ -257,7 +257,7 @@ export const sections = [
       ```php PHP lines
       $curl = curl_init();
       curl_setopt_array($curl, [
-      CURLOPT_URL => "https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token",
+      CURLOPT_URL => "https://{yourDomain}/oauth/token",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -283,7 +283,7 @@ export const sections = [
       import http.client
       conn = http.client.HTTPSConnection("")
       headers = { 'content-type': "application/x-www-form-urlencoded" }
-      conn.request("post", "/dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token", headers=headers)
+      conn.request("post", "/{yourDomain}/oauth/token", headers=headers)
       res = conn.getresponse()
       data = res.read()
       print(data.decode("utf-8"))
@@ -293,7 +293,7 @@ export const sections = [
       require 'uri'
       require 'net/http'
       require 'openssl'
-      url = URI("https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token")
+      url = URI("https://{yourDomain}/oauth/token")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -307,7 +307,7 @@ export const sections = [
       require 'uri'
       require 'net/http'
       require 'openssl'
-      url = URI("https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/token")
+      url = URI("https://{yourDomain}/oauth/token")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE

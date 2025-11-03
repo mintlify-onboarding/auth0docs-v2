@@ -95,7 +95,7 @@ Vous pouvez aussi fournir l’option `AllowedConnections` à la méthode `lock.s
 
 Parfois, l’application qui demande une authentification peut connaître à l’avance le domaine destiné à être utilisé par l’utilisateur. Par ex. une application à multiples locataires peut utiliser des URL sous la forme de : `https://{customer}.yoursite.com` ou `https://www.yoursite.com/{customer}`. Lorsqu’un utilisateur arrive à votre application avec l’URL personnalisée, vous pouvez récupérer cette valeur de `tenant` et la transmettre comme `login_hint` dans la demande d’`authorize` :
 
-`https://{YOUR_AUTH0_DOMAIN}/authorize?client_id=[...]&login_hint={customer}`
+`https://{yourDomain}/authorize?client_id=[...]&login_hint={customer}`
 
 `login_hint` est une indication adressée au serveur d’autorisation (Auth0) pour indiquer ce qui peut être utilisé par l’utilisateur pour se connecter. Dans ce cas, en fonction de l’URL où l’utilisateur se trouve, nous traitons le « client » comme le domaine.
 

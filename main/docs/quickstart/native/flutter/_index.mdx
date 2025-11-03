@@ -76,27 +76,27 @@ export const sections = [
       #### Android
 
       ```
-      SCHEME://dev-gja8kxz4ndtex3rq.us.auth0.com/android/YOUR_PACKAGE_NAME/callback
+      SCHEME://{yourDomain}/android/YOUR_PACKAGE_NAME/callback
       ```
 
       #### iOS
 
       ```
-      https://dev-gja8kxz4ndtex3rq.us.auth0.com/ios/YOUR_BUNDLE_IDENTIFIER/callback,
+      https://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback,
       ```
 
       ```
-      YOUR_BUNDLE_IDENTIFIER://dev-gja8kxz4ndtex3rq.us.auth0.com/ios/YOUR_BUNDLE_IDENTIFIER/callback
+      YOUR_BUNDLE_IDENTIFIER://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback
       ```
 
       #### macOS
 
       ```
-      https://dev-gja8kxz4ndtex3rq.us.auth0.com/macos/YOUR_BUNDLE_IDENTIFIER/callback,
+      https://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback,
       ```
 
       ```
-      YOUR_BUNDLE_IDENTIFIER://dev-gja8kxz4ndtex3rq.us.auth0.com/macos/YOUR_BUNDLE_IDENTIFIER/callback
+      YOUR_BUNDLE_IDENTIFIER://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback
       ```
 
       For example, if your iOS bundle identifier were `com.example.MyApp` and your Auth0 domain were
@@ -181,7 +181,7 @@ export const sections = [
       Next, add the following [entry](https://developer.apple.com/documentation/xcode/configuring-an-associated-domain#Define-a-service-and-its-associated-domain) under **Associated Domains**:
 
       ```
-      webcredentials:dev-gja8kxz4ndtex3rq.us.auth0.com
+      webcredentials:{yourDomain}
       ```
 
       <Info>

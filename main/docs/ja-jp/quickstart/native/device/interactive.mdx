@@ -53,11 +53,11 @@ export const sections = [
       <AuthCodeGroup>
       ```bash cURL lines
       curl --request post \
-        --url 'https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code' \
+        --url 'https://{yourDomain}/oauth/device/code' \
         --header 'content-type: application/x-www-form-urlencoded'
       ```
       ```csharp C# lines
-      var client = new RestClient("https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code");
+      var client = new RestClient("https://{yourDomain}/oauth/device/code");
       var request = new RestRequest(Method.POST);
       request.AddHeader("content-type", "application/x-www-form-urlencoded");
       IRestResponse response = client.Execute(request);
@@ -71,7 +71,7 @@ export const sections = [
       "io/ioutil"
       )
       func main() {
-      url := "https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code"
+      url := "https://{yourDomain}/oauth/device/code"
       req, _ := http.NewRequest("post", url, nil)
       req.Header.Add("content-type", "application/x-www-form-urlencoded")
       res, _ := http.DefaultClient.Do(req)
@@ -82,7 +82,7 @@ export const sections = [
       }
       ```
       ```java Java lines
-      HttpResponse<String> response = Unirest.post("https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code")
+      HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/device/code")
         .header("content-type", "application/x-www-form-urlencoded")
         .asString();
       ```
@@ -90,7 +90,7 @@ export const sections = [
       var axios = require("axios").default;
       var options = {
       method: 'post',
-      url: 'https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code',
+      url: 'https://{yourDomain}/oauth/device/code',
       headers: {'content-type': 'application/x-www-form-urlencoded'}
       };
       axios.request(options).then(function (response) {
@@ -102,7 +102,7 @@ export const sections = [
       ```obj-c Obj-C lines 
       #import <Foundation/Foundation.h>
       NSDictionary *headers = @{ @"content-type": @"application/x-www-form-urlencoded" };
-      NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code"]
+      NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/oauth/device/code"]
                                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
 
                                                     timeoutInterval:10.0];
@@ -132,7 +132,7 @@ export const sections = [
       ```php PHP lines 
       $curl = curl_init();
       curl_setopt_array($curl, [
-      CURLOPT_URL => "https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code",
+      CURLOPT_URL => "https://{yourDomain}/oauth/device/code",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -157,7 +157,7 @@ export const sections = [
       import http.client
       conn = http.client.HTTPSConnection("")
       headers = { 'content-type': "application/x-www-form-urlencoded" }
-      conn.request("post", "/dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code", headers=headers)
+      conn.request("post", "/{yourDomain}/oauth/device/code", headers=headers)
       res = conn.getresponse()
       data = res.read()
       print(data.decode("utf-8"))
@@ -166,7 +166,7 @@ export const sections = [
       require 'uri'
       require 'net/http'
       require 'openssl'
-      url = URI("https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code")
+      url = URI("https://{yourDomain}/oauth/device/code")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -178,7 +178,7 @@ export const sections = [
       ```swift Swift lines 
       import Foundation
       let headers = ["content-type": "application/x-www-form-urlencoded"]
-      let request = NSMutableURLRequest(url: NSURL(string: "https://dev-gja8kxz4ndtex3rq.us.auth0.com/oauth/device/code")! as URL,
+      let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/oauth/device/code")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
 
                                       timeoutInterval: 10.0)

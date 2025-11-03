@@ -23,7 +23,7 @@ Un fichier JSON autonome peut être utilisé pour configurer l’outil Deploy 
 ```javascript lines
 {
   "AUTH0_DOMAIN": "<YOUR_TENANT_DOMAIN>",
-  "AUTH0_CLIENT_ID": "<YOUR_CLIENT_ID>",
+  "AUTH0_CLIENT_ID": "{yourClientId}",
   "AUTH0_ALLOW_DELETE": false
 }
 ```
@@ -47,9 +47,9 @@ Pour désactiver la consommation des variables d’environnement pour les comman
 #### Déployer la configuration pour les formats YAML sans fichier config.json
 
 ```php lines
-$ export AUTH0_DOMAIN=<YOUR_AUTH0_DOMAIN>
-$ export AUTH0_CLIENT_ID=<YOUR_CLIENT_ID>
-$ export AUTH0_CLIENT_SECRET=<YOUR_CLIENT_SECRET>
+$ export AUTH0_DOMAIN={yourDomain}
+$ export AUTH0_CLIENT_ID={yourClientId}
+$ export AUTH0_CLIENT_SECRET={yourClientSecret}
 $ a0deploy import --input_file=local/tenant.yaml
 ```
 

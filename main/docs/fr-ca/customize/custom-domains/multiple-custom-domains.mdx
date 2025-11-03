@@ -449,9 +449,9 @@ For example: To create a password change ticket using Auth0 SDK for [Node.js](ht
 const { ManagementClient } = require('auth0');
 
 const auth0 = new ManagementClient({
-    domain: '<YOUR_AUTH0_DOMAIN>',
-    clientId: '<YOUR_CLIENT_ID>',
-    clientSecret: '<YOUR_CLIENT_SECRET>',
+    domain: '{yourDomain}',
+    clientId: '{yourClientId}',
+    clientSecret: '{yourClientSecret}',
     scope: 'create:passwords_tickets',
     headers: {
         'auth0-custom-domain': 'my-custom-domain.com'

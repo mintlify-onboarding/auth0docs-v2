@@ -102,7 +102,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
             <key>ClientId</key>
             <string>YOUR_AUTH0_CLIENT_ID</string>
             <key>Domain</key>
-            <string>YOUR_AUTH0_DOMAIN</string>
+            <string>{yourDomain}</string>
         </dict>
         </plist>
         ```
@@ -117,28 +117,28 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
 
         **iOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback
         ```
 
         **macOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback
         ```
 
         **Allowed Logout URLs:**
 
         **iOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback
         ```
 
         **macOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback
         ```
       </Tab>
 
@@ -152,34 +152,34 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
 
         **iOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback
         ```
 
         **macOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback
         ```
 
         **Allowed Logout URLs:**
 
         **iOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/ios/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/ios/YOUR_BUNDLE_IDENTIFIER/callback
         ```
 
         **macOS:**
         ```
-        https://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback,
-        YOUR_BUNDLE_IDENTIFIER://YOUR_AUTH0_DOMAIN/macos/YOUR_BUNDLE_IDENTIFIER/callback
+        https://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback,
+        YOUR_BUNDLE_IDENTIFIER://{yourDomain}/macos/YOUR_BUNDLE_IDENTIFIER/callback
         ```
 
         5. Pass credentials in code:
 
         ```swift
-        Auth0.webAuth(clientId: "YOUR_CLIENT_ID", domain: "YOUR_DOMAIN")
+        Auth0.webAuth(clientId: "{yourClientId}", domain: "YOUR_DOMAIN")
         ```
       </Tab>
     </Tabs>
@@ -443,7 +443,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
         1. Auth0 Dashboard → **Applications** → Your app → **Settings** → **Advanced Settings** → **Device Settings**
         2. Add **Apple Team ID** and **bundle identifier** → **Save**
         3. Xcode: Target → **Signing & Capabilities** → **+ Capability** → **Associated Domains**
-        4. Add: `webcredentials:YOUR_AUTH0_DOMAIN`
+        4. Add: `webcredentials:{yourDomain}`
 
         <Warning>Requires: Paid Apple Developer account, iOS 17.4+/macOS 14.4+</Warning>
 
