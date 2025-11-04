@@ -9,6 +9,7 @@ import MCPGetStartedConfigTenantSettings from "/snippets/mcp/get-started/config-
 import CreateProfile from "/snippets/mcp/get-started/create-custom-token-exchange-profile.mdx";
 import CreateMCPAPI from "/snippets/mcp/get-started/create-mcp-api.mdx";
 import { DownloadQuickstartButton } from "/snippets/download-quickstart/DownloadQuickstartButton.jsx";
+import StaticClientRegOrDCR from "/snippets/mcp/get-started/static-cr-or-dcr.mdx";
 import MCPGetStartedTestingInstructions from "/snippets/mcp/get-started/testing-instructions.mdx";
 
 To call your APIs on behalf of your users, the MCP server needs to exchange the Auth0 access token it received from the MCP client (with the audience set to the MCP server itself) for a new Auth0 access token with the audience set to your API. In Auth0, this is called Custom Token Exchange and uses [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693.html).
@@ -173,28 +174,6 @@ Once the action is created you can **Deploy** it. When you deploy the Action, Au
 
 <CreateProfile />
 
-## Create an Application to represent your MCP client
-
-The MCP client will provide the interface to connect to your MCP server. For this quickstart we will use [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) as our client.
-
-Run this command to create the client:
-
-```shell wrap lines
-auth0 api post clients --data '{
-  "name": "MCP Inspector",
-  "app_type": "regular_web",
-  "is_first_party": false,
-  "callbacks": ["http://localhost:6274/oauth/callback"],
-  "grant_types": ["authorization_code"],
-  "token_endpoint_auth_method": "client_secret_post",
-  "oidc_conformant": true,
-  "jwt_configuration": { "alg": "RS256" },
-  "logo_uri": "https://avatars.githubusercontent.com/u/182288589"
-}' | jq -r '"\nClient ID:     " + .client_id + "\nClient Secret: " +  .client_secret'
-```
-
-Save the `Client ID` and `Client Secret` from the command output.
-
 ## Run the MCP server and the API
 
 Run this command to start your server:
@@ -263,6 +242,8 @@ export async function exchangeCustomToken(subjectToken: string) {
     });
 }
 ```
+
+<StaticClientRegOrDCR />
 
 <MCPGetStartedTestingInstructions />
 
