@@ -1,5 +1,5 @@
 ---
-description: Migrate your existing SAML Federation Connection from a legacy Auth0 custom domain to a new one, allowing your tenants to leverage Multiple Custom Domain (MCD) capabilities. 
+description: Migrate your existing SAML Federation Connection from a legacy Auth0 custom domain to a new one, allowing your tenants to leverage Multiple Custom Domain (MCD) capabilities.
 'og:image': https://cdn2.auth0.com/docs/1.14553.0/img/share-image.png
 'og:title': SAML Migration for Multiple Custom Domains (MCD) Early Access
 'og:url': https://auth0.com/docs/
@@ -27,11 +27,11 @@ This process requires configuration via Terraform to set up the Auth0 components
 
 Before getting started with your migration, review the requirements below:
 
-* A tenant on an Enterprise plan with MCD enabled
+* A tenant on an Enterprise plan with MCD enabled.
 * Two verified custom domains configured in your Auth0 tenant:
-  * Old legacy domain (for the proxy)
-  * New target domain (for the application)
-* Terraform CLI and `Node.js/npm` installed
+    1.  **Old legacy domain** (for the proxy)
+    2.  **New target domain** (for the application)
+* Terraform CLI and `Node.js/npm` installed.
 * Cloudflare account with access to the domain hosting your custom domains.
 
 ## How it works
@@ -96,18 +96,21 @@ npx wrangler deploy
 ### Temporarily update SAML connection parameters
 Your old domain receives the SAML response before being reposted to the new domain. Therefore, the SAML Connection's expected validation parameters must temporarily point to the old domain's callback URL to avoid mismatch errors.
 
-1. Obtain a Management API access token for your service provider tenant, with `read:connections` and `update:connections` scopes:
-```bash
-cd bin/
-export access_token='<your-sp-management-api-token>'
-```
+1.  Obtain a Management API access token for your service provider tenant, with `read:connections` and `update:connections` scopes:
 
-2. Update destination URL:
-```bash
-./sp-set-destination-url.sh -i <saml-connection-id> -d https://oldfed.example.com/login/callback
-```
+    ```bash
+    cd bin/
+    export access_token='<your-sp-management-api-token>'
+    ```
 
-3. Update recipient URL:
-```bash
-./sp-set-recipient-url.sh -i <saml-connection-id> -r https://oldfed.example.com/login/callback
-```
+2.  Update destination URL:
+
+    ```bash
+    ./sp-set-destination-url.sh -i <saml-connection-id> -d [https://oldfed.example.com/login/callback](https://oldfed.example.com/login/callback)
+    ```
+
+3.  Update recipient URL:
+
+    ```bash
+    ./sp-set-recipient-url.sh -i <saml-connection-id> -r [https://oldfed.example.com/login/callback](https://oldfed.example.com/login/callback)
+    ```
