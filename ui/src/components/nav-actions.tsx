@@ -28,7 +28,6 @@ const NavActions = observer(({ className }: { className?: string }) => {
       if (wrapperRef.current) {
         const iconsWidth = isLgUp ? 30 + 16 : -8; // icon width + margin
         wrapperRef.current.style.right = `${window.innerWidth - right + iconsWidth}px`;
-        wrapperRef.current.style.top = `var(--opt-out-banner-height, 0px)`;
       }
     };
 

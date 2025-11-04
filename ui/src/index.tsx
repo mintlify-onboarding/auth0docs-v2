@@ -3,8 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import './index.css';
 
-import { NavActions, OptOutBanner } from '@/components';
-import { patchRolloutConsent } from '@/lib/api';
+import { NavActions } from '@/components';
 import { overrideHistoryMethods } from '@/lib/history';
 import { initOneTrust } from '@/lib/one-trust';
 import { initRootStore } from '@/stores';
@@ -12,13 +11,6 @@ import { initRootStore } from '@/stores';
 function mountApp(root: HTMLElement) {
   createRoot(root).render(
     <StrictMode>
-      <OptOutBanner
-        onOptOut={async () => {
-          await patchRolloutConsent({ choice: 'opt_out' });
-          window.heap.track('docs-v2:opt_out');
-          window.location.reload();
-        }}
-      />
       <NavActions />
     </StrictMode>,
   );
