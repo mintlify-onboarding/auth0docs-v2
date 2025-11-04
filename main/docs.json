@@ -1257,7 +1257,8 @@
                             "pages": [
                               "docs/customize/custom-domains/multiple-custom-domains",
                               "docs/customize/custom-domains/multiple-custom-domains/mcd-use-cases",
-                              "docs/customize/custom-domains/multiple-custom-domains/mcd-best-practices"
+                              "docs/customize/custom-domains/multiple-custom-domains/mcd-best-practices",
+                              "docs/customize/custom-domains/multiple-custom-domains/saml-migration.mdx"
                             ]
                           }
                         ]
