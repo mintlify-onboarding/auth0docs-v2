@@ -85,7 +85,8 @@ To enable a connection via the Auth0 Dashboard:
 4. In the Authentication section, locate **Membership On Authentication** and choose whether to enable or disable auto-membership. When enabled, auto-membership automatically adds all users logging in with the connection as members of the organization.
 5. **For Database connections only**: In the Organization Signup section, choose whether to enable or disable self-service signups. When enabled, users can access a signup link on the login prompt to create their account and automatically gain membership to the organization.
 
-   * **Note**: To enable this property, you must first enable **Membership on Authentication**.
+   * To enable this property, you must first enable **Membership on Authentication**.
+   * **Note**: Organization Signup takes priority over the Database connection’s signup configuration. When Organization Signup is enabled, users can still sign up to an Organization or accept an Organization invite, even if signups are disabled at the Database connection level.
 6. **For Enterprise connections only**: In the Connection button section, optionally enable the **Display connection as a button** property to display the connection as an option on the organization login prompt.
 
    <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
