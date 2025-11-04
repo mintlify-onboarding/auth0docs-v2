@@ -23,7 +23,20 @@ By the end of this quickstart, you should have an MCP server that can:
 
 <MCPGetStartedConfigTenantSettings />
 
-## Create an Application for your MCP server
+## Set up the Auth0 Applications and APIs
+
+When an MCP server needs to call underlying APIs, it needs to perform a Custom Token Exchange to obtain an access token with the audience set to the API rather than the MCP server itself. Because of this architecture, the MCP server acts in a dual role.
+
+1. To the MCP client (e.g., an IDE, an AI assistant), the MCP server acts as a Resource Server (an API).
+2. To the underlying API (e.g., your own API), the MCP server acts as a Client.
+
+Because of this duality, you need to set up the MCP server twich on your Auth0 tenant, both as an API and as a Client, as described below.
+
+### Create an API to represent your MCP server
+
+<CreateMCPAPI />
+
+### Create an Application for your MCP server
 
 In the custom token exchange scenario, the MCP server acts as a client in order to obtain an Auth0 access token with custom token exchange:
 
@@ -51,7 +64,9 @@ auth0 api patch clients/<client_id> --data '{
 }'
 ```
 
-## Create a first-party API to call from the MCP server
+And finally, because you need an API to call to, let's create one.
+
+### Create a first-party API to call from the MCP server
 
 Since your objective is to have the MCP server make a tool call that calls a protected first-party API you need to configure an API in Auth0, this will be your upstream API:
 
@@ -69,7 +84,6 @@ auth0 api post resource-servers --data '{
 
 Save the `Audience` from the command output, you'll need it on a later step.
 
-<CreateMCPAPI />
 
 <Tabs>
   <Tab title="Use sample app (recommended)">
