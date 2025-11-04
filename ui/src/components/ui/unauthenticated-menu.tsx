@@ -17,7 +17,7 @@ const UnauthenticatedMenu = () => {
   if (isLgUp) {
     return (
       <>
-        <Button variant="ghost" onClick={() => userLogin(window.location.href)}>
+        <Button className='adu:text-sm!' variant="ghost" onClick={() => userLogin(window.location.href)}>
           Log In
         </Button>
         <Button
