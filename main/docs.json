@@ -7570,10 +7570,6 @@
       "destination": "/docs/customize/login-pages/advanced-customizations/getting-started/sdk-quickstart"
     },
     {
-      "source": "/docs/secure/data-privacy-and-compliance",
-      "destination": "/docshttp://security.okta.com/"
-    },
-    {
       "source": "/docs/deploy-monitor/logs/export-log-events-with-rules",
       "destination": "/docs/customize/log-streams"
     },

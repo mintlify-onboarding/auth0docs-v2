@@ -891,3 +891,20 @@ Allows the user to enroll a new authentication method (such as a passkey).
 ## Rate limits
 
 During Early Access, the My Account API is limited at a tenant level to 25 requests per second.
+
+## Cross-Origin Requests
+
+If you intend to call the My Account API directly from a browser-based application (like a Single Page Application) running on a different domain than your Auth0 tenant, you will encounter browser security policies known as Cross-Origin Resource Sharing (CORS). By default, browsers block these cross-origin requests.
+
+To allow your application to successfully make requests to the API, you must add your application's domain (its "origin") to your client's configuration:
+
+1. Navigate to [Dashboard > Applications](https://manage.auth0.com/#/applications). Select the application to view.
+2. Under Cross-Origin Authentication, toggle on Allow Cross-Origin Authentication.
+3. Locate **Allowed Origins (CORS)**, and enter your application's origin URL.
+4. Select **Save**.
+
+To learn more, read [Configure Cross-Origin Resource Sharing](/docs/get-started/applications/set-up-cors).
+
+<Note>
+If you do not need to use CORS for your application, ensure that Allow Cross-Origin Authentication is toggled off. Adding your application's URL to this list tells Auth0 to trust requests from that origin, allowing your client-side application to access the API.
+</Note>
