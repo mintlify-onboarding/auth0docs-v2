@@ -187,7 +187,7 @@ Les sections suivantes décrivent comment vérifier chaque étape et comment ide
 2. Localisez votre connexion et sélectionnez son icône **Try (Essayer)** (triangle/jouer) pour tester l’interaction entre Auth0 et l’IdP distant. Si la connexion **ne** fonctionne pas, poursuivez avec les étapes détaillées dans cette section. Si c’est le cas, passez à la section suivante.
 3. À côté de la connexion SAML, cliquez sur **Settings (Paramètres)** (r](/docs/images/par l’icône d’engrenage).
 
-   <Frame>![Dashboard Authentication Enterprise SAML Connection Settings](/images/fr-ca/cdy7uua7fh8z/6s8p4aMck06YnPStr493sA/86cf45f919a2b75376a5ee6474b71cb1/2025-02-27_15-56-22.png)</Frame>
+   <Frame>![Dashboard Authentication Enterprise SAML Connection Settings](/docs/images/fr-ca/cdy7uua7fh8z/6s8p4aMck06YnPStr493sA/86cf45f919a2b75376a5ee6474b71cb1/2025-02-27_15-56-22.png)</Frame>
 
 4. Vérifiez et confirmez ce qui suit avec l’administrateur de l’IdP :
 
@@ -284,7 +284,7 @@ Vérifiez si le profil Auth0 de l’utilisateur est correctement rempli :
    1. Pour activer le débogage pour la connexion, accédez à [Authentification (Authentification) > Enterprise (Entreprise)](https://manage.auth0.com/#/connections/enterprise).
    2. Ouvrez la liste des connexions de l’IdP **SAML** , cliquez sur ](/docs/images/ (Paramètres)**, et activez **Debug Mode (Mode débogage)**.
 
-      <Frame>![Troubleshoot SAML Connections Enable Debug Mode screen](/images/fr-ca/cdy7uua7fh8z/1F6npTHy1P0c0ygXfbndBD/a8f34635de6282df5062c2f951ee3177/2025-02-27_15-33-50.png)</Frame>
+      <Frame>![Troubleshoot SAML Connections Enable Debug Mode screen](/docs/images/fr-ca/cdy7uua7fh8z/1F6npTHy1P0c0ygXfbndBD/a8f34635de6282df5062c2f951ee3177/2025-02-27_15-33-50.png)</Frame>
 
    3. Avec **Debug Mode (Mode débogage)** activé, les entrées de journal **Warning During Login (Avertissement lors de la connexion)**[dans le Dashboard](https://manage.auth0.com/#/logs) contiennent une propriété `original_profile` répertoriant chaque attribut inclus dans l’assertion SAML par le fournisseur d’identité. Vous pouvez utiliser cette liste pour voir les informations que l’IdP envoie et pour pouvoir créer les mappages. Si l’attribut manquant n’est pas du tout présent dans l’assertion, veuillez travailler avec l’IdP pour vous assurer qu’il est inclus.
 5. Si une valeur d’attribut existe dans le profil utilisateur Auth0, mais n’est pas mappée au bon attribut, vous pouvez corriger cela via la fonctionnalité de mappage de connexion.
@@ -292,7 +292,7 @@ Vérifiez si le profil Auth0 de l’utilisateur est correctement rempli :
    1. Vous pouvez le faire en accédant à [Authentication (Authentification) > Enterprise (Entreprise)](https://manage.auth0.com/#/connections/enterprise).
    2. Ouvrez la liste des connexions de l’IdP **SAML** et allez ](/docs/images/ **Mappages**.
 
-      <Frame>![Troubleshoot SAML Connections Mappings Tab Screen](/images/fr-ca/cdy7uua7fh8z/BPMjuhqE17E5vWcHukcKf/2ddef4b5c2e30abde00e2f9504799c20/2025-02-27_14-14-14.png)</Frame>
+      <Frame>![Troubleshoot SAML Connections Mappings Tab Screen](/docs/images/fr-ca/cdy7uua7fh8z/BPMjuhqE17E5vWcHukcKf/2ddef4b5c2e30abde00e2f9504799c20/2025-02-27_14-14-14.png)</Frame>
 
    3. Dans l’éditeur fourni, il y a un extrait JSON que vous pouvez modifier pour configurer vos mappages Le nom à gauche est l’attribut du profil utilisateur Auth0 auquel la valeur de l’assertion sera mappée. La valeur à droite est l’identifiant dans l’assertion SAML d’où provient l’attribut. Lorsque Auth0 intègre des attributs SAML non mappés dans le profil utilisateur, les identifiants d’attribut contenant des points `.` sont remplacés par les deux points `:`. Lors de la configuration de vos mappages, assurez-vous que les identifiants que vous fournissez correspondent à ceux de l’assertion SAML.
 
