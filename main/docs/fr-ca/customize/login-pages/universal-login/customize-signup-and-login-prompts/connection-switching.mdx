@@ -76,14 +76,14 @@ curl --request PUT \
 --url 'https://{yourDomain}/api/v2/prompts/signup-password/partials' \
 --header 'authorization: Bearer {mgmtApiToken}' \
 --header 'content-type: application/json' \
---data '{"signup-password":{"form-footer-start":"   Send a secure code by email "}}'
+--data '{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}'
 ``` lines
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/prompts/signup-password/partials");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("authorization", "Bearer {mgmtApiToken}");
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{"signup-password":{"form-footer-start":"   Send a secure code by email "}}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 ```go Go
@@ -96,7 +96,7 @@ import (
 )
 func main() {
 url := "https://{yourDomain}/api/v2/prompts/signup-password/partials"
-payload := strings.NewReader("{"signup-password":{"form-footer-start":"   Send a secure code by email "}}")
+payload := strings.NewReader("{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}")
 req, _ := http.NewRequest("PUT", url, payload)
 req.Header.Add("authorization", "Bearer {mgmtApiToken}")
 req.Header.Add("content-type", "application/json")
@@ -111,7 +111,7 @@ fmt.Println(string(body))
 HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/signup-password/partials")
 .header("authorization", "Bearer {mgmtApiToken}")
 .header("content-type", "application/json")
-.body("{"signup-password":{"form-footer-start":"   Send a secure code by email "}}")
+.body("{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}")
 .asString();
 ```
 ```javascript Node.JS
@@ -136,7 +136,7 @@ console.error(error);
 #import 
 NSDictionary \*headers = @{ @"authorization": @"Bearer {mgmtApiToken}",
 @"content-type": @"application/json" };
-NSDictionary \*parameters = @{ @"signup-password": @{ @"form-footer-start": @"   Send a secure code by email " } };
+NSDictionary \*parameters = @{ @"signup-password": @{ @"form-footer-start": @"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>" } };
 NSData \*postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
 NSMutableURLRequest \*request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/prompts/signup-password/partials"]
 cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -166,7 +166,7 @@ CURLOPT_MAXREDIRS => 10,
 CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "PUT",
-CURLOPT_POSTFIELDS => "{"signup-password":{"form-footer-start":"   Send a secure code by email "}}",
+CURLOPT_POSTFIELDS => "{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}",
 CURLOPT_HTTPHEADER => [
 "authorization: Bearer {mgmtApiToken}",
 "content-type: application/json"
@@ -184,7 +184,7 @@ echo $response;
 ```python Python
 import http.client
 conn = http.client.HTTPSConnection("")
-payload = "{"signup-password":{"form-footer-start":"   Send a secure code by email "}}"
+payload = "{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}"
 headers = {
 'authorization': "Bearer {mgmtApiToken}",
 'content-type': "application/json"
@@ -205,7 +205,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Put.new(url)
 request["authorization"] = 'Bearer {mgmtApiToken}'
 request["content-type"] = 'application/json'
-request.body = "{"signup-password":{"form-footer-start":"   Send a secure code by email "}}"
+request.body = "{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}"
 response = http.request(request)
 puts response.read_body
 ``` lines
@@ -215,7 +215,7 @@ let headers = [
 "authorization": "Bearer {mgmtApiToken}",
 "content-type": "application/json"
 ]
-let parameters = ["signup-password": ["form-footer-start": "   Send a secure code by email "]] as [String : Any]
+let parameters = ["signup-password": ["form-footer-start": "<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"]] as [String : Any]
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/prompts/signup-password/partials")! as URL,
 cachePolicy: .useProtocolCachePolicy,
@@ -250,14 +250,14 @@ curl --request PUT \
 --url 'https://{yourDomain}/api/v2/prompts/login-password/partials' \
 --header 'authorization: Bearer {mgmtApiToken}' \
 --header 'content-type: application/json' \
---data '{"login-password":{"form-footer-start":"   Send a secure code by email "}}'
+--data '{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}'
 ``` lines
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/prompts/login-password/partials");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("authorization", "Bearer {mgmtApiToken}");
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{"login-password":{"form-footer-start":"   Send a secure code by email "}}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 ```go Go
@@ -270,7 +270,7 @@ import (
 )
 func main() {
 url := "https://{yourDomain}/api/v2/prompts/login-password/partials"
-payload := strings.NewReader("{"login-password":{"form-footer-start":"   Send a secure code by email "}}")
+payload := strings.NewReader("{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}")
 req, _ := http.NewRequest("PUT", url, payload)
 req.Header.Add("authorization", "Bearer {mgmtApiToken}")
 req.Header.Add("content-type", "application/json")
@@ -285,7 +285,7 @@ fmt.Println(string(body))
 HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/login-password/partials")
 .header("authorization", "Bearer {mgmtApiToken}")
 .header("content-type", "application/json")
-.body("{"login-password":{"form-footer-start":"   Send a secure code by email "}}")
+.body("{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}")
 .asString();
 ```
 ```javascript Node.JS
@@ -310,7 +310,7 @@ console.error(error);
 #import 
 NSDictionary \*headers = @{ @"authorization": @"Bearer {mgmtApiToken}",
 @"content-type": @"application/json" };
-NSDictionary \*parameters = @{ @"login-password": @{ @"form-footer-start": @"   Send a secure code by email " } };
+NSDictionary \*parameters = @{ @"login-password": @{ @"form-footer-start": @"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>" } };
 NSData \*postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
 NSMutableURLRequest \*request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://{yourDomain}/api/v2/prompts/login-password/partials"]
 cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -340,7 +340,7 @@ CURLOPT_MAXREDIRS => 10,
 CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "PUT",
-CURLOPT_POSTFIELDS => "{"login-password":{"form-footer-start":"   Send a secure code by email "}}",
+CURLOPT_POSTFIELDS => "{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}",
 CURLOPT_HTTPHEADER => [
 "authorization: Bearer {mgmtApiToken}",
 "content-type: application/json"
@@ -358,7 +358,7 @@ echo $response;
 ```python Python
 import http.client
 conn = http.client.HTTPSConnection("")
-payload = "{"login-password":{"form-footer-start":"   Send a secure code by email "}}"
+payload = "{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}"
 headers = {
 'authorization': "Bearer {mgmtApiToken}",
 'content-type': "application/json"
@@ -379,7 +379,7 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Put.new(url)
 request["authorization"] = 'Bearer {mgmtApiToken}'
 request["content-type"] = 'application/json'
-request.body = "{"login-password":{"form-footer-start":"   Send a secure code by email "}}"
+request.body = "{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}"
 response = http.request(request)
 puts response.read_body
 ``` lines
@@ -389,7 +389,7 @@ let headers = [
 "authorization": "Bearer {mgmtApiToken}",
 "content-type": "application/json"
 ]
-let parameters = ["login-password": ["form-footer-start": "   Send a secure code by email "]] as [String : Any]
+let parameters = ["login-password": ["form-footer-start": "<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"]] as [String : Any]
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 let request = NSMutableURLRequest(url: NSURL(string: "https://{yourDomain}/api/v2/prompts/login-password/partials")! as URL,
 cachePolicy: .useProtocolCachePolicy,
