@@ -98,7 +98,7 @@ curl --location 'https://$tenant/bc-authorize' \
 <tbody>
 <tr>
 <td><code>tenant</code></td>
-<td>Tenant name. It can also be a custom domain.</td>
+<td>Tenant name that is passed within the <code>login_hint</code> structure. It can also be a custom domain. <br/><br/> **Example**: `login_hint={"format": "iss_sub", "iss": "https://$tenant/", "sub":"$user_id"}`</td>
 </tr>
 <tr>
 <td><code>client_id</code></td>
@@ -114,7 +114,7 @@ curl --location 'https://$tenant/bc-authorize' \
 </tr>
 <tr>
 <td><code>user_id</code></td>
-<td>User ID for the authorizing user that is passed within the <code>login_hint</code> structure. If <code>iss_sub</code> format is used, then the user ID is passed within the <code>sub</code> claim.<br/><br/>The user ID for a federated connection may have a different format.<br/></td>
+<td>User ID for the authorizing user that is passed within the <code>login_hint</code> structure. If <code>iss_sub</code> format is used, then the user ID is passed within the <code>sub</code> claim. <br/><br/> **Example**: `login_hint={"format": "iss_sub", "iss": "https://$tenant/", "sub":"$user_id"}` <br/><br/>The user ID for a federated connection may have a different format.<br/></td>
 </tr>
 <tr>
 <td><code>request_expiry</code></td>

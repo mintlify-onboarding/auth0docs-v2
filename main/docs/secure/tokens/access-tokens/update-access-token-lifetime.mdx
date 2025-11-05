@@ -16,7 +16,7 @@ You can change the <Tooltip tip="Access Token: Authorization credential, in the 
 1. Go to [Dashboard > Applications > APIs](https://manage.auth0.com/#/apis) and select the name of the API to view.
 
    <Frame>![Dashboard Applications APIs List](/docs/images/cdy7uua7fh8z/3rhmhghYZDSi6YWHRA5yMQ/c71340259481b0b6787d5f3887cfda0f/dashboard-apis-list.png)</Frame>
-2. Locate the **Token Expiration** field under **Token Settings**.
+2. Locate the **Maximum Access Token Lifetime** field under **Access Token Expiration**.
 
    <Frame>![Dashboard - API - Token Settings - Expiration](/docs/images/cdy7uua7fh8z/2FFfqqmntXL9CnGrSxea9M/810e5542553168ffcd6081a10bc2db2f/image2.png)</Frame>
 3. Enter the desired lifetime (in seconds) for access tokens issued for this API.
@@ -27,9 +27,9 @@ You can change the <Tooltip tip="Access Token: Authorization credential, in the 
 
 ## Token Expiration For Browser Flows
 
-The **Token Expiration For Browser Flows** field refers to access tokens issued for the API through implicit and hybrid flows and does not cover all flows initiated from browsers.
+The **Implicit / Hybrid Flow Access Token Lifetime** field refers to access tokens issued for the API through implicit and hybrid flows and does not cover all flows initiated from browsers.
 
-For example, the PKCE flow (used in `auth0-js-spa` SDK) can be initiated from the browser, but it references the **Token Expiration** value, not the **Token Expiration For Browser Flows** value.
+For example, the PKCE flow (used in `auth0-js-spa` SDK) can be initiated from the browser, but it references the **Token Expiration** value, not the **Implicit / Hybrid Flow Access Token Lifetime** value.
 
 ## Restricted lifetime for MFA access tokens
 
