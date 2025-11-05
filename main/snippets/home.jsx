@@ -249,9 +249,9 @@ export const LearnBasicsGrid = () => {
       img: "/docs/images/home/basics-card3",
     },
     {
-      title: "Status",
-      desc: "Check the status of Auth0 services",
-      href: "https://status.auth0.com/",
+      title: "Support",
+      desc: "Get support for your Auth0 implementation.",
+      href: "https://support.auth0.com/",
       img: "/docs/images/home/basics-card4",
     },
   ];
@@ -259,7 +259,7 @@ export const LearnBasicsGrid = () => {
   return (
     <section className="max-w-[962px] mx-auto py-12 pb-30 px-8 lg:px-0">
       <h2 className="font-inter !font-medium text-[24px] text-gray-900 dark:text-white mb-6 text-left">
-        Learn identity basics
+        Resources & Support
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
