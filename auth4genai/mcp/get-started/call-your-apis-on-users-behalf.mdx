@@ -9,7 +9,6 @@ import MCPGetStartedConfigTenantSettings from "/snippets/mcp/get-started/config-
 import CreateProfile from "/snippets/mcp/get-started/create-custom-token-exchange-profile.mdx";
 import CreateMCPAPI from "/snippets/mcp/get-started/create-mcp-api.mdx";
 import { DownloadQuickstartButton } from "/snippets/download-quickstart/DownloadQuickstartButton.jsx";
-import StaticClientRegOrDCR from "/snippets/mcp/get-started/static-cr-or-dcr.mdx";
 import MCPGetStartedTestingInstructions from "/snippets/mcp/get-started/testing-instructions.mdx";
 
 To call your APIs on behalf of your users, the MCP server needs to exchange the Auth0 access token it received from the MCP client (with the audience set to the MCP server itself) for a new Auth0 access token with the audience set to your API. In Auth0, this is called Custom Token Exchange and uses [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693.html).
@@ -256,8 +255,6 @@ export async function exchangeCustomToken(subjectToken: string) {
     });
 }
 ```
-
-<StaticClientRegOrDCR />
 
 <MCPGetStartedTestingInstructions />
 

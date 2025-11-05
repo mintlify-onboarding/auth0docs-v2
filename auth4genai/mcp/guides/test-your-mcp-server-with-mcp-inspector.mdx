@@ -4,6 +4,8 @@ description: Learn how to test your MCP server with MCP Inspector.
 sidebarTitle: Test your MCP Server with MCP Inspector
 ---
 
+import StaticClientRegOrDCR from "/snippets/mcp/get-started/static-cr-or-dcr.mdx";
+
 When you're developing your MCP server locally, you have several ways to test it. You could connect it to a standard AI client, but that often hides the underlying protocol details, making it difficult to debug specific requests. Alternatively, you could use command-line tools like curl, but this can be cumbersome, especially when dealing with complex authentication flows and manually crafting JSON payloads.
 
 This is where [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) shines. It's a purpose-built graphical tool that provides the best of both worlds. It gives you a clear, interactive interface to see your server's available tools, handles complex authentication for you, and allows you to directly execute tools with specific inputs, no natural language prompting required. This direct approach makes it an invaluable asset for efficient debugging and development.
@@ -31,9 +33,12 @@ Once the Inspector is open, you need to configure it to connect to your local MC
 
 1. Set the **Transport Type** to `Streamable HTTP`.
 2. Enter your server's URL, which is typically `http://localhost:3001/mcp`.
-3. In the left navigation menu, click on **Authentication**.
-4. Optionally, if you are not using DCR, enter the **Client ID** and **Client Secret** you obtained when you registered your application.
-5. Click **Connect**.
+
+In order for the MCP Inspector connect to your MCP server you can either do static client registration (recommended) or Dynamic Client Registration (DCR). Pick your preferred method below and follow the instructions.
+
+<StaticClientRegOrDCR />
+
+3. Click **Connect**.
 
 You'll be redirected to a login and consent screen. Sign in with a user account that has been granted the necessary permissions for the tools.
 
