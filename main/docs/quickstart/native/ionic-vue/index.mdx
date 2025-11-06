@@ -59,11 +59,6 @@ You should set the **Allowed Callback URL** to:
 YOUR_PACKAGE_ID://{yourDomain}/capacitor/YOUR_PACKAGE_ID/callback
 ```
 
-
-
-
-
-
 ### Configure Logout URLs
 
 A logout URL is a URL in your application that Auth0 can return to after the user has been logged out of the authorization server. This is specified in the `returnTo` query parameter. The logout URL for your app must be added to the **Allowed Logout URLs** field in your [Application Settings](https://manage.auth0.com/#/applications). If this field is not set, users will be unable to log out from the application and will get an error.
@@ -74,11 +69,6 @@ You should set the **Allowed Logout URLs** to
 YOUR_PACKAGE_ID://{yourDomain}/capacitor/YOUR_PACKAGE_ID/callback
 ```
 
-
-
-
-
-
 ### Configure Origins
 
 To be able to make requests from your application to Auth0, set the following **Allowed Origins** in your [Application Settings](https://manage.auth0.com/#/applications/{yourClientId}/settings).
@@ -86,11 +76,6 @@ To be able to make requests from your application to Auth0, set the following **
 ```
 capacitor://localhost, http://localhost
 ```
-
-
-
-
-
 
 These origins are required for iOS and Android respectively.
 
@@ -104,11 +89,6 @@ Run the following command within your project directory to install the Auth0 Vue
 npm install @auth0/auth0-vue
 ```
 
-
-
-
-
-
 The SDK exposes several types that help you integrate Auth0 with your Vue application idiomatically, including a module and an authentication service.
 
 ### Install Capacitor plugins
@@ -118,11 +98,6 @@ This quickstart and sample make use of some of Capacitor's official plugins. Ins
 ```
 npm install @capacitor/browser @capacitor/app
 ```
-
-
-
-
-
 
 * [`@capacitor/browser`](https://capacitorjs.com/docs/apis/browser) - allows you to interact with the device's system browser and is used to open the URL to Auth0's authorizaction endpoint
 * [`@capacitor/app`](https://capacitorjs.com/docs/apis/app) - allows you to subscribe to high-level app events, useful for handling callbacks from Auth0
@@ -149,7 +124,7 @@ import config from "./auth.config";
 // ..
 
 // Build the URL that Auth0 should redirect back to
-const redirect_uri = \`${config.appId}://{yourDomain}/capacitor/${config.appId}/callback\`;
+const redirect_uri = \`\${config.appId}://{yourDomain}/capacitor/\${config.appId}/callback\`;
 
 const app = createApp(App).use(IonicVue).use(router);
 
@@ -170,11 +145,6 @@ router.isReady().then(() => {
 });`;
 
 <AuthCodeBlock children={codeExample} language="js" />
-
-
-
-
-
 
 The `createAuth0` plugin takes the following props:
 
@@ -418,11 +388,6 @@ export default defineComponent({
 </script>
 ```
 
-
-
-
-
-
 The `user` property contains sensitive information and artifacts related to the user's identity. As such, its availability depends on the user's authentication status. To prevent any render errors, use the `isAuthenticated` property from `useAuth0()` to check if Auth0 has authenticated the user before Vue renders any component that consumes the `user` property. Ensure that the SDK has completed loading before accessing the `isAuthenticated` property, by checking that `isLoading` is `false`.
 
 <Note>
@@ -445,5 +410,3 @@ Add the `UserProfile` component to your application, and verify that you can dis
 </table>
 [Edit on GitHub](https://github.com/auth0/docs/edit/master/articles/quickstart/backend/aspnet-core-webapi/01-authorization.md)
 </Info>
-
----

@@ -10,6 +10,42 @@ permalink: "configure-token-vault"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample1 = `# set your variables
+export access_token="YOUR_MANAGEMENT_API_ACCESS_TOKEN"
+export auth0_domain_url="https://{yourDomain}"
+export connection_id="YOUR_CONNECTION_ID"
+
+# run the script to first fetch the options object of your connection, set federated_connections_access_tokens to true, and then patch it to the connection
+readonly BODY=$(curl --silent --request GET \
+  --header "Authorization: Bearer \${access_token}" \
+  --url "\${auth0_domain_url}/api/v2/connections/\${connection_id}?fields=options" \
+  --header 'content-type: application/json' | \
+  jq "del(.id) | .options += {\"federated_connections_access_tokens\": {\"active\": true}}")
+
+curl --request PATCH \
+  --header "Authorization: Bearer \${access_token}" \
+  --header 'content-type: application/json' \
+  --url "\${auth0_domain_url}/api/v2/connections/\${connection_id}" \
+  --data "\${BODY}"`;
+
+export const codeExample2 = `curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>' \
+  --data '{
+    "grant_types": [
+      "authorization_code",
+      "refresh_token",
+      "urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token"
+    ]
+  }'`;
+  
+export const codeExample3 = `curl --request GET \
+  --url 'https://{yourDomain}/api/v2/users/{userId}/federated-connections-tokensets' \
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'`;
+  
+export const codeExample4 = `curl --request DELETE \
+  --url 'https://{yourDomain}/api/v2/users/{userId}/federated-connections-tokensets/{tokensetId}' \
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'`;
 
 <Warning>
 
@@ -65,24 +101,6 @@ When you use the `options` parameter when making a `PATCH` call to the [Update a
 
 </Callout>
 
-export const codeExample1 = `# set your variables
-export access_token="YOUR_MANAGEMENT_API_ACCESS_TOKEN"
-export auth0_domain_url="https://{yourDomain}"
-export connection_id="YOUR_CONNECTION_ID"
-
-# run the script to first fetch the options object of your connection, set federated_connections_access_tokens to true, and then patch it to the connection
-readonly BODY=$(curl --silent --request GET \
-  --header "Authorization: Bearer ${access_token}" \
-  --url "${auth0_domain_url}/api/v2/connections/${connection_id}?fields=options" \
-  --header 'content-type: application/json' | \
-  jq "del(.id) | .options += {\"federated_connections_access_tokens\": {\"active\": true}}")
-
-curl --request PATCH \
-  --header "Authorization: Bearer ${access_token}" \
-  --header 'content-type: application/json' \
-  --url "${auth0_domain_url}/api/v2/connections/${connection_id}" \
-  --data "${BODY}"`;
-
 <AuthCodeBlock children={codeExample1} language="bash" />
 
 </Tab></Tabs>
@@ -110,16 +128,7 @@ Only certain types of clients can use the Token Vault grant type:
 
 To enable Token Vault for an application, make a `PATCH` call to the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint to add the `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token` grant type to the client JSON object:
 
-export const codeExample2 = `curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
-  --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>' \
-  --data '{
-    "grant_types": [
-      "authorization_code",
-      "refresh_token",
-      "urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token"
-    ]
-  }'`;
+
 
 <AuthCodeBlock children={codeExample2} language="bash" />
 
@@ -139,10 +148,6 @@ To manage tokensets for a user, use the Management API:
 To get a user's tokensets, you need a [Management API access token](/docs/ja-jp/secure/tokens/access-tokens/management-api-access-tokens) with the `read:federated_connections_tokensets` scope.
 
 Make a `GET` request to the `/federated-connections-tokensets` endpoint:
-
-export const codeExample3 = `curl --request GET \
-  --url 'https://{yourDomain}/api/v2/users/{userId}/federated-connections-tokensets' \
-  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'`;
 
 <AuthCodeBlock children={codeExample3} language="bash" />
 
@@ -181,10 +186,6 @@ Status Code: 200
 To delete a tokenset, you need a [Management API access token](/docs/ja-jp/secure/tokens/access-tokens/management-api-access-tokens) with the `update:federated_connections_tokensets` scope.
 
 Make a `DELETE` request to the `/tokensets` endpoint:
-
-export const codeExample4 = `curl --request DELETE \
-  --url 'https://{yourDomain}/api/v2/users/{userId}/federated-connections-tokensets/{tokensetId}' \
-  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>'`;
 
 <AuthCodeBlock children={codeExample4} language="bash" />
 

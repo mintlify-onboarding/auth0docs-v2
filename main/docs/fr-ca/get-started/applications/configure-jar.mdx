@@ -10,6 +10,24 @@ permalink: "configure-jar"
 ---
 import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
+export const codeExample1 = `POST https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}/credentials
+Authorization: Bearer <YOUR_ACCESS_TOKEN>
+Content-Type: application/json
+{
+  "name": "My credentials for JAR",
+  "credential_type": "public_key",
+  "pem": "[YOUR PEM FILE CONTENT]",
+  "alg": "RS256"
+}`;
+
+export const codeExample2 = `PATCH https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}
+Authorization: Bearer <YOUR_ACCESS_TOKEN>
+Content-Type: application/json
+{
+  "signed_request_object": {
+    "credentials": [{"id": "[YOUR CREDENTIAL ID]"}]
+  }
+}`;
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -80,7 +98,7 @@ Lorsque vous créez une nouvelle application, configurez JAR en envoyant une dem
 
 ```json lines
 POST https://{yourTenant}.auth0.com/api/v2/clients
-Authorization: Bearer [YOUR ACCESS TOKEN]
+Authorization: Bearer <YOUR_ACCESS_TOKEN>
 Content-Type: application/json
 {
   "name": "My App using JAR",
@@ -103,18 +121,6 @@ Content-Type: application/json
 
 Lors de la mise à jour d’une application existante, vous devez d’abord créer un identifiant client de manière explicite. La demande POST suivante utilise le contenu de votre fichier PEM pour créer vos identifiants client pour JAR :
 
-
-
-export const codeExample1 = `POST https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}/credentials
-Authorization: Bearer [YOUR ACCESS TOKEN]
-Content-Type: application/json
-{
-  "name": "My credentials for JAR",
-  "credential_type": "public_key",
-  "pem": "[YOUR PEM FILE CONTENT]",
-  "alg": "RS256"
-}`;
-
 <AuthCodeBlock children={codeExample1} language="json" />
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
@@ -124,17 +130,6 @@ Assurez-vous que les nouvelles lignes sont correctement codées en JSON sans for
 </Callout>
 
 Attribuez ensuite les identifiants client à la configuration client `signed_request_object`. La demande PATCH suivante associe les identifiants client à `signed_request_object` :
-
-
-
-export const codeExample2 = `PATCH https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}
-Authorization: Bearer [YOUR ACCESS TOKEN]
-Content-Type: application/json
-{
-  "signed_request_object": {
-    "credentials": [{"id": "[YOUR CREDENTIAL ID]"}]
-  }
-}`;
 
 <AuthCodeBlock children={codeExample2} language="json" />
 
