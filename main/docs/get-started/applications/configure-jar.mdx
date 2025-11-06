@@ -76,7 +76,7 @@ When you create a new application, configure JAR by sending a POST request with 
 
 ```json lines
 POST https://{yourTenant}.auth0.com/api/v2/clients
-Authorization: Bearer [YOUR ACCESS TOKEN]
+Authorization: Bearer <YOUR_ACCESS_TOKEN>
 Content-Type: application/json
 {
   "name": "My App using JAR",
@@ -108,7 +108,7 @@ When updating an existing application, you need to explicitly create a client cr
 
 
 export const codeExample1 = `POST https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}/credentials
-Authorization: Bearer [YOUR ACCESS TOKEN]
+Authorization: Bearer <YOUR_ACCESS_TOKEN>
 Content-Type: application/json
 {
   "name": "My credentials for JAR",
@@ -136,7 +136,7 @@ Then, assign the client credential to the `signed_request_object` client configu
 
 
 export const codeExample2 = `PATCH https://{yourTenant}.auth0.com/api/v2/clients/{yourClientId}
-Authorization: Bearer [YOUR ACCESS TOKEN]
+Authorization: Bearer <YOUR_ACCESS_TOKEN>
 Content-Type: application/json
 {
   "signed_request_object": {
