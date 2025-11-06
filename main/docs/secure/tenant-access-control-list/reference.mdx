@@ -69,6 +69,9 @@ Enforces Tenant ACL for both `management` and `authentication` scopes.
 <ParamField path="management">
 Enforces Tenant ACL for requests sent to `{yourDomain}/api/v2/\*}` and `{yourDomain}/scim/\*}`.
 </ParamField>
+<ParamField path="dcr">
+Controls access to Dynamic Client Registration endpoint `/oidc/register`. 
+</ParamField>
 <ParamField path="authentication">
 Enforces Tenant ACL for requests sent to anywhere not covered in `management` scope.
 </ParamField>

@@ -228,6 +228,7 @@ Content-Type: application/json
       "attestationObject": "<BASE64URL_ATTESTATION_OBJECT>",
       <OTHER_PROPERTIES>
     }  
+  }
 }
 ```
 
@@ -503,11 +504,6 @@ Content-Type: application/json
 }
 ```
 
-
-
-
-
-
 #### Remarks
 
 * After the challenge request is complete, your application can continue the login process using native [Android](https://developer.android.com/identity/sign-in/credential-manager#sign-in) or [iOS](https://developer.apple.com/documentation/authenticationservices/supporting-passkeys#Connect-to-a-service-with-an-existing-account) APIs.
@@ -575,7 +571,7 @@ The `authn_response` parameter is based on the [Web Authentication API specifica
 </tr>
 <tr>
 <td><code>authn_response.authenticatorAttachment</code></td>
-<td><strong>Required</strong>. Include the values:<ul><li><code>platform</code></li><li><code>cross-platform</code></li></ul></td>
+<td><strong>Optional</strong>. Include the values:<ul><li><code>platform</code></li><li><code>cross-platform</code></li></ul></td>
 </tr>
 <tr>
 <td><code>authn_response.response</code></td>
