@@ -61,6 +61,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "scopes": [ { "value": "PERMISSION_NAME", "description": "PERMISSION_DESC" }, { "value": "PERMISSION_NAME", "description": "PERMISSION_DESC" } ] }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/resource-servers/API_ID");
 var request = new RestRequest(Method.PATCH);
@@ -70,6 +71,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "scopes": [ { "value": "PERMISSION_NAME", "description": "PERMISSION_DESC" }, { "value": "PERMISSION_NAME", "description": "PERMISSION_DESC" } ] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -103,6 +105,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/resource-servers/API_ID")
   .header("content-type", "application/json")

@@ -68,6 +68,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "name": "HOOK_NAME", "script": "HOOK_SCRIPT", "triggerId": "EXTENSIBILITY_POINT_NAME" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/hooks");
 var request = new RestRequest(Method.POST);
@@ -77,6 +78,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "name": "HOOK_NAME", "script": "HOOK_SCRIPT", "triggerId": "EXTENSIBILITY_POINT_NAME" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -109,6 +111,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/hooks")
   .header("content-type", "application/json")
@@ -117,6 +120,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/hooks"
   .body("{ "name": "HOOK_NAME", "script": "HOOK_SCRIPT", "triggerId": "EXTENSIBILITY_POINT_NAME" }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -141,6 +145,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -172,6 +177,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -202,6 +208,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -222,6 +229,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 import http.client
 
@@ -242,6 +250,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```swift Swift
 import Foundation
 

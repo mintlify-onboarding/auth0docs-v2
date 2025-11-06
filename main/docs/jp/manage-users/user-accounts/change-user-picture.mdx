@@ -30,6 +30,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"user_metadata": {"picture": "https://example.com/some-image.png"}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.PATCH);
@@ -38,6 +39,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata": {"picture": "https://example.com/some-image.png"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -69,6 +71,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -76,6 +79,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users
   .body("{"user_metadata": {"picture": "https://example.com/some-image.png"}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -95,6 +99,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -123,6 +128,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -152,6 +158,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -171,6 +178,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -190,6 +198,7 @@ request.body = "{"user_metadata": {"picture": "https://example.com/some-image.pn
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

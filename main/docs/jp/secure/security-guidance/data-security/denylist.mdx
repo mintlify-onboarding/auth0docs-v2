@@ -26,6 +26,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
   --data '{"options": {"non_persistent_attrs": ["ethnicity", "gender"]}}'
 
 ```
+
 ```csharp C#
     var client = new RestClient("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID");
 var request = new RestRequest(Method.PATCH);
@@ -35,6 +36,7 @@ request.AddParameter("application/json", "{"options": {"non_persistent_attrs": [
 IRestResponse response = client.Execute(request);
 
 ```
+
 ```go Go
     package main
 
@@ -67,6 +69,7 @@ func main() {
 }
 
 ```
+
 ```java Java
     HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/YOUR_CONNECTION_ID")
   .header("authorization", "Bearer YOUR_TOKEN")
@@ -75,6 +78,7 @@ func main() {
   .asString();
 
 ```
+
 ```javascript Node.JS
     var axios = require("axios").default;
 
@@ -92,6 +96,7 @@ axios.request(options).then(function (response) {
 });
 
 ```
+
 ```objc Obj-C
     #import <Foundation/Foundation.h>
 
@@ -121,6 +126,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
 [dataTask resume];
 
 ```
+
 ```php PHP
     $curl = curl_init();
 
@@ -151,6 +157,7 @@ if ($err) {
 }
 
 ```
+
 ```python Python
     import http.client
 
@@ -171,6 +178,7 @@ data = res.read()
 print(data.decode("utf-8"))
 
 ```
+
 ```ruby Ruby
     require 'uri'
 require 'net/http'
@@ -191,6 +199,7 @@ response = http.request(request)
 puts response.read_body
 
 ```
+
 ```swift Swift
     import Foundation
 

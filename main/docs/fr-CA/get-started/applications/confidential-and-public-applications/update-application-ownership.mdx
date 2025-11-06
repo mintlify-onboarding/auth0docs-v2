@@ -27,6 +27,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "is_first_party": "{ownershipBoolean}" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D");
 var request = new RestRequest(Method.PATCH);
@@ -36,6 +37,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "is_first_party": "{ownershipBoolean}" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -69,6 +71,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D")
   .header("content-type", "application/json")

@@ -88,12 +88,14 @@ curl --request GET \
   --url 'https://{yourDomain}/mfa/authenticators' \
   --header 'authorization: Bearer MFA_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/authenticators");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer MFA_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -122,6 +124,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/mfa/authenticators")
   .header("authorization", "Bearer MFA_TOKEN")
@@ -344,12 +347,14 @@ curl --request DELETE \
   --url 'https://{yourDomain}/mfa/authenticators/AUTHENTICATOR_ID' \
   --header 'authorization: Bearer ACCESS_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/authenticators/AUTHENTICATOR_ID");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("authorization", "Bearer ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -378,6 +383,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.delete("https://{yourDomain}/mfa/authenticators/AUTHENTICATOR_ID")
   .header("authorization", "Bearer ACCESS_TOKEN")
@@ -531,12 +537,14 @@ curl --request POST \
   --url 'https://{yourDomain}/api/v2/users/USER_ID/recovery-code-regeneration' \
   --header 'authorization: Bearer MANAGEMENT_API_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID/recovery-code-regeneration");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer MANAGEMENT_API_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -565,6 +573,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/USER_ID/recovery-code-regeneration")
   .header("authorization", "Bearer MANAGEMENT_API_TOKEN")

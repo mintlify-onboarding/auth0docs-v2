@@ -34,12 +34,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/%7BuserId%7D' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/%7BuserId%7D");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -68,6 +70,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users/%7BuserId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")

@@ -58,6 +58,7 @@ MFA APIを使用して回復コードでユーザーが認証できるように�
    --data 'recovery_code={recoveryCode}'
 
 ```
+
 ```csharp C#
    var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -66,6 +67,7 @@ request.AddParameter("application/x-www-form-urlencoded", "grant_type=http%3A%2F
 IRestResponse response = client.Execute(request);
 
 ```
+
 ```go Go
    package main
 
@@ -97,6 +99,7 @@ func main() {
 }
 
 ```
+
 ```java Java
    HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
 .header("content-type", "application/x-www-form-urlencoded")
@@ -104,6 +107,7 @@ func main() {
 .asString();
 
 ```
+
 ```javascript Node.JS
    var axios = require("axios").default;
 
@@ -127,6 +131,7 @@ console.error(error);
 });
 
 ```
+
 ```objc Obj-C
    #import <Foundation/Foundation.h>
 
@@ -158,6 +163,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
 [dataTask resume];
 
 ```
+
 ```php PHP
    $curl = curl_init();
 
@@ -187,6 +193,7 @@ echo $response;
 }
 
 ```
+
 ```python Python
    import http.client
 
@@ -204,6 +211,7 @@ data = res.read()
 print(data.decode("utf-8"))
 
 ```
+
 ```ruby Ruby
    require 'uri'
 require 'net/http'
@@ -223,6 +231,7 @@ response = http.request(request)
 puts response.read_body
 
 ```
+
 ```swift Swift
    import Foundation
 

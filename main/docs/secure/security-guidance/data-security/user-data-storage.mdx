@@ -88,6 +88,7 @@ curl --request GET \
   --url https://%7ByourAccount%7D.auth0.com/api/v2/users/user_id \
   --header 'authorization: Bearer {yourIdToken}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourAccount%7D.auth0.com/api/v2/users/user_id");
 var request = new RestRequest(Method.GET);
@@ -122,6 +123,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://%7ByourAccount%7D.auth0.com/api/v2/users/user_id")
   .header("authorization", "Bearer {yourIdToken}")
@@ -143,6 +145,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -194,6 +197,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -226,6 +230,7 @@ request["authorization"] = 'Bearer {yourIdToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -261,6 +266,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"user_metadata": {"displayName": "J-vald3z"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/user_id");
 var request = new RestRequest(Method.PATCH);
@@ -269,6 +275,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata": {"displayName": "J-vald3z"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -300,6 +307,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
   .header("authorization", "Bearer {yourAccessToken}")
@@ -307,6 +315,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users
   .body("{"user_metadata": {"displayName": "J-vald3z"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -323,6 +332,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -350,6 +360,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -379,6 +390,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -398,6 +410,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -417,6 +430,7 @@ request.body = "{"user_metadata": {"displayName": "J-vald3z"}"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

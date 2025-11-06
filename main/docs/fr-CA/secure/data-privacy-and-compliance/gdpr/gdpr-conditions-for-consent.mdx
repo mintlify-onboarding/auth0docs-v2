@@ -89,12 +89,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata' \
   --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -123,6 +125,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
@@ -291,12 +294,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -325,6 +330,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -514,6 +520,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"user_metadata":{"consentDate":"01/24/2018"}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.PATCH);
@@ -522,6 +529,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata":{"consentDate":"01/24/2018"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -554,6 +562,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
@@ -741,6 +750,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"user_metadata":{"consent": {"given":true, "date":"01/23/2018", "text_details":"some-url"}}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.PATCH);
@@ -749,6 +759,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata":{"consent": {"given":true, "date":"01/23/2018", "text_details":"some-url"}}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -781,6 +792,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
@@ -983,12 +995,14 @@ curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/users/USER_ID' \
   --header 'authorization: Bearer YOUR_MGMT_API_ACCESS_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -1017,6 +1031,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.delete("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
@@ -1175,6 +1190,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"app_metadata":{"deleted":true}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID");
 var request = new RestRequest(Method.PATCH);
@@ -1183,6 +1199,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"app_metadata":{"deleted":true}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -1215,6 +1232,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")

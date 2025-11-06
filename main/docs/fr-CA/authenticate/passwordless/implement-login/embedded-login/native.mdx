@@ -31,6 +31,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_id": "{yourClientId}",  "connection": "email",   "email": "USER_EMAIL",  "send": "code"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/passwordless/start");
 var request = new RestRequest(Method.POST);
@@ -38,6 +39,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_id": "{yourClientId}",  "connection": "email",   "email": "USER_EMAIL",  "send": "code"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -69,6 +71,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
   .header("content-type", "application/json")
@@ -241,6 +244,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "client_id": "{yourClientId}", "connection": "email", "email": "USER_EMAIL", "send": "link"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/passwordless/start");
 var request = new RestRequest(Method.POST);
@@ -248,6 +252,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "client_id": "{yourClientId}", "connection": "email", "email": "USER_EMAIL", "send": "link"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -279,6 +284,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
   .header("content-type", "application/json")
@@ -451,6 +457,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "client_id": "{yourClientId}",  "connection": "sms",  "phone_number": "USER_PHONE_NUMBER", "send": "code"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/passwordless/start");
 var request = new RestRequest(Method.POST);
@@ -458,6 +465,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "client_id": "{yourClientId}",  "connection": "sms",  "phone_number": "USER_PHONE_NUMBER", "send": "code"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -489,6 +497,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
   .header("content-type", "application/json")
@@ -661,6 +670,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp",  "client_id": "{yourClientId}",  "username": "USER_PHONE_NUMBER",  "otp": "code",  "realm": "sms", "audience": "your-api-audience", "scope": "openid profile email"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -668,6 +678,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp",  "client_id": "{yourClientId}",  "username": "USER_PHONE_NUMBER",  "otp": "code",  "realm": "sms", "audience": "your-api-audience", "scope": "openid profile email"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -699,6 +710,7 @@ func main() {
 }
 
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -870,6 +882,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "username": "USER_EMAIL", "otp": "code", "realm": "email", "audience": "your-api-audience", "scope": "openid profile email"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -877,6 +890,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "username": "USER_EMAIL", "otp": "code", "realm": "email", "audience": "your-api-audience", "scope": "openid profile email"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -908,6 +922,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")

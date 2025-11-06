@@ -86,6 +86,7 @@ curl --request POST \
     "environment": "development"} 
 }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/custom-domains");
 var request = new RestRequest(Method.POST);
@@ -102,6 +103,7 @@ request.AddParameter("application/json", "{
 }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -141,6 +143,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/custom-domains")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -156,6 +159,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/custom
 }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -182,6 +186,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -215,6 +220,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -252,6 +258,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -279,6 +286,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -306,6 +314,7 @@ request.body = "{
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

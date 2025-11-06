@@ -155,6 +155,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "options": { "client_id": "...", "client_secret": "...", "icon_url": "https://cdn.example.com/assets/icon.png", "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }, "display_name": "Connection Name"'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
 var request = new RestRequest(Method.PATCH);
@@ -162,6 +163,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "options": { "client_id": "...", "client_secret": "...", "icon_url": "https://cdn.example.com/assets/icon.png", "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }, "display_name": "Connection Name"", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -192,12 +194,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ "options": { "client_id": "...", "client_secret": "...", "icon_url": "https://cdn.example.com/assets/icon.png", "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }, "display_name": "Connection Name"")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -214,6 +218,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -240,6 +245,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -268,6 +274,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -284,6 +291,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -302,6 +310,7 @@ request.body = "{ "options": { "client_id": "...", "client_secret": "...", "icon
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -345,6 +354,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "options": { "client_id": "...", "client_secret": "...", "authParams": { "custom_param": "custom.param.value" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
 var request = new RestRequest(Method.PATCH);
@@ -352,6 +362,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "options": { "client_id": "...", "client_secret": "...", "authParams": { "custom_param": "custom.param.value" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -382,12 +393,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ "options": { "client_id": "...", "client_secret": "...", "authParams": { "custom_param": "custom.param.value" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -415,6 +428,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -443,6 +457,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -471,6 +486,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -487,6 +503,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -505,6 +522,7 @@ request.body = "{ "options": { "client_id": "...", "client_secret": "...", "auth
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -560,6 +578,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "options": { "client_id": "...", "client_secret": "...", "authParamsMap": { "custom_param": "access_type" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION-ID");
 var request = new RestRequest(Method.PATCH);
@@ -567,6 +586,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "options": { "client_id": "...", "client_secret": "...", "authParamsMap": { "custom_param": "access_type" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -597,12 +617,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ "options": { "client_id": "...", "client_secret": "...", "authParamsMap": { "custom_param": "access_type" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -630,6 +652,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -658,6 +681,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -686,6 +710,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -702,6 +727,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -720,6 +746,7 @@ request.body = "{ "options": { "client_id": "...", "client_secret": "...", "auth
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

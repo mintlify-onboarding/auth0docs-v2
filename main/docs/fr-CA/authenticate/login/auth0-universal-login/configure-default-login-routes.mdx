@@ -28,6 +28,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"initiate_login_uri": "<login_url>"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/clients/{yourClientId}");
 var request = new RestRequest(Method.PATCH);
@@ -37,6 +38,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{"initiate_login_uri": "<login_url>"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -70,6 +72,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients/{yourClientId}")
   .header("content-type", "application/json")
@@ -251,6 +254,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"default_redirection_uri": "<login_url>"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -260,6 +264,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{"default_redirection_uri": "<login_url>"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -293,6 +298,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -501,6 +507,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "user_id": "A_USER_ID", "client_id": "A_CLIENT_ID" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tickets/password-change");
 var request = new RestRequest(Method.POST);
@@ -509,6 +516,7 @@ request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("application/json", "{ "user_id": "A_USER_ID", "client_id": "A_CLIENT_ID" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -541,6 +549,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/tickets/password-change")
   .header("content-type", "application/json")

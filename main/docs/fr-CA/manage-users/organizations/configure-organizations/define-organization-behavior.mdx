@@ -159,6 +159,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "organization_usage": "ORG_USAGE", "organization_require_behavior": "ORG_REQUIRE_BEHAVIOR" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/clients/CLIENT_ID");
 var request = new RestRequest(Method.PATCH);
@@ -168,6 +169,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "organization_usage": "ORG_USAGE", "organization_require_behavior": "ORG_REQUIRE_BEHAVIOR" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -201,6 +203,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients/CLIENT_ID")
   .header("content-type", "application/json")

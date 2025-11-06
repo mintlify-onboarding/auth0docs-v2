@@ -114,6 +114,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "name": "ORG_NAME", "display_name": "ORG_DISPLAY_NAME", "branding": [ { "logo_url": "{orgLogo}", "colors": [ { "primary": "{orgPrimaryColor}", "page_background": "{orgPageBackground}" } ] } ], "metadata": [ { "{key}": "{value}", "{key}": "{value}", "{key}": "{value}" } ] }, "enabled_connections": [ { "connection_id": "{connectionId}", "assign_membership_on_login": "{assignMembershipOption}" }, { "connection_id": "{connectionId}", "assign_membership_on_login": "{assignMembershipOption}" } ] }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/organizations");
 var request = new RestRequest(Method.POST);
@@ -123,6 +124,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "name": "ORG_NAME", "display_name": "ORG_DISPLAY_NAME", "branding": [ { "logo_url": "{orgLogo}", "colors": [ { "primary": "{orgPrimaryColor}", "page_background": "{orgPageBackground}" } ] } ], "metadata": [ { "{key}": "{value}", "{key}": "{value}", "{key}": "{value}" } ] }, "enabled_connections": [ { "connection_id": "{connectionId}", "assign_membership_on_login": "{assignMembershipOption}" }, { "connection_id": "{connectionId}", "assign_membership_on_login": "{assignMembershipOption}" } ] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -156,6 +158,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/organizations")
   .header("content-type", "application/json")

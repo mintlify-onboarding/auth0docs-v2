@@ -47,6 +47,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "authenticator_types": ["oob"], "oob_channels": ["auth0"] }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/associate");
 var request = new RestRequest(Method.POST);
@@ -55,6 +56,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "authenticator_types": ["oob"], "oob_channels": ["auth0"] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -87,6 +89,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/associate")
   .header("authorization", "Bearer MFA_TOKEN")
@@ -285,6 +288,7 @@ curl --request POST \
   --data 'mfa_token={mfaToken}' \
   --data 'oob_code={oobCode}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -293,6 +297,7 @@ request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -325,6 +330,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("authorization", "Bearer {mfaToken}")
@@ -542,6 +548,7 @@ curl --request GET \
   --header 'authorization: Bearer MFA_TOKEN' \
   --header 'content-type: application/json'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/authenticators");
 var request = new RestRequest(Method.GET);
@@ -549,6 +556,7 @@ request.AddHeader("authorization", "Bearer MFA_TOKEN");
 request.AddHeader("content-type", "application/json");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -578,6 +586,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/mfa/authenticators")
   .header("authorization", "Bearer MFA_TOKEN")
@@ -760,12 +769,14 @@ curl --request POST \
   --url 'https://{yourDomain}/mfa/challenge' \
   --data '{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret", "challenge_type": "oob", "authenticator_id": "push|dev_ZUla9SQ6tAIHSz6y", "mfa_token": "{mfaToken}" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/challenge");
 var request = new RestRequest(Method.POST);
 request.AddParameter("undefined", "{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret", "challenge_type": "oob", "authenticator_id": "push|dev_ZUla9SQ6tAIHSz6y", "mfa_token": "{mfaToken}" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -795,6 +806,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/challenge")
   .body("{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret", "challenge_type": "oob", "authenticator_id": "push|dev_ZUla9SQ6tAIHSz6y", "mfa_token": "{mfaToken}" }")
@@ -971,6 +983,7 @@ curl --request POST \
   --data 'mfa_token={mfaToken}' \
   --data 'oob_code={oobCode}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -978,6 +991,7 @@ request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -1009,6 +1023,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")

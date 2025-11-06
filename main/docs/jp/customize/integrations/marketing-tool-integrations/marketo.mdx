@@ -64,6 +64,7 @@ curl --request POST \
   --form file=@auth0_users.csv \
   --form format=csv
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://marketo_rest_api_base_url/bulk/v1/leads.json");
 var request = new RestRequest(Method.POST);
@@ -104,6 +105,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.post("https://marketo_rest_api_base_url/bulk/v1/leads.json")
   .header("authorization", "Bearer {MARKETO_ACCESS_TOKEN}")
@@ -131,6 +133,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines expandable
 #import <Foundation/Foundation.h>
 
@@ -208,6 +211,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -247,6 +251,7 @@ request.body = "-----011000010111000001101001\r\nContent-Disposition: form-data;
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines expandable
 import Foundation
 
@@ -331,6 +336,7 @@ curl --request GET \
   --url https://marketo_rest_api_base_url/bulk/v1/leads/batch/BATCH_ID.json \
   --header 'authorization: Bearer {MARKETO_ACCESS_TOKEN}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://marketo_rest_api_base_url/bulk/v1/leads/batch/BATCH_ID.json");
 var request = new RestRequest(Method.GET);
@@ -365,6 +371,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://marketo_rest_api_base_url/bulk/v1/leads/batch/BATCH_ID.json")
   .header("authorization", "Bearer {MARKETO_ACCESS_TOKEN}")
@@ -386,6 +393,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -437,6 +445,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -469,6 +478,7 @@ request["authorization"] = 'Bearer {MARKETO_ACCESS_TOKEN}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 

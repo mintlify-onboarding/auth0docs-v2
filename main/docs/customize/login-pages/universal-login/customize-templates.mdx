@@ -6255,6 +6255,7 @@ curl --request PUT \
   --header 'content-type: text/html' \
   --data '<!DOCTYPE html><html><head>{%- auth0:head -%}</head><body>{%- auth0:widget -%}</body></html>'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/branding/templates/universal-login");
 var request = new RestRequest(Method.PUT);
@@ -6264,6 +6265,7 @@ request.AddParameter("text/html", "
 {%- auth0:head -%}{%- auth0:widget -%}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -6295,6 +6297,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/branding/templates/universal-login")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -6302,6 +6305,7 @@ HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/brandin
   .body("<!DOCTYPE html><html><head>{%- auth0:head -%}</head><body>{%- auth0:widget -%}</body></html>")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -6318,6 +6322,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -6345,6 +6350,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -6374,6 +6380,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -6393,6 +6400,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -6412,6 +6420,7 @@ request.body = "<!DOCTYPE html><html><head>{%- auth0:head -%}</head><body>{%- au
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -6451,12 +6460,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/branding/templates/universal-login");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -6484,11 +6495,13 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/branding/templates/universal-login")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -6504,6 +6517,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -6527,6 +6541,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -6554,6 +6569,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -6568,6 +6584,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -6585,6 +6602,7 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -6618,12 +6636,14 @@ curl --request DELETE \
   --url 'https://{yourDomain}/api/v2/branding/templates/universal-login' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/branding/templates/universal-login");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -6651,11 +6671,13 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.delete("https://{yourDomain}/api/v2/branding/templates/universal-login")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -6671,6 +6693,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -6694,6 +6717,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -6721,6 +6745,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -6735,6 +6760,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -6752,6 +6778,7 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

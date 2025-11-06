@@ -130,6 +130,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_id": "{yourClientId}","email": "YOUR_USER_EMAIL","password": "YOUR_USER_PASSWORD","user_metadata": {"consentGiven": "true", "consentTimestamp": "1525101183" }}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/dbconnections/signup");
 var request = new RestRequest(Method.POST);
@@ -137,6 +138,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_id": "{yourClientId}","email": "YOUR_USER_EMAIL","password": "YOUR_USER_PASSWORD","user_metadata": {"consentGiven": "true", "consentTimestamp": "1525101183" }}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -167,12 +169,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/dbconnections/signup")
   .header("content-type", "application/json")
   .body("{"client_id": "{yourClientId}","email": "YOUR_USER_EMAIL","password": "YOUR_USER_PASSWORD","user_metadata": {"consentGiven": "true", "consentTimestamp": "1525101183" }}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -194,6 +198,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -224,6 +229,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -252,6 +258,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -268,6 +275,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -286,6 +294,7 @@ request.body = "{"client_id": "{yourClientId}","email": "YOUR_USER_EMAIL","passw
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -349,6 +358,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"user_metadata": {"consentGiven":true, "consentTimestamp": "1525101183"}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/%7BUSER_ID%7D");
 var request = new RestRequest(Method.POST);
@@ -357,6 +367,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata": {"consentGiven":true, "consentTimestamp": "1525101183"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -388,6 +399,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/api/v2/users/%7BUSER_ID%7D")
   .header("authorization", "Bearer YOUR_ACCESS_TOKEN")
@@ -395,6 +407,7 @@ HttpResponse response = Unirest.post("https://{yourDomain}/api/v2/users/%7BUSER_
   .body("{"user_metadata": {"consentGiven":true, "consentTimestamp": "1525101183"}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -411,6 +424,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -439,6 +453,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -468,6 +483,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -487,6 +503,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -506,6 +523,7 @@ request.body = "{"user_metadata": {"consentGiven":true, "consentTimestamp": "152
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

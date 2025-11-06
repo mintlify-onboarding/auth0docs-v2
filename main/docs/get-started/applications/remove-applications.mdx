@@ -33,12 +33,14 @@ curl --request DELETE \
    --url 'https://{yourDomain}/api/v2/clients/%7ByourClientId%7D' \
    --header 'authorization: Bearer {yourMgmtApiToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("authorization", "Bearer {yourMgmtApiToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -66,11 +68,13 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse response = Unirest.delete("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D")
   .header("authorization", "Bearer {yourMgmtApiToken}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -86,6 +90,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -109,6 +114,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -136,6 +142,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -150,6 +157,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -167,6 +175,7 @@ request["authorization"] = 'Bearer {yourMgmtApiToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

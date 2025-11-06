@@ -125,6 +125,7 @@ curl --request POST \
   --data 'code=yourAuthorizationCode}' \
   --data 'redirect_uri={https://yourApp/callback}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -132,6 +133,7 @@ request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=yourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -162,12 +164,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=authorization_code&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&code=yourAuthorizationCode%7D&redirect_uri={https://yourApp/callback}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -190,6 +194,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -220,6 +225,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -248,6 +254,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 conn = http.client.HTTPSConnection("")
@@ -258,6 +265,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -276,6 +284,7 @@ request.body = "grant_type=authorization_code&client_id={yourClientId}&client_se
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -384,6 +393,7 @@ curl --request GET \
   --header 'authorization: Bearer {accessToken}' \
   --header 'content-type: application/json'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://myapi.com/api");
 var request = new RestRequest(Method.GET);
@@ -421,6 +431,7 @@ func main() {
 }
 
 ```
+
 ```java Java lines
 HttpResponse response = Unirest.get("https://myapi.com/api")
   .header("content-type", "application/json")
@@ -444,6 +455,7 @@ axios.request(options).then(function (response) {
 });
 
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -498,6 +510,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -530,6 +543,7 @@ request["authorization"] = 'Bearer {accessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -582,6 +596,7 @@ curl --request POST \
   --data 'client_id={yourClientId}' \
   --data 'refresh_token={yourRefreshToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -589,6 +604,7 @@ request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=refresh_token&client_id={yourClientId}&refresh_token=%7ByourRefreshToken%7D", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -619,12 +635,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=refresh_token&client_id={yourClientId}&refresh_token=%7ByourRefreshToken%7D")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -645,6 +663,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -673,6 +692,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -701,6 +721,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 conn = http.client.HTTPSConnection("")
@@ -711,6 +732,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -725,6 +747,7 @@ request.body = "grant_type=refresh_token&client_id={yourClientId}&refresh_token=
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

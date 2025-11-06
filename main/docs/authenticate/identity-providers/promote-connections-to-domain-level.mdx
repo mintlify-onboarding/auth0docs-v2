@@ -29,6 +29,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "is_domain_connection": true }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION_ID");
 var request = new RestRequest(Method.PATCH);
@@ -38,6 +39,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "is_domain_connection": true }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -70,6 +72,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION_ID")
   .header("content-type", "application/json")
@@ -78,6 +81,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/conne
   .body("{ "is_domain_connection": true }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -98,6 +102,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -127,6 +132,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -157,6 +163,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -177,6 +184,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -197,6 +205,7 @@ request.body = "{ "is_domain_connection": true }"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

@@ -34,6 +34,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "code"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/passwordless/start");
 var request = new RestRequest(Method.POST);
@@ -41,6 +42,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "code"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -71,12 +73,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
   .header("content-type", "application/json")
   .body("{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "code"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -99,6 +103,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -130,6 +135,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -158,6 +164,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -174,6 +181,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -192,6 +200,7 @@ request.body = "{"client_id": "{yourClientId}", "client_secret": "{yourClientSec
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -238,6 +247,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "link"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/passwordless/start");
 var request = new RestRequest(Method.POST);
@@ -245,6 +255,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "link"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -275,12 +286,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
   .header("content-type", "application/json")
   .body("{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "email", "email": "{userEmail}","send": "link"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -303,6 +316,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -334,6 +348,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -362,6 +377,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -378,6 +394,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -396,6 +413,7 @@ request.body = "{"client_id": "{yourClientId}", "client_secret": "{yourClientSec
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -440,6 +458,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "sms", "phone_number": "{userPhoneNumber}","send": "code"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/passwordless/start");
 var request = new RestRequest(Method.POST);
@@ -447,6 +466,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "sms", "phone_number": "{userPhoneNumber}","send": "code"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -477,12 +497,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/passwordless/start")
   .header("content-type", "application/json")
   .body("{"client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "connection": "sms", "phone_number": "{userPhoneNumber}","send": "code"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -505,6 +527,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -536,6 +559,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -564,6 +588,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -580,6 +605,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -598,6 +624,7 @@ request.body = "{"client_id": "{yourClientId}", "client_secret": "{yourClientSec
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -642,6 +669,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "username": "USER_PHONE_NUMBER", "otp": "code", "realm": "sms", "audience": "your-api-audience","scope": "openid profile email"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -649,6 +677,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "username": "USER_PHONE_NUMBER", "otp": "code", "realm": "sms", "audience": "your-api-audience","scope": "openid profile email"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -679,12 +708,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")
   .body("{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "username": "USER_PHONE_NUMBER", "otp": "code", "realm": "sms", "audience": "your-api-audience","scope": "openid profile email"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -710,6 +741,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -744,6 +776,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -772,6 +805,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -788,6 +822,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -806,6 +841,7 @@ request.body = "{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/o
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -853,6 +889,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "username": "{userPhoneNumber}", "otp": "code", "realm": "email", "audience": "your-api-audience", "scope": "openid profile email"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -860,6 +897,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "username": "{userPhoneNumber}", "otp": "code", "realm": "email", "audience": "your-api-audience", "scope": "openid profile email"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -890,12 +928,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")
   .body("{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/otp", "client_id": "{yourClientId}", "client_secret": "{yourClientSecret}", "username": "{userPhoneNumber}", "otp": "code", "realm": "email", "audience": "your-api-audience", "scope": "openid profile email"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -921,6 +961,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -955,6 +996,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -983,6 +1025,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -999,6 +1042,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -1017,6 +1061,7 @@ request.body = "{"grant_type": "http://auth0.com/oauth/grant-type/passwordless/o
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

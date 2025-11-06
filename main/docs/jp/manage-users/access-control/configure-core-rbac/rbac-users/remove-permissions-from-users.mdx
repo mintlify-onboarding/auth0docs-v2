@@ -38,6 +38,7 @@ curl --request DELETE \
   --header 'content-type: application/json' \
   --data '{ "permissions": [ { "resource_server_identifier": "API_ID", "permission_name": "PERMISSION_NAME" }, { "resource_server_identifier": "API_ID", "permission_name": "PERMISSION_NAME" } ] }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/USER_ID/permissions");
 var request = new RestRequest(Method.DELETE);
@@ -47,6 +48,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "permissions": [ { "resource_server_identifier": "API_ID", "permission_name": "PERMISSION_NAME" }, { "resource_server_identifier": "API_ID", "permission_name": "PERMISSION_NAME" } ] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -79,6 +81,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.delete("https://{yourDomain}/api/v2/users/USER_ID/permissions")
   .header("content-type", "application/json")
@@ -87,6 +90,7 @@ HttpResponse<String> response = Unirest.delete("https://{yourDomain}/api/v2/user
   .body("{ "permissions": [ { "resource_server_identifier": "API_ID", "permission_name": "PERMISSION_NAME" }, { "resource_server_identifier": "API_ID", "permission_name": "PERMISSION_NAME" } ] }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -112,6 +116,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -141,6 +146,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -171,6 +177,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -191,6 +198,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -211,6 +219,7 @@ request.body = "{ "permissions": [ { "resource_server_identifier": "API_ID", "pe
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

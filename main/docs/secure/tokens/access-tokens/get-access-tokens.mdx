@@ -41,6 +41,7 @@ curl --request POST \
   --data client_secret={yourClientSecret} \
   --data audience=YOUR_API_IDENTIFIER
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -48,6 +49,7 @@ request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=client_credentials&client_id={yourClientId}&client_secret={yourClientSecret}&audience=YOUR_API_IDENTIFIER", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -78,12 +80,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=client_credentials&client_id={yourClientId}&client_secret={yourClientSecret}&audience=YOUR_API_IDENTIFIER")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -105,6 +109,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -134,6 +139,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -162,6 +168,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -178,6 +185,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -196,6 +204,7 @@ request.body = "grant_type=client_credentials&client_id={yourClientId}&client_se
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

@@ -191,6 +191,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "signInEndpoint": "SIGN_IN_ENDPOINT_URL", "signOutEndpoint": "SIGN_OUT_ENDPOINT_URL", "signatureAlgorithm": "rsa-sha256", "digestAlgorithm": "sha256", "fieldsMap": {}, "signingCert": "BASE64_SIGNING_CERT" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
@@ -200,6 +201,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "signInEndpoint": "SIGN_IN_ENDPOINT_URL", "signOutEndpoint": "SIGN_OUT_ENDPOINT_URL", "signatureAlgorithm": "rsa-sha256", "digestAlgorithm": "sha256", "fieldsMap": {}, "signingCert": "BASE64_SIGNING_CERT" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -232,6 +234,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("content-type", "application/json")
@@ -240,6 +243,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connec
   .body("{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "signInEndpoint": "SIGN_IN_ENDPOINT_URL", "signOutEndpoint": "SIGN_OUT_ENDPOINT_URL", "signatureAlgorithm": "rsa-sha256", "digestAlgorithm": "sha256", "fieldsMap": {}, "signingCert": "BASE64_SIGNING_CERT" } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -271,6 +275,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -302,6 +307,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -332,6 +338,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -352,6 +359,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -372,6 +380,7 @@ request.body = "{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -482,6 +491,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "metadataXml": "<EntityDescriptor entityID='''urn:saml-idp''' xmlns='''urn:oasis:names:tc:SAML:2.0:metadata'''>...</EntityDescriptor>" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
@@ -491,6 +501,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "metadataXml": "<EntityDescriptor entityID='urn:saml-idp' xmlns='urn:oasis:names:tc:SAML:2.0:metadata'>...</EntityDescriptor>" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -523,6 +534,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("content-type", "application/json")
@@ -531,6 +543,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connec
   .body("{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "metadataXml": "<EntityDescriptor entityID='urn:saml-idp' xmlns='urn:oasis:names:tc:SAML:2.0:metadata'>...</EntityDescriptor>" } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -557,6 +570,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -588,6 +602,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -618,6 +633,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 iimport http.client
 
@@ -638,6 +654,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -658,6 +675,7 @@ request.body = "{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -708,6 +726,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "metadataUrl": "https://saml-idp/samlp/metadata/uarlU13n63e0feZNJxOCNZ1To3a9H7jX" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
@@ -717,6 +736,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "metadataUrl": "https://saml-idp/samlp/metadata/uarlU13n63e0feZNJxOCNZ1To3a9H7jX" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -749,6 +769,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("content-type", "application/json")
@@ -757,6 +778,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connec
   .body("{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "metadataUrl": "https://saml-idp/samlp/metadata/uarlU13n63e0feZNJxOCNZ1To3a9H7jX" } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -783,6 +805,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -814,6 +837,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -844,6 +868,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -864,6 +889,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -884,6 +910,7 @@ request.body = "{ "strategy": "samlp", "name": "CONNECTION_NAME", "options": { "
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

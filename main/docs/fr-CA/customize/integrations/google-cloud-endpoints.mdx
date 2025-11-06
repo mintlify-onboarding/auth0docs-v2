@@ -30,6 +30,7 @@ Le guide de démarrage rapide vous guidera à travers la création d’une API 
 curl --request GET \
   --url 'https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO");
 var request = new RestRequest(Method.GET);
@@ -61,6 +62,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO")
   .asString();
@@ -81,6 +83,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -126,6 +129,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -155,6 +159,7 @@ request = Net::HTTP::Get.new(url)
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -331,6 +336,7 @@ Une fois que vous avez redéployé l’API, appelez à nouveau l’API sans séc
 curl --request GET \
   --url 'https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO");
 var request = new RestRequest(Method.GET);
@@ -362,6 +368,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO")
   .asString();
@@ -382,6 +389,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -427,6 +435,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -456,6 +465,7 @@ request = Net::HTTP::Get.new(url)
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -506,6 +516,7 @@ curl --request GET \
   --url 'https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO' \
   --header 'authorization: Bearer {accessToken}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO");
 var request = new RestRequest(Method.GET);
@@ -540,6 +551,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://%7ByourGceProject%7D.appspot.com/airportName?iataCode=SFO")
   .header("authorization", "Bearer {accessToken}")
@@ -562,6 +574,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -613,6 +626,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -645,6 +659,7 @@ request["authorization"] = 'Bearer {accessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 

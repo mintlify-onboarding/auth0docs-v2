@@ -138,12 +138,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3A%22jane%20smith%22&search_engine=v3' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users?q=name%3A%22jane%20smith%22&search_engine=v3");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -172,6 +174,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users?q=name%3A%22jane%20smith%22&search_engine=v3")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -326,12 +329,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=name%3Ajohn*&search_engine=v3' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users?q=name%3Ajohn\*&search_engine=v3");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -360,6 +365,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users?q=name%3Ajohn*&search_engine=v3")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -512,12 +518,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=logins_count%3A%7B100%20TO%20*%5D&search_engine=v3' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users?q=logins_count%3A%7B100%20TO%20\*%5D&search_engine=v3");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -546,6 +554,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users?q=logins_count%3A%7B100%20TO%20*%5D&search_engine=v3")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")

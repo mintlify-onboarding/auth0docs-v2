@@ -41,6 +41,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "flags": { "use_scope_descriptions_for_consent": true } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -50,6 +51,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "flags": { "use_scope_descriptions_for_consent": true } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -83,6 +85,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -266,6 +269,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "flags": { "use_scope_descriptions_for_consent": false } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -275,6 +279,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "flags": { "use_scope_descriptions_for_consent": false } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -308,6 +313,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")

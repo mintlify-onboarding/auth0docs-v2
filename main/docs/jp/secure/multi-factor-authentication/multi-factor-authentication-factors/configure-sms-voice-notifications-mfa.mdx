@@ -99,6 +99,7 @@ request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("application/json", "{ "message_types": ["sms", "voice"] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -127,6 +128,7 @@ HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/guardian/factor
 .body("{ "message_types": ["sms", "voice"] }")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -168,6 +170,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -206,6 +209,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'

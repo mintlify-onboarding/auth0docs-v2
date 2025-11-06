@@ -40,6 +40,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"email": "jane.doe@example.com", "user_metadata": {"hobby": "surfing"}, "app_metadata": {"plan": "full"}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users");
 var request = new RestRequest(Method.POST);
@@ -48,6 +49,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"email": "jane.doe@example.com", "user_metadata": {"hobby": "surfing"}, "app_metadata": {"plan": "full"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -79,6 +81,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -86,6 +89,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users"
   .body("{"email": "jane.doe@example.com", "user_metadata": {"hobby": "surfing"}, "app_metadata": {"plan": "full"}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -109,6 +113,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -139,6 +144,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -168,6 +174,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -187,6 +194,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -206,6 +214,7 @@ request.body = "{"email": "jane.doe@example.com", "user_metadata": {"hobby": "su
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -280,6 +289,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345"}}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/user_id");
 var request = new RestRequest(Method.PATCH);
@@ -288,6 +298,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345"}}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -319,6 +330,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -326,6 +338,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users
   .body("{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345"}}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -345,6 +358,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -373,6 +387,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -402,6 +417,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -421,6 +437,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -440,6 +457,7 @@ request.body = "{"user_metadata": {"addresses": {"home": "123 Main Street, Anyto
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -522,6 +540,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345", "work": "100 Industrial Way, Anytown, ST 12345"}}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users/user_id");
 var request = new RestRequest(Method.PATCH);
@@ -530,6 +549,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345", "work": "100 Industrial Way, Anytown, ST 12345"}}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -561,6 +581,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -568,6 +589,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users
   .body("{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345", "work": "100 Industrial Way, Anytown, ST 12345"}}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -594,6 +616,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -622,6 +645,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -651,6 +675,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -670,6 +695,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -689,6 +715,7 @@ request.body = "{"user_metadata": {"addresses": {"home": "123 Main Street, Anyto
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

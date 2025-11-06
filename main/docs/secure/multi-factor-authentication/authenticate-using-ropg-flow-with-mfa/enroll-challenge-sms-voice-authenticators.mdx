@@ -45,6 +45,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "authenticator_types": ["oob"], "oob_channels": ["sms"], "phone_number": "+11...9" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/associate");
 var request = new RestRequest(Method.POST);
@@ -53,6 +54,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "authenticator_types": ["oob"], "oob_channels": ["sms"], "phone_number": "+11...9" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -84,6 +86,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/associate")
   .header("authorization", "Bearer {mfaToken}")
@@ -91,6 +94,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/associate
   .body("{ "authenticator_types": ["oob"], "oob_channels": ["sms"], "phone_number": "+11...9" }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -107,6 +111,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -137,6 +142,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -166,6 +172,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -185,6 +192,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -204,6 +212,7 @@ request.body = "{ "authenticator_types": ["oob"], "oob_channels": ["sms"], "phon
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -298,6 +307,7 @@ curl --request POST \
   --data 'oob_code={oobCode}' \
   --data 'binding_code={userOtpCode}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -306,6 +316,7 @@ request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D&binding_code=%7BuserOtpCode%7D", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -337,6 +348,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("authorization", "Bearer {mfaToken}")
@@ -344,6 +356,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .body("grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D&binding_code=%7BuserOtpCode%7D")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -370,6 +383,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -402,6 +416,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -431,6 +446,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -450,6 +466,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -469,6 +486,7 @@ request.body = "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -534,6 +552,7 @@ curl --request GET \
   --header 'authorization: Bearer MFA_TOKEN' \
   --header 'content-type: application/json'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/authenticators");
 var request = new RestRequest(Method.GET);
@@ -541,6 +560,7 @@ request.AddHeader("authorization", "Bearer MFA_TOKEN");
 request.AddHeader("content-type", "application/json");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -569,12 +589,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/mfa/authenticators")
   .header("authorization", "Bearer MFA_TOKEN")
   .header("content-type", "application/json")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -590,6 +612,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -614,6 +637,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -642,6 +666,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -659,6 +684,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -677,6 +703,7 @@ request["content-type"] = 'application/json'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -742,6 +769,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret}", "challenge_type": "oob", "authenticator_id": "sms|dev_NU1Ofuw3Cw0XCt5x", "mfa_token": "{mfaToken}" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/mfa/challenge");
 var request = new RestRequest(Method.POST);
@@ -749,6 +777,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret}", "challenge_type": "oob", "authenticator_id": "sms|dev_NU1Ofuw3Cw0XCt5x", "mfa_token": "{mfaToken}" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -779,12 +808,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/challenge")
   .header("content-type", "application/json")
   .body("{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret}", "challenge_type": "oob", "authenticator_id": "sms|dev_NU1Ofuw3Cw0XCt5x", "mfa_token": "{mfaToken}" }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -807,6 +838,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -838,6 +870,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -866,6 +899,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -882,6 +916,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -900,6 +935,7 @@ request.body = "{ "client_id": "{yourClientId}",  "client_secret": "{yourClientS
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -961,6 +997,7 @@ curl --request POST \
   --data 'oob_code={oobCode}' \
   --data binding_code=USER_OTP_CODE
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -968,6 +1005,7 @@ request.AddHeader("content-type", "application/x-www-form-urlencoded");
 request.AddParameter("application/x-www-form-urlencoded", "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D&binding_code=USER_OTP_CODE", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -998,12 +1036,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D&binding_code=USER_OTP_CODE")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -1027,6 +1067,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -1058,6 +1099,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -1086,6 +1128,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -1102,6 +1145,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -1120,6 +1164,7 @@ request.body = "grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

@@ -115,6 +115,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -143,6 +144,7 @@ HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/signup-
 .body("{"signup-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -185,6 +187,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -223,6 +226,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -289,6 +293,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -317,6 +322,7 @@ HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/login-p
 .body("{"login-password":{"form-footer-start":"<form method=\"post\" data-form-secondary=\"true\"><input type=\"hidden\" name=\"state\" value=\"{{state}}\"> <input type=\"hidden\" name=\"connection\" value=\"email\"> <button type=\"submit\" id=\"switchConnectionButton\" style=\"background: #635dff; width: 100%; padding: 12px 16px; border: none; color: white;\" data-action-button-secondary=\"true\"> <span>Send a secure code by email</span> </button></form>"}}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -359,6 +365,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -397,6 +404,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -459,6 +467,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"login-passwordless-email-code":{"form-footer-start":"   Use Password Instead "}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -487,6 +496,7 @@ HttpResponse response = Unirest.put("https://{yourDomain}/api/v2/prompts/login-p
 .body("{"login-passwordless-email-code":{"form-footer-start":"   Use Password Instead "}}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -529,6 +539,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -567,6 +578,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'

@@ -93,6 +93,7 @@ var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -116,6 +117,7 @@ HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users-by-email?
 .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -150,6 +152,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -182,6 +185,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -253,6 +257,7 @@ var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -276,6 +281,7 @@ HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7ByourUs
 .header("authorization", "Bearer {yourMgmtApiAccessToken}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -310,6 +316,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -342,6 +349,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -436,6 +444,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata":{"consentDate":"01/24/2018"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -464,6 +473,7 @@ HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID
 .body("{"user_metadata":{"consentDate":"01/24/2018"}}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -505,6 +515,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -543,6 +554,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -617,6 +629,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"user_metadata":{"consent": {"given":true, "date":"01/23/2018", "text_details":"some-url"}}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -645,6 +658,7 @@ HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID
 .body("{"user_metadata":{"consent": {"given":true, "date":"01/23/2018", "text_details":"some-url"}}}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -688,6 +702,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -726,6 +741,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -819,6 +835,7 @@ var request = new RestRequest(Method.DELETE);
 request.AddHeader("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -842,6 +859,7 @@ HttpResponse response = Unirest.delete("https://{yourDomain}/api/v2/users/USER_I
 .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -875,6 +893,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -907,6 +926,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -971,6 +991,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"app_metadata":{"deleted":true}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -999,6 +1020,7 @@ HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID
 .body("{"app_metadata":{"deleted":true}}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -1040,6 +1062,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -1078,6 +1101,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'

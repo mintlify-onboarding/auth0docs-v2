@@ -70,6 +70,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{ "name": "HOOK_NAME", "script": "HOOK_SCRIPT", "triggerId": "EXTENSIBILITY_POINT_NAME" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/hooks");
 var request = new RestRequest(Method.POST);
@@ -79,6 +80,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "name": "HOOK_NAME", "script": "HOOK_SCRIPT", "triggerId": "EXTENSIBILITY_POINT_NAME" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -112,6 +114,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/hooks")
   .header("content-type", "application/json")

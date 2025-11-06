@@ -62,6 +62,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, { "name": "identities[0].connection", "export_as": "provider" }]}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
 var request = new RestRequest(Method.POST);
@@ -70,6 +71,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, { "name": "identities[0].connection", "export_as": "provider" }]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -101,6 +103,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
@@ -108,6 +111,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/u
   .body("{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, { "name": "identities[0].connection", "export_as": "provider" }]}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -132,6 +136,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -163,6 +168,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -192,6 +198,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -211,6 +218,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -230,6 +238,7 @@ request.body = "{"connection_id": "{yourConnectionId}", "format": "csv", "limit"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -341,6 +350,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent.given"}, {"name": "user_metadata.consent.date"}, {"name": "user_metadata.consent.text_details"}]}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
 var request = new RestRequest(Method.POST);
@@ -349,6 +359,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent.given"}, {"name": "user_metadata.consent.date"}, {"name": "user_metadata.consent.text_details"}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -380,6 +391,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
@@ -387,6 +399,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/u
   .body("{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent.given"}, {"name": "user_metadata.consent.date"}, {"name": "user_metadata.consent.text_details"}]}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -416,6 +429,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -447,6 +461,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -476,6 +491,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -495,6 +511,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -514,6 +531,7 @@ request.body = "{"connection_id": "{yourConnectionId}", "format": "csv", "limit"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -581,6 +599,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"connection_id": "{yourConnectionId}", "format": "json", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent"}]}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-exports");
 var request = new RestRequest(Method.POST);
@@ -589,6 +608,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"connection_id": "{yourConnectionId}", "format": "json", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent"}]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -620,6 +640,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
@@ -627,6 +648,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/u
   .body("{"connection_id": "{yourConnectionId}", "format": "json", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent"}]}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -651,6 +673,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -682,6 +705,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -711,6 +735,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -730,6 +755,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -749,6 +775,7 @@ request.body = "{"connection_id": "{yourConnectionId}", "format": "json", "limit
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -800,12 +827,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D' \
   --header 'authorization: Bearer {yourMgmtAPIAccessToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtAPIAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -833,11 +862,13 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -853,6 +884,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -876,6 +908,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -903,6 +936,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -917,6 +951,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -934,6 +969,7 @@ request["authorization"] = 'Bearer {yourMgmtAPIAccessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

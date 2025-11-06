@@ -43,6 +43,7 @@ curl --request GET \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods");
 var request = new RestRequest(Method.GET);
@@ -77,6 +78,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -98,6 +100,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -149,6 +152,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -181,6 +185,7 @@ request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -238,6 +243,7 @@ curl --request GET \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D");
 var request = new RestRequest(Method.GET);
@@ -272,6 +278,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -293,6 +300,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -344,6 +352,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -376,6 +385,7 @@ request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -442,6 +452,7 @@ curl --request POST \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --data '{ "type": "phone", "name": "SMS", "phone_number": "+00000000000" }'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods");
 var request = new RestRequest(Method.POST);
@@ -480,6 +491,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.post("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -503,6 +515,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines expandable
 #import <Foundation/Foundation.h>
 
@@ -561,6 +574,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -596,6 +610,7 @@ request.body = "{ \"type\": \"phone\", \"name\": \"SMS\", \"phone_number\": \"+0
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines expandable
 import Foundation
 
@@ -658,6 +673,7 @@ curl --request POST \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --data '{ "type": "email", "name": "Email Factor", "email": "user@example.com" }'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods");
 var request = new RestRequest(Method.POST);
@@ -696,6 +712,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.post("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -719,6 +736,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines expandable
 #import <Foundation/Foundation.h>
 
@@ -777,6 +795,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -812,6 +831,7 @@ request.body = "{ \"type\": \"email\", \"name\": \"Email Factor\", \"email\": \"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines expandable
 import Foundation
 
@@ -874,6 +894,7 @@ curl --request POST \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --data '{ "type": "totp", "name": "OTP Application", "totp_secret": "{yourSecret}" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods");
 var request = new RestRequest(Method.POST);
@@ -881,6 +902,7 @@ request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddParameter("undefined", "{ "type": "totp", "name": "OTP Application", "totp_secret": "{yourSecret}" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -911,12 +933,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{ "type": "totp", "name": "OTP Application", "totp_secret": "{yourSecret}" }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -933,6 +957,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -962,6 +987,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -990,6 +1016,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -1006,6 +1033,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -1024,6 +1052,7 @@ request.body = "{ "type": "totp", "name": "OTP Application", "totp_secret": "{yo
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -1086,6 +1115,7 @@ curl --request POST \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --data '{ "type": "webauthn_roaming", "name": "WebAuthn with security keys", "public_key": "{yourPublicKey}", "key_id": "{yourKeyId}", "relying_party_identifier": "{yourDomain}" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods");
 var request = new RestRequest(Method.POST);
@@ -1093,6 +1123,7 @@ request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddParameter("undefined", "{ "type": "webauthn_roaming", "name": "WebAuthn with security keys", "public_key": "{yourPublicKey}", "key_id": "{yourKeyId}", "relying_party_identifier": "{yourDomain}" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -1123,12 +1154,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{ "type": "webauthn_roaming", "name": "WebAuthn with security keys", "public_key": "{yourPublicKey}", "key_id": "{yourKeyId}", "relying_party_identifier": "{yourDomain}" }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -1151,6 +1184,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -1182,6 +1216,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -1210,6 +1245,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -1226,6 +1262,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -1244,6 +1281,7 @@ request.body = "{ "type": "webauthn_roaming", "name": "WebAuthn with security ke
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -1312,6 +1350,7 @@ curl --request PUT \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --data '[{ "type": "phone", "preferred_authentication_method": "sms", "phone_number": "+00000000000", "name": "SMS" }]'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods");
 var request = new RestRequest(Method.PUT);
@@ -1350,6 +1389,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.put("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -1380,6 +1420,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -1436,6 +1477,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -1471,6 +1513,7 @@ request.body = "[{ \"type\": \"phone\", \"preferred_authentication_method\": \"s
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines expandable
 import Foundation
 
@@ -1547,6 +1590,7 @@ curl --request PATCH \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --data '{ "name": "Mobile SMS" }'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D");
 var request = new RestRequest(Method.PATCH);
@@ -1585,6 +1629,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.patch("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -1608,6 +1653,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -1664,6 +1710,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -1699,6 +1746,7 @@ request.body = "{ \"name\": \"Mobile SMS\" }"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -1766,6 +1814,7 @@ curl --request DELETE \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods");
 var request = new RestRequest(Method.DELETE);
@@ -1800,6 +1849,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.delete("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -1821,6 +1871,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -1872,6 +1923,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -1904,6 +1956,7 @@ request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 
@@ -1947,6 +2000,7 @@ curl --request DELETE \
   --url https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D");
 var request = new RestRequest(Method.DELETE);
@@ -1981,6 +2035,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.delete("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods/%7BauthenticationMethodId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -2002,6 +2057,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -2053,6 +2109,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -2085,6 +2142,7 @@ request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 

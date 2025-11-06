@@ -45,6 +45,7 @@ curl --request GET \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --header 'content-type: application/json'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D");
 var request = new RestRequest(Method.GET);
@@ -52,6 +53,7 @@ request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddHeader("content-type", "application/json");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -80,12 +82,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("content-type", "application/json")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -104,6 +108,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -128,6 +133,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -156,6 +162,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -173,6 +180,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -191,6 +199,7 @@ request["content-type"] = 'application/json'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -258,6 +267,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"options":{"client_id":"","profile":true,"scope":["profile"],"upstream_params":{"blog":{"value":"myblog.wordpress.com"}}}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D");
 var request = new RestRequest(Method.PATCH);
@@ -266,6 +276,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"options":{"client_id":"","profile":true,"scope":["profile"],"upstream_params":{"blog":{"value":"myblog.wordpress.com"}}}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -297,6 +308,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -304,6 +316,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/conne
   .body("{"options":{"client_id":"","profile":true,"scope":["profile"],"upstream_params":{"blog":{"value":"myblog.wordpress.com"}}}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -330,6 +343,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -358,6 +372,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -387,6 +402,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -406,6 +422,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -425,6 +442,7 @@ request.body = "{"options":{"client_id":"","profile":true,"scope":["profile"],"u
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -518,6 +536,7 @@ curl --request GET \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}' \
   --header 'content-type: application/json'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D");
 var request = new RestRequest(Method.GET);
@@ -525,6 +544,7 @@ request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddHeader("content-type", "application/json");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -553,12 +573,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("content-type", "application/json")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -577,6 +599,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -601,6 +624,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -629,6 +653,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -646,6 +671,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -664,6 +690,7 @@ request["content-type"] = 'application/json'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -731,6 +758,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"options": {"client_id": "{clientId}", "client_secret": "{clientSecret}", "profile": true, "upstream_params": {"screen_name": {"alias": "login_hint"}}}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D");
 var request = new RestRequest(Method.PATCH);
@@ -739,6 +767,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"options": {"client_id": "{clientId}", "client_secret": "{clientSecret}", "profile": true, "upstream_params": {"screen_name": {"alias": "login_hint"}}}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -770,6 +799,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
@@ -777,6 +807,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/conne
   .body("{"options": {"client_id": "{clientId}", "client_secret": "{clientSecret}", "profile": true, "upstream_params": {"screen_name": {"alias": "login_hint"}}}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -803,6 +834,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -831,6 +863,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -860,6 +893,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -879,6 +913,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -898,6 +933,7 @@ request.body = "{"options": {"client_id": "{clientId}", "client_secret": "{clien
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

@@ -221,6 +221,7 @@ curl --request POST \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
@@ -228,6 +229,7 @@ request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -258,12 +260,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -289,6 +293,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -318,6 +323,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -346,6 +352,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -362,6 +369,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -380,6 +388,7 @@ request.body = "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "t
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -427,6 +436,7 @@ curl --request POST \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID", "client_secret" : "IDP_CLIENT_SECRET", "scopes": "openid profile" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
@@ -434,6 +444,7 @@ request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID", "client_secret" : "IDP_CLIENT_SECRET", "scopes": "openid profile" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -464,12 +475,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "discovery_url": "https://IDP_DOMAIN/.well-known/openid-configuration", "client_id" : "IDP_CLIENT_ID", "client_secret" : "IDP_CLIENT_SECRET", "scopes": "openid profile" } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -496,6 +509,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -525,6 +539,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -553,6 +568,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -569,6 +585,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -587,6 +604,7 @@ request.body = "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "t
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -635,6 +653,7 @@ curl --request POST \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "client_secret" : "IDP_CLIENT_SECRET", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
@@ -642,6 +661,7 @@ request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "client_secret" : "IDP_CLIENT_SECRET", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -672,12 +692,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "back_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "client_secret" : "IDP_CLIENT_SECRET", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -705,6 +727,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -734,6 +757,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -762,6 +786,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -778,6 +803,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -796,6 +822,7 @@ request.body = "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "t
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 imimport Foundation
 
@@ -845,6 +872,7 @@ curl --request POST \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --data '{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "token_endpoint": "https://IDP_DOMAIN/oauth/token", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections");
 var request = new RestRequest(Method.POST);
@@ -852,6 +880,7 @@ request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 request.AddParameter("undefined", "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "token_endpoint": "https://IDP_DOMAIN/oauth/token", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -882,12 +911,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "type": "front_channel", "issuer": "https://IDP_DOMAIN", "authorization_endpoint": "https://IDP_DOMAIN/authorize", "token_endpoint": "https://IDP_DOMAIN/oauth/token", "client_id" : "IDP_CLIENT_ID",  "scopes": "openid profile" } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -915,6 +946,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -944,6 +976,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -972,6 +1005,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -988,6 +1022,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -1006,6 +1041,7 @@ request.body = "{ "strategy": "oidc", "name": "CONNECTION_NAME", "options": { "t
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

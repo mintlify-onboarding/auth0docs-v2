@@ -62,6 +62,7 @@ curl --request POST \
   --form connection_id=CONNECTION_ID \
   --form external_id=EXTERNAL_ID
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/jobs/users-imports");
 var request = new RestRequest(Method.POST);
@@ -84,6 +85,7 @@ EXTERNAL_ID\r
 ", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -129,6 +131,7 @@ EXTERNAL_ID\r
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-imports")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -150,6 +153,7 @@ EXTERNAL_ID\r
 ")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -183,6 +187,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -239,6 +244,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -282,6 +288,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -315,6 +322,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -348,6 +356,7 @@ EXTERNAL_ID\r
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -492,6 +501,7 @@ curl --request GET \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/jobs/JOB_ID");
 var request = new RestRequest(Method.GET);
@@ -499,6 +509,7 @@ request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -527,12 +538,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/JOB_ID")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -551,6 +564,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -575,6 +589,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -603,6 +618,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -620,6 +636,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -638,6 +655,7 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -742,6 +760,7 @@ curl --request GET \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN' \
   --header 'content-type: application/json'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/jobs/JOB_ID/errors");
 var request = new RestRequest(Method.GET);
@@ -749,6 +768,7 @@ request.AddHeader("content-type", "application/json");
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -777,12 +797,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/JOB_ID/errors")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -801,6 +823,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -825,6 +848,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -853,6 +877,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -870,6 +895,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -888,6 +914,7 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

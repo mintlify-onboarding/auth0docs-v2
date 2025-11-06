@@ -50,6 +50,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"options":{"set_user_root_attributes": "ATTRIBUTE_UPDATE_VALUE"}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/connections/CONNECTION_ID");
 var request = new RestRequest(Method.PATCH);
@@ -59,6 +60,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{"options":{"set_user_root_attributes": "ATTRIBUTE_UPDATE_VALUE"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -92,6 +94,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION_ID")
   .header("content-type", "application/json")

@@ -65,6 +65,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "organization_usage": "ORG_USAGE", "organization_require_behavior": "ORG_REQUIRE_BEHAVIOR" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/clients/CLIENT_ID");
 var request = new RestRequest(Method.PATCH);
@@ -74,6 +75,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "organization_usage": "ORG_USAGE", "organization_require_behavior": "ORG_REQUIRE_BEHAVIOR" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -106,6 +108,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients/CLIENT_ID")
   .header("content-type", "application/json")
@@ -114,6 +117,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clien
   .body("{ "organization_usage": "ORG_USAGE", "organization_require_behavior": "ORG_REQUIRE_BEHAVIOR" }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -137,6 +141,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -167,6 +172,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -197,6 +203,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -217,6 +224,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -237,6 +245,7 @@ request.body = "{ "organization_usage": "ORG_USAGE", "organization_require_behav
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

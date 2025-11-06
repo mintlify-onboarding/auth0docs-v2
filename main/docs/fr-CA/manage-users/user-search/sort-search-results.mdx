@@ -24,12 +24,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/users?q=logins_count%3A%5B100%20TO%20200%5D&sort=created_at%3A1&search_engine=v3' \
   --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/users?q=logins_count%3A%5B100%20TO%20200%5D&sort=created_at%3A1&search_engine=v3");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -57,11 +59,13 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users?q=logins_count%3A%5B100%20TO%20200%5D&sort=created_at%3A1&search_engine=v3")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -78,6 +82,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -101,6 +106,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -128,6 +134,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -142,6 +149,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -159,6 +167,7 @@ request["authorization"] = 'Bearer {yourMgmtApiAccessToken}'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

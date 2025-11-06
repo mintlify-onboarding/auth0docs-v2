@@ -39,6 +39,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "name": "ROLE_NAME", "description": "ROLE_DESC" }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/roles/ROLE_ID");
 var request = new RestRequest(Method.PATCH);
@@ -48,6 +49,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "name": "ROLE_NAME", "description": "ROLE_DESC" }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -81,6 +83,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/roles/ROLE_ID")
   .header("content-type", "application/json")

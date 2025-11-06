@@ -31,12 +31,14 @@ curl --request GET \
   --url 'https://{yourDomain}/api/v2/organizations/ORG_ID/enabled_connections' \
   --header 'authorization: Bearer MGMT_API_ACCESS_TOKEN'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/organizations/ORG_ID/enabled_connections");
 var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer MGMT_API_ACCESS_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -64,11 +66,13 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/organizations/ORG_ID/enabled_connections")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -84,6 +88,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -107,6 +112,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -134,6 +140,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -148,6 +155,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -165,6 +173,7 @@ request["authorization"] = 'Bearer MGMT_API_ACCESS_TOKEN'
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

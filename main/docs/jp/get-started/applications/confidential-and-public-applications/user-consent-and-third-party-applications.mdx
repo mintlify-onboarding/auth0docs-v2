@@ -60,6 +60,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "flags": { "use_scope_descriptions_for_consent": true } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -69,6 +70,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "flags": { "use_scope_descriptions_for_consent": true } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -101,6 +103,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -109,6 +112,7 @@ HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/setti
   .body("{ "flags": { "use_scope_descriptions_for_consent": true } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -129,6 +133,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -158,6 +163,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -188,6 +194,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -208,6 +215,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -228,6 +236,7 @@ request.body = "{ "flags": { "use_scope_descriptions_for_consent": true } }"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

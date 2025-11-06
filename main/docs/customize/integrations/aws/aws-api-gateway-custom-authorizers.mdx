@@ -522,6 +522,7 @@ For details, see [Get Access Tokens](/docs/secure/tokens/access-tokens/get-acces
 curl --request GET \
   --url https://%7ByourInvokeUrl%7D/pets
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://%7ByourInvokeUrl%7D/pets");
 var request = new RestRequest(Method.GET);
@@ -553,6 +554,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://%7ByourInvokeUrl%7D/pets")
   .asString();
@@ -569,6 +571,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -614,6 +617,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -643,6 +647,7 @@ request = Net::HTTP::Get.new(url)
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 

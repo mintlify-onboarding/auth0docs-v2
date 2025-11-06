@@ -63,6 +63,7 @@ curl --request PUT \
   --header 'content-type: application/json' \
   --data '{ "login": { "description": "Login to ACME'''s Website" } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/prompts/login/custom-text/en");
 var request = new RestRequest(Method.PUT);
@@ -71,6 +72,7 @@ request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddParameter("application/json", "{ "login": { "description": "Login to ACME's Website" } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -103,6 +105,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
   .header("content-type", "application/json")
@@ -275,6 +278,7 @@ curl --request PUT \
   --header 'content-type: application/json' \
   --data '{}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/prompts/login/custom-text/en");
 var request = new RestRequest(Method.PUT);
@@ -283,6 +287,7 @@ request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -315,6 +320,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
   .header("content-type", "application/json")

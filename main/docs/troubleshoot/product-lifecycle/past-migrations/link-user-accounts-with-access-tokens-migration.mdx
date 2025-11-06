@@ -274,6 +274,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
 var request = new RestRequest(Method.POST);
@@ -282,6 +283,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go lines
 package main
 
@@ -313,6 +315,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer ACCESS_TOKEN")
@@ -320,6 +323,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/
   .body("{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}")
   .asString();
 ```
+
 ```javascript Node.JS lines
 var axios = require("axios").default;
 
@@ -336,6 +340,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines
 #import <Foundation/Foundation.h>
 
@@ -364,6 +369,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP lines
 $curl = curl_init();
 
@@ -393,6 +399,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -412,6 +419,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby lines
 require 'uri'
 require 'net/http'
@@ -431,6 +439,7 @@ request.body = "{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines
 import Foundation
 

@@ -297,6 +297,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities");
 var request = new RestRequest(Method.POST);
@@ -305,6 +306,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go lines
 package main
 
@@ -337,6 +339,7 @@ func main() {
 }
 
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer ACCESS_TOKEN")

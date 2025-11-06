@@ -118,6 +118,7 @@ var request = new RestRequest(Method.GET);
 request.AddHeader("authorization", "Bearer {yourAccessToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 import (
@@ -141,6 +142,7 @@ HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7BuserId
 .header("authorization", "Bearer {yourAccessToken}")
 .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 var options = {
@@ -174,6 +176,7 @@ NSLog(@"%@", httpResponse);
 }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -206,6 +209,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'

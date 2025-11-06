@@ -38,12 +38,14 @@ curl --request DELETE \
    --url 'https://{yourDomain}/api/v2/clients/%7ByourClientId%7D' \
    --header 'authorization: Bearer {yourMgmtApiToken}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("authorization", "Bearer {yourMgmtApiToken}");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -72,6 +74,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.delete("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D")
   .header("authorization", "Bearer {yourMgmtApiToken}")

@@ -64,6 +64,7 @@ curl --request POST \
   --form file=@auth0_users.csv \
   --form format=csv
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://marketo_rest_api_base_url/bulk/v1/leads.json");
 var request = new RestRequest(Method.POST);
@@ -341,6 +342,7 @@ curl --request GET \
   --url https://marketo_rest_api_base_url/bulk/v1/leads/batch/BATCH_ID.json \
   --header 'authorization: Bearer {MARKETO_ACCESS_TOKEN}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://marketo_rest_api_base_url/bulk/v1/leads/batch/BATCH_ID.json");
 var request = new RestRequest(Method.GET);

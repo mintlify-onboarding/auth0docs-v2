@@ -39,6 +39,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "flags": { "enable_dynamic_client_registration": true } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -48,6 +49,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "flags": { "enable_dynamic_client_registration": true } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -81,6 +83,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -270,6 +273,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oidc/register");
 var request = new RestRequest(Method.POST);
@@ -277,6 +281,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -308,6 +313,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oidc/register")
   .header("content-type", "application/json")

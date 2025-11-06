@@ -37,6 +37,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "flags": { "enable_dynamic_client_registration": true } }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -46,6 +47,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "flags": { "enable_dynamic_client_registration": true } }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -78,6 +80,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -86,6 +89,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenan
   .body("{ "flags": { "enable_dynamic_client_registration": true } }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -106,6 +110,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -135,6 +140,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -165,6 +171,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -185,6 +192,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -205,6 +213,7 @@ request.body = "{ "flags": { "enable_dynamic_client_registration": true } }"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -257,6 +266,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oidc/register");
 var request = new RestRequest(Method.POST);
@@ -264,6 +274,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -294,12 +305,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oidc/register")
   .header("content-type", "application/json")
   .body("{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -322,6 +335,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -350,6 +364,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -374,6 +389,7 @@ echo "cURL Error #:" . $err;
 echo $response;
 }
 ```
+
 ```python Python
 import http.client
 conn = http.client.HTTPSConnection("")
@@ -384,6 +400,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -398,6 +415,7 @@ request.body = "{"client_name":"My Dynamic Application","redirect_uris": ["https
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 let headers = ["content-type": "application/json"]

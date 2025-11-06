@@ -90,6 +90,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"error_page": {"html": "", "show_log_link":false, "url": "http://www.example.com"}}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -98,6 +99,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"error_page": {"html": "", "show_log_link":false, "url": "http://www.example.com"}}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -129,6 +131,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("authorization", "Bearer {mgmtApiAccessToken}")
@@ -136,6 +139,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenan
   .body("{"error_page": {"html": "", "show_log_link":false, "url": "http://www.example.com"}}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -155,6 +159,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -183,6 +188,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -212,6 +218,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -231,6 +238,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -250,6 +258,7 @@ request.body = "{"error_page": {"html": "", "show_log_link":false, "url": "http:
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -335,6 +344,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{"error_page": {"html": "<h1>{{error | escape }} {{error_description | escape }} This error was generated {{'\''now'\'' | date: '\''%Y %h'\''}}.</h1>", "show_log_link": false, "url": ""}}'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://login.auth0.com/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -379,6 +389,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.patch("https://login.auth0.com/api/v2/tenants/settings")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -412,6 +423,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C lines expandable
 #import <Foundation/Foundation.h>
 
@@ -470,6 +482,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -509,6 +522,7 @@ request.body = "{\"error_page\": {\"html\": \"<h1>{{error | escape }} {{error_de
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift lines expandable
 import Foundation
 

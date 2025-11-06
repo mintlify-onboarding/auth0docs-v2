@@ -72,6 +72,7 @@ curl --request PATCH \
   --header 'content-type: application/json' \
   --data '{ "session_lifetime": SESSION_LIFETIME_VALUE, "idle_session_lifetime": IDLE_SESSION_LIFETIME_VALUE }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/tenants/settings");
 var request = new RestRequest(Method.PATCH);
@@ -81,6 +82,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("application/json", "{ "session_lifetime": SESSION_LIFETIME_VALUE, "idle_session_lifetime": IDLE_SESSION_LIFETIME_VALUE }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -114,6 +116,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")

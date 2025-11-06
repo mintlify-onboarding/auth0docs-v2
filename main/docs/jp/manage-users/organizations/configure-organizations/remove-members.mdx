@@ -35,6 +35,7 @@ curl --request DELETE \
   --header 'cache-control: no-cache' \
   --data '{ "members": [ "USER_ID", "USER_ID", "USER_ID" ] }'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/api/v2/organizations/ORG_ID/members");
 var request = new RestRequest(Method.DELETE);
@@ -43,6 +44,7 @@ request.AddHeader("cache-control", "no-cache");
 request.AddParameter("undefined", "{ "members": [ "USER_ID", "USER_ID", "USER_ID" ] }", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -74,6 +76,7 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.delete("https://{yourDomain}/api/v2/organizations/ORG_ID/members")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
@@ -81,6 +84,7 @@ HttpResponse<String> response = Unirest.delete("https://{yourDomain}/api/v2/orga
   .body("{ "members": [ "USER_ID", "USER_ID", "USER_ID" ] }")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -97,6 +101,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -125,6 +130,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -154,6 +160,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -173,6 +180,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -192,6 +200,7 @@ request.body = "{ "members": [ "USER_ID", "USER_ID", "USER_ID" ] }"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

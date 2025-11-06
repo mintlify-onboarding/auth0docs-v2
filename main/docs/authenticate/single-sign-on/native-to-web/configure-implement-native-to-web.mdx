@@ -249,6 +249,7 @@ If your web application does not support cookie injection, you can configure you
 curl --request GET \
   --url 'https://your_web_app_login_url/?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://your_web_app_login_url/?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN");
 var request = new RestRequest(Method.GET);
@@ -280,6 +281,7 @@ func main() {
 
 }
 ```
+
 ```java Java lines
 HttpResponse<String> response = Unirest.get("https://your_web_app_login_url/?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN")
   .asString();
@@ -325,6 +327,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python lines
 import http.client
 
@@ -375,11 +378,13 @@ From the application login URL, redirect to the `/authorize` endpoint when the `
 curl --request GET \
   --url 'https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -405,10 +410,12 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -429,6 +436,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -453,6 +461,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -511,12 +520,14 @@ curl --request GET \
   --header 'cookie: session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN' \
   --cookie session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/samlp//{yourClientId}?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN");
 var request = new RestRequest(Method.GET);
 request.AddHeader("cookie", "session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -543,11 +554,13 @@ func main() {
 	fmt.Println(string(body))
 }
 ```
+
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/samlp//{yourClientId}?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN")
   .header("cookie", "session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -564,6 +577,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -591,6 +605,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -605,6 +620,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'

@@ -136,11 +136,13 @@ The My Account API supports the following scopes:
 curl --request GET \
   --url 'https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -166,10 +168,12 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/authorize?response_type=code&client_id={yourClientId}&redirect_uri=%7ByourRedirectUri%7D&scope=create%3Ame%3Aauthentication_methods&offline_access=&audience=https%3A%2F%2F{yourDomain}%2Fme%2F")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -192,6 +196,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -212,6 +217,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -236,6 +242,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -248,6 +255,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -264,6 +272,7 @@ request = Net::HTTP::Get.new(url)
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -295,6 +304,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"grant_type": "authorization_code","client_id": "{yourClientId}","client_secret": "{yourClientId}","code": "{yourAuthorizationCode}","redirect_uri": "{yourRedirectUri}","audience": "{yourAudience}","scope": "create:me:authentication_methods","offline_access": ""}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -302,6 +312,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"grant_type": "authorization_code","client_id": "{yourClientId}","client_secret": "{yourClientId}","code": "{yourAuthorizationCode}","redirect_uri": "{yourRedirectUri}","audience": "{yourAudience}","scope": "create:me:authentication_methods","offline_access": ""}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -332,12 +343,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")
   .body("{"grant_type": "authorization_code","client_id": "{yourClientId}","client_secret": "{yourClientId}","code": "{yourAuthorizationCode}","redirect_uri": "{yourRedirectUri}","audience": "{yourAudience}","scope": "create:me:authentication_methods","offline_access": ""}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -363,6 +376,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -397,6 +411,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -425,6 +440,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -441,6 +457,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -459,6 +476,7 @@ request.body = "{"grant_type": "authorization_code","client_id": "{yourClientId}
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -508,6 +526,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{"client_id": "{yourDomain}"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/passkey/challenge");
 var request = new RestRequest(Method.POST);
@@ -515,6 +534,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{"client_id": "{yourDomain}"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -545,12 +565,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/passkey/challenge")
   .header("content-type", "application/json")
   .body("{"client_id": "{yourDomain}"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -567,6 +589,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -594,6 +617,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -622,6 +646,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -638,6 +663,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 require 'uri'
 require 'net/http'
@@ -656,6 +682,7 @@ request.body = "{"client_id": "{yourDomain}"}"
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 
@@ -694,6 +721,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{  "grant_type": "urn:okta:params:oauth:grant-type:webauthn",  "client_id": "{yourClientId}",  "scope": "create:me:authentication_methods offline_access",  "audience": "https://{yourDomain}/me/"  "auth_session": "{sessionIdFromTheFirstRequest}",  "authn_response": "{authenticatorResponse}"}'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/oauth/token");
 var request = new RestRequest(Method.POST);
@@ -701,6 +729,7 @@ request.AddHeader("content-type", "application/json");
 request.AddParameter("application/json", "{ "grant_type": "urn:okta:params:oauth:grant-type:webauthn", "client_id": "{yourClientId}", "scope": "create:me:authentication_methods offline_access", "audience": "https://{yourDomain}/me/" "auth_session": "{sessionIdFromTheFirstRequest}", "authn_response": "{authenticatorResponse}"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -731,12 +760,14 @@ func main() {
 
 }
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/json")
   .body("{  "grant_type": "urn:okta:params:oauth:grant-type:webauthn",  "client_id": "{yourClientId}",  "scope": "create:me:authentication_methods offline_access",  "audience": "https://{yourDomain}/me/"  "auth_session": "{sessionIdFromTheFirstRequest}",  "authn_response": "{authenticatorResponse}"}")
   .asString();
 ```
+
 ```javascript Node.JS
 var axios = require("axios").default;
 
@@ -753,6 +784,7 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 ```
+
 ```objc Obj-C
 #import <Foundation/Foundation.h>
 
@@ -779,6 +811,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                             }];
 [dataTask resume];
 ```
+
 ```php PHP
 $curl = curl_init();
 
@@ -807,6 +840,7 @@ if ($err) {
   echo $response;
 }
 ```
+
 ```python Python
 import http.client
 
@@ -823,6 +857,7 @@ data = res.read()
 
 print(data.decode("utf-8"))
 ```
+
 ```ruby Ruby
 rrequire 'uri'
 require 'net/http'
@@ -841,6 +876,7 @@ request.body = "{  "grant_type": "urn:okta:params:oauth:grant-type:webauthn",  "
 response = http.request(request)
 puts response.read_body
 ```
+
 ```swift Swift
 import Foundation
 

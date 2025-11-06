@@ -244,6 +244,7 @@ If your web application does not support cookie injection, you can configure you
 curl --request GET \
   --url 'https://your_web_app_login_url/?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN'
 ```
+
 ```csharp C# lines
 var client = new RestClient("https://your_web_app_login_url/?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN");
 var request = new RestRequest(Method.GET);
@@ -418,11 +419,13 @@ From the application login URL, redirect to the `/authorize` endpoint when the `
 curl --request GET \
   --url 'https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code'
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code");
 var request = new RestRequest(Method.GET);
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -449,6 +452,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code")
   .asString();
@@ -624,12 +628,14 @@ curl --request GET \
   --header 'cookie: session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN' \
   --cookie session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN
 ```
+
 ```csharp C#
 var client = new RestClient("https://{yourDomain}/samlp//{yourClientId}?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN");
 var request = new RestRequest(Method.GET);
 request.AddHeader("cookie", "session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN");
 IRestResponse response = client.Execute(request);
 ```
+
 ```go Go
 package main
 
@@ -658,6 +664,7 @@ func main() {
 }
 
 ```
+
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/samlp//{yourClientId}?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN")
   .header("cookie", "session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN")
