@@ -209,21 +209,21 @@ Dans ce cas, l’utilisateur se connecte avec succès au fournisseur d’identit
 1. Vérifiez les pages [Logs (Journaux)](https://manage.auth0.com/#/logs) et [Users (Utilisateurs)](https://manage.auth0.com/#/users) dans Auth0 Dashboard pour voir si Auth0 affiche un événement de connexion réussi. Si les journaux d’Auth0 n’affichent pas d’événement de connexion réussi, il y a probablement un problème avec l’Assertion d’authentification SAML renvoyée par l’IdP ou Auth0 n’est pas en mesure de consommer l’assertion.
 2. Vérifiez les informations qu’Auth0 envoie à l’application en [capturant un suivi HTTP de la séquence de connexion](/docs/fr-CA/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) et en analysant ce suivi HTTP.
 
-   <Warning>
+    <Warning>
 
-   Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
+    Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
 
-   - les informations confidentielles de l’utilisateur
-   - les informations personnelles identifiables (PII)
-   - les informations confidentielles relatives à l’application
+    - les informations confidentielles de l’utilisateur
+    - les informations personnelles identifiables (PII)
+    - les informations confidentielles relatives à l’application
 
-   Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
+    Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
 
-   - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
-   - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
-   - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
-   - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
-     </Warning>
+    - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
+    - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
+    - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
+    - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
+    </Warning>
 
 3. Vous pouvez visualiser le suivi HTTP dans un analyseur de fichiers HAR, tel que [l’analyseur HAR de Google](https://toolbox.googleapps.com/apps/har_analyzer/).
 
@@ -251,15 +251,13 @@ Dans ce cas, l’utilisateur se connecte avec succès au fournisseur d’identit
     <tr>
       <td>Destination</td>
       <td>
-        Vérifiez que la destination de l’assertion SAML est le bon locataire Auth0 et la bonne connexion (`https://
-        {TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
+        Vérifiez que la destination de l’assertion SAML est le bon locataire Auth0 et la bonne connexion (`https://{TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
       </td>
     </tr>
     <tr>
       <td>Status Field (Champ d’état)</td>
       <td>
-        Ce champ doit indiquer la réussite. (`&lt;samlp:StatusCode
-        Value="urn:oasis:names:tc:SAML:2.0:status:Success"/&gt;`).
+        Ce champ doit indiquer la réussite. (`<samlp:StatusCodeValue="urn:oasis:names:tc:SAML:2.0:status:Success">`).
       </td>
     </tr>
     <tr>
@@ -273,8 +271,7 @@ Dans ce cas, l’utilisateur se connecte avec succès au fournisseur d’identit
       <td>Public</td>
       <td>
         Vérifiez que le champ de restriction de public SAML contient les bonnes informations sur le locataire et sur la
-        connexion (`&lt;saml:AudienceRestriction&gt;&lt;saml:Audience&gt;urn:auth0:{TENANT}:{CONNECTION}
-        &lt;/saml:audience&gt;`).
+        connexion (`<saml:AudienceRestriction><saml:Audience>urn:auth0:\{TENANT}:\{CONNECTION}</saml:audience>`).
       </td>
     </tr>
     <tr>
@@ -343,21 +340,21 @@ Dans ce cas, l’utilisateur se connecte à l’IdP avec succès, les journaux d
 
 2. Vérifiez les informations qu’Auth0 envoie à l’application en [capturant un suivi HTTP de la séquence de connexion](/docs/fr-CA/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) et en analysant ce suivi HTTP. Vous pouvez visualiser le suivi HTTP dans un analyseur de fichiers HAR, tel que [l’analyseur HAR de Google](https://toolbox.googleapps.com/apps/har_analyzer/).
 
-   <Warning>
+    <Warning>
 
-   Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
+    Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
 
-   - les informations confidentielles de l’utilisateur
-   - les informations personnelles identifiables (PII)
-   - les informations confidentielles relatives à l’application
+    - les informations confidentielles de l’utilisateur
+    - les informations personnelles identifiables (PII)
+    - les informations confidentielles relatives à l’application
 
-   Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
+    Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
 
-   - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
-   - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
-   - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
-   - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
-     </Warning>
+    - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
+    - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
+    - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
+    - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
+    </Warning>
 
    1. Examinez la séquence d’URL invoquées dans le suivi HTTP.
 
@@ -383,21 +380,19 @@ Dans ce cas, l’utilisateur se connecte à l’IdP avec succès, les journaux d
     <tr>
       <td>Destination</td>
       <td>
-        Vérifiez que la destination de l’assertion SAML est le bon locataire Auth0 et la bonne connexion (`https://
-        {TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
+        Vérifiez que la destination de l’assertion SAML est le bon locataire Auth0 et la bonne connexion (`https://{TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
       </td>
     </tr>
     <tr>
       <td>Status Field (Champ d’état)</td>
       <td>
-        Ce champ doit indiquer la réussite. (`&lt;samlp:StatusCode
-        Value="urn:oasis:names:tc:SAML:2.0:status:Success"/&gt;`).
+        Ce champ doit indiquer la réussite. (`<samlp:StatusCodeValue="urn:oasis:names:tc:SAML:2.0:status:Success"/>`).
       </td>
     </tr>
     <tr>
       <td>Destinataire</td>
       <td>
-        Vérifiez que l’élément Méthode `&lt;saml:SubjectConfirmation` contient le bon locataire et la bonne connexion
+        Vérifiez que l’élément Méthode `<saml:SubjectConfirmation` contient le bon locataire et la bonne connexion
         dans le champ “Recipient” (`https://{TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
       </td>
     </tr>
@@ -405,8 +400,7 @@ Dans ce cas, l’utilisateur se connecte à l’IdP avec succès, les journaux d
       <td>Public</td>
       <td>
         Vérifiez que le champ de restriction de public SAML contient les bonnes informations sur le locataire et sur la
-        connexion (`&lt;saml:AudienceRestriction&gt;&lt;saml:Audience&gt;urn:auth0:{TENANT}:{CONNECTION}
-        &lt;/saml:audience&gt;`).
+        connexion (`<saml:AudienceRestriction><saml:Audience>urn:auth0:{TENANT}:{CONNECTION}</saml:audience>`).
       </td>
     </tr>
     <tr>
@@ -515,21 +509,21 @@ Dans ce cas, l’utilisateur se connecte à l’IdP avec succès, un événement
 2. Vérifiez les fichiers journaux de l’application pour voir s’il y a des messages d’erreur indiquant pourquoi l’utilisateur ne peut pas accéder à l’application. Les deux causes les plus courantes de ce problème sont des informations de profil utilisateur manquantes ou des informations d’autorisation incorrectes ou manquantes.
 3. Vérifiez les informations qu’Auth0 envoie à l’application en [capturant un suivi HTTP de la séquence de connexion](/docs/fr-CA/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files) et en analysant ce suivi HTTP. Vous pouvez visualiser le suivi HTTP dans un analyseur de fichiers HAR, tel que [l’analyseur HAR de Google](https://toolbox.googleapps.com/apps/har_analyzer/).
 
-   <Warning>
+    <Warning>
 
-   Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
+    Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
 
-   - les informations confidentielles de l’utilisateur
-   - les informations personnelles identifiables (PII)
-   - les informations confidentielles relatives à l’application
+    - les informations confidentielles de l’utilisateur
+    - les informations personnelles identifiables (PII)
+    - les informations confidentielles relatives à l’application
 
-   Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
+    Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
 
-   - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
-   - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
-   - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
-   - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
-     </Warning>
+    - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
+    - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
+    - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
+    - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
+    </Warning>
 
    1. Examinez la séquence d’URL invoquées dans le suivi HTTP.
 
@@ -555,21 +549,19 @@ Dans ce cas, l’utilisateur se connecte à l’IdP avec succès, un événement
     <tr>
       <td>Destination</td>
       <td>
-        Vérifiez que la destination de l’assertion SAML est le bon locataire Auth0 et la bonne connexion (`https://
-        {TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
+        Vérifiez que la destination de l’assertion SAML est le bon locataire Auth0 et la bonne connexion (`https://{TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
       </td>
     </tr>
     <tr>
       <td>Status Field (Champ d’état)</td>
       <td>
-        Ce champ doit indiquer la réussite. (`&lt;samlp:StatusCode
-        Value="urn:oasis:names:tc:SAML:2.0:status:Success"/&gt;`).
+        Ce champ doit indiquer la réussite. (`<samlp:StatusCodeValue="urn:oasis:names:tc:SAML:2.0:status:Success"/>`).
       </td>
     </tr>
     <tr>
       <td>Destinataire</td>
       <td>
-        Vérifiez que l’élément Méthode `&lt;saml:SubjectConfirmation` contient le bon locataire et la bonne connexion
+        Vérifiez que l’élément Méthode `<saml:SubjectConfirmation` contient le bon locataire et la bonne connexion
         dans le champ “Recipient” (`https://{TENANT}.auth0.com/login/callback?connection={CONNECTION}`).
       </td>
     </tr>
@@ -577,8 +569,7 @@ Dans ce cas, l’utilisateur se connecte à l’IdP avec succès, un événement
       <td>Public</td>
       <td>
         Vérifiez que le champ de restriction de public SAML contient les bonnes informations sur le locataire et sur la
-        connexion (`&lt;saml:AudienceRestriction&gt;&lt;saml:Audience&gt;urn:auth0:{TENANT}:{CONNECTION}
-        &lt;/saml:audience&gt;`).
+        connexion (`<saml:AudienceRestriction><saml:Audience>urn:auth0:{TENANT}:{CONNECTION} </saml:audience>`).
       </td>
     </tr>
     <tr>
@@ -656,7 +647,7 @@ Si les étapes de dépannage listées ci-dessus ne résolvent pas les problèmes
     - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
     - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
     - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
-      </Warning>
+    </Warning>
 
 11. Une entrée de journal Auth0 pour l’authentification échouée.
 12. Un fichier de journal d’authentification provenant de toute application tierce (comme SharePoint) impliquée

@@ -12,21 +12,21 @@ permalink: "check-user-profiles"
 1. Les informations relatives au profil utilisateur sont-elles correctes à la source (serveur d’autorisations)?
 2. Générez et vérifiez le [fichier HAR](/docs/fr-CA/troubleshoot/troubleshooting-tools/generate-and-analyze-har-files), recherchez un `id_token`.
 
-   <Warning>
+    <Warning>
 
-   Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
+    Avant de partager un fichier HAR avec quiconque (y compris Auth0), assurez-vous de supprimer ou d’obscurcir toutes les données sensibles, telles que :
 
-   - les informations confidentielles de l’utilisateur
-   - les informations personnelles identifiables (PII)
-   - les informations confidentielles relatives à l’application
+    - les informations confidentielles de l’utilisateur
+    - les informations personnelles identifiables (PII)
+    - les informations confidentielles relatives à l’application
 
-   Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
+    Pour en savoir plus, consultez les articles suivants sur [Communauté Auth0](https://community.auth0.com) :
 
-   - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
-   - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
-   - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
-   - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
-     </Warning>
+    - [Assainissement des traces HTTP](https://community.auth0.com/t/sanitizing-http-traces/119488)
+    - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
+    - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
+    - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
+    </Warning>
 
 3. Décodez l’`id_token` sur [JWT.io](https://jwt.io) pour voir s’il contient les bonnes informations.
 4. Vérifiez les scripts de base de données personnalisés ou la logique des règles.

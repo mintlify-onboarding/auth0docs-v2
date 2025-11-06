@@ -57,14 +57,14 @@ L’exemple de cas d’utilisation montre comment la déconnexion par canal d’
 1. Lors de la configuration de l’application, l’application A enregistre un URI de déconnexion du canal d’appui auprès d’Auth0.
 2. Lors de la configuration de l’application, l’application B enregistre un URI de déconnexion du canal d’appui auprès d’Auth0.
 
-   <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+    <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
-   Les URL de déconnexion du canal d’appui OIDC doivent :
+    Les URL de déconnexion du canal d’appui OIDC doivent :
 
-   - Être accessibles à partir de l’IdP
-   - Utiliser des points de terminaison avec chiffrement TLS
-   - [Valider les jetons de déconnexion](https://openid.net/specs/openid-connect-backchannel-1_0.html#Validation)
-     </Callout>
+    - Être accessibles à partir de l’IdP
+    - Utiliser des points de terminaison avec chiffrement TLS
+    - [Valider les jetons de déconnexion](https://openid.net/specs/openid-connect-backchannel-1_0.html#Validation)
+    </Callout>
 
 3. Lors de la connexion de l’utilisateur final, un utilisateur s’authentifie auprès d’Auth0 pour accéder à l’application A.
 4. Auth0 envoie un jeton d’ID avec `sid` à l’application A. Pour en savoir plus, consultez [Structure du jeton d’ID](/docs/fr-CA/secure/tokens/id-tokens/id-token-structure).

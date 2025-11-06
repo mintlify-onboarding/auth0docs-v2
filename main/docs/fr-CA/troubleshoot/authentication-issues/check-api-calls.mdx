@@ -31,7 +31,7 @@ permalink: "check-api-calls"
   - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
   - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
   - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
-    </Warning>
+  </Warning>
 
 - Si vous appelez l’Auth0 <Tooltip href="/docs/fr-CA/glossary?term=management-api" tip="Management API
   Un produit permettant aux clients d’effectuer des tâches administratives." cta="Voir le glossaire">Management API</Tooltip> à partir d’une application qui s’authentifie avec un [Flux des identifiants client](/docs/fr-CA/get-started/authentication-and-authorization-flow/client-credentials-flow), notez que les règles ne sont pas exécutées dans ce contexte. Pour une fonctionnalité similaire à celle d’une règle, vous pouvez utiliser une action dans le [flux intermachines](/docs/fr-CA/customize/actions/explore-triggers/machine-to-machine-trigger) sur le déclencheur `credentials-exchange` dans ce contexte.
@@ -54,7 +54,7 @@ permalink: "check-api-calls"
   - [Comment assainir automatiquement un fichier de trace HTTP](https://community.auth0.com/t/how-to-sanitize-a-http-trace-file-automatically/120583)
   - [Comment caviarder manuellement des informations sensibles](https://community.auth0.com/t/how-to-manually-redact-sensitive-information/122554)
   - [Fichier HAR trop volumineux pour être téléversé dans le dossier d’assistance](https://community.auth0.com/t/har-file-is-too-large-to-upload-to-the-support-case/122488)
-    </Warning>
+  </Warning>
 
 - Vérifier si la réponse à l’appel du point de terminaison `/authorize` contient un objet de permissions. Si c’est le cas, vérifiez si les permissions renvoyées sont différentes des permissions demandées.
 - Assurez-vous que votre API peut [valider le jeton d’accès](/docs/fr-CA/secure/tokens/access-tokens/validate-access-tokens). Elle doit valider l'<Tooltip data-tooltip-id="react-containers-DefinitionTooltip-1" tip="">audience</Tooltip>, l’émetteur, le client (le cas échéant), l’algorithme de signature, la signature, les demandes et les autorisations.
