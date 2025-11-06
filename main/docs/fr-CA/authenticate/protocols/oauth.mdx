@@ -8,6 +8,8 @@ permalink: "oauth"
 "twitter:title": "Cadre d’applications Authorization OAuth 2.0"
 "twitter:description": "Découvrez comment Auth0 fonctionne avec le cadre d’applications Authorization OAuth 2.0."
 ---
+import {AuthLink} from "/snippets/AuthLink.jsx";
+
 
 <Card title="Vue d’ensemble">
 
@@ -191,7 +193,7 @@ La spécification [Pratiques d’encodage des types de réponses multiples OAuth
         terminaison /authorization. Ceci est particulièrement utile lors de l’utilisation de l’authentification
         silencieuse. Pour utiliser ce mode de réponse, vous devez enregistrer l’URL de votre application dans le champ{" "}
         <strong>Origines Web autorisées</strong> de vos{" "}
-        <a href="https://manage.auth0.com/#/applications/{yourClientId}/settings">paramètres d’application</a> Auth0.
+        <AuthLink href="https://manage.auth0.com/#/applications/{yourClientId}/settings">paramètres d’application</AuthLink> Auth0.
       </td>
     </tr>
   </tbody>

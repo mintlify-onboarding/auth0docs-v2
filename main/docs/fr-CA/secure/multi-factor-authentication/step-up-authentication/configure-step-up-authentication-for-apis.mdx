@@ -8,6 +8,8 @@ permalink: "configure-step-up-authentication-for-apis"
 "twitter:title": "Configurer l’authentification renforcée pour les API"
 "twitter:description": "Découvrez comment une API peut vérifier si un utilisateur s’est connecté avec l'authentification multifacteur (MFA) en examinant son jeton d’accès."
 ---
+import {AuthLink} from "/snippets/AuthLink.jsx";
+
 
 import { AuthCodeBlock } from "/snippets/AuthCodeBlock.jsx";
 
@@ -156,9 +158,9 @@ state=OPAQUE_VALUE
       <td>`client_ID`</td>
       <td>
         Définissez l’ID client de votre application (trouvez-le dans{" "}
-        <a href="https://manage.auth0.com/#/applications/{yourClientId}/settings">
+        <AuthLink href="https://manage.auth0.com/#/applications/{yourClientId}/settings">
           Application Settings (Paramètres de l’application)
-        </a>
+        </AuthLink>
         ).
       </td>
     </tr>
@@ -167,9 +169,9 @@ state=OPAQUE_VALUE
       <td>
         Définissez sur une URL dans votre application vers laquelle Auth0 devrait rediriger l’utilisateur après
         l’authentification (trouvez-le dans{" "}
-        <a href="https://manage.auth0.com/#/applications/{yourClientId}/settings">
+        <AuthLink href="https://manage.auth0.com/#/applications/{yourClientId}/settings">
           Application Settings (Paramètres de l’application)
-        </a>
+        </AuthLink>
         ).
       </td>
     </tr>

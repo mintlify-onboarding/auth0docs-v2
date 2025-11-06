@@ -8,6 +8,8 @@ permalink: "call-your-api-using-the-device-authorization-flow"
 "twitter:title": "Appeler une API à l’aide du flux d’autorisation d’appareil"
 "twitter:description": "Découvrez comment appeler votre API à partir d’un appareil dont les entrées sont limitées, à l’aide du flux d’autorisation d’appareil."
 ---
+import {AuthLink} from "/snippets/AuthLink.jsx";
+
 
 import { AuthCodeBlock } from "/snippets/AuthCodeBlock.jsx";
 
@@ -292,7 +294,7 @@ Si votre application ne demande un jeton d’accès que pour récupérer des inf
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez trouver cette valeur dans vos{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</AuthLink>.
       </td>
     </tr>
     <tr>
@@ -623,7 +625,7 @@ dataTask.resume()
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez également trouver cette valeur dans les{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres de l’application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres de l’application</AuthLink>.
       </td>
     </tr>
   </tbody>

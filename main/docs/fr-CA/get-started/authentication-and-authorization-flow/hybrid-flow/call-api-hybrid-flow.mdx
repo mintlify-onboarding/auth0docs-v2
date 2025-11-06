@@ -8,6 +8,8 @@ permalink: "call-api-hybrid-flow"
 "twitter:title": "Appeler votre API à l’aide du flux hybride"
 "twitter:description": "Découvrez comment exécuter le flux hybride afin que votre application puisse utiliser un jeton d’ID pour accéder aux informations sur l’utilisateur tout en obtenant un code d’autorisation pouvant être échangé contre un jeton d’accès."
 ---
+import {AuthLink} from "/snippets/AuthLink.jsx";
+
 
 import { AuthCodeBlock } from "/snippets/AuthCodeBlock.jsx";
 
@@ -113,7 +115,7 @@ Notez que pour autoriser un utilisateur lors de l’appel d’une API personnali
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez trouver cette valeur dans les{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de l’application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de l’application</AuthLink>.
       </td>
     </tr>
     <tr>
@@ -122,8 +124,7 @@ Notez que pour autoriser un utilisateur lors de l’appel d’une API personnali
         URL vers laquelle Auth0 redirigera le navigateur après que l’autorisation ait été accordée par l’utilisateur. Le
         code d’autorisation sera disponible dans le paramètre `code` de l’URL. Vous devez spécifier cette URL en tant
         qu’URL de rappel valide dans les{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètre de l’application</a>. &lt;br
-        /&amp;gt ; &lt;br /&amp;gt ; <strong>Attention:</strong> Conformément à la{" "}
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètre de l’application</AuthLink>. <br/><br/> <strong>Attention:</strong> Conformément à la{" "}
         <a href="https://tools.ietf.org/html/rfc6749#section-3.1.2">spécification OAuth 2.0</a>, Auth0 supprime tout ce
         qui se trouve après le hachage et n’accepte <em>pas</em> les fragments.
       </td>
@@ -517,14 +518,14 @@ dataTask.resume()
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez trouver cette valeur dans les{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</AuthLink>.
       </td>
     </tr>
     <tr>
       <td>`client_secret`</td>
       <td>
         Le secret client de votre application. Vous pouvez trouver cette valeur dans les{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</AuthLink>.
         Pour en savoir plus sur les méthodes d’authentification d’application disponibles, lisez{" "}
         <a href="/docs/fr-CA/secure/application-credentials">Identifiants d’applications</a>.
       </td>
@@ -1003,7 +1004,7 @@ dataTask.resume()
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez trouver cette valeur dans vos{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</AuthLink>.
       </td>
     </tr>
     <tr>

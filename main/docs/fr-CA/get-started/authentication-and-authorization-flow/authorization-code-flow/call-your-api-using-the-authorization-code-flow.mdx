@@ -8,6 +8,8 @@ permalink: "call-your-api-using-the-authorization-code-flow"
 "twitter:title": "Appeler votre API à l’aide du flux de code d’autorisation"
 "twitter:description": "Apprenez à appeler votre propre API à partir d’applications Web standard à l’aide du flux de code d’autorisation."
 ---
+import {AuthLink} from "/snippets/AuthLink.jsx";
+
 
 import { AuthCodeBlock } from "/snippets/AuthCodeBlock.jsx";
 
@@ -90,7 +92,7 @@ Notez que pour autoriser un utilisateur lors de l’appel d’une API personnali
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez trouver cette valeur dans vos{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</AuthLink>.
       </td>
     </tr>
     <tr>
@@ -428,14 +430,14 @@ dataTask.resume()
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez trouver cette valeur dans les{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</AuthLink>.
       </td>
     </tr>
     <tr>
       <td>`client_secret`</td>
       <td>
         Le secret client de votre application. Vous pouvez trouver cette valeur dans les{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">paramètres de votre application</AuthLink>.
         Pour en savoir plus sur les méthodes d’authentification d’application disponibles, lisez{" "}
         <a href="/docs/fr-CA/secure/application-credentials">Identifiants d’applications</a>.
       </td>
@@ -906,7 +908,7 @@ dataTask.resume()
       <td>`client_id`</td>
       <td>
         L’ID client de votre application. Vous pouvez trouver cette valeur dans vos{" "}
-        <a href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</a>.
+        <AuthLink href="https://manage.auth0.com/#/Applications/{yourClientId}/settings">Paramètres d’application</AuthLink>.
       </td>
     </tr>
     <tr>
