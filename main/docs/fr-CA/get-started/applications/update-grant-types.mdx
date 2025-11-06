@@ -88,7 +88,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D")
   .header("content-type", "application/json")
@@ -96,7 +96,7 @@ HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/clients/%7Byo
   .header("cache-control", "no-cache")
   .body("{ "grant_types": "{grantTypes}" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

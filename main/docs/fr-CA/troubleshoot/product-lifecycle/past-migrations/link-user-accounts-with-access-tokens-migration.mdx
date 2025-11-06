@@ -336,14 +336,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java lines
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/PRIMARY_ACCOUNT_USER_ID/identities")
   .header("authorization", "Bearer ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"link_with":"SECONDARY_ACCOUNT_ID_TOKEN"}")
   .asString();
-````
+```
 
 ```javascript Node.JS lines
 var axios = require("axios").default;

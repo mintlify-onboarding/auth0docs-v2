@@ -121,12 +121,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/mfa/authenticators")
   .header("authorization", "Bearer MFA_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -377,12 +377,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.delete("https://{yourDomain}/mfa/authenticators/AUTHENTICATOR_ID")
   .header("authorization", "Bearer ACCESS_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -564,12 +564,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/USER_ID/recovery-code-regeneration")
   .header("authorization", "Bearer MANAGEMENT_API_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

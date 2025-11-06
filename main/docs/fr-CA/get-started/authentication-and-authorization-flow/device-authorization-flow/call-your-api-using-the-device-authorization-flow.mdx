@@ -111,13 +111,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/oauth/device/code")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("client_id={yourClientId}&scope=%7Bscope%7D&audience=%7Baudience%7D")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -434,13 +434,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Adevice_code&device_code=%7ByourDeviceCode%7D&client_id={yourClientId}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -1014,13 +1014,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=refresh_token&client_id={yourClientId}&client_secret={yourClientSecret}&refresh_token=%7ByourRefreshToken%7D")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

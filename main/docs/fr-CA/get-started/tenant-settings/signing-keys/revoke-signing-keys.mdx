@@ -61,14 +61,14 @@ Vous ne pouvez révoquer que la clé de connexion précédemment utilisée.
    --url 'https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke' \
    --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 
-````
+```
 ```csharp C#
    var client = new RestClient("https://{yourDomain}/api/v2/keys/signing/%7ByourKeyId%7D/revoke");
 var request = new RestRequest(Method.PUT);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 
-````
+```
 
 ```go Go
    package main

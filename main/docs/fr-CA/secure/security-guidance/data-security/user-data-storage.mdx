@@ -311,14 +311,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
   .header("authorization", "Bearer {yourAccessToken}")
   .header("content-type", "application/json")
   .body("{"user_metadata": {"displayName": "J-vald3z"}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

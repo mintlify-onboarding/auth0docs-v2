@@ -69,7 +69,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clients/{yourClientId}")
   .header("content-type", "application/json")
@@ -77,7 +77,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/clien
   .header("cache-control", "no-cache")
   .body("{"initiate_login_uri": "<login_url>"}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -292,7 +292,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -300,7 +300,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenan
   .header("cache-control", "no-cache")
   .body("{"default_redirection_uri": "<login_url>"}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -540,14 +540,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/tickets/password-change")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ "user_id": "A_USER_ID", "client_id": "A_CLIENT_ID" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

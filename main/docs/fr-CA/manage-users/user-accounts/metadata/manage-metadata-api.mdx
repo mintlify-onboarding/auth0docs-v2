@@ -81,14 +81,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"email": "jane.doe@example.com", "user_metadata": {"hobby": "surfing"}, "app_metadata": {"plan": "full"}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -332,14 +332,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345"}}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -585,14 +585,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/user_id")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"user_metadata": {"addresses": {"home": "123 Main Street, Anytown, ST 12345", "work": "100 Industrial Way, Anytown, ST 12345"}}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

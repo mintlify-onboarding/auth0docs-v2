@@ -116,7 +116,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/hooks/HOOK_ID")
   .header("content-type", "application/json")
@@ -124,7 +124,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/hooks
   .header("cache-control", "no-cache")
   .body("{ "enabled": "true" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

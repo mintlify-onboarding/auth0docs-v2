@@ -84,14 +84,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/associate")
   .header("authorization", "Bearer {mfaToken}")
   .header("content-type", "application/json")
   .body("{ "authenticator_types": ["oob"], "oob_channels": ["sms"], "phone_number": "+11...9" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -352,14 +352,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("authorization", "Bearer {mfaToken}")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D&binding_code=%7BuserOtpCode%7D")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -595,13 +595,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/mfa/authenticators")
   .header("authorization", "Bearer MFA_TOKEN")
   .header("content-type", "application/json")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -816,13 +816,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/mfa/challenge")
   .header("content-type", "application/json")
   .body("{ "client_id": "{yourClientId}",  "client_secret": "{yourClientSecret}", "challenge_type": "oob", "authenticator_id": "sms|dev_NU1Ofuw3Cw0XCt5x", "mfa_token": "{mfaToken}" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -1046,13 +1046,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=http%3A%2F%2Fauth0.com%2Foauth%2Fgrant-type%2Fmfa-oob&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&mfa_token=%7BmfaToken%7D&oob_code=%7BoobCode%7D&binding_code=USER_OTP_CODE")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

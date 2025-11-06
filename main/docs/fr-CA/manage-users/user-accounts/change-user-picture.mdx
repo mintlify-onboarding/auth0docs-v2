@@ -70,14 +70,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"user_metadata": {"picture": "https://example.com/some-image.png"}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

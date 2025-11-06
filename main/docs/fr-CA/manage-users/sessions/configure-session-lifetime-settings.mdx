@@ -113,7 +113,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -121,7 +121,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenan
   .header("cache-control", "no-cache")
   .body("{ "session_lifetime": SESSION_LIFETIME_VALUE, "idle_session_lifetime": IDLE_SESSION_LIFETIME_VALUE }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

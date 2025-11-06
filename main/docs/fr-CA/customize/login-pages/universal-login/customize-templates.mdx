@@ -6941,14 +6941,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/branding/templates/universal-login")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .header("content-type", "text/html")
   .body("<!DOCTYPE html><html><head>{%- auth0:head -%}</head><body>{%- auth0:widget -%}</body></html>")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -7141,12 +7141,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/branding/templates/universal-login")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -7319,12 +7319,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.delete("https://{yourDomain}/api/v2/branding/templates/universal-login")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

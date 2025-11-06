@@ -171,12 +171,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users?q=name%3A%22jane%20smith%22&search_engine=v3")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -359,12 +359,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users?q=name%3Ajohn*&search_engine=v3")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -545,12 +545,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/users?q=logins_count%3A%7B100%20TO%20*%5D&search_engine=v3")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

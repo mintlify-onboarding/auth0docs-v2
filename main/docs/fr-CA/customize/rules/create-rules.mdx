@@ -133,7 +133,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/rules")
   .header("content-type", "application/json")
@@ -141,7 +141,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/rules"
   .header("cache-control", "no-cache")
   .body("{ "name": "RULE_NAME", "script": "RULE_SCRIPT" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

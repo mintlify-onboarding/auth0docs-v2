@@ -945,13 +945,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{ "type": "totp", "name": "OTP Application", "totp_secret": "{yourSecret}" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -1168,13 +1168,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://%7ByourDomain%7D/api/v2/users/%7BuserId%7D/authentication-methods")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{ "type": "webauthn_roaming", "name": "WebAuthn with security keys", "public_key": "{yourPublicKey}", "key_id": "{yourKeyId}", "relying_party_identifier": "{yourDomain}" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

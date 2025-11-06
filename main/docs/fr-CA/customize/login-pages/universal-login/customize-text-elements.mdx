@@ -102,14 +102,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
   .header("content-type", "application/json")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{ "login": { "description": "Login to ACME's Website" } }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -314,14 +314,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/prompts/login/custom-text/en")
   .header("content-type", "application/json")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .body("{}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

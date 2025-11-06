@@ -251,13 +251,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=authorization_code&client_id={yourClientId}&code_verified=YOUR_GENERATED_CODE_VERIFIER&code=YOUR_AUTHORIZATION_CODE&redirect_uri=https%3A%2F%2F{https://yourApp/callback}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -569,12 +569,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

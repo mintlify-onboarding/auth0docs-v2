@@ -103,14 +103,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .header("content-type", "application/json")
   .body("{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, { "name": "identities[0].connection", "export_as": "provider" }]}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -393,14 +393,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .header("content-type", "application/json")
   .body("{"connection_id": "{yourConnectionId}", "format": "csv", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent.given"}, {"name": "user_metadata.consent.date"}, {"name": "user_metadata.consent.text_details"}]}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -644,14 +644,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/jobs/users-exports")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .header("content-type", "application/json")
   .body("{"connection_id": "{yourConnectionId}", "format": "json", "limit": 5, "fields": [{"name": "email"}, {"name": "user_metadata.consent"}]}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -868,12 +868,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/jobs/%7ByourJobId%7D")
   .header("authorization", "Bearer {yourMgmtAPIAccessToken}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

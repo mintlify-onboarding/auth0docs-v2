@@ -122,12 +122,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users-by-email?email=USER_EMAIL_ADDRESS&fields=user_metadata")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -324,12 +324,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/users/%7ByourUserID%7D?fields=user_metadata")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -553,14 +553,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"user_metadata":{"consentDate":"01/24/2018"}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -780,14 +780,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"user_metadata":{"consent": {"given":true, "date":"01/23/2018", "text_details":"some-url"}}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -1016,12 +1016,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.delete("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -1214,14 +1214,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/users/USER_ID")
   .header("authorization", "Bearer YOUR_MGMT_API_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"app_metadata":{"deleted":true}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

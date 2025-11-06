@@ -110,7 +110,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -118,7 +118,7 @@ HttpResponse response = Unirest.patch("https://{yourDomain}/api/v2/tenants/setti
   .header("cache-control", "no-cache")
   .body("{ "flags": { "use_scope_descriptions_for_consent": true } }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

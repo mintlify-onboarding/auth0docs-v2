@@ -80,7 +80,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -88,7 +88,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenan
   .header("cache-control", "no-cache")
   .body("{ "flags": { "enable_dynamic_client_registration": true } }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -307,13 +307,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oidc/register")
   .header("content-type", "application/json")
   .body("{"client_name":"My Dynamic Application","redirect_uris": ["https://application.example.com/callback", "https://application.example.com/callback2"]}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

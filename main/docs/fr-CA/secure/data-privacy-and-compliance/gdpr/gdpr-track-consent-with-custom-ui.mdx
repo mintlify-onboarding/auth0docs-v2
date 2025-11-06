@@ -162,13 +162,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/dbconnections/signup")
   .header("content-type", "application/json")
   .body("{"client_id": "{yourClientId}","email": "YOUR_USER_EMAIL","password": "YOUR_USER_PASSWORD","user_metadata": {"consentGiven": "true", "consentTimestamp": "1525101183" }}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -395,14 +395,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.post("https://{yourDomain}/api/v2/users/%7BUSER_ID%7D")
   .header("authorization", "Bearer YOUR_ACCESS_TOKEN")
   .header("content-type", "application/json")
   .body("{"user_metadata": {"consentGiven":true, "consentTimestamp": "1525101183"}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

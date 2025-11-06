@@ -58,12 +58,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/api/v2/clients/%7ByourClientId%7D?fields=is_first_party&include_fields=true")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

@@ -62,14 +62,14 @@ Un produit permettant aux clients d’effectuer des tâches administratives." ct
    --url 'https://{yourDomain}/api/v2/keys/signing/rotate' \
    --header 'authorization: Bearer {yourMgmtApiAccessToken}'
 
-````
+```
 ```csharp C#
    var client = new RestClient("https://{yourDomain}/api/v2/keys/signing/rotate");
 var request = new RestRequest(Method.POST);
 request.AddHeader("authorization", "Bearer {yourMgmtApiAccessToken}");
 IRestResponse response = client.Execute(request);
 
-````
+```
 
 ```go Go
    package main

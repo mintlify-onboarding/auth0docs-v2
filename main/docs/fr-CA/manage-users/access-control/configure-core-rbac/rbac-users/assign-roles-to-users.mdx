@@ -96,7 +96,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/USER_ID/roles")
   .header("content-type", "application/json")
@@ -104,7 +104,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/users/
   .header("cache-control", "no-cache")
   .body("{ "roles": [ "ROLE_ID", "ROLE_ID" ] }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

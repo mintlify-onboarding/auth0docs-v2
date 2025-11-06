@@ -91,7 +91,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION_ID")
   .header("content-type", "application/json")
@@ -99,7 +99,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/conne
   .header("cache-control", "no-cache")
   .body("{"options":{"set_user_root_attributes": "ATTRIBUTE_UPDATE_VALUE"}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

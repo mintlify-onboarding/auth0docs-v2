@@ -448,11 +448,11 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/authorize?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN&client_ID={yourClientId}&redirect_uri=YOUR_REDIRECT_URI&response_type=code")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -657,12 +657,12 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse response = Unirest.get("https://{yourDomain}/samlp//{yourClientId}?session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN")
   .header("cookie", "session_transfer_token=YOUR_SESSION_TRANSFER_TOKEN")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

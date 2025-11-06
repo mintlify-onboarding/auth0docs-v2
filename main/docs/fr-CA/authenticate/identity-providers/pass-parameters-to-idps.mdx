@@ -84,13 +84,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("content-type", "application/json")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -312,14 +312,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/%7ByourWordpressConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("content-type", "application/json")
   .body("{"options":{"client_id":"","profile":true,"scope":["profile"],"upstream_params":{"blog":{"value":"myblog.wordpress.com"}}}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -579,13 +579,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("content-type", "application/json")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -807,14 +807,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/%7ByourXConnectionId%7D")
   .header("authorization", "Bearer {yourMgmtApiAccessToken}")
   .header("content-type", "application/json")
   .body("{"options": {"client_id": "{clientId}", "client_secret": "{clientSecret}", "profile": true, "upstream_params": {"screen_name": {"alias": "login_hint"}}}}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

@@ -141,14 +141,14 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.put("https://{yourDomain}/api/v2/guardian/factors/phone/message-types")
   .header("content-type", "application/json")
   .header("authorization", "Bearer MGMT_API_ACCESS_TOKEN")
   .body("{ "message_types": ["sms", "voice"] }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

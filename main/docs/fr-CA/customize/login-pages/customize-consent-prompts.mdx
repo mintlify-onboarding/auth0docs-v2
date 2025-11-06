@@ -82,7 +82,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -90,7 +90,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenan
   .header("cache-control", "no-cache")
   .body("{ "flags": { "use_scope_descriptions_for_consent": true } }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -307,7 +307,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenants/settings")
   .header("content-type", "application/json")
@@ -315,7 +315,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/tenan
   .header("cache-control", "no-cache")
   .body("{ "flags": { "use_scope_descriptions_for_consent": false } }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

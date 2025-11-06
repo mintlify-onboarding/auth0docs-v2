@@ -111,7 +111,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/hooks")
   .header("content-type", "application/json")
@@ -119,7 +119,7 @@ HttpResponse<String> response = Unirest.post("https://{yourDomain}/api/v2/hooks"
   .header("cache-control", "no-cache")
   .body("{ "name": "HOOK_NAME", "script": "HOOK_SCRIPT", "triggerId": "EXTENSIBILITY_POINT_NAME" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

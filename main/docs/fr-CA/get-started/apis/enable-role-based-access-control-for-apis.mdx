@@ -103,7 +103,7 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/resource-servers/API_ID")
   .header("content-type", "application/json")
@@ -111,7 +111,7 @@ HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/resou
   .header("cache-control", "no-cache")
   .body("{ "enforce_policies": "true", "token_dialect": "TOKEN_DIALECT" }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

@@ -187,13 +187,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ "options": { "client_id": "...", "client_secret": "...", "icon_url": "https://cdn.example.com/assets/icon.png", "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }, "display_name": "Connection Name"")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -388,13 +388,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ "options": { "client_id": "...", "client_secret": "...", "authParams": { "custom_param": "custom.param.value" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://public-auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -614,13 +614,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.patch("https://{yourDomain}/api/v2/connections/CONNECTION-ID")
   .header("content-type", "application/json")
   .body("{ "options": { "client_id": "...", "client_secret": "...", "authParamsMap": { "custom_param": "access_type" }, "scripts": { "fetchUserProfile": "..." }, "authorizationURL": "https://auth.example.com/oauth2/authorize", "tokenURL": "https://auth.example.com/oauth2/token", "scope": "auth" }, "enabled_clients": [ "..." ] }")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;

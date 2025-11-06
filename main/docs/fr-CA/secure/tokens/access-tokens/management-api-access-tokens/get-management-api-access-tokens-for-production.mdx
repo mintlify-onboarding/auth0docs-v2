@@ -73,13 +73,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.post("https://{yourDomain}/oauth/token")
   .header("content-type", "application/x-www-form-urlencoded")
   .body("grant_type=client_credentials&client_id={yourClientId}&client_secret=%7ByourClientSecret%7D&audience=https%3A%2F%2F{yourDomain}%2Fapi%2Fv2%2F")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
@@ -551,13 +551,13 @@ func main() {
 
 }
 
-````
+```
 ```java Java
 HttpResponse<String> response = Unirest.get("https://{yourDomain}/api/v2/clients")
   .header("content-type", "application/json")
   .header("authorization", "Bearer {yourAccessToken}")
   .asString();
-````
+```
 
 ```javascript Node.JS
 var axios = require("axios").default;
