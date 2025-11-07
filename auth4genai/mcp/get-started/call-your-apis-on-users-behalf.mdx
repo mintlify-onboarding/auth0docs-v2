@@ -11,7 +11,9 @@ import CreateMCPAPI from "/snippets/mcp/get-started/create-mcp-api.mdx";
 import { DownloadQuickstartButton } from "/snippets/download-quickstart/DownloadQuickstartButton.jsx";
 import MCPGetStartedTestingInstructions from "/snippets/mcp/get-started/testing-instructions.mdx";
 
-To call your APIs on behalf of your users, the MCP server needs to exchange the Auth0 access token it received from the MCP client (with the audience set to the MCP server itself) for a new Auth0 access token with the audience set to your API. In Auth0, this is called Custom Token Exchange and uses [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693.html).
+To call your APIs on behalf of your users, the MCP server needs to exchange the Auth0 access token it received from the MCP client (with the audience set to the MCP server itself) for a new Auth0 access token with the audience set to your API.
+
+In Auth0, this is called Custom Token Exchange and uses [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693.html). This flow involves the MCP server acting as both a resource server (for the client) and a client (for the upstream API).
 
 By the end of this quickstart, you should have an MCP server that can:
 
@@ -26,8 +28,8 @@ By the end of this quickstart, you should have an MCP server that can:
 
 When an MCP server needs to call underlying APIs, it needs to perform a Custom Token Exchange to obtain an access token with the audience set to the API rather than the MCP server itself. Because of this architecture, the MCP server acts in a dual role.
 
-1. To the MCP client (e.g., an IDE, an AI assistant), the MCP server acts as a Resource Server (an API).
-2. To the underlying API (e.g., your own API), the MCP server acts as a Client.
+1. To the MCP client (e.g., an IDE, an AI assistant), the MCP server acts as a **Resource Server** (an API).
+2. To the underlying API (e.g., your own API), the MCP server acts as a **Client**.
 
 Because of this duality, you need to set up the MCP server twich on your Auth0 tenant, both as an API and as a Client, as described below.
 
@@ -162,6 +164,8 @@ For `MCP_AUTH0_CLIENT_ID` and `MCP_AUTH0_CLIENT_SECRET` you will use the values 
 
 ## Use Custom Token Exchange Action
 
+This Action is the server-side logic Auth0 executes to perform the token exchange. It is necessary because the MCP server receives an access token from the client (with the MCP server as its audience) and must exchange it for a new token (with the upstream API as the audience). This Action validates the original token and mints the new one.
+
 The Custom Token Exchange Action, available as a part of Custom Token Exchange Early Access. Navigate to [the On-behalf-of token exchange for first-party apps template available here](https://manage.auth0.com/#/actions/library/templates/templates/daeda4e8-8da2-4abb-afb5-ac09df0ebb2a) and click on **Use This Template**.
 
 <Frame>
@@ -261,10 +265,3 @@ export async function exchangeCustomToken(subjectToken: string) {
 ## Next steps
 
 * To set up user authentication, complete the [User Authentication](./user-authentication) quickstart.
-
-
-
-
-
-
-
