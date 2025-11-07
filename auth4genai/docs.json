@@ -178,7 +178,7 @@
             "icon": "book-open",
             "pages": [
               "mcp/intro/overview",
-              "mcp/intro/why-auth0-for-mcp"
+              "mcp/intro/why-auth-for-mcp"
                 ]
           },{
             "group": "Get Started",
