@@ -1,0 +1,49 @@
+---
+title: "ErrorStore"
+description: "Global error store for ACUL (one screen per page). - Holds a single bucket of errors across the current page. - Generates stable ids for every inserted error. - Emits immutable snapshots to subscribers."
+---
+
+## Properties
+
+<ParamField path="bucket" type={<span>Bucket</span>} required>
+</ParamField>
+
+<ParamField path="listeners" type={<span>Set&lt;Listener&gt;</span>} required>
+</ParamField>
+
+<ParamField path="subscribe" type={<span>() =&gt; void</span>} required>
+</ParamField>
+
+<ParamField path="snapshot" type={<span>Readonly&lt;Bucket&gt;</span>} required>
+</ParamField>
+
+<ParamField path="normalize" type={<span>ReadonlyArray&lt;<a href="/docs/customize/login-pages/advanced-customizations/reference/react-sdk/interfaces/ErrorItem">ErrorItem</a>&gt;</span>} required>
+  Add ids and freeze an array of ErrorItem-like objects.
+</ParamField>
+
+<ParamField path="replace" type={<span>any</span>} required>
+  Replace an entire kind with a new list (generating ids if needed).
+</ParamField>
+
+<ParamField path="replacePartial" type={<span>any</span>} required>
+  Replace only errors for a specific field within a kind. - Keeps all existing errors for other fields. - Normalizes incoming errors and replaces matching field ones.
+</ParamField>
+
+<ParamField path="push" type={<span>any</span>} required>
+  Append one or more items to a kind.
+</ParamField>
+
+<ParamField path="clear" type={<span>any</span>} required>
+  Clear one or more kinds (default: all kinds).
+</ParamField>
+
+<ParamField path="remove" type={<span>any</span>} required>
+  Remove errors that match a given id or predicate from specified kinds.
+</ParamField>
+
+<ParamField path="notify" type={<span>any</span>} required>
+</ParamField>
+
+---
+
+**File:** [src/state/error-store.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/state/error-store.ts)

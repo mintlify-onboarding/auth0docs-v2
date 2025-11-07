@@ -1,0 +1,18 @@
+---
+title: "useMfaPolling"
+description: "React hook to manage MFA push polling (e.g., waiting for a push notification approval) on an Auth0 Advanced Customization of Universal Login (ACUL) screen. This hook sets up and controls a long-running polling loop that repeatedly checks the MFA push challenge endpoint until one of the following occurs: - The challenge is **approved or denied** by the user, triggering `options.onCompleted`. - An **error** occurs (network error, non-200/429 response), triggering `options.onError`. - The **component unmounts** or `stopPolling()` is called, which cancels polling. ### Key Features - `isRunning` is **reactive** — it updates automatically if the polling loop stops internally or is canceled. - Uses a **stable single polling instance** (`useRef`) to prevent duplicate network calls and unintended restarts during React re-renders. - **Automatic cleanup** on unmount: no orphan timers or leaked XHR requests."
+---
+
+## Parameters
+
+<ParamField path="options" type={<span>MfaPollingOptions</span>}>
+</ParamField>
+
+## Returns
+
+<ParamField path="response" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/react-sdk/interfaces/MfaPollingResult">MfaPollingResult</a></span>}>
+</ParamField>
+
+---
+
+**File:** [src/hooks/utility/polling-manager.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/hooks/utility/polling-manager.ts)

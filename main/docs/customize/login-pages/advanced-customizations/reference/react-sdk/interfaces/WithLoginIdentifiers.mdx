@@ -1,0 +1,23 @@
+---
+title: "WithLoginIdentifiers"
+description: ""
+---
+
+<RequestExample>
+
+```typescript Interface lines
+interface WithLoginIdentifiers {
+  getLoginIdentifiers: () => IdentifierType[];
+}
+```
+
+</RequestExample>
+
+## Properties
+
+<ParamField path="getLoginIdentifiers" type={<span>() =&gt; IdentifierType[]</span>} required>
+</ParamField>
+
+---
+
+**File:** [src/hooks/utility/login-identifiers.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/hooks/utility/login-identifiers.ts)
