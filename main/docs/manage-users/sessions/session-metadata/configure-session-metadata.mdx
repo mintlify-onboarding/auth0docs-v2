@@ -27,7 +27,7 @@ Calls to the `/api/v2/sessions/{id}` endpoint require a [Management API access t
 
 ### Retrieve existing session metadata
 
-Make a `GET` request to the [/api/v2/sessions/{id}](https://auth0.com/docs/api/management/v2/sessions/get-session) endpoint:
+Make a `GET` request to the [`/api/v2/sessions/{id}`](https://auth0.com/docs/api/management/v2/sessions/get-session) endpoint:
 
 ```bash lines
 GET /api/v2/sessions/{id}
@@ -35,7 +35,7 @@ GET /api/v2/sessions/{id}
 
 ### Add or update existing session metadata
 
-Make a `PATCH` request to the [/api/v2/sessions/{id}](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint:
+Make a `PATCH` request to the [`/api/v2/sessions/{id}`](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint:
 
 ```bash lines
 PATCH /api/v2/sessions/{id}
@@ -50,7 +50,7 @@ Content-Type: application/json
 
 ### Delete session metadata
 
-Make a `PATCH` request to the [/api/v2/sessions/{id}](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint:
+Make a `PATCH` request to the [`/api/v2/sessions/{id}`](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint:
 
 ```bash lines
 PATCH /api/v2/sessions/{id}
@@ -130,9 +130,9 @@ Once configured, the `logout_token` will include all stored session metadata.
 
 ### Auth0 Management API 
 
-You can use the [/api/v2/clients/{id}](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint to update your application to include session metadata in the `logout_token`.
+You can use the [`/api/v2/clients/{id}`](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint to update your application to include session metadata in the `logout_token`.
 
-Make a `PATCH` request to the [/api/v2/sessions/{id}](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint:
+Make a `PATCH` request to the [`/api/v2/sessions/{id}`](https://auth0.com/docs/api/management/v2/sessions/patch-sessions-by-id) endpoint:
 
 ```json lines
 "oidc_backchannel_logout": {
@@ -148,39 +148,23 @@ Make a `PATCH` request to the [/api/v2/sessions/{id}](https://auth0.com/docs/api
 }
 ```
 
-## Monitor session metadata activity
+## Error handling
 
-You can monitor session metadata activity through [tenant logs](/docs/deploy-monitor/logs/view-log-events).
+You can review Session metadata log events by navigating to [Dashboard > Monitoring > Logs](https://manage.auth0.com/#/logs) or retrieve logs using the [Management API logs](/docs/api/management/v2/logs/get-logs) endpoint.
 
-You can view log events by navigating to [Dashboard > Monitoring > Logs](https://manage.auth0.com/#/logs) or retrieve logs using the [Management API logs](https://auth0.com/docs/api/management/v2/logs/get-logs) endpoint.
+* If an error occurs while adding or updating Session metadata with Actions, the authentication transaction fails and an error is returned to the callback URL.
 
-* A warning `w` event code indicates an error occurred during a session metadata operation:
+A failure `f` event code is logged with its correspoding error:
 
 ```json lines
-"type" : "w"
-"details": {
-  "session": {
-    "metadata" : {
-      "error" : "error executing <function> - <reason>"
-    }
-  }
+{
+  "error": "access_denied",
+  "error_description": "Failed to set session metadata: Invalid metadata: Metadata keys may only include letters, numbers, underscores, or hyphens",
+  "state": "my-custom-state"
 }
 ```
 
-* A successful `s` event code contains session metadata information if it has been modified as per the schema below:
-
-```json lines
-"details": {
- "session": {
-   "metadata" : {
-     "operation": "set" | "delete" | "evict",
-     "keys": ["deviceName", "location"],  // omit for evict
-     "cleared": true                      // only for evict    
-   }
- }
-```
-
-For Management API session metadata activity, you can review the response message:
+* If a failure occurs when managing Session metadata using the Auth0 Management API, the API responds with an `HTTP status: 400` error and its corresponding message:
 
 ```json lines
 {
