@@ -8,6 +8,8 @@ Before your MCP client application can interact with a protected MCP server, it 
 
 You can register your client in two ways: statically or dynamically. For most scenarios, especially in production, we strongly recommend static client registration for its superior security and control.
 
+<Note>In the upcoming authorization specification from MCP, CIMD will be introduced as the recommended method for client registration. Support for this new approach in Auth0 is planned and will be available soon.</Note>
+
 ## Static client registration (recommended for production)
 
 **Static client registration** is a deliberate, manual process where you register your client application directly in the Auth0 Dashboard or via the Management API before your application is deployed. This approach gives you complete control over which clients can connect to your resources.
