@@ -12,6 +12,24 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 
 import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
 
+export const codeExample1 = `https://{yourDomain}/authorize?
+    response_type=code&
+    client_id={yourClientId}&
+    redirect_uri={https://yourApp/callback}&
+    scope={scope}&
+    audience={apiAudience}&
+    state={state}`;
+
+export const codeExample2 = `<a href="https://{yourDomain}/authorize?
+    response_type=code&
+    client_id={yourClientId}&
+    redirect_uri={https://yourApp/callback}&  
+    scope=appointments%20contacts&
+    audience=appointments:api&
+    state=xyzABC123">
+    Sign In
+  </a>`;
+
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
 このチュートリアルでは、認可コードフローを使用して独自のAPIを呼び出します。フローの仕組みやメリットについては、「[認可コードフロー](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow)」を参照してください。通常のWebアプリにログインを追加する方法については、「[認可コードフローを使用してログインを追加する](/docs/ja-jp/get-started/authentication-and-authorization-flow/authorization-code-flow/add-login-auth-code-flow)」を参照してください。
@@ -54,14 +72,6 @@ Auth0を使用すると、以下を使用して簡単にアプリで <Tooltip da
 
 #### 認可URLの例
 
-export const codeExample1 = `https://{yourDomain}/authorize?
-    response_type=code&
-    client_id={yourClientId}&
-    redirect_uri={https://yourApp/callback}&
-    scope={scope}&
-    audience={apiAudience}&
-    state={state}`;
-
 <AuthCodeBlock children={codeExample1} language="text" lines />
 
 ##### パラメーター
@@ -84,16 +94,6 @@ export const codeExample1 = `https://{yourDomain}/authorize?
 | `invitation` | （任意）組織の招待のチケットID。[Organizationにメンバーを招待する](/docs/ja-jp/organizations/invite-members)場合、ユーザーが招待を承諾したときに、アプリケーションは`invitation`および`organization`キー/値ペアを転送することで、招待の受け入れを処理する必要があります。|
 
 たとえば、アプリにログインを追加する際の認可URLのHTMLスニペットは、以下のようになります：
-
-export const codeExample2 = `<a href="https://{yourDomain}/authorize?
-  response_type=code&
-  client_id={yourClientId}&
-  redirect_uri={https://yourApp/callback}&  
-  scope=appointments%20contacts&
-  audience=appointments:api&
-  state=xyzABC123">
-  Sign In
-</a>`;
 
 <AuthCodeBlock children={codeExample2} language="html" />
 
