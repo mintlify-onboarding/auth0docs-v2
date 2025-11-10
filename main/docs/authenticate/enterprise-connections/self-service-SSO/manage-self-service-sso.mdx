@@ -58,7 +58,7 @@ To create a self-service profile on the Auth0 Dashboard: 
          b. Review mappings to ensure the profile attributes are mapping to your preferred Auth0 attributes.
             <Frame>![UAP mapping Authentication > Enterprise > Self-Service](/docs/images/cdy7uua7fh8z/Authenticate>Enterprise>Self-Service>UAP.png)</Frame>
 3. On the **Settings** tab, complete the sections below. Then, select **Save**.
-   * **Identity Providers**: Enable one or more identity providers. In the self-service assistant, customer admins can select their preferred option from the list of enabled providers.
+   * **Identity Providers (IdP)**: Enable one or more identity providers. In the self-service assistant, customer admins can select their preferred option from the list of enabled providers.
    * **Branding**: Provide a logo and primary color for the self-service assistant.
    * **Custom Introduction**: Modify or replace the default message as needed. This introduction text displays to customer admins on the landing page of the self-service assistant. Your messaging can include basic formatting options, such as bolding or hyperlinks, and is limited to 2000 characters.
 4. On the **User Profile** tab, add up to 20 user attributes that your customers should capture through SSO, such as email or family name. You can set each attribute as `required` or `optional`.
@@ -243,7 +243,7 @@ Self-service access tickets serve two primary purposes:
 * Granting customer admins access to the self-service assistant where they can configure a new SSO connection or modify an existing connection.
 * Predefining key details and behaviors of new SSO connections your customer admins will configure, such as which applications or organizations will be enabled for the new connection.
 
-When generating access tickets, you can also enable certain features such as <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> IdP-initated SSO, home realm discovery, and domain verification.
+When generating access tickets, you can also enable certain features such as <Tooltip tip="Security Assertion Markup Language (SAML): Standardized protocol allowing two parties to exchange authentication information without a password." cta="View Glossary" href="/docs/glossary?term=SAML">SAML</Tooltip> IdP-initated SSO, configure Identity Provider Domains (which drive Home Realm Discovery), and domain verification.
 
 #### SAML IdP-initiated SSO
 
@@ -253,41 +253,41 @@ When enabling this option for Self-Service SSO, you must provide your default ap
 
 To learn more about these options, review [Configure SAML Identity Provider-Initiated Single Sign-On](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
 
-#### Domain verification and home realm discovery
+#### Email domain verification IdP domains
 
-Self-service SSO supports two methods for ensuring customer admins associate verified domains with their connections: domain verification and home realm discovery.
+Self-Service SSO supports two ways to associate email domains with an Enterprise connection. Both methods populate the same field: `options.domain_aliases `, which drives Home Realm Discovery (HRD):
 
-While home realm discovery remains an available option, you can now use domain verification to allow your customers to manage this process themselves, reducing administrative overhead. Domain verification is currently available in Early Access.
+1. IdP Domains (tenat-managed):Tenant admin adds known domains directly to the connection.
+2. Email Domain Verification (self-managed): Your IT admin verifies the domain during setup in the self-service assistant.
 
-##### Home realm discovery
+<Note>
+These mechanisms apply to email domains used for HRD and SSO routing. They are not related to Custom Domain verification at the tenant level.
+</Note>
 
-[Home realm discovery](/docs/get-started/architecture-scenarios/business-to-business/authentication#home-realm-discovery) allows you to enter a list of known email domains for your customer. Domains specified in this list are automatically considered verified, and the customer admin does not need to complete manual verification.
+##### Identity Provider Domain verification
 
-You can provide a list of domains when [generating self-service access tickets](#generate-access-tickets-for-new-connections) for your customer admins through either the Auth0 Dashboard or the Management API.
+Use IdP Domains to pre-associate email domains to an Enterprise connection at the tenant-level. Added domains are treated as trusted and are written directly to `options.domain_aliases`.
 
-* **Auth0 Dashboard**: On the Generate Ticket page, use the Home Realm Discovery field to specify your list of domains.
-* **Management API**: Use `domain_aliases` to specify your list of domains.
+You can provide domains when [generating self-service access tickets](#generate-access-tickets-for-new-connections) through either the Auth0 Dashboard or the Management API.
 
-You can only specify domains for home realm discovery when generating access tickets for new connections; you cannot provide this information when using an access ticket to update an existing connection.
+* **Auth0 Dashboard**: On the **Generate Ticket** page, use the **Identity Provider Domains** field to specify your list of domains.
+* **Management API**: Set `connection_config.options.domain_aliases` to the list of domains.
 
-##### Domain verification
+Domains added by tenant admins are treated as **trusted** and **do not** require the customer admin to complete verification. If you want IT admins to verify a domain instead of the domain treated as **trusted**, set `domain_aliases_config.domain_verification` to `required` or `optional` to prompt verification from the self-service assistant.
 
-Domain verification is a tool for confirming your customers' authenticity and ensuring they provide legitimate domains when setting up SSO. When enabled, customer admins are prompted to manually verify their domains through the self-service assistant. This feature is currently available in Early Access.
+##### Email Domain verification
 
-You can enable domain verification when [generating self-service access tickets](#generate-access-tickets-for-new-connections) through either the Auth0 Dashboard or the Management API:
+In contrast to IdP domains, **Email Domain verification** confirms an IT admin owns the domain they provide during self-service setup. When verification is complete, the verified domain is added to the same `options.domain_aliases` array on the connection.
 
-* **Auth0 Dashboard**: On the Generate Ticket page, use the Domain Verification field to set your level of requirement.
-* **Management API**: Use `domain_aliases_config.domain_verification` to set your level of requirement.
+You can enable verification for IT admins when you generate self-service access tickets:
 
-Domain verification supports 3 levels of requirement:
+* **Auth0 Dashboard**: On the **Generate Ticket** page, use the **Domain Verification Requirement** field.
+* **Management API**: Use `domain_aliases_config.domain_verification` with one of the following options:
+   * `none` (default) : The self-service assistant does not prompt a customer admin to verify their domain.
+   * `required`: The self-service assistant prompts the customer admin to verify their domains.
+   * `optional`: The self-service assistant prompts the customer admin to verify their domain. The customer admin can choose to either enter their domain for verification or skip the step.
 
-* **Off**: When set to Off (or `none` via the API), the self-service assistant does not prompt a customer admin to verify their domain. Off is the default option for access tickets.
-* **Optional**: When set to Optional, the self-service assistant prompts the customer admin to verify their domain. The customer admin can choose to either enter their domain for verification or skip the step. In both cases, the customer admin can continue the setup process and enable their connection regardless of its verification status.
-* **Required**: When set to Required, the self-service assistant prompts the customer admin to verify their domains. In this case, the customer admin cannot skip this step and must complete domain verification in order to enable their connection.
-
-  + In some cases, verification may take 24-48 hours to complete. If this occurs, you will need to generate a new access ticket that allows customer admins to modify their SSO connection, as access tickets expire five hours after they are first opened. For more information, review [Generate an access ticket for existing connections](#generate-access-tickets-for-existing-connections).
-
-You can enable domain verification when generating access tickets for both new and existing connections.
+Verification could take up to 24–48 hours in some cases, and you may need to issue a follow-up access ticket to let the customer admin return and enable the connection. Access tickets expire five hours after first being opened. Review [Generate access tickets for existing connections](https://auth0.com/docs/authenticate/enterprise-connections/self-service-SSO/manage-self-service-sso#generate-access-tickets-for-existing-connections).
 
 ### Generate access tickets for new connections
 
@@ -318,7 +318,7 @@ To generate an access ticket for a new connection through the Auth0 Dashboard:
    * **Assign membership on login for organizations**: Automatically grant organization membership to users who authenticate with the connection.
    * **Enable as a domain level connection**: Allow 3rd-party applications to use the connection; requires [Dynamic Client Registration](/docs/get-started/applications/dynamic-client-registration).
    * **Accept SAML IdP-initiated SSO**: Enables [SAML Identity Provider-initiated SSO](/docs/authenticate/protocols/saml/saml-sso-integrations/identity-provider-initiated-single-sign-on).
-5. Under **Home Realm Discovery**, optionally provide a comma-separated list of IdP domains to compare to users’ email domains. For more information, review [Home Realm Discovery](#home-realm-discovery).
+5. Under **Home Realm Discovery**, optionally provide a comma-separated list of IdP domains to compare to users’ email domains. These domains are stored in `options.domain_aliases` and drive HRD. Domains added here are treated as trusted and do not require customer admin verification. For more information, review [Home Realm Discovery](#home-realm-discovery).
 6. Under **Domain Verification Requirement**, choose your desired level of verification:
    * **Off**: Customer admins are not prompted to verify their domain when setting up SSO. **Off** is the default setting for new access tickets.
    * **Optional**: Customer admins are prompted to verify their domain when setting up SSO. However, they can skip this step and enable their connection without completing verification.

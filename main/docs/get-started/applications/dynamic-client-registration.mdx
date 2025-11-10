@@ -521,6 +521,10 @@ This call will redirect the user to Auth0, and upon successful authentication, b
 
 If you need API access, then following the authentication, you need to extract the access token from the hash fragment of the URL, and use it to make calls to the API, by passing it as a `Bearer` token in the `Authorization` header of the HTTP request.
 
+## Use Tenant Access Control List (ACL)
+
+Auth0 provides [Tenant Access Control List (ACL)](/docs/secure/tenant-access-control-list) to manage traffic. For the `/oidc/register` endpoint, you can add the `drc` scope to an ACL rule to help manage rquests. To learn more, read [Reference](/docs/secure/tenant-access-control-list/reference).
+
 ## Learn more
 
 * [First-Party and Third-Party Applications](/docs/get-started/applications/confidential-and-public-applications/first-party-and-third-party-applications)
