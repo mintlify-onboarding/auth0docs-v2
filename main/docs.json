@@ -1439,6 +1439,7 @@
                           "docs/customize/actions/action-coding-guidelines",
                           "docs/customize/actions/limitations",
                           "docs/customize/actions/actions-npm",
+                          "docs/customize/actions/actions-unit-test",
                           "docs/customize/actions/transaction-metadata",
                           "docs/customize/actions/manage-dependencies",
                           "docs/customize/actions/manage-versions",
