@@ -123,7 +123,7 @@ module.exports = {
 
 </Tabs>
 
-## Pre-User Registration Access Control and User Metadata Setup
+## Pre-user registration access control and user metadata setup
 
 The following example Action checks if the user email has a forbidden email domain, and calls `api.access.deny()` when matching. Otherwise, it checks if the full name has being provided through Custom Prompts additional fields and proceeds to set the full name at the user profile `user_metadata`, otherwise sends a validation error to Universal Login.
 
@@ -351,7 +351,7 @@ describe('onExecutePreUserRegistration', () => {
 ```
 </Tabs>
 
-## Custom Email Provider Mocking Secrets and HTTP Request
+## Custom email provider and HTTP request
 
 The following example Action attempts to send a message via HTTP request to an external service, handling the potential request error to drop the notification. It uses secrets for the external service URL and authorization API Key.
 
