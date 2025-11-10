@@ -6,7 +6,7 @@ This repository contains source material for https://auth0.com/docs. **Please re
 * You can edit Docs content by using the GitHub web editor and editing a file. This is best suited for typos and small changes.
 * You can also pull down the `/docs` repo to your computer via Git and edit files in your local editor, before pushing a new branch (or a branch to your own fork of the project). You can then go to GitHub.com and start a PR. 
 We will be able to review the changes prior to merging.
-  - Regardless of which option you use, again, please review any relevant sections of the [Contributing Guidelines](CONTRIBUTING.md) before sending a PR.
+  - Regardless of which option you use, again, please contact the Auth0 Documentation Team for contribution references.
 
 ### Set up your local environment
 
