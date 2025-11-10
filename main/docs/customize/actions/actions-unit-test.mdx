@@ -188,6 +188,7 @@ exports.onExecutePreUserRegistration = async (event: Event, api: PreUserRegistra
   api.user.setUserMetadata('full_name', fullName);
 };
 ```
+</Tab>
 </Tabs>
 
 The Unit Test performs some validations to maximize code coverage, by mocking `event` and `api` objects.
@@ -349,6 +350,7 @@ describe('onExecutePreUserRegistration', () => {
   });
 });
 ```
+</Tab>
 </Tabs>
 
 ## Custom email provider and HTTP request
