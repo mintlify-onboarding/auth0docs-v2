@@ -13,13 +13,12 @@ import {AuthCodeBlock} from "/snippets/AuthCodeBlock.jsx";
 import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
 
 export const codeExample1 = `https://{yourDomain}/authorize?
-  scope=openid
-  &response_type=id_token
-  &client_id={yourClientId}
-  &redirect_uri=https://{yourApp}/callback
-  &nonce=NONCE
-  &state=OPAQUE_VALUE
-`;
+      scope=openid
+      &response_type=id_token
+      &client_id={yourClientId}
+      &redirect_uri=https://{yourApp}/callback
+      &nonce=NONCE
+      &state=OPAQUE_VALUE`;
 
 export const codeExample2 = `https://{yourDomain}/authorize?
   audience=https://{yourDomain}/api/v2/
@@ -101,8 +100,7 @@ export const codeExample17 = `https://{yourDomain}/authorize?
 `;
 
 export const codeExample18 = `DELETE https://{yourDomain}/api/v2/users/{primaryAccountUserId}/identities/{secondaryAccountProvider}/{secondaryAccountUserId}
-  Authorization: 'Bearer {yourMgmtApiAccessToken}'
-`;
+    Authorization: 'Bearer {yourMgmtApiAccessToken}'`;
 
 以前は、一部のケースで、IDトークンを使ってユーザーアカウントのリンクやリンク解除ができました。この機能は、廃止されます。今後は、すべてのケースでアクセストークンを使う必要があります。
 
