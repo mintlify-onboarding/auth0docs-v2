@@ -253,26 +253,6 @@ mfaEmailChallenge.tryAnotherMethod();
 <ParamField path="untrustedData" type={<span>UntrustedDataOptions</span>} required>
 </ParamField>
 
-<ParamField path="continue" type={<span>Promise&lt;void&gt;</span>} required>
-  Continues with the email challenge using the provided code
-</ParamField>
-
-<ParamField path="resendCode" type={<span>Promise&lt;void&gt;</span>} required>
-  Resends the email code
-</ParamField>
-
-<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>} required>
-  Allows the user to try another MFA method
-</ParamField>
-
-<ParamField path="pickEmail" type={<span>Promise&lt;void&gt;</span>} required>
-  Submits the action to pick a different Email configuration, if available.
-</ParamField>
-
-<ParamField path="resendManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendControl">ResendControl</a></span>} required>
-  Gets resend functionality with timeout management for this screen
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -297,12 +277,65 @@ mfaEmailChallenge.tryAnotherMethod();
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="continue" type={<span>Promise&lt;void&gt;</span>}>
+  Continues with the email challenge using the provided code
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ContinueOptions">ContinueOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="resendCode" type={<span>Promise&lt;void&gt;</span>}>
+  Resends the email code
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendCodeOptions">ResendCodeOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>}>
+  Allows the user to try another MFA method
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TryAnotherMethodOptions">TryAnotherMethodOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="pickEmail" type={<span>Promise&lt;void&gt;</span>}>
+  Submits the action to pick a different Email configuration, if available.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="resendManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendControl">ResendControl</a></span>}>
+  Gets resend functionality with timeout management for this screen
+
+  <Expandable title="parameters">
+    <ParamField path="options" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/StartResendOptions">StartResendOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

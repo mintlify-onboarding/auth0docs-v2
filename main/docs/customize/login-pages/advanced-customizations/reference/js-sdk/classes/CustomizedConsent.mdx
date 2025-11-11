@@ -253,14 +253,6 @@ async function denyConsent() {
   Holds the specific screen data and properties for the Customized Consent screen, processed by `ScreenOverride`. This includes `scopes` and `authorizationDetails`.
 </ParamField>
 
-<ParamField path="accept" type={<span>Promise&lt;void&gt;</span>} required>
-  Submits the user's decision to accept (grant) the requested permissions and authorization details. This method prepares and posts form data to the `/u/customized-consent?state=<transaction_state>` endpoint with `action: "accept"`. The transaction state is automatically included in both the URL query parameter and the form body.
-</ParamField>
-
-<ParamField path="deny" type={<span>Promise&lt;void&gt;</span>} required>
-  Submits the user's decision to deny (reject) the requested permissions and authorization details. This method prepares and posts form data to the `/u/customized-consent?state=<transaction_state>` endpoint with `action: "deny"`. The transaction state is automatically included in both the URL query parameter and the form body.
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -288,12 +280,38 @@ async function denyConsent() {
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="accept" type={<span>Promise&lt;void&gt;</span>}>
+  Submits the user's decision to accept (grant) the requested permissions and authorization details. This method prepares and posts form data to the `/u/customized-consent?state=<transaction_state>` endpoint with `action: "accept"`. The transaction state is automatically included in both the URL query parameter and the form body.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="deny" type={<span>Promise&lt;void&gt;</span>}>
+  Submits the user's decision to deny (reject) the requested permissions and authorization details. This method prepares and posts form data to the `/u/customized-consent?state=<transaction_state>` endpoint with `action: "deny"`. The transaction state is automatically included in both the URL query parameter and the form body.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

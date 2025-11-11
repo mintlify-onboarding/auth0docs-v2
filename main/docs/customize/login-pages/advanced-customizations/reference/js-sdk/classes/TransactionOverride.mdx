@@ -17,9 +17,6 @@ description: ""
 <ParamField path="requiredIdentifiers" type={<span>OverrideOptions['requiredIdentifiers']</span>} required>
 </ParamField>
 
-<ParamField path="getRequiredIdentifiers" type={<span>OverrideOptions['requiredIdentifiers']</span>} required>
-</ParamField>
-
 <ParamField path="state" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['state']</span>} required>
   The current state of the authentication transaction
 </ParamField>
@@ -56,16 +53,42 @@ description: ""
   Other available connections
 </ParamField>
 
-<ParamField path="getErrors" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['errors']</span>} required>
-  @static
+## Methods
+
+<ParamField path="getRequiredIdentifiers" type={<span>OverrideOptions['requiredIdentifiers']</span>}>
+  <Expandable title="parameters">
+    <ParamField path="transactionContext" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionContext">TransactionContext</a></span>} required>
+    </ParamField>
+    <ParamField path="connectionStrategy" type={<span>string | null</span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getCurrentConnection" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['currentConnection']</span>} required>
+<ParamField path="getErrors" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['errors']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="transaction" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionContext">TransactionContext</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getAlternateConnections" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['alternateConnections']</span>} required>
+<ParamField path="getCurrentConnection" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['currentConnection']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="transaction" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionContext">TransactionContext</a></span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getAlternateConnections" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['alternateConnections']</span>}>
+  @static
+
+  <Expandable title="parameters">
+    <ParamField path="transaction" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionContext">TransactionContext</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ---

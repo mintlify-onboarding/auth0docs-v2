@@ -409,30 +409,6 @@ export default MfaVoiceChallengeScreen;
 <ParamField path="untrustedData" type={<span>UntrustedDataOptions</span>} required>
 </ParamField>
 
-<ParamField path="continue" type={<span>Promise&lt;void&gt;</span>} required>
-  Submits the voice verification code to validate the MFA challenge.
-</ParamField>
-
-<ParamField path="pickPhone" type={<span>Promise&lt;void&gt;</span>} required>
-  Navigates to the screen for selecting a different phone number.
-</ParamField>
-
-<ParamField path="switchToSms" type={<span>Promise&lt;void&gt;</span>} required>
-  Switches to SMS verification method instead of voice call.
-</ParamField>
-
-<ParamField path="resendCode" type={<span>Promise&lt;void&gt;</span>} required>
-  Requests a new voice call with a verification code.
-</ParamField>
-
-<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>} required>
-  Navigates to the screen for selecting an alternative MFA method.
-</ParamField>
-
-<ParamField path="resendManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendControl">ResendControl</a></span>} required>
-  Gets resend functionality with timeout management for this screen
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -457,12 +433,74 @@ export default MfaVoiceChallengeScreen;
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="continue" type={<span>Promise&lt;void&gt;</span>}>
+  Submits the voice verification code to validate the MFA challenge.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/MfaVoiceChallengeContinueOptions">MfaVoiceChallengeContinueOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="pickPhone" type={<span>Promise&lt;void&gt;</span>}>
+  Navigates to the screen for selecting a different phone number.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="switchToSms" type={<span>Promise&lt;void&gt;</span>}>
+  Switches to SMS verification method instead of voice call.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="resendCode" type={<span>Promise&lt;void&gt;</span>}>
+  Requests a new voice call with a verification code.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>}>
+  Navigates to the screen for selecting an alternative MFA method.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="resendManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendControl">ResendControl</a></span>}>
+  Gets resend functionality with timeout management for this screen
+
+  <Expandable title="parameters">
+    <ParamField path="options" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/StartResendOptions">StartResendOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

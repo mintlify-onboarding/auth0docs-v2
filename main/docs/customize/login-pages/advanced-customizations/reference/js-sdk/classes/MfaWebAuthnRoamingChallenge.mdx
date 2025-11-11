@@ -13,15 +13,6 @@ description: ""
   Holds the specific screen data and properties, processed by `ScreenOverride`. This includes `publicKeyChallengeOptions` for the WebAuthn API call.
 </ParamField>
 
-<ParamField path="verify" type={<span>Promise&lt;void&gt;</span>} required>
-</ParamField>
-
-<ParamField path="reportWebAuthnError" type={<span>Promise&lt;void&gt;</span>} required>
-</ParamField>
-
-<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>} required>
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -49,12 +40,41 @@ description: ""
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="verify" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="options" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/VerifySecurityKeyOptions">VerifySecurityKeyOptions</a></span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="reportWebAuthnError" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="options" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ReportWebAuthnErrorOptions">ReportWebAuthnErrorOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="options" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TryAnotherMethodOptions">TryAnotherMethodOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

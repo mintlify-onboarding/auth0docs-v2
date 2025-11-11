@@ -107,14 +107,6 @@ await mfaCountryCodes.goBack();
 <ParamField path="screen" type={<span>ScreenOptions</span>} required>
 </ParamField>
 
-<ParamField path="selectCountryCode" type={<span>Promise&lt;void&gt;</span>} required>
-  Selects a country code from the available options
-</ParamField>
-
-<ParamField path="goBack" type={<span>Promise&lt;void&gt;</span>} required>
-  Navigates back to the previous screen
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -142,12 +134,38 @@ await mfaCountryCodes.goBack();
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="selectCountryCode" type={<span>Promise&lt;void&gt;</span>}>
+  Selects a country code from the available options
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/SelectCountryCodeOptions">SelectCountryCodeOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="goBack" type={<span>Promise&lt;void&gt;</span>}>
+  Navigates back to the previous screen
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

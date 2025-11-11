@@ -13,22 +13,6 @@ description: ""
   Holds the specific screen data and properties, processed by `ScreenOverride` for the MFA WebAuthn Error screen. This includes details like `errorType` and `webauthnType`.
 </ParamField>
 
-<ParamField path="tryAgain" type={<span>Promise&lt;void&gt;</span>} required>
-  Allows the user to retry the previous WebAuthn operation. This action typically redirects the user to the screen where the WebAuthn process was initially attempted (e.g., back to the MFA challenge or enrollment screen for WebAuthn).
-</ParamField>
-
-<ParamField path="usePassword" type={<span>Promise&lt;void&gt;</span>} required>
-  Allows the user to attempt authentication using their password, if this alternative is configured and appropriate for the current flow (e.g., if password was a prior authentication step or is a valid MFA bypass).
-</ParamField>
-
-<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>} required>
-  Allows the user to choose a different Multi-Factor Authentication method. This action navigates the user to a screen where they can select from other available/enrolled MFA factors.
-</ParamField>
-
-<ParamField path="noThanks" type={<span>Promise&lt;void&gt;</span>} required>
-  Allows the user to decline the current WebAuthn operation (e.g., refuse to add a device during enrollment). This action signifies the user's choice not to proceed with the WebAuthn step at this time.
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -56,12 +40,56 @@ description: ""
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="tryAgain" type={<span>Promise&lt;void&gt;</span>}>
+  Allows the user to retry the previous WebAuthn operation. This action typically redirects the user to the screen where the WebAuthn process was initially attempted (e.g., back to the MFA challenge or enrollment screen for WebAuthn).
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="usePassword" type={<span>Promise&lt;void&gt;</span>}>
+  Allows the user to attempt authentication using their password, if this alternative is configured and appropriate for the current flow (e.g., if password was a prior authentication step or is a valid MFA bypass).
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="tryAnotherMethod" type={<span>Promise&lt;void&gt;</span>}>
+  Allows the user to choose a different Multi-Factor Authentication method. This action navigates the user to a screen where they can select from other available/enrolled MFA factors.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="noThanks" type={<span>Promise&lt;void&gt;</span>}>
+  Allows the user to decline the current WebAuthn operation (e.g., refuse to add a device during enrollment). This action signifies the user's choice not to proceed with the WebAuthn step at this time.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

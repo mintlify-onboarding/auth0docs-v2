@@ -8,16 +8,28 @@ description: "Untrusted data override class for the mfa-voice-challenge screen H
 <ParamField path="submittedFormData" type={<span>OverrideOptions['submittedFormData']</span>} required>
 </ParamField>
 
-<ParamField path="getSubmittedFormData" type={<span>OverrideOptions['submittedFormData']</span>} required>
-  @static
-</ParamField>
-
 <ParamField path="authorizationParams" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataMembers">UntrustedDataMembers</a>['authorizationParams']</span>} required>
   Authorization parameters from the request
 </ParamField>
 
-<ParamField path="getAuthorizationParams" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataMembers">UntrustedDataMembers</a>['authorizationParams']</span>} required>
+## Methods
+
+<ParamField path="getSubmittedFormData" type={<span>OverrideOptions['submittedFormData']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="untrustedDataContext" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataContext">UntrustedDataContext</a></span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getAuthorizationParams" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataMembers">UntrustedDataMembers</a>['authorizationParams']</span>}>
+  @static
+
+  <Expandable title="parameters">
+    <ParamField path="untrustedData" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataContext">UntrustedDataContext</a> | undefined</span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ---

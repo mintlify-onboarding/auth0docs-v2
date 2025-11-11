@@ -228,29 +228,6 @@ export default SignupScreen;
 <ParamField path="transaction" type={<span>TransactionOptions</span>} required>
 </ParamField>
 
-<ParamField path="signup" type={<span>Promise&lt;void&gt;</span>} required>
-  method handles the submission of the signup form.
-</ParamField>
-
-<ParamField path="federatedSignup" type={<span>Promise&lt;void&gt;</span>} required>
-  Handles the submission of the social signup form.
-</ParamField>
-
-<ParamField path="pickCountryCode" type={<span>Promise&lt;void&gt;</span>} required>
-  Signup from "@auth0/auth0-acul-js/signup"; const signupManager = new Signup(); signupManager.pickCountryCode();
-</ParamField>
-
-<ParamField path="validatePassword" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/PasswordValidationResult">PasswordValidationResult</a></span>} required>
-</ParamField>
-
-<ParamField path="getSignupIdentifiers" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/Identifier">Identifier[]</a> | null</span>}>
-  Returns the list of enabled identifiers for the signup form, marking each as required or optional based on transaction config.
-</ParamField>
-
-<ParamField path="validateUsername" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UsernameValidationResult">UsernameValidationResult</a></span>} required>
-  Validates a given username against the current username policy defined in the transaction context.
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -275,12 +252,64 @@ export default SignupScreen;
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="signup" type={<span>Promise&lt;void&gt;</span>}>
+  This method handles the submission of the signup form.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/SignupOptions">SignupOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="federatedSignup" type={<span>Promise&lt;void&gt;</span>}>
+  This method is similar to the method but is used for social signups.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/FederatedSignupOptions">FederatedSignupOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="pickCountryCode" type={<span>Promise&lt;void&gt;</span>}>
+</ParamField>
+
+<ParamField path="validatePassword" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/PasswordValidationResult">PasswordValidationResult</a></span>}>
+  @param password
+
+  <Expandable title="parameters">
+    <ParamField path="password" type={<span>string</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getSignupIdentifiers" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/Identifier">Identifier[]</a> | null</span>}>
+  Returns the list of enabled identifiers for the signup form, marking each as required or optional based on transaction config.
+
+</ParamField>
+
+<ParamField path="validateUsername" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UsernameValidationResult">UsernameValidationResult</a></span>}>
+  Validates a given username against the current username policy defined in the transaction context.
+
+  <Expandable title="parameters">
+    <ParamField path="username" type={<span>string</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

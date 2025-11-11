@@ -300,18 +300,6 @@ resendVerificationCode();
   The unique identifier for the Login Email Verification screen. This static property is used by the SDK's `BaseContext` to ensure that the class is instantiated in the correct screen context.
 </ParamField>
 
-<ParamField path="continueWithCode" type={<span>Promise&lt;void&gt;</span>} required>
-  Submits the email verification code entered by the user to Auth0. This method prepares and posts the form data, including the verification code and the required `action: "default"`, to the `/u/login-email-verification` endpoint.
-</ParamField>
-
-<ParamField path="resendCode" type={<span>Promise&lt;void&gt;</span>} required>
-  Requests Auth0 to send a new verification code to the user's email address. This is typically used when the user didn't receive the original code, or it has expired. This method posts form data with `action: "resend-code"` to the `/u/login-email-verification` endpoint.
-</ParamField>
-
-<ParamField path="resendManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendControl">ResendControl</a></span>} required>
-  Gets resend functionality with timeout management for this screen
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -342,12 +330,47 @@ resendVerificationCode();
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="continueWithCode" type={<span>Promise&lt;void&gt;</span>}>
+  Submits the email verification code entered by the user to Auth0. This method prepares and posts the form data, including the verification code and the required `action: "default"`, to the `/u/login-email-verification` endpoint.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ContinueWithCodeOptions">ContinueWithCodeOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="resendCode" type={<span>Promise&lt;void&gt;</span>}>
+  Requests Auth0 to send a new verification code to the user's email address. This is typically used when the user didn't receive the original code, or it has expired. This method posts form data with `action: "resend-code"` to the `/u/login-email-verification` endpoint.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendCodeOptions">ResendCodeOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="resendManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/ResendControl">ResendControl</a></span>}>
+  Gets resend functionality with timeout management for this screen
+
+  <Expandable title="parameters">
+    <ParamField path="options" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/StartResendOptions">StartResendOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

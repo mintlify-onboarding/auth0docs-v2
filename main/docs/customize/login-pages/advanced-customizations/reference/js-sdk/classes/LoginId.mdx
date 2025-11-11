@@ -91,30 +91,6 @@ loginIdManager.pickCountryCode();
 <ParamField path="transaction" type={<span>TransactionOptions</span>} required>
 </ParamField>
 
-<ParamField path="login" type={<span>Promise&lt;void&gt;</span>} required>
-  LoginId from "@auth0/auth0-acul-js/login-id"; const loginIdManager = new LoginId(); loginIdManager.login();
-</ParamField>
-
-<ParamField path="federatedLogin" type={<span>Promise&lt;void&gt;</span>} required>
-  LoginId from "@auth0/auth0-acul-js/login-id"; const loginIdManager = new LoginId(); // Check if alternateConnections is available and has at least one item if (!loginIdManager.transaction.alternateConnections) // Select the first available connection (users can select any available connection) const selectedConnection = alternateConnections[0]; // Log the chosen connection for debugging or informational purposes console.log(`Selected connection: $`); // Proceed with federated login using the selected connection loginIdManager.federatedLogin();
-</ParamField>
-
-<ParamField path="passkeyLogin" type={<span>Promise&lt;void&gt;</span>} required>
-  LoginId from "@auth0/auth0-acul-js/login-id"; const loginIdManager = new LoginId(); // It internally maps users available passkey config provided from auth0 server loginIdManager.passkeyLogin();
-</ParamField>
-
-<ParamField path="pickCountryCode" type={<span>Promise&lt;void&gt;</span>} required>
-  LoginId from "@auth0/auth0-acul-js/login-id"; const loginIdManager = new LoginId(); loginIdManager.pickCountryCode();
-</ParamField>
-
-<ParamField path="getLoginIdentifiers" type={<span>IdentifierType[] | null</span>}>
-  Gets the active identifier types for the login screen
-</ParamField>
-
-<ParamField path="registerPasskeyAutofill" type={<span>Promise&lt;void&gt;</span>} required>
-  Registers the browser's Conditional UI for passkeys (autocomplete experience). This method initializes a passive WebAuthn credential request using `navigator.credentials.get()` with `mediation: "conditional"`. When supported, this allows the browser to display stored passkeys directly within the username field’s autocomplete dropdown. Call this **once** when the login screen is initialized (for example, on page load). After registration, focusing the username input will automatically display matching passkeys as suggestions. Selecting a passkey completes authentication without requiring additional user interaction. --- ### Input configuration If an `inputId` is provided, the SDK will: - Validate that the element exists and is an `<input>`. - Overwrite its `autocomplete` attribute with `"webauthn username"`. This ensures full compatibility with the Conditional Mediation API. If you do **not** provide an `inputId`, you are responsible for configuring the input element manually with the correct attributes: ```html <input id="username" autocomplete="webauthn username" /> ``` --- ### Gotchas - The `autocomplete` attribute **must exactly** contain `"webauthn username"`. Including unrelated tokens such as `"email"` or `"text"` will prevent browsers from showing the passkey dropdown. - Overwriting the attribute is intentional and required for consistent behavior across browsers. Do not rely on merging or extending existing autocomplete values. - If Conditional Mediation is not supported by the browser, the SDK will safely no-op. ---
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -139,12 +115,62 @@ loginIdManager.pickCountryCode();
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="login" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/LoginOptions">LoginOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="federatedLogin" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/FederatedLoginOptions">FederatedLoginOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="passkeyLogin" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="pickCountryCode" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getLoginIdentifiers" type={<span>IdentifierType[] | null</span>}>
+  Gets the active identifier types for the login screen
+
+</ParamField>
+
+<ParamField path="registerPasskeyAutofill" type={<span>Promise&lt;void&gt;</span>}>
+  This method delegates to the internal `registerPasskeyAutofill()` utility, returning a background `AbortController` to manage request lifetime. It should only be invoked once per page lifecycle.
+
+  <Expandable title="parameters">
+    <ParamField path="inputId" type={<span>string</span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

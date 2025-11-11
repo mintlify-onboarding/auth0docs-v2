@@ -41,16 +41,33 @@ description: ""
   Other available connections
 </ParamField>
 
-<ParamField path="getErrors" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['errors']</span>} required>
+## Methods
+
+<ParamField path="getErrors" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['errors']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="transaction" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionContext">TransactionContext</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getCurrentConnection" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['currentConnection']</span>} required>
+<ParamField path="getCurrentConnection" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['currentConnection']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="transaction" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionContext">TransactionContext</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getAlternateConnections" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['alternateConnections']</span>} required>
+<ParamField path="getAlternateConnections" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionMembers">TransactionMembers</a>['alternateConnections']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="transaction" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/TransactionContext">TransactionContext</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ---

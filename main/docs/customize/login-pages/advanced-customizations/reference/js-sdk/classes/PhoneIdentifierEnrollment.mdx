@@ -121,14 +121,6 @@ export default PhoneIdentifierEnrollmentScreen;
 <ParamField path="screen" type={<span>ScreenOptions</span>} required>
 </ParamField>
 
-<ParamField path="continuePhoneEnrollment" type={<span>Promise&lt;void&gt;</span>} required>
-  PhoneIdentifierEnrollment from '@auth0/auth0-acul-js/phone-identifier-enrollment'; const phoneIdentifierEnrollment = new PhoneIdentifierEnrollment(); phoneIdentifierChallenge.continuePhoneEnrollment();
-</ParamField>
-
-<ParamField path="returnToPrevious" type={<span>Promise&lt;void&gt;</span>} required>
-  PhoneIdentifierEnrollment from '@auth0/auth0-acul-js/phone-identifier-enrollment'; const phoneIdentifierEnrollment = new PhoneIdentifierEnrollment(); phoneIdentifierChallenge.returnToPrevious();
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -156,12 +148,34 @@ export default PhoneIdentifierEnrollmentScreen;
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="continuePhoneEnrollment" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/PhoneEnrollmentOptions">PhoneEnrollmentOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="returnToPrevious" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

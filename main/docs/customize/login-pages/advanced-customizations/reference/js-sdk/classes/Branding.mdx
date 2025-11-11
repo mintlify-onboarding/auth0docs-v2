@@ -13,12 +13,24 @@ description: ""
   Branding themes defining the visual appearance
 </ParamField>
 
-<ParamField path="getSettings" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a>['settings']</span>} required>
+## Methods
+
+<ParamField path="getSettings" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a>['settings']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingContext">BrandingContext</a> | undefined</span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getThemes" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a>['themes']</span>} required>
+<ParamField path="getThemes" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a>['themes']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingContext">BrandingContext</a> | undefined</span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ---

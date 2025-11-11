@@ -99,14 +99,6 @@ mfaPushEnrollmentQr.pickAuthenticator();
 <ParamField path="screen" type={<span>ScreenOptions</span>} required>
 </ParamField>
 
-<ParamField path="pickAuthenticator" type={<span>Promise&lt;void&gt;</span>} required>
-  Navigates to the authenticator selection screen.
-</ParamField>
-
-<ParamField path="pollingManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/MfaPushPollingControl">MfaPushPollingControl</a></span>} required>
-  Starts and manages polling for an MFA push challenge. Creates a polling session that repeatedly checks the MFA push challenge endpoint at the specified interval until the challenge is approved or an error occurs. When the approval condition is met, the provided callback is invoked and polling stops automatically. Use the returned to start, stop, or check the status of the polling process at any time.
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -134,12 +126,38 @@ mfaPushEnrollmentQr.pickAuthenticator();
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="pickAuthenticator" type={<span>Promise&lt;void&gt;</span>}>
+  Navigates to the authenticator selection screen.
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="pollingManager" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/MfaPushPollingControl">MfaPushPollingControl</a></span>}>
+  Starts and manages polling for an MFA push challenge. Creates a polling session that repeatedly checks the MFA push challenge endpoint at the specified interval until the challenge is approved or an error occurs. When the approval condition is met, the provided callback is invoked and polling stops automatically. Use the returned to start, stop, or check the status of the polling process at any time.
+
+  <Expandable title="parameters">
+    <ParamField path="options" type={<span>MfaPollingOptions</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

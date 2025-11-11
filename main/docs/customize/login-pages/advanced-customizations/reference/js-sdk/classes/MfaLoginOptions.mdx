@@ -120,14 +120,6 @@ await mfaLoginOptions.enroll({
   The screen object for the mfa-login-options screen
 </ParamField>
 
-<ParamField path="enroll" type={<span>Promise&lt;void&gt;</span>} required>
-  Continues the login process with the selected MFA factor
-</ParamField>
-
-<ParamField path="returnToPrevious" type={<span>Promise&lt;void&gt;</span>} required>
-  MfaLoginOptions from '@auth0/auth0-acul-js/mfa-login-options'; const mfaLoginOptions = new MfaLoginOptions(); mfaLoginOptions.returnToPrevious();
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -155,12 +147,36 @@ await mfaLoginOptions.enroll({
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="enroll" type={<span>Promise&lt;void&gt;</span>}>
+  Continues the login process with the selected MFA factor
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/LoginEnrollOptions">LoginEnrollOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="returnToPrevious" type={<span>Promise&lt;void&gt;</span>}>
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

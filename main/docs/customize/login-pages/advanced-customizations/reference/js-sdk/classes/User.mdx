@@ -26,11 +26,11 @@ description: ""
 </ParamField>
 
 <ParamField path="userMetadata" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UserMembers">UserMembers</a>['userMetadata']</span>} required>
-  null} userMetadata - User-specific metadata that can be modified
+  @property | null} userMetadata - User-specific metadata that can be modified
 </ParamField>
 
 <ParamField path="appMetadata" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UserMembers">UserMembers</a>['appMetadata']</span>} required>
-  null} appMetadata - Application-specific metadata about the user
+  @property | null} appMetadata - Application-specific metadata about the user
 </ParamField>
 
 <ParamField path="enrolledFactors" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UserMembers">UserMembers</a>['enrolledFactors']</span>} required>
@@ -50,11 +50,18 @@ description: ""
 </ParamField>
 
 <ParamField path="organizations" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UserMembers">UserMembers</a>['organizations']</span>} required>
-  undefined}> | null} organizations - Organizations the user belongs to
+  @property | undefined}> | null} organizations - Organizations the user belongs to
 </ParamField>
 
-<ParamField path="getOrganizations" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UserMembers">UserMembers</a>['organizations']</span>} required>
+## Methods
+
+<ParamField path="getOrganizations" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UserMembers">UserMembers</a>['organizations']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="user" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UserContext">UserContext</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ---

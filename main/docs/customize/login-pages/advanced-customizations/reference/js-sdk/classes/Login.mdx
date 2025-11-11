@@ -203,22 +203,6 @@ export default LoginScreen;
 <ParamField path="transaction" type={<span>TransactionOptions</span>} required>
 </ParamField>
 
-<ParamField path="login" type={<span>Promise&lt;void&gt;</span>} required>
-  Performs login with username/password
-</ParamField>
-
-<ParamField path="federatedLogin" type={<span>Promise&lt;void&gt;</span>} required>
-  Performs login with social provider
-</ParamField>
-
-<ParamField path="pickCountryCode" type={<span>Promise&lt;void&gt;</span>} required>
-  Picks country code for phone number input
-</ParamField>
-
-<ParamField path="getLoginIdentifiers" type={<span>IdentifierType[] | null</span>}>
-  Gets the active identifier types for the login screen
-</ParamField>
-
 <ParamField path="branding" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/BrandingMembers">BrandingMembers</a></span>} required>
 </ParamField>
 
@@ -243,12 +227,52 @@ export default LoginScreen;
 <ParamField path="context" type={<span>UniversalLoginContext | null</span>}>
 </ParamField>
 
-<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
-  Retrieves a specific part of the Universal Login Context.
+## Methods
+
+<ParamField path="login" type={<span>Promise&lt;void&gt;</span>}>
+  Performs login with username/password
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/LoginOptions">LoginOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getErrors" type={<span>TransactionError[]</span>} required>
+<ParamField path="federatedLogin" type={<span>Promise&lt;void&gt;</span>}>
+  Performs login with social provider
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/FederatedLoginOptions">FederatedLoginOptions</a></span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="pickCountryCode" type={<span>Promise&lt;void&gt;</span>}>
+  Picks country code for phone number input
+
+  <Expandable title="parameters">
+    <ParamField path="payload" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/CustomOptions">CustomOptions</a></span>}>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getLoginIdentifiers" type={<span>IdentifierType[] | null</span>}>
+  Gets the active identifier types for the login screen
+
+</ParamField>
+
+<ParamField path="getContext" type={<span>UniversalLoginContext[K] | undefined</span>}>
+  Retrieves a specific part of the Universal Login Context.
+
+  <Expandable title="parameters">
+    <ParamField path="model" type={<span>K</span>} required>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField path="getErrors" type={<span>TransactionError[]</span>}>
   Retrieves the array of transaction errors from the context, or an empty array if none exist.
+
 </ParamField>
 
 ---

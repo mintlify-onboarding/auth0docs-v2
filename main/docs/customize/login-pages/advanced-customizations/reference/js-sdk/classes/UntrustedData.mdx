@@ -13,12 +13,24 @@ description: ""
   Authorization parameters from the request
 </ParamField>
 
-<ParamField path="getSubmittedFormData" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataMembers">UntrustedDataMembers</a>['submittedFormData']</span>} required>
+## Methods
+
+<ParamField path="getSubmittedFormData" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataMembers">UntrustedDataMembers</a>['submittedFormData']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="untrustedData" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataContext">UntrustedDataContext</a> | undefined</span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="getAuthorizationParams" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataMembers">UntrustedDataMembers</a>['authorizationParams']</span>} required>
+<ParamField path="getAuthorizationParams" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataMembers">UntrustedDataMembers</a>['authorizationParams']</span>}>
   @static
+
+  <Expandable title="parameters">
+    <ParamField path="untrustedData" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/interfaces/UntrustedDataContext">UntrustedDataContext</a> | undefined</span>}>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ---
