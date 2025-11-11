@@ -32,8 +32,8 @@ Fine-grained M2M token quotas are distinct from your tenant's overall monthly M2
 
 ## Use cases
 
-* **Control runaway applications**: Apply application-level quotas to limit M2M applications from requesting tokens too frequently (due to bugs, no caching, etc.) without impacting other services or your tenant’s overall M2M token quota.
-* **Ensure fair multi-tenant usage**: Assign organization-level quotas to different customers (Auth0 Organizations) to prevent one from degrading service/quota for others.
+* **Control runaway applications**: Apply application-level quotas to limit M2M applications from requesting tokens too frequently (due to bugs, no caching, etc.) without impacting your tenant’s overall M2M token quota.
+* **Ensure fair multi-tenant usage**: Assign organization-level quotas to different customers (Auth0 Organizations) to prevent one from degrading quota for others.
 * **Set tenant-wide safeguards**: Use tenant-level default quotas as a baseline limit against excessive M2M token requests from applications and organizations.
 * **Monitor before enforcement**: Deploy quotas with `enforce: false` to observe token consumption via [Consumption warning logs](#consumption-warning-logs) and [Auth0 quota headers](#auth0-quota-headers). Then, set informed limits before active blocking.
 
@@ -72,7 +72,7 @@ Auth0 determines and enforces fine-grained M2M token quotas for applications and
    * If the token request has an associated organization defined explicitly or via default organization settings, Auth0 checks the client-level and organization-level quotas concurrently.
    * If the token request does not have an associated organization, Auth0 only checks the client-level quota.
 
-Auth0 enforces quotas if you set the enforce flag to true in the quota’s configuration:
+Auth0 concurrently evaluates all quotas applicable to the transaction and enforces those that have the `enforce` flag set to `true` in the quota's configuration:
 
 * **When a quota is enforced (**`enforce: true`**):** If an enforced quota is exceeded, the token request is **rejected** with an HTTP 429 Too Many Requests error. To learn more, read [Error responses for exceeded quotas](#error-responses-for-exceeded-quotas).
 * **When a quota is not enforced (**`enforce: false`**):** Token requests are **not rejected** by this quota, even if its limit is exceeded. Auth0 still counts tokens and generates [Consumption warning logs](#consumption-warning-logs) at thresholds, allowing for monitoring before enabling enforcement.
@@ -126,8 +126,8 @@ The `default_token_quota` object contains the following application-level and or
 
 * `clients.client_credentials`: (Optional) Defines M2M token quotas for individual applications.
 * `organizations.client_credentials`: (Optional) Defines M2M token quotas for organizations.
-* `per_hour`: (Optional) Sets the hourly token quota. Use when per_day is not specified.
-* `per_day`: (Optional) Sets the daily token quota. Use when per_hour is not specified.
+* `per_hour`: (Optional) Sets the hourly token quota.
+* `per_day`: (Optional) Sets the daily token quota.
 * `enforce`: (Optional) Determines whether token requests are rejected when the quota is exceeded. The default is true.
 
 In the example, all applications in the tenant are limited by default to 100 M2M tokens per hour and 1000 per day. For Organizations, the default is 500 tokens per hour and 5000 per day, but enforcement is currently disabled (`enforce: false`). This allows you to monitor organization token usage before enforcing limits.
@@ -496,6 +496,7 @@ Other fields like `date`, `client_name`, `ip`, and `log_id` are standard Auth0 l
 
 * **Not API Call Limits**: Fine-Grained M2M Token Quotas apply to the number of access tokens obtained via Client Credentials Flow, not calls made to your APIs using those tokens.
 * **Eventual Consistency:** Token counting is eventually consistent; minor, brief overruns are possible before enforcement on subsequent requests.
+* Requests that result in a `429` response count for the Auth0 Authentication API rate limit for your tenant. To learn more, read [Rate Limit Policy](/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy).
 
 ## Troubleshoot
 
