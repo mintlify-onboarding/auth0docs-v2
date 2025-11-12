@@ -169,7 +169,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
     export default function LoginButton() {
       return (
         <a
-          href="/docs/auth/login"
+          href="/auth/login"
           className="button login"
         >
           Log In
@@ -184,7 +184,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
     export default function LogoutButton() {
       return (
         <a
-          href="/docs/auth/logout"
+          href="/auth/logout"
           className="button logout"
         >
           Log Out
@@ -817,7 +817,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     export default function LoginButton() {
       return (
         <a
-          href="/docs/auth/login"
+          href="/auth/login"
           className="button login"
         >
           Log In
@@ -833,7 +833,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     export default function LogoutButton() {
       return (
         <a
-          href="/docs/auth/logout"
+          href="/auth/logout"
           className="button logout"
         >
           Log Out
@@ -1217,7 +1217,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
   - **Simplified client setup** - `new Auth0Client()` reads environment variables automatically
   - **New route paths** - Routes are at `/auth/*` instead of `/api/auth/*`
   - **Required middleware** - All authentication functionality goes through middleware
-  - **Use `<a>` tags** - Navigation must use `<a href="/docs/auth/login">` instead of buttons with onClick
+  - **Use `<a>` tags** - Navigation must use `<a href="/auth/login">` instead of buttons with onClick
 
   ### Authentication Routes
 
