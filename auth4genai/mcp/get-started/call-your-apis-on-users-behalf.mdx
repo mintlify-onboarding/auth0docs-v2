@@ -55,7 +55,7 @@ auth0 api post clients --data '{
 
 The output of the command will be a JSON object with the `client_id` and `client_secret` of the newly created client, which will be used in the next steps to configure the MCP server environment.
 
-Now use the `Client ID` from the last command and allow your client to use custom token exchange:
+Next, we need to indicate Auth0 that the client can use Custom Token Exchange.
 
 ```shell
 CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) \
