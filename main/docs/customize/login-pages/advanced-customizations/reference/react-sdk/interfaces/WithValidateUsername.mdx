@@ -1,0 +1,23 @@
+---
+title: "WithValidateUsername"
+description: ""
+---
+
+<RequestExample>
+
+```typescript Interface lines
+interface WithValidateUsername {
+  validateUsername: (username: string) => UsernameValidationResult;
+}
+```
+
+</RequestExample>
+
+## Properties
+
+<ParamField path="validateUsername" type={<span>(username: string) =&gt; UsernameValidationResult</span>} required>
+</ParamField>
+
+---
+
+**File:** [src/hooks/utility/validate-username.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/hooks/utility/validate-username.ts)

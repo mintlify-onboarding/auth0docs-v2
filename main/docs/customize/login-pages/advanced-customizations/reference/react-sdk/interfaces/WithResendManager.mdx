@@ -1,0 +1,23 @@
+---
+title: "WithResendManager"
+description: "Screens that support resend operations expose a `resendManager` method."
+---
+
+<RequestExample>
+
+```typescript Interface lines
+interface WithResendManager {
+  resendManager(options?: StartResendOptions): ResendControl;
+}
+```
+
+</RequestExample>
+
+## Properties
+
+<ParamField path="resendManager" type={<span>ResendControl</span>} required>
+</ParamField>
+
+---
+
+**File:** [src/hooks/utility/resend-manager.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/hooks/utility/resend-manager.ts)

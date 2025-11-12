@@ -1,0 +1,27 @@
+---
+title: "ErrorsResult"
+description: ""
+---
+
+<RequestExample>
+
+```typescript Interface lines
+export interface ErrorsResult extends ReadonlyArray<ErrorItem> {
+  byKind(kind: ErrorKind, opts?: { field?: string }): ReadonlyArray<ErrorItem>;
+  byField(field: string, opts?: { kind?: ErrorKind }): ReadonlyArray<ErrorItem>;
+}
+```
+
+</RequestExample>
+
+## Properties
+
+<ParamField path="byKind" type={<span>ReadonlyArray&lt;<a href="/docs/customize/login-pages/advanced-customizations/reference/react-sdk/interfaces/ErrorItem">ErrorItem</a>&gt;</span>} required>
+</ParamField>
+
+<ParamField path="byField" type={<span>ReadonlyArray&lt;<a href="/docs/customize/login-pages/advanced-customizations/reference/react-sdk/interfaces/ErrorItem">ErrorItem</a>&gt;</span>} required>
+</ParamField>
+
+---
+
+**File:** [src/hooks/common/errors.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/hooks/common/errors.ts)

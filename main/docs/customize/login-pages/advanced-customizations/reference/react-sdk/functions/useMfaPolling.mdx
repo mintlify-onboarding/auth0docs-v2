@@ -1,0 +1,18 @@
+---
+title: "useMfaPolling"
+description: "- The `onError` callback receives an object with `status` and `responseText` describing the server response. - Internal rate-limit responses (`429`) are automatically handled: polling waits for the reset window before retrying. - Calling `startPolling()` repeatedly while running is safe and idempotent."
+---
+
+## Parameters
+
+<ParamField path="options" type={<span>MfaPollingOptions</span>}>
+</ParamField>
+
+## Returns
+
+<ParamField path="response" type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/react-sdk/interfaces/MfaPollingResult">MfaPollingResult</a></span>}>
+</ParamField>
+
+---
+
+**File:** [src/hooks/utility/polling-manager.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/hooks/utility/polling-manager.ts)

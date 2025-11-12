@@ -1,0 +1,15 @@
+---
+title: "useCurrentScreen"
+description: "React hook that gets the current screen context and state. This hook provides access to client configuration, organization details, screen identification, tenant settings, transaction state, and authorization parameters for building custom authentication UI. ## Return Value Returns `CurrentScreenOptions` object with the following properties, or `null` if unavailable: - **`client`** - Application identifier and metadata - **`organization`** - Organization ID and metadata (for Auth0 Organizations) - **`prompt`** - Current prompt name (e.g., \"login\", \"consent\", \"mfa\") - **`screen`** - Current screen name (e.g., \"login-id\", \"login-password\", \"mfa-otp-challenge\") - **`tenant`** - Tenant configuration including enabled locales - **`transaction`** - Transaction state, errors array, and current locale - **`untrustedData`** - Authorization parameters from the client (validate before use) ## Key Points - Use `screen.name` for conditional rendering of authentication screens - Always use optional chaining (`?.`) as nested properties can be `null` - Check `transaction.errors` for displaying validation errors - Access `organization.metadata` for organization-specific branding"
+---
+
+## Parameters
+
+## Returns
+
+<ParamField path="response" type={<span>CurrentScreenOptions | null</span>}>
+</ParamField>
+
+---
+
+**File:** [src/hooks/common/current-screen.ts](https://github.com/auth0/universal-login/blob/master/packages/auth0-acul-react/src/hooks/common/current-screen.ts)
