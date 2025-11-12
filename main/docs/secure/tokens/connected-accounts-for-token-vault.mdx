@@ -1,0 +1,22 @@
+---
+description: Learn how to configure and use Connected Accounts for Token Vault.
+'og:image': https://cdn2.auth0.com/docs/1.14553.0/img/share-image.png
+'og:title': Connected Accounts for Token Vault
+'og:url': https://auth0.com/docs/
+permalink: connected-accounts-for-token-vault
+sidebarTitle: Connected Accounts for Token Vault
+title: Connected Accounts for Token Vault
+'twitter:description': Learn how to configure and use Connected Accounts for Token Vault.
+'twitter:title': Connected Accounts for Token Vault
+---
+
+Connected Accounts enables applications to securely access external APIs on the user’s behalf through [Token Vault](/docs/secure/tokens/token-vault). While standard user authentication handles user login through a social or enterprise identity provider, Connected Accounts links a user profile to external services like Google, GitHub, Slack, and more, facilitating delegated access to external APIs on the user’s behalf. 
+
+Once a user successfully connects and authorizes access to a [supported external provider](/docs/secure/tokens/token-vault#supported-external-providers), Auth0 securely stores the following: 
+* The account on the user profile as a connected account.
+* The external provider’s access and refresh tokens for that connected account in the Token Vault.
+
+Connected Accounts creates and manages a unified Auth0 user profile linked to multiple external accounts, where users can log in to any one of their accounts using a single set of credentials. Your application then fetches the stored credentials in Token Vault to interact with external APIs on the user’s behalf.
+
+
+

@@ -2036,6 +2036,7 @@
                             "group": "Token Vault",
                             "pages": [
                               "docs/secure/tokens/token-vault",
+                              "docs/secure/tokens/connected-accounts-for-token-vault",
                               "docs/secure/tokens/token-vault/call-apis-with-token-vault",
                               "docs/secure/tokens/token-vault/configure-token-vault"
                             ]
