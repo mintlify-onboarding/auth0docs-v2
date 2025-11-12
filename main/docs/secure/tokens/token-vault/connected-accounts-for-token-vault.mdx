@@ -92,12 +92,12 @@ The following sequence diagram illustrates the end-to-end Connected Accounts flo
 
 When a user logs in via a supported external provider through Auth0, they initiate a Connected Accounts request from the client application:
 
-1. The client application makes a `POST` request to the My Account API’s `/me/v1/connected-accounts` endpoint, passing scopes and other parameters in the scopes to send to the external provider. To learn more, read Initiate Connected Accounts request.
+1. The client application makes a `POST` request to the My Account API’s `/me/v1/connected-accounts` endpoint, passing scopes and other parameters in the scopes to send to the external provider. To learn more, read [Initiate Connected Accounts request](#initiate-connected-accounts-request).
 2. The My Account API creates a unique `auth_session` and `connect_uri` containing a `ticket` that redirects the user to a web browser. The client application saves the `auth_session` for later verification. If [DPoP](/docs/secure/sender-constraining/demonstrating-proof-of-possession-dpop) is configured, the My Account API validates the DPoP Proof JWT. 
 3. The client application redirects the user to the `connect_uri` with the `ticket` as a query parameter for user authentication and authorization in the browser. The client application may also pass a `code_challenge` or `code_challenge_method` to the URL, as in the [Authorization Code Flow with PKCE](/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce).
 4. The user connects and authorizes the permissions for the connection in the consent screen.
 5. After the user successfully authorizes the connection, the external provider redirects the user to the My Account API, which redirects the user to the client application using the `redirect_uri` with a single-use `connect_code`. 
-6. The client application presents the `connect_code`, `code_verifier` (if applicable), and the original `auth_session` to the My Account API by making a `POST` request to the `/me/v1/connected-accounts/complete` endpoint. To learn more, read Complete Connected Accounts request. 
+6. The client application presents the `connect_code`, `code_verifier` (if applicable), and the original `auth_session` to the My Account API by making a `POST` request to the `/me/v1/connected-accounts/complete` endpoint. To learn more, read [Complete Connected Accounts request](#complete-connected-accounts-request). 
 7. The My Account API validates the request by confirming:
   * The `auth_session` matches the ID originally issued for the user
   * The request is coming from the same device that initiated the Connected Accounts flow
@@ -262,6 +262,10 @@ curl -s -X POST "https://${account.namespace}/oauth/token" \
 ## Initiate Connected Accounts request
 
 To initiate a Connected Accounts request, make a `POST` request to the My Account API’s `/me/v1/connected-accounts/connect` endpoint with the following parameters:
+
+<Note>
+For a Google social connection, make sure you enable offline access in the Auth0 Dashboard.
+</Note>
 
 <table class="table"><thead>
 <tr>
