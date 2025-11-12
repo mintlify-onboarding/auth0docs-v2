@@ -50,15 +50,16 @@ auth0 api post clients --data '{
   "token_endpoint_auth_method": "client_secret_post",
   "oidc_conformant": true,
   "jwt_configuration": { "alg": "RS256" }
-}' | jq -r '"\nClient ID:     " + .client_id + "\nClient Secret: " +  .client_secret'
+}' | jq -r '"{\"client_id\":\"" + .client_id + "\",\"client_secret\": \"" +  .client_secret + "\"}"' > auth0-app-details.json
 ```
 
-Save the `Client ID` and the `Client Secret` from the output.
+The output of the command will be a JSON object with the `client_id` and `client_secret` of the newly created client, which will be used in the next steps to configure the MCP server environment.
 
 Now use the `Client ID` from the last command and allow your client to use custom token exchange:
 
 ```shell
-auth0 api patch clients/<client_id> --data '{
+CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) \
+&& auth0 api patch clients/${CLIENT_ID} --data '{
   "token_exchange": {
     "allow_any_profile_of_type": ["custom_authentication"]
   }
@@ -123,33 +124,26 @@ npm install
 
 ## Create your environment file
 
-In the `fastmcp-mcp-customtokenexchange-js` directory, rename the `.env.example` to `.env` file and update the following content:
+In the `fastmcp-mcp-customtokenexchange-js` directory, run the following commnd to create a new `.env` file populated with all the required environment variables:
 
 ```shell wrap lines expandable
-# Auth0 tenant domain
-AUTH0_DOMAIN=<your-tenant.auth0.com>
-# Auth0 API Identifier
-AUTH0_AUDIENCE=http://localhost:3001/
-
-# Server port
-PORT=3001
-
-# MCP server URL
-MCP_SERVER_URL=http://localhost:3001/
-
-# MCP Auth0 client credentials and configuration
-MCP_AUTH0_CLIENT_ID=your-client-id
-MCP_AUTH0_CLIENT_SECRET=your-client-secret
-
-# Subject token type for CTE
-MCP_AUTH0_SUBJECT_TOKEN_TYPE=urn:fastmcp:mcp
-
-# Scopes to request
-MCP_AUTH0_EXCHANGE_SCOPE=read:tasks
-
-# Upstream API configuration
-API_AUTH0_AUDIENCE=http://localhost:8787/
-API_BASE_URL=http://localhost:8787/
+CLIENT_ID=$(jq -r '.client_id' auth0-app-details.json) \
+&& CLIENT_SECRET=$(jq -r '.client_secret' auth0-app-details.json) \
+&& DOMAIN=$(auth0 tenants list --json | jq -r '.[] | select(.active == true) | .name') \
+&& touch .env \
+&& echo "AUTH0_DOMAIN=${DOMAIN}" > .env \
+&& echo "AUTH0_AUDIENCE=http://localhost:3001/" >> .env \
+&& echo "PORT=3001" >> .env \
+&& echo "MCP_SERVER_URL=http://localhost:3001/" >> .env \
+&& echo "MCP_AUTH0_CLIENT_ID=${CLIENT_ID}" >> .env \
+&& echo "MCP_AUTH0_CLIENT_SECRET=${CLIENT_SECRET}" >> .env \
+&& echo "MCP_AUTH0_SUBJECT_TOKEN_TYPE=urn:fastmcp:mcp" >> .env \
+&& echo "MCP_AUTH0_EXCHANGE_SCOPE=read:tasks" >> .env \
+&& echo "API_AUTH0_AUDIENCE=http://localhost:8787/" >> .env \
+&& echo "API_BASE_URL=http://localhost:8787/" >> .env \
+&& rm auth0-app-details.json \
+&& echo ".env file created with your Auth0 details:" \
+&& cat .env
 ```
 
 To get your Auth0 application’s `AUTH0_DOMAIN`, run the following command:
