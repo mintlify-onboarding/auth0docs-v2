@@ -1,0 +1,158 @@
+---
+title: "MfaRecoveryCodeChallengeMembers"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:17
+
+Interface describing the members of the Mfa Recovery Code Challenge screen.
+
+## Extends
+
+- [`BaseMembers`](./BaseMembers)
+
+## Properties
+
+<ParamField body='branding' type='[BrandingMembers](./BrandingMembers)'>
+> **branding**: [`BrandingMembers`](./BrandingMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:22
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`branding`](./BaseMembers.md#branding)
+
+</ParamField>
+
+<ParamField body='tenant' type='[TenantMembers](./TenantMembers)'>
+> **tenant**: [`TenantMembers`](./TenantMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:27
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`tenant`](./BaseMembers.md#tenant)
+
+</ParamField>
+
+<ParamField body='user' type='[UserMembers](./UserMembers)'>
+> **user**: [`UserMembers`](./UserMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:29
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`user`](./BaseMembers.md#user)
+
+</ParamField>
+
+<ParamField body='untrustedData' type='[UntrustedDataMembers](./UntrustedDataMembers)'>
+> **untrustedData**: [`UntrustedDataMembers`](./UntrustedDataMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:30
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`untrustedData`](./BaseMembers.md#untrusteddata)
+
+</ParamField>
+
+<ParamField body='client' type='[ClientMembers](./ClientMembers)'>
+> **client**: [`ClientMembers`](./ClientMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:18
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`client`](./BaseMembers.md#client)
+
+</ParamField>
+
+<ParamField body='organization' type='[OrganizationMembers](./OrganizationMembers)'>
+> **organization**: [`OrganizationMembers`](./OrganizationMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:19
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`organization`](./BaseMembers.md#organization)
+
+</ParamField>
+
+<ParamField body='prompt' type='[PromptMembers](./PromptMembers)'>
+> **prompt**: [`PromptMembers`](./PromptMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:20
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`prompt`](./BaseMembers.md#prompt)
+
+</ParamField>
+
+<ParamField body='screen' type='[ScreenMembers](./ScreenMembers)'>
+> **screen**: [`ScreenMembers`](./ScreenMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:21
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`screen`](./BaseMembers.md#screen)
+
+</ParamField>
+
+<ParamField body='transaction' type='[TransactionMembers](./TransactionMembers)'>
+> **transaction**: [`TransactionMembers`](./TransactionMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:22
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`transaction`](./BaseMembers.md#transaction)
+
+**Methods**
+</ParamField>
+
+<ParamField body='continue()' type='unknown'>
+> **continue**(`payload`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:28
+
+Continues with the provided recovery code.
+
+**Parameters**
+
+**payload**
+
+[`MfaRecoveryCodeChallengeContinueOptions`](./MfaRecoveryCodeChallengeContinueOptions)
+
+The continue options containing the recovery code and optional custom options.
+
+**Returns**
+
+`Promise`\<`void`\>
+
+A promise that resolves when the continuation is successful.
+
+</ParamField>
+
+<ParamField body='tryAnotherMethod()' type='unknown'>
+> **tryAnotherMethod**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-recovery-code-challenge.d.ts:34
+
+Navigates to the screen where the user can pick another MFA method.
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional payload.
+
+**Returns**
+
+`Promise`\<`void`\>
+
+A promise that resolves when the navigation is complete.
+</ParamField>

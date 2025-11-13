@@ -1,0 +1,231 @@
+---
+title: "SignupMembers"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:31
+
+## Extends
+
+- [`BaseMembers`](./BaseMembers)
+
+## Properties
+
+<ParamField body='branding' type='[BrandingMembers](./BrandingMembers)'>
+> **branding**: [`BrandingMembers`](./BrandingMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:22
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`branding`](./BaseMembers.md#branding)
+
+</ParamField>
+
+<ParamField body='client' type='[ClientMembers](./ClientMembers)'>
+> **client**: [`ClientMembers`](./ClientMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:23
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`client`](./BaseMembers.md#client)
+
+</ParamField>
+
+<ParamField body='organization' type='[OrganizationMembers](./OrganizationMembers)'>
+> **organization**: [`OrganizationMembers`](./OrganizationMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:24
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`organization`](./BaseMembers.md#organization)
+
+</ParamField>
+
+<ParamField body='prompt' type='[PromptMembers](./PromptMembers)'>
+> **prompt**: [`PromptMembers`](./PromptMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:25
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`prompt`](./BaseMembers.md#prompt)
+
+</ParamField>
+
+<ParamField body='tenant' type='[TenantMembers](./TenantMembers)'>
+> **tenant**: [`TenantMembers`](./TenantMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:27
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`tenant`](./BaseMembers.md#tenant)
+
+</ParamField>
+
+<ParamField body='user' type='[UserMembers](./UserMembers)'>
+> **user**: [`UserMembers`](./UserMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:29
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`user`](./BaseMembers.md#user)
+
+</ParamField>
+
+<ParamField body='untrustedData' type='[UntrustedDataMembers](./UntrustedDataMembers)'>
+> **untrustedData**: [`UntrustedDataMembers`](./UntrustedDataMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:30
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`untrustedData`](./BaseMembers.md#untrusteddata)
+
+</ParamField>
+
+<ParamField body='screen' type='[ScreenMembersOnSignup](./ScreenMembersOnSignup)'>
+> **screen**: [`ScreenMembersOnSignup`](./ScreenMembersOnSignup)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:32
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`screen`](./BaseMembers.md#screen)
+
+</ParamField>
+
+<ParamField body='transaction' type='[TransactionMembersOnSignup](./TransactionMembersOnSignup)'>
+> **transaction**: [`TransactionMembersOnSignup`](./TransactionMembersOnSignup)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:33
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`transaction`](./BaseMembers.md#transaction)
+
+**Methods**
+</ParamField>
+
+<ParamField body='signup()' type='unknown'>
+> **signup**(`payload`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:34
+
+**Parameters**
+
+**payload**
+
+[`SignupPayloadOptions`](./SignupPayloadOptions)
+
+**Returns**
+
+`Promise`\<`void`\>
+
+</ParamField>
+
+<ParamField body='federatedSignup()' type='unknown'>
+> **federatedSignup**(`payload`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:35
+
+**Parameters**
+
+**payload**
+
+[`FederatedSignupPayloadOptions`](./FederatedSignupPayloadOptions)
+
+**Returns**
+
+`Promise`\<`void`\>
+
+</ParamField>
+
+<ParamField body='pickCountryCode()' type='unknown'>
+> **pickCountryCode**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:36
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+**Returns**
+
+`Promise`\<`void`\>
+
+</ParamField>
+
+<ParamField body='validatePassword()' type='unknown'>
+> **validatePassword**(`password`): [`PasswordValidationResult`](./PasswordValidationResult)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:37
+
+**Parameters**
+
+**password**
+
+`string`
+
+**Returns**
+
+[`PasswordValidationResult`](./PasswordValidationResult)
+
+</ParamField>
+
+<ParamField body='getSignupIdentifiers()' type='unknown'>
+> **getSignupIdentifiers**(): [`Identifier`](./Identifier)[] \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:59
+
+Returns a list of enabled identifiers (e.g. email, phone, username)
+based on the current transaction state.
+
+Identifiers may be required or optional depending on the connection strategy
+and configuration provided during the authentication or signup flow.
+
+**Returns**
+
+[`Identifier`](./Identifier)[] \| `null`
+
+An array of enabled [Identifier](./Identifier) objects, or `null` if the transaction is not initialized.
+
+**Example**
+
+```ts
+const identifiers = authClient.getSignupIdentifiers();
+if (identifiers) {
+  identifiers.forEach(({ type, required }) => {
+    console.log(`${type} is ${required ? 'required' : 'optional'}`);
+  });
+}
+```
+
+**Utility Feature**
+
+**See**
+
+Identifier
+
+</ParamField>
+
+<ParamField body='validateUsername()' type='unknown'>
+> **validateUsername**(`username`): [`UsernameValidationResult`](./UsernameValidationResult)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/signup.d.ts:60
+
+**Parameters**
+
+**username**
+
+`string`
+
+**Returns**
+
+[`UsernameValidationResult`](./UsernameValidationResult)
+</ParamField>

@@ -1,0 +1,217 @@
+---
+title: "MfaEmailChallengeMembers"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:51
+
+Interface defining the available methods and properties for the mfa-email-challenge screen
+
+## Extends
+
+- [`BaseMembers`](./BaseMembers)
+
+## Properties
+
+<ParamField body='branding' type='[BrandingMembers](./BrandingMembers)'>
+> **branding**: [`BrandingMembers`](./BrandingMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:22
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`branding`](./BaseMembers.md#branding)
+
+</ParamField>
+
+<ParamField body='client' type='[ClientMembers](./ClientMembers)'>
+> **client**: [`ClientMembers`](./ClientMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:23
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`client`](./BaseMembers.md#client)
+
+</ParamField>
+
+<ParamField body='organization' type='[OrganizationMembers](./OrganizationMembers)'>
+> **organization**: [`OrganizationMembers`](./OrganizationMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:24
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`organization`](./BaseMembers.md#organization)
+
+</ParamField>
+
+<ParamField body='prompt' type='[PromptMembers](./PromptMembers)'>
+> **prompt**: [`PromptMembers`](./PromptMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:25
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`prompt`](./BaseMembers.md#prompt)
+
+</ParamField>
+
+<ParamField body='tenant' type='[TenantMembers](./TenantMembers)'>
+> **tenant**: [`TenantMembers`](./TenantMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:27
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`tenant`](./BaseMembers.md#tenant)
+
+</ParamField>
+
+<ParamField body='transaction' type='[TransactionMembers](./TransactionMembers)'>
+> **transaction**: [`TransactionMembers`](./TransactionMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:28
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`transaction`](./BaseMembers.md#transaction)
+
+</ParamField>
+
+<ParamField body='user' type='[UserMembers](./UserMembers)'>
+> **user**: [`UserMembers`](./UserMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:29
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`user`](./BaseMembers.md#user)
+
+</ParamField>
+
+<ParamField body='screen' type='[ScreenMembersOnMfaEmailChallenge](./ScreenMembersOnMfaEmailChallenge)'>
+> **screen**: [`ScreenMembersOnMfaEmailChallenge`](./ScreenMembersOnMfaEmailChallenge)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:52
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`screen`](./BaseMembers.md#screen)
+
+</ParamField>
+
+<ParamField body='untrustedData' type='[UntrustedDataMembersOnMfaEmailChallenge](./UntrustedDataMembersOnMfaEmailChallenge)'>
+> **untrustedData**: [`UntrustedDataMembersOnMfaEmailChallenge`](./UntrustedDataMembersOnMfaEmailChallenge)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:53
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`untrustedData`](./BaseMembers.md#untrusteddata)
+
+**Methods**
+</ParamField>
+
+<ParamField body='continue()' type='unknown'>
+> **continue**(`payload`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:58
+
+Continues with the email challenge using the provided code
+
+**Parameters**
+
+**payload**
+
+[`ContinuePayloadOptions`](./ContinuePayloadOptions)
+
+The options containing the code and rememberDevice flag
+
+**Returns**
+
+`Promise`\<`void`\>
+
+</ParamField>
+
+<ParamField body='resendCode()' type='unknown'>
+> **resendCode**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:63
+
+Resends the email code
+
+**Parameters**
+
+**payload?**
+
+[`ResendCodePayloadOptions`](./ResendCodePayloadOptions)
+
+Optional custom options to include with the request
+
+**Returns**
+
+`Promise`\<`void`\>
+
+</ParamField>
+
+<ParamField body='tryAnotherMethod()' type='unknown'>
+> **tryAnotherMethod**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:68
+
+Allows the user to try another MFA method
+
+**Parameters**
+
+**payload?**
+
+[`TryAnotherMethodPayloadOptions`](./TryAnotherMethodPayloadOptions)
+
+Optional custom options to include with the request
+
+**Returns**
+
+`Promise`\<`void`\>
+
+</ParamField>
+
+<ParamField body='pickEmail()' type='unknown'>
+> **pickEmail**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:73
+
+Submits the action to pick a different Email configuration, if available
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional custom options to include with the request
+
+**Returns**
+
+`Promise`\<`void`\>
+
+</ParamField>
+
+<ParamField body='resendManager()' type='unknown'>
+> **resendManager**(`options?`): [`ResendControl`](./ResendControl)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-email-challenge.d.ts:78
+
+Gets resend functionality with timeout management for this screen
+
+**Parameters**
+
+**options?**
+
+[`StartResendOptions`](./StartResendOptions)
+
+Configuration options for resend functionality
+
+**Returns**
+
+[`ResendControl`](./ResendControl)
+</ParamField>

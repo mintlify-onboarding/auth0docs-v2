@@ -1,0 +1,360 @@
+---
+title: "Types"
+---
+
+## Classes
+
+- [ContextHooks](./classes/ContextHooks): Factory class that creates context hooks for accessing Auth0 Universal Login data. These hooks provide access to various aspects of the authentication flow and tenant configuration.
+
+## Interfaces
+
+- [CustomOptions](./interfaces/CustomOptions)
+- [WebAuthnErrorDetails](./interfaces/WebAuthnErrorDetails): Details of a WebAuthn browser error.
+- [CurrentScreenOptions](./interfaces/CurrentScreenOptions): CurrentScreenOptions details.
+- [FlattenedTheme](./interfaces/FlattenedTheme)
+- [BaseMembers](./interfaces/BaseMembers)
+- [BrandingSettings](./interfaces/BrandingSettings)
+- [BrandingThemes](./interfaces/BrandingThemes)
+- [BrandingMembers](./interfaces/BrandingMembers)
+- [ClientMembers](./interfaces/ClientMembers)
+- [Branding](./interfaces/Branding)
+- [OrganizationMembers](./interfaces/OrganizationMembers)
+- [PromptMembers](./interfaces/PromptMembers)
+- [CaptchaContext](./interfaces/CaptchaContext)
+- [AllowCredential](./interfaces/AllowCredential)
+- [PasskeyCreate](./interfaces/PasskeyCreate)
+- [PhonePrefix](./interfaces/PhonePrefix)
+- [Scope](./interfaces/Scope)
+- [AuthorizationDetail](./interfaces/AuthorizationDetail)
+- [ScreenMembers](./interfaces/ScreenMembers)
+- [TenantMembers](./interfaces/TenantMembers)
+- [Connection](./interfaces/Connection)
+- [UsernamePolicy](./interfaces/UsernamePolicy)
+- [PasswordPolicy](./interfaces/PasswordPolicy)
+- [EnterpriseConnection](./interfaces/EnterpriseConnection)
+- [PasswordComplexityRule](./interfaces/PasswordComplexityRule)
+- [Error](./interfaces/Error)
+- [TransactionMembers](./interfaces/TransactionMembers)
+- [UntrustedDataMembers](./interfaces/UntrustedDataMembers)
+- [EnrolledEmail](./interfaces/EnrolledEmail)
+- [EnrolledPhoneNumber](./interfaces/EnrolledPhoneNumber)
+- [EnrolledDevice](./interfaces/EnrolledDevice)
+- [Organizations](./interfaces/Organizations)
+- [UserMembers](./interfaces/UserMembers)
+- [ScreenMembersOnAcceptInvitation](./interfaces/ScreenMembersOnAcceptInvitation)
+- [AcceptInvitationMembers](./interfaces/AcceptInvitationMembers)
+- [ScreenMembersOnConsent](./interfaces/ScreenMembersOnConsent): ScreenMembersOnConsent
+- [ConsentMembers](./interfaces/ConsentMembers): ConsentMembers
+- [ScreenMembersOnCustomizedConsent](./interfaces/ScreenMembersOnCustomizedConsent): ScreenMembersOnCustomizedConsent
+- [CustomizedConsentMembers](./interfaces/CustomizedConsentMembers): CustomizedConsentMembers
+- [DeviceCodeActivationAllowedMembers](./interfaces/DeviceCodeActivationAllowedMembers): Interface describing the members of the Device Code Activation Allowed screen.
+- [DeviceCodeActivationDeniedMembers](./interfaces/DeviceCodeActivationDeniedMembers): Interface describing the members of the Device Code Activation Denied screen.
+- [DeviceCodeActivationContinueOptions](./interfaces/DeviceCodeActivationContinueOptions): payload for continuing device code activation.
+- [DeviceCodeActivationMembers](./interfaces/DeviceCodeActivationMembers): Interface describing the members of the Device Code Activation screen.
+- [ScreenMembersOnDeviceCodeConfirmation](./interfaces/ScreenMembersOnDeviceCodeConfirmation): Interface describing the data available on the Device Code Confirmation screen.
+- [DeviceCodeConfirmationMembers](./interfaces/DeviceCodeConfirmationMembers): Interface describing the members of the Device Code Confirmation screen.
+- [EmailChallengeOptions](./interfaces/EmailChallengeOptions)
+- [ScreenMembersOnEmailIdentifierChallenge](./interfaces/ScreenMembersOnEmailIdentifierChallenge)
+- [EmailIdentifierChallengeMembers](./interfaces/EmailIdentifierChallengeMembers)
+- [ScreenMembersOnEmailOTPChallenge](./interfaces/ScreenMembersOnEmailOTPChallenge): Represents the members of the Email OTP Challenge screen. Extends the base ScreenMembers interface.
+- [OtpCodeOptions](./interfaces/OtpCodeOptions)
+- [EmailOTPChallengeMembers](./interfaces/EmailOTPChallengeMembers): Represents the Email OTP Challenge screen interface.
+- [ScreenMembersOnEmailVerificationResult](./interfaces/ScreenMembersOnEmailVerificationResult): ScreenMembersOnEmailVerificationResult
+- [EmailVerificationResultMembers](./interfaces/EmailVerificationResultMembers): EmailVerificationResultMembers
+- [SubmitCaptchaOptions](./interfaces/SubmitCaptchaOptions)
+- [InterstitialCaptchaMembers](./interfaces/InterstitialCaptchaMembers)
+- [ContinueWithCodeOptionPayload](./interfaces/ContinueWithCodeOptionPayload): ContinueWithCodeOptions description Options for the `continueWithCode` method on the Login Email Verification screen. This operation is used when the user submits the verification code they received via email to proceed with the authentication flow.
+- [ResendCodeOptionsPayload](./interfaces/ResendCodeOptionsPayload): ResendCodeOptions description Options for the `resendCode` method on the Login Email Verification screen. This operation is used when the user requests a new verification code to be sent to their email, for instance, if they did not receive the initial code or if it has expired.
+- [LoginEmailVerificationMembers](./interfaces/LoginEmailVerificationMembers): LoginEmailVerificationMembers description Defines the members (properties and methods) available for interacting with the Login Email Verification screen. This screen is a crucial part of email verification processes, typically during login, where a user must prove ownership of an email address by providing a one-time code. The SDK facilitates submitting this code or requesting a new one.
+- [ScreenMembersOnLoginId](./interfaces/ScreenMembersOnLoginId)
+- [TransactionMembersOnLoginId](./interfaces/TransactionMembersOnLoginId)
+- [LoginOptions](./interfaces/LoginOptions)
+- [FederatedLoginOptions](./interfaces/FederatedLoginOptions)
+- [LoginIdMembers](./interfaces/LoginIdMembers)
+- [ScreenMembersOnLoginPassword](./interfaces/ScreenMembersOnLoginPassword)
+- [TransactionMembersOnLoginPassword](./interfaces/TransactionMembersOnLoginPassword)
+- [LoginPasswordOptions](./interfaces/LoginPasswordOptions)
+- [FederatedLoginPasswordOptions](./interfaces/FederatedLoginPasswordOptions)
+- [LoginPasswordMembers](./interfaces/LoginPasswordMembers)
+- [ScreenMembersOnLoginPasswordlessEmailCode](./interfaces/ScreenMembersOnLoginPasswordlessEmailCode)
+- [TransactionMembersOnLoginPasswordlessEmailCode](./interfaces/TransactionMembersOnLoginPasswordlessEmailCode)
+- [SubmitCodeOptions](./interfaces/SubmitCodeOptions)
+- [LoginPasswordlessEmailCodeMembers](./interfaces/LoginPasswordlessEmailCodeMembers)
+- [ScreenMembersOnLoginPasswordlessSmsOtp](./interfaces/ScreenMembersOnLoginPasswordlessSmsOtp)
+- [TransactionMembersOnLoginPasswordlessSmsOtp](./interfaces/TransactionMembersOnLoginPasswordlessSmsOtp)
+- [SubmitOTPOptions](./interfaces/SubmitOTPOptions)
+- [LoginPasswordlessSmsOtpMembers](./interfaces/LoginPasswordlessSmsOtpMembers)
+- [ScreenMembersOnLogin](./interfaces/ScreenMembersOnLogin): Extended screen members interface for the login screen
+- [TransactionMembersOnLogin](./interfaces/TransactionMembersOnLogin): Extended transaction members interface for the login screen
+- [LoginPayloadOptions](./interfaces/LoginPayloadOptions): Options for performing login operations
+- [FederatedLoginPayloadOptions](./interfaces/FederatedLoginPayloadOptions): Options for performing social login operations
+- [LoginMembers](./interfaces/LoginMembers): Login screen members interface extending base members
+- [LogoutAbortedMembers](./interfaces/LogoutAbortedMembers): Interface defining the available methods and properties for the logout-aborted screen
+- [LogoutCompleteMembers](./interfaces/LogoutCompleteMembers): Interface defining the available methods and properties for the logout-complete screen
+- [ConfirmLogoutOptions](./interfaces/ConfirmLogoutOptions): Options for confirming logout
+- [LogoutMembers](./interfaces/LogoutMembers): Interface defining the available methods and properties for the logout screen
+- [MfaEnrollOptions](./interfaces/MfaEnrollOptions): Options for continuing with factor enrollment
+- [MfaBeginEnrollOptionsMembers](./interfaces/MfaBeginEnrollOptionsMembers): MFA Begin Enroll Options screen members interface
+- [ScreenMembersOnMfaCountryCodes](./interfaces/ScreenMembersOnMfaCountryCodes): Interface for screen data specific to mfa-country-codes screen
+- [SelectCountryCodeOptions](./interfaces/SelectCountryCodeOptions): Options for selecting a country code
+- [MfaCountryCodesMembers](./interfaces/MfaCountryCodesMembers): Interface defining the available methods and properties for the mfa-country-codes screen
+- [MfaDetectBrowserCapabilitiesMembers](./interfaces/MfaDetectBrowserCapabilitiesMembers): Interface defining the available methods and properties for the mfa-detect-browser-capabilities screen
+- [ScreenMembersOnMfaEmailChallenge](./interfaces/ScreenMembersOnMfaEmailChallenge): Interface for the screen data specific to mfa-email-challenge screen
+- [UntrustedDataMembersOnMfaEmailChallenge](./interfaces/UntrustedDataMembersOnMfaEmailChallenge): Interface for untrusted data specific to mfa-email-challenge screen
+- [ContinuePayloadOptions](./interfaces/ContinuePayloadOptions): Options for continuing with the email challenge
+- [ResendCodePayloadOptions](./interfaces/ResendCodePayloadOptions): Options for resending the email code
+- [TryAnotherMethodPayloadOptions](./interfaces/TryAnotherMethodPayloadOptions): Options for trying another method
+- [MfaEmailChallengeMembers](./interfaces/MfaEmailChallengeMembers): Interface defining the available methods and properties for the mfa-email-challenge screen
+- [ScreenMembersOnMfaEmailList](./interfaces/ScreenMembersOnMfaEmailList): Interface for the screen data specific to mfa-email-list screen
+- [SelectMfaEmailOptions](./interfaces/SelectMfaEmailOptions): Options for selecting an email address
+- [MfaEmailListMembers](./interfaces/MfaEmailListMembers): Interface defining the available methods and properties for the mfa-email-list screen
+- [ScreenMembersOnMfaEnrollResult](./interfaces/ScreenMembersOnMfaEnrollResult): ScreenMembersOnMfaEnrollResult
+- [MfaEnrollResultMembers](./interfaces/MfaEnrollResultMembers): MfaEnrollResultMembers
+- [ScreenMembersOnMfaLoginOptions](./interfaces/ScreenMembersOnMfaLoginOptions): Interface for the screen data specific to mfa-login-options screen
+- [LoginEnrollOptions](./interfaces/LoginEnrollOptions): Options for continuing with a selected MFA factor
+- [MfaLoginOptionsMembers](./interfaces/MfaLoginOptionsMembers): Interface defining the available methods and properties for the mfa-login-options screen
+- [ScreenMembersOnMfaOtpChallenge](./interfaces/ScreenMembersOnMfaOtpChallenge): Interface for the screen data specific to mfa-otp-challenge screen
+- [UntrustedDataMembersOnMfaOtpChallenge](./interfaces/UntrustedDataMembersOnMfaOtpChallenge): Interface for untrusted data specific to mfa-otp-challenge screen
+- [ContinueOTPOptions](./interfaces/ContinueOTPOptions): Options for continuing with the OTP challenge
+- [TryAnotherMethodMfaOtpChallengeOptions](./interfaces/TryAnotherMethodMfaOtpChallengeOptions): Options for trying another method
+- [MfaOtpChallengeMembers](./interfaces/MfaOtpChallengeMembers): Interface defining the available methods and properties for the mfa-otp-challenge screen
+- [MfaOtpContinueOptions](./interfaces/MfaOtpContinueOptions): Options for continuing with the MFA OTP enrollment code.
+- [MfaOtpTryAnotherMethodOptions](./interfaces/MfaOtpTryAnotherMethodOptions): Options for trying another MFA method.
+- [ScreenMembersOnMfaOtpEnrollmentCode](./interfaces/ScreenMembersOnMfaOtpEnrollmentCode): Interface for the screen data specific to the mfa-otp-enrollment-code screen.
+- [MfaOtpEnrollmentCodeMembers](./interfaces/MfaOtpEnrollmentCodeMembers): Interface defining the available methods and properties for the mfa-otp-enrollment-code screen.
+- [ScreenMembersOnMfaOtpEnrollmentQr](./interfaces/ScreenMembersOnMfaOtpEnrollmentQr): Interface for the screen data specific to mfa-otp-enrollment-qr screen
+- [MfaOtpEnrollmentQrContinueOptions](./interfaces/MfaOtpEnrollmentQrContinueOptions): Interface for the payload of the continue method
+- [MfaOtpEnrollmentQrMembers](./interfaces/MfaOtpEnrollmentQrMembers): Interface defining the available methods and properties for the mfa-otp-enrollment-qr screen
+- [ScreenMembersOnMfaPhoneChallenge](./interfaces/ScreenMembersOnMfaPhoneChallenge): ScreenMembersOnMfaPhoneChallenge
+- [MfaPhoneChallengeContinueOptions](./interfaces/MfaPhoneChallengeContinueOptions): ContinueOptions Defines the options required to continue the MFA phone challenge process. This typically involves selecting the method (SMS or Voice) to receive the verification code.
+- [MfaPhoneChallengePickPhoneOptions](./interfaces/MfaPhoneChallengePickPhoneOptions): PickPhoneOptions Defines the options for the 'pick-phone' action. Although the interface only shows one phone number, this action might be used in scenarios where the server needs to redirect to a phone selection screen.
+- [MfaPhoneChallengePickAuthenticatorOptions](./interfaces/MfaPhoneChallengePickAuthenticatorOptions): PickAuthenticatorOptions Defines the options for the 'pick-authenticator' action. This allows the user to choose a different MFA method if available.
+- [MfaPhoneChallengeMembers](./interfaces/MfaPhoneChallengeMembers): MfaPhoneChallengeMembers
+- [MfaPhoneEnrollmentContinueOptions](./interfaces/MfaPhoneEnrollmentContinueOptions): Options for continuing with the MFA phone enrollment.
+- [MfaPhoneEnrollmentMembers](./interfaces/MfaPhoneEnrollmentMembers)
+- [ScreenMembersOnMfaPushChallengePush](./interfaces/ScreenMembersOnMfaPushChallengePush): Interface for the screen data specific to mfa-push-challenge-push screen
+- [UntrustedDataMembersOnMfaPushChallengePush](./interfaces/UntrustedDataMembersOnMfaPushChallengePush): Interface for untrusted data specific to mfa-push-challenge-push screen
+- [WithRememberOptions](./interfaces/WithRememberOptions)
+- [MfaPushChallengePushMembers](./interfaces/MfaPushChallengePushMembers): Interface defining the available methods and properties for the mfa-push-challenge-push screen
+- [ScreenMembersOnMfaPushEnrollmentQr](./interfaces/ScreenMembersOnMfaPushEnrollmentQr): Interface for the screen data specific to mfa-push-enrollment-qr screen
+- [MfaPushEnrollmentQrMembers](./interfaces/MfaPushEnrollmentQrMembers): Interface defining the available methods and properties for the mfa-push-enrollment-qr screen
+- [SelectMfaPushDeviceOptions](./interfaces/SelectMfaPushDeviceOptions): Options for selecting an MFA push device.
+- [MfaPushListMembers](./interfaces/MfaPushListMembers): Interface defining the available methods and properties for the mfa-push-list screen
+- [ScreenMembersOnMfaPushWelcome](./interfaces/ScreenMembersOnMfaPushWelcome)
+- [MfaPushWelcomeMembers](./interfaces/MfaPushWelcomeMembers)
+- [ScreenMembersOnMfaRecoveryCodeChallengeNewCode](./interfaces/ScreenMembersOnMfaRecoveryCodeChallengeNewCode): ScreenMembersOnMfaRecoveryCodeChallengeNewCode
+- [MfaRecoveryCodeChallengeNewCodeContinueOptions](./interfaces/MfaRecoveryCodeChallengeNewCodeContinueOptions): ContinueOptions
+- [MfaRecoveryCodeChallengeNewCodeMembers](./interfaces/MfaRecoveryCodeChallengeNewCodeMembers): MfaRecoveryCodeChallengeNewCodeMembers
+- [MfaRecoveryCodeChallengeContinueOptions](./interfaces/MfaRecoveryCodeChallengeContinueOptions): Options for continuing with the MFA Recovery Code Challenge.
+- [MfaRecoveryCodeChallengeMembers](./interfaces/MfaRecoveryCodeChallengeMembers): Interface describing the members of the Mfa Recovery Code Challenge screen.
+- [ScreenMembersOnMfaRecoveryCodeEnrollment](./interfaces/ScreenMembersOnMfaRecoveryCodeEnrollment): Interface describing the data available on the Mfa Recovery Code Enrollment screen.
+- [MfaRecoveryCodeEnrollmentContinueOptions](./interfaces/MfaRecoveryCodeEnrollmentContinueOptions)
+- [MfaRecoveryCodeEnrollmentMembers](./interfaces/MfaRecoveryCodeEnrollmentMembers): Interface describing the members of the Mfa Recovery Code Enrollment screen.
+- [MfaSmsChallengeOptions](./interfaces/MfaSmsChallengeOptions)
+- [ScreenMembersOnMfaSmsChallenge](./interfaces/ScreenMembersOnMfaSmsChallenge): Interface for the screen data specific to mfa-sms-challenge screen
+- [MfaSmsChallengeMembers](./interfaces/MfaSmsChallengeMembers)
+- [UntrustedDataMembersOnMfaSmsChallenge](./interfaces/UntrustedDataMembersOnMfaSmsChallenge): Interface for untrusted data specific to mfa-sms-challenge screen
+- [MfaSmsEnrollmentOptions](./interfaces/MfaSmsEnrollmentOptions)
+- [ScreenMembersOnMfaSmsEnrollment](./interfaces/ScreenMembersOnMfaSmsEnrollment)
+- [MfaSmsEnrollmentMembers](./interfaces/MfaSmsEnrollmentMembers)
+- [MfaSmsListOptions](./interfaces/MfaSmsListOptions): MfaSmsListOptions Options for performing actions on the mfa-sms-list screen.
+- [MfaSmsListMembers](./interfaces/MfaSmsListMembers): MfaSmsListMembers Interface defining the members and methods for the MfaSmsList class.
+- [MfaVoiceChallengeContinueOptions](./interfaces/MfaVoiceChallengeContinueOptions): Options for submitting the voice challenge code.
+- [ScreenMembersOnMfaVoiceChallenge](./interfaces/ScreenMembersOnMfaVoiceChallenge): Extended screen members interface for the MFA Voice Challenge screen.
+- [MfaVoiceChallengeMembers](./interfaces/MfaVoiceChallengeMembers): Interface defining all members and operations available on the MFA Voice Challenge screen.
+- [UntrustedDataMembersOnMfaVoiceChallenge](./interfaces/UntrustedDataMembersOnMfaVoiceChallenge): Interface for untrusted data specific to mfa-voice-challenge screen
+- [MfaVoiceEnrollmentContinueOptions](./interfaces/MfaVoiceEnrollmentContinueOptions): Payload for continuing the MFA Voice Enrollment flow.
+- [MfaVoiceEnrollmentMembers](./interfaces/MfaVoiceEnrollmentMembers): Interface describing the members of the Mfa Voice Enrollment screen.
+- [ScreenMembersOnMfaWebAuthnChangeKeyNickname](./interfaces/ScreenMembersOnMfaWebAuthnChangeKeyNickname): ScreenMembersOnMfaWebAuthnChangeKeyNickname
+- [MfaWebAuthnChangeKeyNicknameContinueOptions](./interfaces/MfaWebAuthnChangeKeyNicknameContinueOptions): ContinueOptions
+- [MfaWebAuthnChangeKeyNicknameMembers](./interfaces/MfaWebAuthnChangeKeyNicknameMembers): MfaWebAuthnChangeKeyNicknameMembers
+- [ScreenMembersOnMfaWebAuthnEnrollmentSuccess](./interfaces/ScreenMembersOnMfaWebAuthnEnrollmentSuccess): ScreenMembersOnMfaWebAuthnEnrollmentSuccess
+- [WebAuthnEnrollSuccessContinueOptions](./interfaces/WebAuthnEnrollSuccessContinueOptions): ContinueOptions
+- [MfaWebAuthnEnrollmentSuccessMembers](./interfaces/MfaWebAuthnEnrollmentSuccessMembers): MfaWebAuthnEnrollmentSuccessMembers
+- [ScreenMembersOnMfaWebAuthnError](./interfaces/ScreenMembersOnMfaWebAuthnError): ScreenMembersOnMfaWebAuthnError
+- [MfaWebAuthnErrorMembers](./interfaces/MfaWebAuthnErrorMembers): MfaWebAuthnErrorMembers
+- [MfaWebAuthnNotAvailableErrorMembers](./interfaces/MfaWebAuthnNotAvailableErrorMembers): MfaWebAuthnNotAvailableErrorMembers
+- [ScreenMembersOnMfaWebAuthnPlatformChallenge](./interfaces/ScreenMembersOnMfaWebAuthnPlatformChallenge): ScreenMembersOnMfaWebAuthnPlatformChallenge
+- [VerifyPlatformAuthenticatorOptions](./interfaces/VerifyPlatformAuthenticatorOptions): VerifyPlatformAuthenticatorOptions
+- [MfaWebAuthnPlatformChallengeReportErrorOptions](./interfaces/MfaWebAuthnPlatformChallengeReportErrorOptions): ReportBrowserErrorOptions
+- [MfaWebAuthnPlatformChallengeTryAnotherMethodOptions](./interfaces/MfaWebAuthnPlatformChallengeTryAnotherMethodOptions): TryAnotherMethodOptions
+- [MfaWebAuthnPlatformChallengeMembers](./interfaces/MfaWebAuthnPlatformChallengeMembers): MfaWebAuthnPlatformChallengeMembers
+- [ScreenMembersOnMfaWebAuthnPlatformEnrollment](./interfaces/ScreenMembersOnMfaWebAuthnPlatformEnrollment): ScreenMembersOnMfaWebAuthnPlatformEnrollment
+- [SubmitPasskeyCredentialOptions](./interfaces/SubmitPasskeyCredentialOptions): SubmitPasskeyCredentialOptions
+- [ReportBrowserErrorOptions](./interfaces/ReportBrowserErrorOptions): ReportBrowserErrorOptions
+- [MfaWebAuthnPlatformEnrollmentMembers](./interfaces/MfaWebAuthnPlatformEnrollmentMembers): MfaWebAuthnPlatformEnrollmentMembers
+- [ScreenMembersOnMfaWebAuthnRoamingChallenge](./interfaces/ScreenMembersOnMfaWebAuthnRoamingChallenge): ScreenMembersOnMfaWebAuthnRoamingChallenge
+- [VerifySecurityKeyOptions](./interfaces/VerifySecurityKeyOptions): VerifySecurityKeyOptions
+- [MfaWebAuthnRoamingChallengeReportErrorOptions](./interfaces/MfaWebAuthnRoamingChallengeReportErrorOptions): ReportWebAuthnErrorOptions
+- [MfaWebAuthnRoamingChallengeTryAnotherMethodOptions](./interfaces/MfaWebAuthnRoamingChallengeTryAnotherMethodOptions): TryAnotherMethodOptions
+- [MfaWebAuthnRoamingChallengeMembers](./interfaces/MfaWebAuthnRoamingChallengeMembers): MfaWebAuthnRoamingChallengeMembers
+- [ScreenMembersOnMfaWebAuthnRoamingEnrollment](./interfaces/ScreenMembersOnMfaWebAuthnRoamingEnrollment): Interface for screen data specific to mfa-webauthn-roaming-enrollment screen.
+- [ShowErrorOptions](./interfaces/ShowErrorOptions): Options for submitting a WebAuthn browser error.
+- [MfaWebAuthnRoamingEnrollmentTryAnotherMethodOptions](./interfaces/MfaWebAuthnRoamingEnrollmentTryAnotherMethodOptions): Options for trying another MFA method.
+- [MfaWebAuthnRoamingEnrollmentMembers](./interfaces/MfaWebAuthnRoamingEnrollmentMembers): Interface defining the available methods and properties for the mfa-webauthn-roaming-enrollment screen.
+- [SelectOrganizationOptions](./interfaces/SelectOrganizationOptions)
+- [OrganizationPickerMembers](./interfaces/OrganizationPickerMembers): Interface defining the available methods and properties for the organization-picker screen
+- [ContinueWithOrganizationNameOptions](./interfaces/ContinueWithOrganizationNameOptions): Options for continuing with the selected organization name.
+- [ScreenMembersOnOrganizationSelection](./interfaces/ScreenMembersOnOrganizationSelection): Interface for the screen data specific to organization-selection screen.
+- [OrganizationSelectionMembers](./interfaces/OrganizationSelectionMembers): Interface defining the available methods and properties for the organization-selection screen.
+- [AbortEnrollmentOptions](./interfaces/AbortEnrollmentOptions)
+- [ScreenMembersOnPasskeyEnrollmentLocal](./interfaces/ScreenMembersOnPasskeyEnrollmentLocal)
+- [PasskeyEnrollmentLocalMembers](./interfaces/PasskeyEnrollmentLocalMembers)
+- [ScreenMembersOnPasskeyEnrollment](./interfaces/ScreenMembersOnPasskeyEnrollment)
+- [PasskeyEnrollmentMembers](./interfaces/PasskeyEnrollmentMembers)
+- [PhoneChallengeOptions](./interfaces/PhoneChallengeOptions)
+- [ScreenMembersOnPhoneIdentifierChallenge](./interfaces/ScreenMembersOnPhoneIdentifierChallenge)
+- [PhoneIdentifierChallengeMembers](./interfaces/PhoneIdentifierChallengeMembers)
+- [ScreenMembersOnPhoneIdentifierEnrollment](./interfaces/ScreenMembersOnPhoneIdentifierEnrollment)
+- [PhoneEnrollmentOptions](./interfaces/PhoneEnrollmentOptions)
+- [PhoneIdentifierEnrollmentMembers](./interfaces/PhoneIdentifierEnrollmentMembers)
+- [RedeemTicketMembers](./interfaces/RedeemTicketMembers): Interface describing the data available on the Redeem Ticket screen.
+- [ResetPasswordEmailOptions](./interfaces/ResetPasswordEmailOptions)
+- [ScreenMembersOnResetPasswordEmail](./interfaces/ScreenMembersOnResetPasswordEmail)
+- [ResetPasswordEmailMembers](./interfaces/ResetPasswordEmailMembers)
+- [ScreenMembersOnResetPasswordError](./interfaces/ScreenMembersOnResetPasswordError)
+- [ResetPasswordErrorMembers](./interfaces/ResetPasswordErrorMembers)
+- [ScreenMembersOnResetPasswordMfaEmailChallenge](./interfaces/ScreenMembersOnResetPasswordMfaEmailChallenge): Interface for the screen data specific to reset-password-mfa-email-challenge screen
+- [ContinueOptions](./interfaces/ContinueOptions): Options for continuing with the email challenge.
+- [ResendCodeOptions](./interfaces/ResendCodeOptions): Options for resending the email code.
+- [TryAnotherMethodOptions](./interfaces/TryAnotherMethodOptions): Options for trying another method.
+- [ResetPasswordMfaEmailChallengeMembers](./interfaces/ResetPasswordMfaEmailChallengeMembers): Interface defining the available methods and properties for the reset-password-mfa-email-challenge screen
+- [ResetPasswordMfaOtpChallengeContinueOptions](./interfaces/ResetPasswordMfaOtpChallengeContinueOptions): Options for continuing with the OTP challenge.
+- [ResetPasswordMfaOtpChallengeTryAnotherMethodOptions](./interfaces/ResetPasswordMfaOtpChallengeTryAnotherMethodOptions): Options for trying another method.
+- [ResetPasswordMfaOtpChallengeMembers](./interfaces/ResetPasswordMfaOtpChallengeMembers): Interface defining the available methods and properties for the reset-password-mfa-otp-challenge screen
+- [ScreenMembersOnResetPasswordMfaPhoneChallenge](./interfaces/ScreenMembersOnResetPasswordMfaPhoneChallenge): ScreenMembersOnResetPasswordMfaPhoneChallenge
+- [ResetPasswordMfaPhoneChallengeContinueOptions](./interfaces/ResetPasswordMfaPhoneChallengeContinueOptions): ContinueOptions
+- [ResetPasswordMfaPhoneChallengeTryAnotherMethodOptions](./interfaces/ResetPasswordMfaPhoneChallengeTryAnotherMethodOptions): TryAnotherMethodOptions
+- [ResetPasswordMfaPhoneChallengeMembers](./interfaces/ResetPasswordMfaPhoneChallengeMembers): ResetPasswordMfaPhoneChallengeMembers
+- [ScreenMembersOnResetPasswordMfaPushChallengePush](./interfaces/ScreenMembersOnResetPasswordMfaPushChallengePush): Interface for the screen data specific to reset-password-mfa-push-challenge-push screen
+- [ResetPasswordMfaPushChallengePushMembers](./interfaces/ResetPasswordMfaPushChallengePushMembers): Interface defining the available methods and properties for the reset-password-mfa-push-challenge-push screen
+- [ResetPasswordMfaRecoveryCodeChallengeMembers](./interfaces/ResetPasswordMfaRecoveryCodeChallengeMembers): Interface describing the members of the Mfa Recovery Code Challenge screen.
+- [ResetPasswordMfaSmsChallengeOptions](./interfaces/ResetPasswordMfaSmsChallengeOptions)
+- [ScreenMembersOnResetPasswordMfaSmsChallenge](./interfaces/ScreenMembersOnResetPasswordMfaSmsChallenge)
+- [ResetPasswordMfaSmsChallengeMembers](./interfaces/ResetPasswordMfaSmsChallengeMembers)
+- [ScreenMembersOnResetPasswordMfaVoiceChallenge](./interfaces/ScreenMembersOnResetPasswordMfaVoiceChallenge): Interface for the screen data specific to reset-password-mfa-voice-challenge screen.
+- [ResetPasswordMfaVoiceChallengeContinueOptions](./interfaces/ResetPasswordMfaVoiceChallengeContinueOptions): Payload for the `continue()` method on ResetPasswordMfaVoiceChallengeMembers.
+- [ResetPasswordMfaVoiceChallengeMembers](./interfaces/ResetPasswordMfaVoiceChallengeMembers): Interface defining the available methods and properties for the reset-password-mfa-voice-challenge screen.
+- [ScreenMembersOnResetPasswordMfaWebAuthnPlatformChallenge](./interfaces/ScreenMembersOnResetPasswordMfaWebAuthnPlatformChallenge): ScreenMembersOnResetPasswordMfaWebAuthnPlatformChallenge
+- [ResetPasswordMfaWebAuthnPlatformChallengeContinueOptions](./interfaces/ResetPasswordMfaWebAuthnPlatformChallengeContinueOptions): ContinueWithPasskeyOptions
+- [ResetPasswordMfaWebAuthnPlatformChallengeReportErrorOptions](./interfaces/ResetPasswordMfaWebAuthnPlatformChallengeReportErrorOptions): ReportBrowserErrorOptions
+- [ResetPasswordMfaWebAuthnPlatformChallengeTryAnotherMethodOptions](./interfaces/ResetPasswordMfaWebAuthnPlatformChallengeTryAnotherMethodOptions): TryAnotherMethodOptions
+- [ResetPasswordMfaWebAuthnPlatformChallengeMembers](./interfaces/ResetPasswordMfaWebAuthnPlatformChallengeMembers): ResetPasswordMfaWebAuthnPlatformChallengeMembers
+- [ScreenMembersOnResetPasswordMfaWebAuthnRoamingChallenge](./interfaces/ScreenMembersOnResetPasswordMfaWebAuthnRoamingChallenge): ScreenMembersOnResetPasswordMfaWebAuthnRoamingChallenge
+- [ResetPasswordMfaWebAuthnRoamingChallengeUseSecurityKeyOptions](./interfaces/ResetPasswordMfaWebAuthnRoamingChallengeUseSecurityKeyOptions): UseSecurityKeyOptions
+- [ResetPasswordMfaWebAuthnRoamingChallengeShowErrorOptions](./interfaces/ResetPasswordMfaWebAuthnRoamingChallengeShowErrorOptions): ShowErrorOptions
+- [ResetPasswordMfaWebAuthnRoamingChallengeTryAnotherMethodOptions](./interfaces/ResetPasswordMfaWebAuthnRoamingChallengeTryAnotherMethodOptions): TryAnotherMethodOptions
+- [ResetPasswordMfaWebAuthnRoamingChallengeMembers](./interfaces/ResetPasswordMfaWebAuthnRoamingChallengeMembers): ResetPasswordMfaWebAuthnRoamingChallengeMembers
+- [ResetPasswordRequestOptions](./interfaces/ResetPasswordRequestOptions)
+- [TransactionMembersOnResetPasswordRequest](./interfaces/TransactionMembersOnResetPasswordRequest)
+- [ScreenMembersOnResetPasswordRequest](./interfaces/ScreenMembersOnResetPasswordRequest)
+- [ResetPasswordRequestMembers](./interfaces/ResetPasswordRequestMembers)
+- [ScreenMembersOnResetPasswordSuccess](./interfaces/ScreenMembersOnResetPasswordSuccess)
+- [ResetPasswordSuccessMembers](./interfaces/ResetPasswordSuccessMembers)
+- [ResetPasswordOptions](./interfaces/ResetPasswordOptions)
+- [ScreenMembersOnResetPassword](./interfaces/ScreenMembersOnResetPassword)
+- [TransactionMembersOnResetPassword](./interfaces/TransactionMembersOnResetPassword)
+- [ResetPasswordMembers](./interfaces/ResetPasswordMembers)
+- [ScreenMembersOnSignupId](./interfaces/ScreenMembersOnSignupId)
+- [TransactionMembersOnSignupId](./interfaces/TransactionMembersOnSignupId)
+- [FederatedSignupOptions](./interfaces/FederatedSignupOptions)
+- [SignupOptions](./interfaces/SignupOptions)
+- [SignupIdMembers](./interfaces/SignupIdMembers)
+- [FederatedSignupPasswordPayloadOptions](./interfaces/FederatedSignupPasswordPayloadOptions)
+- [ScreenMembersOnSignupPassword](./interfaces/ScreenMembersOnSignupPassword)
+- [TransactionMembersOnSignupPassword](./interfaces/TransactionMembersOnSignupPassword)
+- [SignupPasswordOptions](./interfaces/SignupPasswordOptions)
+- [SignupPasswordMembers](./interfaces/SignupPasswordMembers)
+- [SignupPayloadOptions](./interfaces/SignupPayloadOptions)
+- [FederatedSignupPayloadOptions](./interfaces/FederatedSignupPayloadOptions)
+- [ScreenMembersOnSignup](./interfaces/ScreenMembersOnSignup)
+- [TransactionMembersOnSignup](./interfaces/TransactionMembersOnSignup)
+- [SignupMembers](./interfaces/SignupMembers)
+- [CredentialResponse](./interfaces/CredentialResponse)
+- [PasskeyCreateResponse](./interfaces/PasskeyCreateResponse)
+- [MfaPushPollingControl](./interfaces/MfaPushPollingControl): Control interface for managing an MFA push-notification polling session.
+- [StartResendOptions](./interfaces/StartResendOptions): Options for configuring resend functionality
+- [ResendControl](./interfaces/ResendControl): Control object returned by resendManager method
+- [Identifier](./interfaces/Identifier): Describes a configured identifier field (e.g. email, phone, or username) for use in a signup form or authentication flow.
+- [PasswordValidationResult](./interfaces/PasswordValidationResult)
+- [UsernameValidationError](./interfaces/UsernameValidationError): Represents a single username validation error returned during validation.
+- [UsernameValidationResult](./interfaces/UsernameValidationResult): The result of validating a username against one or more rules.
+- [ErrorsResult](./interfaces/ErrorsResult)
+- [UseErrorOptions](./interfaces/UseErrorOptions)
+- [UseErrorsResult](./interfaces/UseErrorsResult)
+- [MfaPollingResult](./interfaces/MfaPollingResult): Result object returned by [useMfaPolling](../Hooks/functions/useMfaPolling).
+- [UseResendReturn](./interfaces/UseResendReturn): Return type for [useResend](../Hooks/functions/useResend).
+- [UseResendOptions](./interfaces/UseResendOptions): Optional configuration for [useResend](../Hooks/functions/useResend).
+- [ErrorItem](./interfaces/ErrorItem)
+
+## Type Aliases
+
+- [AuthenticatorTransport](./type-aliases/AuthenticatorTransport)
+- [WebAuthnType](./type-aliases/WebAuthnType)
+- [MfaPollingOptions](./type-aliases/MfaPollingOptions): Configuration options for managing an MFA push-notification polling process.
+- [OnStatusChangeCallback](./type-aliases/OnStatusChangeCallback): Callback function for status changes during resend countdown.
+- [ScreenIdentifierType](./type-aliases/ScreenIdentifierType): Represents the types of user identifiers that can be used during signup.
+- [IdentifierType](./type-aliases/IdentifierType): Type representing valid identifier values
+- [MfaLoginFactorType](./type-aliases/MfaLoginFactorType): Type definition for MFA login factor constants
+- [MfaEnrollFactorType](./type-aliases/MfaEnrollFactorType): Type definition for MFA enroll factor constants
+- [ErrorKind](./type-aliases/ErrorKind)
+
+## References
+
+### ULError
+
+Renames and re-exports [Error](./interfaces/Error)
+
+***
+
+### useAuth0Themes
+
+Re-exports [useAuth0Themes](../Hooks/functions/useAuth0Themes)
+
+***
+
+### useCurrentScreen
+
+Re-exports [useCurrentScreen](../Hooks/functions/useCurrentScreen)
+
+***
+
+### useErrors
+
+Re-exports [useErrors](../Hooks/functions/useErrors)
+
+***
+
+### useLoginIdentifiers
+
+Re-exports [useLoginIdentifiers](../Hooks/functions/useLoginIdentifiers)
+
+***
+
+### useSignupIdentifiers
+
+Re-exports [useSignupIdentifiers](../Hooks/functions/useSignupIdentifiers)
+
+***
+
+### useMfaPolling
+
+Re-exports [useMfaPolling](../Hooks/functions/useMfaPolling)
+
+***
+
+### useResend
+
+Re-exports [useResend](../Hooks/functions/useResend)
+
+***
+
+### usePasswordValidation
+
+Re-exports [usePasswordValidation](../Hooks/functions/usePasswordValidation)
+
+***
+
+### useUsernameValidation
+
+Re-exports [useUsernameValidation](../Hooks/functions/useUsernameValidation)

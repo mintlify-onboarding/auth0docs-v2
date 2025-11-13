@@ -1,0 +1,226 @@
+---
+title: "MfaWebAuthnRoamingEnrollmentMembers"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-webauthn-roaming-enrollment.d.ts:36
+
+Interface defining the available methods and properties for the mfa-webauthn-roaming-enrollment screen.
+
+## Extends
+
+- [`BaseMembers`](./BaseMembers)
+
+## Properties
+
+<ParamField body='branding' type='[BrandingMembers](./BrandingMembers)'>
+> **branding**: [`BrandingMembers`](./BrandingMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:22
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`branding`](./BaseMembers.md#branding)
+
+</ParamField>
+
+<ParamField body='client' type='[ClientMembers](./ClientMembers)'>
+> **client**: [`ClientMembers`](./ClientMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:23
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`client`](./BaseMembers.md#client)
+
+</ParamField>
+
+<ParamField body='organization' type='[OrganizationMembers](./OrganizationMembers)'>
+> **organization**: [`OrganizationMembers`](./OrganizationMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:24
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`organization`](./BaseMembers.md#organization)
+
+</ParamField>
+
+<ParamField body='prompt' type='[PromptMembers](./PromptMembers)'>
+> **prompt**: [`PromptMembers`](./PromptMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:25
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`prompt`](./BaseMembers.md#prompt)
+
+</ParamField>
+
+<ParamField body='tenant' type='[TenantMembers](./TenantMembers)'>
+> **tenant**: [`TenantMembers`](./TenantMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:27
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`tenant`](./BaseMembers.md#tenant)
+
+</ParamField>
+
+<ParamField body='transaction' type='[TransactionMembers](./TransactionMembers)'>
+> **transaction**: [`TransactionMembers`](./TransactionMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:28
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`transaction`](./BaseMembers.md#transaction)
+
+</ParamField>
+
+<ParamField body='user' type='[UserMembers](./UserMembers)'>
+> **user**: [`UserMembers`](./UserMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:29
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`user`](./BaseMembers.md#user)
+
+</ParamField>
+
+<ParamField body='untrustedData' type='[UntrustedDataMembers](./UntrustedDataMembers)'>
+> **untrustedData**: [`UntrustedDataMembers`](./UntrustedDataMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:30
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`untrustedData`](./BaseMembers.md#untrusteddata)
+
+</ParamField>
+
+<ParamField body='screen' type='[ScreenMembersOnMfaWebAuthnRoamingEnrollment](./ScreenMembersOnMfaWebAuthnRoamingEnrollment)'>
+> **screen**: [`ScreenMembersOnMfaWebAuthnRoamingEnrollment`](./ScreenMembersOnMfaWebAuthnRoamingEnrollment)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-webauthn-roaming-enrollment.d.ts:37
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`screen`](./BaseMembers.md#screen)
+
+**Methods**
+</ParamField>
+
+<ParamField body='enroll()' type='unknown'>
+> **enroll**(`payload`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-webauthn-roaming-enrollment.d.ts:60
+
+Initiates the WebAuthn credential creation and submits the result to the server.
+This corresponds to the user interacting with the FIDO Security Keys prompt.
+
+**Parameters**
+
+**payload**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional custom options to include with the request.
+
+**Returns**
+
+`Promise`\<`void`\>
+
+**Example**
+
+```typescript
+import MfaWebAuthnRoamingEnrollment from '@auth0/auth0-acul-js/mfa-webauthn-roaming-enrollment';
+
+const webauthnEnrollment = new MfaWebAuthnRoamingEnrollment();
+try {
+  // This will trigger the browser's WebAuthn prompt
+  const credential = await navigator.credentials.create({ publicKey: webauthnEnrollment.screen.data.passkey.public_key });
+  // You would typically serialize the credential response here
+  const response = JSON.stringify(credential);
+  await webauthnEnrollment.enroll({ response });
+} catch (error) {
+  console.error('WebAuthn enrollment failed:', error);
+  // Handle the error, e.g., show an error message to the user or submit the error details
+  // await webauthnEnrollment.showError({ error: { name: error.name, message: error.message } });
+}
+```
+
+</ParamField>
+
+<ParamField body='showError()' type='unknown'>
+> **showError**(`payload`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-webauthn-roaming-enrollment.d.ts:84
+
+Submits details about a WebAuthn browser error to the server.
+This is used when the browser's WebAuthn API encounters an error.
+
+**Parameters**
+
+**payload**
+
+[`ShowErrorOptions`](./ShowErrorOptions)
+
+The options containing the error details.
+
+**Returns**
+
+`Promise`\<`void`\>
+
+**Example**
+
+```typescript
+import MfaWebAuthnRoamingEnrollment from '@auth0/auth0-acul-js/mfa-webauthn-roaming-enrollment';
+
+const webauthnEnrollment = new MfaWebAuthnRoamingEnrollment();
+// Example error handler for the browser's WebAuthn API call
+const handleError = async (error: any) => {
+  console.error('WebAuthn error:', error);
+  await webauthnEnrollment.showError({
+    error: {
+      name: error.name,
+      message: error.message,
+      // Include other relevant error properties if available
+    },
+  });
+};
+// ... use handleError in your WebAuthn API call's catch block
+```
+
+</ParamField>
+
+<ParamField body='tryAnotherMethod()' type='unknown'>
+> **tryAnotherMethod**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-webauthn-roaming-enrollment.d.ts:97
+
+Allows the user to try another MFA method.
+This corresponds to the "Try Another Method" button.
+
+**Parameters**
+
+**payload?**
+
+[`MfaWebAuthnRoamingEnrollmentTryAnotherMethodOptions`](./MfaWebAuthnRoamingEnrollmentTryAnotherMethodOptions)
+
+Optional custom options to include with the request.
+
+**Returns**
+
+`Promise`\<`void`\>
+
+**Example**
+
+```typescript
+import MfaWebAuthnRoamingEnrollment from '@auth0/auth0-acul-js/mfa-webauthn-roaming-enrollment';
+
+const webauthnEnrollment = new MfaWebAuthnRoamingEnrollment();
+await webauthnEnrollment.tryAnotherMethod();
+```
+</ParamField>

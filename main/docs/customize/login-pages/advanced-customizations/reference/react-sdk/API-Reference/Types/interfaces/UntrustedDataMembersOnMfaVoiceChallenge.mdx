@@ -1,0 +1,34 @@
+---
+title: "UntrustedDataMembersOnMfaVoiceChallenge"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:131
+
+Interface for untrusted data specific to mfa-voice-challenge screen
+
+## Extends
+
+- [`UntrustedDataMembers`](./UntrustedDataMembers)
+
+## Properties
+
+<ParamField body='authorizationParams' type='{[key:  ext-${string} ]: string; login_hint?: string; screen_hint?: string; ui_locales?: string; } '>
+> **authorizationParams**: \{\[`key`: `` `ext-${string}` ``\]: `string`; `login_hint?`: `string`; `screen_hint?`: `string`; `ui_locales?`: `string`; \} \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/untrusted-data.d.ts:17
+
+**Inherited from**
+
+[`UntrustedDataMembers`](./UntrustedDataMembers).[`authorizationParams`](./UntrustedDataMembers.md#authorizationparams)
+
+</ParamField>
+
+<ParamField body='submittedFormData' type='{ rememberDevice: boolean; } '>
+> **submittedFormData**: \{ `rememberDevice`: `boolean`; \} \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:132
+
+**Overrides**
+
+[`UntrustedDataMembers`](./UntrustedDataMembers).[`submittedFormData`](./UntrustedDataMembers.md#submittedformdata)
+</ParamField>

@@ -1,0 +1,61 @@
+---
+title: "ErrorsResult"
+---
+
+Defined in: [packages/auth0-acul-react/src/hooks/common/errors.ts:12](https://github.com/WriteChoiceMigration/universal-login/blob/79e6cc195f7925469d498589518d9c044e7ab14f/packages/auth0-acul-react/src/hooks/common/errors.ts#L12)
+
+## Extends
+
+- `ReadonlyArray`\<[`ErrorItem`](./ErrorItem)\>
+
+## Indexable
+
+\[`n`: `number`\]: [`ErrorItem`](./ErrorItem)
+
+## Methods
+
+### byKind()
+
+> **byKind**(`kind`, `opts?`): readonly [`ErrorItem`](./ErrorItem)[]
+
+Defined in: [packages/auth0-acul-react/src/hooks/common/errors.ts:13](https://github.com/WriteChoiceMigration/universal-login/blob/79e6cc195f7925469d498589518d9c044e7ab14f/packages/auth0-acul-react/src/hooks/common/errors.ts#L13)
+
+#### Parameters
+
+##### kind
+
+[`ErrorKind`](../type-aliases/ErrorKind)
+
+##### opts?
+
+###### field?
+
+`string`
+
+#### Returns
+
+readonly [`ErrorItem`](./ErrorItem)[]
+
+***
+
+### byField()
+
+> **byField**(`field`, `opts?`): readonly [`ErrorItem`](./ErrorItem)[]
+
+Defined in: [packages/auth0-acul-react/src/hooks/common/errors.ts:14](https://github.com/WriteChoiceMigration/universal-login/blob/79e6cc195f7925469d498589518d9c044e7ab14f/packages/auth0-acul-react/src/hooks/common/errors.ts#L14)
+
+#### Parameters
+
+##### field
+
+`string`
+
+##### opts?
+
+###### kind?
+
+[`ErrorKind`](../type-aliases/ErrorKind)
+
+#### Returns
+
+readonly [`ErrorItem`](./ErrorItem)[]

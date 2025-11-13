@@ -1,0 +1,36 @@
+---
+title: "useLoginIdentifiers"
+---
+
+> **useLoginIdentifiers**(): [`IdentifierType`](../../Types/type-aliases/IdentifierType)[]
+
+Defined in: [packages/auth0-acul-react/src/hooks/utility/login-identifiers.ts:34](https://github.com/WriteChoiceMigration/universal-login/blob/79e6cc195f7925469d498589518d9c044e7ab14f/packages/auth0-acul-react/src/hooks/utility/login-identifiers.ts#L34)
+
+Returns a list of active identifier types (such as `'email'`, `'phone'`, or `'username'`)
+currently in use in the authentication flow or login process.
+
+## Returns
+
+[`IdentifierType`](../../Types/type-aliases/IdentifierType)[]
+
+An array of [IdentifierType](../../Types/type-aliases/IdentifierType) representing active identifiers.
+
+## Supported Screens
+
+- `login`
+- `login-id`
+- `reset-password-request`
+
+## Example
+
+```tsx
+import { useLoginIdentifiers } from '@auth0/auth0-acul-react/login';
+
+const loginIdentifiers = useLoginIdentifiers();
+const hasEmail = loginIdentifiers.includes('email');
+const hasPhone = loginIdentifiers.includes('phone');
+const hasUsername = loginIdentifiers.includes('username');
+
+// loginIdentifiers could be:
+// ['email', 'username']
+```

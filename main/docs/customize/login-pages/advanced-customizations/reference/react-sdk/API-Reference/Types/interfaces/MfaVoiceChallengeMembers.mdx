@@ -1,0 +1,288 @@
+---
+title: "MfaVoiceChallengeMembers"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:48
+
+Interface defining all members and operations available on the MFA Voice Challenge screen.
+
+## Extends
+
+- [`BaseMembers`](./BaseMembers)
+
+## Properties
+
+<ParamField body='branding' type='[BrandingMembers](./BrandingMembers)'>
+> **branding**: [`BrandingMembers`](./BrandingMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:22
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`branding`](./BaseMembers.md#branding)
+
+</ParamField>
+
+<ParamField body='client' type='[ClientMembers](./ClientMembers)'>
+> **client**: [`ClientMembers`](./ClientMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:23
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`client`](./BaseMembers.md#client)
+
+</ParamField>
+
+<ParamField body='organization' type='[OrganizationMembers](./OrganizationMembers)'>
+> **organization**: [`OrganizationMembers`](./OrganizationMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:24
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`organization`](./BaseMembers.md#organization)
+
+</ParamField>
+
+<ParamField body='prompt' type='[PromptMembers](./PromptMembers)'>
+> **prompt**: [`PromptMembers`](./PromptMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:25
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`prompt`](./BaseMembers.md#prompt)
+
+</ParamField>
+
+<ParamField body='tenant' type='[TenantMembers](./TenantMembers)'>
+> **tenant**: [`TenantMembers`](./TenantMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:27
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`tenant`](./BaseMembers.md#tenant)
+
+</ParamField>
+
+<ParamField body='transaction' type='[TransactionMembers](./TransactionMembers)'>
+> **transaction**: [`TransactionMembers`](./TransactionMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:28
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`transaction`](./BaseMembers.md#transaction)
+
+</ParamField>
+
+<ParamField body='user' type='[UserMembers](./UserMembers)'>
+> **user**: [`UserMembers`](./UserMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:29
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`user`](./BaseMembers.md#user)
+
+</ParamField>
+
+<ParamField body='screen' type='[ScreenMembersOnMfaVoiceChallenge](./ScreenMembersOnMfaVoiceChallenge)'>
+> **screen**: [`ScreenMembersOnMfaVoiceChallenge`](./ScreenMembersOnMfaVoiceChallenge)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:52
+
+Screen-specific properties and data.
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`screen`](./BaseMembers.md#screen)
+
+</ParamField>
+
+<ParamField body='untrustedData' type='[UntrustedDataMembersOnMfaVoiceChallenge](./UntrustedDataMembersOnMfaVoiceChallenge)'>
+> **untrustedData**: [`UntrustedDataMembersOnMfaVoiceChallenge`](./UntrustedDataMembersOnMfaVoiceChallenge)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:53
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`untrustedData`](./BaseMembers.md#untrusteddata)
+
+**Methods**
+</ParamField>
+
+<ParamField body='continue()' type='unknown'>
+> **continue**(`payload`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:69
+
+Submits the voice verification code to validate the MFA challenge.
+
+**Parameters**
+
+**payload**
+
+[`MfaVoiceChallengeContinueOptions`](./MfaVoiceChallengeContinueOptions)
+
+Object containing the verification code and optional parameters
+
+**Returns**
+
+`Promise`\<`void`\>
+
+Promise that resolves when the code is successfully validated
+
+**Example**
+
+```typescript
+const mfaVoiceChallenge = new MfaVoiceChallenge();
+mfaVoiceChallenge.continue({
+  code: '123456',
+  rememberDevice: true
+});
+```
+
+</ParamField>
+
+<ParamField body='pickPhone()' type='unknown'>
+> **pickPhone**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:82
+
+Navigates to the screen for selecting a different phone number.
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional custom parameters
+
+**Returns**
+
+`Promise`\<`void`\>
+
+Promise that resolves when navigation is complete
+
+**Example**
+
+```typescript
+const mfaVoiceChallenge = new MfaVoiceChallenge();
+mfaVoiceChallenge.pickPhone();
+```
+
+</ParamField>
+
+<ParamField body='switchToSms()' type='unknown'>
+> **switchToSms**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:95
+
+Switches to SMS verification method instead of voice call.
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional custom parameters
+
+**Returns**
+
+`Promise`\<`void`\>
+
+Promise that resolves when switching is complete
+
+**Example**
+
+```typescript
+const mfaVoiceChallenge = new MfaVoiceChallenge();
+mfaVoiceChallenge.switchToSms();
+```
+
+</ParamField>
+
+<ParamField body='resendCode()' type='unknown'>
+> **resendCode**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:108
+
+Requests a new voice call with a verification code.
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional custom parameters
+
+**Returns**
+
+`Promise`\<`void`\>
+
+Promise that resolves when the new code is sent
+
+**Example**
+
+```typescript
+const mfaVoiceChallenge = new MfaVoiceChallenge();
+mfaVoiceChallenge.resendCode();
+```
+
+</ParamField>
+
+<ParamField body='tryAnotherMethod()' type='unknown'>
+> **tryAnotherMethod**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:121
+
+Navigates to the screen for selecting an alternative MFA method.
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional custom parameters
+
+**Returns**
+
+`Promise`\<`void`\>
+
+Promise that resolves when navigation is complete
+
+**Example**
+
+```typescript
+const mfaVoiceChallenge = new MfaVoiceChallenge();
+mfaVoiceChallenge.tryAnotherMethod();
+```
+
+</ParamField>
+
+<ParamField body='resendManager()' type='unknown'>
+> **resendManager**(`options?`): [`ResendControl`](./ResendControl)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-voice-challenge.d.ts:126
+
+Gets resend functionality with timeout management for this screen
+
+**Parameters**
+
+**options?**
+
+[`StartResendOptions`](./StartResendOptions)
+
+Configuration options for resend functionality
+
+**Returns**
+
+[`ResendControl`](./ResendControl)
+</ParamField>

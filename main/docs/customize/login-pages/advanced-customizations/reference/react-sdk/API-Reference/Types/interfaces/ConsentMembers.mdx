@@ -1,0 +1,209 @@
+---
+title: "ConsentMembers"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/consent.d.ts:38
+
+ConsentMembers
+
+## Extends
+
+- [`BaseMembers`](./BaseMembers)
+
+## Properties
+
+<ParamField body='branding' type='[BrandingMembers](./BrandingMembers)'>
+> **branding**: [`BrandingMembers`](./BrandingMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:22
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`branding`](./BaseMembers.md#branding)
+
+</ParamField>
+
+<ParamField body='client' type='[ClientMembers](./ClientMembers)'>
+> **client**: [`ClientMembers`](./ClientMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:23
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`client`](./BaseMembers.md#client)
+
+</ParamField>
+
+<ParamField body='organization' type='[OrganizationMembers](./OrganizationMembers)'>
+> **organization**: [`OrganizationMembers`](./OrganizationMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:24
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`organization`](./BaseMembers.md#organization)
+
+</ParamField>
+
+<ParamField body='prompt' type='[PromptMembers](./PromptMembers)'>
+> **prompt**: [`PromptMembers`](./PromptMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:25
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`prompt`](./BaseMembers.md#prompt)
+
+</ParamField>
+
+<ParamField body='tenant' type='[TenantMembers](./TenantMembers)'>
+> **tenant**: [`TenantMembers`](./TenantMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:27
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`tenant`](./BaseMembers.md#tenant)
+
+</ParamField>
+
+<ParamField body='transaction' type='[TransactionMembers](./TransactionMembers)'>
+> **transaction**: [`TransactionMembers`](./TransactionMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:28
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`transaction`](./BaseMembers.md#transaction)
+
+</ParamField>
+
+<ParamField body='user' type='[UserMembers](./UserMembers)'>
+> **user**: [`UserMembers`](./UserMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:29
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`user`](./BaseMembers.md#user)
+
+</ParamField>
+
+<ParamField body='untrustedData' type='[UntrustedDataMembers](./UntrustedDataMembers)'>
+> **untrustedData**: [`UntrustedDataMembers`](./UntrustedDataMembers)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/base-context.d.ts:30
+
+**Inherited from**
+
+[`BaseMembers`](./BaseMembers).[`untrustedData`](./BaseMembers.md#untrusteddata)
+
+</ParamField>
+
+<ParamField body='screen' type='[ScreenMembersOnConsent](./ScreenMembersOnConsent)'>
+> **screen**: [`ScreenMembersOnConsent`](./ScreenMembersOnConsent)
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/consent.d.ts:44
+
+Provides access to the specific properties and data of the Consent screen,
+including the list of `scopes` being requested and the `hideScopes` flag.
+
+**Overrides**
+
+[`BaseMembers`](./BaseMembers).[`screen`](./BaseMembers.md#screen)
+
+**Methods**
+</ParamField>
+
+<ParamField body='accept()' type='unknown'>
+> **accept**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/consent.d.ts:72
+
+Submits the user's decision to accept (grant) the requested permissions.
+This action posts to the `/u/consent` endpoint with `action: "accept"`.
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional. An object for any custom key-value pairs
+                                   to be sent with the request. These parameters will be
+                                   included in the form data submitted to the server.
+
+**Returns**
+
+`Promise`\<`void`\>
+
+A promise that resolves when the accept action is successfully submitted.
+                         On success, Auth0 typically redirects the user back to the application
+                         or to the next step in the authentication flow.
+
+**Throws**
+
+Throws an error if the form submission fails (e.g., network issue, invalid state).
+                Server-side errors (like "invalid_request") will be reflected in `this.transaction.errors`
+                after the operation, rather than being thrown as JavaScript errors.
+
+**Example**
+
+```typescript
+// Assuming 'consentManager' is an instance of the Consent screen SDK class
+try {
+  await consentManager.accept();
+  // If successful, the page will typically redirect.
+} catch (error) {
+  // Handle unexpected errors during the submission itself.
+  console.error("Failed to submit consent acceptance:", error);
+}
+// After the await, check consentManager.transaction.errors for server-side validation issues.
+```
+
+</ParamField>
+
+<ParamField body='deny()' type='unknown'>
+> **deny**(`payload?`): `Promise`\<`void`\>
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/consent.d.ts:98
+
+Submits the user's decision to deny (reject) the requested permissions.
+This action posts to the `/u/consent` endpoint with `action: "deny"`.
+
+**Parameters**
+
+**payload?**
+
+[`CustomOptions`](./CustomOptions)
+
+Optional. An object for any custom key-value pairs
+                                   to be sent with the request. These parameters will be
+                                   included in the form data submitted to the server.
+
+**Returns**
+
+`Promise`\<`void`\>
+
+A promise that resolves when the deny action is successfully submitted.
+                         On success, Auth0 typically redirects the user, potentially showing an
+                         access denied message or returning an error to the application.
+
+**Throws**
+
+Throws an error if the form submission fails (e.g., network issue, invalid state).
+                Server-side errors are reflected in `this.transaction.errors`.
+
+**Example**
+
+```typescript
+// Assuming 'consentManager' is an instance of the Consent screen SDK class
+try {
+  await consentManager.deny({ reason: "user_declined" }); // Example custom option
+  // If successful, the page will typically redirect.
+} catch (error) {
+  console.error("Failed to submit consent denial:", error);
+}
+// After the await, check consentManager.transaction.errors for server-side validation issues.
+```
+</ParamField>

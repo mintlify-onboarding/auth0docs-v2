@@ -1,0 +1,138 @@
+---
+title: "ScreenMembersOnEmailVerificationResult"
+---
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/email-verification-result.d.ts:15
+
+ScreenMembersOnEmailVerificationResult
+
+## Extends
+
+- [`ScreenMembers`](./ScreenMembers)
+
+## Properties
+
+<ParamField body='name' type='string'>
+> **name**: `string`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:71
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`name`](./ScreenMembers.md#name)
+
+</ParamField>
+
+<ParamField body='captchaImage' type='string '>
+> **captchaImage**: `string` \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:72
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`captchaImage`](./ScreenMembers.md#captchaimage)
+
+</ParamField>
+
+<ParamField body='captchaSiteKey' type='string '>
+> **captchaSiteKey**: `string` \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:73
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`captchaSiteKey`](./ScreenMembers.md#captchasitekey)
+
+</ParamField>
+
+<ParamField body='captchaProvider' type='string '>
+> **captchaProvider**: `string` \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:74
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`captchaProvider`](./ScreenMembers.md#captchaprovider)
+
+</ParamField>
+
+<ParamField body='isCaptchaAvailable' type='boolean'>
+> **isCaptchaAvailable**: `boolean`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:75
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`isCaptchaAvailable`](./ScreenMembers.md#iscaptchaavailable)
+
+</ParamField>
+
+<ParamField body='links' type='Record<string, string> '>
+> **links**: `Record`\<`string`, `string`\> \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:77
+
+Navigation links available on this screen.
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`links`](./ScreenMembers.md#links)
+
+</ParamField>
+
+<ParamField body='texts' type='Record<string, string> '>
+> **texts**: `Record`\<`string`, `string`\> \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:78
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`texts`](./ScreenMembers.md#texts)
+
+</ParamField>
+
+<ParamField body='captcha' type='[CaptchaContext](./CaptchaContext) '>
+> **captcha**: [`CaptchaContext`](./CaptchaContext) \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:79
+
+**Inherited from**
+
+[`ScreenMembers`](./ScreenMembers).[`captcha`](./ScreenMembers.md#captcha)
+
+</ParamField>
+
+<ParamField body='data' type='{ status: string; } '>
+> **data**: \{ `status`: `string`; \} \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/email-verification-result.d.ts:20
+
+Screen-specific data.
+
+**Type Declaration**
+
+\{ `status`: `string`; \}
+
+**status**
+
+> **status**: `string`
+
+The status of the email verification process.
+Possible values might include "success", "failure", "already_verified", etc.
+This status should be displayed to the user to inform them of the outcome.
+
+`null`
+
+**Overrides**
+
+[`ScreenMembers`](./ScreenMembers).[`data`](./ScreenMembers.md#data)
+
+</ParamField>
+
+<ParamField body='loginLink' type='string '>
+> **loginLink**: `string` \| `null`
+
+Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/email-verification-result.d.ts:32
+
+Navigation links available on this screen.
+</ParamField>
