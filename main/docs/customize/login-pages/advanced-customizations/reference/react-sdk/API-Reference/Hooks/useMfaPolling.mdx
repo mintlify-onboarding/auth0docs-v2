@@ -2,7 +2,7 @@
 title: "useMfaPolling"
 ---
 
-> **useMfaPolling**(`options?`): [`MfaPollingResult`](../../Types/interfaces/MfaPollingResult)
+> **useMfaPolling**(`options?`): [`MfaPollingResult`](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/MfaPollingResult)
 
 Defined in: [packages/auth0-acul-react/src/hooks/utility/polling-manager.ts:106](https://github.com/WriteChoiceMigration/universal-login/blob/79e6cc195f7925469d498589518d9c044e7ab14f/packages/auth0-acul-react/src/hooks/utility/polling-manager.ts#L106)
 
@@ -27,16 +27,16 @@ the MFA push challenge endpoint until one of the following occurs:
 
 ### options?
 
-[`MfaPollingOptions`](../../Types/type-aliases/MfaPollingOptions)
+[`MfaPollingOptions`](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/type-aliases/MfaPollingOptions)
 
-[MfaPollingOptions](../../Types/type-aliases/MfaPollingOptions) specifying the polling interval,
+[MfaPollingOptions](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/type-aliases/MfaPollingOptions) specifying the polling interval,
                  success callback (`onCompleted`), and optional error handler (`onError`).
 
 ## Returns
 
-[`MfaPollingResult`](../../Types/interfaces/MfaPollingResult)
+[`MfaPollingResult`](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/MfaPollingResult)
 
-object [MfaPollingResult](../../Types/interfaces/MfaPollingResult) containing:
+object [MfaPollingResult](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/MfaPollingResult) containing:
 - `isRunning` — `true` while polling is active.
 - `startPolling()` — starts or resumes polling.
 - `stopPolling()` — stops polling immediately.
@@ -72,7 +72,7 @@ export function MfaPushStatus() {
 
 ## Remarks
 
-- The `onError` callback receives an [ULError](../../Types/interfaces/Error) object
+- The `onError` callback receives an [ULError](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/Error) object
   with `status` and `responseText` describing the server response.
 - Internal rate-limit responses (`429`) are automatically handled:
   polling waits for the reset window before retrying.
