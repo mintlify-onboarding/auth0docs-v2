@@ -31,6 +31,11 @@
       "format": "woff2"
     }
   },
+  "integrations": {
+    "gtm": {
+        "tagId": "GTM-W7FRLJ"
+    }
+  },
   "navigation": {
     "languages": [
       {
