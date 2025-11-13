@@ -2,27 +2,59 @@ export const AuthLink = ({ href, target = "_blank", rel = "noopener noreferrer",
   const [processedHref, setProcessedHref] = useState(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     let unsubscribe = null;
 
-    function init() {
-      unsubscribe = window.autorun(() => {
-        let processedHref = href;
-        for (const [key, value] of window.rootStore.variableStore.values.entries()) {
-          processedHref = processedHref.replace(new RegExp(key, "g"), value);
+    const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    const compute = () => {
+      try {
+        let next = href;
+
+        // Support Map, { values: Map }, or plain object
+        const vs = window.rootStore?.variableStore;
+        const entries =
+          (vs?.values?.entries && Array.from(vs.values.entries())) ||
+          (vs?.entries && Array.from(vs.entries())) ||
+          (vs && typeof vs === "object" ? Object.entries(vs) : []);
+
+        for (const [rawKey, rawVal] of entries) {
+          const key = String(rawKey ?? "");
+          if (!key) continue;
+          const val = String(rawVal ?? "");
+          next = next.replace(new RegExp(escapeRegExp(key), "g"), val);
         }
 
-        // Only update state if the processed href has changed
-        // This helps in rendering anchor tag only when we have a valid href
-        if (processedHref !== href) {
-          setProcessedHref(processedHref);
-        }
-      });
-    }
+        if (next !== href) setProcessedHref(next);
+      } catch {
+        // swallow errors so inline usage doesn't crash the MDX tree
+      }
+    };
 
+    const init = () => {
+      // re-check at call time (event may fire early)
+      if (!window.rootStore) {
+        compute(); // compute once anyway; keeps behavior if nothing changes
+        return;
+      }
+
+      const run =
+        typeof window.autorun === "function"
+          ? window.autorun
+          : (fn) => {
+              fn();
+              return () => {};
+            }; // no-op reactive fallback
+
+      unsubscribe = run(compute);
+    };
+
+    // If store already there, init now; else wait once for readiness
     if (window.rootStore) {
       init();
     } else {
-      window.addEventListener("adu:storeReady", init);
+      window.addEventListener("adu:storeReady", init, { once: true });
     }
 
     return () => {
