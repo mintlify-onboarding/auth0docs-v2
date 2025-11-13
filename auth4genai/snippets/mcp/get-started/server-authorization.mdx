@@ -3,15 +3,14 @@ import MCPGetStartedConfigTenantSettings from "/snippets/mcp/get-started/config-
 import CreateMCPAPI from "/snippets/mcp/get-started/create-mcp-api.mdx";
 import { DownloadQuickstartButton } from "/snippets/download-quickstart/DownloadQuickstartButton.jsx";
 
-Authentication is the process of proving a user’s identity before granting them access to a resource. In this quickstart, you’ll learn how to bring [Universal Login](https://auth0.com/docs/authenticate/login/auth0-universal-login) to your MCP-based applications and leverage OAuth 2.0 and OpenID Connect to securely authenticate users.
+Authorization controls access to your MCP server so that only trusted clients can use its resources. In this quickstart, you'll learn how to secure your MCP server by requiring and validating client access tokens.
 
-When a user authenticates with an identity provider through Auth0, Auth0 can pass user information to the MCP server in order to allow the user to access the appropriate tools and resources.
+When an MCP client makes a request on behalf of a user, it must include a valid access token issued by Auth0. Your MCP server verifies this token and determines which tools and resources the client can access based on the user's permissions.
 
-By the end of this quickstart, you should have an MCP server that can:
-
-* Let users sign up and log in using a username and password or a Google account.
-* Authenticate and authorize users using OAuth 2.0 and OpenID Connect.
-* Let users use specific tools based on their roles.
+By the end of this quickstart, you will have an MCP server that:
+* Requires access tokens for all incoming requests
+* Validates OAuth 2.0 access tokens from authorized clients
+* Enforces role-based access control to manage tool permissions
 
 <MCPGetStartedPrerequisites />
 

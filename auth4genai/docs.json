@@ -185,7 +185,7 @@
             "icon": "rocket-launch",
             "pages": [
               "mcp/get-started/overview",
-              "mcp/get-started/user-authentication",
+              "mcp/get-started/authorization-for-your-mcp-server",
               "mcp/get-started/call-your-apis-on-users-behalf"
             ]
           },{
@@ -304,6 +304,10 @@
     {
       "source": "mcp/auth-for-mcp",
       "destination": "/mcp/intro/overview"
+    },
+    {
+      "source": "/mcp/get-started/user-authentication",
+      "destination": "/mcp/get-started/authorization-for-your-mcp-server"
     }
   ],
   "logo": {
