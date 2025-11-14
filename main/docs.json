@@ -24197,6 +24197,18 @@
     {
      "source": "/docs/secure/security-guidance/measures-against-application-impersonation",
       "destination": "/docs/secure/security-guidance/measures-against-app-impersonation"
+    },
+    {
+     "source": "/docs/secure/tokens/token-vault/configure-access-token-exchange-with-token-vault",
+      "destination": "/docs/secure/tokens/token-vault/configure-token-vault"
+    },
+    {
+     "source": "/docs/secure/tokens/token-vault/configure-refresh-token-exchange-with-token-vault",
+      "destination": "/docs/secure/tokens/token-vault/configure-token-vault"
+    },
+    {
+     "source": "/docs/secure/tokens/token-vault/call-apis-with-token-vault",
+      "destination": "/docs/secure/tokens/token-vault/refresh-token-exchange-with-token-vault"
     }
   ]
 }
