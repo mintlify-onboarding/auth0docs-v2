@@ -11,7 +11,7 @@ title: Access Token Exchange with Token Vault
 'twitter:title': Access Token Exchange with Token Vault
 ---
 
-Token Vault supports the access token exchange, which enables a client to exchange an Auth0 access token (subject token) for an external provider’s access token (requested token).
+Token Vault supports the access token exchange, which enables a client application to exchange an Auth0 access token (subject token) for an external provider’s access token (requested token).
 
 When a Single-Page Application (SPA) calls a backend API, it only passes an Auth0 access token in the `Authorization` header. Because the backend API does not receive any refresh tokens issued to the SPA, it cannot use the [refresh token exchange](/docs/secure/tokens/token-vault/refresh-token-exchange-with-token-vault) to access the Token Vault to call external APIs.
 
@@ -33,9 +33,9 @@ Common use cases for the access token exchange include:
 
 The following sequence diagram describes end-to-end how to call external APIs using the access token exchange in Auth0:
 
-Let’s walk through a real-world example: A user wants to schedule a meeting in their Google Calendar using an SPA.
-
 <Frame>![](/docs/images/token-vault/access_token_exchange_flow_diagram.png)</Frame>
+
+Let’s walk through a real-world example: A user wants to schedule a meeting in their Google Calendar using an SPA.
 
 ## Prerequisites
 
@@ -44,7 +44,9 @@ Before getting started, you must [configure the access token exchange with Token
 ## Step 1: Connect and authorize access
 
 To schedule the meeting, the SPA needs to connect with Google via Auth0 and then receive the user’s permission to access the Google Calendar API.
-The user logs into the application via Google with the [Connected Accounts flow](/docs/secure/tokens/token-vault/connected-accounts-for-token-vault#how-it-works), which uses the [My Account API](/docs/manage-users/my-account-api). After the My Account API validates and completes the Connected Accounts request, it stores the Google access and refresh tokens with the requested calendar scopes in the Token Vault.
+The user logs into the application via Google with the [Connected Accounts flow](/docs/secure/tokens/token-vault/connected-accounts-for-token-vault#how-it-works), which uses the [My Account API](/docs/manage-users/my-account-api).
+
+After the My Account API validates and completes the Connected Accounts request, it stores the Google access and refresh tokens with the requested calendar scopes in the Token Vault.
 
 ## Step 2: SPA calls backend API with Auth0 access token
 
@@ -60,11 +62,11 @@ After successfully completing these checks, the backend API can trust the Auth0 
 
 ## Step 3: Backend API performs access token exchange
 
-For the access token exchange, you need to create a Custom API Client linked to the backend API. The Custom API Client has the same identifier as your backend API and has the Token Vault grant type enabled.
+For the access token exchange, you need to [create a Custom API Client](/docs/secure/tokens/token-vault/configure-token-vault#create-custom-api-client) linked to the backend API. The Custom API Client has the same identifier as your backend API and has the Token Vault grant type enabled.
 
 When the backend API performs the access token exchange, it authenticates itself by passing the Custom API Client’s credentials to the Auth0 Authorization Server, proving that it is the same entity that was registered in the Auth0 Dashboard.
 
-To perform the access token exchange, the backend API calls Auth0 SDKs to make a POST request to the `/oauth/token` endpoint.
+To perform the access token exchange, the backend API calls Auth0 SDKs to make a `POST` request to the `/oauth/token` endpoint.
 
 In the token request, the backend API:
 * Passes the backend API’s (the Custom API Client’s) client credentials to the Auth0 Authorization Server to authenticate itself. 
@@ -138,7 +140,7 @@ Once the Auth0 Authorization Server validates the user, it locates the Google ac
 
 ```json lines
 {
-  "access_token": "YOUR_GOOGLE_ACCESS_TOKEN",
+  "access_token": "<YOUR_GOOGLE_ACCESS_TOKEN>",
   "scope": "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.addons.execute https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/calendar.settings.readonly https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid",
   "expires_in": 1377,
   "issued_token_type": "http://auth0.com/oauth/token-type/federated-connection-access-token",

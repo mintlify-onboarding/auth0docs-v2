@@ -13,11 +13,11 @@ Once a user authenticates with a [supported external provider](/docs/secure/toke
 
 To configure Token Vault, you need to:
 
-1. [Configure Connected Accounts for Token Vault](/docs/secure/tokens/token-vault/configure-token-vault#configure-connected-accounts) for a supported social or enterprise connection.
+1. [Configure Connected Accounts for Token Vault](/docs/secure/tokens/token-vault/configure-token-vault#configure-connected-accounts-for-token-vault) for a supported social or enterprise connection.
 2. [Configure your application](#configure-application) with the Token Vault grant type.
 3. Configure the token exchange for your application:
-  * [Refresh token exchange](#configure-refresh-token-exchange)
-  * [Access token exchange](#configure-access-token-exchange)
+    * [Refresh token exchange](#configure-refresh-token-exchange)
+    * [Access token exchange](#configure-access-token-exchange)
 
 <Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 
@@ -31,13 +31,13 @@ If you need to trigger MFA challenges for interactive flows, enable **Customize 
 
 Connected Accounts for Token Vault manages a unified Auth0 user profile linked to multiple external accounts, where users can log in to any one of their accounts using a single set of credentials. Your application then fetches the stored credentials in Token Vault to interact with external APIs on the user’s behalf.
 
-You can configure Connected Accounts for supported social and enterprise connections. To learn more, read [Configure Connected Accounts](/docs/secure/tokens/token-vault/configure-token-vault#configure-connected-accounts).
+You can configure Connected Accounts for supported social and enterprise connections. To learn more, read [Configure Connected Accounts](/docs/secure/tokens/token-vault/connected-accounts-for-token-vault#configure-connected-accounts).
 
 ## Configure application
 
 Configure your application with the Token Vault grant type using the <Tooltip tip="Management API: A product to allow customers to perform administrative tasks." cta="View Glossary" href="/docs/glossary?term=Auth0+Dashboard">Auth0 Dashboard</Tooltip> or <Tooltip tip="Auth0 Dashboard: Auth0's main product to configure your services." cta="View Glossary" href="/docs/glossary?term=Management+API">Management API</Tooltip>.
 
-Only certain types of clients can use the Token Exchange (Federated Connection) grant type:
+Only certain types of clients can use the Token Vault grant type:
 
 1. The client must be a first-party client, i.e. the `is_first_party` property is `true`.
 2. The client must be a confidential client with a valid authentication mechanism, i.e. the `token_endpoint_auth_method` property must not be set to `none`.
@@ -117,7 +117,7 @@ curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}'
 ### Configure access token exchange
 
 To use the [access token exchange with Token Vault](/docs/secure/tokens/token-vault/access-token-exchange-with-token-vault), you need to: 
-* [Configure your SPA](#configure-your-spa) with the authorization_code grant type.
+* [Configure your SPA](#configure-your-spa) with the `authorization_code` grant type.
 * [Create a backend API](#create-backend-api) that the SPA can request an Auth0 access token for by specifying it as the audience.
 * [Create a Custom API Client](#create-custom-api-client) that is linked to the backend API with the Token Vault grant type enabled.
 
@@ -236,7 +236,7 @@ curl --request POST 'https://{yourDomain}/api/v2/clients' \
 </tr>
 <tr>
 <td><code>app_type</code></td>
-<td>The application type of your Custom API Client. To register the client as a resource server, set to resource_server.</td>
+<td>The application type of your Custom API Client. To register the client as a resource server, set to <code>resource_server</code>.</td>
 </tr>
 <tr>
 <td><code>resource_server_identifier</code></td>
