@@ -58,13 +58,28 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
   - If no Next.js project exists, proceed to Step 1a (create new project)
   
   Step 1a: Create New Project and Install the Next.js SDK
-  If an existing project exists, simply install the SDK:
+  If an existing project exists, check the Next.js version and install the SDK accordingly:
+  
+  Check Next.js version:
+  cat package.json | grep '"next"'
+  
+  For Next.js 15 or earlier (recommended):
   npm install @auth0/nextjs-auth0@latest
-  Otherwise, create a new project and install the SDK:
+  
+  For Next.js 16:
+  npm install @auth0/nextjs-auth0@latest --legacy-peer-deps
+  
+  Otherwise, create a new project with Next.js 15 and install the SDK:
   
   ⚠️ IMPORTANT: The Next.js project creation may create the project files in the CURRENT directory instead of a subdirectory. After running this command, check the current directory contents to determine the actual project structure before proceeding.
   
-  npx create-next-app@latest auth0-nextjs-app --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --yes && cd auth0-nextjs-app && npm install @auth0/nextjs-auth0@latest
+  Create Next.js 15 project and install SDK (recommended - no peer dependency issues):
+  npx create-next-app@15 auth0-nextjs-app --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --yes && cd auth0-nextjs-app && npm install @auth0/nextjs-auth0@latest
+  
+  Step 1b: Create project files
+  After installing the SDK, create all necessary directories and files:
+  
+    mkdir -p src/lib src/components && touch src/lib/auth0.ts src/middleware.ts src/components/LoginButton.tsx src/components/LogoutButton.tsx src/components/Profile.tsx
   
   
   Step 2: Modify & Create Files
@@ -127,22 +142,22 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
     echo "7. Generate a random secret for AUTH0_SECRET (32+ characters)"
   
   2.2: Create the Auth0 client configuration
-  Create lib/auth0.ts:
+  Add code to src/lib/auth0.ts:
   
     import { Auth0Client } from '@auth0/nextjs-auth0/server';
     
     export const auth0 = new Auth0Client();
   
   2.3: Create middleware for authentication
-  Create middleware.ts in the root directory:
+  Add code to src/middleware.ts:
   
     import type { NextRequest } from "next/server";
     import { auth0 } from "./lib/auth0";
-  
+    
     export async function middleware(request: NextRequest) {
       return await auth0.middleware(request);
     }
-  
+    
     export const config = {
       matcher: [
         /*
@@ -156,13 +171,9 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
     };
   
   2.4: Create Login, Logout and Profile Components
-  Create components directory and files:
+  Add code to the component files:
   
-    mkdir -p components && touch components/LoginButton.tsx && touch components/LogoutButton.tsx && touch components/Profile.tsx
-  
-  And add the following code snippets:
-  
-  Create components/LoginButton.tsx:
+  src/components/LoginButton.tsx:
   
     "use client";
     
@@ -177,7 +188,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
       );
     }
   
-  Create components/LogoutButton.tsx:
+  src/components/LogoutButton.tsx:
   
     "use client";
     
@@ -192,11 +203,11 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
       );
     }
   
-  Create components/Profile.tsx:
+  src/components/Profile.tsx:
   
     "use client";
     
-    import { useUser } from "@auth0/nextjs-auth0";
+    import { useUser } from "@auth0/nextjs-auth0/client";
     
     export default function Profile() {
       const { user, isLoading } = useUser();
@@ -244,7 +255,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
         <div className="app-container">
           <div className="main-card-wrapper">
             <img
-              src="https://cdn.auth0.com/website/auth0-logo-dark.svg"
+              src="https://cdn.auth0.com/quantum-assets/dist/latest/logos/auth0/auth0-lockup-en-ondark.png"
               alt="Auth0 Logo"
               className="auth0-logo"
             />
@@ -545,7 +556,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
   Update src/app/layout.tsx:
   
     import type { Metadata } from "next";
-    import { Auth0Provider } from "@auth0/nextjs-auth0";
+    import { Auth0Provider } from "@auth0/nextjs-auth0/client";
     import "./globals.css";
   
     export const metadata: Metadata = {
@@ -661,7 +672,7 @@ import {AuthCodeGroup} from "/snippets/AuthCodeGroup.jsx";
   - **[npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)** 10+ or **[yarn](https://classic.yarnpkg.com/lang/en/docs/install/)** 1.22+ or **[pnpm](https://pnpm.io/installation)** 8+
   - **[jq](https://jqlang.org/)** - Required for Auth0 CLI setup
 
-  **Next.js Version Compatibility:** This quickstart works with **Next.js 14.x** and **Next.js 15.x** using the App Router.
+  **Next.js Version Compatibility:** This quickstart uses **Next.js 15** which is fully supported by the Auth0 SDK. Next.js 16 is also compatible but requires the `--legacy-peer-deps` flag during installation (see Step 2 for details).
 </Note>
 
 
@@ -674,7 +685,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     Create a new Next.js project for this Quickstart
 
     ```shellscript
-    npx create-next-app@latest auth0-nextjs --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --yes
+    npx create-next-app@15 auth0-nextjs --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --yes
     ```
 
     Open the project
@@ -682,13 +693,32 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     ```shellscript
     cd auth0-nextjs
     ```
+    
+    <Note>
+      We're using `create-next-app@15` to create a Next.js 15 project, which is fully supported by the Auth0 SDK. If you prefer to use Next.js 16 or already have a Next.js 16 project, you'll need to use `--legacy-peer-deps` when installing the Auth0 SDK in Step 2.
+    </Note>
   </Step>
   <Step title="Install the Auth0 Next.js SDK" stepNumber={2}>
     ```shellscript
     npm install @auth0/nextjs-auth0
     ```
+    
+    <Note>
+      **For Next.js 16 users:** If you're using Next.js 16 (or upgraded to it), install with the `--legacy-peer-deps` flag:
+      ```shellscript
+      npm install @auth0/nextjs-auth0 --legacy-peer-deps
+      ```
+      The `--legacy-peer-deps` flag is needed because Next.js 16 support is pending in the SDK. The SDK works correctly with Next.js 16 using this flag.
+    </Note>
   </Step>
-  <Step title="Setup your Auth0 App" stepNumber={3}>
+  <Step title="Create project files" stepNumber={3}>
+    Create all necessary directories and files for Auth0 integration:
+
+    ```shellscript
+    mkdir -p src/lib src/components && touch src/lib/auth0.ts src/middleware.ts src/components/LoginButton.tsx src/components/LogoutButton.tsx src/components/Profile.tsx
+    ```
+  </Step>
+  <Step title="Setup your Auth0 App" stepNumber={4}>
     Next up, you need to create a new app on your Auth0 tenant and add the environment variables to your project.
 
     You can choose to do this automatically by running a CLI command or do it manually via the Dashboard:
@@ -709,7 +739,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
       </Tab>
 
       <Tab title="Dashboard">
-        Before you start, create a `.env.local` file on your project's root directory
+        Create a `.env.local` file on your project's root directory:
 
         ```shellscript .env.local
         AUTH0_DOMAIN=YOUR_AUTH0_APP_DOMAIN
@@ -719,12 +749,26 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
         APP_BASE_URL=http://localhost:3000
         ```
 
+        **Generate a secure AUTH0_SECRET:**
+        ```shellscript
+        openssl rand -hex 32
+        ```
+        
+        Copy the output and replace `YOUR_LONG_RANDOM_SECRET_HERE` in `.env.local`. This must be exactly 64 hexadecimal characters.
+
+        Then configure your Auth0 application:
+
+        Then configure your Auth0 application:
+
         1. Head to the [Auth0 Dashboard](https://manage.auth0.com/dashboard/)
         2. Click on **Applications** > **Applications** > **Create Application**
         3. In the popup, enter a name for your app, select `Regular Web Application` as the app type and click **Create**
         4. Switch to the **Settings** tab on the Application Details page
         5. Replace `YOUR_AUTH0_APP_DOMAIN`, `YOUR_AUTH0_APP_CLIENT_ID`, and `YOUR_AUTH0_APP_CLIENT_SECRET` in the `.env.local` file with the **Domain**, **Client ID**, and **Client Secret** values from the dashboard
-        6. Generate `YOUR_LONG_RANDOM_SECRET_HERE` using: `openssl rand -hex 32` (Mac/Linux) or use an online generator
+        
+        <Warning>
+          **Critical:** If you change the `AUTH0_SECRET` after the app has been running, you must clear your browser cookies for localhost. Old session cookies encrypted with the previous secret will cause a `JWEDecryptionFailed` error.
+        </Warning>
 
         Finally, on the **Settings** tab of your Application Details page, configure the following URLs:
 
@@ -753,19 +797,19 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
       </Tab>
     </Tabs>
   </Step>
-  <Step title="Create the Auth0 configuration" stepNumber={4}>
-    Create `lib/auth0.ts`:
+  <Step title="Create the Auth0 configuration" stepNumber={5}>
+    Add the Auth0 client code to `src/lib/auth0.ts`:
 
-    ```typescript lib/auth0.ts lines
+    ```typescript src/lib/auth0.ts lines
     import { Auth0Client } from '@auth0/nextjs-auth0/server';
     
     export const auth0 = new Auth0Client();
     ```
   </Step>
-  <Step title="Add middleware" stepNumber={5}>
-    Create `middleware.ts` in your project root:
+  <Step title="Add middleware" stepNumber={6}>
+    Add the middleware code to `src/middleware.ts`:
 
-    ```typescript middleware.ts expandable lines
+    ```typescript src/middleware.ts expandable lines
     import type { NextRequest } from "next/server";
     import { auth0 } from "./lib/auth0";
     
@@ -787,7 +831,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     ```
 
     <Note>
-      If you're using a `src/` directory, the `middleware.ts` file must be created inside the `src/` directory.
+      Since we're using a `src/` directory, the `middleware.ts` file is created inside `src/`. If you're not using a `src/` directory, create it in the project root instead.
     </Note>
     <Info>
       This middleware automatically mounts the following authentication routes:
@@ -800,18 +844,12 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
       - `/auth/backchannel-logout` - Backchannel logout route
     </Info>
   </Step>
-  <Step title="Create Login, Logout and Profile Components" stepNumber={6}>
-    Create the components directory and files:
-
-    ```shellscript
-    mkdir -p components && touch components/LoginButton.tsx && touch components/LogoutButton.tsx && touch components/Profile.tsx
-    ```
-
-    Add the component code:
+  <Step title="Create Login, Logout and Profile Components" stepNumber={7}>
+    Add the component code to the files created in Step 3:
 
     <AuthCodeGroup>
 
-    ```typescript components/LoginButton.tsx lines
+    ```typescript src/components/LoginButton.tsx lines
     "use client";
     
     export default function LoginButton() {
@@ -827,7 +865,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     ```
 
     
-    ```typescript components/LogoutButton.tsx lines
+    ```typescript src/components/LogoutButton.tsx lines
     "use client";
     
     export default function LogoutButton() {
@@ -843,10 +881,10 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     ```
 
     
-    ```typescript components/Profile.tsx expandable lines
+    ```typescript src/components/Profile.tsx expandable lines
     "use client";
     
-    import { useUser } from "@auth0/nextjs-auth0";
+    import { useUser } from "@auth0/nextjs-auth0/client";
     
     export default function Profile() {
       const { user, isLoading } = useUser();
@@ -881,7 +919,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
 
     </AuthCodeGroup>
   </Step>
-  <Step title="Update your main page" stepNumber={7}>
+  <Step title="Update your main page" stepNumber={8}>
     Replace `src/app/page.tsx` with:
 
     ```typescript src/app/page.tsx expandable lines
@@ -898,7 +936,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
         <div className="app-container">
           <div className="main-card-wrapper">
             <img
-              src="https://cdn.auth0.com/website/auth0-logo-dark.svg"
+              src="https://cdn.auth0.com/quantum-assets/dist/latest/logos/auth0/auth0-lockup-en-ondark.png"
               alt="Auth0 Logo"
               className="auth0-logo"
             />
@@ -926,12 +964,12 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     }
     ```
   </Step>
-  <Step title="Update layout with Auth0Provider (OPTIONAL)" stepNumber={8}>
+  <Step title="Update layout with Auth0Provider (OPTIONAL)" stepNumber={9}>
     Update `src/app/layout.tsx` to wrap your app with the `Auth0Provider`:
 
     ```typescript src/app/layout.tsx lines
     import type { Metadata } from "next";
-    import { Auth0Provider } from "@auth0/nextjs-auth0";
+    import { Auth0Provider } from "@auth0/nextjs-auth0/client";
     import "./globals.css";
     
     export const metadata: Metadata = {
@@ -960,7 +998,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
       In v4, the Auth0Provider is **optional**. You only need it if you want to pass an initial user during server rendering to be available to the `useUser()` hook.
     </Note>
   </Step>
-  <Step title="Add styling" stepNumber={9}>
+  <Step title="Add styling" stepNumber={10}>
     Replace `src/app/globals.css` with modern Auth0-branded styling:
 
     ```css src/app/globals.css expandable lines
@@ -1189,7 +1227,7 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
     }
     ```
   </Step>
-  <Step title="Run your app" stepNumber={10}>
+  <Step title="Run your app" stepNumber={11}>
     ```shellscript
     npm run dev
     ```
@@ -1205,6 +1243,56 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
 
   You should now have a fully functional Auth0 login page running on your [localhost](http://localhost:3000/)
 </Check>
+
+---
+
+## Troubleshooting
+
+<Accordion title="JWEDecryptionFailed Error">
+  If you see a `JWEDecryptionFailed: decryption operation failed` error, this is caused by either an invalid `AUTH0_SECRET` or an old session cookie encrypted with a different secret.
+
+  **Solution:**
+  
+  1. Generate a new secret using:
+  ```shellscript
+  openssl rand -hex 32
+  ```
+  
+  2. Update your `.env.local` file:
+  ```
+  AUTH0_SECRET=<your-new-64-character-hex-string>
+  ```
+  
+  3. **Clear your browser cookies** for `localhost:3000`:
+     - Chrome/Edge: Press `F12` → Application tab → Cookies → Delete all cookies for localhost
+     - Firefox: Press `F12` → Storage tab → Cookies → Delete all cookies for localhost
+     - Safari: Develop menu → Show Web Inspector → Storage tab → Cookies → Delete all
+  
+  4. Restart your dev server:
+  ```shellscript
+  npm run dev
+  ```
+  
+  The secret must be exactly 32 bytes (64 hexadecimal characters). The error occurs when the app tries to decrypt an existing session cookie that was encrypted with a different secret.
+</Accordion>
+
+<Accordion title="404 Error on /auth/login">
+  If clicking login takes you to a 404 page, check these common issues:
+
+  1. **Middleware location:** Ensure `src/middleware.ts` exists in the correct location
+  2. **Middleware code:** Verify the middleware matches the code in Step 6
+  3. **Restart server:** After creating middleware, restart the dev server
+  4. **Check imports:** Make sure `import { auth0 } from "./lib/auth0"` path is correct
+</Accordion>
+
+<Accordion title="Module Not Found Errors">
+  If you see "Cannot find module '@/components/LoginButton'" or similar errors:
+
+  1. **Verify files exist:** Check that all files from Step 3 were created
+  2. **Check paths:** Ensure components are in `src/components/` directory
+  3. **Restart TypeScript:** Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows) and run "TypeScript: Restart TS Server"
+  4. **Verify imports:** Make sure you're using `@/components/*` (not `~/components/*`)
+</Accordion>
 
 ---
 
@@ -1231,6 +1319,13 @@ This quickstart demonstrates how to add Auth0 authentication to a Next.js applic
   | `/auth/profile`            | Get user profile          |
   | `/auth/access-token`       | Get access token          |
   | `/auth/backchannel-logout` | Handle backchannel logout |
+
+  <Note>
+    If you're experiencing 404 errors on these routes, ensure that:
+    1. The `middleware.ts` file is created in the correct location (project root, or inside `src/` if using a `src/` directory)
+    2. The middleware is properly configured with the matcher pattern shown in Step 5
+    3. The development server was restarted after creating the middleware file
+  </Note>
 </Accordion>
 
 <Accordion title="Server-Side Authentication">
