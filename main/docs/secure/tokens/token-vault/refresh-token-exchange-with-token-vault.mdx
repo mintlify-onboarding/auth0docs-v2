@@ -11,7 +11,7 @@ title: Refresh Token Exchange with Token Vault
 'twitter:title': Refresh Token Exchange with Token Vault
 ---
 
-Token Vault supports the refresh token exchange, which enables a client to access the Token Vault to exchange an Auth0 refresh token (subject token) for an external provider’s access token (requested token).
+Token Vault supports the refresh token exchange, which enables a client application to access the Token Vault to exchange an Auth0 refresh token (subject token) for an external provider’s access token (requested token).
 
 Because refresh tokens are exchanged only on a secure backchannel between the client and the authorization server, they are never exposed to the end-user. As a result, clients can maintain a user’s session without requiring the user to re-authorize the connection.
 
@@ -47,7 +47,7 @@ While Token Vault does not support refresh token rotation, you can use [DPoP](/d
 
 The application can use a valid Auth0 refresh token to request a Google access token from the Token Vault with the scopes granted in the login flow. This process allows the application to get a new access token without requiring the user to re-authorize the connection.
 
-To perform the refresh token exchange, the application calls Auth0 SDKs to make a POST request to the /oauth/token endpoint with the following parameters:
+To perform the refresh token exchange, the application calls Auth0 SDKs to make a `POST` request to the `/oauth/token` endpoint with the following parameters:
 
 ```bash lines
 curl --request POST 'https://{yourDomain}/oauth/token' \

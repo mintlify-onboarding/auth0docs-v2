@@ -189,7 +189,7 @@ You can configure Connected Accounts with the [Auth0 Dashboard](https://manage.a
 To configure Connected Accounts with the Auth0 Dashboard:
 1. Navigate to **Authentication > Social Connections** or **Enterprise Connections**.
 2. Select **Create Connection** or select an existing connection.
-3. In **Purpose**, toggle on **Use for Connected Accounts for Token Vault**. Depending on your **Purpose** setting, Auth0 may enable offline access by default, allowing the client application to obtain an Auth0 refresh token. To learn more, read [User authentication vs Connected Accounts](#user-authentication-vs-connected-accounts).
+3. In **Purpose**, toggle on **Use for Connected Accounts for Token Vault**. Depending on your **Purpose** setting, Auth0 may enable `offline_access` by default, allowing the client application to obtain an Auth0 refresh token. To learn more, read [User authentication vs Connected Accounts](#user-authentication-vs-connected-accounts).
 5. Click **Save**.
 
 </Tab><Tab title="Management API">
@@ -261,7 +261,7 @@ curl -s -X POST "https://{yourDomain}/oauth/token" \
 To initiate a Connected Accounts request, make a `POST` request to the My Account API’s `/me/v1/connected-accounts/connect` endpoint with the following parameters:
 
 <Note>
-For a Google social connection, make sure you select **Offline Access** in the Auth0 Dashboard when configuring your connection. This is required for your client application to fetch a refresh token from the Auth0 Authorization Server
+For a Google social connection, make sure you select `offline_access` in the Auth0 Dashboard when configuring your connection. This is required for your client application to fetch a refresh token from the Auth0 Authorization Server
 </Note>
 
 <table class="table"><thead>
