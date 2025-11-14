@@ -14,7 +14,7 @@ title: Token Vault
 
 Token Vault simplifies how your applications access external APIs on a user's behalf. When you integrate with Token Vault, you gain a secure way to manage application access to a wide range of external services and their APIs, such as Google, GitHub, and Microsoft.
 
-When a user connects with a [supported external provider](#supported-external-providers) and authorizes access using <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> scopes, Auth0 automatically adds that connected account to the user profile. A connected account enables applications to access external APIs through a unified Auth0 user profile. To learn more, read [Connected Accounts for Token Vault](/docs/secure/tokens/connected-accounts-for-token-vault).
+When a user connects with a [supported external provider](#supported-external-providers) and authorizes access using <Tooltip tip="OAuth 2.0: Authorization framework that defines authorization protocols and workflows." cta="View Glossary" href="/docs/glossary?term=OAuth">OAuth</Tooltip> scopes, Auth0 automatically adds that connected account to the user profile. A connected account enables applications to access external APIs through a unified Auth0 user profile. To learn more, read [Connected Accounts for Token Vault](/docs/secure/tokens/token-vault/connected-accounts-for-token-vault).
 
 Auth0 stores the access and refresh tokens for each connected account in the Token Vault. To retrieve these stored credentials from Token Vault, your application performs a [secure token exchange](#supported-token-exchanges). This token exchange enables your application to get the necessary tokens to call an external API, removing the need for you to build and maintain custom integrations with each provider.
 
@@ -70,12 +70,12 @@ Applications can access Token Vault using the following token exchanges:
 </thead>
 <tbody>
 <tr>
-<td><a href="/docs/secure/tokens/token-vault/refresh-token-exchange-with-token-vault">Refresh Token Exchange</a></td>
+<td><a href="/docs/secure/tokens/token-vault/refresh-token-exchange-with-token-vault">Refresh token exchange</a></td>
 <td>Exchanges an Auth0 refresh token for an external provider’s access token.</td>
 <td>Applications that need to maintain a user's session and access external APIs when the user isn't actively using the application, such as web, mobile, and native applications.</td>
 </tr>
 <tr>
-<td><a href="/docs/secure/tokens/token-vault/call-apis-with-token-vault">Access token exchange</a></td>
+<td><a href="/docs/secure/tokens/token-vault/access-token-exchange-with-token-vault">Access token exchange</a></td>
 <td>Exchanges an Auth0 access token for an external provider’s access token.</td>
 <td>APIs or microservices that need to exchange access tokens they’ve received from other services or applications, such as a Single-Page Application (SPA).</td>
 </tr>

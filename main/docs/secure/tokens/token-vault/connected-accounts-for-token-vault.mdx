@@ -70,12 +70,12 @@ You can enable user authentication, Connected Accounts, or both for supported so
 <tr>
 <td>Connected Accounts for Token Vault</td>
 <td>The connection uses the Connected Accounts flow to retrieve and store the access tokens for the connection in the Token Vault. The connection does not use the `/authorize` login flow to authenticate users, and is excluded from the list of valid identity providers.</td>
-<td>Use the Auth0 Dashboard or Management API to select the desired scopes for your connection. At runtime, any scopes included in the `scopes` parameter in the authorization request take precedence over the scopes selected in the Auth0 Dashboard.<br/><br/>**Note:** By default, `offline_access` is enabled for the connection.</td>
+<td>Use the Auth0 Dashboard or Management API to pass the desired scopes to your connection. At runtime, any scopes included in the `scopes` parameter in the authorization request take precedence over the scopes selected in the Auth0 Dashboard.<br/><br/>**Note:** By default, `offline_access` is enabled for the connection.</td>
 </tr>
 <tr>
 <td>Authentication and Connected Accounts for Token Vault</td>
 <td>The connection uses the `/authorize` login flow to authenticate users as a valid identity provider. It also uses the Connected Accounts flow to retrieve and store access tokens for the connection in the Token Vault.</td>
-<td>Use the Auth0 Dashboard and Management API to pass scopes to the connection using the `scopes` parameter in the authorization request. At runtime, any scopes included in the `scopes` parameter take precedence over the scopes selected in the Auth0 Dashboard.<br/><br/>**Note:** The user is prompted to consent to enabling offline_access. If the user accepts, `offline_access` is enabled for the connection.</td>
+<td>Use the Auth0 Dashboard and Management API to pass the desired scopes to the connection. At runtime, any scopes included in the `scopes` parameter take precedence over the scopes selected in the Auth0 Dashboard.<br/><br/>**Note:** The user is prompted to consent to enabling `offline_access`. If the user accepts, `offline_access` is enabled for the connection.</td>
 </tr>
 </tbody>
 </table>
@@ -99,11 +99,11 @@ When a user logs in via a supported external provider through Auth0, they initia
 5. After the user successfully authorizes the connection, the external provider redirects the user to the My Account API, which redirects the user to the client application using the `redirect_uri` with a single-use `connect_code`. 
 6. The client application presents the `connect_code`, `code_verifier` (if applicable), and the original `auth_session` to the My Account API by making a `POST` request to the `/me/v1/connected-accounts/complete` endpoint. To learn more, read [Complete Connected Accounts request](#complete-connected-accounts-request). 
 7. The My Account API validates the request by confirming:
-  * The `auth_session` matches the ID originally issued for the user
-  * The request is coming from the same device that initiated the Connected Accounts flow
-  * The DPoP Proof JWT (if configured)
-  * The single-use `connect_code`
-  * The code_verifier (if using the PKCE flow)
+    * The `auth_session` matches the ID originally issued for the user
+    * The request is coming from the same device that initiated the Connected Accounts flow
+    * The DPoP Proof JWT (if configured)
+    * The single-use `connect_code`
+    * The code_verifier (if using the PKCE flow)
 8. After successful validation, the Auth0 Authorization Server adds the account to the `connected_accounts` array on the user profile and stores the access and refresh tokens for the connected account in the Token Vault.
 9. My Account API completes the flow by sending a `200` status code back to the client application, indicating that the account was successfully connected.
 
@@ -122,14 +122,14 @@ To use Connected Accounts, configure the My Account API in the Auth0 Dashboard:
 2. Once activated, select **Auth0 My Account API** and then the **Applications** tab.
 3. Toggle your client application to authorize it to access the My Account API. 
 4. In the dropdown menu, select the [Connected Accounts scopes](/docs/manage-users/my-account-api#scope) for the application in the dropdown.
-Select Update. This creates a [client grant](/docs/get-started/applications/application-access-to-apis-client-grants) that allows your client application to access the My Account API with the Connected Accounts scopes on the user’s behalf. 
-5. If you’re using [Multi-Resource Refresh Token](/docs/secure/tokens/refresh-tokens/multi-resource-refresh-token#multi-resource-refresh-token), navigate to the **Settings** tab. Under **Access Settings**, select **Allow Skipping User Consent**.
+5. Select **Update**. This creates a [client grant](/docs/get-started/applications/application-access-to-apis-client-grants) that allows your client application to access the My Account API with the Connected Accounts scopes on the user’s behalf. 
+6. If you’re using [Multi-Resource Refresh Token](/docs/secure/tokens/refresh-tokens/multi-resource-refresh-token#multi-resource-refresh-token), navigate to the **Settings** tab. Under **Access Settings**, select **Allow Skipping User Consent**.
 
 ### Configure Multi-Resource Refresh Token
 
 Configure Multi-Resource Refresh Token (MRRT) to get a single long-lived refresh token that can be exchanged for new My Account API access tokens and other APIs without requiring the user to re-authenticate.
 
-While you can use any [authentication and authorization flow](/docs/get-started/authentication-and-authorization-flow) that uses the `/authorize` endpoint to get an access token for the My Account API, Auth0 recommends using MRRT for native applications with the Authorization Code Flow with PKCE.
+While you can use any [authentication and authorization flow](/docs/get-started/authentication-and-authorization-flow) that uses the `/authorize` endpoint to get an access token for the My Account API, Auth0 recommends using MRRT for native applications with the Authorization Code Flow with PKCE. By default, the [AI Framework SDKs](https://auth0.com/ai/docs/sdks/overview) use MRRT to get an access token for the My Account API.
 
 You can configure MRRT with the [Auth0 Dashboard](https://manage.auth0.com) or the [Management API](https://auth0.com/docs/api/management/v2).
 
@@ -189,8 +189,7 @@ You can configure Connected Accounts with the [Auth0 Dashboard](https://manage.a
 To configure Connected Accounts with the Auth0 Dashboard:
 1. Navigate to **Authentication > Social Connections** or **Enterprise Connections**.
 2. Select **Create Connection** or select an existing connection.
-3. In **Purpose**, toggle on **Connected Accounts for Token Vault** or **Authentication and Connected Accounts for Token Vault**.
-4. Depending on your **Purpose** setting, Auth0 may enable offline access by default so the client application can get an Auth0 refresh token. To learn more, read [User authentication vs Connected Accounts](#user-authentication-vs-connected-accounts).
+3. In **Purpose**, toggle on **Use for Connected Accounts for Token Vault**. Depending on your **Purpose** setting, Auth0 may enable offline access by default, allowing the client application to obtain an Auth0 refresh token. To learn more, read [User authentication vs Connected Accounts](#user-authentication-vs-connected-accounts).
 5. Click **Save**.
 
 </Tab><Tab title="Management API">
@@ -198,7 +197,7 @@ To configure Connected Accounts with the Auth0 Dashboard:
 To configure Connected Accounts with the Management API, make a `PATCH` request to the `/connections/{connectionId}` endpoint to set `connected_accounts` to `true`:
 
 ```bash lines
-curl -L -X PATCH "https://${account.namespace}/api/v2/connections/{connectionId}" \
+curl -L -X PATCH "https://{yourDomain}/api/v2/connections/{connectionId}" \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
 -H "Authorization: Bearer <YOUR_MANAGEMENT_API_TOKEN>" \
@@ -211,9 +210,7 @@ curl -L -X PATCH "https://${account.namespace}/api/v2/connections/{connectionId}
 
 Before initiating a Connected Accounts request, [get an access token](/docs/manage-users/my-account-api#scope) for the My Account API with the Connected Accounts scopes.
 
-While you can use any [authentication and authorization flow](/docs/get-started/authentication-and-authorization-flow) that uses the `/authorize` endpoint, Auth0 recommends using [Multi-Resource Refresh Token (MRRT)](/docs/secure/tokens/refresh-tokens/multi-resource-refresh-token) with the Authorization Code Flow with PKCE for public clients. By default, the [AI Framework SDKs](https://auth0.com/ai/docs/sdks/overview) use MRRT to get an access token for the My Account API.
-
-The following sections explain how to use Multi-Resource Refresh Token (MRRT) to get an access token for the My Account API.
+The following sections explain how to use [Multi-Resource Refresh Token (MRRT)](/docs/secure/tokens/refresh-tokens/multi-resource-refresh-token) to get an access token for the My Account API.
 
 ### Fetch a refresh token
 
@@ -222,14 +219,14 @@ After [configuring MRRT](#configure-multi-resource-refresh-token) for the client
 The following is an authorization code flow request for a confidential client that includes the `offline_scope` to return a refresh token and a single-use authorization code for the `https://my-example-api.com`: 
 
 ```bash lines
-open "https://${account.namespace}/authorize?client_id=$<CLIENT_ID>&response_type=code&prompt=login&scope=openid%20profile%20offline_access&redirect_uri=<REDIRECT_URI>&state=<STATE>&audience=https://my-example-api.com"
+open "https://{yourDomain}/authorize?client_id=$<CLIENT_ID>&response_type=code&prompt=login&scope=openid%20profile%20offline_access&redirect_uri=<REDIRECT_URI>&state=<STATE>&audience=https://my-example-api.com"
 ```
 
 Exchange the single-use authorization code for a refresh token at the `/token` endpoint:
 
 ```bash lines
 curl -s --request POST \
-  --url "https://${account.namespace}/oauth/token" \
+  --url "https://{yourDomain}/oauth/token" \
   --header 'Content-Type: application/json' \
   --data-binary @- <<EOF | jq -r '.refresh_token'
 {
@@ -249,13 +246,13 @@ EOF
 Once you’ve obtained a refresh token, exchange it for an access token with a difference audience (the My Account API) and the Connected Accounts scopes using the refresh token grant type:
 
 ```bash lines
-curl -s -X POST "https://${account.namespace}/oauth/token" \
+curl -s -X POST "https://{yourDomain}/oauth/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   --data-urlencode "grant_type=refresh_token" \
   --data-urlencode "client_id=<CLIENT_ID>" \
   --data-urlencode "client_secret=<CLIENT_SECRET>" \
   --data-urlencode "refresh_token=<REFRESH_TOKEN>" \
-  --data-urlencode "audience=https://${account.namespace}/me/" \
+  --data-urlencode "audience=https://{yourDomain}/me/" \
   --data-urlencode "scope=openid profile offline_access create:me:connected_accounts read:me:connected_accounts delete:me:connected_accounts"
 ```
 
@@ -264,7 +261,7 @@ curl -s -X POST "https://${account.namespace}/oauth/token" \
 To initiate a Connected Accounts request, make a `POST` request to the My Account API’s `/me/v1/connected-accounts/connect` endpoint with the following parameters:
 
 <Note>
-For a Google social connection, make sure you enable offline access in the Auth0 Dashboard.
+For a Google social connection, make sure you select **Offline Access** in the Auth0 Dashboard when configuring your connection. This is required for your client application to fetch a refresh token from the Auth0 Authorization Server
 </Note>
 
 <table class="table"><thead>
@@ -279,7 +276,7 @@ For a Google social connection, make sure you enable offline access in the Auth0
 <td>Name of connection. For a Google social connection, set to <code>google-oauth2</code>.</td>
 </tr>
 <tr>
-<td>redirect_uri</td>
+<td><code>redirect_uri</code></td>
 <td>The callback URL of your client application.</td>
 </tr>
 <tr>
@@ -288,13 +285,13 @@ For a Google social connection, make sure you enable offline access in the Auth0
 </tr>
 <tr>
 <td><code>scopes</code></td>
-<td>(Optional) The scopes passed to the external provider as an array of strings.<br/><br/>If used to pass scopes for a Google social connection, include `openid` and `profile` at minimum. At runtime, any scopes included in the `scopes` parameter take precedence over the scopes selected in the Auth0 Dashboard.</td>
+<td>(Optional) The scopes passed to the external provider as an array of strings.<br/><br/>If used to pass scopes for a Google social connection, include `openid` and `profile` at a minimum. At runtime, any scopes included in the `scopes` parameter take precedence over the scopes selected in the Auth0 Dashboard.</td>
 </tr>
 </tbody>
 </table>
 
 ```bash lines
-curl --request POST "https://${account.namespace}/me/v1/connected-accounts/connect" \
+curl --request POST "https://{yourDomain}/me/v1/connected-accounts/connect" \
 --header 'Content-Type: application/json' \
 --header "Authorization: Bearer <MY_ACCOUNT_API_TOKEN>" \
 --data '{
@@ -338,7 +335,7 @@ If successful, the My Account API returns a response like the following:
 ```json
 {
   "auth_session": "PKM-CYkdx2FyLb4Oob4ED91cSE7i_XJ4SVJByik0xKQxz9CgUZ5JlYr-aMPty0Xr",
-  "connect_uri": "https://${account.namespace}.us.auth0.com/connect",
+  "connect_uri": "https://{yourDomain}.us.auth0.com/connect",
   "connect_params": {
     "ticket": "9375f326-5846-4b57-ae8b-8042573f7c1f"
   },
@@ -375,9 +372,9 @@ To complete a Connected Accounts request, make a `POST` request to the `/me/v1/c
 </table>
 
 ```bash lines
-curl --location "https://${account.namespace}/me/v1/connected-accounts/complete" \
+curl --location "https://{yourDomain}/me/v1/connected-accounts/complete" \
 --header 'Content-Type: application/json' \
---header "Authorization: Bearer $ME_TOKEN" \
+--header "Authorization: Bearer <MY_ACCOUNT_API_TOKEN>" \
 --data '{
     "auth_session": "<AUTH_SESSION>",
     "connect_code": "<CONNECT_CODE>",
@@ -446,7 +443,7 @@ Before using the `/connected-accounts` collection, [get an access token for Conn
 Make a `GET` request to the `/me/v1/connected-accounts/connections` endpoint to return a list of connections that are linked to the user profile: 
 
 ```bash lines
-curl -X GET --location "https://${account.namespace}/me/v1/connected-accounts/connections" \
+curl -X GET --location "https://{yourDomain}/me/v1/connected-accounts/connections" \
 --header 'Content-Type: application/json' \
 --header "Authorization: Bearer <MY_ACCOUNT_API_TOKEN>"
 ```
@@ -486,7 +483,7 @@ If successful, the My Accounts API returns a response like the following:
 Make a `GET` request to the `/me/v1/connected-accounts/accounts` endpoint to return a list of connected accounts linked to the user profile:
 
 ```bash lines
-curl -X GET --location "https://${account.namespace}/me/v1/connected-accounts/accounts" \
+curl -X GET --location "https://{yourDomain}/me/v1/connected-accounts/accounts" \
 --header 'Content-Type: application/json' \
 --header "Authorization: Bearer <MY_ACCOUNT_API_TOKEN>"
 ```
@@ -529,7 +526,7 @@ If successful, the My Accounts API returns a response like the following:
 You can also use the Management API to return a list of connected accounts for a user profile by making a `GET` request to the `/users/{userId}/connected-accounts` endpoint:
 
 ```bash lines
-curl -X GET --location "https://${account.namespace}/api/v2/users/{userId}/connected-accounts" \
+curl -X GET --location "https://{yourDomain}/api/v2/users/{userId}/connected-accounts" \
 --header 'Content-Type: application/json' \
 --header "Authorization: Bearer <YOUR_MANAGEMENT_API_TOKEN>"
 ```
@@ -565,7 +562,7 @@ If successful, the Management API returns a response like the following:
 Make a `GET` request to the `/me/v1/connected-accounts/accounts` endpoint and pass the connection name as a query parameter to return a list of connected accounts filtered by a given connection linked to a user profile:
 
 ```bash lines
-curl -X GET --location "https://${account.namespace}/me/v1/connected-accounts/accounts?connection={connectionName}" \
+curl -X GET --location "https://{yourDomain}/me/v1/connected-accounts/accounts?connection={connectionName}" \
 --header 'Content-Type: application/json' \
 --header "Authorization: Bearer <MY_ACCOUNT_API_TOKEN>"
 ```
@@ -599,7 +596,7 @@ If successful, the My Accounts API returns a response like the following, filter
 Make a `DELETE` request to the `/me/v1/connected-accounts/accounts/{connectedAccountId}` endpoint to delete a connected account for a given ID:
 
 ```bash lines
-curl -X DELETE --location "https://${account.namespace}/me/v1/connected-accounts/accounts/{connectedAccountId}" \
+curl -X DELETE --location "https://{yourDomain}/me/v1/connected-accounts/accounts/{connectedAccountId}" \
 --header 'Content-Type: application/json' \
 --header "Authorization: Bearer <MY_ACCOUNT_API_TOKEN>"
 ```
