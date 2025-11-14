@@ -33,7 +33,7 @@
   },
   "integrations": {
     "gtm": {
-        "tagId": "GTM-W7FRLJ"
+      "tagId": "GTM-W7FRLJ"
     }
   },
   "navigation": {
@@ -24169,6 +24169,10 @@
       "destination": "/docs/quickstart/spa/angular"
     },
     {
+      "source": "/docs/quickstart/webapp/nextjs/01-login",
+      "destination": "/docs/quickstart/webapp/nextjs"
+    },
+    {
       "source": "/docs/quickstart/webapp/nextjs/interactive",
       "destination": "/docs/quickstart/webapp/nextjs"
     },
@@ -24193,7 +24197,7 @@
       "destination": "/docs/ja-jp/get-started/auth0-for-ai-agents"
     },
     {
-     "source": "/docs/secure/security-guidance/measures-against-application-impersonation",
+      "source": "/docs/secure/security-guidance/measures-against-application-impersonation",
       "destination": "/docs/secure/security-guidance/measures-against-app-impersonation"
     }
   ]
