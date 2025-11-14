@@ -6,60 +6,44 @@ Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:19
 
 ## Properties
 
-<ParamField body='public\_key' type='object'>
-> **public\_key**: `object`
+<ParamField body='public\_key' type="object">
 
-Defined in: packages/auth0-acul-js/dist/types/interfaces/models/screen.d.ts:20
+<Expandable title="properties">
+  <ParamField body='user' type='object'>
 
-**user**
+  </ParamField>
+  <ParamField body='user.id' type='string'>
 
-> **user**: `object`
+  </ParamField>
+  <ParamField body='user.name' type='string'>
 
-**user.id**
+  </ParamField>
+  <ParamField body='user.displayName' type='string'>
 
-> **id**: `string`
+  </ParamField>
+  <ParamField body='rp' type='object'>
 
-**user.name**
+  </ParamField>
+  <ParamField body='rp.id' type='string'>
 
-> **name**: `string`
+  </ParamField>
+  <ParamField body='rp.name' type='string'>
 
-**user.displayName**
+  </ParamField>
+  <ParamField body='challenge' type='string'>
 
-> **displayName**: `string`
+  </ParamField>
+  <ParamField body='pubKeyCredParams' type='[{ type: string; alg: number; }]'>
 
-**rp**
+  </ParamField>
+  <ParamField body='authenticatorSelection' type='object'>
 
-> **rp**: `object`
+  </ParamField>
+  <ParamField body='authenticatorSelection.residentKey' type='string'>
 
-**rp.id**
+  </ParamField>
+  <ParamField body='authenticatorSelection.userVerification' type='string'>
 
-> **id**: `string`
-
-**rp.name**
-
-> **name**: `string`
-
-**challenge**
-
-> **challenge**: `string`
-
-**pubKeyCredParams**
-
-> **pubKeyCredParams**: \[\{ `type`: `string`; `alg`: `number`; \}\]
-
-**authenticatorSelection**
-
-> **authenticatorSelection**: `object`
-
-**authenticatorSelection.residentKey**
-
-> **residentKey**: `string`
-
-**authenticatorSelection.userVerification**
-
-> **userVerification**: `string`
-
-**authenticatorSelection.authenticatorAttachment?**
-
-> `optional` **authenticatorAttachment**: `string`
+  </ParamField>
+</Expandable>
 </ParamField>

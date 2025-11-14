@@ -12,23 +12,20 @@ Interface for untrusted data specific to mfa-sms-challenge screen
 
 ## Properties
 
-<ParamField body='authorizationParams' type='{[key:  ext-${string} ]: string; login_hint?: string; screen_hint?: string; ui_locales?: string; } '>
-> **authorizationParams**: \{\[`key`: `` `ext-${string}` ``\]: `string`; `login_hint?`: `string`; `screen_hint?`: `string`; `ui_locales?`: `string`; \} \| `null`
+<ParamField body='authorizationParams' type="object">
 
-Defined in: packages/auth0-acul-js/dist/types/interfaces/models/untrusted-data.d.ts:17
+<Expandable title="properties">
+  <ParamField body='key' type='ext-${string'>
 
-**Inherited from**
-
-[`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/UntrustedDataMembers).[`authorizationParams`](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/UntrustedDataMembers.md#authorizationparams)
-
+  </ParamField>
+</Expandable>
 </ParamField>
 
-<ParamField body='submittedFormData' type='{ rememberDevice: boolean; } '>
-> **submittedFormData**: \{ `rememberDevice`: `boolean`; \} \| `null`
+<ParamField body='submittedFormData' type="object">
 
-Defined in: packages/auth0-acul-js/dist/types/interfaces/screens/mfa-sms-challenge.d.ts:48
+<Expandable title="properties">
+  <ParamField body='rememberDevice' type='boolean'>
 
-**Overrides**
-
-[`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/UntrustedDataMembers).[`submittedFormData`](/docs/customize/login-pages/advanced-customizations/reference/react-sdk/API-Reference/Types/interfaces/UntrustedDataMembers.md#submittedformdata)
+  </ParamField>
+</Expandable>
 </ParamField>
