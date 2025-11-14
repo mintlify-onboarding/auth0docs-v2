@@ -57,9 +57,9 @@ Only certain types of clients can use the Token Vault grant type:
 To enable Token Vault for an application, make a `PATCH` call to the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint to add the `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token` grant type to the client JSON object:
 
 ```bash lines
-curl --location --request PATCH 'https://{tenantDomain}/api/v2/clients/{clientId}' \
+curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer {your_management_api_access_token}' \
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_ACCESS_TOKEN>' \
   --data '{
     "grant_types": [
       "authorization_code",
@@ -140,7 +140,7 @@ To configure your SPA, make a `PATCH` call to the [Update a Client](/docs/api/ma
 ```bash lines
 curl --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer YOUR_MANAGEMENT_API_TOKEN' \
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_TOKEN>' \
   --data '{
     "grant_types": [
       "authorization_code"
@@ -169,7 +169,7 @@ To create a backend API using the Management API, make a `POST` request to the `
 ```bash lines 
 curl --request POST 'https://{yourDomain}/api/v2/resource-servers' \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer YOUR_MANAGEMENT_API_TOKEN' \
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_TOKEN>' \
   --data '{
     "name": "My API Resource Server",
     "identifier": "https://my-api.example.com",
@@ -212,7 +212,7 @@ The following code sample creates a Custom API Client with the same identifier a
 ```bash lines
 curl --request POST 'https://{yourDomain}/api/v2/clients' \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer YOUR_MANAGEMENT_API_TOKEN' \
+  --header 'Authorization: Bearer <YOUR_MANAGEMENT_API_TOKEN>' \
   --data '{
     "name": "Custom API Client",
     "app_type": "resource_server",
