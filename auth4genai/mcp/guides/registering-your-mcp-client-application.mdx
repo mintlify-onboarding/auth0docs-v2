@@ -113,7 +113,7 @@ For a client to interact with your server, the MCP specification requires you to
 
 1. **Use the `WWW-Authenticate` Header for 401 Errors**
 
-   When a client makes a request without a valid token, your server must return a `401 Unauthorized` status. Crucially, this response must include the `WWW-Authenticate` header, pointing to the metadata URL you configured above. This signals to the client that authentication is required and tells it exactly.
+   When a client makes a request without a valid token, your server must return a `401 Unauthorized` status. Crucially, this response must include the `WWW-Authenticate` header, pointing to the metadata URL you configured above. This signals to the client that authentication is required and tells it exactly where to obtain the authorization metadata.
 
 2. **Announce Your Auth Server with Protected Resource Metadata ([RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728))**
 
