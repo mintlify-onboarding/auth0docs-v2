@@ -1,0 +1,35 @@
+---
+title: "Type Alias: OnStatusChangeCallback"
+---
+
+<ParamField body="OnStatusChangeCallback" type='(remainingSeconds, isDisabled) => void'>
+{/*> **OnStatusChangeCallback** = (`remainingSeconds`, `isDisabled`) => `void`*/}
+
+Defined in: [interfaces/utils/resend-control.ts:6](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/interfaces/utils/resend-control.ts#L6)
+
+Callback function for status changes during resend countdown.
+
+<Expandable title="Parameters">
+<ParamField body='remainingSeconds' type='number'>
+`number`
+
+Number of seconds remaining in the countdown
+</ParamField>
+<ParamField body='isDisabled' type='boolean'>
+`boolean`
+
+Whether the resend functionality is currently disabled
+</ParamField>
+</Expandable>
+
+## Returns
+
+`void`
+
+
+<RequestExample>
+```ts
+export type OnStatusChangeCallback = (remainingSeconds: number, isDisabled: boolean) => void;
+```
+</RequestExample>
+</ParamField>

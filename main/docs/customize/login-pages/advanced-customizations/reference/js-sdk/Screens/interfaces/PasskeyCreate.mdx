@@ -1,0 +1,95 @@
+---
+title: "PasskeyCreate"
+---
+
+Defined in: [interfaces/models/screen.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/interfaces/models/screen.ts#L23)
+
+
+<RequestExample>
+```ts
+export interface PasskeyCreate {
+  public_key: {
+    user: {
+      id: string;
+      name: string;
+      displayName: string;
+    };
+    rp: {
+      id: string;
+      name: string;
+    };
+    challenge: string;
+    pubKeyCredParams: [
+      {
+        type: string;
+        alg: number;
+      },
+    ];
+    authenticatorSelection: {
+      residentKey: string;
+      userVerification: string;
+      authenticatorAttachment?: string;
+    };
+  };
+}
+```
+</RequestExample>
+
+## Properties
+
+<ParamField body='public_key' type='object'>
+{/*> **public_key**: `object`*/}
+
+Defined in: [interfaces/models/screen.ts:24](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/interfaces/models/screen.ts#L24)
+
+<Expandable title="Properties">
+<ParamField body='authenticatorSelection' type='object'>
+{/*> **authenticatorSelection**: `object`*/}
+
+<Expandable title="Properties">
+<ParamField body='authenticatorSelection.authenticatorAttachment?' type='string'>
+{/*> `optional` **authenticatorAttachment**: `string`*/}
+</ParamField>
+<ParamField body='authenticatorSelection.residentKey' type='string'>
+{/*> **residentKey**: `string`*/}
+</ParamField>
+<ParamField body='authenticatorSelection.userVerification' type='string'>
+{/*> **userVerification**: `string`*/}
+</ParamField>
+</Expandable>
+</ParamField>
+<ParamField body='challenge' type='object'>
+{/*> **challenge**: `string`*/}
+</ParamField>
+<ParamField body='pubKeyCredParams' type='object'>
+{/*> **pubKeyCredParams**: `[{ alg: number; type: string; }]`*/}
+</ParamField>
+<ParamField body='rp' type='object'>
+{/*> **rp**: `object`*/}
+
+<Expandable title="Properties">
+<ParamField body='rp.id' type='string'>
+{/*> **id**: `string`*/}
+</ParamField>
+<ParamField body='rp.name' type='string'>
+{/*> **name**: `string`*/}
+</ParamField>
+</Expandable>
+</ParamField>
+<ParamField body='user' type='object'>
+{/*> **user**: `object`*/}
+
+<Expandable title="Properties">
+<ParamField body='user.displayName' type='string'>
+{/*> **displayName**: `string`*/}
+</ParamField>
+<ParamField body='user.id' type='string'>
+{/*> **id**: `string`*/}
+</ParamField>
+<ParamField body='user.name' type='string'>
+{/*> **name**: `string`*/}
+</ParamField>
+</Expandable>
+</ParamField>
+</Expandable>
+</ParamField>

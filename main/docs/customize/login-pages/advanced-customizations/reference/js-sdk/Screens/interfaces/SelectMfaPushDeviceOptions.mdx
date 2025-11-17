@@ -1,0 +1,36 @@
+---
+title: "SelectMfaPushDeviceOptions"
+---
+
+Defined in: [interfaces/screens/mfa-push-list.ts:7](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/interfaces/screens/mfa-push-list.ts#L7)
+
+Options for selecting an MFA push device.
+
+
+<RequestExample>
+```ts
+export interface SelectMfaPushDeviceOptions {
+  /**
+   * The index of the device to select from the list of enrolled devices.
+   * The index is 0-based.
+   */
+  deviceIndex: number;
+  [key: string]: string | number | boolean | undefined;
+}
+```
+</RequestExample>
+
+## Indexable
+
+\[`key`: `string`\]: `string` \| `number` \| `boolean` \| `undefined`
+
+## Properties
+
+<ParamField body='deviceIndex' type='number'>
+{/*> **deviceIndex**: `number`*/}
+
+Defined in: [interfaces/screens/mfa-push-list.ts:12](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/interfaces/screens/mfa-push-list.ts#L12)
+
+The index of the device to select from the list of enrolled devices.
+The index is 0-based.
+</ParamField>
