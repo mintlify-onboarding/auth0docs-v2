@@ -20,7 +20,7 @@ Connected Accounts for Token Vault creates and manages a unified Auth0 user prof
 
 ## User authentication vs Connected Accounts
 
-When you [configure Connected Accounts](#configure-connected-accounts) for a supported social or enterprise connection, Auth0 uses the Connect Accounts flow (`/me/v1/connected-accounts` endpoint) to retrieve and store access and refresh tokens in the Token Vault instead of the social or enterprise login flow (`/authorize` endpoint). After successfully completing the Connected Accounts flow, Auth0 adds the user account to the `connected_accounts` array on the user profile. In contrast, for the social or enterprise login flow, Auth0 adds the user account to the `identities` array on the user profile.
+When you [configure Connected Accounts](#configure-connected-accounts) for a supported social or enterprise connection, Auth0 uses the Connected Accounts flow (`/me/v1/connected-accounts` endpoint) to retrieve and store access and refresh tokens in the Token Vault instead of using the social or enterprise login flow (`/authorize` endpoint). After successfully completing the Connected Accounts flow, Auth0 adds the user account to the `connected_accounts` array on the user profile. In contrast, for the social or enterprise login flow, Auth0 adds the user account to the `identities` array on the user profile.
 
 The following table explains the differences between user authentication and Connected Accounts flows:
 
