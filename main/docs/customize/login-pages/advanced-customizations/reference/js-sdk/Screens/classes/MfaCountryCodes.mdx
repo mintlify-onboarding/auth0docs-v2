@@ -2,7 +2,7 @@
 title: "MfaCountryCodes"
 ---
 
-Defined in: [src/screens/mfa-country-codes/index.ts:20](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L20)
+Defined in: [src/screens/mfa-country-codes/index.ts:20](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L20)
 
 Class implementing the mfa-country-codes screen functionality
 This screen allows users to select a country code for MFA phone number verification
@@ -10,74 +10,19 @@ This screen allows users to select a country code for MFA phone number verificat
 
 <RequestExample>
 ```ts
-export default class MfaCountryCodes extends BaseContext implements MfaCountryCodesMembers {
-  static screenIdentifier: string = ScreenIds.MFA_COUNTRY_CODES;
-  screen: ScreenOptions;
+import MfaCountryCodes from '@auth0/auth0-acul-js/mfa-country-codes';
 
-  /**
-   * Creates an instance of MfaCountryCodes screen manager
-   */
-  constructor() {
-    super();
-    const screenContext = this.getContext('screen') as ScreenContext;
-    this.screen = new ScreenOverride(screenContext);
-  }
+const mfaCountryCodes = new MfaCountryCodes();
 
-  /**
-   * Selects a country code from the available options
-   * @param payload The options containing the country code selection action
-   * @example
-   * ```typescript
-   * import MfaCountryCodes from '@auth0/auth0-acul-js/mfa-country-codes';
-   *
-   * const mfaCountryCodes = new MfaCountryCodes();
-   *
-   * // Get the available country codes and phone prefixes
-   * const { screen } = mfaCountryCodes;
-   * const { phone_prefixes } = screen.data
-   * const {country_code, phone_prefix} = phone_prefixes[0]
-   *
-   * await mfaCountryCodes.selectCountryCode({
-   *   country_code: 'US',
-   *   phone_prefix: '+1',
-   * });
-   * ```
-   */
-  async selectCountryCode(payload: SelectCountryCodeOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaCountryCodes.screenIdentifier, 'selectCountryCode'],
-    };
-    const { country_code, phone_prefix } = payload;
-    const action = `selection-action::${country_code}${phone_prefix}`;
-    await new FormHandler(options).submitData<SelectCountryCodeOptions>({
-      ...payload,
-      action,
-    });
-  }
+// Get the available country codes and phone prefixes
+const { screen } = mfaCountryCodes;
+const { phone_prefixes } = screen.data
+const {country_code, phone_prefix} = phone_prefixes[0]
 
-  /**
-   * Navigates back to the previous screen
-   * @param payload Optional custom options to include with the request
-   * @example
-   * ```typescript
-   * import MfaCountryCodes from '@auth0/auth0-acul-js/mfa-country-codes';
-   *
-   * const mfaCountryCodes = new MfaCountryCodes();
-   * await mfaCountryCodes.goBack();
-   * ```
-   */
-  async goBack(payload?: CustomOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaCountryCodes.screenIdentifier, 'goBack'],
-    };
-    await new FormHandler(options).submitData<CustomOptions>({
-      ...payload,
-      action: FormActions.BACK,
-    });
-  }
-}
+await mfaCountryCodes.selectCountryCode({
+  country_code: 'US',
+  phone_prefix: '+1',
+});
 ```
 </RequestExample>
 
@@ -94,7 +39,7 @@ export default class MfaCountryCodes extends BaseContext implements MfaCountryCo
 <ParamField body="MfaCountryCodes" type="Constructor">
 {/*> **new MfaCountryCodes**(): `MfaCountryCodes`*/}
 
-Defined in: [src/screens/mfa-country-codes/index.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L27)
+Defined in: [src/screens/mfa-country-codes/index.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L27)
 
 Creates an instance of MfaCountryCodes screen manager
 
@@ -112,7 +57,7 @@ Creates an instance of MfaCountryCodes screen manager
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -127,7 +72,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -142,7 +87,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -157,7 +102,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -172,7 +117,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaCountryCodes">ScreenMembersOnMfaCountryCodes</a></span>}>
 {/*> **screen**: [`ScreenMembersOnMfaCountryCodes`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaCountryCodes)*/}
 
-Defined in: [src/screens/mfa-country-codes/index.ts:22](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L22)
+Defined in: [src/screens/mfa-country-codes/index.ts:22](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L22)
 
 #### Implementation of
 
@@ -187,7 +132,7 @@ Defined in: [src/screens/mfa-country-codes/index.ts:22](https://github.com/auth0
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -202,7 +147,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -217,7 +162,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -232,7 +177,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -247,7 +192,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.MFA_COUNTRY_CODES`*/}
 
-Defined in: [src/screens/mfa-country-codes/index.ts:21](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L21)
+Defined in: [src/screens/mfa-country-codes/index.ts:21](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L21)
 
 #### Overrides
 
@@ -259,7 +204,7 @@ Defined in: [src/screens/mfa-country-codes/index.ts:21](https://github.com/auth0
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 
@@ -278,7 +223,7 @@ An array of error objects from the transaction context.
 <ParamField body='goBack' type='Promise<void>'>
 {/*> **goBack**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-country-codes/index.ts:77](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L77)
+Defined in: [src/screens/mfa-country-codes/index.ts:77](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L77)
 
 Navigates back to the previous screen
 
@@ -312,7 +257,7 @@ await mfaCountryCodes.goBack();
 <ParamField body='selectCountryCode' type='Promise<void>'>
 {/*> **selectCountryCode**(`payload`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-country-codes/index.ts:53](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L53)
+Defined in: [src/screens/mfa-country-codes/index.ts:53](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-country-codes/index.ts#L53)
 
 Selects a country code from the available options
 

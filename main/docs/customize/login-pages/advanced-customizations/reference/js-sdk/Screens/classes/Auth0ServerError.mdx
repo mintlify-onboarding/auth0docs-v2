@@ -2,23 +2,10 @@
 title: "Auth0ServerError"
 ---
 
-Defined in: [src/utils/errors.ts:63](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L63)
+Defined in: [src/utils/errors.ts:63](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L63)
 
 Auth0ServerError
 
-
-<RequestExample>
-```ts
-export class Auth0ServerError extends AculError {
-  public readonly code = 'AUTH0_SERVER_ERROR';
-
-  constructor(message: string, field?: string) {
-    super(message, field);
-    Object.setPrototypeOf(this, new.target.prototype);
-  }
-}
-```
-</RequestExample>
 
 ## Param
 
@@ -37,7 +24,7 @@ The optional field associated with the error.
 <ParamField body="Auth0ServerError" type="Constructor">
 {/*> **new Auth0ServerError**(`message`, `field?`): `Auth0ServerError`*/}
 
-Defined in: [src/utils/errors.ts:66](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L66)
+Defined in: [src/utils/errors.ts:66](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L66)
 
 <Expandable title="Parameters">
 <ParamField body='message' type='string'>
@@ -59,7 +46,7 @@ Defined in: [src/utils/errors.ts:66](https://github.com/auth0/universal-login/bl
 <ParamField body='code' type='"AUTH0_SERVER_ERROR"'>
 {/*> `readonly` **code**: `"AUTH0_SERVER_ERROR"` = `'AUTH0_SERVER_ERROR'`*/}
 
-Defined in: [src/utils/errors.ts:64](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L64)
+Defined in: [src/utils/errors.ts:64](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L64)
 
 #### Overrides
 
@@ -70,7 +57,7 @@ Defined in: [src/utils/errors.ts:64](https://github.com/auth0/universal-login/bl
 <ParamField body='field?' type='string'>
 {/*> `readonly` `optional` **field**: `string`*/}
 
-Defined in: [src/utils/errors.ts:12](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L12)
+Defined in: [src/utils/errors.ts:12](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L12)
 
 #### Inherited from
 

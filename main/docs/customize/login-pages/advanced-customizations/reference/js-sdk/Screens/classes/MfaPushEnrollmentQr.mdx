@@ -2,91 +2,17 @@
 title: "MfaPushEnrollmentQr"
 ---
 
-Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:20](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L20)
+Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:20](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L20)
 
 Class implementing the mfa-push-enrollment-qr screen functionality
 
 
 <RequestExample>
 ```ts
-export default class MfaPushEnrollmentQr extends BaseContext implements MfaPushEnrollmentQrMembers {
-  static screenIdentifier: string = ScreenIds.MFA_PUSH_ENROLLMENT_QR;
-  screen: ScreenOptions;
+import MfaPushEnrollmentQr from '@auth0/auth0-acul-js/mfa-push-enrollment-qr';
 
-  constructor() {
-    super();
-    const screenContext = this.getContext('screen') as ScreenContext;
-    this.screen = new ScreenOverride(screenContext);
-  }
-
-  /**
-   * Navigates to the authenticator selection screen.
-   * @param payload Optional custom options to include with the request
-   * @example
-   * ```typescript
-   * import MfaPushEnrollmentQr from '@auth0/auth0-acul-js/mfa-push-enrollment-qr';
-   *
-   * const mfaPushEnrollmentQr = new MfaPushEnrollmentQr();
-   * await mfaPushEnrollmentQr.pickAuthenticator();
-   * ```
-   */
-  async pickAuthenticator(payload?: CustomOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaPushEnrollmentQr.screenIdentifier, 'pickAuthenticator'],
-    };
-    await new FormHandler(options).submitData<CustomOptions>({
-      ...payload,
-      action: FormActions.PICK_AUTHENTICATOR,
-    });
-  }
-  
-/**
-   * Starts and manages polling for an MFA push challenge.
-   *
-   * Creates a polling session that repeatedly checks the MFA push challenge endpoint
-   * at the specified interval until the challenge is approved or an error occurs.
-   * When the approval condition is met, the provided
-   * {@link MfaPollingOptions.onCompleted | onCompleted} callback is invoked and
-   * polling stops automatically.
-   *
-   * Use the returned {@link MfaPushPollingControl} to start, stop, or check the
-   * status of the polling process at any time.
-   *
-   * @param options - {@link MfaPollingOptions | Configuration options} for the polling process:
-   * - `intervalMs` — Optional polling interval in milliseconds (defaults to SDK’s internal value, typically 5000 ms).
-   * - `onCompleted` — Optional callback fired when the MFA push is successfully approved.
-   * - `onError` — Optional callback fired when a polling error occurs, receiving an {@link ULError}.
-   *
-   * @returns A {@link MfaPushPollingControl} instance exposing:
-   * - `startPolling()` — Starts or resumes polling.
-   * - `stopPolling()` — Cancels polling immediately.
-   * - `isRunning()` — Indicates whether polling is currently active.
-   * 
-   * @utilityFeature
-   *
-   * @example
-   * ```ts
-   * // Start polling every 5 seconds until the push challenge is approved
-   * const control = mfaPushChallengePush.pollingManager({
-   *   intervalMs: 5000,
-   *   onCompleted: () => mfaPushChallengePush.continue(),
-   *   onError: (error) => console.error('Polling error:', error),
-   * });
-   *
-   * // Later, cancel polling if needed
-   * control.stopPolling();
-   * ```
-   *
-   * @remarks
-   * - HTTP 429 (rate limit) responses are handled internally: polling automatically
-   *   waits until the rate limit resets before retrying.
-   * - Safe to call `startPolling()` multiple times; it has no effect if already running.
-   */
-  pollingManager(options: MfaPollingOptions): MfaPushPollingControl {
-    return createPollingControl(options);
-  }
-}
+const mfaPushEnrollmentQr = new MfaPushEnrollmentQr();
+await mfaPushEnrollmentQr.pickAuthenticator();
 ```
 </RequestExample>
 
@@ -103,7 +29,7 @@ export default class MfaPushEnrollmentQr extends BaseContext implements MfaPushE
 <ParamField body="MfaPushEnrollmentQr" type="Constructor">
 {/*> **new MfaPushEnrollmentQr**(): `MfaPushEnrollmentQr`*/}
 
-Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:24](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L24)
+Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:24](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L24)
 
 #### Returns
 
@@ -119,7 +45,7 @@ Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:24](https://github.com/
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -134,7 +60,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -149,7 +75,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -164,7 +90,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -179,7 +105,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaPushEnrollmentQr">ScreenMembersOnMfaPushEnrollmentQr</a></span>}>
 {/*> **screen**: [`ScreenMembersOnMfaPushEnrollmentQr`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaPushEnrollmentQr)*/}
 
-Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:22](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L22)
+Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:22](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L22)
 
 #### Implementation of
 
@@ -194,7 +120,7 @@ Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:22](https://github.com/
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -209,7 +135,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -224,7 +150,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -239,7 +165,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -254,7 +180,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.MFA_PUSH_ENROLLMENT_QR`*/}
 
-Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:21](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L21)
+Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:21](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L21)
 
 #### Overrides
 
@@ -266,7 +192,7 @@ Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:21](https://github.com/
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 
@@ -285,7 +211,7 @@ An array of error objects from the transaction context.
 <ParamField body='pickAuthenticator' type='Promise<void>'>
 {/*> **pickAuthenticator**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:41](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L41)
+Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:41](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L41)
 
 Navigates to the authenticator selection screen.
 
@@ -319,7 +245,7 @@ await mfaPushEnrollmentQr.pickAuthenticator();
 <ParamField body='pollingManager' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/MfaPushPollingControl">MfaPushPollingControl</a></span>}>
 {/*> **pollingManager**(`options`): [`MfaPushPollingControl`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/MfaPushPollingControl)*/}
 
-Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:94](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L94)
+Defined in: [src/screens/mfa-push-enrollment-qr/index.ts:94](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-push-enrollment-qr/index.ts#L94)
 
 **`Utility Feature`**
 

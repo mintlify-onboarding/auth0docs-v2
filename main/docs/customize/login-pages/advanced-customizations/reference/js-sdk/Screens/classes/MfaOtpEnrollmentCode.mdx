@@ -2,7 +2,7 @@
 title: "MfaOtpEnrollmentCode"
 ---
 
-Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:21](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L21)
+Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:21](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L21)
 
 Class implementing the mfa-otp-enrollment-code screen functionality.
 This screen is displayed when the user needs to enter the OTP code received during MFA enrollment.
@@ -10,75 +10,12 @@ This screen is displayed when the user needs to enter the OTP code received duri
 
 <RequestExample>
 ```ts
-export default class MfaOtpEnrollmentCode extends BaseContext implements MfaOtpEnrollmentCodeMembers {
-  /**
-   * Screen identifier for validation and telemetry
-   */
-  static screenIdentifier: string = ScreenIds.MFA_OTP_ENROLLMENT_CODE;
-  /**
-   * The screen properties for the mfa-otp-enrollment-code screen.
-   */
-  screen: ScreenOptions;
+import MfaOtpEnrollmentCode from '@auth0/auth0-acul-js/mfa-otp-enrollment-code';
 
-  /**
-   * Creates an instance of MfaOtpEnrollmentCode.
-   */
-  constructor() {
-    super();
-    const screenContext = this.getContext('screen') as ScreenContext;
-    this.screen = new ScreenOverride(screenContext);
-  }
-
-  /**
-   * Continues the MFA OTP enrollment process by submitting the OTP code.
-   *
-   * @param {ContinueOptions} payload - The options containing the OTP code.
-   * @returns {Promise<void>}
-   * @example
-   * ```typescript
-   * import MfaOtpEnrollmentCode from '@auth0/auth0-acul-js/mfa-otp-enrollment-code';
-   *
-   * const mfaOtpEnrollmentCode = new MfaOtpEnrollmentCode();
-   * await mfaOtpEnrollmentCode.continue({
-   *   code: '123456',
-   * });
-   * ```
-   */
-  async continue(payload: ContinueOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaOtpEnrollmentCode.screenIdentifier, 'continue'],
-    };
-    await new FormHandler(options).submitData<ContinueOptions>({
-      ...payload,
-      action: FormActions.DEFAULT,
-    });
-  }
-
-  /**
-   * Allows the user to try another MFA method.
-   *
-   * @param {TryAnotherMethodOptions} [payload] - Optional payload.
-   * @returns {Promise<void>}
-   * @example
-   * ```typescript
-   * import MfaOtpEnrollmentCode from '@auth0/auth0-acul-js/mfa-otp-enrollment-code';
-   *
-   * const mfaOtpEnrollmentCode = new MfaOtpEnrollmentCode();
-   * await mfaOtpEnrollmentCode.tryAnotherMethod();
-   * ```
-   */
-  async tryAnotherMethod(payload?: TryAnotherMethodOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaOtpEnrollmentCode.screenIdentifier, 'tryAnotherMethod'],
-    };
-    await new FormHandler(options).submitData<CustomOptions>({
-      ...payload,
-      action: FormActions.PICK_AUTHENTICATOR,
-    });
-  }
-}
+const mfaOtpEnrollmentCode = new MfaOtpEnrollmentCode();
+await mfaOtpEnrollmentCode.continue({
+  code: '123456',
+});
 ```
 </RequestExample>
 
@@ -95,7 +32,7 @@ export default class MfaOtpEnrollmentCode extends BaseContext implements MfaOtpE
 <ParamField body="MfaOtpEnrollmentCode" type="Constructor">
 {/*> **new MfaOtpEnrollmentCode**(): `MfaOtpEnrollmentCode`*/}
 
-Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:34](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L34)
+Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:34](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L34)
 
 Creates an instance of MfaOtpEnrollmentCode.
 
@@ -113,7 +50,7 @@ Creates an instance of MfaOtpEnrollmentCode.
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -128,7 +65,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -143,7 +80,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -158,7 +95,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -173,7 +110,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaOtpEnrollmentCode">ScreenMembersOnMfaOtpEnrollmentCode</a></span>}>
 {/*> **screen**: [`ScreenMembersOnMfaOtpEnrollmentCode`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaOtpEnrollmentCode)*/}
 
-Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L29)
+Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L29)
 
 The screen properties for the mfa-otp-enrollment-code screen.
 
@@ -190,7 +127,7 @@ The screen properties for the mfa-otp-enrollment-code screen.
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -205,7 +142,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -220,7 +157,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -235,7 +172,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -250,7 +187,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.MFA_OTP_ENROLLMENT_CODE`*/}
 
-Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L25)
+Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L25)
 
 Screen identifier for validation and telemetry
 
@@ -264,7 +201,7 @@ Screen identifier for validation and telemetry
 <ParamField body='continue' type='Promise<void>'>
 {/*> **continue**(`payload`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:55](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L55)
+Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:55](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L55)
 
 Continues the MFA OTP enrollment process by submitting the OTP code.
 
@@ -300,7 +237,7 @@ await mfaOtpEnrollmentCode.continue({
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 
@@ -319,7 +256,7 @@ An array of error objects from the transaction context.
 <ParamField body='tryAnotherMethod' type='Promise<void>'>
 {/*> **tryAnotherMethod**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:79](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L79)
+Defined in: [src/screens/mfa-otp-enrollment-code/index.ts:79](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-otp-enrollment-code/index.ts#L79)
 
 Allows the user to try another MFA method.
 

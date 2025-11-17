@@ -2,64 +2,14 @@
 title: "PasskeyEnrollmentLocal"
 ---
 
-Defined in: [src/screens/passkey-enrollment-local/index.ts:17](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L17)
+Defined in: [src/screens/passkey-enrollment-local/index.ts:17](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L17)
 
 
 <RequestExample>
 ```ts
-export default class PasskeyEnrollmentLocal extends BaseContext implements PasskeyEnrollmentLocalMembers {
-  static screenIdentifier: string = ScreenIds.PASSKEY_ENROLLMENT_LOCAL;
-  screen: ScreenOptions;
-
-  constructor() {
-    super();
-
-    const screenContext = this.getContext('screen') as ScreenContext;
-
-    this.screen = new ScreenOverride(screenContext);
-  }
-
-  /**
-   * @example
-   * import PasskeyEnrollmentLocal from '@auth0/auth0-acul-js/passkey-enrollment-local';
-   *
-   * const passkeyEnrollment = new PasskeyEnrollmentLocal();
-   * passkeyEnrollment.continuePasskeyEnrollment();
-   */
-  async continuePasskeyEnrollment(payload?: CustomOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [PasskeyEnrollmentLocal.screenIdentifier, 'continuePasskeyEnrollment'],
-    };
-
-    const publicKey = this.screen.publicKey;
-    const encoded = publicKey && (await createPasskeyCredentials(publicKey));
-
-    await new FormHandler(options).submitData<CustomOptions>({ ...payload, passkey: JSON.stringify(encoded) });
-  }
-
-  /**
-   * @example
-   * import PasskeyEnrollmentLocal from '@auth0/auth0-acul-js/passkey-enrollment-local';
-   *
-   * const passkeyEnrollment = new PasskeyEnrollmentLocal();
-   * passkeyEnrollment.abortPasskeyEnrollment({
-   *     doNotShowAgain: <boolean>
-   * });
-   */
-  async abortPasskeyEnrollment(payload: AbortEnrollmentOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [PasskeyEnrollmentLocal.screenIdentifier, 'abortPasskeyEnrollment'],
-    };
-
-    const userActions: { [key: string]: string } = {};
-    if (payload['doNotShowAgain'] === true) {
-      userActions['dontShowAgain'] = 'on';
-    }
-    await new FormHandler(options).submitData<AbortEnrollmentOptions>({ ...payload, action: FormActions.ABORT_PASSKEY_ENROLLMENT, ...userActions });
-  }
-}
+import PasskeyEnrollmentLocal from '@auth0/auth0-acul-js/passkey-enrollment-local';
+const passkeyEnrollment = new PasskeyEnrollmentLocal();
+passkeyEnrollment.continuePasskeyEnrollment();
 ```
 </RequestExample>
 
@@ -76,7 +26,7 @@ export default class PasskeyEnrollmentLocal extends BaseContext implements Passk
 <ParamField body="PasskeyEnrollmentLocal" type="Constructor">
 {/*> **new PasskeyEnrollmentLocal**(): `PasskeyEnrollmentLocal`*/}
 
-Defined in: [src/screens/passkey-enrollment-local/index.ts:21](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L21)
+Defined in: [src/screens/passkey-enrollment-local/index.ts:21](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L21)
 
 #### Returns
 
@@ -92,7 +42,7 @@ Defined in: [src/screens/passkey-enrollment-local/index.ts:21](https://github.co
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -107,7 +57,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -122,7 +72,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -137,7 +87,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -152,7 +102,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnPasskeyEnrollmentLocal">ScreenMembersOnPasskeyEnrollmentLocal</a></span>}>
 {/*> **screen**: [`ScreenMembersOnPasskeyEnrollmentLocal`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnPasskeyEnrollmentLocal)*/}
 
-Defined in: [src/screens/passkey-enrollment-local/index.ts:19](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L19)
+Defined in: [src/screens/passkey-enrollment-local/index.ts:19](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L19)
 
 #### Implementation of
 
@@ -167,7 +117,7 @@ Defined in: [src/screens/passkey-enrollment-local/index.ts:19](https://github.co
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -182,7 +132,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -197,7 +147,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -212,7 +162,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -227,7 +177,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.PASSKEY_ENROLLMENT_LOCAL`*/}
 
-Defined in: [src/screens/passkey-enrollment-local/index.ts:18](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L18)
+Defined in: [src/screens/passkey-enrollment-local/index.ts:18](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L18)
 
 #### Overrides
 
@@ -239,7 +189,7 @@ Defined in: [src/screens/passkey-enrollment-local/index.ts:18](https://github.co
 <ParamField body='abortPasskeyEnrollment' type='Promise<void>'>
 {/*> **abortPasskeyEnrollment**(`payload`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/passkey-enrollment-local/index.ts:57](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L57)
+Defined in: [src/screens/passkey-enrollment-local/index.ts:57](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L57)
 
 <Expandable title="Parameters">
 <ParamField body='payload' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/AbortEnrollmentOptions">AbortEnrollmentOptions</a></span>}>
@@ -271,7 +221,7 @@ passkeyEnrollment.abortPasskeyEnrollment({
 <ParamField body='continuePasskeyEnrollment' type='Promise<void>'>
 {/*> **continuePasskeyEnrollment**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/passkey-enrollment-local/index.ts:36](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L36)
+Defined in: [src/screens/passkey-enrollment-local/index.ts:36](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/passkey-enrollment-local/index.ts#L36)
 
 <Expandable title="Parameters">
 <ParamField body='payload?' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/CustomOptions">CustomOptions</a></span>}>
@@ -301,7 +251,7 @@ passkeyEnrollment.continuePasskeyEnrollment();
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 

@@ -2,82 +2,24 @@
 title: "MfaRecoveryCodeChallengeNewCode"
 ---
 
-Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:22](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L22)
+Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:22](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L22)
 
 MfaRecoveryCodeChallengeNewCode
 
 
 <RequestExample>
 ```ts
-export default class MfaRecoveryCodeChallengeNewCode extends BaseContext implements MfaRecoveryCodeChallengeNewCodeMembers {
-  /**
-   * The unique identifier for this screen, used internally and for telemetry.
-   * @type {string}
-   */
-  static screenIdentifier: string = ScreenIds.MFA_RECOVERY_CODE_CHALLENGE_NEW_CODE
-
-  /**
-   * Holds the specific screen data and properties, processed by ScreenOverride.
-   * @type {ScreenMembersOnMfaRecoveryCodeChallengeNewCode}
-   */
-  screen: ScreenMembersOnMfaRecoveryCodeChallengeNewCode;
-
-  /**
-   * Initializes a new instance of the `MfaRecoveryCodeChallengeNewCode` class.
-   * It retrieves the necessary context (screen, transaction, etc.) and sets up screen-specific properties.
-   * @throws {Error} If the Universal Login Context is not available or if the screen name doesn't match.
-   */
-  constructor() {
-    super(); // Calls BaseContext constructor
-    const screenContext = this.getContext('screen') as ScreenContext;
-    this.screen = new ScreenOverride(screenContext);
+const screenManager = new MfaRecoveryCodeChallengeNewCode();
+// Assuming a checkbox 'confirmSaved' is checked by the user
+if (confirmSaved) {
+  try {
+    await screenManager.continue({ customData: 'optionalValue' });
+  } catch (err) {
+    // Handle errors, potentially check screenManager.transaction.errors
+    console.error("Confirmation failed:", err);
   }
-
-  /**
-   * Confirms that the user has saved the new recovery code and continues the authentication flow.
-   * This method sends a POST request to the `/u/mfa-recovery-code-challenge-new-code` endpoint
-   * with the required `state`, `action`, and `saved` parameters.
-   *
-   * @param {ContinueOptions} [payload] - Optional custom data to include with the request form body.
-   * @returns {Promise<void>} A promise that resolves when the confirmation is successfully submitted.
-   *                          On success, the browser will typically be redirected to the next step.
-   * @throws {Error} Throws an error if the form submission fails (e.g., network issue, invalid state,
-   *                 or if the server responds with a 400 error like 'no-confirmation').
-   * @example
-   * ```typescript
-   * const screenManager = new MfaRecoveryCodeChallengeNewCode();
-   * // Assuming a checkbox 'confirmSaved' is checked by the user
-   * if (confirmSaved) {
-   *   try {
-   *     await screenManager.continue({ customData: 'optionalValue' });
-   *   } catch (err) {
-   *     // Handle errors, potentially check screenManager.transaction.errors
-   *     console.error("Confirmation failed:", err);
-   *   }
-   * } else {
-   *   // Prompt user to confirm saving the code
-   * }
-   * ```
-   */
-  async continue(payload?: ContinueOptions): Promise<void> {
-    // Prepare options for the FormHandler, including state and telemetry
-    const formHandlerOptions: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaRecoveryCodeChallengeNewCode.screenIdentifier, 'continue']
-    };
-
-    // Construct the data payload for the form submission
-    // 'saved' is set to 'on' as calling this method implies user confirmation.
-    // Include any custom payload properties.
-    const submitPayload = {
-      ...payload, // Spread custom options first
-      action: FormActions.DEFAULT,
-      saved: 'on', // Indicate confirmation
-    };
-
-    // Use FormHandler to submit the data via a POST request
-    await new FormHandler(formHandlerOptions).submitData<typeof submitPayload>(submitPayload);
-  }
+} else {
+  // Prompt user to confirm saving the code
 }
 ```
 </RequestExample>
@@ -95,7 +37,7 @@ export default class MfaRecoveryCodeChallengeNewCode extends BaseContext impleme
 <ParamField body="MfaRecoveryCodeChallengeNewCode" type="Constructor">
 {/*> **new MfaRecoveryCodeChallengeNewCode**(): `MfaRecoveryCodeChallengeNewCode`*/}
 
-Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:40](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L40)
+Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:40](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L40)
 
 Initializes a new instance of the `MfaRecoveryCodeChallengeNewCode` class.
 It retrieves the necessary context (screen, transaction, etc.) and sets up screen-specific properties.
@@ -118,7 +60,7 @@ If the Universal Login Context is not available or if the screen name doesn't ma
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -133,7 +75,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -148,7 +90,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -163,7 +105,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -178,7 +120,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaRecoveryCodeChallengeNewCode">ScreenMembersOnMfaRecoveryCodeChallengeNewCode</a></span>}>
 {/*> **screen**: [`ScreenMembersOnMfaRecoveryCodeChallengeNewCode`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnMfaRecoveryCodeChallengeNewCode)*/}
 
-Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:33](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L33)
+Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:33](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L33)
 
 Holds the specific screen data and properties, processed by ScreenOverride.
 
@@ -195,7 +137,7 @@ Holds the specific screen data and properties, processed by ScreenOverride.
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -210,7 +152,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -225,7 +167,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -240,7 +182,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -255,7 +197,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.MFA_RECOVERY_CODE_CHALLENGE_NEW_CODE`*/}
 
-Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L27)
+Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L27)
 
 The unique identifier for this screen, used internally and for telemetry.
 
@@ -269,7 +211,7 @@ The unique identifier for this screen, used internally and for telemetry.
 <ParamField body='continue' type='Promise<void>'>
 {/*> **continue**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:72](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L72)
+Defined in: [src/screens/mfa-recovery-code-challenge-new-code/index.ts:72](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-recovery-code-challenge-new-code/index.ts#L72)
 
 Confirms that the user has saved the new recovery code and continues the authentication flow.
 This method sends a POST request to the `/u/mfa-recovery-code-challenge-new-code` endpoint
@@ -321,7 +263,7 @@ if (confirmSaved) {
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 

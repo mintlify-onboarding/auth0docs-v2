@@ -2,155 +2,22 @@
 title: "SignupId"
 ---
 
-Defined in: [src/screens/signup-id/index.ts:24](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L24)
+Defined in: [src/screens/signup-id/index.ts:24](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L24)
 
 
 <RequestExample>
 ```ts
-export default class SignupId extends BaseContext implements SignupIdMembers {
-  static screenIdentifier: string = ScreenIds.SIGNUP_ID;
-  screen: ScreenOptions;
-  transaction: TransactionOptions;
-
-  constructor() {
-    super();
-
-    const screenContext = this.getContext('screen') as ScreenContext;
-    const transactionContext = this.getContext('transaction') as TransactionContext;
-
-    this.screen = new ScreenOverride(screenContext);
-    this.transaction = new TransactionOverride(transactionContext);
-  }
-
-  /**
-   * @remarks
-   * This methods handles signup-id related configuration.
-   * It allows to signup new users via different identifiers.
-   *
-   * @example
-   * import SignupId from "@auth0/auth0-acul-js/signup-id";
-   *
-   * const signupIdManager = new SignupId();
-   * const { transaction } = signupIdManager;
-   *
-   * //get mandatory & optional identifiers required for signup
-   * const mandatoryIdentifier = transaction.getRequiredIdentifiers(); // eg: email
-   * const optionalIdentifiers = transaction.getOptionalIdentifiers() // eg: phone
-   *
-   * const signupParams = {
-   *  email : "testEmail",
-   *  phone : "+91923456789"
-   * };
-   *
-   * signupIdManager.signup(signupParams);
-   */
-  async signup(payload: SignupOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [SignupId.screenIdentifier, 'signup'],
-    };
-
-    const activeIdentifiers = this.transaction.requiredIdentifiers || [];
-    const missingParameters = activeIdentifiers.filter((param) => !Object.keys(payload).includes(param));
-    if (missingParameters.length) {
-      throw new Error(`Missing parameter(s): ${missingParameters.join(', ')}`);
-    }
-
-    if (payload.phone?.trim() ?? '') {
-      const { phone, ...rest } = payload;
-      payload = { ...rest, phone_number: phone };
-    }
-
-    const browserCapabilities = await getBrowserCapabilities()
-    await new FormHandler(options).submitData<SignupOptions>({
-      ...payload,
-      ...browserCapabilities
-    });
-  }
-
-  /**
-   * @remarks
-   * This methods handles allows signup via different social identifiers.
-   * Eg: Google, Facebook etc.
-   *
-   * @example
-   * import SignupId from "@auth0/auth0-acul-js/signup-id";
-   *
-   * const signupIdManager = new SignupId();
-   * const { transaction } = signupIdManager;
-   *
-   * //get social connections
-   * const socialConnection = transaction.alternateConnections; //eg: "google-oauth2"
-   *
-   * const signupParams = {
-   *  connection : socialConnection[0].name, // "google-oauth2"
-   * };
-   *
-   * signupIdManager.federatedSignup(signupParams);
-   */
-  async federatedSignup(payload: FederatedSignupOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [SignupId.screenIdentifier, 'federatedSignup'],
-    };
-    await new FormHandler(options).submitData<FederatedSignupOptions>(payload);
-  }
-
-  /**
-   * Returns the list of enabled identifiers for the signup-id form,
-   * marking each as required or optional based on transaction config.
-   *
-   * @returns Array of identifier objects (e.g., email, phone, username).
-   * @utilityFeature
-   * @example
-   * const signupId = new SignupId();
-   * const identifiers = signupId.getSignupIdentifiers();
-   * // [{ type: 'email', required: true }, { type: 'username', required: false }]
-   */
-  getSignupIdentifiers(): Identifier[] | null {
-    const transaction = {
-      ...this.transaction,
-      errors: this.transaction.errors ?? undefined, // convert `null` to `undefined`
-    };
-    return _getSignupIdentifiers(transaction.requiredIdentifiers ?? [], transaction.optionalIdentifiers ?? [], transaction.connectionStrategy);
-  }
-  
-  /**
-   * @example
-   * import SignupId from "@auth0/auth0-acul-js/signup-id";
-   * const signupIdManager = new SignupId();
-   *
-   * signupIdManager.pickCountryCode();
-   */
-  async pickCountryCode(): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [SignupId.screenIdentifier, 'pickCountryCode'],
-    };
-
-    await new FormHandler(options).submitData({
-      action: FormActions.PICK_COUNTRY_CODE,
-    });
-  }
-
-  /**
-     * Validates a given username against the current username policy
-     * defined in the transaction context.
-     *
-     * @param username - The username string to validate.
-     * @returns Result object indicating whether the username is valid and why.
-     * @utilityFeature
-     *
-     * @example
-     * const signupIdManager = new SignupId();
-     * const result = signupIdManager.validateUsername('myusername');
-     * // result => { valid: true, errors: [] }
-     */
-    validateUsername(username: string): UsernameValidationResult {
-      const usernameValidationConfig = this.transaction.usernamePolicy;
-      return _validateUsername(username, usernameValidationConfig);
-    }
-}
+import SignupId from "@auth0/auth0-acul-js/signup-id";
+const signupIdManager = new SignupId();
+const { transaction } = signupIdManager;
+//get mandatory & optional identifiers required for signup
+const mandatoryIdentifier = transaction.getRequiredIdentifiers(); // eg: email
+const optionalIdentifiers = transaction.getOptionalIdentifiers() // eg: phone
+const signupParams = {
+ email : "testEmail",
+ phone : "+91923456789"
+};
+signupIdManager.signup(signupParams);
 ```
 </RequestExample>
 
@@ -167,7 +34,7 @@ export default class SignupId extends BaseContext implements SignupIdMembers {
 <ParamField body="SignupId" type="Constructor">
 {/*> **new SignupId**(): `SignupId`*/}
 
-Defined in: [src/screens/signup-id/index.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L29)
+Defined in: [src/screens/signup-id/index.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L29)
 
 #### Returns
 
@@ -183,7 +50,7 @@ Defined in: [src/screens/signup-id/index.ts:29](https://github.com/auth0/univers
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -198,7 +65,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -213,7 +80,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -228,7 +95,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -243,7 +110,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnSignupId">ScreenMembersOnSignupId</a></span>}>
 {/*> **screen**: [`ScreenMembersOnSignupId`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembersOnSignupId)*/}
 
-Defined in: [src/screens/signup-id/index.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L26)
+Defined in: [src/screens/signup-id/index.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L26)
 
 #### Implementation of
 
@@ -258,7 +125,7 @@ Defined in: [src/screens/signup-id/index.ts:26](https://github.com/auth0/univers
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -273,7 +140,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembersOnSignupId">TransactionMembersOnSignupId</a></span>}>
 {/*> **transaction**: [`TransactionMembersOnSignupId`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembersOnSignupId)*/}
 
-Defined in: [src/screens/signup-id/index.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L27)
+Defined in: [src/screens/signup-id/index.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L27)
 
 #### Implementation of
 
@@ -288,7 +155,7 @@ Defined in: [src/screens/signup-id/index.ts:27](https://github.com/auth0/univers
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -303,7 +170,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -318,7 +185,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.SIGNUP_ID`*/}
 
-Defined in: [src/screens/signup-id/index.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L25)
+Defined in: [src/screens/signup-id/index.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L25)
 
 #### Overrides
 
@@ -330,7 +197,7 @@ Defined in: [src/screens/signup-id/index.ts:25](https://github.com/auth0/univers
 <ParamField body='federatedSignup' type='Promise<void>'>
 {/*> **federatedSignup**(`payload`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/signup-id/index.ts:105](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L105)
+Defined in: [src/screens/signup-id/index.ts:105](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L105)
 
 <Expandable title="Parameters">
 <ParamField body='payload' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/FederatedSignupOptions">FederatedSignupOptions</a></span>}>
@@ -374,7 +241,7 @@ signupIdManager.federatedSignup(signupParams);
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 
@@ -393,7 +260,7 @@ An array of error objects from the transaction context.
 <ParamField body='getSignupIdentifiers' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Identifier">Identifier</a>[]</span>}>
 {/*> **getSignupIdentifiers**(): [`Identifier`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Identifier)[] \| `null`*/}
 
-Defined in: [src/screens/signup-id/index.ts:124](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L124)
+Defined in: [src/screens/signup-id/index.ts:124](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L124)
 
 **`Utility Feature`**
 
@@ -423,7 +290,7 @@ const identifiers = signupId.getSignupIdentifiers();
 <ParamField body='pickCountryCode' type='Promise<void>'>
 {/*> **pickCountryCode**(): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/signup-id/index.ts:139](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L139)
+Defined in: [src/screens/signup-id/index.ts:139](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L139)
 
 #### Returns
 
@@ -447,7 +314,7 @@ signupIdManager.pickCountryCode();
 <ParamField body='signup' type='Promise<void>'>
 {/*> **signup**(`payload`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/signup-id/index.ts:61](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L61)
+Defined in: [src/screens/signup-id/index.ts:61](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L61)
 
 <Expandable title="Parameters">
 <ParamField body='payload' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/SignupOptions">SignupOptions</a></span>}>
@@ -493,7 +360,7 @@ signupIdManager.signup(signupParams);
 <ParamField body='validateUsername' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UsernameValidationResult">UsernameValidationResult</a></span>}>
 {/*> **validateUsername**(`username`): [`UsernameValidationResult`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UsernameValidationResult)*/}
 
-Defined in: [src/screens/signup-id/index.ts:163](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/signup-id/index.ts#L163)
+Defined in: [src/screens/signup-id/index.ts:163](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/signup-id/index.ts#L163)
 
 **`Utility Feature`**
 

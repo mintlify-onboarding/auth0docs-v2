@@ -2,107 +2,19 @@
 title: "EmailOTPChallenge"
 ---
 
-Defined in: [src/screens/email-otp-challenge/index.ts:14](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L14)
+Defined in: [src/screens/email-otp-challenge/index.ts:14](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L14)
 
 Represents the Email OTP Challenge screen.
 
 
 <RequestExample>
 ```ts
-export default class EmailOTPChallenge extends BaseContext implements EmailOTPChallengeMembers {
-  static screenIdentifier: string = ScreenIds.EMAIL_OTP_CHALLENGE;
+import EmailOTPChallenge from '@auth0/auth0-acul-js/email-otp-challenge';
 
-  constructor() {
-    super();
-  }
-
-  /**
-   * Submits the OTP code entered by the user.
-   * @param options Optional parameters to include in the submission.
-   * @example
-   * ```typescript
-   * import EmailOTPChallenge from '@auth0/auth0-acul-js/email-otp-challenge';
-   *
-   * const emailOTPChallenge = new EmailOTPChallenge();
-   * emailOTPChallenge.submitCode({
-   *   code: '123456',
-   * });
-   * ```
-   */
-  async submitCode(options: OtpCodeOptions): Promise<void> {
-    const formOptions: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [EmailOTPChallenge.screenIdentifier, 'submitCode'],
-    };
-    const payload = {
-      ...options,
-      action: FormActions.DEFAULT,
-    };
-
-    await new FormHandler(formOptions).submitData(payload);
-  }
-
-  /**
-   * Requests a new OTP code to be sent to the user's email.
-   * @param options Optional parameters to include in the resend request.
-   * @example
-   * ```typescript
-   * import EmailOTPChallenge from '@auth0/auth0-acul-js/email-otp-challenge';
-   *
-   * const emailOTPChallenge = new EmailOTPChallenge();
-   * emailOTPChallenge.resendCode();
-   * ```
-   */
-  async resendCode(options?: CustomOptions): Promise<void> {
-    const formOptions: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [EmailOTPChallenge.screenIdentifier, 'resendCode'],
-    };
-
-    const payload = {
-      ...options,
-      action: FormActions.RESEND_CODE,
-    };
-
-    await new FormHandler(formOptions).submitData(payload);
-  }
-
-  /**
-   * Gets resend functionality with timeout management for this screen
-   * @param options - Configuration options for resend functionality
-   * @param options.timeoutSeconds - Number of seconds to wait before allowing resend (default: 10)
-   * @param options.onStatusChange - Callback to receive state updates (remaining seconds, disabled status)
-   * @param options.onTimeout - Callback to execute when timeout countdown reaches zero
-   * @returns ResendControl object with startResend method
-   * @utilityFeature
-   * 
-   * @example
-   * ```typescript
-   * import EmailOTPChallenge from '@auth0/auth0-acul-js/email-otp-challenge';
-   * 
-   * const emailOTPChallenge = new EmailOTPChallenge();
-   * const { startResend } = emailOTPChallenge.resendManager({
-   *   timeoutSeconds: 15,
-   *   onStatusChange: (remainingSeconds, isDisabled) => {
-   *     console.log(`Resend available in ${remainingSeconds}s, disabled: ${isDisabled}`);
-   *   },
-   *   onTimeout: () => {
-   *     console.log('Resend is now available');
-   *   }
-   * });
-   * 
-   * // Call startResend when user clicks resend button
-   * startResend();
-   * ```
-   */
-  resendManager(options?: StartResendOptions): ResendControl {
-    return createResendControl(
-      EmailOTPChallenge.screenIdentifier,
-      () => this.resendCode(),
-      options
-    );
-  }
-}
+const emailOTPChallenge = new EmailOTPChallenge();
+emailOTPChallenge.submitCode({
+  code: '123456',
+});
 ```
 </RequestExample>
 
@@ -119,7 +31,7 @@ export default class EmailOTPChallenge extends BaseContext implements EmailOTPCh
 <ParamField body="EmailOTPChallenge" type="Constructor">
 {/*> **new EmailOTPChallenge**(): `EmailOTPChallenge`*/}
 
-Defined in: [src/screens/email-otp-challenge/index.ts:17](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L17)
+Defined in: [src/screens/email-otp-challenge/index.ts:17](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L17)
 
 #### Returns
 
@@ -135,7 +47,7 @@ Defined in: [src/screens/email-otp-challenge/index.ts:17](https://github.com/aut
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -150,7 +62,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -165,7 +77,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -180,7 +92,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -195,7 +107,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembers">ScreenMembers</a></span>}>
 {/*> **screen**: [`ScreenMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembers)*/}
 
-Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L24)
+Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L24)
 
 #### Implementation of
 
@@ -210,7 +122,7 @@ Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-l
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -225,7 +137,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -240,7 +152,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -255,7 +167,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -270,7 +182,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.EMAIL_OTP_CHALLENGE`*/}
 
-Defined in: [src/screens/email-otp-challenge/index.ts:15](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L15)
+Defined in: [src/screens/email-otp-challenge/index.ts:15](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L15)
 
 #### Overrides
 
@@ -282,7 +194,7 @@ Defined in: [src/screens/email-otp-challenge/index.ts:15](https://github.com/aut
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 
@@ -301,7 +213,7 @@ An array of error objects from the transaction context.
 <ParamField body='resendCode' type='Promise<void>'>
 {/*> **resendCode**(`options?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/email-otp-challenge/index.ts:58](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L58)
+Defined in: [src/screens/email-otp-challenge/index.ts:58](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L58)
 
 Requests a new OTP code to be sent to the user's email.
 
@@ -335,7 +247,7 @@ emailOTPChallenge.resendCode();
 <ParamField body='resendManager' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ResendControl">ResendControl</a></span>}>
 {/*> **resendManager**(`options?`): [`ResendControl`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ResendControl)*/}
 
-Defined in: [src/screens/email-otp-challenge/index.ts:100](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L100)
+Defined in: [src/screens/email-otp-challenge/index.ts:100](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L100)
 
 **`Utility Feature`**
 
@@ -384,7 +296,7 @@ startResend();
 <ParamField body='submitCode' type='Promise<void>'>
 {/*> **submitCode**(`options`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/email-otp-challenge/index.ts:34](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L34)
+Defined in: [src/screens/email-otp-challenge/index.ts:34](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/email-otp-challenge/index.ts#L34)
 
 Submits the OTP code entered by the user.
 

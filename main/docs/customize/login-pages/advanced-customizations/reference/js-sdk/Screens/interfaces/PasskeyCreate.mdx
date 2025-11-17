@@ -2,7 +2,7 @@
 title: "PasskeyCreate"
 ---
 
-Defined in: [interfaces/models/screen.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/interfaces/models/screen.ts#L23)
+Defined in: [interfaces/models/screen.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/interfaces/models/screen.ts#L23)
 
 
 <RequestExample>
@@ -37,59 +37,60 @@ export interface PasskeyCreate {
 
 ## Properties
 
-<ParamField body='public_key' type='object'>
-{/*> **public_key**: `object`*/}
+### public\_key
 
-Defined in: [interfaces/models/screen.ts:24](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/interfaces/models/screen.ts#L24)
+> **public\_key**: `object`
 
-<Expandable title="Properties">
-<ParamField body='authenticatorSelection' type='object'>
+Defined in: [interfaces/models/screen.ts:24](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/interfaces/models/screen.ts#L24)
+
+<<ParamField body='authenticatorSelection' type='object'>
 {/*> **authenticatorSelection**: `object`*/}
 
-<Expandable title="Properties">
-<ParamField body='authenticatorSelection.authenticatorAttachment?' type='string'>
+##### authenticatorSelection.authenticatorAttachment?
+
 {/*> `optional` **authenticatorAttachment**: `string`*/}
-</ParamField>
-<ParamField body='authenticatorSelection.residentKey' type='string'>
+
+##### authenticatorSelection.residentKey
+
 {/*> **residentKey**: `string`*/}
-</ParamField>
-<ParamField body='authenticatorSelection.userVerification' type='string'>
+
+##### authenticatorSelection.userVerification
+
 {/*> **userVerification**: `string`*/}
-</ParamField>
-</Expandable>
-</ParamField>
-<ParamField body='challenge' type='object'>
+
+#### challenge
+
 {/*> **challenge**: `string`*/}
-</ParamField>
-<ParamField body='pubKeyCredParams' type='object'>
-{/*> **pubKeyCredParams**: `[{ alg: number; type: string; }]`*/}
-</ParamField>
-<ParamField body='rp' type='object'>
+
+#### pubKeyCredParams
+
+{/*> **pubKeyCredParams**: \[\{ `alg`: `number`; `type`: `string`; \}\]*/}
+
+#### rp
+
 {/*> **rp**: `object`*/}
 
-<Expandable title="Properties">
-<ParamField body='rp.id' type='string'>
+##### rp.id
+
 {/*> **id**: `string`*/}
-</ParamField>
-<ParamField body='rp.name' type='string'>
+
+##### rp.name
+
 {/*> **name**: `string`*/}
-</ParamField>
-</Expandable>
-</ParamField>
-<ParamField body='user' type='object'>
+
+#### user
+
 {/*> **user**: `object`*/}
 
-<Expandable title="Properties">
-<ParamField body='user.displayName' type='string'>
+##### user.displayName
+
 {/*> **displayName**: `string`*/}
-</ParamField>
-<ParamField body='user.id' type='string'>
+
+##### user.id
+
 {/*> **id**: `string`*/}
-</ParamField>
-<ParamField body='user.name' type='string'>
+
+##### user.name
+
 {/*> **name**: `string`*/}
-</ParamField>
-</Expandable>
-</ParamField>
-</Expandable>
 </ParamField>

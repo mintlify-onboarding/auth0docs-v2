@@ -2,7 +2,7 @@
 title: "MfaSmsList"
 ---
 
-Defined in: [src/screens/mfa-sms-list/index.ts:14](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L14)
+Defined in: [src/screens/mfa-sms-list/index.ts:14](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L14)
 
 MfaSmsList
 Class for handling the mfa-sms-list screen.
@@ -10,73 +10,12 @@ Class for handling the mfa-sms-list screen.
 
 <RequestExample>
 ```ts
-export default class MfaSmsList extends BaseContext implements MfaSmsListMembers {
-  static screenIdentifier: string = ScreenIds.MFA_SMS_LIST;
-  constructor() {
-    super();
-  }
-
-  /**
-   * Selects a phone number from the list of enrolled phone numbers.
-   * @param {MfaSmsListOptions} [payload] - Optional payload for the action.
-   * @returns {Promise<void>}
-   * @throws {Error} If the index is out of bounds.
-   * @example
-   * ```typescript
-   * import MfaSmsList from '@auth0/auth0-acul-js/mfa-sms-list';
-   * const mfaSmsList = new MfaSmsList();
-   * const selectPhoneNumber = async () => {
-   *  const getEnrolledPhoneNumbers = mfaSmsList.user.enrolledPhoneNumbers;
-   *  const selectedNumber = getEnrolledPhoneNumbers[0];
-   *  await mfaSmsList.selectPhoneNumber({index: selectedNumber});
-   * }
-   * ```
-   */
-  public async selectPhoneNumber(payload?: MfaSmsListOptions): Promise<void> {
-    const index = payload?.index;
-    if (index === undefined || index < 0 || index >= (this.user?.enrolledPhoneNumbers?.length ?? 0)) {
-      throw new Error('Index out of bounds.');
-    }
-
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaSmsList.screenIdentifier, 'selectPhoneNumber'],
-    };
-
-    await new FormHandler(options).submitData<CustomOptions>({
-      ...payload,
-      action: `selection-action::${index}`,
-    });
-  }
-
-  /**
-   * Navigates back to the previous screen.
-   * @param {MfaSmsListOptions} [payload] - Optional payload for the action.
-   * @returns {Promise<void>}
-   * @example
-   * ```typescript
-   * import MfaSmsList from '@auth0/auth0-acul-js/mfa-sms-list';
-   * const mfaSmsList = new MfaSmsList();
-   * const handleBackAction = async () => {
-   *  try {
-   *    await mfaSmsList.backAction();
-   *  } catch (error) {
-   *    console.error('Failed to go back:', error);
-   *  }
-   * };
-   * ```
-   */
-  public async backAction(payload?: CustomOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaSmsList.screenIdentifier, 'backAction'],
-    };
-
-    await new FormHandler(options).submitData<CustomOptions>({
-      ...payload,
-      action: FormActions.BACK,
-    });
-  }
+import MfaSmsList from '@auth0/auth0-acul-js/mfa-sms-list';
+const mfaSmsList = new MfaSmsList();
+const selectPhoneNumber = async () => {
+ const getEnrolledPhoneNumbers = mfaSmsList.user.enrolledPhoneNumbers;
+ const selectedNumber = getEnrolledPhoneNumbers[0];
+ await mfaSmsList.selectPhoneNumber({index: selectedNumber});
 }
 ```
 </RequestExample>
@@ -94,7 +33,7 @@ export default class MfaSmsList extends BaseContext implements MfaSmsListMembers
 <ParamField body="MfaSmsList" type="Constructor">
 {/*> **new MfaSmsList**(): `MfaSmsList`*/}
 
-Defined in: [src/screens/mfa-sms-list/index.ts:16](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L16)
+Defined in: [src/screens/mfa-sms-list/index.ts:16](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L16)
 
 #### Returns
 
@@ -110,7 +49,7 @@ Defined in: [src/screens/mfa-sms-list/index.ts:16](https://github.com/auth0/univ
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -125,7 +64,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -140,7 +79,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -155,7 +94,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -170,7 +109,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembers">ScreenMembers</a></span>}>
 {/*> **screen**: [`ScreenMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembers)*/}
 
-Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L24)
+Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L24)
 
 #### Implementation of
 
@@ -185,7 +124,7 @@ Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-l
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -200,7 +139,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -215,7 +154,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -230,7 +169,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -245,7 +184,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.MFA_SMS_LIST`*/}
 
-Defined in: [src/screens/mfa-sms-list/index.ts:15](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L15)
+Defined in: [src/screens/mfa-sms-list/index.ts:15](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L15)
 
 #### Overrides
 
@@ -257,7 +196,7 @@ Defined in: [src/screens/mfa-sms-list/index.ts:15](https://github.com/auth0/univ
 <ParamField body='backAction' type='Promise<void>'>
 {/*> **backAction**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-sms-list/index.ts:70](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L70)
+Defined in: [src/screens/mfa-sms-list/index.ts:70](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L70)
 
 Navigates back to the previous screen.
 
@@ -296,7 +235,7 @@ const handleBackAction = async () => {
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 
@@ -315,7 +254,7 @@ An array of error objects from the transaction context.
 <ParamField body='selectPhoneNumber' type='Promise<void>'>
 {/*> **selectPhoneNumber**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-sms-list/index.ts:36](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L36)
+Defined in: [src/screens/mfa-sms-list/index.ts:36](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-sms-list/index.ts#L36)
 
 Selects a phone number from the list of enrolled phone numbers.
 

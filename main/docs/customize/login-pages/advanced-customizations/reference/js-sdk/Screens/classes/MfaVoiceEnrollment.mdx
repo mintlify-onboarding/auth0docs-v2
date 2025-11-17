@@ -2,104 +2,26 @@
 title: "MfaVoiceEnrollment"
 ---
 
-Defined in: [src/screens/mfa-voice-enrollment/index.ts:12](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L12)
+Defined in: [src/screens/mfa-voice-enrollment/index.ts:12](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L12)
 
 Class implementing the mfa-voice-enrollment screen functionality.
 
 
 <RequestExample>
 ```ts
-export default class MfaVoiceEnrollment extends BaseContext implements MfaVoiceEnrollmentMembers {
-  static screenIdentifier: string = ScreenIds.MFA_VOICE_ENROLLMENT;
-
-  /**
-   * Creates an instance of MfaVoiceEnrollment screen manager.
-   */
-  constructor() {
-    super();
-  }
-
-  /**
-   * Continues with the default action.
-   * @param  payload - Optional payload.
-   * @returns {Promise<void>}
-   * @example
-   * ```typescript
-   * import MfaVoiceEnrollment from '@auth0/auth0-acul-js/mfa-voice-enrollment';
-   * const mfaVoiceEnrollmentManager = new MfaVoiceEnrollment();
-   * const handleContinueEnrollment = async () => {
-   *  try {
-   *    await mfaVoiceEnrollmentManager.continue({
-   *      phone: '+1234567890',
-   *      // Add any optional CustomOptions here if needed 
-   *    });
-   *    console.log('Voice enrollment continued successfully.');
-   *  } catch (error) {
-   *    console.error('Error continuing voice enrollment:', error);
-   *  }
-   * };
-   * ```
-   */
-  async continue(payload: ContinueOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaVoiceEnrollment.screenIdentifier, 'continue'],
-    };
-
-    await new FormHandler(options).submitData({
-      ...payload,
-      action: FormActions.DEFAULT,
-    });
-  }
-
-  /**
-   * Allows trying another authentication method
-   * @param {CustomOptions} [payload] - Optional payload.
-   * @example
-   * ```typescript
-   * import MfaVoiceEnrollment from '@auth0/auth0-acul-js/mfa-voice-enrollment';
-   * const mfaVoiceEnrollment = new MfaVoiceEnrollment();
-   * const handleTryAnotherMethod = async () => {
-   *  await mfaVoiceEnrollment.tryAnotherMethod();
-   * };
-   * ```
-   */
-  async tryAnotherMethod(payload?: CustomOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaVoiceEnrollment.screenIdentifier, 'tryAnotherMethod'],
-    };
-
-    await new FormHandler(options).submitData({
-      ...payload,
-      action: FormActions.PICK_AUTHENTICATOR,
-    });
-  }
-
-  /**
-   * Allows picking a country code for the phone number
-   * @param {CustomOptions} [payload] - Optional payload.
-   * @example
-   * ```typescript
-   * import MfaVoiceEnrollment from '@auth0/auth0-acul-js/mfa-voice-enrollment';
-   * const mfaVoiceEnrollment = new MfaVoiceEnrollment();
-   * const handlePickCountryCode = async () => {
-   *  await mfaVoiceEnrollment.selectPhoneCountryCode();
-   * };
-   * ```
-   */
-  async selectPhoneCountryCode(payload?: CustomOptions): Promise<void> {
-    const options: FormOptions = {
-      state: this.transaction.state,
-      telemetry: [MfaVoiceEnrollment.screenIdentifier, 'selectPhoneCountryCode'],
-    };
-
-    await new FormHandler(options).submitData({
-      ...payload,
-      action: FormActions.PICK_COUNTRY_CODE,
-    });
-  }
-}
+import MfaVoiceEnrollment from '@auth0/auth0-acul-js/mfa-voice-enrollment';
+const mfaVoiceEnrollmentManager = new MfaVoiceEnrollment();
+const handleContinueEnrollment = async () => {
+ try {
+   await mfaVoiceEnrollmentManager.continue({
+     phone: '+1234567890',
+     // Add any optional CustomOptions here if needed 
+   });
+   console.log('Voice enrollment continued successfully.');
+ } catch (error) {
+   console.error('Error continuing voice enrollment:', error);
+ }
+};
 ```
 </RequestExample>
 
@@ -116,7 +38,7 @@ export default class MfaVoiceEnrollment extends BaseContext implements MfaVoiceE
 <ParamField body="MfaVoiceEnrollment" type="Constructor">
 {/*> **new MfaVoiceEnrollment**(): `MfaVoiceEnrollment`*/}
 
-Defined in: [src/screens/mfa-voice-enrollment/index.ts:18](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L18)
+Defined in: [src/screens/mfa-voice-enrollment/index.ts:18](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L18)
 
 Creates an instance of MfaVoiceEnrollment screen manager.
 
@@ -134,7 +56,7 @@ Creates an instance of MfaVoiceEnrollment screen manager.
 <ParamField body='branding' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers">BrandingMembers</a></span>}>
 {/*> **branding**: [`BrandingMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/BrandingMembers)*/}
 
-Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L23)
+Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L23)
 
 #### Implementation of
 
@@ -149,7 +71,7 @@ Defined in: [src/models/base-context.ts:23](https://github.com/auth0/universal-l
 <ParamField body='client' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers">ClientMembers</a></span>}>
 {/*> **client**: [`ClientMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ClientMembers)*/}
 
-Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L28)
+Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L28)
 
 #### Implementation of
 
@@ -164,7 +86,7 @@ Defined in: [src/models/base-context.ts:28](https://github.com/auth0/universal-l
 <ParamField body='organization' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers">OrganizationMembers</a></span>}>
 {/*> **organization**: [`OrganizationMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/OrganizationMembers)*/}
 
-Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L27)
+Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L27)
 
 #### Implementation of
 
@@ -179,7 +101,7 @@ Defined in: [src/models/base-context.ts:27](https://github.com/auth0/universal-l
 <ParamField body='prompt' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers">PromptMembers</a></span>}>
 {/*> **prompt**: [`PromptMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/PromptMembers)*/}
 
-Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L26)
+Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L26)
 
 #### Implementation of
 
@@ -194,7 +116,7 @@ Defined in: [src/models/base-context.ts:26](https://github.com/auth0/universal-l
 <ParamField body='screen' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembers">ScreenMembers</a></span>}>
 {/*> **screen**: [`ScreenMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/ScreenMembers)*/}
 
-Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L24)
+Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L24)
 
 #### Implementation of
 
@@ -209,7 +131,7 @@ Defined in: [src/models/base-context.ts:24](https://github.com/auth0/universal-l
 <ParamField body='tenant' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers">TenantMembers</a></span>}>
 {/*> **tenant**: [`TenantMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TenantMembers)*/}
 
-Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L25)
+Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L25)
 
 #### Implementation of
 
@@ -224,7 +146,7 @@ Defined in: [src/models/base-context.ts:25](https://github.com/auth0/universal-l
 <ParamField body='transaction' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers">TransactionMembers</a></span>}>
 {/*> **transaction**: [`TransactionMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/TransactionMembers)*/}
 
-Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L29)
+Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L29)
 
 #### Implementation of
 
@@ -239,7 +161,7 @@ Defined in: [src/models/base-context.ts:29](https://github.com/auth0/universal-l
 <ParamField body='untrustedData' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers">UntrustedDataMembers</a></span>}>
 {/*> **untrustedData**: [`UntrustedDataMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UntrustedDataMembers)*/}
 
-Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L31)
+Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L31)
 
 #### Implementation of
 
@@ -254,7 +176,7 @@ Defined in: [src/models/base-context.ts:31](https://github.com/auth0/universal-l
 <ParamField body='user' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers">UserMembers</a></span>}>
 {/*> **user**: [`UserMembers`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/UserMembers)*/}
 
-Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L30)
+Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L30)
 
 #### Implementation of
 
@@ -269,7 +191,7 @@ Defined in: [src/models/base-context.ts:30](https://github.com/auth0/universal-l
 <ParamField body='screenIdentifier' type='string'>
 {/*> `static` **screenIdentifier**: `string` = `ScreenIds.MFA_VOICE_ENROLLMENT`*/}
 
-Defined in: [src/screens/mfa-voice-enrollment/index.ts:13](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L13)
+Defined in: [src/screens/mfa-voice-enrollment/index.ts:13](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L13)
 
 #### Overrides
 
@@ -281,7 +203,7 @@ Defined in: [src/screens/mfa-voice-enrollment/index.ts:13](https://github.com/au
 <ParamField body='continue' type='Promise<void>'>
 {/*> **continue**(`payload`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-voice-enrollment/index.ts:43](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L43)
+Defined in: [src/screens/mfa-voice-enrollment/index.ts:43](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L43)
 
 Continues with the default action.
 
@@ -324,7 +246,7 @@ const handleContinueEnrollment = async () => {
 <ParamField body='getErrors' type={<span><a href="/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error">Error</a>[]</span>}>
 {/*> **getErrors**(): [`Error`](/docs/customize/login-pages/advanced-customizations/reference/js-sdk/Screens/interfaces/Error)[]*/}
 
-Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/models/base-context.ts#L99)
+Defined in: [src/models/base-context.ts:99](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/models/base-context.ts#L99)
 
 Retrieves the array of transaction errors from the context, or an empty array if none exist.
 
@@ -343,7 +265,7 @@ An array of error objects from the transaction context.
 <ParamField body='selectPhoneCountryCode' type='Promise<void>'>
 {/*> **selectPhoneCountryCode**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-voice-enrollment/index.ts:91](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L91)
+Defined in: [src/screens/mfa-voice-enrollment/index.ts:91](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L91)
 
 Allows picking a country code for the phone number
 
@@ -378,7 +300,7 @@ const handlePickCountryCode = async () => {
 <ParamField body='tryAnotherMethod' type='Promise<void>'>
 {/*> **tryAnotherMethod**(`payload?`): `Promise`\<`void`\>*/}
 
-Defined in: [src/screens/mfa-voice-enrollment/index.ts:67](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L67)
+Defined in: [src/screens/mfa-voice-enrollment/index.ts:67](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/screens/mfa-voice-enrollment/index.ts#L67)
 
 Allows trying another authentication method
 

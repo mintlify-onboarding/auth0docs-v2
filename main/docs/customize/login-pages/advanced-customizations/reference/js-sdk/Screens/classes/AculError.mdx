@@ -2,27 +2,10 @@
 title: "AculError"
 ---
 
-Defined in: [src/utils/errors.ts:10](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L10)
+Defined in: [src/utils/errors.ts:10](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L10)
 
 AculError
 
-
-<RequestExample>
-```ts
-export class AculError extends Error {
-  public readonly code: string;
-  public readonly field?: string;
-
-  constructor(message: string, field?: string) {
-    super(message);
-    this.name = new.target.name;
-    this.code = 'ACUL_ERROR';
-    this.field = field;
-    Object.setPrototypeOf(this, new.target.prototype);
-  }
-}
-```
-</RequestExample>
 
 ## Param
 
@@ -51,7 +34,7 @@ Throws an error if the message is empty.
 <ParamField body="AculError" type="Constructor">
 {/*> **new AculError**(`message`, `field?`): `AculError`*/}
 
-Defined in: [src/utils/errors.ts:14](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L14)
+Defined in: [src/utils/errors.ts:14](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L14)
 
 <Expandable title="Parameters">
 <ParamField body='message' type='string'>
@@ -73,12 +56,12 @@ Defined in: [src/utils/errors.ts:14](https://github.com/auth0/universal-login/bl
 <ParamField body='code' type='string'>
 {/*> `readonly` **code**: `string`*/}
 
-Defined in: [src/utils/errors.ts:11](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L11)
+Defined in: [src/utils/errors.ts:11](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L11)
 
 </ParamField>
 
 <ParamField body='field?' type='string'>
 {/*> `readonly` `optional` **field**: `string`*/}
 
-Defined in: [src/utils/errors.ts:12](https://github.com/auth0/universal-login/blob/41ce742a4ee4c4f52541f94813d5a46ef3da573d/packages/auth0-acul-js/src/utils/errors.ts#L12)
+Defined in: [src/utils/errors.ts:12](https://github.com/auth0/universal-login/blob/5c054686de6099ea69493d68134be65604477bb6/packages/auth0-acul-js/src/utils/errors.ts#L12)
 </ParamField>
