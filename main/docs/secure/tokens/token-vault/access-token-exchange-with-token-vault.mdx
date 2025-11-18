@@ -15,7 +15,7 @@ Token Vault supports the access token exchange, which enables a client applicati
 
 When a Single-Page Application (SPA) calls a backend API, it only passes an Auth0 access token in the `Authorization` header. Because the backend API does not receive any refresh tokens issued to the SPA, it cannot use the [refresh token exchange](/docs/secure/tokens/token-vault/refresh-token-exchange-with-token-vault) to access the Token Vault to call external APIs.
 
-Instead, the backend API can exchange the Auth0 access token received from the SPA (subject token) for an external provider’s access token (requested token), otherwise known as the access token exchange. This process keeps the sensitive external credentials secure on the backend.
+Instead, the backend API can exchange the Auth0 access token received from the SPA for an external provider’s access token, otherwise known as the access token exchange. This process keeps the sensitive external credentials secure on the backend.
 
 In Auth0’s access token exchange, the backend API acts as both a client and a resource server: 
 * Client: Uses its own credentials to securely perform the access token exchange with the Auth0 Authorization Server. In Auth0, you create a Custom API Client with the same identifier as the backend API. The backend API passes the Custom API Client’s credentials to securely perform the access token exchange with the Auth0 Authorization Server.
@@ -76,9 +76,9 @@ In the token request, the backend API:
 curl --request POST 'https://{yourDomain}/oauth/token' \
   --header 'Content-Type: application/json' \
   --data '{
-    "client_id": "YOUR_CUSTOM_API_CLIENT_ID",
-    "client_secret": "YOUR_CUSTOM_API_CLIENT_SECRET",
-    "subject_token": "YOUR_AUTH0_ACCESS_TOKEN",
+    "client_id": "<YOUR_CUSTOM_API_CLIENT_ID>",
+    "client_secret": "<YOUR_CUSTOM_API_CLIENT_SECRET>",
+    "subject_token": "<YOUR_AUTH0_ACCESS_TOKEN>",
     "grant_type": "urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token",
     "subject_token_type": "urn:ietf:params:oauth:token-type:access_token",
     "requested_token_type": "http://auth0.com/oauth/token-type/federated-connection-access-token",

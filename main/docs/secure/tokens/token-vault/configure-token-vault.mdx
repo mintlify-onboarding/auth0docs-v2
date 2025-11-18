@@ -29,7 +29,7 @@ If you need to trigger MFA challenges for interactive flows, enable **Customize 
 
 ## Configure Connected Accounts for Token Vault
 
-Connected Accounts for Token Vault manages a unified Auth0 user profile linked to multiple external accounts, where users can log in to any one of their accounts using a single set of credentials. Your application then fetches the stored credentials in Token Vault to interact with external APIs on the user’s behalf.
+Connected Accounts for Token Vault manages a unified Auth0 user profile linked to multiple external accounts. Your application then fetches the stored credentials in Token Vault to interact with external APIs on the user’s behalf.
 
 You can configure Connected Accounts for supported social and enterprise connections. To learn more, read [Configure Connected Accounts](/docs/secure/tokens/token-vault/connected-accounts-for-token-vault#configure-connected-accounts).
 
@@ -97,7 +97,7 @@ To configure your application for the refresh token exchange:
 
 </Tab><Tab title="Management API">
 
-To configure your application for the refresh token exchange, make a `PATCH` call to the [Update a Client](/docs/api/management/v2/clients/patch-clients-by-id) endpoint to add the `refresh_token`, `authorization_code,` and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token` grant types to the client JSON object:
+To configure your application for the refresh token exchange, make a `PATCH` call to the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint to add the `refresh_token`, `authorization_code,` and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token` grant types to the client JSON object:
 
 ```bash lines
 curl --location --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
@@ -135,7 +135,7 @@ To configure your SPA with the `authorization_code` grant type:
 
 </Tab><Tab title="Management API">
 
-To configure your SPA, make a `PATCH` call to the [Update a Client](/docs/api/management/v2/clients/patch-clients-by-id) endpoint to add the `authorization_code` grant type to the client JSON object:
+To configure your SPA, make a `PATCH` call to the [Update a Client](https://auth0.com/docs/api/management/v2/clients/patch-clients-by-id) endpoint to add the `authorization_code` grant type to the client JSON object:
 
 ```bash lines
 curl --request PATCH 'https://{yourDomain}/api/v2/clients/{clientId}' \
@@ -202,8 +202,6 @@ To create a Custom API Client in the Auth0 Dashboard:
 * Under **Advanced Settings > Grant Types**, the **Token Vault** grant type should already be enabled for the Custom API Client.
 
 <Frame>![](/docs/images/token-vault/create_custom_api_client.png)</Frame>
-
-Once you’ve successfully created the Custom API Client, the user will be redirected to it instead of the SPA after logging in.
 
 </Tab><Tab title="Management API">
 
