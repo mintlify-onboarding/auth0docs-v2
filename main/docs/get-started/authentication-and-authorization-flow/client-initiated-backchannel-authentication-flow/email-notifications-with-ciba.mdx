@@ -11,9 +11,9 @@ title: Email Notifications with CIBA
 'twitter:title': Email Notifications with CIBA
 ---
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 To use Client-Initiated Backchannel Authentication (CIBA) features, you must have an Enterprise Plan or an appropriate add-on. Refer to [Auth0 Pricing](https://auth0.com/pricing/) for details.
-</Note>
+</Callout>
 
 When you use email notifications with CIBA, the user receives an email with a link that redirects them to authenticate or authorize a request in the browser.
 
@@ -125,7 +125,7 @@ BackChannelAuthorizeResponse resp = request.execute().getBody();
 <tbody>
 <tr>
 <td><code>tenant</code></td>
-<td>Tenant name. It can also be a custom domain. If the `iss_sub` format is used, then the tenant is passed within the `iss` claim.</td>
+<td>Tenant name. It can also be a custom domain. If the `iss_sub` format is used, then the tenant name is passed within the `iss` claim.</td>
 </tr>
 <tr>
 <td><code>client_id</code></td>
@@ -141,7 +141,7 @@ BackChannelAuthorizeResponse resp = request.execute().getBody();
 </tr>
 <tr>
 <td><code>user_id</code></td>
-<td>User ID for the authorizing user that is passed within the <code>login_hint</code> structure. If <code>iss_sub</code> format is used, then the user ID is passed within the <code>sub</code> claim.<br/><br/>The user ID for a federated connection may have a different format.<br/></td>
+<td>User ID for the authorizing user that is passed within the <code>login_hint</code> structure. If <code>iss_sub</code> format is used, then the user ID is passed within the <code>sub</code> claim.<br/><br/>The user ID may have a different format depending on the external provider.<br/></td>
 </tr>
 <tr>
 <td><code>requested_expiry</code></td>
@@ -345,7 +345,9 @@ If the user approves the email request, Auth0 returns an <Tooltip tip="Access To
 }
 ```
 
-**Note:** The `refresh_token` will only be present if the `offline_access` scope was included in the initial `/bc-authorize` request.
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+The `refresh_token` will only be present if the `offline_access` scope was included in the initial `/bc-authorize` request.
+</Callout>
 
 ## Learn more
 

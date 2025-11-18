@@ -131,6 +131,40 @@ If you’re using the Auth0 Guardian app, then the `authorization_details` types
             </tbody>
 </table>
 
+The following is an example `authorization_details` type with the Auth0 schema:
+
+```json lines
+{
+    "type": "urn:auth0:schemas:authorization-details:v1:user-profile",
+    "instruction": "An instruction to the user",
+    "properties": {
+        "stringPropertyForDisplay": {
+            "display": true,
+            "name": "A String:",
+            "display_order": "1",
+            "value": "Value 1"
+        },
+        "numericPropertyForDisplay": {
+            "display": true,
+            "name": "A Number:",
+            "display_order": "2",
+            "description": "An optional description",
+            "value": 100.00
+        },
+        "booleanPropertyForDisplay": {
+            "display": true,
+            "name": "A Boolean:",
+            "display_order": "3",
+            "value": true
+        },
+        "hiddenProperty": {
+            "display": false,
+            "value": "This value should not be displayed"
+        }
+    }
+}
+```
+
 ### Other notification channels
 
 If you’re not using the Auth0 Guardian app, then the `authorization_details` types does not need to use the Auth0 schema. Instead, they must follow these requirements:
@@ -154,6 +188,17 @@ The following is an example `authorization_details` of type `money_transfer` tha
 - `beneficiary`: The recipient of the money transfer. 
 - `subject`: The subject line of the money transfer.
 
+```json lines
+{
+  "type": "money_transfer", 
+  "instructedAmount": {"amount": 2500, "currency": "USD"},   
+  "sourceAccount": "xxxxxxxxxxx1234", 
+  "destinationAccount": "xxxxxxxxxxx9876", 
+  "beneficiary": "Hanna Herwitz", 
+  "subject": "A Lannister Always Pays His Debts"
+}
+```
+
 You can register `authorization_details` types with the [Auth0 Dashboard](https://manage.auth0.com/) or [Management API](https://auth0.com/docs/api/management/v2).
 
 <Tabs><Tab title="Auth0 Dashboard">
@@ -162,7 +207,8 @@ To add `authorization_details` in the Auth0 Dashboard:
 
 1. Navigate to [Auth0 Dashboard > Applications > APIs](https://manage.auth0.com/#/apis).
 2. Select the **Permissions** tab.
-3. Under **Add an Authorization Details type**, you can add multiple `authorization_details` types for your resource server. Enter an `authorization_details` type and then select the **+Add** option.
+3. Under **Add an Authorization Details type**, you can add multiple `authorization_details` types for your resource server. Enter an `authorization_details` type
+4. Select the **+Add** option.
 
 You can see the `authorization_details` types for your resource server under **List of Authorization Details Types**:
 
@@ -170,7 +216,7 @@ You can see the `authorization_details` types for your resource server under **L
 
 </Tab><Tab title="Management API">
 
-To register  `authorization_details` types with the Management API, make a `PATCH` request to the [Update a resource server](https://auth0.com/docs/api/management/v2/resource-servers/patch-resource-servers-by-id) endpoint.
+To register  `authorization_details` types with an existing resource server, make a `PATCH` request to the [Update a resource server](https://auth0.com/docs/api/management/v2/resource-servers/patch-resource-servers-by-id) endpoint.
 
 The following code sample adds the `payment_initiation` and `money_transfer` types under `authorization_details` for a resource server:
 
@@ -208,7 +254,7 @@ curl --location --request POST 'https://$tenant/api/v2/resource-servers' \
 
 You can render the `authorization_details` of a Rich Authorization Request in the consent prompt. To do so, configure the `customized-consent` prompt with the appropriate template partials.
 
-You can set the customized consent prompt using the Management API or Auth0 CLI. 
+You can set the customized consent prompt using the Auth0 CLI or Management API. 
 
 ### Auth0 CLI
 

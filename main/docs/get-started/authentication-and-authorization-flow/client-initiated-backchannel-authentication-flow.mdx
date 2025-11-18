@@ -11,9 +11,9 @@ title: Client-Initiated Backchannel Authentication Flow
 'twitter:title': Client-Initiated Backchannel Authentication Flow
 ---
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 To use Client-Initiated Backchannel Authentication (CIBA) features, you must have an Enterprise Plan or an appropriate add-on. Refer to [Auth0 Pricing](https://auth0.com/pricing/) for details.
-</Note>
+</Callout>
 
 The Client-Initiated Backchannel Authentication (CIBA) Flow is an <Tooltip tip="OpenID: Open standard for authentication that allows applications to verify users' identities without collecting and storing login information." cta="View Glossary" href="/docs/glossary?term=OpenID">OpenID</Tooltip> Foundation standard that enables decoupled authentication and authorization using secure backchannel requests. The CIBA flow is designed for use cases where the device initiating a request (the consumption device) is different from the device a user uses to authenticate (the authentication device).
 
@@ -36,7 +36,7 @@ Common use cases for CIBA flow include:
 
 Auth0 supports the following notification channels with CIBA:
 
-- [Auth0 Guardian mobile push notifications](/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/mobile-push-notifications-with-ciba): Available for all [Enterprise plans](https://auth0.com/pricing). The user receives a push notification to their enrolled mobile device to authenticate or confirm transaction details. Authentication and authorization happen on the authentication device that receives the push notification. You can enable mobile push notifications with CIBA through:
+- [Auth0 Guardian mobile push notifications](/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/mobile-push-notifications-with-ciba): Available for all [Enterprise plans](https://auth0.com/pricing). The user receives a push notification on their enrolled mobile device to authenticate or confirm transaction details. Authentication and authorization happen on the authentication device that receives the push notification. You can enable mobile push notifications with CIBA through:
   - The Auth0 Guardian app
   - A Custom app integrated with the Auth0 Guardian SDK
 - [Email notifications](/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/email-notifications-with-ciba): Available as an add-on for [paid plans](https://auth0.com/pricing). The user receives an email to their verified email address. The email contains a link, and authentication and authorization happens via the browser.
@@ -57,9 +57,9 @@ The following diagram describes the end-to-end CIBA flow:
 6. The end user provides their response on the authentication device, which submits the user response to Auth0.
 7. The client application’s backend polls the `/token` endpoint and receives the appropriate tokens upon completing the CIBA flow.
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 Because the CIBA flow is used for one-time asynchronous user authentication and authorization, CIBA does not create or store a grant containing the user’s consent for an application to access an API’s resources. If the user later authenticates using a different authentication flow, and that flow requests the same scopes the user previously consented to using CIBA, Auth0 will not have a record of that consent. Therefore, it will prompt the user to consent again.
-</Note>
+</Callout>
 
 ## Get started
 

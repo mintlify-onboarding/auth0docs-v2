@@ -11,13 +11,14 @@ title: Mobile Push Notifications with CIBA
 'twitter:title': Mobile Push Notifications with CIBA
 ---
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 To use Client-Initiated Backchannel Authentication (CIBA) features, you must have an Enterprise Plan or an appropriate add-on. Refer to [Auth0 Pricing](https://auth0.com/pricing/) for details.
-</Note>
+</Callout>
 
 When you use mobile push notifications with CIBA, the user receives a push notification to authenticate or authorize a request on their enrolled mobile device. You can send mobile push notifications with CIBA using the Auth0 Guardian app or a custom app integrated with the Auth0 Guardian SDK.
 
 The CIBA flow with mobile push notifications authenticates and authorizes users on their mobile device, bypassing the need for a browser. Because the consumption device doesn't require an active browser session, the user doesn't need to be logged in before a CIBA request is triggered. This also ensures that the CIBA flow won't impact any existing sessions the user may have.
+
 The following diagram explains the end-to-end CIBA with mobile push notifications flow:
 
 <Frame>![](/docs/images/ciba/mobile_push_notifications_with_ciba_diagram.png)</Frame>
@@ -124,7 +125,7 @@ BackChannelAuthorizeResponse resp = request.execute().getBody();
 <tbody>
 <tr>
 <td><code>tenant</code></td>
-<td>Tenant name. It can also be a custom domain. If the `iss_sub` format is used, then the tenant is passed within the `iss` claim.</td>
+<td>Tenant name. It can also be a custom domain. If the `iss_sub` format is used, then the tenant name is passed within the `iss` claim.</td>
 </tr>
 <tr>
 <td><code>client_id</code></td>
@@ -140,7 +141,7 @@ BackChannelAuthorizeResponse resp = request.execute().getBody();
 </tr>
 <tr>
 <td><code>user_id</code></td>
-<td>User ID for the authorizing user that is passed within the <code>login_hint</code> structure. If <code>iss_sub</code> format is used, then the user ID is passed within the <code>sub</code> claim.<br/><br/>The user ID for a federated connection may have a different format.<br/></td>
+<td>User ID for the authorizing user that is passed within the <code>login_hint</code> structure. If <code>iss_sub</code> format is used, then the user ID is passed within the <code>sub</code> claim.<br/><br/>The user ID may have a different format depending on the external provider.<br/></td>
 </tr>
 <tr>
 <td><code>requested_expiry</code></td>
@@ -529,8 +530,9 @@ If the user approves the push request, Auth0 returns an <Tooltip tip="Access Tok
 
 
 
-
-**Note:** The `refresh_token` will only be present if the `offline_access` scope was included in the initial `/bc-authorize` request.
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
+The `refresh_token` will only be present if the `offline_access` scope was included in the initial `/bc-authorize` request.
+</Callout>
 
 ## Learn more
 
