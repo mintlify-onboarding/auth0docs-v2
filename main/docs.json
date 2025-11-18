@@ -304,7 +304,8 @@
                             "group": "Client-Initiated Backchannel Authentication Flow",
                             "pages": [
                               "docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow",
-                              "docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authentication-with-ciba",
+                              "docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/mobile-push-notifications-with-ciba",
+                              "docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/email-notifications-with-ciba",
                               "docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authorization-with-ciba"
                             ]
                           },
@@ -24213,6 +24214,10 @@
     {
      "source": "/docs/secure/tokens/token-vault/call-apis-with-token-vault",
       "destination": "/docs/secure/tokens/token-vault/refresh-token-exchange-with-token-vault"
+    },
+    {
+     "source": "/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/user-authentication-with-ciba",
+      "destination": "/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow/mobile-push-notifications-with-ciba"
     }
   ]
 }
