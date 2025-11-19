@@ -11,9 +11,9 @@ title: Configure Client-Initiated Backchannel Authentication
 'twitter:title': Configure Client-Initiated Backchannel Authentication
 ---
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 To use Client-Initiated Backchannel Authentication (CIBA) features, you must have an Enterprise Plan or an appropriate add-on. Refer to [Auth0 Pricing](https://auth0.com/pricing/) for details.
-</Note>
+</Callout>
 
 The [Client-Initiated Backchannel Authentication (CIBA) flow](/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow) is a decoupled authentication and authorization flow defined by the OpenID Foundation. You can use the CIBA flow in asynchronous workflows where the device initiating the CIBA request (the consumption device) is different from the device used by the user to authenticate (the authentication device).
 
@@ -84,9 +84,9 @@ myClient := &Client{
 
 ## Enable notification channels for your application
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 To use Client-Initiated Backchannel Authentication (CIBA) features, you must have an Enterprise Plan or an appropriate add-on. Refer to [Auth0 Pricing](https://auth0.com/pricing/) for details.
-</Note>
+</Callout>
 
 Once you have enabled the CIBA grant type for your application, you can configure which notification channels are enabled for the CIBA flow. If you have enabled multiple notification channels,  CIBA uses the value of the `requested_expiry` parameter to determine which notification channel to use. The `requested_expiry` determines the maximum duration for which the CIBA session should be valid in seconds:
 - [Mobile push notifications](#configure-mobile-push-notifications): If you set your `requested_expiry` to a value of 300 seconds or lower, CIBA uses the mobile push notification channel if enabled.
@@ -156,9 +156,9 @@ In the Auth0 Dashboard:
 
 #### Enroll the authorizing user in MFA using push notifications
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 If the user is not enrolled to use MFA push notifications, Auth0 falls back to using email notifications, if configured, instead of rejecting the CIBA request.
-</Note>
+</Callout>
 
 For both the Auth0 Guardian app and a custom app, you must [enroll the authorizing user in MFA using push notifications](/docs/secure/multi-factor-authentication/auth0-guardian#enroll-in-push-notifications).
 
@@ -170,9 +170,9 @@ If you have set <Tooltip tip="Multi-factor authentication (MFA): User authentica
 
 ### Configure email notifications
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 To use email notifications with CIBA, you need the Auth0 for AI Agents add-on with a paid plan. To learn more, read [Auth0 Pricing](https://auth0.com/pricing).
-</Note>
+</Callout>
 
 You can send email notifications with the CIBA flow. To configure email notifications with CIBA, make sure you:
 - [Configure your email provider](#configure-your-email-provider)
@@ -210,9 +210,9 @@ curl -L "https://{yourDomain}.auth0.com/api/v2/email-templates" \
 
 #### Ensure the authorizing user has a verified email address
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 If the user does not have a verified email address, Auth0 rejects the CIBA email request.
-</Note>
+</Callout>
 
 To send an email notification with CIBA, the authorizing user must have a verified email address associated with their user account. 
 
