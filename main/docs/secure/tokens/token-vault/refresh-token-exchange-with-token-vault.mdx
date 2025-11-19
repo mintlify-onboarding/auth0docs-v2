@@ -41,9 +41,9 @@ The user logs into the application via Google with the [Connected Accounts flow]
 
 ## Step 2: Perform refresh token exchange
 
-<Note>
+<Callout icon="file-lines" color="#0EA5E9" iconType="regular">
 While Token Vault does not support refresh token rotation, you can use [DPoP](/docs/secure/sender-constraining/demonstrating-proof-of-possession-dpop) to bind Auth0-issued tokens to your client for additional security. To successfully perform the refresh token exchange with Token Vault, disable Allow Refresh Token Rotation for your application in the Auth0 Dashboard.
-</Note>
+</Callout>
 
 The application can use a valid Auth0 refresh token to request a Google access token from the Token Vault with the scopes granted in the Connected Accounts flow. This process allows the application to get a new access token without requiring the user to re-authorize the connection.
 
